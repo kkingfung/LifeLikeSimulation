@@ -3,13 +3,13 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 .utmp/
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
 *.log
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
@@ -97,3 +97,38 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# ===================
+# Project Specific
+# ===================
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+*.sln
+*.slnx
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Video files (large assets - consider using Git LFS)
+# Uncomment if you want to exclude videos from git
+# /[Aa]ssets/Videos/*.mp4
+# /[Aa]ssets/Videos/*.webm
+# /[Aa]ssets/Videos/*.mov
+
+# Backup files
+*~
+*.bak
+*.swp
+
+# Claude Code
+.claude/
