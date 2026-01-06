@@ -547,7 +547,346 @@ private void OnGameStartRequested()
 
 ---
 
+---
+
+## Operator Mode（オペレーターモード）
+
+### コンセプト: "Operator: Night Signal"
+
+夜間緊急オペレーターとして電話を受ける。
+通話は断片的で、偏りがあり、時には虚偽。
+真実は語られるのではなく、**浮かび上がる**。
+
+### Core Pillars
+
+1. **One Operator, Many Calls, One Truth**
+   - プレイヤーはデスクから離れない
+   - 世界は声だけで構築される
+   - 通話は不完全、偏見あり、時に虚偽
+
+2. **"Ridiculous → Serious" Narrative Curve**
+   - 最初は馬鹿げた通話（騒音苦情、いたずら）
+   - 徐々に繋がりが見えてくる
+   - 「これらはランダムじゃなかった」という気づき
+
+3. **Lying Is a Feature**
+   - オペレーターは嘘をつける
+   - 良い/悪いのラベルなし、結果のみ
+
+### Operator Mode Data Structures
+
+#### CallerData（発信者）
+
+```csharp
+[CreateAssetMenu(menuName = "LifeLike/Operator/Caller Data")]
+public class CallerData : ScriptableObject
+{
+    public string callerId;
+    public string displayName;       // 最初は「不明」の場合も
+    public string realName;          // 判明後の本名
+    public Sprite silhouetteImage;   // フェーズ1用
+    public Sprite revealedImage;     // 判明後
+    public CallerPersonality personality; // 正直さ、安定性、協力性、攻撃性
+    public List<CallerRelation> relations; // 他の発信者との関係
+    public string hiddenInfo;        // 隠している情報
+    public string trueMotivation;    // 本当の目的
+}
+```
+
+#### CallData（通話）
+
+```csharp
+[CreateAssetMenu(menuName = "LifeLike/Operator/Call Data")]
+public class CallData : ScriptableObject
+{
+    public string callId;
+    public CallerData caller;
+    public int incomingTimeMinutes;  // 着信時刻
+    public float ringDuration;       // 着信持続時間
+    public int priority;             // 優先度
+    public string startSegmentId;
+    public List<CallSegment> segments;
+    public List<StoryEffect> onEndEffects;   // 終了時の効果
+    public List<StoryEffect> onMissedEffects; // 不在着信時の効果
+    public bool isCritical;          // スキップ不可
+}
+```
+
+#### CallSegment（通話セグメント）
+
+```csharp
+[Serializable]
+public class CallSegment
+{
+    public string segmentId;
+    public CallMediaReference media; // シルエット/音声/動画
+    public List<ResponseData> responses; // プレイヤーの応答選択肢
+    public float responseTimeLimit;  // 応答制限時間
+    public string timeoutResponseId; // タイムアウト時のデフォルト
+    public List<string> autoDiscoveredEvidenceIds; // 自動発見証拠
+}
+```
+
+#### ResponseData（応答）
+
+```csharp
+[Serializable]
+public class ResponseData
+{
+    public string responseId;
+    public string displayText;       // 表示テキスト
+    public string actualText;        // 実際の発言
+    public bool isSilence;           // 沈黙か
+    public bool isLie;               // 嘘か
+    public bool presentsEvidence;    // 証拠を提示するか
+    public string evidenceIdToPresent;
+    public List<StoryCondition> conditions;
+    public List<string> requiredEvidenceIds;
+    public List<StoryEffect> effects;
+    public int trustImpact;          // 信頼度への影響
+    public string nextSegmentId;
+    public bool endsCall;
+    public bool discoversEvidence;
+    public string discoveredEvidenceId;
+}
+```
+
+#### EvidenceData（証拠）
+
+```csharp
+[Serializable]
+public class EvidenceData
+{
+    public string evidenceId;
+    public EvidenceType evidenceType; // Statement, Timestamp, Location, Contradiction, Silence等
+    public string content;
+    public string sourceCallerId;
+    public string sourceCallId;
+    public EvidenceReliability reliability; // Unverified, Verified, Disproven等
+    public bool isActuallyTrue;      // 真実かどうか（内部フラグ）
+    public List<string> relatedCallerIds;
+    public List<string> contradictingEvidenceIds;
+    public bool isDiscovered;
+    public bool isUsable;
+}
+```
+
+**重要**: 証拠は「真実」ではなく「使用可能」。それが深みを生む。
+
+#### TrustEdge（信頼関係）
+
+```csharp
+[Serializable]
+public class TrustEdge
+{
+    public string fromId;
+    public string toId;
+    public TrustTargetType targetType; // Operator, OtherCaller, Assumption
+    public int trustValue;           // -100 ~ 100
+    public TrustLevel trustLevel;    // Hostile ~ Devoted
+    public List<string> trustHistory;
+}
+```
+
+#### NightScenarioData（一夜のシナリオ）
+
+```csharp
+[CreateAssetMenu(menuName = "LifeLike/Operator/Night Scenario")]
+public class NightScenarioData : ScriptableObject
+{
+    public string scenarioId;
+    public string title;
+    public int startTimeMinutes;     // 例: 22:00 = 1320
+    public int endTimeMinutes;       // 例: 06:00 = 360（翌日）
+    public float realSecondsPerGameMinute;
+    public List<CallerData> callers;
+    public List<CallData> calls;
+    public List<EvidenceTemplate> evidenceTemplates;
+    public List<WorldStateSnapshot> initialWorldStates;
+    public string theTruth;          // シナリオの真実
+    public List<ScenarioEnding> endings;
+}
+```
+
+### Operator Mode Services
+
+#### IEvidenceService
+証拠の発見・使用・管理
+
+```csharp
+public interface IEvidenceService
+{
+    IReadOnlyList<EvidenceData> DiscoveredEvidence { get; }
+    event Action<EvidenceData> OnEvidenceDiscovered;
+    event Action<EvidenceData, EvidenceData> OnContradictionFound;
+
+    bool DiscoverEvidence(string evidenceId);
+    EvidenceData CreateStatementEvidence(string sourceCallerId, string content, bool isTrue);
+    bool UseEvidence(string evidenceId);
+    void UpdateReliability(string evidenceId, EvidenceReliability reliability);
+    bool CheckContradiction(string evidenceId1, string evidenceId2);
+}
+```
+
+#### ITrustGraphService
+信頼関係の管理
+
+```csharp
+public interface ITrustGraphService
+{
+    event Action<string, string, int, TrustLevel> OnTrustChanged;
+    event Action<CallerAssumption> OnAssumptionDisproven;
+
+    int GetOperatorTrust(string callerId);
+    TrustLevel GetOperatorTrustLevel(string callerId);
+    void ModifyOperatorTrust(string callerId, int delta, string reason);
+    void ModifyCallerTrust(string fromId, string toId, int delta, string reason);
+    IReadOnlyList<CallerAssumption> GetAssumptions(string callerId);
+    void DisproveAssumption(string assumptionId);
+}
+```
+
+#### ICallFlowService
+通話フローの管理
+
+```csharp
+public interface ICallFlowService
+{
+    CallData? CurrentCall { get; }
+    CallSegment? CurrentSegment { get; }
+    IReadOnlyList<CallData> IncomingCalls { get; }
+
+    event Action<CallData> OnIncomingCall;
+    event Action<CallData> OnCallStarted;
+    event Action<CallSegment> OnSegmentChanged;
+    event Action<IReadOnlyList<ResponseData>> OnResponsesPresented;
+    event Action<CallData, CallState> OnCallEnded;
+    event Action<CallData> OnCallMissed;
+
+    void LoadScenario(NightScenarioData scenario);
+    bool AnswerCall(string callId);
+    bool HoldCall();
+    void EndCall();
+    void SelectResponse(string responseId);
+    void SelectSilence();
+}
+```
+
+#### IWorldStateService
+世界状態と時間の管理
+
+```csharp
+public interface IWorldStateService
+{
+    int CurrentTimeMinutes { get; }
+    string FormattedTime { get; }
+    bool IsScenarioEnded { get; }
+
+    event Action<int, string> OnTimeChanged;
+    event Action<WorldStateSnapshot> OnWorldStateChanged;
+    event Action<ScenarioEnding> OnScenarioEnded;
+    event Action<CallData> OnCallTriggered;
+
+    void LoadScenario(NightScenarioData scenario);
+    void UpdateTime(float deltaTime);
+    void AddWorldState(WorldStateSnapshot state);
+    void RevealStateToPlayer(string stateId);
+    ScenarioEnding? CheckEndingConditions();
+}
+```
+
+### 段階的開発
+
+**フェーズ1**: シルエット画像 + テキスト
+**フェーズ2**: 音声追加
+**フェーズ3**: 動画追加
+
+```csharp
+public enum CallMediaType
+{
+    SilhouetteText,  // フェーズ1
+    SilhouetteVoice, // フェーズ2
+    Video            // フェーズ3
+}
+```
+
+### Ending Types
+
+```csharp
+public enum EndingType
+{
+    TruthRevealed,      // 真相解明
+    DamageMinimized,    // 被害最小化
+    SomeoneSaved,       // 誰かを救った
+    SomeoneAbandoned,   // 誰かを見捨てた
+    BecameAccomplice,   // 共犯者になった
+    EveryoneSaved,      // 全員を救った
+    NooneSaved,         // 誰も救えなかった
+    Neutral,            // 中立/曖昧
+    CoverUpSucceeded,   // 隠蔽成功
+    JusticeServed       // 正義執行
+}
+```
+
+「成功」エンディングは悲劇的かもしれない。
+「失敗」は道徳的に正しいかもしれない。
+その曖昧さがブランド。
+
+---
+
+## ディレクトリ構造（更新版）
+
+```
+Assets/
+├── Scripts/
+│   ├── Core/
+│   │   ├── MVVM/
+│   │   ├── Commands/
+│   │   ├── Services/
+│   │   └── GameBootstrap.cs
+│   ├── Services/
+│   │   ├── Story/          # 既存
+│   │   ├── Video/          # 既存
+│   │   ├── Choice/         # 既存
+│   │   ├── Relationship/   # 既存
+│   │   ├── Save/           # 既存
+│   │   ├── Transition/     # 既存
+│   │   ├── AssetBundle/    # 既存
+│   │   ├── Evidence/       # NEW: 証拠システム
+│   │   ├── TrustGraph/     # NEW: 信頼グラフ
+│   │   ├── CallFlow/       # NEW: 通話フロー
+│   │   └── WorldState/     # NEW: 世界状態
+│   ├── Data/
+│   │   ├── StorySceneData.cs
+│   │   ├── ChoiceData.cs
+│   │   ├── CharacterData.cs
+│   │   ├── CallerData.cs       # NEW
+│   │   ├── CallData.cs         # NEW
+│   │   ├── CallMediaReference.cs # NEW
+│   │   ├── EvidenceData.cs     # NEW
+│   │   ├── TrustData.cs        # NEW
+│   │   └── NightScenarioData.cs # NEW
+│   ├── ViewModels/
+│   │   ├── MainMenuViewModel.cs
+│   │   ├── StorySceneViewModel.cs
+│   │   └── OperatorViewModel.cs # NEW
+│   └── Views/
+│       ├── MainMenuView.cs
+│       ├── StorySceneView.cs
+│       └── OperatorView.cs     # TODO
+├── StoryData/
+│   └── Operator/               # NEW: オペレーターモード用
+│       ├── Scenarios/
+│       ├── Callers/
+│       ├── Calls/
+│       └── Evidence/
+└── ...
+```
+
+---
+
 ## バージョン情報
 
 - Unity: 6000.x
 - 作成日: 2026-01-06
+- 更新日: 2026-01-07 (Operator Mode追加)

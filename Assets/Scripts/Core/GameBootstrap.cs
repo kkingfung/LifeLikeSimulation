@@ -2,12 +2,17 @@
 using LifeLike.Core.Services;
 using LifeLike.Data;
 using LifeLike.Services.AssetBundle;
+using LifeLike.Services.CallFlow;
 using LifeLike.Services.Choice;
+using LifeLike.Services.Evidence;
 using LifeLike.Services.Relationship;
 using LifeLike.Services.Save;
 using LifeLike.Services.Story;
 using LifeLike.Services.Transition;
+using LifeLike.Services.Localization;
+using LifeLike.Services.TrustGraph;
 using LifeLike.Services.Video;
+using LifeLike.Services.WorldState;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,6 +35,10 @@ namespace LifeLike.Core
         [Header("AssetBundle Settings")]
         [Tooltip("AssetBundleのダウンロード元ベースURL（空の場合はStreamingAssetsを使用）")]
         [SerializeField] private string _assetBundleBaseUrl = string.Empty;
+
+        [Header("Operator Mode Settings")]
+        [Tooltip("初期信頼グラフデータ")]
+        [SerializeField] private TrustGraphData? _trustGraphData;
 
         [Header("Settings")]
         [SerializeField] private string _mainMenuSceneName = "MainMenu";
@@ -73,6 +82,10 @@ namespace LifeLike.Core
             // ServiceLocatorをリセット
             ServiceLocator.ResetInstance();
 
+            // LocalizationServiceを最初に作成・登録（他のサービスから参照される可能性があるため）
+            var localizationService = new LocalizationService();
+            ServiceLocator.Instance.Register<ILocalizationService>(localizationService);
+
             // AssetBundleServiceを作成・登録
             var assetBundleService = new AssetBundleService();
             if (!string.IsNullOrEmpty(_assetBundleBaseUrl))
@@ -108,6 +121,28 @@ namespace LifeLike.Core
                 transitionService.Initialize(_fadeCanvasGroup, _fadeImage);
             }
             ServiceLocator.Instance.Register<ITransitionService>(transitionService);
+
+            // === Operator Mode Services ===
+
+            // EvidenceServiceを作成・登録
+            var evidenceService = new EvidenceService();
+            ServiceLocator.Instance.Register<IEvidenceService>(evidenceService);
+
+            // TrustGraphServiceを作成・登録
+            var trustGraphService = new TrustGraphService();
+            if (_trustGraphData != null)
+            {
+                trustGraphService.Initialize(_trustGraphData);
+            }
+            ServiceLocator.Instance.Register<ITrustGraphService>(trustGraphService);
+
+            // WorldStateServiceを作成・登録（StoryServiceに依存）
+            var worldStateService = new WorldStateService(storyService);
+            ServiceLocator.Instance.Register<IWorldStateService>(worldStateService);
+
+            // CallFlowServiceを作成・登録（複数サービスに依存）
+            var callFlowService = new CallFlowService(storyService, evidenceService, trustGraphService);
+            ServiceLocator.Instance.Register<ICallFlowService>(callFlowService);
 
             // GameStateDataが設定されていれば、キャラクターを登録
             if (_gameStateData != null)
