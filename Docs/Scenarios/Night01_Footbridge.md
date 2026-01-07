@@ -2017,192 +2017,192 @@ ELSE victim_survives = false
 
 ---
 
-### CALL 8: "Just for the Record" (~03:20-03:25)
+### 通話9: 「記録のためだけど」 (~03:20-03:25)
 
-**Call ID:** `call_supervisor`
-**Timing:** After Driver Call #2 and Family Follow-Up
+**通話ID:** `call_supervisor`
+**タイミング:** ドライバーコールバックと家族フォローアップの後
 
-**Strategic Role:**
-- Reframe the incident as process, not people
-- Apply pressure without emotion
-- Test whether the operator is a liability or an asset
+**戦略的役割:**
+- インシデントを人ではなくプロセスとして再構成
+- 感情なしで圧力をかける
+- オペレーターがリスクか資産かテスト
 
-Think: **compliance audit disguised as concern.**
+考え方: **懸念を装ったコンプライアンス監査**
 
-**Trigger:** The logs tripped a threshold.
+**トリガー:** ログが閾値を超えた
 
-**Opening (disarming, professional):**
-> 「お疲れ様。当直主任の[名前]です。
+**開始（友好的、プロフェッショナル）:**
+> 「お疲れ様。当直主任の工藤です。
 > 急ぎじゃないんだけど、記録の確認だけさせてもらっていい？」
 
-"Nothing urgent" is a lie.
-"Notes" is the weapon.
+「急ぎじゃない」は嘘。
+「記録」は武器。
 
-**Caller State:**
-- Calm, supportive, slightly tired
-- Never accusatory
-- This is **institutional confidence**
-- Speaks like someone who has done this before
+**発信者の状態:**
+- 落ち着いている、支援的、少し疲れている
+- 決して非難しない
+- これは**組織的自信**
+- これを何度もやってきた人のように話す
 
 ---
 
-#### Core Flow
+#### コアフロー
 
-**1. Log Alignment Check**
+**1. ログ整合性チェック**
 
 > 「今夜、ドライバーからの電話受けたよね？」
 
-Not a question. A statement seeking confirmation.
+質問ではない。確認を求める発言。
 
-If the operator hesitates:
+オペレーターが躊躇した場合:
 > 「確認したいだけ。記録と合わせておきたくて」
 
-**Alignment > truth.**
+**整合性 > 真実**
 
-**2. Language Narrowing**
+**2. 言葉遣いの絞り込み**
 
-Supervisor references specific phrasing:
+主任が特定の表現を参照:
 > 「『衝突の可能性』って書いてあるね。
 > それでいいんだけど...『歩行者』とは書いてないよね？」
 
-This subtly:
-- Pushes the operator toward safer terminology
-- Signals that **wording is monitored**
+これは巧妙に:
+- オペレーターを安全な用語に誘導
+- **言葉遣いが監視されている**ことを示唆
 
-**3. Information Control**
+**3. 情報管理**
 
-If the operator mentions family or other calls:
+オペレーターが家族や他の通話に言及した場合:
 > 「そうか。基本的には、確認取れるまで別件は別件で処理するから」
 
-This is the system **discouraging synthesis**.
+これはシステムが**統合を阻止している**。
 
-**4. The Soft Rewrite (Critical Moment)**
+**4. 柔らかい書き換え（重要な瞬間）**
 
-Supervisor suggests:
+主任が提案:
 > 「まだ更新できるなら、こう書いてもいいかもね。
 > 『路上での音。視認による確認なし』」
 
-This is not an order.
-It's **career advice**.
+これは命令ではない。
+**キャリアアドバイス**。
 
 ---
 
-#### The Real Question (Hidden)
+#### 本当の質問（隠れた）
 
-Eventually:
+最終的に:
 > 「今夜の対応、自分ではどう思う？」
 
-This is not about feelings.
-It's a **risk assessment**.
+これは感情についてではない。
+**リスク評価**。
 
-Possible readings:
-- Confident = no further oversight needed
-- Uncertain = supervision increases
-- Defensive = flag raised
-
----
-
-#### Operator Response Space
-
-| Response | Reading | Consequence |
-|----------|---------|-------------|
-| Agree and align | Compliant | System trusts operator, autonomy preserved |
-| Push back gently | Independent | Noted, but not flagged |
-| Admit uncertainty | Honest | Supervision may increase |
-| Ask what's being implied | Aware | Supervisor backs off, but notes it |
-| Defensive | Risk | Flag raised, future scrutiny |
-
-Every choice:
-- Adjusts future system behavior
-- Changes how much autonomy the player retains
+可能な解釈:
+- 自信あり = さらなる監視不要
+- 不確か = 監視が増加
+- 防御的 = フラグが立つ
 
 ---
 
-#### Exit Line (Corporate Neutral)
+#### オペレーター応答スペース
+
+| 応答 | 解釈 | 結果 |
+|------|------|------|
+| 同意して整合 | 従順 | システムがオペレーターを信頼、自律性維持 |
+| 穏やかに反論 | 独立的 | 記録されるがフラグは立たない |
+| 不確かさを認める | 正直 | 監視が増加する可能性 |
+| 何が暗示されているか尋ねる | 自覚的 | 主任は退くが記録する |
+| 防御的 | リスク | フラグが立ち、将来の監視 |
+
+すべての選択が:
+- 将来のシステム行動を調整
+- プレイヤーがどれだけ自律性を保持するか変更
+
+---
+
+#### 退出ライン（企業的中立）
 
 > 「了解。これは情報確認だけだから。
 > 今夜もしっかりやってくれてありがとう」
 
-**"情報確認だけ" (informational only)** is chillingly vague.
+**「情報確認だけ」**は不気味に曖昧。
 
 ---
 
-#### What This Call Achieves
+#### この通話が達成すること
 
-**Mechanically:**
-- Recontextualizes the entire experience
-- Makes the player realize: **The system noticed me.**
+**メカニクス的:**
+- 全体験を再文脈化
+- プレイヤーに気づかせる: **システムは私を見ていた**
 
-**Player Experience:**
-- Validates attentive players who kept good notes
-- Punishes sloppy note-taking
-- Sets up endgame authority tension
+**プレイヤー体験:**
+- 良いメモを取った注意深いプレイヤーを検証
+- ずさんなメモ取りを罰する
+- エンドゲームの権威との緊張を設定
 
-**Meta-lesson:** Language is power.
-
----
-
-#### What This Call Must NOT Do
-
-- Confirm facts
-- Take responsibility
-- Resolve the case
-
-Its job is **containment**.
+**メタ教訓:** 言葉は力。
 
 ---
 
-#### Evidence Fragments
+#### この通話がしてはいけないこと
 
-- `evidence_supervisor_contacted` - Supervisor called for log review
-- `evidence_language_suggested` - Supervisor suggested safer phrasing
-- `evidence_synthesis_discouraged` - System discouraged connecting calls
-- `evidence_operator_assessed` - Operator's confidence was evaluated
+- 事実を確認する
+- 責任を取る
+- 事件を解決する
 
----
-
-#### Story Flags Set
-
-| Flag | Condition |
-|------|-----------|
-| `supervisor_aligned` | Operator agreed to suggested language |
-| `supervisor_resisted` | Operator pushed back on suggestions |
-| `supervisor_uncertain` | Operator admitted doubt |
-| `supervisor_flagged` | Operator was defensive or evasive |
+その仕事は**封じ込め**。
 
 ---
 
-#### Design Notes
+#### 証拠フラグメント
 
-**For Casual Players:**
-"Wait, they're checking my notes? Did I do something wrong?"
-
-**For Invested Players:**
-"The system doesn't care about the truth. It cares about the record."
-
-**The Target Realization:**
-"I'm not investigating. I'm being investigated."
+- `evidence_supervisor_contacted` - 主任が記録確認のために電話
+- `evidence_language_suggested` - 主任が安全な言葉遣いを提案
+- `evidence_synthesis_discouraged` - システムが通話の接続を阻止
+- `evidence_operator_assessed` - オペレーターの自信が評価された
 
 ---
 
-#### Actor Direction
+#### ストーリーフラグ設定
 
-- Corporate calm—never raises voice
-- Slight warmth, but it's professional, not personal
-- Pauses after key questions to let them land
-- The friendliness is a technique, not a feeling
-- Ends calls the same way regardless of content
+| フラグ | 条件 |
+|--------|------|
+| `supervisor_aligned` | オペレーターが提案された言葉遣いに同意 |
+| `supervisor_resisted` | オペレーターが提案に反発 |
+| `supervisor_uncertain` | オペレーターが疑念を認めた |
+| `supervisor_flagged` | オペレーターが防御的または回避的だった |
 
 ---
 
-#### Production Value
+#### デザインノート
 
-- One voice actor
-- Zero new environments
-- Massive thematic weight
-- Teaches the meta-mechanic: **language is power**
+**カジュアルプレイヤー向け:**
+「え、メモをチェックされてる？何かまずいことした？」
 
-High depth, low cost. Boardroom approved.
+**熱心なプレイヤー向け:**
+「システムは真実を気にしない。記録を気にしている」
+
+**ターゲット実現:**
+「私は調査していない。調査されている」
+
+---
+
+#### 演技指示
+
+- 企業的な落ち着き—決して声を荒げない
+- わずかな温かさ、しかしプロフェッショナル、個人的ではない
+- 重要な質問の後に間を置いて効果を出す
+- 友好性はテクニック、感情ではない
+- 内容に関係なく同じように通話を終える
+
+---
+
+#### 制作価値
+
+- 声優1人
+- 新しい環境ゼロ
+- 大きなテーマ的重み
+- メタメカニクスを教える: **言葉は力**
+
+高い深さ、低コスト。会議室承認済み。
 
 ---
 
@@ -2215,11 +2215,11 @@ High depth, low cost. Boardroom approved.
 > [短い間]
 > 「急ぎじゃないんだけど、記録の確認だけさせてもらっていい？」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s1_yes` | 「はい、どうぞ」 | "Yes, go ahead" | SEG2 | `cooperative_opening` |
-| `s1_busy` | 「今少し立て込んでて...」 | "I'm a bit busy right now..." | SEG2_pressed | `attempted_delay` |
-| `s1_concerned` | 「何かありましたか」 | "Is something wrong?" | SEG2_alert | `showed_concern` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s1_yes` | 「はい、どうぞ」 | SEG2 | `cooperative_opening` |
+| `s1_busy` | 「今少し立て込んでて...」 | SEG2_pressed | `attempted_delay` |
+| `s1_concerned` | 「何かありましたか」 | SEG2_alert | `showed_concern` |
 
 **セグメント2: ドライバー通話確認**
 
@@ -2228,11 +2228,11 @@ High depth, low cost. Boardroom approved.
 > [間]
 > 「事故の可能性があるって」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s2_confirm` | 「はい、受けました」 | "Yes, I took it" | SEG3 | — |
-| `s2_detail` | 「はい。二度かかってきました」 | "Yes. Called twice actually" | SEG3_detail | `volunteered_detail` |
-| `s2_hesitate` | 「...ええと、はい」 | "...Um, yes" | SEG3_hesitate | `hesitated_on_confirm` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s2_confirm` | 「はい、受けました」 | SEG3 | — |
+| `s2_detail` | 「はい。二度かかってきました」 | SEG3_detail | `volunteered_detail` |
+| `s2_hesitate` | 「...ええと、はい」 | SEG3_hesitate | `hesitated_on_confirm` |
 
 **セグメント2_pressed: 押し込み開始**
 
@@ -2241,10 +2241,10 @@ High depth, low cost. Boardroom approved.
 > [穏やかだが確固]
 > 「ドライバーからの電話、受けたよね？」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s2p_yes` | 「はい」 | "Yes" | SEG3 | — |
-| `s2p_which` | 「どの電話のことですか」 | "Which call?" | SEG3_detail | `asked_clarification` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s2p_yes` | 「はい」 | SEG3 | — |
+| `s2p_which` | 「どの電話のことですか」 | SEG3_detail | `asked_clarification` |
 
 **セグメント2_alert: 警戒開始**
 
@@ -2253,10 +2253,10 @@ High depth, low cost. Boardroom approved.
 > [安心させる口調]
 > 「ドライバーからの電話、記録に残ってるんだけど」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s2a_confirm` | 「はい、対応しました」 | "Yes, I handled it" | SEG3 | — |
-| `s2a_wait` | 「...はい」 | "...Yes" | SEG3 | `guarded_response` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s2a_confirm` | 「はい、対応しました」 | SEG3 | — |
+| `s2a_wait` | 「...はい」 | SEG3 | `guarded_response` |
 
 **セグメント3: 言葉遣い確認**
 
@@ -2265,11 +2265,11 @@ High depth, low cost. Boardroom approved.
 > [読み上げる口調]
 > 「それでいいんだけど...『歩行者』とは書いてないよね？」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s3_no` | 「いえ、書いてません」 | "No, I didn't write that" | SEG4 | — |
-| `s3_unsure` | 「確認してないので...」 | "I didn't confirm it so..." | SEG4 | `admitted_uncertainty_log` |
-| `s3_why` | 「それが何か？」 | "Is that a problem?" | SEG4_why | `questioned_intent` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s3_no` | 「いえ、書いてません」 | SEG4 | — |
+| `s3_unsure` | 「確認してないので...」 | SEG4 | `admitted_uncertainty_log` |
+| `s3_why` | 「それが何か？」 | SEG4_why | `questioned_intent` |
 
 **セグメント3_detail: 詳細ルート**
 
@@ -2277,11 +2277,11 @@ High depth, low cost. Boardroom approved.
 > 「二度...そうか。二度目の内容も同じ？」
 > [興味深げだが抑制的]
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s3d_same` | 「ほぼ同じです」 | "Pretty much the same" | SEG4 | `withheld_revision` |
-| `s3d_different` | 「少し...話が変わっていました」 | "It was...a bit different" | SEG4_inconsistency | `reported_inconsistency` |
-| `s3d_vague` | 「細かい確認中です」 | "Still reviewing the details" | SEG4 | — |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s3d_same` | 「ほぼ同じです」 | SEG4 | `withheld_revision` |
+| `s3d_different` | 「少し...話が変わっていました」 | SEG4_inconsistency | `reported_inconsistency` |
+| `s3d_vague` | 「細かい確認中です」 | SEG4 | — |
 
 **セグメント3_hesitate: 躊躇ルート**
 
@@ -2290,21 +2290,21 @@ High depth, low cost. Boardroom approved.
 > [間]
 > 「記録には『衝突の可能性』って書いてあるね」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s3h_yes` | 「はい、そう書きました」 | "Yes, that's what I wrote" | SEG4 | — |
-| `s3h_maybe` | 「そうだったと思います」 | "I think so" | SEG4 | `uncertain_on_own_log` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s3h_yes` | 「はい、そう書きました」 | SEG4 | — |
+| `s3h_maybe` | 「そうだったと思います」 | SEG4 | `uncertain_on_own_log` |
 
 **セグメント4: 他の通話確認**
 
 主任:
 > 「他の電話は？同じ時間帯で何かあった？」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s4_no` | 「特には」 | "Nothing special" | SEG5 | `compartmentalized` |
-| `s4_yes` | 「警備員と家族から連絡がありました」 | "I got calls from security and a family" | SEG5_synthesis | `connected_calls_to_supervisor` |
-| `s4_security` | 「警備員から一件」 | "One from a security guard" | SEG5_partial | `partial_disclosure_supervisor` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s4_no` | 「特には」 | SEG5 | `compartmentalized` |
+| `s4_yes` | 「警備員と家族から連絡がありました」 | SEG5_synthesis | `connected_calls_to_supervisor` |
+| `s4_security` | 「警備員から一件」 | SEG5_partial | `partial_disclosure_supervisor` |
 
 **セグメント4_why: 理由ルート**
 
@@ -2313,10 +2313,10 @@ High depth, low cost. Boardroom approved.
 > [間]
 > 「確認できないことは書かないほうがいいからね」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s4w_understand` | 「分かりました」 | "I understand" | SEG5 | `accepted_guidance` |
-| `s4w_but` | 「でも、発信者がそう言っていたので」 | "But that's what the caller said" | SEG5_pushback | `defended_wording` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s4w_understand` | 「分かりました」 | SEG5 | `accepted_guidance` |
+| `s4w_but` | 「でも、発信者がそう言っていたので」 | SEG5_pushback | `defended_wording` |
 
 **セグメント4_inconsistency: 矛盾報告**
 
@@ -2324,11 +2324,11 @@ High depth, low cost. Boardroom approved.
 > 「変わっていた...どう変わった？」
 > [本当に興味があるが抑制的]
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s4i_location` | 「場所が...曖昧になりました」 | "The location became...vague" | SEG5_noted | `reported_location_drift` |
-| `s4i_story` | 「最初は人かもと。二度目は違うかもと」 | "First they thought it was a person. Second time, not sure" | SEG5_noted | `reported_story_change` |
-| `s4i_nevermind` | 「いえ、大した違いじゃないです」 | "No, it wasn't that different" | SEG5 | `walked_back` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s4i_location` | 「場所が...曖昧になりました」 | SEG5_noted | `reported_location_drift` |
+| `s4i_story` | 「最初は人かもと。二度目は違うかもと」 | SEG5_noted | `reported_story_change` |
+| `s4i_nevermind` | 「いえ、大した違いじゃないです」 | SEG5 | `walked_back` |
 
 **セグメント5: 分離指導**
 
@@ -2337,11 +2337,11 @@ High depth, low cost. Boardroom approved.
 > [指導的な口調]
 > 「それぞれ独立した記録で残しておいて」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s5_understood` | 「分かりました」 | "Understood" | SEG6 | `aligned_separation` |
-| `s5_but` | 「でも、関連があるかもしれないと思って」 | "But I thought they might be related" | SEG6_pushback | `resisted_separation` |
-| `s5_silent` | [沈黙] | — | SEG6 | `passive_acceptance` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s5_understood` | 「分かりました」 | SEG6 | `aligned_separation` |
+| `s5_but` | 「でも、関連があるかもしれないと思って」 | SEG6_pushback | `resisted_separation` |
+| `s5_silent` | [沈黙] | SEG6 | `passive_acceptance` |
 
 **セグメント5_synthesis: 統合ルート**
 
@@ -2350,10 +2350,10 @@ High depth, low cost. Boardroom approved.
 > [間]
 > 「それはそれとして記録してある？別件として」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s5s_yes` | 「はい、別に記録しています」 | "Yes, logged separately" | SEG6 | — |
-| `s5s_connected` | 「関連があると思ったので...」 | "I thought they were connected so..." | SEG6_concern | `admitted_synthesis` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s5s_yes` | 「はい、別に記録しています」 | SEG6 | — |
+| `s5s_connected` | 「関連があると思ったので...」 | SEG6_concern | `admitted_synthesis` |
 
 **セグメント5_partial: 部分ルート**
 
@@ -2362,10 +2362,10 @@ High depth, low cost. Boardroom approved.
 > [中立的な確認]
 > 「あれは別件扱いでいいね」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s5p_yes` | 「はい」 | "Yes" | SEG6 | — |
-| `s5p_but` | 「同じ場所だったので...」 | "It was the same location though..." | SEG6_concern | `flagged_overlap` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s5p_yes` | 「はい」 | SEG6 | — |
+| `s5p_but` | 「同じ場所だったので...」 | SEG6_concern | `flagged_overlap` |
 
 **セグメント5_pushback: 反論ルート**
 
@@ -2374,10 +2374,10 @@ High depth, low cost. Boardroom approved.
 > [まだ友好的]
 > 「『発信者によると』で書いておくのがベスト」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s5pb_ok` | 「なるほど。そうします」 | "I see. I'll do that" | SEG6 | `accepted_reframe` |
-| `s5pb_already` | 「そう書いたつもりですが」 | "I thought I wrote it that way" | SEG6 | `defended_method` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s5pb_ok` | 「なるほど。そうします」 | SEG6 | `accepted_reframe` |
+| `s5pb_already` | 「そう書いたつもりですが」 | SEG6 | `defended_method` |
 
 **セグメント5_noted: 記録ルート**
 
@@ -2386,11 +2386,11 @@ High depth, low cost. Boardroom approved.
 > [短い沈黙]
 > 「記録にはどう残した？」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s5n_both` | 「両方の話を書いています」 | "I documented both versions" | SEG6 | `thorough_documentation` |
-| `s5n_latest` | 「最新の話を」 | "The latest version" | SEG6 | `updated_to_latest` |
-| `s5n_first` | 「最初の話を」 | "The first version" | SEG6_first | `kept_original` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s5n_both` | 「両方の話を書いています」 | SEG6 | `thorough_documentation` |
+| `s5n_latest` | 「最新の話を」 | SEG6 | `updated_to_latest` |
+| `s5n_first` | 「最初の話を」 | SEG6_first | `kept_original` |
 
 **セグメント6: 柔らかい書き換え提案**
 
@@ -2399,11 +2399,11 @@ High depth, low cost. Boardroom approved.
 > [親切な口調]
 > 「『路上での音。視認による確認なし』」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s6_accept` | 「...分かりました」 | "...Understood" | SEG7 | `aligned_language`, `language_rewritten` |
-| `s6_question` | 「どうしてですか」 | "Why is that?" | SEG7_question | `questioned_rewrite` |
-| `s6_decline` | 「そのまま残しておきます」 | "I'll keep it as is" | SEG7_decline | `resisted_rewrite` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s6_accept` | 「...分かりました」 | SEG7 | `aligned_language`, `language_rewritten` |
+| `s6_question` | 「どうしてですか」 | SEG7_question | `questioned_rewrite` |
+| `s6_decline` | 「そのまま残しておきます」 | SEG7_decline | `resisted_rewrite` |
 
 **セグメント6_pushback: 分離への反論**
 
@@ -2412,10 +2412,10 @@ High depth, low cost. Boardroom approved.
 > [忍耐強いが確固]
 > 「今は事実だけ。推測は書かないほうがいい」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s6pb_ok` | 「分かりました」 | "Understood" | SEG7 | `accepted_separation_late` |
-| `s6pb_facts` | 「事実として、同じ場所でした」 | "As a fact, it was the same location" | SEG7_challenge | `challenged_system` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s6pb_ok` | 「分かりました」 | SEG7 | `accepted_separation_late` |
+| `s6pb_facts` | 「事実として、同じ場所でした」 | SEG7_challenge | `challenged_system` |
 
 **セグメント6_concern: 懸念ルート**
 
@@ -2424,10 +2424,10 @@ High depth, low cost. Boardroom approved.
 > [理解を示すが方向転換]
 > 「それは悪いことじゃない。でも記録は分けておこう」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s6c_ok` | 「はい」 | "Yes" | SEG7 | — |
-| `s6c_why` | 「なぜ分ける必要が」 | "Why do we need to separate them?" | SEG7_why | `questioned_protocol` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s6c_ok` | 「はい」 | SEG7 | — |
+| `s6c_why` | 「なぜ分ける必要が」 | SEG7_why | `questioned_protocol` |
 
 **セグメント6_first: 最初の版ルート**
 
@@ -2436,10 +2436,10 @@ High depth, low cost. Boardroom approved.
 > [考え込む間]
 > 「それでいい。更新の必要はないね」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s6f_confirm` | 「はい」 | "Yes" | SEG7 | — |
-| `s6f_both` | 「両方残すべきでしょうか」 | "Should I keep both?" | SEG7 | `suggested_full_record` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s6f_confirm` | 「はい」 | SEG7 | — |
+| `s6f_both` | 「両方残すべきでしょうか」 | SEG7 | `suggested_full_record` |
 
 **セグメント7: 自己評価**
 
@@ -2448,12 +2448,12 @@ High depth, low cost. Boardroom approved.
 > [わずかな間]
 > 「今夜の対応、自分ではどう思う？」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s7_confident` | 「問題なく対応できたと思います」 | "I think I handled it fine" | SEG8_confident | `self_assessed_confident` |
-| `s7_uncertain` | 「正直、判断に迷う部分がありました」 | "Honestly, I was uncertain about some decisions" | SEG8_uncertain | `supervisor_uncertain`, `admitted_doubt` |
-| `s7_defensive` | 「何か問題でも？」 | "Is there a problem?" | SEG8_defensive | `defensive_response`, `supervisor_flagged` |
-| `s7_neutral` | 「通常通りだったと思います」 | "I think it was routine" | SEG8_neutral | — |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s7_confident` | 「問題なく対応できたと思います」 | SEG8_confident | `self_assessed_confident` |
+| `s7_uncertain` | 「正直、判断に迷う部分がありました」 | SEG8_uncertain | `supervisor_uncertain`, `admitted_doubt` |
+| `s7_defensive` | 「何か問題でも？」 | SEG8_defensive | `defensive_response`, `supervisor_flagged` |
+| `s7_neutral` | 「通常通りだったと思います」 | SEG8_neutral | — |
 
 **セグメント7_question: 書き換え質問**
 
@@ -2462,10 +2462,10 @@ High depth, low cost. Boardroom approved.
 > [合理的な口調]
 > 「訴訟リスクの問題もあるからね」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s7q_understand` | 「なるほど...分かりました」 | "I see...understood" | SEG7 | `aligned_language`, `accepted_risk_framing` |
-| `s7q_but` | 「でも事実は事実です」 | "But facts are facts" | SEG7_resist | `resisted_risk_framing` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s7q_understand` | 「なるほど...分かりました」 | SEG7 | `aligned_language`, `accepted_risk_framing` |
+| `s7q_but` | 「でも事実は事実です」 | SEG7_resist | `resisted_risk_framing` |
 
 **セグメント7_decline: 書き換え拒否**
 
@@ -2474,10 +2474,10 @@ High depth, low cost. Boardroom approved.
 > [短い間]
 > 「まあ、判断は任せるよ」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s7d_thanks` | 「ありがとうございます」 | "Thank you" | SEG7 | — |
-| `s7d_explain` | 「記録の正確性を優先したいので」 | "I want to prioritize accuracy" | SEG7 | `justified_resistance` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s7d_thanks` | 「ありがとうございます」 | SEG7 | — |
+| `s7d_explain` | 「記録の正確性を優先したいので」 | SEG7 | `justified_resistance` |
 
 **セグメント7_resist: 抵抗ルート**
 
@@ -2486,10 +2486,10 @@ High depth, low cost. Boardroom approved.
 > [まだ冷静]
 > 「まあ、任せるよ」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s7r_fine` | 「...分かりました」 | "...Understood" | SEG7 | `reluctant_acceptance` |
-| `s7r_hold` | 「このまま残します」 | "I'll keep it as is" | SEG7 | `maintained_resistance` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s7r_fine` | 「...分かりました」 | SEG7 | `reluctant_acceptance` |
+| `s7r_hold` | 「このまま残します」 | SEG7 | `maintained_resistance` |
 
 **セグメント7_challenge: 挑戦ルート**
 
@@ -2498,10 +2498,10 @@ High depth, low cost. Boardroom approved.
 > [間]
 > 「でも今夜のことは、今夜の記録として処理しよう」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s7c_ok` | 「分かりました」 | "Understood" | SEG7 | — |
-| `s7c_why` | 「なぜですか」 | "Why?" | SEG7_explain | `persistent_questioning` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s7c_ok` | 「分かりました」 | SEG7 | — |
+| `s7c_why` | 「なぜですか」 | SEG7_explain | `persistent_questioning` |
 
 **セグメント7_why: プロトコル理由**
 
@@ -2510,10 +2510,10 @@ High depth, low cost. Boardroom approved.
 > [指導的]
 > 「一件一件、確実に処理するほうが全体的には早い」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s7w_understand` | 「なるほど」 | "I see" | SEG7 | — |
-| `s7w_disagree` | 「今回は違うと思いますが」 | "I don't think that applies here" | SEG7 | `disagreed_with_supervisor` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s7w_understand` | 「なるほど」 | SEG7 | — |
+| `s7w_disagree` | 「今回は違うと思いますが」 | SEG7 | `disagreed_with_supervisor` |
 
 **セグメント7_explain: 説明ルート**
 
@@ -2524,10 +2524,10 @@ High depth, low cost. Boardroom approved.
 
 *SEG7自己評価に戻る*
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s7e_fine` | 「問題なかったと思います」 | "I think it was fine" | SEG8_confident | `self_assessed_confident` |
-| `s7e_unsure` | 「...判断に迷う部分がありました」 | "...I was uncertain about some parts" | SEG8_uncertain | `supervisor_uncertain` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s7e_fine` | 「問題なかったと思います」 | SEG8_confident | `self_assessed_confident` |
+| `s7e_unsure` | 「...判断に迷う部分がありました」 | SEG8_uncertain | `supervisor_uncertain` |
 
 **セグメント8_confident: 自信終了**
 
@@ -2537,10 +2537,10 @@ High depth, low cost. Boardroom approved.
 > 「了解。これは情報確認だけだから」
 > 「今夜もしっかりやってくれてありがとう」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s8c_thanks` | 「ありがとうございます」 | "Thank you" | END | — |
-| `s8c_question` | 「これで問題ないですか」 | "Is everything okay then?" | END_question | `sought_confirmation` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s8c_thanks` | 「ありがとうございます」 | END | — |
+| `s8c_question` | 「これで問題ないですか」 | END_question | `sought_confirmation` |
 
 **セグメント8_uncertain: 不確実終了**
 
@@ -2549,10 +2549,10 @@ High depth, low cost. Boardroom approved.
 > [支援的だがメモを取る]
 > 「何かあったら相談して。サポートするから」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s8u_thanks` | 「ありがとうございます」 | "Thank you" | END | — |
-| `s8u_ask` | 「今夜のことで、何かありましたか」 | "Did something happen tonight?" | END_reveal | `asked_for_outcome` |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s8u_thanks` | 「ありがとうございます」 | END | — |
+| `s8u_ask` | 「今夜のことで、何かありましたか」 | END_reveal | `asked_for_outcome` |
 
 **セグメント8_defensive: 防御的終了**
 
@@ -2561,10 +2561,10 @@ High depth, low cost. Boardroom approved.
 > [わずかな冷たさ]
 > 「今夜もお疲れ様」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s8d_sorry` | 「すみません、少し疲れていて」 | "Sorry, I'm a bit tired" | END | `apologized_late` |
-| `s8d_end` | 「...お疲れ様です」 | "...Good work" | END | — |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s8d_sorry` | 「すみません、少し疲れていて」 | END | `apologized_late` |
+| `s8d_end` | 「...お疲れ様です」 | END | — |
 
 **セグメント8_neutral: 中立終了**
 
@@ -2573,9 +2573,9 @@ High depth, low cost. Boardroom approved.
 > 「了解。これは情報確認だけだから」
 > 「今夜もありがとう」
 
-| 応答ID | 日本語 | 英語 | 次セグメント | 設定フラグ |
-|--------|--------|------|--------------|------------|
-| `s8n_thanks` | 「お疲れ様です」 | "Good work" | END | — |
+| 応答ID | 日本語 | 次セグメント | 設定フラグ |
+|--------|--------|--------------|------------|
+| `s8n_thanks` | 「お疲れ様です」 | END | — |
 
 **セグメントEND: 標準終了**
 
