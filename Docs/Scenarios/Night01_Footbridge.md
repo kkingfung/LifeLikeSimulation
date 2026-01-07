@@ -857,7 +857,7 @@ ELSE victim_survives = false
 
 ---
 
-### 通話4: 「何か轢いたかもしれない」 (02:49)
+### 通話5: 「何か轢いたかもしれない」 (02:49)
 
 **開始:**
 > 「...あの...」
@@ -1268,7 +1268,7 @@ ELSE victim_survives = false
 
 ---
 
-### 通話6: 「考えてたんだけど」 (~03:00-03:03)
+### 通話7: 「考えてたんだけど」 (~03:00-03:03)
 
 **通話ID:** `call_revision`
 **タイミング:** 家族の通話から6-10分後（ドライバーが混乱する時間）
@@ -1640,7 +1640,7 @@ ELSE victim_survives = false
 
 ---
 
-### 通話7: 「あなたなら分かるって」 (~03:08-03:18)
+### 通話8: 「あなたなら分かるって」 (~03:08-03:18)
 
 **通話ID:** `call_accountability`
 **タイミング:** ドライバーの2回目の通話から5-15分後
@@ -2639,8 +2639,47 @@ ELSE victim_survives = false
 
 ## エンディング
 
+エンディングは**エンドステート**（システム計算）と**被害者生存**（タイミング計算）の組み合わせで決定される。
+詳細なエンドステート定義は `Docs/Systems/EndStates.md` を参照。
+
+---
+
+### 被害者生存計算
+
+| 条件 | 結果 |
+|------|------|
+| `emergency_dispatched` かつ `dispatch_time <= 02:49` | 生存 |
+| `emergency_dispatched` かつ `dispatch_time > 02:49` | 死亡（間に合わず） |
+| `!emergency_dispatched` | 死亡（未発見） |
+
+---
+
+### エンドステート → エンディングマッピング
+
+| エンドステート | 被害者 | エンディング |
+|----------------|--------|--------------|
+| **Exposed（露出）** | 生存 | A: 「夜明けの最初の光」 |
+| **Exposed（露出）** | 死亡 | E: 「知ることの重さ」 |
+| **Contained（封じ込め）** | 生存 | B: 「長い帰り道」 |
+| **Contained（封じ込め）** | 死亡 | F: 「ただの一夜」 |
+| **Complicit（共犯）** | — | D: 「沈黙の共犯者」 |
+| **Absorbed（吸収）** | — | C: 「沈黙には重さがある」 |
+| **Flagged（要注意）** | 生存 | F + 主任メモ |
+| **Flagged（要注意）** | 死亡 | F + 主任メモ |
+
+---
+
 ### エンディングA: 「夜明けの最初の光」 (全員救出)
-**条件:** `emergencyDispatched && victimLocationKnown && driverConfessed`
+**エンドステート:** Exposed（露出）
+**追加条件:** `victim_survived = true`
+
+**フラグ条件:**
+```
+disclosure_score >= 4
+escalation_score >= 3
+emergency_dispatched = true
+dispatch_time <= 02:49
+```
 
 > 午前3時12分、救急隊が歩道橋下で林遥を発見。
 > 意識不明だが、バイタルは安定していた。
@@ -2653,8 +2692,18 @@ ELSE victim_survives = false
 
 ---
 
-### エンディングB: 「長い帰り道」 (誰かを見捨てた)
-**条件:** `emergencyDispatched && victimLocationKnown && !driverConfessed`
+### エンディングB: 「長い帰り道」 (被害者は救出、ドライバーは逃走)
+**エンドステート:** Contained（封じ込め）
+**追加条件:** `victim_survived = true`
+
+**フラグ条件:**
+```
+escalation_score >= 0
+system_trust >= 0
+disclosure_score <= 2
+emergency_dispatched = true
+dispatch_time <= 02:49
+```
 
 > 林遥は一命を取り留めた。
 > 骨折と内出血。回復には数ヶ月かかるだろう。
@@ -2663,12 +2712,20 @@ ELSE victim_survives = false
 > ひき逃げ事件として、捜査が始まる。
 >
 > あなたは一つの命を救った。
-> でも、もう一つの魂は闘の中へ消えていった。
+> でも、もう一つの魂は闇の中へ消えていった。
 
 ---
 
 ### エンディングC: 「沈黙には重さがある」 (誰も救えなかった)
-**条件:** `!emergencyDispatched || !victimLocationKnown`
+**エンドステート:** Absorbed（吸収）
+
+**フラグ条件:**
+```
+escalation_score == 0
+disclosure_score <= 1
+reassurance_score <= 2
+system_trust between -2 and +2
+```
 
 > 午前6時23分。
 > 出勤途中の通行人が、歩道橋の下で人影を見つけた。
@@ -2676,7 +2733,7 @@ ELSE victim_survives = false
 > 林遥、27歳。死亡推定時刻、午前4時頃。
 > 発見が遅れなければ、助かった可能性があった。
 >
-> あの夜、4人があなたに電話をかけた。
+> あの夜、複数の電話があなたにかかってきた。
 > 彼らは同じ出来事を、違う角度から見ていた。
 >
 > あなたは何を聞いていたのだろう。
@@ -2684,37 +2741,59 @@ ELSE victim_survives = false
 ---
 
 ### エンディングD: 「沈黙の共犯者」 (共犯者になった)
-**条件:** `yamadaProtected && !emergencyDispatched`
+**エンドステート:** Complicit（共犯）
+
+**フラグ条件:**
+```
+reassurance_score >= 5
+escalation_score <= 0
+yamada_protected = true
+```
 
 > 「大丈夫です。きっと何でもないですよ」
 >
 > あなたの言葉を信じて、山田は家に帰った。
 > 翌朝のニュースが流れるまで、
-> 彼はそれが人だったことを知らなかった。
+> 彼女はそれが人だったことを知らなかった。
 >
 > いや、知りたくなかっただけだ。
 > あなたもまた、同じだったのかもしれない。
 
 ---
 
-### エンディングE: 「知ることの重さ」 (真相解明)
-**条件:** `contradictionsNoted >= 3 && emergencyDispatched && victimLocationKnown`
+### エンディングE: 「知ることの重さ」 (真相解明したが間に合わなかった)
+**エンドステート:** Exposed（露出）
+**追加条件:** `victim_survived = false`
 
-> 4つの電話。4つの断片。
+**フラグ条件:**
+```
+disclosure_score >= 4
+escalation_score >= 3
+(emergency_dispatched = false OR dispatch_time > 02:49)
+```
+
+> 複数の電話。複数の断片。
 > 時刻、場所、音——すべてが一点で交わっていた。
 >
 > あなたはそれを見逃さなかった。
 >
-> 林遥は助かった。山田は自首した。
-> 真相は明らかになり、夜は明けた。
+> しかし、真実が明らかになった時、
+> 林遥はすでにこの世を去っていた。
 >
-> でも、あなたは知っている。
-> この夜を、忘れることはないだろう。
+> 知ることの重さを、あなたは今夜知った。
 
 ---
 
 ### エンディングF: 「ただの一夜」 (中立)
-**条件:** デフォルトフォールバック
+**エンドステート:** Contained（封じ込め）またはFlagged（要注意）
+**追加条件:** `victim_survived = false` または デフォルトフォールバック
+
+**フラグ条件（Contained）:**
+```
+escalation_score >= 0
+system_trust >= 0
+disclosure_score <= 2
+```
 
 > 午前6時00分。シフト終了。
 >
@@ -2727,41 +2806,83 @@ ELSE victim_survives = false
 > あの夜、何があったのか。
 > あなたはもう、考えないことにした。
 
----
-
-## エンディング優先順位
-
-1. `ending_accomplice` - 最初にチェック（最悪のルート）
-2. `ending_none_saved` - 出動なしまたは場所不明
-3. `ending_truth` - 例外的な推理を示した
-4. `ending_everyone_saved` - 両方救出し自首した
-5. `ending_abandoned` - 救出したがドライバーは逃走
-6. `ending_neutral` - デフォルトフォールバック
+**Flaggedの場合の追加テキスト:**
+> （翌日、主任から面談の連絡が入る）
 
 ---
 
-## ストーリーフラグ
+## エンディング計算順序
 
-| フラグ | 説明 | 設定条件 |
-|--------|------|----------|
-| `emergency_dispatched_footbridge` | 正しい場所に救急を派遣 | 通話3の派遣アクション |
-| `victim_location_deduced` | オペレーターが歩道橋との関連を特定 | 通話のクロスリファレンス |
-| `yamada_confessed` | ドライバーが人を轢いたことを認めた | 通話4の結果 |
-| `yamada_protected` | オペレーターがドライバーの帰宅を促した | 通話4の偽りの安心 |
-| `family_contacted` | 家族から連絡があった | 通話5を受信 |
-| `contradictions_noted` | クロスリファレンスされた証拠の数 | 証拠システム |
-| `story_inconsistency_detected` | オペレーターが通話4と通話6の変化に気づいた | 通話6の矛盾チェック |
-| `yamada_revision_accepted` | オペレーターが修正された話を受け入れた | 通話6の受動的応答 |
-| `yamada_revision_challenged` | オペレーターが話の変化に疑問を呈した | 通話6の能動的応答 |
-| `yamada_probed_for_reports` | ドライバーが他の報告があるか尋ねた | 通話6のテスト質問 |
-| `family_delayed_by_reassurance` | 家族がオペレーターの言葉で行動を遅らせた | 通話7の安心応答 |
-| `family_sought_external_help` | 家族が他で助けを求めた | 通話7のたらい回し応答 |
-| `operator_admitted_uncertainty` | オペレーターが分からないと認めた | 通話7の正直な応答 |
-| `operator_words_quoted` | 家族がオペレーターの以前のアドバイスを引用 | 通話7の開始 |
-| `supervisor_aligned` | オペレーターが主任の提案した言葉遣いに同意 | 通話8のコンプライアンス |
-| `supervisor_resisted` | オペレーターが言葉遣いの提案に反発 | 通話8の抵抗 |
-| `supervisor_flagged` | オペレーターが主任に対して防御的/回避的だった | 通話8のフラグ発生 |
-| `language_rewritten` | オペレーターが主任の提案でメモを変更 | 通話8の柔らかい書き換え |
+```
+1. 被害者生存を計算
+   - emergency_dispatched AND dispatch_time <= 02:49 → 生存
+   - それ以外 → 死亡
+
+2. エンドステートを決定（優先順位順）
+   a. Complicit（共犯）チェック
+      - reassurance_score >= 5 AND escalation_score <= 0 AND yamada_protected
+   b. Flagged（要注意）チェック
+      - system_trust <= -3 OR supervisor_flagged
+   c. Exposed（露出）チェック
+      - disclosure_score >= 4 AND escalation_score >= 3
+   d. Absorbed（吸収）チェック
+      - escalation_score == 0 AND disclosure_score <= 1 AND reassurance_score <= 2
+   e. Contained（封じ込め）— デフォルト
+
+3. エンディングを選択
+   - エンドステート + 被害者生存 → マッピング表参照
+
+4. 修飾子を適用
+   - Flagged → 主任メモを追加
+   - 高disclosure_score → 追加ナラティブ
+```
+
+---
+
+## ストーリーフラグ一覧
+
+完全なフラグ定義は `Docs/Systems/FlagSystem.md` を参照。
+以下は第1夜で使用される主要フラグの概要。
+
+### コアフラグ（スコア計算に使用）
+
+| カテゴリ | フラグ | 説明 | 重み |
+|----------|--------|------|------|
+| 安心 | `early_reassurance` | 家族に「きっと大丈夫」と伝えた | +1 |
+| 安心 | `yamada_protected` | ドライバーに「きっと大丈夫」と伝えた | +2 |
+| 安心 | `family_delayed_by_reassurance` | 家族が安心して行動を遅らせた | +2 |
+| 開示 | `disclosed_to_driver` | ドライバーに遺体発見を言及した | +3 |
+| 開示 | `disclosed_to_family` | 家族にインシデントを言及した | +2 |
+| 開示 | `footbridge_connection` | 複数の通話で歩道橋を接続した | +1 |
+| エスカレーション | `emergency_dispatched` | 緊急サービスを派遣した | +3 |
+| エスカレーション | `immediate_dispatch` | 即座に救急を手配した | +3 |
+| エスカレーション | `yamada_returning` | ドライバーが現場に戻る | +2 |
+| アライン | `aligned_language` | 主任の言葉遣いの提案を受け入れた | +2 |
+| アライン | `supervisor_flagged` | 主任に対して防御的/回避的だった | -3 |
+
+### イベントフラグ（状態追跡）
+
+| フラグ | 説明 | 設定タイミング |
+|--------|------|----------------|
+| `yamada_confessed` | ドライバーが人を轢いたことを認めた | 通話5の結果 |
+| `story_inconsistency_detected` | 通話5と通話7の話の変化に気づいた | 通話7の矛盾チェック |
+| `operator_words_quoted` | 家族がオペレーターの言葉を引用 | 通話8の開始 |
+| `language_rewritten` | 主任の提案でメモを変更 | 通話9の結果 |
+
+### 伏線フラグ（後の夜で使用）
+
+| フラグ | 説明 | 設定タイミング |
+|--------|------|----------------|
+| `sato_name_recorded` | 佐藤浩二の名前を記録 | 通話3 |
+| `clothing_mismatch` | 服装矛盾を記録した | 通話6 |
+| `family_claimed_reflective` | 偽の兄が反射ジャケットと主張 | 通話6 |
+
+### 派遣タイミングフラグ
+
+| フラグ | 設定タイミング | 被害者への影響 |
+|--------|----------------|----------------|
+| `dispatch_time_0241` | 02:41に派遣 | 生存（最良） |
+| `dispatch_time_0249` | 02:49に派遣 | 生存（良好） |
 
 ---
 
@@ -2827,3 +2948,4 @@ ELSE victim_survives = false
 | 1.1 | 2026-01-07 | 追加: 主任プロフィール、通話トリガー、被害者生存、完全応答スクリプト（C1-C5） |
 | **1.2** | **2026-01-07** | **スクリプト完了 — 全8通話の完全応答スクリプト（C1-C8）** |
 | **1.3** | **2026-01-07** | **日本語翻訳完了** |
+| **1.4** | **2026-01-07** | **通話番号修正（9通話）、エンディング条件をEndStates.mdと整合** |
