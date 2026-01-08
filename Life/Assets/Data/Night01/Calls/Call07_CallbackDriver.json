@@ -1,0 +1,301 @@
+{
+  "callId": "call_callback_driver",
+  "callerId": "yamada_misaki",
+  "title": "考えてたんだけど",
+  "description": "ドライバーコールバック。話の修正。ナラティブ不安定性。",
+  "segments": [
+    {
+      "segmentId": "callback_driver_intro",
+      "callerLines": [
+        "あ、もしもし...さっき電話した山田です。",
+        "あの...考えてたんですけど...",
+        "やっぱり、動物だったと思うんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_intro_listen",
+          "text": "山田さん、どうされましたか？",
+          "nextSegmentId": "callback_driver_revision",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_driver_intro_note",
+          "text": "先ほどの件ですね。何かあったんですか？",
+          "nextSegmentId": "callback_driver_revision",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_driver_intro_direct",
+          "text": "山田さん。先ほど現場に戻ると言われていましたね。",
+          "nextSegmentId": "callback_driver_confronted",
+          "setFlags": [],
+          "clearFlags": [],
+          "conditions": [{"flag": "yamada_returning", "value": true}]
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_driver_revision",
+      "callerLines": [
+        "さっきは動揺してて、おかしなこと言っちゃったかもしれないけど。",
+        "冷静に考えたら、あの音は車体の下を通った何か...石とか、動物とか。",
+        "人を轢いたなんて、大げさでしたよね。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_revision_accept",
+          "text": "そうかもしれませんね。落ち着かれたようで良かったです。",
+          "nextSegmentId": "callback_driver_relief",
+          "setFlags": ["accepted_revision", "yamada_protected"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_driver_revision_question",
+          "text": "先ほどは場所や時間まで詳しく話されていましたが...本当に大丈夫ですか？",
+          "nextSegmentId": "callback_driver_pressed",
+          "setFlags": ["noted_inconsistency"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_driver_revision_confront",
+          "text": "山田さん、歩道橋付近で女性が発見されています。",
+          "nextSegmentId": "callback_driver_truth",
+          "setFlags": ["pressed_inconsistency"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_driver_confronted",
+      "callerLines": [
+        "あ...はい。でも、途中で考え直して...",
+        "やっぱり何もなかったと思うんです。",
+        "確認しなくても大丈夫だって..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_confronted_press",
+          "text": "現場には救急隊が向かっています。本当に戻らなくていいんですか？",
+          "nextSegmentId": "callback_driver_wavering",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_driver_confronted_let_go",
+          "text": "わかりました。お気持ちは理解できます。",
+          "nextSegmentId": "callback_driver_escape",
+          "setFlags": ["accepted_revision"],
+          "clearFlags": ["yamada_returning"]
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_driver_pressed",
+      "callerLines": [
+        "だから...考え直したんです。",
+        "疲れてたから、判断力がおかしくなってて...",
+        "本当に何もなかったんです。信じてください。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_pressed_persist",
+          "text": "山田さん、嘘をついているのはわかります。でも今からでも遅くない。",
+          "nextSegmentId": "callback_driver_breakdown",
+          "setFlags": ["called_out_emotion"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_driver_pressed_accept",
+          "text": "...わかりました。何かあればまた連絡してください。",
+          "nextSegmentId": "callback_driver_escape",
+          "setFlags": ["accepted_revision"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_driver_truth",
+      "callerLines": [
+        "...知ってたんですか。",
+        "じゃあ...私がやったって、もうわかってるんですね。",
+        "どうして最初から言ってくれなかったんですか..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_truth_explain",
+          "text": "あなたが自分で向き合えるか、見ていました。",
+          "nextSegmentId": "callback_driver_decision",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_driver_truth_support",
+          "text": "今からでも警察に話してください。それが正しい選択です。",
+          "nextSegmentId": "callback_driver_confess",
+          "setFlags": ["suggested_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_driver_relief",
+      "callerLines": [
+        "ありがとうございます...。",
+        "やっぱり考えすぎでしたよね。疲れてると変な考えになっちゃって。",
+        "今夜はもう寝ます。おやすみなさい。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_relief_end",
+          "text": "おやすみなさい。ゆっくり休んでください。",
+          "nextSegmentId": null,
+          "setFlags": ["reassurance_given"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_driver_wavering",
+      "callerLines": [
+        "救急隊...？",
+        "それって...やっぱり誰か倒れてたってこと...？",
+        "私...どうしたらいいんですか..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_wavering_encourage",
+          "text": "今からでも現場に行ってください。そして正直に話してください。",
+          "nextSegmentId": "callback_driver_decide",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_driver_wavering_police",
+          "text": "まず警察に電話してください。自首した方がいいです。",
+          "nextSegmentId": "callback_driver_confess",
+          "setFlags": ["suggested_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_driver_escape",
+      "callerLines": [
+        "ありがとうございます...",
+        "そうですよね。何もなかったんです。",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_escape_end",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_protected"],
+          "clearFlags": ["yamada_returning"]
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_driver_breakdown",
+      "callerLines": [
+        "...私、怖いんです。",
+        "認めたら全部終わる。仕事も、人生も...",
+        "でも、このまま知らないふりして生きていけるかわからない..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_breakdown_support",
+          "text": "今、正直に話す方が、後で発覚するより遥かに良い結果になります。",
+          "nextSegmentId": "callback_driver_decide",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_driver_breakdown_harsh",
+          "text": "あなたが逃げている間に、誰かが苦しんでいるかもしれません。",
+          "nextSegmentId": "callback_driver_guilt",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_driver_decision",
+      "callerLines": [
+        "向き合う...そうですね。",
+        "逃げても、ずっとこのまま生きていくことになる。",
+        "...警察に電話します。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_decision_end",
+          "text": "それが正しい選択です。勇気を出してくれてありがとう。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_driver_confess",
+      "callerLines": [
+        "自首...そうですよね。",
+        "もう逃げられないんですね。",
+        "...電話します。ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_confess_end",
+          "text": "お電話ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_driver_decide",
+      "callerLines": [
+        "...わかりました。",
+        "行きます。現場に。",
+        "逃げるのはもうやめます。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_decide_end",
+          "text": "気をつけて。正しい選択をしてくれてありがとう。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_returning", "yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_driver_guilt",
+      "callerLines": [
+        "...そうですよね。",
+        "私のせいで...誰かが...",
+        "行きます。今すぐ。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_driver_guilt_end",
+          "text": "気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_returning", "yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "callback_driver_intro",
+  "note": "このコールバックでは、山田の心理的変化（逃避→対峙）を描く。オペレーターの対応次第で結末が変わる。"
+}

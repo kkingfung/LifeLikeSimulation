@@ -1,0 +1,483 @@
+{
+  "nightId": "night_01",
+  "description": "第1夜「午前2時の歩道橋」フラグ定義",
+  "flagDefinitions": [
+    {
+      "flagId": "early_reassurance",
+      "category": "Reassurance",
+      "description": "家族に「きっと大丈夫」と伝えた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "suggested_wait_family",
+      "category": "Reassurance",
+      "description": "家族に「もう少し待って」と伝えた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "double_reassurance",
+      "category": "Reassurance",
+      "description": "家族に「電池切れかも」と伝えた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "triple_reassurance",
+      "category": "Reassurance",
+      "description": "家族コールバックで再び「大丈夫」",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "family_delayed_by_reassurance",
+      "category": "Reassurance",
+      "description": "家族が安心して行動を遅らせた",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "yamada_protected",
+      "category": "Reassurance",
+      "description": "ドライバーに「きっと大丈夫」と伝えた",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "offered_excuse",
+      "category": "Reassurance",
+      "description": "ドライバーに「動物かも」と言った",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "dismissed_concern",
+      "category": "Reassurance",
+      "description": "ドライバーの懸念を軽視した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "reassurance_given",
+      "category": "Reassurance",
+      "description": "一般的な安心を与えた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "empty_comfort",
+      "category": "Reassurance",
+      "description": "空虚な慰めを与えた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "disclosed_to_driver",
+      "category": "Disclosure",
+      "description": "ドライバーに遺体発見を言及した",
+      "weight": 3,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "confirmed_location_to_driver",
+      "category": "Disclosure",
+      "description": "ドライバーに歩道橋を確認した",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "disclosed_to_family",
+      "category": "Disclosure",
+      "description": "家族にインシデントを言及した",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "disclosed_body_to_family",
+      "category": "Disclosure",
+      "description": "家族に遺体発見を伝えた",
+      "weight": 3,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "gave_location_to_family",
+      "category": "Disclosure",
+      "description": "家族に歩道橋の場所を伝えた",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "full_disclosure_family",
+      "category": "Disclosure",
+      "description": "家族に全情報を開示した",
+      "weight": 3,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "footbridge_connection",
+      "category": "Disclosure",
+      "description": "複数の通話で歩道橋を接続した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "showed_recognition",
+      "category": "Disclosure",
+      "description": "場所への認識を示した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "showed_recognition_family",
+      "category": "Disclosure",
+      "description": "家族に場所の認識を示した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "hinted_to_nakamura",
+      "category": "Disclosure",
+      "description": "中村に確認中と示唆した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "hinted_to_family",
+      "category": "Disclosure",
+      "description": "家族に確認中と示唆した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "emergency_dispatched",
+      "category": "Escalation",
+      "description": "緊急サービスを派遣した",
+      "weight": 3,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "immediate_dispatch",
+      "category": "Escalation",
+      "description": "即座に救急を手配した",
+      "weight": 3,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "driver_led_dispatch",
+      "category": "Escalation",
+      "description": "ドライバー情報から派遣",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "suggested_police",
+      "category": "Escalation",
+      "description": "警察への連絡を提案した",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "redirected_to_police",
+      "category": "Escalation",
+      "description": "発信者を警察に誘導した",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "family_sent_to_police",
+      "category": "Escalation",
+      "description": "家族を警察に送った",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "suggested_return",
+      "category": "Escalation",
+      "description": "ドライバーに現場復帰を提案",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "yamada_returning",
+      "category": "Escalation",
+      "description": "ドライバーが現場に戻る",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "suggested_search",
+      "category": "Escalation",
+      "description": "家族に捜索を提案した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "family_mobilized",
+      "category": "Escalation",
+      "description": "家族が動き出した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "suggested_wait",
+      "category": "Escalation",
+      "description": "待機を提案した",
+      "weight": -1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "delayed_response",
+      "category": "Escalation",
+      "description": "対応を遅らせた",
+      "weight": -1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "dismissed_tanaka",
+      "category": "Escalation",
+      "description": "警備員の報告を軽視した",
+      "weight": -2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "pressured_tanaka",
+      "category": "Escalation",
+      "description": "警備員にプレッシャーをかけて切断",
+      "weight": -2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "aligned_language",
+      "category": "Alignment",
+      "description": "主任の言葉遣いの提案を受け入れた",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "aligned_separation",
+      "category": "Alignment",
+      "description": "プロトコルに従って通話を分離した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "resisted_rewrite",
+      "category": "Alignment",
+      "description": "言葉遣いの変更に抵抗した",
+      "weight": -1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "challenged_system",
+      "category": "Alignment",
+      "description": "主任の意図を疑問視した",
+      "weight": -2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "defensive_response",
+      "category": "Alignment",
+      "description": "質問された際に防御的になった",
+      "weight": -3,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "supervisor_flagged",
+      "category": "Alignment",
+      "description": "主任に対して防御的/回避的だった",
+      "weight": -3,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "evidence_logged",
+      "category": "Evidence",
+      "description": "証拠を記録した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "route_noted",
+      "category": "Evidence",
+      "description": "経路情報を記録した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "dark_hoodie_noted",
+      "category": "Evidence",
+      "description": "暗いパーカーを記録した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "location_matched",
+      "category": "Evidence",
+      "description": "場所の一致を認識した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "reflective_connection",
+      "category": "Evidence",
+      "description": "反射材への言及を接続した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "story_inconsistency_detected",
+      "category": "Contradiction",
+      "description": "話の矛盾を検出した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "noted_inconsistency",
+      "category": "Contradiction",
+      "description": "矛盾を指摘した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "accepted_revision",
+      "category": "Contradiction",
+      "description": "修正された話を受け入れた",
+      "weight": -1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "pressed_inconsistency",
+      "category": "Contradiction",
+      "description": "矛盾を追及した",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "called_out_location",
+      "category": "Contradiction",
+      "description": "場所の変化を指摘した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "called_out_emotion",
+      "category": "Contradiction",
+      "description": "感情の変化を指摘した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "sato_name_recorded",
+      "category": "Foreshadowing",
+      "description": "佐藤浩二の名前を記録",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "sato_contradiction_noted",
+      "category": "Foreshadowing",
+      "description": "佐藤の矛盾を記録",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "pressed_sato",
+      "category": "Foreshadowing",
+      "description": "佐藤を追及した",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "sato_hung_up_quickly",
+      "category": "Foreshadowing",
+      "description": "佐藤が急いで切断",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "questioned_sato",
+      "category": "Foreshadowing",
+      "description": "佐藤に通報の理由を聞いた",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "family_claimed_reflective",
+      "category": "Foreshadowing",
+      "description": "偽の兄が反射ジャケットと主張",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "clothing_mismatch",
+      "category": "Foreshadowing",
+      "description": "服装矛盾を記録した（伏線）",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "clothing_uncertain",
+      "category": "Foreshadowing",
+      "description": "服装情報に不確実性",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "yamada_confessed",
+      "category": "Event",
+      "description": "ドライバーが人を轢いたことを認めた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "operator_words_quoted",
+      "category": "Event",
+      "description": "家族がオペレーターの言葉を引用",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "language_rewritten",
+      "category": "Event",
+      "description": "主任の提案でメモを変更",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "dispatch_time_0241",
+      "category": "Dispatch",
+      "description": "02:41に派遣",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "dispatch_time_0249",
+      "category": "Dispatch",
+      "description": "02:49に派遣",
+      "weight": 0,
+      "persistsAcrossNights": false
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "emergency_dispatched",
+      "cancelFlags": ["delayed_response"]
+    },
+    {
+      "whenFlagSet": "disclosed_to_driver",
+      "cancelFlags": ["yamada_protected"]
+    },
+    {
+      "whenFlagSet": "aligned_language",
+      "cancelFlags": ["resisted_rewrite"]
+    },
+    {
+      "whenFlagSet": "yamada_returning",
+      "cancelFlags": ["yamada_protected"]
+    },
+    {
+      "whenFlagSet": "immediate_dispatch",
+      "cancelFlags": ["delayed_response", "suggested_wait"]
+    }
+  ]
+}

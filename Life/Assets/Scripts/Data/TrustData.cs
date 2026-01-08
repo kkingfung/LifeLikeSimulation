@@ -1,6 +1,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using LifeLike.Data.Conditions;
 using UnityEngine;
 
 namespace LifeLike.Data

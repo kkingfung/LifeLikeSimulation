@@ -3,7 +3,7 @@
 **プロジェクト:** Operator: Night Signal
 **スライス:** 第1夜 — 「午前2時の歩道橋」
 **ステータス:** 仕様書完成
-**最終更新:** 2026-01-07
+**最終更新:** 2026-01-08
 
 ---
 
@@ -340,7 +340,7 @@
 
 1. **ボイスキャスティング** — 6人の俳優が必要
 2. **サウンドデザイン** — アンビエント、UI、感情的キュー
-3. **第2夜デザイン** — 新しいインシデント、継続キャラクター
+3. ✅ **第2夜デザイン** — 「静かな追跡」設計完了 → `Docs/Scenarios/Night02_SilentPursuit.md`
 4. **セーブシステム** — 夜をまたぐ永続化
 5. **プラットフォームターゲット** — PC、Switch、モバイルの実現可能性
 
@@ -350,9 +350,12 @@
 
 | ドキュメント | 場所 |
 |--------------|------|
-| シナリオデザイン | `Docs/Scenarios/Night01_Footbridge.md` |
+| Night01シナリオ | `Docs/Scenarios/Night01_Footbridge.md` |
+| Night02シナリオ | `Docs/Scenarios/Night02_FlameTestimony.md` |
 | フラグシステム | `Docs/Systems/FlagSystem.md` |
 | エンドステート | `Docs/Systems/EndStates.md` |
+| ストーリー深層設定 | `Docs/Design/StoryNotes_DeepLore.md` |
+| 技術実装計画 | `Docs/Technical/ImplementationPlan.md` |
 | データ構造 | `Life/Assets/Scripts/Data/` |
 | サービス | `Life/Assets/Scripts/Services/` |
 
@@ -364,3 +367,4 @@
 |------------|------|----------|
 | 1.0 | 2026-01-07 | 初期バーティカルスライス仕様書 |
 | 1.1 | 2026-01-07 | 日本語翻訳 |
+| 1.2 | 2026-01-08 | Night02シナリオ参照追加、ファイル参照更新 |

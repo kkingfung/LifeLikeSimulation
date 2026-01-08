@@ -1,0 +1,221 @@
+{
+  "callId": "call_supervisor_records",
+  "callerId": "kudo_shinji",
+  "title": "昨日の報告書だけど",
+  "description": "工藤主任からの確認。Night01の報告書から詳細の削除を婉曲に求める。Night01のエンドステートによって態度が変わる。",
+  "segments": [
+    {
+      "segmentId": "supervisor_intro",
+      "callerLines": [
+        "工藤だ。今、時間あるか？",
+        "昨夜の報告書、目を通したんだが...",
+        "いくつか確認したいことがあってね。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_intro_yes",
+          "text": "はい、何でしょうか？",
+          "nextSegmentId": "supervisor_records",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_intro_busy",
+          "text": "今、火災の対応中なんですが...",
+          "nextSegmentId": "supervisor_fire_aware",
+          "setFlags": ["reported_to_supervisor"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_fire_aware",
+      "callerLines": [
+        "ああ、工業地帯の火災か。消防は到着したか？",
+        "...まあ、そっちはそっちでいい。",
+        "昨夜の件だが、報告書の表現について少し相談したくてな。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_fire_okay",
+          "text": "はい、どのような点でしょうか？",
+          "nextSegmentId": "supervisor_records",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_records",
+      "callerLines": [
+        "歩道橋の件だが...「発信者間で情報を共有した可能性」という記述があるだろう。",
+        "これ、あまり具体的に書かない方がいいかもしれない。",
+        "誤解を招く恐れがあるからな。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_records_why",
+          "text": "誤解とは？事実を記録しただけですが。",
+          "nextSegmentId": "supervisor_explain",
+          "setFlags": ["questioned_supervisor"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_records_accept",
+          "text": "分かりました。表現を修正します。",
+          "nextSegmentId": "supervisor_satisfied_path",
+          "setFlags": ["accepted_rewrite"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_records_silent",
+          "text": "...。",
+          "nextSegmentId": "supervisor_pressure",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_explain",
+      "callerLines": [
+        "まあ、事実は事実だが...",
+        "オペレーターが発信者に他の通報内容を伝えた、と取られかねないだろう。",
+        "そうなると、プロトコル違反を問われる可能性がある。君のためを思って言ってるんだ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_explain_understood",
+          "text": "...分かりました。表現を変えます。",
+          "nextSegmentId": "supervisor_satisfied_path",
+          "setFlags": ["accepted_rewrite"],
+          "clearFlags": ["questioned_supervisor"]
+        },
+        {
+          "responseId": "supervisor_explain_resist",
+          "text": "でも、記録は正確であるべきでは？",
+          "nextSegmentId": "supervisor_push",
+          "setFlags": ["resisted_rewrite"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_pressure",
+      "callerLines": [
+        "...分かっているな？",
+        "報告書は「確認中に複数の類似通報があった」程度の表現でいい。",
+        "詳細は別途、内部で共有する。そういうものだ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_pressure_accept",
+          "text": "...はい。修正します。",
+          "nextSegmentId": "supervisor_satisfied_path",
+          "setFlags": ["accepted_rewrite"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_pressure_question",
+          "text": "なぜ詳細を隠す必要があるんですか？",
+          "nextSegmentId": "supervisor_push",
+          "setFlags": ["questioned_supervisor"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_push",
+      "callerLines": [
+        "隠すわけじゃない。整理するんだ。",
+        "記録は後から誰かが読む。不必要な詳細は混乱を招く。",
+        "君はまだ若い。そういうことは経験を積めば分かる。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_push_yield",
+          "text": "...分かりました。",
+          "nextSegmentId": "supervisor_reluctant_end",
+          "setFlags": ["accepted_rewrite"],
+          "clearFlags": ["resisted_rewrite"]
+        },
+        {
+          "responseId": "supervisor_push_refuse",
+          "text": "記録は事実のままにしておきたいんですが。",
+          "nextSegmentId": "supervisor_warning",
+          "setFlags": ["resisted_rewrite"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_warning",
+      "callerLines": [
+        "...そうか。",
+        "君の判断だ。ただ、後で問題になっても、私は助けられないかもしれない。",
+        "まあ、考えておいてくれ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_warning_end",
+          "text": "はい。",
+          "nextSegmentId": "supervisor_end",
+          "setFlags": ["supervisor_concerned"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_satisfied_path",
+      "callerLines": [
+        "ありがとう。話が分かって助かる。",
+        "あと、今夜の火災の件、何かあったら報告してくれ。",
+        "通常通りの対応でいい。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_satisfied_yes",
+          "text": "はい、分かりました。",
+          "nextSegmentId": "supervisor_end",
+          "setFlags": ["supervisor_satisfied"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_reluctant_end",
+      "callerLines": [
+        "よし。じゃあ、そういうことで。",
+        "火災の対応、頑張ってくれ。",
+        "何かあれば連絡を。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_reluctant_end_yes",
+          "text": "はい。",
+          "nextSegmentId": "supervisor_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_end",
+      "callerLines": [
+        "じゃあ、また。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_end_reply",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "supervisor_intro",
+  "note": "Night01のエンドステートによって工藤主任の態度が変わる。Exposed→警戒しつつ慎重、Complicit→圧力軽い、Flagged→圧力強い、Absorbed→無関心。"
+}

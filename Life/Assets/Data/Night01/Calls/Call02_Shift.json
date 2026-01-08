@@ -1,0 +1,254 @@
+{
+  "callId": "call_shift",
+  "callerId": "nakamura_kenta",
+  "title": "シフトに来ない",
+  "description": "林遥の不在を報告。最初の種を蒔く。",
+  "segments": [
+    {
+      "segmentId": "shift_intro",
+      "callerLines": [
+        "もしもし、緊急通報センターですか？",
+        "あの、物流センターの中村といいます。シフト主任をしてるんですが。",
+        "うちの従業員が今夜のシフトに来てなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "shift_intro_listen",
+          "text": "はい、お話をお聞きします。従業員の方が出勤されていないのですね。",
+          "nextSegmentId": "shift_detail",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "shift_intro_clarify",
+          "text": "緊急通報センターです。無断欠勤のご報告でしょうか？",
+          "nextSegmentId": "shift_explain",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shift_detail",
+      "callerLines": [
+        "林遥っていう子なんですが、27歳の女性です。",
+        "普段は真面目で、連絡なしに休むような子じゃないんです。",
+        "電話も繋がらなくて...何かあったんじゃないかと。"
+      ],
+      "responses": [
+        {
+          "responseId": "shift_detail_concern",
+          "text": "連絡が取れないのは心配ですね。最後に連絡があったのはいつですか？",
+          "nextSegmentId": "shift_lastcontact",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "shift_detail_procedure",
+          "text": "まだ数時間ですので、もう少しお待ちになってみては？",
+          "nextSegmentId": "shift_worry",
+          "setFlags": ["suggested_wait"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "shift_detail_redirect",
+          "text": "行方不明のご心配でしたら、警察への届け出をお勧めします。",
+          "nextSegmentId": "shift_police",
+          "setFlags": ["redirected_to_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shift_explain",
+      "callerLines": [
+        "いや、ただの無断欠勤じゃないと思うんです。",
+        "林さんは5年勤めてて、一度も無断で休んだことないんですよ。",
+        "何か事故にでも遭ったんじゃないかって..."
+      ],
+      "responses": [
+        {
+          "responseId": "shift_explain_serious",
+          "text": "そうでしたか。それは確かに心配ですね。詳しく教えていただけますか？",
+          "nextSegmentId": "shift_lastcontact",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "shift_explain_calm",
+          "text": "落ち着いてください。まずは状況を整理しましょう。",
+          "nextSegmentId": "shift_lastcontact",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shift_lastcontact",
+      "callerLines": [
+        "昨日の夕方、退勤する時に「また明日」って言ってたんです。",
+        "今夜のシフトは23時からで、いつもは15分前には来てるのに...",
+        "もう2時間以上経ってます。"
+      ],
+      "responses": [
+        {
+          "responseId": "shift_lastcontact_note",
+          "text": "林遥さん、27歳女性、昨日夕方に最後の連絡。承知しました。",
+          "nextSegmentId": "shift_route",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "shift_lastcontact_home",
+          "text": "ご自宅には連絡されましたか？",
+          "nextSegmentId": "shift_home",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shift_worry",
+      "callerLines": [
+        "待つって言われても...嫌な予感がするんです。",
+        "林さん、最近ちょっと様子がおかしかったんですよね。",
+        "何か怯えてるような...気のせいかもしれませんが。"
+      ],
+      "responses": [
+        {
+          "responseId": "shift_worry_listen",
+          "text": "怯えている様子...何か心当たりはありますか？",
+          "nextSegmentId": "shift_strange",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "shift_worry_practical",
+          "text": "通勤経路で何かあったかもしれません。経路はご存知ですか？",
+          "nextSegmentId": "shift_route",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shift_home",
+      "callerLines": [
+        "一人暮らしなんです。緊急連絡先に電話したんですが、お兄さんも出なくて。",
+        "家族とはあまり連絡取ってないみたいで...",
+        "職場の人間しか頼れないんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "shift_home_understand",
+          "text": "わかりました。通勤経路はご存知ですか？",
+          "nextSegmentId": "shift_route",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shift_strange",
+      "callerLines": [
+        "詳しくは...本人が話してくれなかったので。",
+        "でも、帰り際に何度も後ろを振り返ってたり。",
+        "「誰かに見られてる気がする」って一度だけ言ってました。"
+      ],
+      "responses": [
+        {
+          "responseId": "shift_strange_note",
+          "text": "貴重な情報をありがとうございます。記録しておきます。",
+          "nextSegmentId": "shift_route",
+          "setFlags": ["evidence_logged"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "shift_strange_dismiss",
+          "text": "気のせいかもしれませんね。通勤経路を教えていただけますか？",
+          "nextSegmentId": "shift_route",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shift_route",
+      "callerLines": [
+        "えっと、国道沿いを自転車で来てるはずです。",
+        "途中に歩道橋があって、その近くを通るって言ってました。",
+        "夜は暗いから心配だって..."
+      ],
+      "responses": [
+        {
+          "responseId": "shift_route_note",
+          "text": "国道沿い、歩道橋付近ですね。記録しました。",
+          "nextSegmentId": "shift_end",
+          "setFlags": ["route_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "shift_route_hint",
+          "text": "歩道橋...わかりました。何かわかればこちらからも確認してみます。",
+          "nextSegmentId": "shift_end_hopeful",
+          "setFlags": ["route_noted", "hinted_to_nakamura"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shift_police",
+      "callerLines": [
+        "警察...そうですね。でもまだ数時間だと相手にしてもらえるか...",
+        "とりあえず、もう少し待ってみます。",
+        "何かあったら、また電話してもいいですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "shift_police_yes",
+          "text": "はい、何かありましたらまたお電話ください。",
+          "nextSegmentId": "shift_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shift_end_hopeful",
+      "callerLines": [
+        "本当ですか？ありがとうございます。",
+        "林さん、いい子なんです。何もなければいいんですが...",
+        "すみません、お手数おかけします。"
+      ],
+      "responses": [
+        {
+          "responseId": "shift_end_hopeful_reply",
+          "text": "お気持ちはわかります。何かわかりましたらご連絡します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "shift_end",
+      "callerLines": [
+        "わかりました...ありがとうございます。",
+        "何かわかったら教えてください。",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "shift_end_reply",
+          "text": "承知しました。失礼します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "shift_intro"
+}

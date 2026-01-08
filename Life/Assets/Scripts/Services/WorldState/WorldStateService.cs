@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LifeLike.Data;
+using LifeLike.Data.EndState;
+using LifeLike.Services.Clock;
+using LifeLike.Services.EndState;
 using LifeLike.Services.Story;
 using UnityEngine;
 
@@ -14,6 +17,8 @@ namespace LifeLike.Services.WorldState
     public class WorldStateService : IWorldStateService
     {
         private readonly IStoryService _storyService;
+        private readonly IEndStateService? _endStateService;
+        private readonly IClockService? _clockService;
 
         private NightScenarioData? _currentScenario;
         private int _currentTimeMinutes;
@@ -24,8 +29,8 @@ namespace LifeLike.Services.WorldState
         private readonly List<WorldStateSnapshot> _worldStates = new();
         private readonly HashSet<string> _triggeredCallIds = new();
 
-        public int CurrentTimeMinutes => _currentTimeMinutes;
-        public string FormattedTime => FormatTime(_currentTimeMinutes);
+        public int CurrentTimeMinutes => _clockService?.CurrentTimeMinutes ?? _currentTimeMinutes;
+        public string FormattedTime => _clockService?.FormattedTime ?? FormatTime(_currentTimeMinutes);
         public bool IsScenarioEnded => _isScenarioEnded;
 
         public event Action<int, string>? OnTimeChanged;
@@ -33,9 +38,57 @@ namespace LifeLike.Services.WorldState
         public event Action<ScenarioEnding>? OnScenarioEnded;
         public event Action<CallData>? OnCallTriggered;
 
+        /// <summary>
+        /// コンストラクタ（後方互換性のため）
+        /// </summary>
         public WorldStateService(IStoryService storyService)
+            : this(storyService, null, null)
+        {
+        }
+
+        /// <summary>
+        /// コンストラクタ（EndStateService/ClockService統合版）
+        /// </summary>
+        public WorldStateService(
+            IStoryService storyService,
+            IEndStateService? endStateService,
+            IClockService? clockService)
         {
             _storyService = storyService ?? throw new ArgumentNullException(nameof(storyService));
+            _endStateService = endStateService;
+            _clockService = clockService;
+
+            // ClockServiceの時刻変更イベントを購読
+            if (_clockService != null)
+            {
+                _clockService.OnTimeChanged += OnClockTimeChanged;
+                _clockService.OnTimeUp += OnClockTimeUp;
+            }
+        }
+
+        /// <summary>
+        /// ClockServiceの時刻変更イベントハンドラ
+        /// </summary>
+        private void OnClockTimeChanged(int timeMinutes, string formattedTime)
+        {
+            int oldTime = _currentTimeMinutes;
+            _currentTimeMinutes = timeMinutes;
+
+            OnTimeChanged?.Invoke(timeMinutes, formattedTime);
+
+            // この間にトリガーされるべき通話をチェック
+            CheckCallTriggers(oldTime, timeMinutes);
+        }
+
+        /// <summary>
+        /// ClockServiceのシナリオ終了イベントハンドラ
+        /// </summary>
+        private void OnClockTimeUp()
+        {
+            if (!_isScenarioEnded)
+            {
+                FinalizeScenario();
+            }
         }
 
         public void LoadScenario(NightScenarioData scenario)
@@ -114,12 +167,25 @@ namespace LifeLike.Services.WorldState
                 return null;
             }
 
+            // EndStateServiceが利用可能な場合は、そちらを使用
+            if (_endStateService != null)
+            {
+                int? dispatchTime = _clockService?.DispatchTimeMinutes;
+                string endingId = _endStateService.DetermineEnding(dispatchTime);
+
+                if (!string.IsNullOrEmpty(endingId))
+                {
+                    return _endStateService.GetEnding(endingId);
+                }
+            }
+
+            // 従来のロジック（後方互換性）
             foreach (var ending in _currentScenario.endings)
             {
                 bool allConditionsMet = true;
                 foreach (var condition in ending.conditions)
                 {
-                    if (!_storyService.CheckCondition(condition))
+                    if (!_storyService.EvaluateCondition(condition))
                     {
                         allConditionsMet = false;
                         break;
@@ -145,6 +211,55 @@ namespace LifeLike.Services.WorldState
             _isScenarioEnded = true;
             Debug.Log($"[WorldStateService] シナリオ終了: {ending.title}");
             OnScenarioEnded?.Invoke(ending);
+        }
+
+        /// <summary>
+        /// シナリオを終了させる（EndStateServiceを使用）
+        /// </summary>
+        public void FinalizeScenario()
+        {
+            if (_isScenarioEnded)
+            {
+                return;
+            }
+
+            ScenarioEnding? ending = null;
+
+            // EndStateServiceを使用してエンディングを決定
+            if (_endStateService != null)
+            {
+                int? dispatchTime = _clockService?.DispatchTimeMinutes;
+                string endingId = _endStateService.DetermineEnding(dispatchTime);
+
+                if (!string.IsNullOrEmpty(endingId))
+                {
+                    ending = _endStateService.GetEnding(endingId);
+
+                    var endState = _endStateService.CurrentEndState;
+                    var victimSurvived = _endStateService.VictimSurvived;
+
+                    Debug.Log($"[WorldStateService] エンドステート: {endState}");
+                    Debug.Log($"[WorldStateService] 被害者生存: {victimSurvived}");
+                    Debug.Log($"[WorldStateService] エンディング: {endingId}");
+                }
+            }
+
+            // フォールバック: 従来のロジック
+            if (ending == null)
+            {
+                ending = CheckEndingConditions();
+            }
+
+            // さらにフォールバック: デフォルトエンディング
+            if (ending == null && _currentScenario != null)
+            {
+                ending = _currentScenario.endings.FirstOrDefault();
+            }
+
+            if (ending != null)
+            {
+                EndScenario(ending);
+            }
         }
 
         public void Pause()
@@ -234,6 +349,12 @@ namespace LifeLike.Services.WorldState
                 return;
             }
 
+            // ClockServiceを使用している場合はそちらに任せる
+            if (_clockService != null)
+            {
+                return;
+            }
+
             // 終了時刻を過ぎたかチェック（日をまたぐ場合の処理）
             int endTime = _currentScenario.endTimeMinutes;
             int startTime = _currentScenario.startTimeMinutes;
@@ -247,12 +368,7 @@ namespace LifeLike.Services.WorldState
 
             if (_currentTimeMinutes >= endTime)
             {
-                // デフォルトのエンディングを探す（または最初のエンディング）
-                var defaultEnding = _currentScenario.endings.FirstOrDefault();
-                if (defaultEnding != null)
-                {
-                    EndScenario(defaultEnding);
-                }
+                FinalizeScenario();
             }
         }
 

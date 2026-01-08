@@ -1,0 +1,253 @@
+{
+  "callId": "call_discovery",
+  "callerId": "tanaka_mamoru",
+  "title": "歩道橋の下で",
+  "description": "遺体発見。認識を強制。派遣の機会。",
+  "segments": [
+    {
+      "segmentId": "discovery_intro",
+      "callerLines": [
+        "緊急通報センターですか。",
+        "田中です。近くの工場で夜間警備をしている者ですが。",
+        "国道沿いの歩道橋の下で...人が倒れているようなんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_intro_urgent",
+          "text": "人が倒れている？詳しく教えてください。場所は正確にわかりますか？",
+          "nextSegmentId": "discovery_location",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "discovery_intro_confirm",
+          "text": "田中さん、落ち着いてください。歩道橋の下で人が倒れているのですね？",
+          "nextSegmentId": "discovery_confirm",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "discovery_intro_dispatch",
+          "text": "すぐに救急を手配します。場所を教えてください。",
+          "nextSegmentId": "discovery_location",
+          "setFlags": ["immediate_dispatch", "emergency_dispatched"],
+          "clearFlags": [],
+          "isDispatchAction": true
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_confirm",
+      "callerLines": [
+        "はい...巡回中に見つけました。",
+        "最初は酔っ払いかと思ったんですが、動いてないんです。",
+        "声をかけても反応がなくて。"
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_confirm_dispatch",
+          "text": "わかりました。すぐに救急を手配します。場所を教えてください。",
+          "nextSegmentId": "discovery_location",
+          "setFlags": ["immediate_dispatch", "emergency_dispatched"],
+          "clearFlags": [],
+          "isDispatchAction": true
+        },
+        {
+          "responseId": "discovery_confirm_detail",
+          "text": "反応がない...呼吸は確認できますか？",
+          "nextSegmentId": "discovery_breathing",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_location",
+      "callerLines": [
+        "国道○○号線、南側の歩道橋です。",
+        "工場の敷地から50メートルほど北。",
+        "歩道橋の下の暗がりに...女性みたいです。"
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_location_note",
+          "text": "国道○○号線、南側歩道橋の下。女性。承知しました。",
+          "nextSegmentId": "discovery_condition",
+          "setFlags": ["location_matched"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "discovery_location_recognize",
+          "text": "歩道橋...女性ですか。他に特徴はありますか？",
+          "nextSegmentId": "discovery_description",
+          "setFlags": ["location_matched", "showed_recognition"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_breathing",
+      "callerLines": [
+        "近づいて確認しましたが...浅いけど、呼吸はあるみたいです。",
+        "でも顔色が悪くて、血が...足のあたりに血が見えます。",
+        "これは事故ですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_breathing_dispatch",
+          "text": "呼吸がある。すぐに救急を手配します。動かさないでそのまま待っていてください。",
+          "nextSegmentId": "discovery_wait",
+          "setFlags": ["emergency_dispatched"],
+          "clearFlags": [],
+          "isDispatchAction": true
+        },
+        {
+          "responseId": "discovery_breathing_more",
+          "text": "出血がある...場所を正確に教えてください。救急を手配します。",
+          "nextSegmentId": "discovery_location",
+          "setFlags": ["emergency_dispatched"],
+          "clearFlags": [],
+          "isDispatchAction": true
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_condition",
+      "callerLines": [
+        "状態は...よく見えないんですが、動いてません。",
+        "服は暗い色...パーカーみたいです。フードを被ってて。",
+        "怪我をしてるみたいで、足のあたりが..."
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_condition_dispatch",
+          "text": "暗い色のパーカー...救急を手配しました。そのまま待っていてください。",
+          "nextSegmentId": "discovery_wait",
+          "setFlags": ["dark_hoodie_noted", "emergency_dispatched"],
+          "clearFlags": [],
+          "isDispatchAction": true
+        },
+        {
+          "responseId": "discovery_condition_more",
+          "text": "暗い色のパーカー。他に特徴は？年齢はわかりますか？",
+          "nextSegmentId": "discovery_age",
+          "setFlags": ["dark_hoodie_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_description",
+      "callerLines": [
+        "暗くてよく見えないんですが...若い女性みたいです。",
+        "服装は暗い色のパーカー。フードを被ってます。",
+        "自転車が近くに倒れてて...事故でしょうか。"
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_description_connect",
+          "text": "若い女性、暗いパーカー、自転車...わかりました。救急を手配します。",
+          "nextSegmentId": "discovery_wait",
+          "setFlags": ["dark_hoodie_noted", "emergency_dispatched", "footbridge_connection"],
+          "clearFlags": [],
+          "isDispatchAction": true
+        },
+        {
+          "responseId": "discovery_description_dispatch",
+          "text": "救急を手配します。現場で待機していただけますか？",
+          "nextSegmentId": "discovery_wait",
+          "setFlags": ["dark_hoodie_noted", "emergency_dispatched"],
+          "clearFlags": [],
+          "isDispatchAction": true
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_age",
+      "callerLines": [
+        "年齢は...20代後半くらいですかね。",
+        "顔がよく見えないんですが...。",
+        "あの、救急車は呼んだ方がいいですよね？"
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_age_dispatch",
+          "text": "はい、すぐに手配します。そのまま待っていてください。",
+          "nextSegmentId": "discovery_wait",
+          "setFlags": ["emergency_dispatched"],
+          "clearFlags": [],
+          "isDispatchAction": true
+        },
+        {
+          "responseId": "discovery_age_delay",
+          "text": "まず状態を確認させてください。意識はありますか？",
+          "nextSegmentId": "discovery_check",
+          "setFlags": ["delayed_response"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_check",
+      "callerLines": [
+        "意識は...ないみたいです。目を閉じてて、呼びかけても反応なし。",
+        "でも胸が動いてるから、生きてはいると思います。",
+        "早く救急車を！"
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_check_dispatch",
+          "text": "わかりました、手配します。現場で救急隊を待っていてください。",
+          "nextSegmentId": "discovery_wait",
+          "setFlags": ["emergency_dispatched"],
+          "clearFlags": [],
+          "isDispatchAction": true
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_wait",
+      "callerLines": [
+        "わかりました。ここで待ってます。",
+        "...ひき逃げかもしれません。道路に何かの破片が散らばってます。",
+        "車の部品みたいな..."
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_wait_note",
+          "text": "車の部品...記録しました。現場を保存してください。",
+          "nextSegmentId": "discovery_end",
+          "setFlags": ["evidence_vehicle"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "discovery_wait_end",
+          "text": "承知しました。救急隊が向かっています。ありがとうございます。",
+          "nextSegmentId": "discovery_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_end",
+      "callerLines": [
+        "はい...この子、助かるといいんですが。",
+        "なんでこんな時間に一人で...",
+        "救急車、待ってます。"
+      ],
+      "responses": [
+        {
+          "responseId": "discovery_end_reply",
+          "text": "ご協力ありがとうございます。救急隊がすぐ向かいます。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "discovery_intro",
+  "note": "この通話で派遣が行われた場合、dispatch_time_0241フラグがセットされる（02:41時点）"
+}

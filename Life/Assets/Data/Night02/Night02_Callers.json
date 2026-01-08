@@ -1,0 +1,102 @@
+{
+  "nightId": "night_02",
+  "description": "第2夜「炎の証言」発信者データ",
+  "callers": [
+    {
+      "callerId": "yoshida_kazuko",
+      "displayName": "吉田和子",
+      "realName": "吉田和子",
+      "description": "72歳、一人暮らしの高齢女性。夫を5年前に亡くし、子供は遠方に住んでいる。夜間の病院帰りに倉庫火災を目撃。林遥の隣人で、遥と美咲のことを気にかけていた。",
+      "voiceDescription": "震えた高齢女性の声。最初はパニック状態、後に落ち着く。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 95,
+        "stability": 50,
+        "cooperation": 90,
+        "aggression": 5
+      },
+      "hiddenInfo": "林遥の隣人。遥と美咲を「若いお母さんと子供」として知っている。遥が最近姿を見せないことを心配している。火災前に見た車の会社名（アラートセキュリティ）を後で思い出す可能性がある。",
+      "trueMotivation": "火災の通報、孤独",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Neighbor", "description": "近所に住む若い母親として認識", "isKnown": false }
+      ],
+      "organizationRelation": "none",
+      "note": "Night01の林遥との接点を持つ人物。プレイヤーが気づけば接続できる。"
+    },
+    {
+      "callerId": "ikeda_kenta",
+      "displayName": "池田健太",
+      "realName": "池田健太",
+      "description": "24歳、コンビニ店員（フリーター）。深夜シフト中に倉庫火災を目撃。火災前に不審な車を見ていた。",
+      "voiceDescription": "若い男性の声。比較的冷静だが緊張している。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 85,
+        "stability": 70,
+        "cooperation": 80,
+        "aggression": 10
+      },
+      "hiddenInfo": "火災前に倉庫に出入りしていた車を目撃。吉田和子と同じ車を見ている可能性がある（別角度から）。",
+      "trueMotivation": "火災の通報",
+      "relations": [],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "kudo_shinji",
+      "displayName": "工藤真司",
+      "realName": "工藤真司",
+      "description": "45歳、当直主任。10年のベテラン。システムの代弁者。Night01の報告書について確認してくる。",
+      "voiceDescription": "落ち着いた低い声。権威的だが穏やか。",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 50,
+        "stability": 90,
+        "cooperation": 40,
+        "aggression": 30
+      },
+      "hiddenInfo": "組織との関係はないが、システムを守ることを優先する。Night01の報告書から「不要な詳細」を削除するよう婉曲に圧力をかける。",
+      "trueMotivation": "組織的リスク管理、記録の整理",
+      "relations": [],
+      "organizationRelation": "system_aligned"
+    },
+    {
+      "callerId": "yamamoto_yuko",
+      "displayName": "山本裕子",
+      "realName": "山本裕子",
+      "description": "38歳、主婦。住宅街に住む。公園で子供を見ている不審な人物を通報。",
+      "voiceDescription": "主婦らしい声。心配と警戒が混じっている。",
+      "voicePitch": 1.05,
+      "personality": {
+        "honesty": 90,
+        "stability": 65,
+        "cooperation": 85,
+        "aggression": 15
+      },
+      "hiddenInfo": "通報した「不審者」は実は渡辺真理（遥の友人）で、美咲を探している。山本はそのことを知らない。",
+      "trueMotivation": "子供の安全への懸念",
+      "relations": [],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "watanabe_mari",
+      "displayName": "（不審者）",
+      "realName": "渡辺真理",
+      "description": "29歳、林遥の親友。遥の死後、行方不明の美咲を探している。Night02では直接登場しない（不審者として言及されるのみ）。Night03で本人として登場予定。",
+      "voiceDescription": "N/A（Night02では登場しない）",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 80,
+        "stability": 55,
+        "cooperation": 70,
+        "aggression": 20
+      },
+      "hiddenInfo": "遥の親友。遥の死を知り、美咲を心配して探している。Night02では山本裕子の通報を通じて間接的に存在が示される。",
+      "trueMotivation": "美咲を見つけて保護したい",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Friend", "description": "高校時代からの親友", "isKnown": false }
+      ],
+      "organizationRelation": "none",
+      "note": "Night03への伏線キャラクター"
+    }
+  ]
+}

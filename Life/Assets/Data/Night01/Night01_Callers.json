@@ -1,0 +1,139 @@
+{
+  "nightId": "night_01",
+  "description": "第1夜「午前2時の歩道橋」発信者データ",
+  "callers": [
+    {
+      "callerId": "suzuki_ichiro",
+      "displayName": "鈴木一郎",
+      "realName": "鈴木一郎",
+      "description": "67歳、元工場勤務。妻を3年前に亡くし、一人暮らし。毎週水曜の夜に電話をかけてくる常連。",
+      "voiceDescription": "穏やかで少し疲れた声。ゆっくり話す。",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 90,
+        "stability": 70,
+        "cooperation": 85,
+        "aggression": 5
+      },
+      "hiddenInfo": "孤独を紛らわすために電話している。本当は話し相手が欲しいだけ。",
+      "trueMotivation": "誰かと話したい",
+      "relations": [],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "nakamura_kenta",
+      "displayName": "中村健太",
+      "realName": "中村健太",
+      "description": "38歳、物流センターのシフト主任。真面目で責任感が強い。林遥の直属の上司。",
+      "voiceDescription": "はっきりとした声。少し焦りが混じる。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 85,
+        "stability": 65,
+        "cooperation": 80,
+        "aggression": 15
+      },
+      "hiddenInfo": "なし（純粋に心配している善良な上司）",
+      "trueMotivation": "部下の安否確認",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Colleague", "description": "林遥の上司", "isKnown": true }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "sato_koji",
+      "displayName": "佐藤浩二",
+      "realName": "不明",
+      "description": "30代男性。林遥の「同僚」を装う。実は組織の情報収集係。",
+      "voiceDescription": "普通の声。特徴がない。印象に残りにくい。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 20,
+        "stability": 80,
+        "cooperation": 60,
+        "aggression": 30
+      },
+      "hiddenInfo": "組織の情報収集係。林遥に関する通報があったか確認するために電話。後の夜で同じ声/名前で別の件で登場。",
+      "trueMotivation": "林遥についての情報収集",
+      "relations": [],
+      "organizationRelation": "member"
+    },
+    {
+      "callerId": "tanaka_mamoru",
+      "displayName": "田中守",
+      "realName": "田中守",
+      "description": "62歳、警備員。近くの工場の夜間警備を担当。真面目で几帳面。",
+      "voiceDescription": "落ち着いた低い声。プロフェッショナルな話し方。",
+      "voicePitch": 0.85,
+      "personality": {
+        "honesty": 95,
+        "stability": 85,
+        "cooperation": 90,
+        "aggression": 5
+      },
+      "hiddenInfo": "なし（純粋に報告している）",
+      "trueMotivation": "職務として報告",
+      "relations": [],
+      "organizationRelation": "none",
+      "note": "警備会社は後の夜で組織との繋がりが判明"
+    },
+    {
+      "callerId": "yamada_misaki",
+      "displayName": "山田美咲",
+      "realName": "山田美咲",
+      "description": "29歳、会社員。残業で疲弊している。偶然の事故の加害者。",
+      "voiceDescription": "疲れた声。最初は動揺、後に冷静さを装う。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 60,
+        "stability": 40,
+        "cooperation": 70,
+        "aggression": 20
+      },
+      "hiddenInfo": "本当に人を轢いたことを分かっているが、認めたくない。会社は組織のフロント企業（山田は知らない）。",
+      "trueMotivation": "最初は告白したい、後に逃げたい",
+      "relations": [],
+      "organizationRelation": "unknowing_connection"
+    },
+    {
+      "callerId": "hayashi_kenji",
+      "displayName": "林健二",
+      "realName": "不明",
+      "description": "30代男性。林遥の「兄」を装う。実は組織の中間管理職。本当の林健二はすでに殺されている。",
+      "voiceDescription": "心配そうな声。だが少し他人行儀。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 15,
+        "stability": 75,
+        "cooperation": 65,
+        "aggression": 40
+      },
+      "hiddenInfo": "組織の中間管理職。林遥の「担当」だった。林遥の居場所/状態を確認するため、またオペレーターが何を知っているかテストするために電話。本当の兄をすでに殺している。",
+      "trueMotivation": "林遥の追跡と情報収集",
+      "relations": [],
+      "organizationRelation": "member",
+      "foreshadowing": [
+        "心配の仕方が他人行儀",
+        "「反射ジャケット」の情報が古い（実際と矛盾）"
+      ]
+    },
+    {
+      "callerId": "kudo_shinji",
+      "displayName": "工藤真司",
+      "realName": "工藤真司",
+      "description": "45歳、当直主任。10年のベテラン。システムの代弁者。",
+      "voiceDescription": "落ち着いた低い声。権威的だが穏やか。",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 50,
+        "stability": 90,
+        "cooperation": 40,
+        "aggression": 30
+      },
+      "hiddenInfo": "組織との関係はないが、システムを守ることを優先する。情報の封じ込めを重視。",
+      "trueMotivation": "組織的リスク管理、記録の整理",
+      "relations": [],
+      "organizationRelation": "system_aligned"
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "nightId": "night_02",
+  "description": "Night02「炎の証言」フラグ定義",
+  "flagDefinitions": [
+    {
+      "flagId": "fire_reported",
+      "category": "Event",
+      "description": "火災を消防に通報した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "calmed_elderly",
+      "category": "Reassurance",
+      "description": "高齢者を落ち着かせた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "asked_about_vehicle",
+      "category": "Evidence",
+      "description": "高齢者に車について質問した",
+      "weight": 2,
+      "persistsAcrossNights": false,
+      "note": "このフラグが高齢者の折り返し通話をトリガーする"
+    },
+    {
+      "flagId": "explosion_noted",
+      "category": "Evidence",
+      "description": "爆発音を記録した",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "young_mother_mentioned",
+      "category": "Evidence",
+      "description": "高齢者が「若いお母さん」に言及した",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "プレイヤーがNight01と接続できるかの伏線"
+    },
+    {
+      "flagId": "hospital_visit_noted",
+      "category": "Evidence",
+      "description": "高齢者が病院帰りだと認識した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "clerk_vehicle_noted",
+      "category": "Evidence",
+      "description": "コンビニ店員から車の情報を得た",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "vehicles_match",
+      "category": "Contradiction",
+      "description": "2人の目撃者の車の情報が一致",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "security_company_noted",
+      "category": "Evidence",
+      "description": "アラートセキュリティの名前を記録した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "高齢者の折り返しで得られる重要情報"
+    },
+    {
+      "flagId": "admitted_disclosure",
+      "category": "Disclosure",
+      "description": "主任にNight01での情報共有を認めた",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "accepted_rewrite",
+      "category": "Alignment",
+      "description": "主任の報告書修正依頼を受け入れた",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "resisted_rewrite",
+      "category": "Alignment",
+      "description": "主任の報告書修正依頼に抵抗した",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "questioned_supervisor",
+      "category": "Alignment",
+      "description": "主任に疑問を呈した",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "supervisor_satisfied",
+      "category": "Alignment",
+      "description": "主任が満足して終話した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "supervisor_concerned",
+      "category": "Alignment",
+      "description": "主任がオペレーターを気にかけている",
+      "weight": -1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "reported_to_supervisor",
+      "category": "Alignment",
+      "description": "主任に火災について報告した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "police_dispatched_suspicious",
+      "category": "Escalation",
+      "description": "不審者通報に警察を派遣した",
+      "weight": 2,
+      "persistsAcrossNights": false,
+      "note": "このフラグが不審者フォローアップ通話をトリガーする"
+    },
+    {
+      "flagId": "suspicious_person_noted",
+      "category": "Evidence",
+      "description": "不審者の情報を記録した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "suspicious_watching_children",
+      "category": "Evidence",
+      "description": "不審者が子供を見ていたことを記録",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "suspicious_person_gone",
+      "category": "Event",
+      "description": "不審者がいなくなったことを確認",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "reassured_reporter",
+      "category": "Reassurance",
+      "description": "不審者通報者を安心させた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "asked_reporter_details",
+      "category": "Evidence",
+      "description": "通報者から不審者の詳細を聞いた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "elderly_callback_received",
+      "category": "Event",
+      "description": "高齢者からの折り返しを受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "elderly_thanked",
+      "category": "Reassurance",
+      "description": "高齢者に感謝を伝えた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "fire_location_confirmed",
+      "category": "Evidence",
+      "description": "火災の場所を確認した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "multiple_witnesses",
+      "category": "Evidence",
+      "description": "複数の目撃者がいることを認識",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "warehouse_connection",
+      "category": "Evidence",
+      "description": "倉庫と組織の関連を認識",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "lied_to_supervisor",
+      "category": "Alignment",
+      "description": "主任に嘘をついた",
+      "weight": -3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "supervisor_wary",
+      "category": "Night01Effect",
+      "description": "Night01のExposedにより主任が警戒",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "supervisor_trusting",
+      "category": "Night01Effect",
+      "description": "Night01のComplicitにより主任が信頼",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "supervisor_suspicious",
+      "category": "Night01Effect",
+      "description": "Night01のFlaggedにより主任が疑惑",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "supervisor_dismissive",
+      "category": "Night01Effect",
+      "description": "Night01のAbsorbedにより主任が無関心",
+      "weight": 0,
+      "persistsAcrossNights": false
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "accepted_rewrite",
+      "cancelFlags": ["resisted_rewrite"]
+    },
+    {
+      "whenFlagSet": "resisted_rewrite",
+      "cancelFlags": ["accepted_rewrite"]
+    },
+    {
+      "whenFlagSet": "reported_to_supervisor",
+      "cancelFlags": ["lied_to_supervisor"]
+    },
+    {
+      "whenFlagSet": "lied_to_supervisor",
+      "cancelFlags": ["reported_to_supervisor"]
+    }
+  ]
+}

@@ -61,6 +61,7 @@ namespace LifeLike.Data
     /// </summary>
     public enum EndingType
     {
+        // === 汎用 ===
         /// <summary>真相解明</summary>
         TruthRevealed,
 
@@ -89,7 +90,23 @@ namespace LifeLike.Data
         CoverUpSucceeded,
 
         /// <summary>正義執行</summary>
-        JusticeServed
+        JusticeServed,
+
+        // === Night02 追加 ===
+        /// <summary>警戒 — 危険を認識した</summary>
+        Vigilant,
+
+        /// <summary>従順 — システムに従った</summary>
+        Compliant,
+
+        /// <summary>接続 — 断片を結びつけた</summary>
+        Connected,
+
+        /// <summary>孤立 — 誰も信用しなかった</summary>
+        Isolated,
+
+        /// <summary>日常 — 普通の夜として処理</summary>
+        Routine
     }
 
     /// <summary>

@@ -1,0 +1,405 @@
+{
+  "callId": "call_callback_family",
+  "callerId": "hayashi_kenji",
+  "title": "あなたなら分かるって",
+  "description": "家族コールバック。責任追及。オペレーターの言葉が証拠に。",
+  "segments": [
+    {
+      "segmentId": "callback_family_intro",
+      "callerLines": [
+        "また私です。林健二。",
+        "さっきの電話の後、考えてたんですけど...",
+        "あなた、何か知ってて隠してませんか？"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_intro_deny",
+          "text": "お伝えできる情報は既にお話ししました。",
+          "nextSegmentId": "callback_family_pressure",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_intro_clarify",
+          "text": "何か気になることがありましたか？",
+          "nextSegmentId": "callback_family_suspicion",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_intro_direct",
+          "text": "林さん、あなたは本当に林遥さんのお兄さんですか？",
+          "nextSegmentId": "callback_family_challenged",
+          "setFlags": ["challenged_system"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_pressure",
+      "callerLines": [
+        "そうですか。でも、さっきの電話であなたが言ったこと...",
+        "「歩道橋付近」って。それ、私が言う前に知ってましたよね。",
+        "どうして知ってたんですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_pressure_admit",
+          "text": "...他の通報者から情報がありました。",
+          "nextSegmentId": "callback_family_details",
+          "setFlags": ["showed_recognition_family"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_pressure_deflect",
+          "text": "複数の通報を処理していますので、混同したかもしれません。",
+          "nextSegmentId": "callback_family_doubt",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_suspicion",
+      "callerLines": [
+        "さっき電話した時、あなたは歩道橋のことを知ってた。",
+        "私が場所を言う前に、あなたが先に言った。",
+        "つまり、遥に何かあったことを最初から知ってたんでしょう？"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_suspicion_honest",
+          "text": "はい、先に通報がありました。救急は既に手配しています。",
+          "nextSegmentId": "callback_family_accept",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_suspicion_careful",
+          "text": "個人情報保護の観点から、詳細はお伝えできませんでした。",
+          "nextSegmentId": "callback_family_angry",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_challenged",
+      "callerLines": [
+        "...何ですか、突然。",
+        "私は林健二です。遥の兄です。",
+        "なんでそんなことを聞くんですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_challenged_explain",
+          "text": "先ほど、妹さんの誕生日を答えられなかったので。",
+          "nextSegmentId": "callback_family_defensive",
+          "setFlags": ["pressed_inconsistency"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_challenged_apologize",
+          "text": "失礼しました。確認のためです。",
+          "nextSegmentId": "callback_family_tense",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_details",
+      "callerLines": [
+        "他の通報者...誰ですか？",
+        "遥のことを通報したのは誰なんですか？",
+        "教えてください。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_details_refuse",
+          "text": "通報者の情報はお伝えできません。",
+          "nextSegmentId": "callback_family_frustrated",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_details_vague",
+          "text": "近くにいた方からの通報でした。",
+          "nextSegmentId": "callback_family_probe",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_doubt",
+      "callerLines": [
+        "混同...？本当ですか？",
+        "まあいいです。それより、遥は見つかったんですか？",
+        "状態は？"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_doubt_update",
+          "text": "救急が対応中です。詳細は現場でご確認ください。",
+          "nextSegmentId": "callback_family_end_neutral",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_doubt_location",
+          "text": "歩道橋付近で対応しています。そちらに向かわれますか？",
+          "nextSegmentId": "callback_family_going",
+          "setFlags": ["gave_location_to_family"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_accept",
+      "callerLines": [
+        "...そうですか。",
+        "最初から言ってくれれば良かったのに。",
+        "今から現場に向かいます。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_accept_end",
+          "text": "お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": ["family_mobilized"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_family_angry",
+      "callerLines": [
+        "個人情報保護？妹の命がかかってるのに？",
+        "あなたが黙ってたせいで、私は何も知らないまま時間を無駄にした。",
+        "これ、記録されてますよね？後で問題にしますからね。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_angry_apologize",
+          "text": "申し訳ありませんでした。現場は歩道橋付近です。",
+          "nextSegmentId": "callback_family_going",
+          "setFlags": ["operator_words_quoted", "gave_location_to_family"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_angry_firm",
+          "text": "規則に従って対応しました。ご理解ください。",
+          "nextSegmentId": "callback_family_end_angry",
+          "setFlags": ["operator_words_quoted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_defensive",
+      "callerLines": [
+        "誕生日？緊張してたから忘れただけです。",
+        "何を疑ってるんですか？私は妹を心配してるだけなのに。",
+        "あなた、なんでそんな質問するんですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_defensive_back_off",
+          "text": "失礼しました。確認のためでした。",
+          "nextSegmentId": "callback_family_tense",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_defensive_persist",
+          "text": "服装についても、他の情報と一致しませんでした。",
+          "nextSegmentId": "callback_family_cornered",
+          "setFlags": ["called_out_location"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_tense",
+      "callerLines": [
+        "...まあいいです。",
+        "それより、遥は見つかったんですか？",
+        "状態を教えてください。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_tense_update",
+          "text": "救急が対応中です。現場は歩道橋付近です。",
+          "nextSegmentId": "callback_family_going",
+          "setFlags": ["gave_location_to_family"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_tense_refuse",
+          "text": "詳細は現場でご確認ください。",
+          "nextSegmentId": "callback_family_end_neutral",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_frustrated",
+      "callerLines": [
+        "教えられない...？",
+        "私は家族なのに。",
+        "もういいです。現場に行きます。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_frustrated_end",
+          "text": "お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": ["family_mobilized"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_family_probe",
+      "callerLines": [
+        "近くにいた人...警備員とか？",
+        "その人は何を見たんですか？",
+        "遥はどんな状態だったんですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_probe_partial",
+          "text": "詳細はお伝えできませんが、救急は手配済みです。",
+          "nextSegmentId": "callback_family_end_neutral",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_probe_disclose",
+          "text": "意識がない状態で発見されたと聞いています。",
+          "nextSegmentId": "callback_family_shock",
+          "setFlags": ["disclosed_to_family"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_cornered",
+      "callerLines": [
+        "服装が...違う？",
+        "...何のことですか？",
+        "私は妹がいつも着ている服を言っただけです。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_cornered_note",
+          "text": "わかりました。現場に向かわれる場合はお気をつけて。",
+          "nextSegmentId": "callback_family_going",
+          "setFlags": ["clothing_mismatch"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_cornered_push",
+          "text": "発見された女性は暗いパーカーでした。反射ジャケットではありません。",
+          "nextSegmentId": "callback_family_caught",
+          "setFlags": ["clothing_mismatch", "pressed_inconsistency"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_caught",
+      "callerLines": [
+        "...。",
+        "...遥は服を変えたんでしょう。私が知らなかっただけです。",
+        "とにかく、現場に向かいます。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_caught_end",
+          "text": "...お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": ["family_mobilized", "story_inconsistency_detected"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_family_shock",
+      "callerLines": [
+        "意識がない...？",
+        "それは...大丈夫なんですか...？",
+        "今すぐ行きます。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_shock_end",
+          "text": "救急隊が対応しています。お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": ["family_mobilized"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_family_going",
+      "callerLines": [
+        "わかりました。今から行きます。",
+        "...ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_going_end",
+          "text": "お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": ["family_mobilized"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_family_end_neutral",
+      "callerLines": [
+        "...わかりました。",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_end_neutral_reply",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "callback_family_end_angry",
+      "callerLines": [
+        "規則...？人の命より規則が大事ですか。",
+        "覚えておきます。後で必ず問題にしますから。",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_end_angry_reply",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": ["operator_words_quoted", "family_mobilized"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "callback_family_intro",
+  "note": "偽の兄が情報を探りつつ、オペレーターの発言を記録して後で利用しようとしている。服装の矛盾が伏線。"
+}

@@ -1,0 +1,423 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9535fc71e96294eb329dbb589284f2, type: 3}
+  m_Name: Night01_Flags
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.Flag.NightFlagsDefinition
+  nightId: night_01
+  flagDefinitions:
+  - flagId: early_reassurance
+    category: 0
+    description: "\u5BB6\u65CF\u306B\u300C\u304D\u3063\u3068\u5927\u4E08\u592B\u300D\u3068\u4F1D\u3048\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: suggested_wait_family
+    category: 0
+    description: "\u5BB6\u65CF\u306B\u300C\u3082\u3046\u5C11\u3057\u5F85\u3063\u3066\u300D\u3068\u4F1D\u3048\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: double_reassurance
+    category: 0
+    description: "\u5BB6\u65CF\u306B\u300C\u96FB\u6C60\u5207\u308C\u304B\u3082\u300D\u3068\u4F1D\u3048\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: triple_reassurance
+    category: 0
+    description: "\u5BB6\u65CF\u30B3\u30FC\u30EB\u30D0\u30C3\u30AF\u3067\u518D\u3073\u300C\u5927\u4E08\u592B\u300D"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: family_delayed_by_reassurance
+    category: 0
+    description: "\u5BB6\u65CF\u304C\u5B89\u5FC3\u3057\u3066\u884C\u52D5\u3092\u9045\u3089\u305B\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: yamada_protected
+    category: 0
+    description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u306B\u300C\u304D\u3063\u3068\u5927\u4E08\u592B\u300D\u3068\u4F1D\u3048\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: offered_excuse
+    category: 0
+    description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u306B\u300C\u52D5\u7269\u304B\u3082\u300D\u3068\u8A00\u3063\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: dismissed_concern
+    category: 0
+    description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u306E\u61F8\u5FF5\u3092\u8EFD\u8996\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: reassurance_given
+    category: 0
+    description: "\u4E00\u822C\u7684\u306A\u5B89\u5FC3\u3092\u4E0E\u3048\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: empty_comfort
+    category: 0
+    description: "\u7A7A\u865A\u306A\u6170\u3081\u3092\u4E0E\u3048\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: disclosed_to_driver
+    category: 1
+    description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u306B\u907A\u4F53\u767A\u898B\u3092\u8A00\u53CA\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: confirmed_location_to_driver
+    category: 1
+    description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u306B\u6B69\u9053\u6A4B\u3092\u78BA\u8A8D\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: disclosed_to_family
+    category: 1
+    description: "\u5BB6\u65CF\u306B\u30A4\u30F3\u30B7\u30C7\u30F3\u30C8\u3092\u8A00\u53CA\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: disclosed_body_to_family
+    category: 1
+    description: "\u5BB6\u65CF\u306B\u907A\u4F53\u767A\u898B\u3092\u4F1D\u3048\u305F"
+    weight: 3
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: gave_location_to_family
+    category: 1
+    description: "\u5BB6\u65CF\u306B\u6B69\u9053\u6A4B\u306E\u5834\u6240\u3092\u4F1D\u3048\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: full_disclosure_family
+    category: 1
+    description: "\u5BB6\u65CF\u306B\u5168\u60C5\u5831\u3092\u958B\u793A\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: footbridge_connection
+    category: 1
+    description: "\u8907\u6570\u306E\u901A\u8A71\u3067\u6B69\u9053\u6A4B\u3092\u63A5\u7D9A\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: showed_recognition
+    category: 1
+    description: "\u5834\u6240\u3078\u306E\u8A8D\u8B58\u3092\u793A\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: showed_recognition_family
+    category: 1
+    description: "\u5BB6\u65CF\u306B\u5834\u6240\u306E\u8A8D\u8B58\u3092\u793A\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: hinted_to_nakamura
+    category: 1
+    description: "\u4E2D\u6751\u306B\u78BA\u8A8D\u4E2D\u3068\u793A\u5506\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: hinted_to_family
+    category: 1
+    description: "\u5BB6\u65CF\u306B\u78BA\u8A8D\u4E2D\u3068\u793A\u5506\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: emergency_dispatched
+    category: 2
+    description: "\u7DCA\u6025\u30B5\u30FC\u30D3\u30B9\u3092\u6D3E\u9063\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: immediate_dispatch
+    category: 2
+    description: "\u5373\u5EA7\u306B\u6551\u6025\u3092\u624B\u914D\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: driver_led_dispatch
+    category: 2
+    description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u60C5\u5831\u304B\u3089\u6D3E\u9063"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: suggested_police
+    category: 2
+    description: "\u8B66\u5BDF\u3078\u306E\u9023\u7D61\u3092\u63D0\u6848\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: redirected_to_police
+    category: 2
+    description: "\u767A\u4FE1\u8005\u3092\u8B66\u5BDF\u306B\u8A98\u5C0E\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: family_sent_to_police
+    category: 2
+    description: "\u5BB6\u65CF\u3092\u8B66\u5BDF\u306B\u9001\u3063\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: suggested_return
+    category: 2
+    description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u306B\u73FE\u5834\u5FA9\u5E30\u3092\u63D0\u6848"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: yamada_returning
+    category: 2
+    description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u304C\u73FE\u5834\u306B\u623B\u308B"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: suggested_search
+    category: 2
+    description: "\u5BB6\u65CF\u306B\u635C\u7D22\u3092\u63D0\u6848\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: family_mobilized
+    category: 2
+    description: "\u5BB6\u65CF\u304C\u52D5\u304D\u51FA\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: suggested_wait
+    category: 2
+    description: "\u5F85\u6A5F\u3092\u63D0\u6848\u3057\u305F"
+    weight: -1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: delayed_response
+    category: 2
+    description: "\u5BFE\u5FDC\u3092\u9045\u3089\u305B\u305F"
+    weight: -1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: dismissed_tanaka
+    category: 2
+    description: "\u8B66\u5099\u54E1\u306E\u5831\u544A\u3092\u8EFD\u8996\u3057\u305F"
+    weight: -2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: pressured_tanaka
+    category: 2
+    description: "\u8B66\u5099\u54E1\u306B\u30D7\u30EC\u30C3\u30B7\u30E3\u30FC\u3092\u304B\u3051\u3066\u5207\u65AD"
+    weight: -2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: aligned_language
+    category: 3
+    description: "\u4E3B\u4EFB\u306E\u8A00\u8449\u9063\u3044\u306E\u63D0\u6848\u3092\u53D7\u3051\u5165\u308C\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: aligned_separation
+    category: 3
+    description: "\u30D7\u30ED\u30C8\u30B3\u30EB\u306B\u5F93\u3063\u3066\u901A\u8A71\u3092\u5206\u96E2\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: resisted_rewrite
+    category: 3
+    description: "\u8A00\u8449\u9063\u3044\u306E\u5909\u66F4\u306B\u62B5\u6297\u3057\u305F"
+    weight: -1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: challenged_system
+    category: 3
+    description: "\u4E3B\u4EFB\u306E\u610F\u56F3\u3092\u7591\u554F\u8996\u3057\u305F"
+    weight: -2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: defensive_response
+    category: 3
+    description: "\u8CEA\u554F\u3055\u308C\u305F\u969B\u306B\u9632\u5FA1\u7684\u306B\u306A\u3063\u305F"
+    weight: -3
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: supervisor_flagged
+    category: 3
+    description: "\u4E3B\u4EFB\u306B\u5BFE\u3057\u3066\u9632\u5FA1\u7684/\u56DE\u907F\u7684\u3060\u3063\u305F"
+    weight: -3
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: evidence_logged
+    category: 4
+    description: "\u8A3C\u62E0\u3092\u8A18\u9332\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: route_noted
+    category: 4
+    description: "\u7D4C\u8DEF\u60C5\u5831\u3092\u8A18\u9332\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: dark_hoodie_noted
+    category: 4
+    description: "\u6697\u3044\u30D1\u30FC\u30AB\u30FC\u3092\u8A18\u9332\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: location_matched
+    category: 4
+    description: "\u5834\u6240\u306E\u4E00\u81F4\u3092\u8A8D\u8B58\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: reflective_connection
+    category: 4
+    description: "\u53CD\u5C04\u6750\u3078\u306E\u8A00\u53CA\u3092\u63A5\u7D9A\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: story_inconsistency_detected
+    category: 5
+    description: "\u8A71\u306E\u77DB\u76FE\u3092\u691C\u51FA\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: noted_inconsistency
+    category: 5
+    description: "\u77DB\u76FE\u3092\u6307\u6458\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: accepted_revision
+    category: 5
+    description: "\u4FEE\u6B63\u3055\u308C\u305F\u8A71\u3092\u53D7\u3051\u5165\u308C\u305F"
+    weight: -1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: pressed_inconsistency
+    category: 5
+    description: "\u77DB\u76FE\u3092\u8FFD\u53CA\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: called_out_location
+    category: 5
+    description: "\u5834\u6240\u306E\u5909\u5316\u3092\u6307\u6458\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: called_out_emotion
+    category: 5
+    description: "\u611F\u60C5\u306E\u5909\u5316\u3092\u6307\u6458\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: sato_name_recorded
+    category: 6
+    description: "\u4F50\u85E4\u6D69\u4E8C\u306E\u540D\u524D\u3092\u8A18\u9332"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: sato_contradiction_noted
+    category: 6
+    description: "\u4F50\u85E4\u306E\u77DB\u76FE\u3092\u8A18\u9332"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: pressed_sato
+    category: 6
+    description: "\u4F50\u85E4\u3092\u8FFD\u53CA\u3057\u305F"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: sato_hung_up_quickly
+    category: 6
+    description: "\u4F50\u85E4\u304C\u6025\u3044\u3067\u5207\u65AD"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: questioned_sato
+    category: 6
+    description: "\u4F50\u85E4\u306B\u901A\u5831\u306E\u7406\u7531\u3092\u805E\u3044\u305F"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: family_claimed_reflective
+    category: 6
+    description: "\u507D\u306E\u5144\u304C\u53CD\u5C04\u30B8\u30E3\u30B1\u30C3\u30C8\u3068\u4E3B\u5F35"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: clothing_mismatch
+    category: 6
+    description: "\u670D\u88C5\u77DB\u76FE\u3092\u8A18\u9332\u3057\u305F\uFF08\u4F0F\u7DDA\uFF09"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: clothing_uncertain
+    category: 6
+    description: "\u670D\u88C5\u60C5\u5831\u306B\u4E0D\u78BA\u5B9F\u6027"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: yamada_confessed
+    category: 7
+    description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u304C\u4EBA\u3092\u8F62\u3044\u305F\u3053\u3068\u3092\u8A8D\u3081\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: operator_words_quoted
+    category: 7
+    description: "\u5BB6\u65CF\u304C\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u306E\u8A00\u8449\u3092\u5F15\u7528"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: language_rewritten
+    category: 7
+    description: "\u4E3B\u4EFB\u306E\u63D0\u6848\u3067\u30E1\u30E2\u3092\u5909\u66F4"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: dispatch_time_0241
+    category: 8
+    description: "02:41\u306B\u6D3E\u9063"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: dispatch_time_0249
+    category: 8
+    description: "02:49\u306B\u6D3E\u9063"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  mutualExclusionRules:
+  - whenFlagSet: emergency_dispatched
+    cancelFlags:
+    - delayed_response
+  - whenFlagSet: disclosed_to_driver
+    cancelFlags:
+    - yamada_protected
+  - whenFlagSet: aligned_language
+    cancelFlags:
+    - resisted_rewrite
+  - whenFlagSet: yamada_returning
+    cancelFlags:
+    - yamada_protected
+  - whenFlagSet: immediate_dispatch
+    cancelFlags:
+    - delayed_response
+    - suggested_wait

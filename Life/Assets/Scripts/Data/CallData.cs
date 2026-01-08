@@ -88,6 +88,16 @@ namespace LifeLike.Data
         [Tooltip("信頼度への影響")]
         public int trustImpact = 0;
 
+        [Header("フラグ")]
+        [Tooltip("この応答選択時に設定するフラグID")]
+        public List<string> setFlags = new();
+
+        [Tooltip("この応答選択時にクリアするフラグID")]
+        public List<string> clearFlags = new();
+
+        [Tooltip("この応答が派遣アクションかどうか")]
+        public bool isDispatchAction = false;
+
         [Header("遷移")]
         [Tooltip("次のセグメントID（同じ通話内）")]
         public string nextSegmentId = string.Empty;

@@ -1,0 +1,157 @@
+{
+  "nightId": "night_02",
+  "description": "Night02「炎の証言」エンドステート定義",
+  "endStateConditions": [
+    {
+      "endStateType": "Vigilant",
+      "priority": 1,
+      "description": "警戒 — オペレーターが情報を収集し、危険を認識した",
+      "scoreConditions": [
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 5 }
+      ],
+      "flagConditions": [
+        { "variableName": "security_company_noted", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true },
+        { "variableName": "explosion_noted", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    },
+    {
+      "endStateType": "Compliant",
+      "priority": 2,
+      "description": "従順 — オペレーターがシステムに協力した",
+      "scoreConditions": [
+        { "category": "Alignment", "comparison": "GreaterThanOrEqual", "value": 2 }
+      ],
+      "flagConditions": [
+        { "variableName": "accepted_rewrite", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    },
+    {
+      "endStateType": "Connected",
+      "priority": 3,
+      "description": "接続 — オペレーターが断片的な情報を結びつけた",
+      "scoreConditions": [
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 4 }
+      ],
+      "flagConditions": [
+        { "variableName": "vehicles_match", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    },
+    {
+      "endStateType": "Isolated",
+      "priority": 4,
+      "description": "孤立 — オペレーターが誰も信用しなかった",
+      "scoreConditions": [
+        { "category": "Alignment", "comparison": "LessThanOrEqual", "value": -2 }
+      ],
+      "flagConditions": [
+        { "variableName": "lied_to_supervisor", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    },
+    {
+      "endStateType": "Routine",
+      "priority": 5,
+      "description": "日常 — 普通の夜として処理した",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "variableName": "fire_reported", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    }
+  ],
+  "endingMappings": [
+    {
+      "endState": "Vigilant",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_watching_shadows"
+    },
+    {
+      "endState": "Compliant",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_good_employee"
+    },
+    {
+      "endState": "Connected",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_threads_weaving"
+    },
+    {
+      "endState": "Isolated",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_alone_in_dark"
+    },
+    {
+      "endState": "Routine",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_another_night"
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": false,
+    "maxDispatchTimeMinutes": 0,
+    "dispatchFlagId": "",
+    "note": "Night02では直接的な被害者救出はない。情報収集と接続がテーマ。"
+  },
+  "defaultEndState": "Routine",
+  "defaultEndingId": "ending_another_night",
+  "endings": [
+    {
+      "endingId": "ending_watching_shadows",
+      "title": "影を見つめる者",
+      "description": "炎の向こうに何かが見えた。\n\n爆発音。「アラートセキュリティ」の車。消えた証拠。\n\n断片は断片のまま。しかし、あなたはそれらを記憶している。\n\n次の夜、それらが何を意味するのか、わかるかもしれない。",
+      "endingType": "Vigilant"
+    },
+    {
+      "endingId": "ending_good_employee",
+      "title": "良い従業員",
+      "description": "報告書は整理された。不要な詳細は省かれた。\n\n「ありがとう。これでいい」\n\n工藤主任の声は満足そうだった。システムは正常に機能している。\n\nあなたはその歯車の一つ。良い歯車。",
+      "endingType": "Compliant"
+    },
+    {
+      "endingId": "ending_threads_weaving",
+      "title": "糸が紡がれる",
+      "description": "2人の目撃者。同じ車。同じ火災。\n\n偶然？それとも...\n\n倉庫の火災は消えた。しかし、あなたの中で何かが燃え始めている。\n\n疑問。それは消えない。",
+      "endingType": "Connected"
+    },
+    {
+      "endingId": "ending_alone_in_dark",
+      "title": "暗闇の中で一人",
+      "description": "誰も信じない。誰にも話さない。\n\n主任には嘘をついた。通報者には最低限の対応しかしなかった。\n\n安全か、孤独か。その境界線は曖昧だ。\n\n周りの全てが敵に見え始めている。",
+      "endingType": "Isolated"
+    },
+    {
+      "endingId": "ending_another_night",
+      "title": "また一つの夜",
+      "description": "火災は消防に通報された。不審者は警察に報告された。\n\n普通の夜。普通の対応。\n\nあなたの仕事は終わった。\n\n...本当に？",
+      "endingType": "Routine"
+    }
+  ],
+  "night01EndStateEffects": {
+    "description": "Night01のエンドステートがNight02に与える影響",
+    "effects": [
+      {
+        "night01EndState": "Exposed",
+        "effect": "工藤主任が「良い対応だった」と言う。しかし、より慎重な対応を求める。"
+      },
+      {
+        "night01EndState": "Contained",
+        "effect": "通常の展開。"
+      },
+      {
+        "night01EndState": "Complicit",
+        "effect": "工藤主任が「問題なし」と言う。圧力は軽い。"
+      },
+      {
+        "night01EndState": "Flagged",
+        "effect": "工藤主任の圧力が強い。記録の確認がより厳しくなる。"
+      },
+      {
+        "night01EndState": "Absorbed",
+        "effect": "工藤主任は特に何も言わない。組織はオペレーターを無視。"
+      }
+    ]
+  }
+}

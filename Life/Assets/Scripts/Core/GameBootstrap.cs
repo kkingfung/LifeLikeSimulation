@@ -13,6 +13,9 @@ using LifeLike.Services.Localization;
 using LifeLike.Services.TrustGraph;
 using LifeLike.Services.Video;
 using LifeLike.Services.WorldState;
+using LifeLike.Services.Flag;
+using LifeLike.Services.EndState;
+using LifeLike.Services.Clock;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -122,6 +125,21 @@ namespace LifeLike.Core
             }
             ServiceLocator.Instance.Register<ITransitionService>(transitionService);
 
+            // === Night Signal Services (Flag/EndState/Clock) ===
+            // これらは他のOperator Modeサービスより先に作成する必要がある
+
+            // FlagServiceを作成・登録
+            var flagService = new FlagService();
+            ServiceLocator.Instance.Register<IFlagService>(flagService);
+
+            // ClockServiceを作成・登録
+            var clockService = new ClockService();
+            ServiceLocator.Instance.Register<IClockService>(clockService);
+
+            // EndStateServiceを作成・登録（FlagServiceに依存）
+            var endStateService = new EndStateService(flagService);
+            ServiceLocator.Instance.Register<IEndStateService>(endStateService);
+
             // === Operator Mode Services ===
 
             // EvidenceServiceを作成・登録
@@ -136,12 +154,17 @@ namespace LifeLike.Core
             }
             ServiceLocator.Instance.Register<ITrustGraphService>(trustGraphService);
 
-            // WorldStateServiceを作成・登録（StoryServiceに依存）
-            var worldStateService = new WorldStateService(storyService);
+            // WorldStateServiceを作成・登録（StoryService, EndStateService, ClockServiceに依存）
+            var worldStateService = new WorldStateService(storyService, endStateService, clockService);
             ServiceLocator.Instance.Register<IWorldStateService>(worldStateService);
 
-            // CallFlowServiceを作成・登録（複数サービスに依存）
-            var callFlowService = new CallFlowService(storyService, evidenceService, trustGraphService);
+            // CallFlowServiceを作成・登録（複数サービスに依存、FlagService/ClockService統合）
+            var callFlowService = new CallFlowService(
+                storyService,
+                evidenceService,
+                trustGraphService,
+                flagService,
+                clockService);
             ServiceLocator.Instance.Register<ICallFlowService>(callFlowService);
 
             // GameStateDataが設定されていれば、キャラクターを登録

@@ -1,0 +1,295 @@
+{
+  "callId": "call_fire_clerk",
+  "callerId": "ikeda_kenta",
+  "title": "近くの倉庫が燃えてます",
+  "description": "コンビニ店員からの火災通報。別角度からの目撃、不審な車を見た。高齢者と同じ車を見ている可能性。",
+  "segments": [
+    {
+      "segmentId": "clerk_intro",
+      "callerLines": [
+        "あ、すみません。緊急通報センターですか？",
+        "コンビニで働いてるんですけど、近くの倉庫が燃えてるみたいで。",
+        "もう通報ありました？消防車、来てます？"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_intro_confirm",
+          "text": "はい、消防は手配済みです。追加の情報があれば教えてください。",
+          "nextSegmentId": "clerk_confirm",
+          "setFlags": ["multiple_witnesses"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_intro_details",
+          "text": "火災の通報ですね。場所を教えてください。",
+          "nextSegmentId": "clerk_location",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_confirm",
+      "callerLines": [
+        "あ、そうですか。よかった。",
+        "でも、ちょっと気になることがあって...",
+        "火が出る前に、変な車を見たんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_confirm_vehicle",
+          "text": "変な車？どんな車でしたか？",
+          "nextSegmentId": "clerk_vehicle",
+          "setFlags": ["clerk_vehicle_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_confirm_time",
+          "text": "火が出る前？何時頃のことですか？",
+          "nextSegmentId": "clerk_time",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_location",
+      "callerLines": [
+        "○○通りの工業地帯です。うちの店から100メートルくらい。",
+        "古い倉庫があって、普段は人気がないんですけど...",
+        "今夜は何か動きがあったみたいで。"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_location_movement",
+          "text": "動きがあった？詳しく教えてください。",
+          "nextSegmentId": "clerk_vehicle",
+          "setFlags": ["clerk_vehicle_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_location_fire",
+          "text": "火災の状況は？煙の量とか、炎の大きさは？",
+          "nextSegmentId": "clerk_fire_status",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_vehicle",
+      "callerLines": [
+        "白いバン...業務用みたいな。",
+        "荷台に何か書いてあったと思うんですけど...セキュリティ関係の会社？",
+        "で、30分くらい前に倉庫に入っていって、その後に爆発みたいな音がして。"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_vehicle_security",
+          "text": "セキュリティ会社の車...会社名は分かりますか？",
+          "nextSegmentId": "clerk_company",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_vehicle_explosion",
+          "text": "爆発音？火災の前に爆発があったんですか？",
+          "nextSegmentId": "clerk_explosion",
+          "setFlags": ["explosion_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_time",
+      "callerLines": [
+        "う〜ん...11時半くらい？シフト変わったばっかりで。",
+        "白いバンが倉庫の方に入っていくのを見て、何だろうって思ってたんです。",
+        "で、しばらくして爆発みたいな音がして..."
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_time_vehicle",
+          "text": "白いバン？詳しく教えてください。",
+          "nextSegmentId": "clerk_vehicle",
+          "setFlags": ["clerk_vehicle_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_time_explosion",
+          "text": "爆発音...記録します。他に見たことは？",
+          "nextSegmentId": "clerk_other",
+          "setFlags": ["explosion_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_company",
+      "callerLines": [
+        "アラート...なんとか、だったかな。",
+        "アラートセキュリティ？よく覚えてないですけど、そんな感じの名前。",
+        "でも、こんな時間にセキュリティ会社が何しに来るんだろうって不思議で。"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_company_note",
+          "text": "アラートセキュリティ...記録しました。ありがとうございます。",
+          "nextSegmentId": "clerk_end",
+          "setFlags": ["security_company_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_company_people",
+          "text": "車から降りた人は見ましたか？",
+          "nextSegmentId": "clerk_people",
+          "setFlags": ["security_company_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_explosion",
+      "callerLines": [
+        "そうです。ドーンって大きな音が。",
+        "最初はトラックの事故かと思ったんですけど、煙が上がって...",
+        "そしたら火が見えて。急に燃え広がった感じでした。"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_explosion_note",
+          "text": "爆発の後に急速に燃え広がった...記録しました。",
+          "nextSegmentId": "clerk_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_explosion_cause",
+          "text": "爆発の原因に心当たりは？倉庫に何が保管されてたか分かりますか？",
+          "nextSegmentId": "clerk_warehouse",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_fire_status",
+      "callerLines": [
+        "煙がすごいです。黒い煙。",
+        "炎も大きくて...倉庫全体が燃えてる感じ。",
+        "消防車、もう来てるみたいですけど、消せるのかな..."
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_fire_status_thanks",
+          "text": "情報ありがとうございます。消防が対応中です。",
+          "nextSegmentId": "clerk_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_people",
+      "callerLines": [
+        "人は...よく見えなかったです。暗かったし。",
+        "でも、車は倉庫の裏に回ったみたいで、しばらくして出ていきました。",
+        "で、その後に爆発。...何か関係あるのかな。"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_people_maybe",
+          "text": "分かりません。でも、情報は記録しました。ありがとうございます。",
+          "nextSegmentId": "clerk_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_people_vehicle_match",
+          "text": "白いバン、セキュリティ会社...別の方からも似た情報がありました。",
+          "nextSegmentId": "clerk_match",
+          "setFlags": ["vehicles_match"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_warehouse",
+      "callerLines": [
+        "倉庫に何があるかは...分からないです。",
+        "普段は静かなんですよ。トラックが来ることもあるけど、夜中は珍しい。",
+        "なんか、変な感じですよね..."
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_warehouse_thanks",
+          "text": "情報ありがとうございます。何かあればまた連絡ください。",
+          "nextSegmentId": "clerk_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_other",
+      "callerLines": [
+        "他には...特に。",
+        "あ、でも、お婆さんがバス停のところにいて、通報してるみたいでした。",
+        "同じこと言ってると思います。"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_other_thanks",
+          "text": "分かりました。ご協力ありがとうございます。",
+          "nextSegmentId": "clerk_end",
+          "setFlags": ["multiple_witnesses"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_match",
+      "callerLines": [
+        "え、他の人も見てたんですか？",
+        "じゃあ、本当に何かあったのかも...",
+        "消防とか警察に言った方がいいですかね？"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_match_police",
+          "text": "必要であれば警察にも連絡します。お名前と連絡先を教えてもらえますか？",
+          "nextSegmentId": "clerk_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_match_noted",
+          "text": "情報は記録しました。ありがとうございます。何かあればまた連絡ください。",
+          "nextSegmentId": "clerk_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_end",
+      "callerLines": [
+        "分かりました。",
+        "何かあったらまた電話します。",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_end_reply",
+          "text": "ご協力ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "clerk_intro",
+  "note": "高齢者と同じ車を見ている。プレイヤーが両方の証言を照合すれば vehicles_match フラグが立つ。"
+}

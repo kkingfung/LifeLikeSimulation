@@ -1,0 +1,192 @@
+{
+  "callId": "call_elderly_callback",
+  "callerId": "yoshida_kazuko",
+  "title": "あの...思い出したことがあって",
+  "description": "高齢者からの折り返し。車について質問した場合のみ発生。アラートセキュリティの車を思い出す。",
+  "segments": [
+    {
+      "segmentId": "callback_intro",
+      "callerLines": [
+        "あの...さっき火事の件で電話した吉田です。",
+        "もう家に帰ってきたんですけど...",
+        "さっき聞かれた車のこと、思い出したことがあって..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_intro_listen",
+          "text": "吉田さん、ありがとうございます。何を思い出しましたか？",
+          "nextSegmentId": "callback_remember",
+          "setFlags": ["elderly_callback_received"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_intro_grateful",
+          "text": "わざわざありがとうございます。お体は大丈夫ですか？",
+          "nextSegmentId": "callback_health",
+          "setFlags": ["elderly_callback_received", "elderly_thanked"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_health",
+      "callerLines": [
+        "はい、大丈夫です。ありがとうございます。",
+        "あの、車のこと...家に帰ってゆっくり考えたら、思い出せて。",
+        "荷台に書いてあった字が..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_health_tell",
+          "text": "何と書いてありましたか？",
+          "nextSegmentId": "callback_company",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_remember",
+      "callerLines": [
+        "あの車...荷台に会社の名前が書いてあって...",
+        "さっきは思い出せなかったんですけど...",
+        "「アラート」って字が見えた気がするんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_remember_more",
+          "text": "アラート...それだけですか？",
+          "nextSegmentId": "callback_company",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_remember_security",
+          "text": "アラートセキュリティ、ですか？",
+          "nextSegmentId": "callback_confirm",
+          "setFlags": ["security_company_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_company",
+      "callerLines": [
+        "「アラート」の後に...セキュリティ？だったかしら...",
+        "目が悪くて...でも、赤い字で書いてあったような...",
+        "警備会社みたいな名前だったと思います。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_company_note",
+          "text": "アラートセキュリティ...記録しました。ありがとうございます。",
+          "nextSegmentId": "callback_thanks",
+          "setFlags": ["security_company_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_company_other",
+          "text": "他に何か思い出したことはありますか？",
+          "nextSegmentId": "callback_other",
+          "setFlags": ["security_company_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_confirm",
+      "callerLines": [
+        "あ、そうそう、そんな名前！アラートセキュリティ！",
+        "よく覚えてらっしゃいますね。",
+        "お役に立てたなら良かったです..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_confirm_helpful",
+          "text": "とても助かります。ありがとうございました。",
+          "nextSegmentId": "callback_thanks",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_other",
+      "callerLines": [
+        "他は...そうですね...",
+        "車が倉庫に入っていく時、運転手以外にも人が乗ってた気がします。",
+        "でも、暗くて顔までは..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_other_thanks",
+          "text": "十分です。ありがとうございました。",
+          "nextSegmentId": "callback_thanks",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_thanks",
+      "callerLines": [
+        "いえいえ...お役に立てたなら...",
+        "あの火事、大変でしたね。消防の人たち、大丈夫かしら...",
+        "...そういえば、近所の林さん、最近見かけないわ。心配..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_thanks_end",
+          "text": "夜遅くにありがとうございました。ゆっくりお休みください。",
+          "nextSegmentId": "callback_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_thanks_hayashi",
+          "text": "林さん？さっきもおっしゃってましたね。",
+          "nextSegmentId": "callback_hayashi",
+          "setFlags": ["young_mother_mentioned"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_hayashi",
+      "callerLines": [
+        "ええ...優しい人なんです。お子さんと二人暮らしで...",
+        "よく買い物を手伝ってくれて...最近、挨拶もなく姿を見かけなくて...",
+        "引っ越したのかしら...でも、荷物を運ぶところも見てないし..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_hayashi_end",
+          "text": "そうですか...。何かあればまた連絡くださいね。お休みなさい。",
+          "nextSegmentId": "callback_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_end",
+      "callerLines": [
+        "はい...ありがとうございます。",
+        "お仕事、大変ですね。お体に気をつけて。",
+        "おやすみなさい。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_end_reply",
+          "text": "おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "callback_intro",
+  "note": "最初の通話で車について質問した場合（asked_about_vehicle フラグ）にのみ発生。アラートセキュリティの名前を得られる重要な通話。林遥への言及がNight01との接点。"
+}

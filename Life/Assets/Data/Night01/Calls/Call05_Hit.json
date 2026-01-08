@@ -1,0 +1,358 @@
+{
+  "callId": "call_hit",
+  "callerId": "yamada_misaki",
+  "title": "何か轢いたかもしれない",
+  "description": "ドライバーからの告白。感情的な重さ。",
+  "segments": [
+    {
+      "segmentId": "hit_intro",
+      "callerLines": [
+        "...もしもし。",
+        "あの...すみません、こういう時どこに電話すればいいか...",
+        "さっき車を運転してて...何か轢いたかもしれないんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "hit_intro_serious",
+          "text": "落ち着いてください。何か轢いたかもしれない...詳しく教えてください。",
+          "nextSegmentId": "hit_detail",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_intro_location",
+          "text": "まず場所を教えてください。今どこにいますか？",
+          "nextSegmentId": "hit_location",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_intro_calm",
+          "text": "大丈夫ですか？まずは落ち着いて。何があったか教えてください。",
+          "nextSegmentId": "hit_detail",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_detail",
+      "callerLines": [
+        "残業で遅くなって...疲れてたんです。",
+        "国道を走ってたら、急に何か...影みたいなのが飛び出してきて。",
+        "ブレーキ踏んだけど、間に合わなくて...音がして..."
+      ],
+      "responses": [
+        {
+          "responseId": "hit_detail_what",
+          "text": "音がした...何に当たったか確認しましたか？",
+          "nextSegmentId": "hit_confirm",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_detail_where",
+          "text": "国道のどのあたりですか？歩道橋の近くですか？",
+          "nextSegmentId": "hit_footbridge",
+          "setFlags": ["confirmed_location_to_driver"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_detail_reassure",
+          "text": "動物だったかもしれませんね。暗いと見えにくいですから。",
+          "nextSegmentId": "hit_hope",
+          "setFlags": ["offered_excuse", "yamada_protected"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_location",
+      "callerLines": [
+        "今は...家に帰ってきてます。",
+        "怖くて、その場で止まれなくて...そのまま走っちゃったんです。",
+        "でも、ずっと気になって..."
+      ],
+      "responses": [
+        {
+          "responseId": "hit_location_serious",
+          "text": "現場から離れてしまったのですね。何を轢いたか見ましたか？",
+          "nextSegmentId": "hit_confirm",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_location_scene",
+          "text": "場所は覚えていますか？",
+          "nextSegmentId": "hit_footbridge",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_confirm",
+      "callerLines": [
+        "確認...できませんでした。怖くて。",
+        "でもミラーで見たら...何か倒れてるみたいで...",
+        "人だったらどうしよう..."
+      ],
+      "responses": [
+        {
+          "responseId": "hit_confirm_disclose",
+          "text": "実は、歩道橋付近で人が倒れているという通報が入っています。",
+          "nextSegmentId": "hit_shock",
+          "setFlags": ["disclosed_to_driver"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_confirm_return",
+          "text": "確認のため、現場に戻れますか？",
+          "nextSegmentId": "hit_return_question",
+          "setFlags": ["suggested_return"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_confirm_reassure",
+          "text": "暗い道路では動物も多いです。あまり気にしすぎないでください。",
+          "nextSegmentId": "hit_denial",
+          "setFlags": ["yamada_protected", "dismissed_concern"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_footbridge",
+      "callerLines": [
+        "歩道橋...ああ、そうです。あの辺りでした。",
+        "歩道橋を過ぎたあたりで...急に何かが...",
+        "...なんでそれを知ってるんですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "hit_footbridge_honest",
+          "text": "その付近で人が倒れているという通報がありました。",
+          "nextSegmentId": "hit_shock",
+          "setFlags": ["disclosed_to_driver", "confirmed_location_to_driver"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_footbridge_vague",
+          "text": "いくつかの通報を受けています。詳しく教えてください。",
+          "nextSegmentId": "hit_time",
+          "setFlags": ["confirmed_location_to_driver"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_hope",
+      "callerLines": [
+        "動物...そうですよね。きっとそうですよね。",
+        "でも、音が...普通じゃなかった気がして。",
+        "確認しなかったのがずっと引っかかって..."
+      ],
+      "responses": [
+        {
+          "responseId": "hit_hope_continue",
+          "text": "不安なお気持ちはわかります。場所を教えていただけますか？",
+          "nextSegmentId": "hit_footbridge",
+          "setFlags": [],
+          "clearFlags": ["yamada_protected"]
+        },
+        {
+          "responseId": "hit_hope_end",
+          "text": "お気持ちはわかりますが、今夜はゆっくり休んでください。",
+          "nextSegmentId": "hit_end_protected",
+          "setFlags": ["yamada_protected", "reassurance_given"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_shock",
+      "callerLines": [
+        "...え？",
+        "人が...？それって...",
+        "私が...私がやったの...？"
+      ],
+      "responses": [
+        {
+          "responseId": "hit_shock_confirm",
+          "text": "まだ確定ではありません。でも、あなたが見たものと関係がある可能性があります。",
+          "nextSegmentId": "hit_breakdown",
+          "setFlags": ["yamada_confessed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_shock_police",
+          "text": "警察に連絡することをお勧めします。正直に話した方がいいです。",
+          "nextSegmentId": "hit_police",
+          "setFlags": ["suggested_police", "yamada_confessed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_time",
+      "callerLines": [
+        "時間は...2時15分くらいだったと思います。",
+        "残業で遅くなって、もう眠くて...",
+        "一瞬、意識が飛んでたかもしれない..."
+      ],
+      "responses": [
+        {
+          "responseId": "hit_time_serious",
+          "text": "2時15分頃...。その時間に歩道橋付近で人が倒れているという通報がありました。",
+          "nextSegmentId": "hit_shock",
+          "setFlags": ["disclosed_to_driver"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_time_return",
+          "text": "確認のため、現場に戻ることはできますか？",
+          "nextSegmentId": "hit_return_question",
+          "setFlags": ["suggested_return"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_return_question",
+      "callerLines": [
+        "戻る...？",
+        "でも、もし本当に人だったら...私、どうすれば...",
+        "怖い...でも、このまま逃げるのも..."
+      ],
+      "responses": [
+        {
+          "responseId": "hit_return_encourage",
+          "text": "今からでも遅くありません。確認して、必要なら助けを呼んでください。",
+          "nextSegmentId": "hit_decide",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_return_police",
+          "text": "まず警察に連絡してください。正直に話した方がいいです。",
+          "nextSegmentId": "hit_police",
+          "setFlags": ["suggested_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_breakdown",
+      "callerLines": [
+        "そんな...私、人を...",
+        "どうしよう...どうしたらいいの...",
+        "逃げちゃったのに...今更..."
+      ],
+      "responses": [
+        {
+          "responseId": "hit_breakdown_support",
+          "text": "今からでも現場に戻れます。救急はすでに手配されています。",
+          "nextSegmentId": "hit_decide",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hit_breakdown_police",
+          "text": "警察に電話してください。正直に話すことが大切です。",
+          "nextSegmentId": "hit_police",
+          "setFlags": ["suggested_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_denial",
+      "callerLines": [
+        "そう...ですよね。きっと動物。",
+        "ありがとうございます。少し落ち着きました。",
+        "...今夜はもう寝ます。"
+      ],
+      "responses": [
+        {
+          "responseId": "hit_denial_end",
+          "text": "おやすみなさい。何かあればまたお電話ください。",
+          "nextSegmentId": null,
+          "setFlags": ["empty_comfort"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "hit_decide",
+      "callerLines": [
+        "...戻ります。",
+        "逃げたまま生きていけない。",
+        "あの人が...まだ生きてるなら..."
+      ],
+      "responses": [
+        {
+          "responseId": "hit_decide_support",
+          "text": "わかりました。気をつけて。現場には救急隊がいるはずです。",
+          "nextSegmentId": "hit_end_return",
+          "setFlags": ["yamada_returning"],
+          "clearFlags": ["yamada_protected"]
+        }
+      ]
+    },
+    {
+      "segmentId": "hit_police",
+      "callerLines": [
+        "警察...そうですね。",
+        "もう隠せない。隠しちゃいけない。",
+        "...電話します。ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "hit_police_end",
+          "text": "勇気ある決断です。お電話ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "hit_end_return",
+      "callerLines": [
+        "行ってきます。",
+        "...あの人が助かりますように。"
+      ],
+      "responses": [
+        {
+          "responseId": "hit_end_return_reply",
+          "text": "お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "hit_end_protected",
+      "callerLines": [
+        "...そうですね。考えすぎですよね。",
+        "ありがとうございました。おやすみなさい。"
+      ],
+      "responses": [
+        {
+          "responseId": "hit_end_protected_reply",
+          "text": "おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "hit_intro",
+  "note": "この通話で派遣が行われた場合（田中からの通報で未派遣の場合）、dispatch_time_0249フラグがセットされる（02:49時点）"
+}

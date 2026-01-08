@@ -1,0 +1,1404 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd4027b4e354644d948da849de0ca3f, type: 3}
+  m_Name: call_callback_family
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.CallData
+  callId: call_callback_family
+  caller: {fileID: 11400000, guid: 19986a8ec947cc645ab8b25557e7062e, type: 2}
+  description: "\u5BB6\u65CF\u30B3\u30FC\u30EB\u30D0\u30C3\u30AF\u3002\u8CAC\u4EFB\u8FFD\u53CA\u3002\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u306E\u8A00\u8449\u304C\u8A3C\u62E0\u306B\u3002"
+  incomingTimeMinutes: 192
+  ringDuration: 45
+  priority: 8
+  startSegmentId: callback_family_intro
+  segments:
+  - segmentId: callback_family_intro
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u307E\u305F\u79C1\u3067\u3059\u3002\u6797\u5065\u4E8C\u3002\n\u3055\u3063\u304D\u306E\u96FB\u8A71\u306E\u5F8C\u3001\u8003\u3048\u3066\u305F\u3093\u3067\u3059\u3051\u3069...\n\u3042\u306A\u305F\u3001\u4F55\u304B\u77E5\u3063\u3066\u3066\u96A0\u3057\u3066\u307E\u305B\u3093\u304B\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_intro_deny
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u304A\u4F1D\u3048\u3067\u304D\u308B\u60C5\u5831\u306F\u65E2\u306B\u304A\u8A71\u3057\u3057\u307E\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_pressure
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_intro_clarify
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u4F55\u304B\u6C17\u306B\u306A\u308B\u3053\u3068\u304C\u3042\u308A\u307E\u3057\u305F\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_suspicion
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_intro_direct
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6797\u3055\u3093\u3001\u3042\u306A\u305F\u306F\u672C\u5F53\u306B\u6797\u9065\u3055\u3093\u306E\u304A\u5144\u3055\u3093\u3067\u3059\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - challenged_system
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_challenged
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_pressure
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u3046\u3067\u3059\u304B\u3002\u3067\u3082\u3001\u3055\u3063\u304D\u306E\u96FB\u8A71\u3067\u3042\u306A\u305F\u304C\u8A00\u3063\u305F\u3053\u3068...\n\u300C\u6B69\u9053\u6A4B\u4ED8\u8FD1\u300D\u3063\u3066\u3002\u305D\u308C\u3001\u79C1\u304C\u8A00\u3046\u524D\u306B\u77E5\u3063\u3066\u307E\u3057\u305F\u3088\u306D\u3002\n\u3069\u3046\u3057\u3066\u77E5\u3063\u3066\u305F\u3093\u3067\u3059\u304B\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_pressure_admit
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u4ED6\u306E\u901A\u5831\u8005\u304B\u3089\u60C5\u5831\u304C\u3042\u308A\u307E\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - showed_recognition_family
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_details
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_pressure_deflect
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u8907\u6570\u306E\u901A\u5831\u3092\u51E6\u7406\u3057\u3066\u3044\u307E\u3059\u306E\u3067\u3001\u6DF7\u540C\u3057\u305F\u304B\u3082\u3057\u308C\u307E\u305B\u3093\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_doubt
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_suspicion
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u3055\u3063\u304D\u96FB\u8A71\u3057\u305F\u6642\u3001\u3042\u306A\u305F\u306F\u6B69\u9053\u6A4B\u306E\u3053\u3068\u3092\u77E5\u3063\u3066\u305F\u3002\n\u79C1\u304C\u5834\u6240\u3092\u8A00\u3046\u524D\u306B\u3001\u3042\u306A\u305F\u304C\u5148\u306B\u8A00\u3063\u305F\u3002\n\u3064\u307E\u308A\u3001\u9065\u306B\u4F55\u304B\u3042\u3063\u305F\u3053\u3068\u3092\u6700\u521D\u304B\u3089\u77E5\u3063\u3066\u305F\u3093\u3067\u3057\u3087\u3046\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_suspicion_honest
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u306F\u3044\u3001\u5148\u306B\u901A\u5831\u304C\u3042\u308A\u307E\u3057\u305F\u3002\u6551\u6025\u306F\u65E2\u306B\u624B\u914D\u3057\u3066\u3044\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_accept
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_suspicion_careful
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u500B\u4EBA\u60C5\u5831\u4FDD\u8B77\u306E\u89B3\u70B9\u304B\u3089\u3001\u8A73\u7D30\u306F\u304A\u4F1D\u3048\u3067\u304D\u307E\u305B\u3093\u3067\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_angry
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_challenged
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u4F55\u3067\u3059\u304B\u3001\u7A81\u7136\u3002\n\u79C1\u306F\u6797\u5065\u4E8C\u3067\u3059\u3002\u9065\u306E\u5144\u3067\u3059\u3002\n\u306A\u3093\u3067\u305D\u3093\u306A\u3053\u3068\u3092\u805E\u304F\u3093\u3067\u3059\u304B\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_challenged_explain
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u5148\u307B\u3069\u3001\u59B9\u3055\u3093\u306E\u8A95\u751F\u65E5\u3092\u7B54\u3048\u3089\u308C\u306A\u304B\u3063\u305F\u306E\u3067\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - pressed_inconsistency
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_defensive
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_challenged_apologize
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u5931\u793C\u3057\u307E\u3057\u305F\u3002\u78BA\u8A8D\u306E\u305F\u3081\u3067\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_tense
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_details
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u4ED6\u306E\u901A\u5831\u8005...\u8AB0\u3067\u3059\u304B\uFF1F\n\u9065\u306E\u3053\u3068\u3092\u901A\u5831\u3057\u305F\u306E\u306F\u8AB0\u306A\u3093\u3067\u3059\u304B\uFF1F\n\u6559\u3048\u3066\u304F\u3060\u3055\u3044\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_details_refuse
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u901A\u5831\u8005\u306E\u60C5\u5831\u306F\u304A\u4F1D\u3048\u3067\u304D\u307E\u305B\u3093\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_frustrated
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_details_vague
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u8FD1\u304F\u306B\u3044\u305F\u65B9\u304B\u3089\u306E\u901A\u5831\u3067\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_probe
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_doubt
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6DF7\u540C...\uFF1F\u672C\u5F53\u3067\u3059\u304B\uFF1F\n\u307E\u3042\u3044\u3044\u3067\u3059\u3002\u305D\u308C\u3088\u308A\u3001\u9065\u306F\u898B\u3064\u304B\u3063\u305F\u3093\u3067\u3059\u304B\uFF1F\n\u72B6\u614B\u306F\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_doubt_update
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6551\u6025\u304C\u5BFE\u5FDC\u4E2D\u3067\u3059\u3002\u8A73\u7D30\u306F\u73FE\u5834\u3067\u3054\u78BA\u8A8D\u304F\u3060\u3055\u3044\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_end_neutral
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_doubt_location
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6B69\u9053\u6A4B\u4ED8\u8FD1\u3067\u5BFE\u5FDC\u3057\u3066\u3044\u307E\u3059\u3002\u305D\u3061\u3089\u306B\u5411\u304B\u308F\u308C\u307E\u3059\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - gave_location_to_family
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_going
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_accept
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u305D\u3046\u3067\u3059\u304B\u3002\n\u6700\u521D\u304B\u3089\u8A00\u3063\u3066\u304F\u308C\u308C\u3070\u826F\u304B\u3063\u305F\u306E\u306B\u3002\n\u4ECA\u304B\u3089\u73FE\u5834\u306B\u5411\u304B\u3044\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_accept_end
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u304A\u6C17\u3092\u3064\u3051\u3066\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - family_mobilized
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_angry
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u500B\u4EBA\u60C5\u5831\u4FDD\u8B77\uFF1F\u59B9\u306E\u547D\u304C\u304B\u304B\u3063\u3066\u308B\u306E\u306B\uFF1F\n\u3042\u306A\u305F\u304C\u9ED9\u3063\u3066\u305F\u305B\u3044\u3067\u3001\u79C1\u306F\u4F55\u3082\u77E5\u3089\u306A\u3044\u307E\u307E\u6642\u9593\u3092\u7121\u99C4\u306B\u3057\u305F\u3002\n\u3053\u308C\u3001\u8A18\u9332\u3055\u308C\u3066\u307E\u3059\u3088\u306D\uFF1F\u5F8C\u3067\u554F\u984C\u306B\u3057\u307E\u3059\u304B\u3089\u306D\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_angry_apologize
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u7533\u3057\u8A33\u3042\u308A\u307E\u305B\u3093\u3067\u3057\u305F\u3002\u73FE\u5834\u306F\u6B69\u9053\u6A4B\u4ED8\u8FD1\u3067\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - operator_words_quoted
+      - gave_location_to_family
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_going
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_angry_firm
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u898F\u5247\u306B\u5F93\u3063\u3066\u5BFE\u5FDC\u3057\u307E\u3057\u305F\u3002\u3054\u7406\u89E3\u304F\u3060\u3055\u3044\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - operator_words_quoted
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_end_angry
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_defensive
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u8A95\u751F\u65E5\uFF1F\u7DCA\u5F35\u3057\u3066\u305F\u304B\u3089\u5FD8\u308C\u305F\u3060\u3051\u3067\u3059\u3002\n\u4F55\u3092\u7591\u3063\u3066\u308B\u3093\u3067\u3059\u304B\uFF1F\u79C1\u306F\u59B9\u3092\u5FC3\u914D\u3057\u3066\u308B\u3060\u3051\u306A\u306E\u306B\u3002\n\u3042\u306A\u305F\u3001\u306A\u3093\u3067\u305D\u3093\u306A\u8CEA\u554F\u3059\u308B\u3093\u3067\u3059\u304B\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_defensive_back_off
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u5931\u793C\u3057\u307E\u3057\u305F\u3002\u78BA\u8A8D\u306E\u305F\u3081\u3067\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_tense
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_defensive_persist
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u670D\u88C5\u306B\u3064\u3044\u3066\u3082\u3001\u4ED6\u306E\u60C5\u5831\u3068\u4E00\u81F4\u3057\u307E\u305B\u3093\u3067\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - called_out_location
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_cornered
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_tense
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u307E\u3042\u3044\u3044\u3067\u3059\u3002\n\u305D\u308C\u3088\u308A\u3001\u9065\u306F\u898B\u3064\u304B\u3063\u305F\u3093\u3067\u3059\u304B\uFF1F\n\u72B6\u614B\u3092\u6559\u3048\u3066\u304F\u3060\u3055\u3044\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_tense_update
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6551\u6025\u304C\u5BFE\u5FDC\u4E2D\u3067\u3059\u3002\u73FE\u5834\u306F\u6B69\u9053\u6A4B\u4ED8\u8FD1\u3067\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - gave_location_to_family
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_going
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_tense_refuse
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u8A73\u7D30\u306F\u73FE\u5834\u3067\u3054\u78BA\u8A8D\u304F\u3060\u3055\u3044\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_end_neutral
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_frustrated
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6559\u3048\u3089\u308C\u306A\u3044...\uFF1F\n\u79C1\u306F\u5BB6\u65CF\u306A\u306E\u306B\u3002\n\u3082\u3046\u3044\u3044\u3067\u3059\u3002\u73FE\u5834\u306B\u884C\u304D\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_frustrated_end
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u304A\u6C17\u3092\u3064\u3051\u3066\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - family_mobilized
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_probe
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u8FD1\u304F\u306B\u3044\u305F\u4EBA...\u8B66\u5099\u54E1\u3068\u304B\uFF1F\n\u305D\u306E\u4EBA\u306F\u4F55\u3092\u898B\u305F\u3093\u3067\u3059\u304B\uFF1F\n\u9065\u306F\u3069\u3093\u306A\u72B6\u614B\u3060\u3063\u305F\u3093\u3067\u3059\u304B\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_probe_partial
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u8A73\u7D30\u306F\u304A\u4F1D\u3048\u3067\u304D\u307E\u305B\u3093\u304C\u3001\u6551\u6025\u306F\u624B\u914D\u6E08\u307F\u3067\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_end_neutral
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_probe_disclose
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u610F\u8B58\u304C\u306A\u3044\u72B6\u614B\u3067\u767A\u898B\u3055\u308C\u305F\u3068\u805E\u3044\u3066\u3044\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - disclosed_to_family
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_shock
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_cornered
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u670D\u88C5\u304C...\u9055\u3046\uFF1F\n...\u4F55\u306E\u3053\u3068\u3067\u3059\u304B\uFF1F\n\u79C1\u306F\u59B9\u304C\u3044\u3064\u3082\u7740\u3066\u3044\u308B\u670D\u3092\u8A00\u3063\u305F\u3060\u3051\u3067\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_cornered_note
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u308F\u304B\u308A\u307E\u3057\u305F\u3002\u73FE\u5834\u306B\u5411\u304B\u308F\u308C\u308B\u5834\u5408\u306F\u304A\u6C17\u3092\u3064\u3051\u3066\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - clothing_mismatch
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_going
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: callback_family_cornered_push
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u767A\u898B\u3055\u308C\u305F\u5973\u6027\u306F\u6697\u3044\u30D1\u30FC\u30AB\u30FC\u3067\u3057\u305F\u3002\u53CD\u5C04\u30B8\u30E3\u30B1\u30C3\u30C8\u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - clothing_mismatch
+      - pressed_inconsistency
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: callback_family_caught
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_caught
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u3002\n...\u9065\u306F\u670D\u3092\u5909\u3048\u305F\u3093\u3067\u3057\u3087\u3046\u3002\u79C1\u304C\u77E5\u3089\u306A\u304B\u3063\u305F\u3060\u3051\u3067\u3059\u3002\n\u3068\u306B\u304B\u304F\u3001\u73FE\u5834\u306B\u5411\u304B\u3044\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_caught_end
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u304A\u6C17\u3092\u3064\u3051\u3066\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - family_mobilized
+      - story_inconsistency_detected
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_shock
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u610F\u8B58\u304C\u306A\u3044...\uFF1F\n\u305D\u308C\u306F...\u5927\u4E08\u592B\u306A\u3093\u3067\u3059\u304B...\uFF1F\n\u4ECA\u3059\u3050\u884C\u304D\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_shock_end
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6551\u6025\u968A\u304C\u5BFE\u5FDC\u3057\u3066\u3044\u307E\u3059\u3002\u304A\u6C17\u3092\u3064\u3051\u3066\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - family_mobilized
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_going
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u308F\u304B\u308A\u307E\u3057\u305F\u3002\u4ECA\u304B\u3089\u884C\u304D\u307E\u3059\u3002\n...\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3057\u305F\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_going_end
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u304A\u6C17\u3092\u3064\u3051\u3066\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - family_mobilized
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_end_neutral
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u308F\u304B\u308A\u307E\u3057\u305F\u3002\n\u5931\u793C\u3057\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_end_neutral_reply
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u5931\u793C\u3057\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: callback_family_end_angry
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u898F\u5247...\uFF1F\u4EBA\u306E\u547D\u3088\u308A\u898F\u5247\u304C\u5927\u4E8B\u3067\u3059\u304B\u3002\n\u899A\u3048\u3066\u304A\u304D\u307E\u3059\u3002\u5F8C\u3067\u5FC5\u305A\u554F\u984C\u306B\u3057\u307E\u3059\u304B\u3089\u3002\n\u5931\u793C\u3057\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: callback_family_end_angry_reply
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u5931\u793C\u3057\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - operator_words_quoted
+      - family_mobilized
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  triggerConditions: []
+  onEndEffects: []
+  onMissedEffects: []
+  isCritical: 0
+  canRepeat: 0

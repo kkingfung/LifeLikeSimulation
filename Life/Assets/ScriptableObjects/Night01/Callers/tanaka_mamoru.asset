@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f24c282a3f12e64aa75308b10806407, type: 3}
+  m_Name: tanaka_mamoru
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.CallerData
+  callerId: tanaka_mamoru
+  displayName: "\u7530\u4E2D\u5B88"
+  phoneNumber: "\u975E\u901A\u77E5"
+  realName: "\u7530\u4E2D\u5B88"
+  description: "62\u6B73\u3001\u8B66\u5099\u54E1\u3002\u8FD1\u304F\u306E\u5DE5\u5834\u306E\u591C\u9593\u8B66\u5099\u3092\u62C5\u5F53\u3002\u771F\u9762\u76EE\u3067\u51E0\u5E33\u9762\u3002"
+  silhouetteImage: {fileID: 0}
+  revealedImage: {fileID: 0}
+  silhouetteColor: {r: 1, g: 1, b: 1, a: 1}
+  voiceDescription: "\u843D\u3061\u7740\u3044\u305F\u4F4E\u3044\u58F0\u3002\u30D7\u30ED\u30D5\u30A7\u30C3\u30B7\u30E7\u30CA\u30EB\u306A\u8A71\u3057\u65B9\u3002"
+  voicePitch: 0.85
+  personality:
+    honesty: 95
+    stability: 85
+    cooperation: 90
+    aggression: 5
+  relations: []
+  hiddenInfo: "\u306A\u3057\uFF08\u7D14\u7C8B\u306B\u5831\u544A\u3057\u3066\u3044\u308B\uFF09"
+  trueMotivation: "\u8077\u52D9\u3068\u3057\u3066\u5831\u544A"

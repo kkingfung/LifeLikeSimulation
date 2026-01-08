@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f24c282a3f12e64aa75308b10806407, type: 3}
+  m_Name: ikeda_kenta
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.CallerData
+  callerId: ikeda_kenta
+  displayName: "\u6C60\u7530\u5065\u592A"
+  phoneNumber: "\u975E\u901A\u77E5"
+  realName: "\u6C60\u7530\u5065\u592A"
+  description: "24\u6B73\u3001\u30B3\u30F3\u30D3\u30CB\u5E97\u54E1\uFF08\u30D5\u30EA\u30FC\u30BF\u30FC\uFF09\u3002\u6DF1\u591C\u30B7\u30D5\u30C8\u4E2D\u306B\u5009\u5EAB\u706B\u707D\u3092\u76EE\u6483\u3002\u706B\u707D\u524D\u306B\u4E0D\u5BE9\u306A\u8ECA\u3092\u898B\u3066\u3044\u305F\u3002"
+  silhouetteImage: {fileID: 0}
+  revealedImage: {fileID: 0}
+  silhouetteColor: {r: 1, g: 1, b: 1, a: 1}
+  voiceDescription: "\u82E5\u3044\u7537\u6027\u306E\u58F0\u3002\u6BD4\u8F03\u7684\u51B7\u9759\u3060\u304C\u7DCA\u5F35\u3057\u3066\u3044\u308B\u3002"
+  voicePitch: 1
+  personality:
+    honesty: 85
+    stability: 70
+    cooperation: 80
+    aggression: 10
+  relations: []
+  hiddenInfo: "\u706B\u707D\u524D\u306B\u5009\u5EAB\u306B\u51FA\u5165\u308A\u3057\u3066\u3044\u305F\u8ECA\u3092\u76EE\u6483\u3002\u5409\u7530\u548C\u5B50\u3068\u540C\u3058\u8ECA\u3092\u898B\u3066\u3044\u308B\u53EF\u80FD\u6027\u304C\u3042\u308B\uFF08\u5225\u89D2\u5EA6\u304B\u3089\uFF09\u3002"
+  trueMotivation: "\u706B\u707D\u306E\u901A\u5831"

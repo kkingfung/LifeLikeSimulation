@@ -1,0 +1,140 @@
+{
+  "nightId": "night_01",
+  "description": "第1夜「午前2時の歩道橋」エンドステート定義",
+  "endStateConditions": [
+    {
+      "endStateType": "Complicit",
+      "priority": 1,
+      "description": "共犯 — オペレーターが隠蔽を可能にした",
+      "scoreConditions": [
+        { "category": "Reassurance", "comparison": "GreaterThanOrEqual", "value": 5 },
+        { "category": "Escalation", "comparison": "LessThanOrEqual", "value": 0 }
+      ],
+      "flagConditions": [
+        { "variableName": "yamada_protected", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    },
+    {
+      "endStateType": "Flagged",
+      "priority": 2,
+      "description": "要注意 — オペレーターがレビュー対象としてマーク",
+      "scoreConditions": [
+        { "category": "Alignment", "comparison": "LessThanOrEqual", "value": -3 }
+      ],
+      "flagConditions": []
+    },
+    {
+      "endStateType": "Flagged",
+      "priority": 3,
+      "description": "要注意 — 主任にフラグを立てられた",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "variableName": "supervisor_flagged", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    },
+    {
+      "endStateType": "Exposed",
+      "priority": 4,
+      "description": "露出 — 接続が作られ、真実が浮上",
+      "scoreConditions": [
+        { "category": "Disclosure", "comparison": "GreaterThanOrEqual", "value": 4 },
+        { "category": "Escalation", "comparison": "GreaterThanOrEqual", "value": 3 }
+      ],
+      "flagConditions": []
+    },
+    {
+      "endStateType": "Absorbed",
+      "priority": 5,
+      "description": "吸収 — オペレーターが日常に消えた",
+      "scoreConditions": [
+        { "category": "Escalation", "comparison": "Equal", "value": 0 },
+        { "category": "Disclosure", "comparison": "LessThanOrEqual", "value": 1 },
+        { "category": "Reassurance", "comparison": "LessThanOrEqual", "value": 2 }
+      ],
+      "flagConditions": []
+    }
+  ],
+  "endingMappings": [
+    {
+      "endState": "Exposed",
+      "endingIdIfSurvived": "ending_dawn_light",
+      "endingIdIfDied": "ending_weight_of_knowing",
+      "endingIdRegardless": ""
+    },
+    {
+      "endState": "Contained",
+      "endingIdIfSurvived": "ending_long_road",
+      "endingIdIfDied": "ending_just_another_night",
+      "endingIdRegardless": ""
+    },
+    {
+      "endState": "Complicit",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_silent_accomplice"
+    },
+    {
+      "endState": "Absorbed",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_silence_weighs"
+    },
+    {
+      "endState": "Flagged",
+      "endingIdIfSurvived": "ending_just_another_night_flagged",
+      "endingIdIfDied": "ending_just_another_night_flagged",
+      "endingIdRegardless": ""
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": true,
+    "maxDispatchTimeMinutes": 169,
+    "dispatchFlagId": "emergency_dispatched"
+  },
+  "defaultEndState": "Contained",
+  "defaultEndingId": "ending_just_another_night",
+  "endings": [
+    {
+      "endingId": "ending_dawn_light",
+      "title": "夜明けの最初の光",
+      "description": "午前3時12分、救急隊が歩道橋下で林遥を発見。意識不明だが、バイタルは安定していた。\n\n山田は現場に留まり、警察に全てを話した。「あの人が...ちゃんと聞いてくれたから」\n\n夜明け前の最も暗い時間に、あなたは光を選んだ。",
+      "endingType": "EveryoneSaved"
+    },
+    {
+      "endingId": "ending_long_road",
+      "title": "長い帰り道",
+      "description": "林遥は一命を取り留めた。骨折と内出血。回復には数ヶ月かかるだろう。\n\n事故現場に、加害者の姿はなかった。ひき逃げ事件として、捜査が始まる。\n\nあなたは一つの命を救った。でも、もう一つの魂は闇の中へ消えていった。",
+      "endingType": "SomeoneSaved"
+    },
+    {
+      "endingId": "ending_silence_weighs",
+      "title": "沈黙には重さがある",
+      "description": "午前6時23分。出勤途中の通行人が、歩道橋の下で人影を見つけた。\n\n林遥、27歳。死亡推定時刻、午前4時頃。発見が遅れなければ、助かった可能性があった。\n\nあの夜、複数の電話があなたにかかってきた。彼らは同じ出来事を、違う角度から見ていた。\n\nあなたは何を聞いていたのだろう。",
+      "endingType": "NooneSaved"
+    },
+    {
+      "endingId": "ending_silent_accomplice",
+      "title": "沈黙の共犯者",
+      "description": "「大丈夫です。きっと何でもないですよ」\n\nあなたの言葉を信じて、山田は家に帰った。翌朝のニュースが流れるまで、彼女はそれが人だったことを知らなかった。\n\nいや、知りたくなかっただけだ。あなたもまた、同じだったのかもしれない。",
+      "endingType": "BecameAccomplice"
+    },
+    {
+      "endingId": "ending_weight_of_knowing",
+      "title": "知ることの重さ",
+      "description": "複数の電話。複数の断片。時刻、場所、音——すべてが一点で交わっていた。\n\nあなたはそれを見逃さなかった。\n\nしかし、真実が明らかになった時、林遥はすでにこの世を去っていた。\n\n知ることの重さを、あなたは今夜知った。",
+      "endingType": "TruthRevealed"
+    },
+    {
+      "endingId": "ending_just_another_night",
+      "title": "ただの一夜",
+      "description": "午前6時00分。シフト終了。\n\n引き継ぎメモには、特記事項なし。「いたずら電話数件。通常業務」\n\n次のオペレーターがあなたの席に座る。あなたは家に帰り、眠りにつく。\n\nあの夜、何があったのか。あなたはもう、考えないことにした。",
+      "endingType": "Neutral"
+    },
+    {
+      "endingId": "ending_just_another_night_flagged",
+      "title": "ただの一夜",
+      "description": "午前6時00分。シフト終了。\n\n引き継ぎメモには、特記事項なし。「いたずら電話数件。通常業務」\n\n次のオペレーターがあなたの席に座る。あなたは家に帰り、眠りにつく。\n\nあの夜、何があったのか。あなたはもう、考えないことにした。\n\n（翌日、主任から面談の連絡が入る）",
+      "endingType": "Neutral"
+    }
+  ]
+}

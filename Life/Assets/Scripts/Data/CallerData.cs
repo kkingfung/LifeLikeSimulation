@@ -42,6 +42,9 @@ namespace LifeLike.Data
         [Tooltip("表示名（最初は「不明」の場合も）")]
         public string displayName = "不明";
 
+        [Tooltip("電話番号（表示用）")]
+        public string phoneNumber = "非通知";
+
         [Tooltip("本名（ゲーム内で判明する可能性）")]
         public string realName = string.Empty;
 
@@ -128,6 +131,7 @@ namespace LifeLike.Data
         Enemy,          // 敵
         Accomplice,     // 共犯者
         Victim,         // 被害者
-        Suspect         // 容疑者
+        Suspect,        // 容疑者
+        Neighbor        // 隣人
     }
 }

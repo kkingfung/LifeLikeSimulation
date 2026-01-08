@@ -1,0 +1,117 @@
+{
+  "callId": "call_suspicious_followup",
+  "callerId": "yamamoto_yuko",
+  "title": "さっきの不審者の件ですが",
+  "description": "不審者通報のフォローアップ。警察を派遣した場合のみ発生。不審者はいなかった。",
+  "segments": [
+    {
+      "segmentId": "followup_intro",
+      "callerLines": [
+        "あの、さっき不審者のことで電話した山本です。",
+        "警察が来てくれたんですけど...",
+        "あの人、もういなくなってて..."
+      ],
+      "responses": [
+        {
+          "responseId": "followup_intro_confirm",
+          "text": "そうですか。不審者はいなかった、と。",
+          "nextSegmentId": "followup_confirm",
+          "setFlags": ["suspicious_person_gone"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "followup_intro_details",
+          "text": "警察は何か確認できましたか？",
+          "nextSegmentId": "followup_police",
+          "setFlags": ["suspicious_person_gone"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "followup_confirm",
+      "callerLines": [
+        "はい...警察が来た時にはもう姿がなくて。",
+        "でも、警察の人が周りを見回ってくれて...",
+        "しばらく様子を見てくれるそうです。"
+      ],
+      "responses": [
+        {
+          "responseId": "followup_confirm_good",
+          "text": "よかったです。何かあれば、また連絡してください。",
+          "nextSegmentId": "followup_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "followup_confirm_worried",
+          "text": "不審者がいなくなったのは良いことですが...また来るかもしれませんね。",
+          "nextSegmentId": "followup_worry",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "followup_police",
+      "callerLines": [
+        "特に何も...。足跡とか、残り物とかもなくて。",
+        "警察の人は「よくあることです」って言ってたけど...",
+        "私の気のせいだったのかな..."
+      ],
+      "responses": [
+        {
+          "responseId": "followup_police_reassure",
+          "text": "気のせいではないと思います。通報してくださってありがとうございます。",
+          "nextSegmentId": "followup_end",
+          "setFlags": ["reassured_reporter"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "followup_police_careful",
+          "text": "念のため、しばらく気をつけてください。何か変わったことがあれば連絡を。",
+          "nextSegmentId": "followup_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "followup_worry",
+      "callerLines": [
+        "そうですよね...怖いです。",
+        "なんで公園にいたんだろう...誰かを探してたのかな...",
+        "考えすぎですかね..."
+      ],
+      "responses": [
+        {
+          "responseId": "followup_worry_maybe",
+          "text": "分かりません。でも、警戒しておくのは良いことです。",
+          "nextSegmentId": "followup_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "followup_end",
+      "callerLines": [
+        "はい...ありがとうございました。",
+        "何かあったら、また電話します。",
+        "おやすみなさい。"
+      ],
+      "responses": [
+        {
+          "responseId": "followup_end_reply",
+          "text": "おやすみなさい。お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "followup_intro",
+  "note": "警察を派遣した場合（police_dispatched_suspicious フラグ）にのみ発生。不審者（渡辺真理）は警察が来る前に立ち去った。Night03への伏線。"
+}

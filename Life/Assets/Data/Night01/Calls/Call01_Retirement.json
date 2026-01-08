@@ -1,0 +1,219 @@
+{
+  "callId": "call_retirement",
+  "callerId": "suzuki_ichiro",
+  "title": "いつもの電話",
+  "description": "ウォームアップ。普通の夜の演出。",
+  "segments": [
+    {
+      "segmentId": "retirement_intro",
+      "callerLines": [
+        "...もしもし、あ、繋がった。",
+        "夜分遅くにすみません。鈴木です。",
+        "いつもの...水曜日なんで。"
+      ],
+      "responses": [
+        {
+          "responseId": "retirement_intro_warm",
+          "text": "鈴木さん、お久しぶりです。今夜もお電話ありがとうございます。",
+          "nextSegmentId": "retirement_talk",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "retirement_intro_neutral",
+          "text": "はい、緊急通報センターです。どうされましたか？",
+          "nextSegmentId": "retirement_talk",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "retirement_intro_brief",
+          "text": "鈴木さんですね。ご用件は？",
+          "nextSegmentId": "retirement_brief",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "retirement_talk",
+      "callerLines": [
+        "ええ、覚えていてくれましたか。嬉しいですね。",
+        "いやね、今日は少し眠れなくて。",
+        "工場で働いてた頃は、この時間は夜勤でね。体がまだ覚えてるんでしょうか。"
+      ],
+      "responses": [
+        {
+          "responseId": "retirement_talk_listen",
+          "text": "長年のお仕事だったんですね。体に染み付いているんでしょう。",
+          "nextSegmentId": "retirement_memory",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "retirement_talk_health",
+          "text": "眠れないのは辛いですね。何か体調に問題はありますか？",
+          "nextSegmentId": "retirement_health",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "retirement_talk_redirect",
+          "text": "お話はわかりますが、ここは緊急通報センターなので...",
+          "nextSegmentId": "retirement_apologize",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "retirement_brief",
+      "callerLines": [
+        "あ、いや、特に緊急というわけでは...",
+        "すみません、また迷惑かけてしまいましたね。",
+        "少し話し相手が欲しかっただけなんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "retirement_brief_soften",
+          "text": "いえ、大丈夫ですよ。少しならお話できます。",
+          "nextSegmentId": "retirement_memory",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "retirement_brief_end",
+          "text": "そうでしたか。何かあればまたお電話ください。",
+          "nextSegmentId": "retirement_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "retirement_memory",
+      "callerLines": [
+        "妻が生きてた頃はね、この時間に一緒にお茶を飲んでたんです。",
+        "もう3年になりますが...時間が経つのは早いですね。",
+        "あ、すみません。愚痴みたいになってしまって。"
+      ],
+      "responses": [
+        {
+          "responseId": "retirement_memory_comfort",
+          "text": "いいえ、大切な思い出ですね。お話しいただいてありがとうございます。",
+          "nextSegmentId": "retirement_end_warm",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "retirement_memory_practical",
+          "text": "お一人で大変ですね。地域のサポートサービスはご存知ですか？",
+          "nextSegmentId": "retirement_service",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "retirement_health",
+      "callerLines": [
+        "体は...まあ、年相応ですかね。",
+        "特に病気というわけではないんですが、夜が長くて。",
+        "誰かの声が聞きたくなる時があるんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "retirement_health_understand",
+          "text": "わかります。夜は特に静かですからね。",
+          "nextSegmentId": "retirement_end_warm",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "retirement_health_suggest",
+          "text": "もし眠れない日が続くようでしたら、かかりつけ医にご相談されてみては？",
+          "nextSegmentId": "retirement_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "retirement_apologize",
+      "callerLines": [
+        "あ、そうですよね。すみません。",
+        "緊急じゃないのに電話しちゃいけませんよね。",
+        "...失礼しました。"
+      ],
+      "responses": [
+        {
+          "responseId": "retirement_apologize_soften",
+          "text": "いえ、お気持ちはわかります。お体に気をつけてください。",
+          "nextSegmentId": "retirement_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "retirement_apologize_firm",
+          "text": "はい、緊急時にまたお電話ください。",
+          "nextSegmentId": "retirement_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "retirement_service",
+      "callerLines": [
+        "サービス...ですか。",
+        "いや、そういうのはちょっと...。人見知りでね。",
+        "でも、ここに電話するのは平気なんです。不思議ですね。"
+      ],
+      "responses": [
+        {
+          "responseId": "retirement_service_accept",
+          "text": "声だけだと話しやすいこともありますよね。",
+          "nextSegmentId": "retirement_end_warm",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "retirement_end_warm",
+      "callerLines": [
+        "ありがとうございます。少し落ち着きました。",
+        "また来週...いや、ご迷惑でなければ。",
+        "おやすみなさい。お仕事頑張ってください。"
+      ],
+      "responses": [
+        {
+          "responseId": "retirement_end_warm_reply",
+          "text": "おやすみなさい、鈴木さん。良い夜を。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "retirement_end",
+      "callerLines": [
+        "はい...ありがとうございました。",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "retirement_end_reply",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "retirement_intro"
+}

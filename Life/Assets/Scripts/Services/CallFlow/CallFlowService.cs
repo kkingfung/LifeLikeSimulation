@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LifeLike.Data;
+using LifeLike.Data.Conditions;
+using LifeLike.Services.Clock;
 using LifeLike.Services.Evidence;
+using LifeLike.Services.Flag;
 using LifeLike.Services.Story;
 using LifeLike.Services.TrustGraph;
 using UnityEngine;
@@ -18,6 +21,8 @@ namespace LifeLike.Services.CallFlow
         private readonly IStoryService _storyService;
         private readonly IEvidenceService _evidenceService;
         private readonly ITrustGraphService _trustGraphService;
+        private readonly IFlagService? _flagService;
+        private readonly IClockService? _clockService;
 
         private NightScenarioData? _currentScenario;
         private CallData? _currentCall;
@@ -41,14 +46,32 @@ namespace LifeLike.Services.CallFlow
         public event Action<CallData, CallState>? OnCallEnded;
         public event Action<CallData>? OnCallMissed;
 
+        /// <summary>
+        /// コンストラクタ（後方互換性のため）
+        /// </summary>
         public CallFlowService(
             IStoryService storyService,
             IEvidenceService evidenceService,
             ITrustGraphService trustGraphService)
+            : this(storyService, evidenceService, trustGraphService, null, null)
+        {
+        }
+
+        /// <summary>
+        /// コンストラクタ（フラグ・時計サービス統合版）
+        /// </summary>
+        public CallFlowService(
+            IStoryService storyService,
+            IEvidenceService evidenceService,
+            ITrustGraphService trustGraphService,
+            IFlagService? flagService,
+            IClockService? clockService)
         {
             _storyService = storyService ?? throw new ArgumentNullException(nameof(storyService));
             _evidenceService = evidenceService ?? throw new ArgumentNullException(nameof(evidenceService));
             _trustGraphService = trustGraphService ?? throw new ArgumentNullException(nameof(trustGraphService));
+            _flagService = flagService;
+            _clockService = clockService;
         }
 
         public void LoadScenario(NightScenarioData scenario)
@@ -295,13 +318,22 @@ namespace LifeLike.Services.CallFlow
             // 効果を適用
             ApplyEffects(response.effects);
 
+            // フラグを設定
+            ProcessResponseFlags(response);
+
+            // 派遣アクションの処理
+            if (response.isDispatchAction)
+            {
+                ProcessDispatchAction();
+            }
+
             // 信頼度への影響
             if (response.trustImpact != 0 && _currentCall?.caller != null)
             {
                 _trustGraphService.ModifyOperatorTrust(
                     _currentCall.caller.callerId,
                     response.trustImpact,
-                    response.displayText);
+                    response.displayText.ToString());
             }
 
             // 証拠を発見
@@ -335,6 +367,83 @@ namespace LifeLike.Services.CallFlow
         }
 
         /// <summary>
+        /// 応答に関連するフラグを処理
+        /// </summary>
+        private void ProcessResponseFlags(ResponseData response)
+        {
+            if (_flagService == null)
+            {
+                return;
+            }
+
+            int currentTime = _clockService?.CurrentTimeMinutes ?? 0;
+
+            // フラグを設定
+            if (response.setFlags != null && response.setFlags.Count > 0)
+            {
+                foreach (var flagId in response.setFlags)
+                {
+                    if (!string.IsNullOrEmpty(flagId))
+                    {
+                        _flagService.SetFlag(flagId, currentTime);
+                        Debug.Log($"[CallFlowService] フラグ設定: {flagId}");
+                    }
+                }
+            }
+
+            // フラグをクリア
+            if (response.clearFlags != null && response.clearFlags.Count > 0)
+            {
+                foreach (var flagId in response.clearFlags)
+                {
+                    if (!string.IsNullOrEmpty(flagId))
+                    {
+                        _flagService.ClearFlag(flagId);
+                        Debug.Log($"[CallFlowService] フラグクリア: {flagId}");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 派遣アクションを処理
+        /// </summary>
+        private void ProcessDispatchAction()
+        {
+            if (_clockService == null || _flagService == null)
+            {
+                Debug.LogWarning("[CallFlowService] 派遣アクション: ClockServiceまたはFlagServiceが未設定");
+                return;
+            }
+
+            // 既に派遣済みの場合はスキップ
+            if (_clockService.HasDispatched)
+            {
+                Debug.Log("[CallFlowService] 派遣アクション: 既に派遣済み");
+                return;
+            }
+
+            // 派遣を記録
+            _clockService.RecordDispatch();
+            int dispatchTime = _clockService.DispatchTimeMinutes ?? _clockService.CurrentTimeMinutes;
+
+            // emergency_dispatchedフラグを設定
+            _flagService.SetFlag("emergency_dispatched", dispatchTime);
+
+            // 派遣時刻に応じたフラグを設定
+            if (dispatchTime <= 161)  // 02:41以前
+            {
+                _flagService.SetFlag("dispatch_time_0241", dispatchTime);
+            }
+            else if (dispatchTime <= 169)  // 02:49以前
+            {
+                _flagService.SetFlag("dispatch_time_0249", dispatchTime);
+            }
+
+            Debug.Log($"[CallFlowService] 派遣アクション: {_clockService.FormatTime(dispatchTime)}に派遣を記録");
+        }
+
+        /// <summary>
         /// セグメントに遷移
         /// </summary>
         private void TransitionToSegment(CallSegment segment)
@@ -365,7 +474,7 @@ namespace LifeLike.Services.CallFlow
         {
             foreach (var condition in conditions)
             {
-                if (!_storyService.CheckCondition(condition))
+                if (!_storyService.EvaluateCondition(condition))
                 {
                     return false;
                 }

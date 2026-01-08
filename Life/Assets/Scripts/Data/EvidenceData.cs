@@ -1,6 +1,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using LifeLike.Data.Conditions;
 using UnityEngine;
 
 namespace LifeLike.Data
@@ -66,6 +67,9 @@ namespace LifeLike.Data
         [Header("基本情報")]
         [Tooltip("証拠の一意なID")]
         public string evidenceId = string.Empty;
+
+        [Tooltip("証拠のタイトル")]
+        public string title = string.Empty;
 
         [Tooltip("証拠の種類")]
         public EvidenceType evidenceType = EvidenceType.Statement;

@@ -1,0 +1,168 @@
+{
+  "scenarioId": "night_02",
+  "title": "炎の証言",
+  "description": "倉庫火災の通報から始まる夜。複数の目撃者が同じ炎を見ているが、それぞれが異なる断片を持っている。そして、昨夜の事件の影が静かに伸びてくる。",
+  "startTimeMinutes": 1380,
+  "endTimeMinutes": 1500,
+  "realSecondsPerGameMinute": 2.0,
+  "difficulty": 4,
+  "estimatedPlayTimeMinutes": 20,
+  "theTruth": "倉庫火災は組織のフロント企業「アラートセキュリティ」の倉庫で発生した危険物事故。真の原因は不明だが、証拠隠滅の可能性がある。高齢者の吉田和子は林遥の隣人で、遥と美咲のことを知っているが、遥の死をまだ知らない。不審者として通報された人物は、遥の友人・渡辺真理で、遥の死後に行方不明の美咲を探している。工藤主任はNight01の報告書から「不要な詳細」を削除するよう圧力をかけてくる。",
+  "callSchedule": [
+    {
+      "callId": "call_fire_elderly",
+      "callerId": "yoshida_kazuko",
+      "title": "火事です！",
+      "incomingTimeMinutes": 1385,
+      "ringDuration": 45,
+      "priority": 9,
+      "isCritical": true,
+      "description": "高齢者からの火災第一報。パニック状態、爆発音を聞いた、病院帰り。"
+    },
+    {
+      "callId": "call_fire_clerk",
+      "callerId": "ikeda_kenta",
+      "title": "近くの倉庫が燃えてます",
+      "incomingTimeMinutes": 1395,
+      "ringDuration": 30,
+      "priority": 8,
+      "isCritical": true,
+      "description": "コンビニ店員からの火災通報。別角度からの目撃、不審な車を見た。"
+    },
+    {
+      "callId": "call_supervisor_records",
+      "callerId": "kudo_shinji",
+      "title": "昨日の報告書だけど",
+      "incomingTimeMinutes": 1415,
+      "ringDuration": 60,
+      "priority": 6,
+      "isCritical": false,
+      "description": "工藤主任からの確認。Night01の報告書から詳細の削除を婉曲に求める。"
+    },
+    {
+      "callId": "call_suspicious_person",
+      "callerId": "yamamoto_yuko",
+      "title": "公園に不審な人がいて...",
+      "incomingTimeMinutes": 1435,
+      "ringDuration": 45,
+      "priority": 5,
+      "isCritical": false,
+      "description": "住宅街住人からの不審者通報。子供を見ている人物。実は遥の友人・渡辺真理。"
+    },
+    {
+      "callId": "call_elderly_callback",
+      "callerId": "yoshida_kazuko",
+      "title": "あの...思い出したことがあって",
+      "incomingTimeMinutes": 1455,
+      "ringDuration": 30,
+      "priority": 7,
+      "isCritical": false,
+      "description": "高齢者からの折り返し。車について質問した場合のみ発生。アラートセキュリティの車を思い出す。",
+      "triggerCondition": {
+        "requiresFlag": "asked_about_vehicle"
+      }
+    },
+    {
+      "callId": "call_suspicious_followup",
+      "callerId": "yamamoto_yuko",
+      "title": "さっきの不審者の件ですが",
+      "incomingTimeMinutes": 1475,
+      "ringDuration": 30,
+      "priority": 4,
+      "isCritical": false,
+      "description": "不審者通報のフォローアップ。警察を派遣した場合のみ発生。不審者はいなかった。",
+      "triggerCondition": {
+        "requiresFlag": "police_dispatched_suspicious"
+      }
+    }
+  ],
+  "initialWorldStates": [
+    {
+      "stateId": "warehouse_fire",
+      "description": "組織のフロント企業の倉庫で火災発生",
+      "timeMinutes": 1380,
+      "involvedCallerIds": ["yoshida_kazuko", "ikeda_kenta"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "haruka_neighbor_unaware",
+      "description": "吉田和子は遥の隣人だが、遥の死を知らない",
+      "timeMinutes": 1380,
+      "involvedCallerIds": ["yoshida_kazuko"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "watanabe_searching",
+      "description": "渡辺真理が美咲を探している",
+      "timeMinutes": 1380,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "organization_cleanup",
+      "description": "組織が昨夜の事件の痕跡を消そうとしている",
+      "timeMinutes": 1380,
+      "involvedCallerIds": ["kudo_shinji"],
+      "isKnownToPlayer": false
+    }
+  ],
+  "evidenceTemplates": [
+    {
+      "evidenceId": "evidence_explosion",
+      "title": "爆発音",
+      "content": "火災前に爆発のような音がした",
+      "category": "Incident"
+    },
+    {
+      "evidenceId": "evidence_suspicious_vehicle",
+      "title": "不審な車",
+      "content": "複数の目撃者が火災前に車を目撃",
+      "category": "Vehicle"
+    },
+    {
+      "evidenceId": "evidence_security_company",
+      "title": "アラートセキュリティ",
+      "content": "車にはセキュリティ会社のロゴがあった",
+      "category": "Organization"
+    },
+    {
+      "evidenceId": "evidence_young_mother",
+      "title": "近所の若いお母さん",
+      "content": "吉田和子が言及した「最近見かけない」隣人",
+      "category": "Connection"
+    },
+    {
+      "evidenceId": "evidence_person_searching",
+      "title": "子供を探す人物",
+      "content": "公園で子供を見ていた不審者",
+      "category": "Person"
+    }
+  ],
+  "night01EndStateEffects": {
+    "Exposed": {
+      "description": "工藤主任が「良い対応だった」と言いつつ、より慎重な対応を求める",
+      "modifiesCall": "call_supervisor_records",
+      "addFlags": ["supervisor_wary"]
+    },
+    "Contained": {
+      "description": "通常の展開",
+      "modifiesCall": null,
+      "addFlags": []
+    },
+    "Complicit": {
+      "description": "工藤主任が「問題なし」と言う。圧力は軽い",
+      "modifiesCall": "call_supervisor_records",
+      "addFlags": ["supervisor_trusting"]
+    },
+    "Flagged": {
+      "description": "工藤主任の圧力が強い。記録の確認がより厳しい",
+      "modifiesCall": "call_supervisor_records",
+      "addFlags": ["supervisor_suspicious"]
+    },
+    "Absorbed": {
+      "description": "工藤主任は特に何も言わない。組織はオペレーターを無視",
+      "modifiesCall": "call_supervisor_records",
+      "addFlags": ["supervisor_dismissive"]
+    }
+  }
+}

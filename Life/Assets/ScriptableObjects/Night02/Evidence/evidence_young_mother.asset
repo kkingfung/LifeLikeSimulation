@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: evidence_young_mother
+  m_EditorClassIdentifier: Assembly-CSharp:LifeLike.Data:EvidenceTemplate
+  data:
+    evidenceId: evidence_young_mother
+    title: "\u8FD1\u6240\u306E\u82E5\u3044\u304A\u6BCD\u3055\u3093"
+    evidenceType: 0
+    content: "\u5409\u7530\u548C\u5B50\u304C\u8A00\u53CA\u3057\u305F\u300C\u6700\u8FD1\u898B\u304B\u3051\u306A\u3044\u300D\u96A3\u4EBA"
+    description: 
+    sourceCallerId: 
+    sourceCallId: 
+    timestamp: 
+    reliability: 0
+    isActuallyTrue: 1
+    relatedCallerIds: []
+    contradictingEvidenceIds: []
+    supportingEvidenceIds: []
+    isDiscovered: 0
+    isUsable: 1
+    useCount: 0
+  discoveryConditions: []
+  useEffects: []

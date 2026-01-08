@@ -1,0 +1,159 @@
+{
+  "scenarioId": "night_01",
+  "title": "午前2時の歩道橋",
+  "description": "深夜の緊急通報センター。複数の通話が一つの事件を異なる角度から照らし出す。あなたの言葉が、誰かの運命を左右する。",
+  "startTimeMinutes": 137,
+  "endTimeMinutes": 205,
+  "realSecondsPerGameMinute": 2.0,
+  "difficulty": 3,
+  "estimatedPlayTimeMinutes": 20,
+  "theTruth": "林遥（27歳）は組織から逃げている最中、疲労困憊の山田美咲の車に轢かれた。林は組織の末端工作員で、守ろうとした子供と共に逃走中だった。彼女が持つ情報は組織トップの正体を暴露する致命的な秘密。偽の兄（組織の中間管理職）と偽の同僚（佐藤浩二）は彼女を追跡している。服装の矛盾（反射ジャケット vs パーカー）は追跡者が古い情報しか持っていないことを示す。",
+  "callSchedule": [
+    {
+      "callId": "call_retirement",
+      "callerId": "suzuki_ichiro",
+      "title": "いつもの電話",
+      "incomingTimeMinutes": 137,
+      "ringDuration": 30,
+      "priority": 2,
+      "isCritical": false,
+      "description": "ウォームアップ。普通の夜の演出。"
+    },
+    {
+      "callId": "call_shift",
+      "callerId": "nakamura_kenta",
+      "title": "シフトに来ない",
+      "incomingTimeMinutes": 143,
+      "ringDuration": 45,
+      "priority": 5,
+      "isCritical": false,
+      "description": "林遥の不在を報告。最初の種を蒔く。"
+    },
+    {
+      "callId": "call_coworker",
+      "callerId": "sato_koji",
+      "title": "林さんのことで",
+      "incomingTimeMinutes": 151,
+      "ringDuration": 30,
+      "priority": 4,
+      "isCritical": false,
+      "description": "偽の同僚。林遥についての情報を探る。伏線。"
+    },
+    {
+      "callId": "call_discovery",
+      "callerId": "tanaka_mamoru",
+      "title": "歩道橋の下で",
+      "incomingTimeMinutes": 161,
+      "ringDuration": 60,
+      "priority": 9,
+      "isCritical": true,
+      "description": "遺体発見。認識を強制。派遣の機会。"
+    },
+    {
+      "callId": "call_hit",
+      "callerId": "yamada_misaki",
+      "title": "何か轢いたかもしれない",
+      "incomingTimeMinutes": 169,
+      "ringDuration": 60,
+      "priority": 10,
+      "isCritical": true,
+      "description": "ドライバーからの告白。感情的な重さ。"
+    },
+    {
+      "callId": "call_missing",
+      "callerId": "hayashi_kenji",
+      "title": "妹を探しています",
+      "incomingTimeMinutes": 177,
+      "ringDuration": 45,
+      "priority": 7,
+      "isCritical": true,
+      "description": "偽の兄。服装矛盾の伏線。"
+    },
+    {
+      "callId": "call_callback_driver",
+      "callerId": "yamada_misaki",
+      "title": "考えてたんだけど",
+      "incomingTimeMinutes": 185,
+      "ringDuration": 30,
+      "priority": 8,
+      "isCritical": false,
+      "description": "ドライバーコールバック。話の修正。ナラティブ不安定性。"
+    },
+    {
+      "callId": "call_callback_family",
+      "callerId": "hayashi_kenji",
+      "title": "あなたなら分かるって",
+      "incomingTimeMinutes": 192,
+      "ringDuration": 45,
+      "priority": 8,
+      "isCritical": false,
+      "description": "家族コールバック。責任追及。オペレーターの言葉が証拠に。"
+    },
+    {
+      "callId": "call_supervisor",
+      "callerId": "kudo_shinji",
+      "title": "記録のためだけど",
+      "incomingTimeMinutes": 198,
+      "ringDuration": 60,
+      "priority": 6,
+      "isCritical": true,
+      "description": "主任からの介入。システムの圧力。情報の封じ込め。"
+    }
+  ],
+  "initialWorldStates": [
+    {
+      "stateId": "victim_hit",
+      "description": "林遥が車に轢かれた",
+      "timeMinutes": 137,
+      "involvedCallerIds": ["yamada_misaki"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "victim_under_bridge",
+      "description": "林遥が歩道橋の下で倒れている",
+      "timeMinutes": 137,
+      "involvedCallerIds": ["tanaka_mamoru"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "victim_still_alive",
+      "description": "林遥はまだ生きているが、助けが必要",
+      "timeMinutes": 137,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "organization_tracking",
+      "description": "組織が林遥を追跡している",
+      "timeMinutes": 137,
+      "involvedCallerIds": ["sato_koji", "hayashi_kenji"],
+      "isKnownToPlayer": false
+    }
+  ],
+  "evidenceTemplates": [
+    {
+      "evidenceId": "evidence_time_0217",
+      "title": "時刻の一致",
+      "content": "複数の通話で02:17頃の出来事が言及されている",
+      "category": "Time"
+    },
+    {
+      "evidenceId": "evidence_footbridge",
+      "title": "歩道橋の場所",
+      "content": "国道沿いの歩道橋が複数の通話で言及されている",
+      "category": "Location"
+    },
+    {
+      "evidenceId": "evidence_clothing",
+      "title": "服装の情報",
+      "content": "暗い色のパーカー/反射ジャケット — 情報が矛盾",
+      "category": "Description"
+    },
+    {
+      "evidenceId": "evidence_vehicle",
+      "title": "車両の関与",
+      "content": "車が何かに衝突した可能性",
+      "category": "Incident"
+    }
+  ]
+}

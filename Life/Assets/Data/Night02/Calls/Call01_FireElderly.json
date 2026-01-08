@@ -1,0 +1,254 @@
+{
+  "callId": "call_fire_elderly",
+  "callerId": "yoshida_kazuko",
+  "title": "火事です！",
+  "description": "高齢者からの火災第一報。パニック状態、爆発音を聞いた、病院帰り。Night01の林遥との接点を持つ。",
+  "segments": [
+    {
+      "segmentId": "fire_panic_intro",
+      "callerLines": [
+        "火事です！火事！",
+        "倉庫が...倉庫が燃えてるんです！",
+        "お願い、早く消防車を！"
+      ],
+      "responses": [
+        {
+          "responseId": "fire_panic_calm",
+          "text": "落ち着いてください。消防に連絡します。まず、場所を教えてください。",
+          "nextSegmentId": "fire_location",
+          "setFlags": ["calmed_elderly"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fire_panic_immediate",
+          "text": "火事ですね。消防を手配します。どこですか？",
+          "nextSegmentId": "fire_location",
+          "setFlags": ["fire_reported"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_location",
+      "callerLines": [
+        "え、えっと...工業地帯の...古い倉庫です。",
+        "私、病院の帰りで...バスを降りたところで...",
+        "爆発みたいな音がして、振り返ったら火が見えて..."
+      ],
+      "responses": [
+        {
+          "responseId": "fire_location_explosion",
+          "text": "爆発音がした？火災の前に爆発があったんですか？",
+          "nextSegmentId": "fire_explosion",
+          "setFlags": ["explosion_noted", "hospital_visit_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fire_location_address",
+          "text": "工業地帯の倉庫ですね。もう少し詳しい場所は分かりますか？",
+          "nextSegmentId": "fire_address",
+          "setFlags": ["fire_location_confirmed", "hospital_visit_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_explosion",
+      "callerLines": [
+        "はい...ドーンって、大きな音が...",
+        "最初は何かと思って...でも、すぐに煙が見えて...",
+        "怖くて...でも、通報しなきゃって..."
+      ],
+      "responses": [
+        {
+          "responseId": "fire_explosion_confirm",
+          "text": "爆発音の後に火災。承知しました。消防に伝えます。あなたは安全な場所にいますか？",
+          "nextSegmentId": "fire_safety",
+          "setFlags": ["fire_reported"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fire_explosion_vehicle",
+          "text": "爆発の前に、何か見ましたか？車とか、人とか。",
+          "nextSegmentId": "fire_vehicle",
+          "setFlags": ["asked_about_vehicle"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_address",
+      "callerLines": [
+        "えっと...○○通りの...工場が並んでるところの...",
+        "大きな倉庫です。看板は...暗くて見えなくて...",
+        "でも、火がどんどん大きくなってます！"
+      ],
+      "responses": [
+        {
+          "responseId": "fire_address_dispatch",
+          "text": "分かりました。消防を手配します。あなたは火から離れていますか？",
+          "nextSegmentId": "fire_safety",
+          "setFlags": ["fire_reported"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fire_address_sound",
+          "text": "火災の前に何か音は聞きましたか？爆発とか。",
+          "nextSegmentId": "fire_explosion",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_vehicle",
+      "callerLines": [
+        "車...？そう言えば...",
+        "さっき、倉庫の方に車が入っていくのを見たような...",
+        "でも、暗くて...よく分からなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "fire_vehicle_details",
+          "text": "車の色とか大きさとか、覚えていることはありますか？",
+          "nextSegmentId": "fire_vehicle_describe",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fire_vehicle_safety",
+          "text": "分かりました。まず、あなたの安全を確認させてください。火から離れていますか？",
+          "nextSegmentId": "fire_safety",
+          "setFlags": ["fire_reported"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_vehicle_describe",
+      "callerLines": [
+        "う〜ん...白っぽかったような...バンみたいな...",
+        "荷台に何か書いてあった気がするけど...",
+        "ごめんなさい、暗くて...年を取ると目も悪くなって..."
+      ],
+      "responses": [
+        {
+          "responseId": "fire_vehicle_okay",
+          "text": "大丈夫です。思い出せる範囲で結構です。消防を手配しますね。",
+          "nextSegmentId": "fire_safety",
+          "setFlags": ["fire_reported"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fire_vehicle_remember",
+          "text": "荷台に何か書いてあった？会社名とかですか？",
+          "nextSegmentId": "fire_vehicle_company",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_vehicle_company",
+      "callerLines": [
+        "会社名...どうだったかしら...",
+        "「セキュリティ」って字が見えた気が...でも、確かじゃなくて...",
+        "ああ、火がもっと大きくなってきた！"
+      ],
+      "responses": [
+        {
+          "responseId": "fire_vehicle_dispatch_now",
+          "text": "消防を手配します。あなたはその場から離れてください。ありがとうございました。",
+          "nextSegmentId": "fire_end",
+          "setFlags": ["fire_reported"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_safety",
+      "callerLines": [
+        "はい...バス停のところにいます。火からは離れてます。",
+        "でも、煙がすごくて...咳が...",
+        "あの...私、一人暮らしなので...帰っても大丈夫でしょうか..."
+      ],
+      "responses": [
+        {
+          "responseId": "fire_safety_go_home",
+          "text": "消防が到着すれば大丈夫です。無理せず、お家に帰ってください。",
+          "nextSegmentId": "fire_lonely_mention",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fire_safety_stay",
+          "text": "消防が来るまで、もう少し待っていただけますか？追加の情報が必要かもしれません。",
+          "nextSegmentId": "fire_lonely_mention",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_lonely_mention",
+      "callerLines": [
+        "はい...分かりました...",
+        "病院の帰り道でこんなことになるなんて...",
+        "近所の若いお母さんがいつも心配してくれてたのに...最近、見かけなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "fire_lonely_ignore",
+          "text": "消防が向かっています。ご協力ありがとうございました。",
+          "nextSegmentId": "fire_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fire_lonely_listen",
+          "text": "近所の方が見かけない？お名前は分かりますか？",
+          "nextSegmentId": "fire_haruka_mention",
+          "setFlags": ["young_mother_mentioned"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_haruka_mention",
+      "callerLines": [
+        "お名前...林さん、だったかしら。お子さんと二人暮らしで...",
+        "よく買い物を手伝ってくれて...優しい人なんです。",
+        "最近、引っ越したのかしら...挨拶もなく..."
+      ],
+      "responses": [
+        {
+          "responseId": "fire_haruka_end",
+          "text": "そうですか...。消防が到着したら、お家に帰ってゆっくり休んでください。",
+          "nextSegmentId": "fire_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_end",
+      "callerLines": [
+        "はい...ありがとうございます。",
+        "消防車の音が聞こえます...来てくれたみたい。",
+        "ご迷惑をおかけしました..."
+      ],
+      "responses": [
+        {
+          "responseId": "fire_end_reply",
+          "text": "ご通報ありがとうございました。お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "fire_panic_intro",
+  "note": "吉田和子が「近所の若いお母さん」として林遥に言及する。プレイヤーがNight01と接続できるかの伏線。車について質問した場合、折り返し通話がトリガーされる。"
+}
