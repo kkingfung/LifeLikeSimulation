@@ -1,0 +1,114 @@
+{
+  "callId": "call_unknown_voice",
+  "callerId": "unknown_voice",
+  "title": "無言",
+  "description": "組織に誘拐された人物からの電話。何かを伝えようとしているが、話せない状況にある。",
+  "segments": [
+    {
+      "segmentId": "unknown_silence",
+      "callerLines": [
+        "...",
+        "...",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "unknown_silence_hello",
+          "text": "もしもし？緊急通報センターです。",
+          "nextSegmentId": "unknown_silence_2",
+          "setFlags": ["silent_call_received", "tried_to_talk_silent"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "unknown_silence_wait",
+          "text": "（沈黙を待つ）",
+          "nextSegmentId": "unknown_silence_2",
+          "setFlags": ["silent_call_received"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "unknown_silence_2",
+      "callerLines": [
+        "...",
+        "（かすかな呼吸音が聞こえる）",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "unknown_silence_2_ask",
+          "text": "大丈夫ですか？何かあったのですか？",
+          "nextSegmentId": "unknown_silence_3",
+          "setFlags": ["tried_to_talk_silent"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "unknown_silence_2_location",
+          "text": "場所を教えてください。助けに行きます。",
+          "nextSegmentId": "unknown_silence_3",
+          "setFlags": ["tried_to_talk_silent"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "unknown_silence_2_wait",
+          "text": "（さらに待つ）",
+          "nextSegmentId": "unknown_silence_3",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "unknown_silence_3",
+      "callerLines": [
+        "...",
+        "（微かな物音）",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "unknown_silence_3_speak",
+          "text": "話せないなら、何か音を立ててください。",
+          "nextSegmentId": "unknown_end",
+          "setFlags": ["tried_to_talk_silent"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "unknown_silence_3_trace",
+          "text": "この電話を追跡します。そのままでいてください。",
+          "nextSegmentId": "unknown_end",
+          "setFlags": ["tried_to_talk_silent"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "unknown_silence_3_wait",
+          "text": "（待ち続ける）",
+          "nextSegmentId": "unknown_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "unknown_end",
+      "callerLines": [
+        "...",
+        "（電話が切れる音）",
+        "ツー...ツー...ツー..."
+      ],
+      "responses": [
+        {
+          "responseId": "unknown_end_reply",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "unknown_silence",
+  "note": "組織に誘拐された人物からの電話。話せない状況にあり、何かを伝えようとしているが、最終的に電話は切れる。Night03の締めくくり。"
+}

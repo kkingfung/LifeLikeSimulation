@@ -1,0 +1,137 @@
+{
+  "callId": "call_supervisor_intervention",
+  "callerId": "kudo_shinji",
+  "title": "直接介入",
+  "description": "工藤主任が直接オペレーターの席に来る。「カップルの口論は業務外」と警告。組織とは関係なく、純粋に業務監督。",
+  "isInPersonEvent": true,
+  "segments": [
+    {
+      "segmentId": "supervisor_approach",
+      "callerLines": [
+        "ちょっといいか？",
+        "さっきの通報記録を見たんだが...",
+        "カップルの口論って...?"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_approach_explain",
+          "text": "女性が怖がっていて、暴力になりそうだったので...",
+          "nextSegmentId": "supervisor_duty",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_approach_admit",
+          "text": "はい、警察を派遣しました。",
+          "nextSegmentId": "supervisor_duty",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_duty",
+      "callerLines": [
+        "気持ちは分かるんだが...",
+        "カップルの口論は、基本的に我々の業務外だ。",
+        "明確な暴力や犯罪がない限り、介入は難しい。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_duty_understand",
+          "text": "分かりました。以後気をつけます。",
+          "nextSegmentId": "supervisor_end_obey",
+          "setFlags": ["obeyed_supervisor"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_duty_argue",
+          "text": "でも、女性が怖がっていたんです。放っておけませんでした。",
+          "nextSegmentId": "supervisor_conflict",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_conflict",
+      "callerLines": [
+        "...気持ちは分かるんだ。本当に。",
+        "でも、我々にはルールがある。",
+        "全ての通報に介入していたら、キリがない。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_conflict_accept",
+          "text": "...分かりました。",
+          "nextSegmentId": "supervisor_end_reluctant",
+          "setFlags": ["obeyed_supervisor", "supervisor_showed_conflict"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_conflict_refuse",
+          "text": "それでも、助けを求めている人を無視できません。",
+          "nextSegmentId": "supervisor_warning",
+          "setFlags": ["ignored_supervisor", "supervisor_showed_conflict"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_warning",
+      "callerLines": [
+        "...君の判断は尊重する。",
+        "だが、上からは良い顔をされないぞ。",
+        "覚えておいてくれ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_warning_noted",
+          "text": "...はい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "supervisor_end_obey",
+      "callerLines": [
+        "うん、頼むよ。",
+        "仕事熱心なのは良いことだが、線引きも大事だ。",
+        "じゃあ、頑張ってくれ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_end_obey_reply",
+          "text": "はい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "supervisor_end_reluctant",
+      "callerLines": [
+        "...うん。",
+        "君みたいな人間がいるのは、悪いことじゃないんだがな。",
+        "...難しいところだ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_end_reluctant_reply",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "supervisor_approach",
+  "note": "工藤主任は組織のことを知らない。純粋に業務上の警告をしているが、内心では葛藤している。タイミングは偶然。"
+}

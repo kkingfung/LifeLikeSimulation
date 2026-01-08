@@ -1,0 +1,204 @@
+{
+  "nightId": "night_03",
+  "description": "Night03「探す声」フラグ定義",
+  "flagDefinitions": [
+    {
+      "flagId": "argument_reported",
+      "category": "Event",
+      "description": "口論を通報として受け付けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "police_dispatched_argument",
+      "category": "Escalation",
+      "description": "口論に警察を派遣した",
+      "weight": 2,
+      "persistsAcrossNights": false,
+      "note": "このフラグがmari_savedにつながる可能性がある"
+    },
+    {
+      "flagId": "mari_saved",
+      "category": "Event",
+      "description": "真理を助けた（警察派遣による）",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "警察報告通話のトリガー、Night04への影響"
+    },
+    {
+      "flagId": "mari_not_saved",
+      "category": "Event",
+      "description": "真理を助けなかった",
+      "weight": -2,
+      "persistsAcrossNights": true,
+      "note": "Night04への影響"
+    },
+    {
+      "flagId": "argument_location_noted",
+      "category": "Evidence",
+      "description": "口論の場所を記録した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "woman_scared_noted",
+      "category": "Evidence",
+      "description": "女性が怖がっていることを記録",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "man_yelling_noted",
+      "category": "Evidence",
+      "description": "男が怒鳴っていることを記録",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "told_sato_about_haruka",
+      "category": "Disclosure",
+      "description": "佐藤に遥の情報を渡した",
+      "weight": -3,
+      "persistsAcrossNights": true,
+      "note": "エンドステート判定に使用"
+    },
+    {
+      "flagId": "told_sato_haruka_dead",
+      "category": "Disclosure",
+      "description": "佐藤に遥が死んだことを伝えた",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "lied_to_sato",
+      "category": "Alignment",
+      "description": "佐藤に嘘をついた",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "refused_sato",
+      "category": "Alignment",
+      "description": "佐藤に情報を渡さなかった",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "エンドステート判定に使用"
+    },
+    {
+      "flagId": "questioned_sato",
+      "category": "Alignment",
+      "description": "佐藤に逆質問した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "sato_threatened",
+      "category": "Threat",
+      "description": "佐藤が「覚えておくよ」と言った",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "sato_satisfied",
+      "category": "Alignment",
+      "description": "佐藤が情報を得て満足した",
+      "weight": -1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "ignored_supervisor",
+      "category": "Alignment",
+      "description": "主任の警告を無視した",
+      "weight": -2,
+      "persistsAcrossNights": true,
+      "note": "主任の警告後も派遣を続けた場合"
+    },
+    {
+      "flagId": "obeyed_supervisor",
+      "category": "Alignment",
+      "description": "主任の警告に従った",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "supervisor_showed_conflict",
+      "category": "Event",
+      "description": "主任が葛藤を見せた",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "「気持ちは分かるが...」と言った場合"
+    },
+    {
+      "flagId": "silent_call_received",
+      "category": "Event",
+      "description": "無言電話を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "tried_to_talk_silent",
+      "category": "Event",
+      "description": "無言電話に話しかけようとした",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "police_report_received",
+      "category": "Event",
+      "description": "警察からの報告を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "sato_cautious",
+      "category": "Night02Effect",
+      "description": "Night02のConnectedにより佐藤が慎重",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "sato_direct",
+      "category": "Night02Effect",
+      "description": "Night02のCompliantにより佐藤が直接的",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "supervisor_harsh",
+      "category": "Night02Effect",
+      "description": "Night02のIsolatedにより主任が厳しい",
+      "weight": 0,
+      "persistsAcrossNights": false
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "mari_saved",
+      "cancelFlags": ["mari_not_saved"]
+    },
+    {
+      "whenFlagSet": "mari_not_saved",
+      "cancelFlags": ["mari_saved"]
+    },
+    {
+      "whenFlagSet": "told_sato_about_haruka",
+      "cancelFlags": ["refused_sato", "lied_to_sato"]
+    },
+    {
+      "whenFlagSet": "refused_sato",
+      "cancelFlags": ["told_sato_about_haruka"]
+    },
+    {
+      "whenFlagSet": "lied_to_sato",
+      "cancelFlags": ["told_sato_about_haruka"]
+    },
+    {
+      "whenFlagSet": "ignored_supervisor",
+      "cancelFlags": ["obeyed_supervisor"]
+    },
+    {
+      "whenFlagSet": "obeyed_supervisor",
+      "cancelFlags": ["ignored_supervisor"]
+    }
+  ]
+}

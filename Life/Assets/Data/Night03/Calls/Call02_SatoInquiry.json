@@ -1,0 +1,300 @@
+{
+  "callId": "call_sato_inquiry",
+  "callerId": "sato_koji",
+  "title": "林遥について",
+  "description": "佐藤浩二（組織）が林遥について探りを入れてくる。佐藤は遥の死を知らない。",
+  "segments": [
+    {
+      "segmentId": "sato_intro",
+      "callerLines": [
+        "夜分遅くにすみません。",
+        "以前、一度お電話させていただいた者です。",
+        "林遥のこと、覚えていますか？"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_intro_remember",
+          "text": "林遥さん...はい、覚えています。",
+          "nextSegmentId": "sato_ask_location",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_intro_who",
+          "text": "申し訳ありませんが、どちら様ですか？",
+          "nextSegmentId": "sato_introduce",
+          "setFlags": ["questioned_sato"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_intro_no_comment",
+          "text": "通報内容についてはお答えできません。",
+          "nextSegmentId": "sato_push",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_introduce",
+      "callerLines": [
+        "佐藤と申します。林遥の...友人です。",
+        "彼女のことが心配で、連絡が取れなくて...",
+        "何かご存知ありませんか？"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_introduce_truth",
+          "text": "申し上げにくいのですが...林遥さんは亡くなられました。",
+          "nextSegmentId": "sato_learn_death",
+          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_introduce_refuse",
+          "text": "通報者の情報はお伝えできません。",
+          "nextSegmentId": "sato_pressure",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_introduce_lie",
+          "text": "存じ上げません。",
+          "nextSegmentId": "sato_test",
+          "setFlags": ["lied_to_sato"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_ask_location",
+      "callerLines": [
+        "それで...林遥はどこにいるか、ご存知ですか？",
+        "連絡が取れなくて、心配しているんです。",
+        "何か聞いていませんか？"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_location_truth",
+          "text": "林遥さんは...亡くなられました。",
+          "nextSegmentId": "sato_learn_death",
+          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_location_refuse",
+          "text": "申し訳ありませんが、そのような情報はお伝えできません。",
+          "nextSegmentId": "sato_pressure",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_location_lie",
+          "text": "存じません。",
+          "nextSegmentId": "sato_test",
+          "setFlags": ["lied_to_sato"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_push",
+      "callerLines": [
+        "そうですか...",
+        "でも、彼女のことが本当に心配なんです。",
+        "林遥はどこにいますか？"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_push_truth",
+          "text": "...林遥さんは亡くなりました。",
+          "nextSegmentId": "sato_learn_death",
+          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_push_refuse",
+          "text": "お答えできません。他にご用件は？",
+          "nextSegmentId": "sato_threat",
+          "setFlags": ["refused_sato"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_learn_death",
+      "callerLines": [
+        "...亡くなった？",
+        "...",
+        "それは...いつのことですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_death_details",
+          "text": "数日前のことです。詳細は警察にお問い合わせください。",
+          "nextSegmentId": "sato_ask_more",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_death_no_more",
+          "text": "これ以上はお答えできません。",
+          "nextSegmentId": "sato_end_info",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_ask_more",
+      "callerLines": [
+        "...そうですか。",
+        "では、美咲ちゃんは？遥の娘です。",
+        "美咲ちゃんはどこにいますか？"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_more_refuse",
+          "text": "お子さんの情報はお伝えできません。",
+          "nextSegmentId": "sato_end_info",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_more_why",
+          "text": "なぜそんなことを聞くのですか？",
+          "nextSegmentId": "sato_excuse",
+          "setFlags": ["questioned_sato"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_excuse",
+      "callerLines": [
+        "心配している友人として、当然でしょう。",
+        "遥が亡くなったなら、美咲ちゃんのことが心配です。",
+        "...誰か、面倒を見ているんですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_excuse_refuse",
+          "text": "個人情報に関わるため、お答えできません。",
+          "nextSegmentId": "sato_end_info",
+          "setFlags": ["refused_sato"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_test",
+      "callerLines": [
+        "そうですか。",
+        "でも、あなたは先日、林遥さんからの電話を受けましたよね？",
+        "覚えていないはずがない。"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_test_caught",
+          "text": "...なぜそれを？",
+          "nextSegmentId": "sato_reveal",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_test_deny",
+          "text": "業務上の守秘義務がありますので。",
+          "nextSegmentId": "sato_threat",
+          "setFlags": ["refused_sato"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_reveal",
+      "callerLines": [
+        "我々はいろいろと知っています。",
+        "あなたが何を聞いたか、何を記録したか。",
+        "...協力的な方は、覚えておきます。"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_reveal_comply",
+          "text": "...林遥さんは亡くなりました。それだけです。",
+          "nextSegmentId": "sato_end_info",
+          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
+          "clearFlags": ["lied_to_sato"]
+        },
+        {
+          "responseId": "sato_reveal_refuse",
+          "text": "何を言っているのか分かりません。",
+          "nextSegmentId": "sato_threat",
+          "setFlags": ["refused_sato"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_pressure",
+      "callerLines": [
+        "そうですか。",
+        "残念です。",
+        "林遥はどこにいるんですか？本当に知らない？"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_pressure_truth",
+          "text": "...林遥さんは亡くなりました。",
+          "nextSegmentId": "sato_learn_death",
+          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sato_pressure_final_refuse",
+          "text": "これ以上はお答えできません。",
+          "nextSegmentId": "sato_threat",
+          "setFlags": ["refused_sato"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_threat",
+      "callerLines": [
+        "...そうですか。",
+        "覚えておきますよ。",
+        "良い夜を。"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_threat_end",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["sato_threatened"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "sato_end_info",
+      "callerLines": [
+        "...分かりました。",
+        "情報、ありがとうございます。",
+        "また連絡するかもしれません。"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_end_info_reply",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["sato_satisfied"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "sato_intro",
+  "note": "佐藤浩二は組織の情報収集係。林遥の死を知らない。オペレーターの反応によって、組織の態度が変わる。"
+}

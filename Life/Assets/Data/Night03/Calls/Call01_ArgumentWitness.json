@@ -1,0 +1,183 @@
+{
+  "callId": "call_argument_witness",
+  "callerId": "passerby",
+  "title": "口論の通報",
+  "description": "通りすがりの市民が口論を目撃。女性が怖がり、男が怒鳴っている。実は渡辺真理と組織の人間。",
+  "segments": [
+    {
+      "segmentId": "argument_intro",
+      "callerLines": [
+        "あの、すみません。",
+        "今、道を歩いてたら、男女が口論してるのを見まして...",
+        "ちょっと様子がおかしいんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "argument_intro_details",
+          "text": "どのような状況ですか？詳しく教えてください。",
+          "nextSegmentId": "argument_describe",
+          "setFlags": ["argument_reported"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "argument_intro_location",
+          "text": "場所はどちらですか？",
+          "nextSegmentId": "argument_location",
+          "setFlags": ["argument_reported"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_describe",
+      "callerLines": [
+        "男の人が怒鳴ってて、女の人がすごく怖がってるんです。",
+        "女の人は逃げようとしてるんですけど、男が腕を掴んでて...",
+        "暴力にならないか心配で..."
+      ],
+      "responses": [
+        {
+          "responseId": "argument_describe_location",
+          "text": "場所を教えてください。すぐに警察を向かわせます。",
+          "nextSegmentId": "argument_dispatch",
+          "setFlags": ["woman_scared_noted", "man_yelling_noted", "police_dispatched_argument"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "argument_describe_calm",
+          "text": "カップルの口論のようですね。もう少し様子を見てもらえますか？",
+          "nextSegmentId": "argument_hesitate",
+          "setFlags": ["woman_scared_noted", "man_yelling_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_location",
+      "callerLines": [
+        "○○通りの...えーと、コンビニの近くです。",
+        "女の人が「やめて」って言ってます。",
+        "男の人がすごい剣幕で..."
+      ],
+      "responses": [
+        {
+          "responseId": "argument_location_dispatch",
+          "text": "分かりました。警察を向かわせます。",
+          "nextSegmentId": "argument_dispatch",
+          "setFlags": ["argument_location_noted", "police_dispatched_argument"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "argument_location_watch",
+          "text": "どのような口論ですか？暴力はありますか？",
+          "nextSegmentId": "argument_describe",
+          "setFlags": ["argument_location_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_hesitate",
+      "callerLines": [
+        "でも、男の人がかなり怒ってて...",
+        "女の人が泣いてるみたいです。",
+        "本当に大丈夫ですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "argument_hesitate_dispatch",
+          "text": "すみません、やはり警察を派遣します。場所を教えてください。",
+          "nextSegmentId": "argument_dispatch",
+          "setFlags": ["police_dispatched_argument"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "argument_hesitate_wait",
+          "text": "暴力がなければ、カップルの問題に介入は難しいのです。",
+          "nextSegmentId": "argument_no_dispatch",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_dispatch",
+      "callerLines": [
+        "○○通り、コンビニの角のところです。",
+        "あ、今...男の人が何か言って、女の人を引っ張っていこうとしてます。",
+        "急いでください..."
+      ],
+      "responses": [
+        {
+          "responseId": "argument_dispatch_confirm",
+          "text": "警察が向かいます。危険ですので、近づかないでください。",
+          "nextSegmentId": "argument_end_dispatch",
+          "setFlags": ["mari_saved"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_no_dispatch",
+      "callerLines": [
+        "そうですか...でも、あの女の人、本当に怖がってて...",
+        "...あ、二人ともどこかに行きました。",
+        "男の人が女の人を連れて行った感じで..."
+      ],
+      "responses": [
+        {
+          "responseId": "argument_no_dispatch_end",
+          "text": "ご通報ありがとうございました。何かあればまた連絡ください。",
+          "nextSegmentId": null,
+          "setFlags": ["mari_not_saved"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "argument_no_dispatch_late",
+          "text": "待ってください、やはり警察を...どちらの方向に行きましたか？",
+          "nextSegmentId": "argument_too_late",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_too_late",
+      "callerLines": [
+        "住宅街の方に...もう見えなくなりました。",
+        "すみません、もっと早く通報すればよかった...",
+        "大丈夫ですかね、あの女の人..."
+      ],
+      "responses": [
+        {
+          "responseId": "argument_too_late_end",
+          "text": "警察にパトロールを依頼します。ご通報ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["mari_not_saved"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "argument_end_dispatch",
+      "callerLines": [
+        "はい、分かりました。離れて見てます。",
+        "早く来てくださいね...",
+        "あの女の人、助けてあげてください。"
+      ],
+      "responses": [
+        {
+          "responseId": "argument_end_dispatch_reply",
+          "text": "ご協力ありがとうございます。警察がすぐ到着します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "argument_intro",
+  "note": "口論している二人は渡辺真理（遥の親友）と組織の人間。プレイヤーはそれを知らない。35分以内に警察を派遣すれば真理は助かる。"
+}

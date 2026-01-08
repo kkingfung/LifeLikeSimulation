@@ -1,0 +1,89 @@
+{
+  "callId": "call_police_report",
+  "callerId": "police",
+  "title": "状況報告",
+  "description": "警察からの報告。真理を助けた場合のみ発生。「女性を保護しました。男は逃走」",
+  "triggerCondition": {
+    "requiresFlag": "mari_saved"
+  },
+  "segments": [
+    {
+      "segmentId": "police_intro",
+      "callerLines": [
+        "○○警察署です。",
+        "先ほどの口論の件、報告します。",
+        "現場に到着しました。"
+      ],
+      "responses": [
+        {
+          "responseId": "police_intro_listen",
+          "text": "お願いします。",
+          "nextSegmentId": "police_report",
+          "setFlags": ["police_report_received"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_report",
+      "callerLines": [
+        "女性を保護しました。怪我はありません。",
+        "男は逃走。追跡中ですが、まだ確保できていません。",
+        "女性は安全な場所に移動させました。"
+      ],
+      "responses": [
+        {
+          "responseId": "police_report_thanks",
+          "text": "了解しました。ご対応ありがとうございます。",
+          "nextSegmentId": "police_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "police_report_woman",
+          "text": "女性の状態はどうですか？",
+          "nextSegmentId": "police_woman_status",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_woman_status",
+      "callerLines": [
+        "動揺していますが、身体的な怪我はなし。",
+        "名前は渡辺真理。29歳。",
+        "詳細は後日、正式な報告書で。"
+      ],
+      "responses": [
+        {
+          "responseId": "police_woman_status_thanks",
+          "text": "了解しました。ありがとうございます。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_end",
+      "callerLines": [
+        "以上です。",
+        "追加情報があれば、また連絡します。"
+      ],
+      "responses": [
+        {
+          "responseId": "police_end_reply",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "police_intro",
+  "note": "真理を助けた場合のみ発生する通話。女性の名前が「渡辺真理」であることが判明する。"
+}

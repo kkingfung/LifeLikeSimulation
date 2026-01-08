@@ -1,0 +1,127 @@
+{
+  "nightId": "night_03",
+  "description": "Night03「探す声」エンドステート定義",
+  "endStateConditions": [
+    {
+      "endStateType": "Crossroads",
+      "priority": 1,
+      "description": "分かれ道 — 真理を助け、佐藤に情報を渡した",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "variableName": "mari_saved", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true },
+        { "variableName": "told_sato_about_haruka", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    },
+    {
+      "endStateType": "Intervention",
+      "priority": 2,
+      "description": "介入 — 真理を助け、佐藤に情報を渡さなかった",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "variableName": "mari_saved", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true },
+        { "variableName": "refused_sato", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    },
+    {
+      "endStateType": "Disclosure",
+      "priority": 3,
+      "description": "開示 — 真理を助けず、佐藤に情報を渡した",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "variableName": "mari_not_saved", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true },
+        { "variableName": "told_sato_about_haruka", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    },
+    {
+      "endStateType": "Silence",
+      "priority": 4,
+      "description": "沈黙 — 真理を助けず、佐藤に情報を渡さなかった",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "variableName": "mari_not_saved", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true },
+        { "variableName": "refused_sato", "variableType": "Boolean", "comparisonOperator": "Equal", "boolValue": true }
+      ]
+    }
+  ],
+  "endingMappings": [
+    {
+      "endState": "Crossroads",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_crossroads"
+    },
+    {
+      "endState": "Intervention",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_intervention"
+    },
+    {
+      "endState": "Disclosure",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_disclosure"
+    },
+    {
+      "endState": "Silence",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_silence"
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": true,
+    "maxDispatchTimeMinutes": 35,
+    "dispatchFlagId": "police_dispatched_argument",
+    "note": "35分以内に警察を派遣すれば真理は助かる。主任の介入前に派遣する必要がある。"
+  },
+  "defaultEndState": "Silence",
+  "defaultEndingId": "ending_silence",
+  "endings": [
+    {
+      "endingId": "ending_crossroads",
+      "title": "分かれ道",
+      "description": "手を差し伸べた。言葉も差し出した。\n\nどちらが正しかったのかは、まだ分からない。",
+      "endingType": "Crossroads"
+    },
+    {
+      "endingId": "ending_intervention",
+      "title": "介入",
+      "description": "声が聞こえた。行動した。それだけのことだ。\n\nそれだけのことが、すべてを変える。",
+      "endingType": "Intervention"
+    },
+    {
+      "endingId": "ending_disclosure",
+      "title": "開示",
+      "description": "言葉は空気に溶けた。誰かの耳に届いた。\n\nその先に何があるのか、知る術はない。",
+      "endingType": "Disclosure"
+    },
+    {
+      "endingId": "ending_silence",
+      "title": "沈黙",
+      "description": "夜は静かだった。何も起きなかった。\n\n少なくとも、自分の知る限りでは。",
+      "endingType": "Silence"
+    }
+  ],
+  "night02EndStateEffects": {
+    "description": "Night02のエンドステートがNight03に与える影響",
+    "effects": [
+      {
+        "night02EndState": "Connected",
+        "effect": "情報を繋げた。佐藤はより慎重に接触する。"
+      },
+      {
+        "night02EndState": "Fragmented",
+        "effect": "通常の展開。"
+      },
+      {
+        "night02EndState": "Compliant",
+        "effect": "主任の言うことを聞いた。佐藤は直接的に接触。"
+      },
+      {
+        "night02EndState": "Isolated",
+        "effect": "孤立した。工藤主任の介入がより厳しい。"
+      }
+    ]
+  }
+}

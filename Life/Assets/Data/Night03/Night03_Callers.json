@@ -1,0 +1,160 @@
+{
+  "nightId": "night_03",
+  "description": "第3夜「探す声」発信者データ",
+  "callers": [
+    {
+      "callerId": "passerby",
+      "displayName": "通りすがり",
+      "realName": "不明",
+      "description": "一般市民。たまたま口論を目撃して通報した。",
+      "voiceDescription": "普通の成人男性の声。少し緊張している。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 80,
+        "stability": 70,
+        "cooperation": 75,
+        "aggression": 10
+      },
+      "hiddenInfo": "特になし。本当にただの通りすがり。",
+      "trueMotivation": "騒ぎを通報して自分の義務を果たしたい",
+      "relations": [],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "police",
+      "displayName": "警察",
+      "realName": "警察官",
+      "description": "派遣された警察官。状況報告をする。",
+      "voiceDescription": "事務的な男性の声。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 90,
+        "stability": 90,
+        "cooperation": 80,
+        "aggression": 10
+      },
+      "hiddenInfo": "特になし。",
+      "trueMotivation": "業務を遂行する",
+      "relations": [],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "watanabe_mari",
+      "displayName": "渡辺真理",
+      "realName": "渡辺真理",
+      "description": "29歳、会社員。林遥の高校時代からの親友。遥の死後、行方不明の美咲を探している。Night02では「不審者」として間接的に登場。",
+      "voiceDescription": "切迫した女性の声。最初は必死、後に感情的になる。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 90,
+        "stability": 55,
+        "cooperation": 85,
+        "aggression": 25
+      },
+      "hiddenInfo": "遥が「何かあったら真理おばちゃんに渡して」と美咲に言っていたことを知っている。封筒の中身は知らない。",
+      "trueMotivation": "美咲を見つけて保護したい、遥の死の真相を知りたい",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Friend", "description": "高校時代からの親友", "isKnown": false }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "sato_koji",
+      "displayName": "佐藤浩二",
+      "realName": "不明",
+      "description": "30代男性。Night01では「林遥の同僚」を装っていた。実は組織の情報収集係。Night03では本当の姿で接触。",
+      "voiceDescription": "普通の声だが、今回は低く落ち着いた威圧感がある。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 20,
+        "stability": 85,
+        "cooperation": 30,
+        "aggression": 50
+      },
+      "hiddenInfo": "組織の情報収集係。オペレーターのNight01-02での行動を把握している。",
+      "trueMotivation": "オペレーターを組織側に取り込む、または無力化する",
+      "relations": [
+        { "targetCallerId": "hayashi_kenji", "relationType": "Colleague", "description": "同じ組織のメンバー", "isKnown": false }
+      ],
+      "organizationRelation": "member"
+    },
+    {
+      "callerId": "hayashi_kenji",
+      "displayName": "林健二",
+      "realName": "不明",
+      "description": "Night01では「林遥の兄」を装っていた。実は組織の中間管理職。林遥の「担当」だった。遥の死に関与している可能性。",
+      "voiceDescription": "以前より冷たく、威圧的な声。",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 15,
+        "stability": 80,
+        "cooperation": 10,
+        "aggression": 70
+      },
+      "hiddenInfo": "組織の中間管理職。林遥の監視担当だった。遥の逃亡を阻止できなかった責任を問われている。",
+      "trueMotivation": "事態の収拾、美咲の確保、情報漏洩の防止",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Enemy", "description": "監視対象だった", "isKnown": false },
+        { "targetCallerId": "sato_koji", "relationType": "Colleague", "description": "同じ組織のメンバー", "isKnown": false }
+      ],
+      "organizationRelation": "member"
+    },
+    {
+      "callerId": "yoshida_kazuko",
+      "displayName": "吉田和子",
+      "realName": "吉田和子",
+      "description": "72歳、一人暮らしの高齢女性。Night02で火災を通報。林遥の隣人として、遥と美咲を気にかけていた。渡辺真理と話をした。",
+      "voiceDescription": "震えた高齢女性の声。心配そう。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 95,
+        "stability": 60,
+        "cooperation": 90,
+        "aggression": 5
+      },
+      "hiddenInfo": "渡辺真理が訪ねてきて、遥の死を知った。美咲のことが心配でたまらない。",
+      "trueMotivation": "美咲の安全を確認したい",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Neighbor", "description": "隣人として見守っていた", "isKnown": true },
+        { "targetCallerId": "watanabe_mari", "relationType": "Acquaintance", "description": "渡辺が訪ねてきた", "isKnown": true }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "kudo_shinji",
+      "displayName": "工藤真司",
+      "realName": "工藤真司",
+      "description": "45歳、緊急通報センター当直主任。Night01-02で登場。組織との直接の繋がりはないが、「上からの圧力」を感じている。",
+      "voiceDescription": "落ち着いた低い声。今回は心配そうな口調。",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 60,
+        "stability": 85,
+        "cooperation": 50,
+        "aggression": 20
+      },
+      "hiddenInfo": "上層部から「特定の通話について深入りするな」という指示を受けている。組織の存在は知らないが、何かがおかしいとは感じている。",
+      "trueMotivation": "自分の立場を守りつつ、部下も守りたい",
+      "relations": [],
+      "organizationRelation": "system_aligned"
+    },
+    {
+      "callerId": "unknown_voice",
+      "displayName": "???",
+      "realName": "不明",
+      "description": "組織に誘拐された人物。何かを伝えようとしているが、話せない状況にある。",
+      "voiceDescription": "無言。時折かすかな呼吸音が聞こえるかもしれない。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 100,
+        "stability": 20,
+        "cooperation": 100,
+        "aggression": 0
+      },
+      "hiddenInfo": "組織に誘拐されている。電話をかけることはできたが、話すことができない状況。",
+      "trueMotivation": "助けを求めている",
+      "relations": [],
+      "organizationRelation": "victim"
+    }
+  ]
+}
