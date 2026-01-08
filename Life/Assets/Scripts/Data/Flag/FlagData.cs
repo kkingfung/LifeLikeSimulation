@@ -45,7 +45,11 @@ namespace LifeLike.Data.Flag
         Night01Effect,
 
         /// <summary>Night02の影響フラグ</summary>
-        Night02Effect
+        Night02Effect,
+
+        // === Night04 追加 ===
+        /// <summary>Night03の影響フラグ</summary>
+        Night03Effect
     }
 
     /// <summary>

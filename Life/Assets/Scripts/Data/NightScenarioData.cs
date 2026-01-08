@@ -119,7 +119,20 @@ namespace LifeLike.Data
         Disclosure,
 
         /// <summary>沈黙 — 真理を助けず、佐藤に情報を渡さなかった</summary>
-        Silence
+        Silence,
+
+        // === Night04 追加 ===
+        /// <summary>証人と接続 — 詳細情報を得て、繋がりも伝えた</summary>
+        WitnessConnected,
+
+        /// <summary>証人のみ — 詳細情報を得たが、繋がりは伝えなかった</summary>
+        WitnessOnly,
+
+        /// <summary>接続のみ — 詳細情報は少ないが、繋がりは伝えた</summary>
+        ConnectedOnly,
+
+        /// <summary>どちらもなし — 情報も少なく、繋がりも伝えなかった</summary>
+        Neither
     }
 
     /// <summary>

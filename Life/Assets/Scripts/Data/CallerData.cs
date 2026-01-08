@@ -132,6 +132,7 @@ namespace LifeLike.Data
         Accomplice,     // 共犯者
         Victim,         // 被害者
         Suspect,        // 容疑者
-        Neighbor        // 隣人
+        Neighbor,       // 隣人
+        Protected       // 保護対象（内部告発者が守ろうとした相手など）
     }
 }

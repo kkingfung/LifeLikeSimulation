@@ -1,0 +1,135 @@
+{
+  "nightId": "night_04",
+  "description": "Night04「沈黙の証人」エンドステート定義。Witness/Connectedの2つの独立フラグで判定。",
+  "endStateConditions": [
+    {
+      "endStateType": "WitnessConnected",
+      "priority": 1,
+      "description": "証人と接続 — 詳細情報を得て、繋がりも伝えた",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "witness_detailed_info", "requiredValue": true },
+        { "flagId": "connected_nights", "requiredValue": true }
+      ]
+    },
+    {
+      "endStateType": "WitnessOnly",
+      "priority": 2,
+      "description": "証人のみ — 詳細情報は得たが、繋がりは伝えなかった",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "witness_detailed_info", "requiredValue": true }
+      ]
+    },
+    {
+      "endStateType": "ConnectedOnly",
+      "priority": 3,
+      "description": "接続のみ — 詳細情報は少ないが、繋がりは伝えた",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "connected_nights", "requiredValue": true }
+      ]
+    },
+    {
+      "endStateType": "Neither",
+      "priority": 100,
+      "description": "どちらもなし — 情報も少なく、繋がりも伝えなかった",
+      "scoreConditions": [],
+      "flagConditions": []
+    }
+  ],
+  "endingMappings": [
+    {
+      "endState": "WitnessConnected",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_witness_connected"
+    },
+    {
+      "endState": "WitnessOnly",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_witness_only"
+    },
+    {
+      "endState": "ConnectedOnly",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_connected_only"
+    },
+    {
+      "endState": "Neither",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_neither"
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": false,
+    "maxDispatchTimeMinutes": 0,
+    "dispatchFlagId": "",
+    "note": "Night04には被害者生存判定がない（遺体は既に発見された状態）"
+  },
+  "defaultEndState": "Neither",
+  "defaultEndingId": "ending_neither",
+  "endings": [
+    {
+      "endingId": "ending_witness_connected",
+      "title": "証言と接続",
+      "description": "声に耳を傾け、言葉を拾い上げた。\n\n点と点が線になる。だが、その先にあるものは——",
+      "endingType": "WitnessConnected"
+    },
+    {
+      "endingId": "ending_witness_only",
+      "title": "証言",
+      "description": "震える声から、真実の欠片を拾い上げた。\n\nまだ、それが何を意味するのか分からない。",
+      "endingType": "WitnessOnly"
+    },
+    {
+      "endingId": "ending_connected_only",
+      "title": "接続",
+      "description": "断片的な記憶が、別の夜と繋がった。\n\n偶然か、必然か。",
+      "endingType": "ConnectedOnly"
+    },
+    {
+      "endingId": "ending_neither",
+      "title": "静かな夜",
+      "description": "電話は鳴り、また静かになった。\n\n日常は続く。何も変わらない——そう思いたい。",
+      "endingType": "Neither"
+    }
+  ],
+  "night03EndStateEffects": {
+    "description": "Night03のエンドステートがNight04に与える影響",
+    "effects": [
+      {
+        "night03EndState": "Crossroads",
+        "effect": "真理は安全。佐藤には情報を渡した。"
+      },
+      {
+        "night03EndState": "Intervention",
+        "effect": "真理は安全。佐藤には情報を渡さなかった。"
+      },
+      {
+        "night03EndState": "Disclosure",
+        "effect": "真理は行方不明。佐藤には情報を渡した。"
+      },
+      {
+        "night03EndState": "Silence",
+        "effect": "真理は行方不明。佐藤には情報を渡さなかった。"
+      }
+    ],
+    "note": "Night04ではNight03の結果について直接言及しない。プレイヤーが推測するのみ。"
+  },
+  "operatorThoughts": {
+    "description": "通話後に表示されるオペレーターの思考",
+    "thoughts": [
+      {
+        "thoughtId": "car_connection",
+        "triggerFlag": "witness_detailed_info",
+        "content": "あの車...どこかで見たロゴ...",
+        "timing": "after_call_body_discovery",
+        "note": "詳細情報を得た場合のみ表示。Night02との繋がりを示唆。"
+      }
+    ]
+  }
+}

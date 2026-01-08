@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d34f36aed81da45b07e6f6f91a17ea, type: 3}
+  m_Name: Night04_Scenario
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.NightScenarioData
+  scenarioId: night_04
+  title: "\u6C88\u9ED9\u306E\u8A3C\u4EBA"
+  description: "\u7720\u308C\u306A\u3044\u591C\u306E\u6563\u6B69\u4E2D\u3001\u9AD8\u9F62\u7537\u6027\u304C\u5C71\u4E2D\u3067\u907A\u4F53\u3092\u767A\u898B\u3059\u308B\u3002\u30D1\u30CB\u30C3\u30AF\u72B6\u614B\u306E\u901A\u5831\u8005\u3092\u843D\u3061\u7740\u304B\u305B\u3001\u60C5\u5831\u3092\u5F15\u304D\u51FA\u305B\u308B\u304B\u3002\u305D\u3057\u3066\u8B66\u5BDF\u304B\u3089\u306E\u78BA\u8A8D\u9023\u7D61\u3067\u3001\u6628\u591C\u306E\u7121\u8A00\u96FB\u8A71\u3068\u306E\u7E4B\u304C\u308A\u304C\u6D6E\u304B\u3073\u4E0A\u304C\u308B\u3002"
+  startTimeMinutes: 1320
+  endTimeMinutes: 360
+  realSecondsPerGameMinute: 2
+  callers: []
+  calls: []
+  evidenceTemplates:
+  - {fileID: 11400000, guid: 4e58d7285962f1646903e29b333faebc, type: 2}
+  - {fileID: 11400000, guid: 54b8afb833929924986ad216f396efc3, type: 2}
+  - {fileID: 11400000, guid: 301c3bb6adce2b246b6216550a3c36c4, type: 2}
+  - {fileID: 11400000, guid: c043305d860946d4a9e03753501a51e5, type: 2}
+  - {fileID: 11400000, guid: af2a5b792c25e7c4b9548d61df9b3365, type: 2}
+  - {fileID: 11400000, guid: 2627bd77ccf8f1247bcdd3ce31dd0aab, type: 2}
+  initialWorldStates:
+  - stateId: whistleblower_killed
+    description: "\u5185\u90E8\u544A\u767A\u8005\u304C\u7D44\u7E54\u306B\u6BBA\u3055\u308C\u305F"
+    timeMinutes: 0
+    involvedCallerIds:
+    - unknown_voice
+    isKnownToPlayer: 0
+  - stateId: body_dumped
+    description: "\u907A\u4F53\u304C\u5C71\u4E2D\u306B\u907A\u68C4\u3055\u308C\u305F"
+    timeMinutes: 0
+    involvedCallerIds: []
+    isKnownToPlayer: 0
+  - stateId: evidence_removed
+    description: "\u6240\u6301\u54C1\u306F\u5168\u3066\u7D44\u7E54\u306B\u56DE\u53CE\u3055\u308C\u305F"
+    timeMinutes: 0
+    involvedCallerIds: []
+    isKnownToPlayer: 0
+  - stateId: same_car
+    description: "Night02\u306E\u706B\u707D\u73FE\u5834\u3067\u76EE\u6483\u3055\u308C\u305F\u8ECA\u3068\u540C\u3058\u793E\u7528\u8ECA\u304C\u4F7F\u308F\u308C\u305F"
+    timeMinutes: 0
+    involvedCallerIds: []
+    isKnownToPlayer: 0
+  theTruth: "\u907A\u4F53\u306F\u7D44\u7E54\u306E\u5185\u90E8\u544A\u767A\u8005\u3060\u3063\u305F\u4E2D\u9593\u7BA1\u7406\u8077\u306E\u7537\u6027\u3002\u6797\u9065\u3092\u9003\u304C\u305D\u3046\u3068\u3057\u3066\u7D44\u7E54\u306B\u6355\u307E\u308A\u3001\u7D5E\u6BBA\u3055\u308C\u305F\u3002Night03\u306E\u7121\u8A00\u96FB\u8A71\u306E\u4E3B\u3002\u6240\u6301\u54C1\u306F\u5168\u3066\u56DE\u53CE\u3055\u308C\u3001\u8EAB\u5143\u4E0D\u660E\u306E\u72B6\u614B\u3067\u767A\u898B\u3055\u308C\u308B\u3002\u73FE\u5834\u306B\u6B8B\u3055\u308C\u305F\u5F15\u304D\u305A\u308A\u75D5\u3068\u3001\u76EE\u6483\u3055\u308C\u305F\u793E\u7528\u8ECA\u306FNight02\u306E\u5009\u5EAB\u706B\u707D\u73FE\u5834\u3067\u898B\u3089\u308C\u305F\u8ECA\u3068\u540C\u3058\u3002"
+  endings: []
+  dialogueDatabase: {fileID: 0}
+  difficulty: 4
+  estimatedPlayTimeMinutes: 20

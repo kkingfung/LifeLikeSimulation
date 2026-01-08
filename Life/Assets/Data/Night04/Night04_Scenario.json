@@ -1,0 +1,123 @@
+{
+  "scenarioId": "night_04",
+  "title": "沈黙の証人",
+  "description": "眠れない夜の散歩中、高齢男性が山中で遺体を発見する。パニック状態の通報者を落ち着かせ、情報を引き出せるか。そして警察からの確認連絡で、昨夜の無言電話との繋がりが浮かび上がる。",
+  "startTimeMinutes": 1320,
+  "endTimeMinutes": 360,
+  "realSecondsPerGameMinute": 2.0,
+  "difficulty": 4,
+  "estimatedPlayTimeMinutes": 20,
+  "theTruth": "遺体は組織の内部告発者だった中間管理職の男性。林遥を逃がそうとして組織に捕まり、絞殺された。Night03の無言電話の主。所持品は全て回収され、身元不明の状態で発見される。現場に残された引きずり痕と、目撃された社用車はNight02の倉庫火災現場で見られた車と同じ。",
+  "callSchedule": [
+    {
+      "callId": "call_body_discovery",
+      "callerId": "elderly_man",
+      "title": "遺体発見",
+      "incomingTimeMinutes": 150,
+      "ringDuration": 45,
+      "priority": 10,
+      "isCritical": true,
+      "description": "眠れずに深夜の散歩をしていた高齢男性が、山中の登山道脇で遺体を発見。パニック状態で通報。"
+    },
+    {
+      "callId": "call_police_inquiry",
+      "callerId": "police",
+      "title": "確認連絡",
+      "incomingTimeMinutes": 180,
+      "ringDuration": 30,
+      "priority": 8,
+      "isCritical": true,
+      "description": "警察からの確認連絡。Night03の無言電話について質問してくる。"
+    }
+  ],
+  "initialWorldStates": [
+    {
+      "stateId": "whistleblower_killed",
+      "description": "内部告発者が組織に殺された",
+      "timeMinutes": 0,
+      "involvedCallerIds": ["unknown_voice"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "body_dumped",
+      "description": "遺体が山中に遺棄された",
+      "timeMinutes": 0,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "evidence_removed",
+      "description": "所持品は全て組織に回収された",
+      "timeMinutes": 0,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "same_car",
+      "description": "Night02の火災現場で目撃された車と同じ社用車が使われた",
+      "timeMinutes": 0,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    }
+  ],
+  "evidenceTemplates": [
+    {
+      "evidenceId": "evidence_body_found",
+      "title": "遺体発見",
+      "content": "山中の登山道脇で身元不明の男性遺体が発見された",
+      "category": "Incident"
+    },
+    {
+      "evidenceId": "evidence_strangulation",
+      "title": "絞殺痕",
+      "content": "遺体の首には絞められた痕跡があった",
+      "category": "Physical"
+    },
+    {
+      "evidenceId": "evidence_drag_marks",
+      "title": "引きずり痕",
+      "content": "遺体は別の場所から引きずられてきた形跡がある",
+      "category": "Physical"
+    },
+    {
+      "evidenceId": "evidence_company_car",
+      "title": "社用車の目撃",
+      "content": "現場付近で見慣れない社用車が目撃された",
+      "category": "Testimony"
+    },
+    {
+      "evidenceId": "evidence_car_connection",
+      "title": "車の繋がり",
+      "content": "目撃された車はNight02の火災現場付近でも見られた車と同じ",
+      "category": "Connection"
+    },
+    {
+      "evidenceId": "evidence_silent_call_victim",
+      "title": "無言電話の主",
+      "content": "Night03の無言電話の発信者が、今回の被害者である可能性",
+      "category": "Connection"
+    }
+  ],
+  "night03EndStateEffects": {
+    "Crossroads": {
+      "description": "真理を助け、佐藤に情報を渡した",
+      "modifiesCall": null,
+      "addFlags": ["mari_saved_n03", "told_sato_n03"]
+    },
+    "Intervention": {
+      "description": "真理を助け、佐藤に情報を渡さなかった",
+      "modifiesCall": null,
+      "addFlags": ["mari_saved_n03", "refused_sato_n03"]
+    },
+    "Disclosure": {
+      "description": "真理を助けず、佐藤に情報を渡した",
+      "modifiesCall": null,
+      "addFlags": ["mari_not_saved_n03", "told_sato_n03"]
+    },
+    "Silence": {
+      "description": "真理を助けず、佐藤に情報を渡さなかった",
+      "modifiesCall": null,
+      "addFlags": ["mari_not_saved_n03", "refused_sato_n03"]
+    }
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "callId": "call_police_inquiry",
+  "callerId": "police",
+  "title": "確認連絡",
+  "description": "警察からの確認連絡。Night03の無言電話について質問してくる。",
+  "segments": [
+    {
+      "segmentId": "police_intro",
+      "callerLines": [
+        "○○警察署です。",
+        "先ほどの遺体発見の件で、確認したいことがあります。",
+        "昨夜、そちらに無言の電話がありましたね？"
+      ],
+      "responses": [
+        {
+          "responseId": "confirm_call",
+          "text": "はい、ありました。",
+          "nextSegmentId": "ask_content",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "deny_call",
+          "text": "...覚えていません。",
+          "nextSegmentId": "police_press",
+          "setFlags": ["evasive_initial"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_press",
+      "callerLines": [
+        "記録にはあります。",
+        "重要な捜査です。協力をお願いします。",
+        "その電話について、何か覚えていることは？"
+      ],
+      "responses": [
+        {
+          "responseId": "press_honest",
+          "text": "...呼吸音だけ聞こえました。",
+          "nextSegmentId": "ask_details",
+          "setFlags": ["honest_with_police"],
+          "clearFlags": ["evasive_initial"]
+        },
+        {
+          "responseId": "press_vague",
+          "text": "本当に覚えていないんです。",
+          "nextSegmentId": "police_end_unsatisfied",
+          "setFlags": ["evasive_with_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "ask_content",
+      "callerLines": [
+        "その電話で、何か聞こえましたか？",
+        "声、音、何でも構いません。"
+      ],
+      "responses": [
+        {
+          "responseId": "answer_honest",
+          "text": "呼吸音だけ聞こえました。誰かがいることは分かりましたが、それだけです。",
+          "nextSegmentId": "ask_details",
+          "setFlags": ["honest_with_police"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "answer_vague",
+          "text": "よく覚えていません。",
+          "nextSegmentId": "ask_details_vague",
+          "setFlags": ["evasive_with_police"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "answer_lie",
+          "text": "完全に無音でした。",
+          "nextSegmentId": "ask_details_lie",
+          "setFlags": ["lied_to_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "ask_details",
+      "callerLines": [
+        "呼吸音...なるほど。",
+        "他に気づいたことはありますか？",
+        "背景音とか、何か聞こえませんでしたか？"
+      ],
+      "responses": [
+        {
+          "responseId": "details_nothing",
+          "text": "それだけです。すぐに切れました。",
+          "nextSegmentId": "check_connection",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "ask_details_vague",
+      "callerLines": [
+        "そうですか...",
+        "何か思い出したら連絡ください。"
+      ],
+      "responses": [
+        {
+          "responseId": "vague_end",
+          "text": "分かりました。",
+          "nextSegmentId": "check_connection_brief",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "ask_details_lie",
+      "callerLines": [
+        "完全に無音...？",
+        "...分かりました。"
+      ],
+      "responses": [
+        {
+          "responseId": "lie_end",
+          "text": "お力になれず申し訳ありません。",
+          "nextSegmentId": "police_end_suspicious",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "check_connection",
+      "callerLines": [
+        "ありがとうございます。",
+        "他に何か、この件で気づいたことはありますか？"
+      ],
+      "responses": [
+        {
+          "responseId": "mention_car",
+          "text": "あの...先ほどの通報で、社用車の目撃情報がありました。以前も同じような車を...",
+          "nextSegmentId": "car_connection",
+          "setFlags": ["connected_nights"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "witness_detailed_info"
+          }
+        },
+        {
+          "responseId": "no_mention",
+          "text": "いいえ、特には。",
+          "nextSegmentId": "police_end_normal",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "check_connection_brief",
+      "callerLines": [
+        "他に何かあれば連絡ください。"
+      ],
+      "responses": [
+        {
+          "responseId": "brief_end",
+          "text": "分かりました。",
+          "nextSegmentId": "police_end_unsatisfied",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "car_connection",
+      "callerLines": [
+        "...以前も？",
+        "詳しく聞かせてください。"
+      ],
+      "responses": [
+        {
+          "responseId": "explain_night02",
+          "text": "倉庫火災の時にも、同じような社用車が目撃されていました。",
+          "nextSegmentId": "police_interested",
+          "setFlags": ["told_police_connection"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_interested",
+      "callerLines": [
+        "...なるほど。",
+        "重要な情報です。確認します。",
+        "ご協力ありがとうございます。"
+      ],
+      "responses": [
+        {
+          "responseId": "interested_end",
+          "text": "お役に立てれば。",
+          "nextSegmentId": null,
+          "setFlags": ["police_connection_noted"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_end_normal",
+      "callerLines": [
+        "分かりました。",
+        "ご協力ありがとうございました。",
+        "何かあればまた連絡します。"
+      ],
+      "responses": [
+        {
+          "responseId": "normal_end_reply",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_end_unsatisfied",
+      "callerLines": [
+        "...そうですか。",
+        "何か思い出したら連絡ください。"
+      ],
+      "responses": [
+        {
+          "responseId": "unsatisfied_end_reply",
+          "text": "分かりました。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_end_suspicious",
+      "callerLines": [
+        "...分かりました。",
+        "また連絡することがあるかもしれません。"
+      ],
+      "responses": [
+        {
+          "responseId": "suspicious_end_reply",
+          "text": "...はい。",
+          "nextSegmentId": null,
+          "setFlags": ["police_suspicious"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "police_intro",
+  "note": "警察はNight03の無言電話を追跡している。オペレーターの回答によって警察との関係が変わる。車の情報を得ていた場合（witness_detailed_info）、Night02との繋がりを伝える選択肢が出現し、connected_nightsフラグを獲得できる。"
+}

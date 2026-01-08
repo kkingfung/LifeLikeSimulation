@@ -69,6 +69,15 @@ namespace LifeLike.Editor
                     Debug.Log($"[EndStateIntegrationTest] Night03テスト完了: {_testResults.FindAll(r => r.passed).Count}/{_testResults.Count} passed");
                 }
             }
+            if (GUILayout.Button("Run Night04 Tests"))
+            {
+                _testResults.Clear();
+                if (_flagDefinition != null && _endStateDefinition != null)
+                {
+                    RunNight04Tests();
+                    Debug.Log($"[EndStateIntegrationTest] Night04テスト完了: {_testResults.FindAll(r => r.passed).Count}/{_testResults.Count} passed");
+                }
+            }
             GUILayout.EndHorizontal();
 
             GUILayout.Space(10);
@@ -631,6 +640,164 @@ namespace LifeLike.Editor
                 expected = "ending_silence",
                 actual = endingId,
                 passed = endingId == "ending_silence"
+            });
+        }
+
+        #endregion
+
+        #region Night04 Tests
+
+        /// <summary>
+        /// Night04テストを実行
+        /// Night04は独立した2つのフラグ（Witness/Connected）で判定
+        /// 4パターン: 両方あり、Witnessのみ、Connectedのみ、どちらもなし
+        /// </summary>
+        public void RunNight04Tests()
+        {
+            TestWitnessAndConnected();
+            TestWitnessOnly();
+            TestConnectedOnly();
+            TestNeither();
+        }
+
+        /// <summary>
+        /// テスト: Witness + Connected → ending_witness_connected
+        /// 条件: witness_detailed_info = true, connected_nights = true
+        /// パターン: 良いアプローチで詳細情報を得て、Night02との繋がりを警察に伝えた
+        /// </summary>
+        private void TestWitnessAndConnected()
+        {
+            var flagService = new FlagService();
+            flagService.Initialize(_flagDefinition!.nightId, _flagDefinition!);
+
+            // 良いアプローチで詳細情報を得た
+            flagService.SetFlag("good_approach", 60);
+            flagService.SetFlag("caller_calmed", 65);
+            flagService.SetFlag("evidence_body_details", 70);
+            flagService.SetFlag("evidence_drag_marks", 75);
+            flagService.SetFlag("evidence_car_details", 80);
+            flagService.SetFlag("witness_detailed_info", 85);          // Witnessフラグ
+
+            // 警察に正直に答え、Night02との繋がりを伝えた
+            flagService.SetFlag("honest_with_police", 90);
+            flagService.SetFlag("connected_nights", 95);               // Connectedフラグ
+            flagService.SetFlag("told_police_connection", 100);
+
+            var endStateService = new EndStateService(flagService);
+            endStateService.Initialize(_endStateDefinition!);
+
+            string endingId = endStateService.DetermineEnding(null);
+
+            _testResults.Add(new TestResult
+            {
+                testName = "WITNESS + CONNECTED → ending_witness_connected",
+                expected = "ending_witness_connected",
+                actual = endingId,
+                passed = endingId == "ending_witness_connected"
+            });
+        }
+
+        /// <summary>
+        /// テスト: Witness のみ → ending_witness_only
+        /// 条件: witness_detailed_info = true, connected_nights = false
+        /// パターン: 詳細情報は得たが、繋がりは伝えなかった
+        /// </summary>
+        private void TestWitnessOnly()
+        {
+            var flagService = new FlagService();
+            flagService.Initialize(_flagDefinition!.nightId, _flagDefinition!);
+
+            // 良いアプローチで詳細情報を得た
+            flagService.SetFlag("good_approach", 60);
+            flagService.SetFlag("caller_calmed", 65);
+            flagService.SetFlag("evidence_body_details", 70);
+            flagService.SetFlag("evidence_drag_marks", 75);
+            flagService.SetFlag("evidence_car_details", 80);
+            flagService.SetFlag("witness_detailed_info", 85);          // Witnessフラグ
+
+            // 警察に正直に答えたが、繋がりは伝えなかった
+            flagService.SetFlag("honest_with_police", 90);
+            // connected_nights は設定しない
+
+            var endStateService = new EndStateService(flagService);
+            endStateService.Initialize(_endStateDefinition!);
+
+            string endingId = endStateService.DetermineEnding(null);
+
+            _testResults.Add(new TestResult
+            {
+                testName = "WITNESS only → ending_witness_only",
+                expected = "ending_witness_only",
+                actual = endingId,
+                passed = endingId == "ending_witness_only"
+            });
+        }
+
+        /// <summary>
+        /// テスト: Connected のみ → ending_connected_only
+        /// 条件: witness_detailed_info = false, connected_nights = true
+        /// パターン: 詳細情報は少ないが、過去の知識からNight02との繋がりを伝えた
+        /// </summary>
+        private void TestConnectedOnly()
+        {
+            var flagService = new FlagService();
+            flagService.Initialize(_flagDefinition!.nightId, _flagDefinition!);
+
+            // 悪いアプローチで詳細情報を得られなかった
+            flagService.SetFlag("bad_approach", 60);
+            flagService.SetFlag("caller_partial_calm", 65);
+            flagService.SetFlag("location_confirmed", 70);
+            // witness_detailed_info は設定しない
+
+            // 警察に正直に答え、Night02との繋がりを伝えた（過去の記憶から）
+            flagService.SetFlag("honest_with_police", 90);
+            flagService.SetFlag("connected_nights", 95);               // Connectedフラグ
+
+            var endStateService = new EndStateService(flagService);
+            endStateService.Initialize(_endStateDefinition!);
+
+            string endingId = endStateService.DetermineEnding(null);
+
+            _testResults.Add(new TestResult
+            {
+                testName = "CONNECTED only → ending_connected_only",
+                expected = "ending_connected_only",
+                actual = endingId,
+                passed = endingId == "ending_connected_only"
+            });
+        }
+
+        /// <summary>
+        /// テスト: どちらもなし → ending_neither
+        /// 条件: witness_detailed_info = false, connected_nights = false
+        /// パターン: 詳細情報を得られず、繋がりも伝えなかった
+        /// </summary>
+        private void TestNeither()
+        {
+            var flagService = new FlagService();
+            flagService.Initialize(_flagDefinition!.nightId, _flagDefinition!);
+
+            // 悪いアプローチで詳細情報を得られなかった
+            flagService.SetFlag("bad_approach", 60);
+            flagService.SetFlag("caller_partial_calm", 65);
+            flagService.SetFlag("location_confirmed", 70);
+            // witness_detailed_info は設定しない
+
+            // 警察に曖昧に答えた
+            flagService.SetFlag("evasive_with_police", 90);
+            // connected_nights は設定しない
+
+            var endStateService = new EndStateService(flagService);
+            endStateService.Initialize(_endStateDefinition!);
+
+            string endingId = endStateService.DetermineEnding(null);
+
+            _testResults.Add(new TestResult
+            {
+                testName = "NEITHER → ending_neither",
+                expected = "ending_neither",
+                actual = endingId,
+                passed = endingId == "ending_neither"
             });
         }
 

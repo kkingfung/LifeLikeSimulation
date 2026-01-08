@@ -1,0 +1,227 @@
+{
+  "nightId": "night_04",
+  "description": "Night04「沈黙の証人」フラグ定義",
+  "flagDefinitions": [
+    {
+      "flagId": "empathy_approach",
+      "category": "Event",
+      "description": "共感型アプローチを選んだ",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "directive_approach",
+      "category": "Event",
+      "description": "指示型アプローチを選んだ",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "question_approach",
+      "category": "Event",
+      "description": "質問型アプローチを選んだ",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "good_approach",
+      "category": "Event",
+      "description": "良いアプローチで対応した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "bad_approach",
+      "category": "Event",
+      "description": "悪いアプローチで対応した",
+      "weight": -1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "caller_calmed",
+      "category": "Event",
+      "description": "通報者を落ち着かせることができた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "caller_partial_calm",
+      "category": "Event",
+      "description": "通報者を部分的に落ち着かせた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "evidence_body_details",
+      "category": "Evidence",
+      "description": "遺体の詳細情報を得た",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "evidence_drag_marks",
+      "category": "Evidence",
+      "description": "引きずり痕の情報を得た",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "evidence_car_seen",
+      "category": "Evidence",
+      "description": "社用車の目撃情報を得た",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "evidence_car_details",
+      "category": "Evidence",
+      "description": "社用車の詳細情報を得た",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "evidence_time_info",
+      "category": "Evidence",
+      "description": "時間情報を得た（昨日の朝はなかった）",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "witness_detailed_info",
+      "category": "Evidence",
+      "description": "詳細な情報を引き出せた（Witnessフラグ）",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "エンドステート判定に使用"
+    },
+    {
+      "flagId": "location_confirmed",
+      "category": "Event",
+      "description": "場所を確認し、警察を派遣した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "call_body_completed",
+      "category": "Event",
+      "description": "遺体発見通話が完了した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "evasive_initial",
+      "category": "Alignment",
+      "description": "最初に曖昧に答えた",
+      "weight": -1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "honest_with_police",
+      "category": "Alignment",
+      "description": "警察に正直に答えた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "evasive_with_police",
+      "category": "Alignment",
+      "description": "警察に曖昧に答えた",
+      "weight": -1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "lied_to_police",
+      "category": "Alignment",
+      "description": "警察に嘘をついた",
+      "weight": -3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "connected_nights",
+      "category": "Evidence",
+      "description": "Night02との繋がりを警察に伝えた（Connectedフラグ）",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "エンドステート判定に使用"
+    },
+    {
+      "flagId": "told_police_connection",
+      "category": "Disclosure",
+      "description": "倉庫火災との関連を警察に伝えた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_connection_noted",
+      "category": "Event",
+      "description": "警察が関連を記録した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "police_suspicious",
+      "category": "Alignment",
+      "description": "警察がオペレーターを疑っている",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "mari_saved_n03",
+      "category": "Night03Effect",
+      "description": "Night03で真理を助けた",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night03からの引き継ぎ"
+    },
+    {
+      "flagId": "mari_not_saved_n03",
+      "category": "Night03Effect",
+      "description": "Night03で真理を助けなかった",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night03からの引き継ぎ"
+    },
+    {
+      "flagId": "told_sato_n03",
+      "category": "Night03Effect",
+      "description": "Night03で佐藤に情報を渡した",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night03からの引き継ぎ"
+    },
+    {
+      "flagId": "refused_sato_n03",
+      "category": "Night03Effect",
+      "description": "Night03で佐藤に情報を渡さなかった",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night03からの引き継ぎ"
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "good_approach",
+      "cancelFlags": ["bad_approach"]
+    },
+    {
+      "whenFlagSet": "bad_approach",
+      "cancelFlags": ["good_approach"]
+    },
+    {
+      "whenFlagSet": "caller_calmed",
+      "cancelFlags": ["caller_partial_calm"]
+    },
+    {
+      "whenFlagSet": "honest_with_police",
+      "cancelFlags": ["evasive_with_police", "lied_to_police"]
+    },
+    {
+      "whenFlagSet": "evasive_with_police",
+      "cancelFlags": ["honest_with_police", "lied_to_police"]
+    },
+    {
+      "whenFlagSet": "lied_to_police",
+      "cancelFlags": ["honest_with_police", "evasive_with_police"]
+    }
+  ]
+}

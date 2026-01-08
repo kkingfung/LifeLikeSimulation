@@ -1,0 +1,279 @@
+{
+  "callId": "call_body_discovery",
+  "callerId": "elderly_man",
+  "title": "遺体発見",
+  "description": "眠れずに深夜の散歩をしていた高齢男性が、山中の登山道脇で遺体を発見。パニック状態で通報。",
+  "segments": [
+    {
+      "segmentId": "panic_start",
+      "callerLines": [
+        "た、助けて...！",
+        "し、死体が...人が倒れて...！",
+        "血が...首に...ああ..."
+      ],
+      "responses": [
+        {
+          "responseId": "approach_empathy",
+          "text": "落ち着いてください。怖かったですね。大丈夫ですよ。",
+          "nextSegmentId": "calming_empathy",
+          "setFlags": ["empathy_approach"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "approach_directive",
+          "text": "深呼吸してください。ゆっくり息を吸って、吐いて。",
+          "nextSegmentId": "calming_directive",
+          "setFlags": ["directive_approach"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "approach_question",
+          "text": "今どこにいますか？場所を教えてください。",
+          "nextSegmentId": "calming_question",
+          "setFlags": ["question_approach"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "calming_empathy",
+      "callerLines": [
+        "...はい...はい...",
+        "すみません...初めて見て...こんなの...",
+        "...少し落ち着きました..."
+      ],
+      "responses": [
+        {
+          "responseId": "empathy_continue",
+          "text": "大丈夫です。ゆっくりで構いません。何があったか教えてください。",
+          "nextSegmentId": "detailed_report",
+          "setFlags": ["caller_calmed", "good_approach"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "calming_directive",
+      "callerLines": [
+        "...すぅ...はぁ...",
+        "...すみません、取り乱しました...",
+        "...少し落ち着きました..."
+      ],
+      "responses": [
+        {
+          "responseId": "directive_continue",
+          "text": "いいですよ。状況を教えてください。",
+          "nextSegmentId": "detailed_report",
+          "setFlags": ["caller_calmed", "good_approach"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "calming_question",
+      "callerLines": [
+        "ば、場所...？え...山...山の道...",
+        "わ、分からない...怖くて...",
+        "...ああ...ああ..."
+      ],
+      "responses": [
+        {
+          "responseId": "question_retry",
+          "text": "大丈夫です。落ち着いて。まず深呼吸しましょう。",
+          "nextSegmentId": "calming_retry",
+          "setFlags": ["bad_approach"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "calming_retry",
+      "callerLines": [
+        "...はい...",
+        "...すみません...",
+        "...少しだけ..."
+      ],
+      "responses": [
+        {
+          "responseId": "retry_continue",
+          "text": "いいですよ。何が見えますか？",
+          "nextSegmentId": "minimal_report",
+          "setFlags": ["caller_partial_calm"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "detailed_report",
+      "callerLines": [
+        "山の...登山道を歩いていたんです...",
+        "眠れなくて、散歩しようと思って...",
+        "そしたら...道の脇の茂みに...人が..."
+      ],
+      "responses": [
+        {
+          "responseId": "ask_body_details",
+          "text": "その人はどんな状態でしたか？",
+          "nextSegmentId": "body_details",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_location",
+          "text": "場所をもう少し詳しく教えてください。",
+          "nextSegmentId": "location_details",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "body_details",
+      "callerLines": [
+        "男の人です...スーツみたいな...服が破れてて...",
+        "首に...赤い痕があって...絞められたような...",
+        "動かない...息もしてない..."
+      ],
+      "responses": [
+        {
+          "responseId": "body_to_scene",
+          "text": "周りに何か気づいたことはありますか？",
+          "nextSegmentId": "scene_details",
+          "setFlags": ["evidence_body_details"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "scene_details",
+      "callerLines": [
+        "茂みから...引きずった跡があるんです...",
+        "ここまで運ばれてきたみたいで...",
+        "草が踏み荒らされてて..."
+      ],
+      "responses": [
+        {
+          "responseId": "scene_to_witness",
+          "text": "何か不審なものを見ませんでしたか？車とか、人とか。",
+          "nextSegmentId": "witness_info",
+          "setFlags": ["evidence_drag_marks"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "witness_info",
+      "callerLines": [
+        "あ...そういえば...",
+        "さっき...来る途中で車を見ました...",
+        "社用車...会社のロゴが入った車..."
+      ],
+      "responses": [
+        {
+          "responseId": "ask_car_details",
+          "text": "どんな車でしたか？覚えていますか？",
+          "nextSegmentId": "car_details",
+          "setFlags": ["evidence_car_seen"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "car_details",
+      "callerLines": [
+        "暗くてはっきりとは...でも会社の車でした...",
+        "この辺では見慣れない車で...",
+        "...あ、昨日の朝もここを歩きましたが、何もなかったんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "car_to_location",
+          "text": "分かりました。正確な場所を教えてください。警察を向かわせます。",
+          "nextSegmentId": "location_details",
+          "setFlags": ["evidence_car_details", "evidence_time_info", "witness_detailed_info"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "location_details",
+      "callerLines": [
+        "○○山の...ハイキングコースです...",
+        "登山口から...15分くらい歩いたところ...",
+        "道の右側の茂みの中に..."
+      ],
+      "responses": [
+        {
+          "responseId": "location_confirm",
+          "text": "分かりました。警察を向かわせます。その場で待っていてください。",
+          "nextSegmentId": "call_end",
+          "setFlags": ["location_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "minimal_report",
+      "callerLines": [
+        "山...山の道で...",
+        "人が...倒れてて...",
+        "動かなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "minimal_location",
+          "text": "どこの山ですか？場所を教えてください。",
+          "nextSegmentId": "minimal_location",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "minimal_location",
+      "callerLines": [
+        "○○山...だと思います...",
+        "登山口の近く..."
+      ],
+      "responses": [
+        {
+          "responseId": "minimal_end",
+          "text": "分かりました。警察を向かわせます。その場で待っていてください。",
+          "nextSegmentId": "call_end",
+          "setFlags": ["location_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "call_end",
+      "callerLines": [
+        "...はい...",
+        "...ありがとうございます...",
+        "...待っています..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_reply",
+          "text": "お電話ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["call_body_completed"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "panic_start",
+  "operatorThoughts": [
+    {
+      "triggerId": "car_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "witness_detailed_info"
+      },
+      "triggerTiming": "after_call",
+      "content": "あの車...どこかで見たロゴ..."
+    }
+  ],
+  "note": "プレイヤーのアプローチによって得られる情報量が変わる。良いアプローチ（共感型・指示型）で詳細情報を得られ、悪いアプローチ（質問型から入る）だと最低限の情報しか得られない。車の情報を得た場合、Night02との繋がりに気づくヒントとなる。"
+}

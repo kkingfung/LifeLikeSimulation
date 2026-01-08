@@ -1,0 +1,62 @@
+{
+  "nightId": "night_04",
+  "description": "第4夜「沈黙の証人」発信者データ",
+  "callers": [
+    {
+      "callerId": "elderly_man",
+      "displayName": "通報者",
+      "realName": "不明",
+      "description": "退職した高齢男性。毎朝の散歩が日課だが、この夜は眠れずに深夜に散歩していた。人生で初めて遺体を目撃し、パニック状態。",
+      "voiceDescription": "震えた高齢男性の声。パニック状態で息が荒く、声が裏返ることも。落ち着くと穏やかな口調になる。",
+      "voicePitch": 0.85,
+      "personality": {
+        "honesty": 95,
+        "stability": 40,
+        "cooperation": 90,
+        "aggression": 5
+      },
+      "hiddenInfo": "特になし。本当にただの一般市民。眠れない夜が続いていたため深夜の散歩に出た。",
+      "trueMotivation": "助けを求めている、恐怖から逃れたい",
+      "relations": [],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "police",
+      "displayName": "警察",
+      "realName": "警察官",
+      "description": "Night03の無言電話を追跡している警察官。通報センターに電話がかかってきたことを把握し、確認の連絡をしてきた。",
+      "voiceDescription": "事務的だが、少し緊迫感のある男性の声。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 90,
+        "stability": 85,
+        "cooperation": 75,
+        "aggression": 15
+      },
+      "hiddenInfo": "無言電話の発信元を追跡中。遺体発見との関連を調査している。",
+      "trueMotivation": "事件の真相を解明したい",
+      "relations": [],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "whistleblower",
+      "displayName": "不明",
+      "realName": "不明",
+      "description": "Night03の無言電話の主。組織の中間管理職で、内部告発者だった。林遥を逃がそうとして組織に捕まり、殺された。Night04では遺体として発見される。",
+      "voiceDescription": "（Night04では登場しない — 遺体として言及されるのみ）",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 80,
+        "stability": 50,
+        "cooperation": 70,
+        "aggression": 20
+      },
+      "hiddenInfo": "組織の中間管理職だった。林遥の逃亡を手助けしようとしたが、発覚して捕まった。Night03で最後の電話をかけようとしたが、話すことができなかった。",
+      "trueMotivation": "（死亡）組織の不正を暴きたかった、遥を救いたかった",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Protected", "description": "逃がそうとした", "isKnown": false }
+      ],
+      "organizationRelation": "former_member"
+    }
+  ]
+}

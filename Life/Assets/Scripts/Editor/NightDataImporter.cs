@@ -18,7 +18,7 @@ namespace LifeLike.Editor
     public class NightDataImporter : EditorWindow
     {
         private string _selectedNight = "Night01";
-        private readonly string[] _nightOptions = { "Night01", "Night02", "Night03" };
+        private readonly string[] _nightOptions = { "Night01", "Night02", "Night03", "Night04" };
         private int _selectedNightIndex = 0;
 
         private string JsonDataPath => $"Assets/Data/{_selectedNight}";
@@ -272,6 +272,8 @@ namespace LifeLike.Editor
                 "Threat" => FlagCategory.Threat,
                 "Night01Effect" => FlagCategory.Night01Effect,
                 "Night02Effect" => FlagCategory.Night02Effect,
+                // Night04追加
+                "Night03Effect" => FlagCategory.Night03Effect,
                 _ => FlagCategory.Event
             };
         }
@@ -293,6 +295,8 @@ namespace LifeLike.Editor
                 "Victim" => RelationType.Victim,
                 "Suspect" => RelationType.Suspect,
                 "Neighbor" => RelationType.Neighbor,
+                // Night04追加
+                "Protected" => RelationType.Protected,
                 _ => RelationType.Stranger
             };
         }
@@ -358,10 +362,12 @@ namespace LifeLike.Editor
                     {
                         foreach (var flagJson in condJson.flagConditions)
                         {
+                            // flagId形式（Night04）とvariableName形式（Night01-03）の両方をサポート
+                            string flagId = !string.IsNullOrEmpty(flagJson.flagId) ? flagJson.flagId : flagJson.variableName;
                             condition.flagConditions.Add(new FlagCondition
                             {
-                                flagId = flagJson.variableName,
-                                requiredValue = flagJson.boolValue
+                                flagId = flagId,
+                                requiredValue = flagJson.requiredValue || flagJson.boolValue
                             });
                         }
                     }
@@ -438,6 +444,11 @@ namespace LifeLike.Editor
                 "Intervention" => EndStateType.Intervention,
                 "Disclosure" => EndStateType.Disclosure,
                 "Silence" => EndStateType.Silence,
+                // Night04追加
+                "WitnessConnected" => EndStateType.WitnessConnected,
+                "WitnessOnly" => EndStateType.WitnessOnly,
+                "ConnectedOnly" => EndStateType.ConnectedOnly,
+                "Neither" => EndStateType.Neither,
                 _ => EndStateType.Contained
             };
         }
@@ -481,6 +492,11 @@ namespace LifeLike.Editor
                 "Intervention" => EndingType.Intervention,
                 "Disclosure" => EndingType.Disclosure,
                 "Silence" => EndingType.Silence,
+                // Night04追加
+                "WitnessConnected" => EndingType.WitnessConnected,
+                "WitnessOnly" => EndingType.WitnessOnly,
+                "ConnectedOnly" => EndingType.ConnectedOnly,
+                "Neither" => EndingType.Neither,
                 _ => EndingType.Neutral
             };
         }
@@ -894,10 +910,14 @@ namespace LifeLike.Editor
         [Serializable]
         private class FlagConditionJson
         {
+            // Night01-03形式
             public string variableName = string.Empty;
             public string variableType = string.Empty;
             public string comparisonOperator = string.Empty;
             public bool boolValue;
+            // Night04形式
+            public string flagId = string.Empty;
+            public bool requiredValue;
         }
 
         [Serializable]
