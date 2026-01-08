@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98530dacedb0bb84c965271d31722dd6, type: 3}
+  m_Name: Night03_EndState
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.EndState.EndStateDefinition
+  nightId: night_03
+  conditions:
+  - endStateType: 10
+    priority: 1
+    scoreConditions: []
+    flagConditions:
+    - flagId: mari_saved
+      requiredValue: 1
+    - flagId: told_sato_about_haruka
+      requiredValue: 1
+    description: "\u5206\u304B\u308C\u9053 \u2014 \u771F\u7406\u3092\u52A9\u3051\u3001\u4F50\u85E4\u306B\u60C5\u5831\u3092\u6E21\u3057\u305F"
+  - endStateType: 11
+    priority: 2
+    scoreConditions: []
+    flagConditions:
+    - flagId: mari_saved
+      requiredValue: 1
+    - flagId: refused_sato
+      requiredValue: 1
+    description: "\u4ECB\u5165 \u2014 \u771F\u7406\u3092\u52A9\u3051\u3001\u4F50\u85E4\u306B\u60C5\u5831\u3092\u6E21\u3055\u306A\u304B\u3063\u305F"
+  - endStateType: 12
+    priority: 3
+    scoreConditions: []
+    flagConditions:
+    - flagId: mari_not_saved
+      requiredValue: 1
+    - flagId: told_sato_about_haruka
+      requiredValue: 1
+    description: "\u958B\u793A \u2014 \u771F\u7406\u3092\u52A9\u3051\u305A\u3001\u4F50\u85E4\u306B\u60C5\u5831\u3092\u6E21\u3057\u305F"
+  - endStateType: 13
+    priority: 4
+    scoreConditions: []
+    flagConditions:
+    - flagId: mari_not_saved
+      requiredValue: 1
+    - flagId: refused_sato
+      requiredValue: 1
+    description: "\u6C88\u9ED9 \u2014 \u771F\u7406\u3092\u52A9\u3051\u305A\u3001\u4F50\u85E4\u306B\u60C5\u5831\u3092\u6E21\u3055\u306A\u304B\u3063\u305F"
+  endingMappings:
+  - endState: 10
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_crossroads
+  - endState: 11
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_intervention
+  - endState: 12
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_disclosure
+  - endState: 13
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_silence
+  victimSurvival:
+    requiresDispatch: 1
+    maxDispatchTimeMinutes: 35
+    dispatchFlagId: police_dispatched_argument
+  defaultEndState: 13
+  defaultEndingId: ending_silence
+  endings:
+  - endingId: ending_crossroads
+    title: "\u5206\u304B\u308C\u9053"
+    description: "\u624B\u3092\u5DEE\u3057\u4F38\u3079\u305F\u3002\u8A00\u8449\u3082\u5DEE\u3057\u51FA\u3057\u305F\u3002\n\n\u3069\u3061\u3089\u304C\u6B63\u3057\u304B\u3063\u305F\u306E\u304B\u306F\u3001\u307E\u3060\u5206\u304B\u3089\u306A\u3044\u3002"
+    conditions: []
+    endingType: 15
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_intervention
+    title: "\u4ECB\u5165"
+    description: "\u58F0\u304C\u805E\u3053\u3048\u305F\u3002\u884C\u52D5\u3057\u305F\u3002\u305D\u308C\u3060\u3051\u306E\u3053\u3068\u3060\u3002\n\n\u305D\u308C\u3060\u3051\u306E\u3053\u3068\u304C\u3001\u3059\u3079\u3066\u3092\u5909\u3048\u308B\u3002"
+    conditions: []
+    endingType: 16
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_disclosure
+    title: "\u958B\u793A"
+    description: "\u8A00\u8449\u306F\u7A7A\u6C17\u306B\u6EB6\u3051\u305F\u3002\u8AB0\u304B\u306E\u8033\u306B\u5C4A\u3044\u305F\u3002\n\n\u305D\u306E\u5148\u306B\u4F55\u304C\u3042\u308B\u306E\u304B\u3001\u77E5\u308B\u8853\u306F\u306A\u3044\u3002"
+    conditions: []
+    endingType: 17
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_silence
+    title: "\u6C88\u9ED9"
+    description: "\u591C\u306F\u9759\u304B\u3060\u3063\u305F\u3002\u4F55\u3082\u8D77\u304D\u306A\u304B\u3063\u305F\u3002\n\n\u5C11\u306A\u304F\u3068\u3082\u3001\u81EA\u5206\u306E\u77E5\u308B\u9650\u308A\u3067\u306F\u3002"
+    conditions: []
+    endingType: 18
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0

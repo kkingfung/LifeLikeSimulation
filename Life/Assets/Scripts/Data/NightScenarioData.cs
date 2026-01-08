@@ -106,7 +106,20 @@ namespace LifeLike.Data
         Isolated,
 
         /// <summary>日常 — 普通の夜として処理</summary>
-        Routine
+        Routine,
+
+        // === Night03 追加 ===
+        /// <summary>分かれ道 — 真理を助け、佐藤に情報を渡した</summary>
+        Crossroads,
+
+        /// <summary>介入 — 真理を助け、佐藤に情報を渡さなかった</summary>
+        Intervention,
+
+        /// <summary>開示 — 真理を助けず、佐藤に情報を渡した</summary>
+        Disclosure,
+
+        /// <summary>沈黙 — 真理を助けず、佐藤に情報を渡さなかった</summary>
+        Silence
     }
 
     /// <summary>

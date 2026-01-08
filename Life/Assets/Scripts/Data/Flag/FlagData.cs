@@ -35,7 +35,17 @@ namespace LifeLike.Data.Flag
         Event,
 
         /// <summary>派遣タイミングフラグ</summary>
-        Dispatch
+        Dispatch,
+
+        // === Night03 追加 ===
+        /// <summary>脅威フラグ — 組織からの脅迫</summary>
+        Threat,
+
+        /// <summary>Night01の影響フラグ</summary>
+        Night01Effect,
+
+        /// <summary>Night02の影響フラグ</summary>
+        Night02Effect
     }
 
     /// <summary>

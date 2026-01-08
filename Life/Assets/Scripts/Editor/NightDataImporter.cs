@@ -13,12 +13,12 @@ using UnityEngine;
 namespace LifeLike.Editor
 {
     /// <summary>
-    /// 汎用シナリオデータインポーター（Night01/Night02共通）
+    /// 汎用シナリオデータインポーター（Night01/Night02/Night03共通）
     /// </summary>
     public class NightDataImporter : EditorWindow
     {
         private string _selectedNight = "Night01";
-        private readonly string[] _nightOptions = { "Night01", "Night02" };
+        private readonly string[] _nightOptions = { "Night01", "Night02", "Night03" };
         private int _selectedNightIndex = 0;
 
         private string JsonDataPath => $"Assets/Data/{_selectedNight}";
@@ -268,6 +268,10 @@ namespace LifeLike.Editor
                 "Foreshadowing" => FlagCategory.Foreshadowing,
                 "Event" => FlagCategory.Event,
                 "Dispatch" => FlagCategory.Dispatch,
+                // Night03追加
+                "Threat" => FlagCategory.Threat,
+                "Night01Effect" => FlagCategory.Night01Effect,
+                "Night02Effect" => FlagCategory.Night02Effect,
                 _ => FlagCategory.Event
             };
         }
@@ -429,6 +433,11 @@ namespace LifeLike.Editor
                 "Connected" => EndStateType.Connected,
                 "Isolated" => EndStateType.Isolated,
                 "Routine" => EndStateType.Routine,
+                // Night03追加
+                "Crossroads" => EndStateType.Crossroads,
+                "Intervention" => EndStateType.Intervention,
+                "Disclosure" => EndStateType.Disclosure,
+                "Silence" => EndStateType.Silence,
                 _ => EndStateType.Contained
             };
         }
@@ -467,6 +476,11 @@ namespace LifeLike.Editor
                 "Connected" => EndingType.Connected,
                 "Isolated" => EndingType.Isolated,
                 "Routine" => EndingType.Routine,
+                // Night03追加
+                "Crossroads" => EndingType.Crossroads,
+                "Intervention" => EndingType.Intervention,
+                "Disclosure" => EndingType.Disclosure,
+                "Silence" => EndingType.Silence,
                 _ => EndingType.Neutral
             };
         }
