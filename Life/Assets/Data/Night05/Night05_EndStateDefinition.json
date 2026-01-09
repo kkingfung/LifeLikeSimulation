@@ -1,0 +1,149 @@
+{
+  "nightId": "night_05",
+  "description": "Night05「小さな声」エンドステート定義。メイン軸（美咲からの情報収集）+サブ軸（調査、デモ対応）の総合評価。",
+  "endStateConditions": [
+    {
+      "endStateType": "VoiceReached",
+      "priority": 1,
+      "description": "届いた声 — 情報を多く集め、繋がりを見つけた",
+      "scoreConditions": [
+        { "minScore": 6, "maxScore": 999 }
+      ],
+      "flagConditions": [
+        { "flagId": "misaki_info_gathered", "requiredValue": true }
+      ],
+      "note": "美咲から十分な情報を得た上で、調査やデモからも情報を得た場合"
+    },
+    {
+      "endStateType": "VoiceDistant",
+      "priority": 2,
+      "description": "遠い声 — 部分的に情報を得た",
+      "scoreConditions": [
+        { "minScore": 3, "maxScore": 5 }
+      ],
+      "flagConditions": [],
+      "note": "一部の情報は得たが、全体像は見えていない"
+    },
+    {
+      "endStateType": "VoiceLost",
+      "priority": 100,
+      "description": "消えた声 — ほとんど情報を得られなかった",
+      "scoreConditions": [],
+      "flagConditions": [],
+      "note": "美咲との会話を早く切り上げた、または情報を引き出せなかった"
+    }
+  ],
+  "scoreCalculation": {
+    "description": "フラグのweightを合計してスコアを算出",
+    "contributingFlags": [
+      "learned_mari_name",
+      "learned_yoshida_existence",
+      "heard_mari_voice",
+      "heard_yoshida_name",
+      "misaki_comforted",
+      "noticed_no_info",
+      "listened_demo_story",
+      "drug_connection"
+    ]
+  },
+  "endingMappings": [
+    {
+      "endState": "VoiceReached",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_voice_reached"
+    },
+    {
+      "endState": "VoiceDistant",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_voice_distant"
+    },
+    {
+      "endState": "VoiceLost",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_voice_lost"
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": false,
+    "maxDispatchTimeMinutes": 0,
+    "dispatchFlagId": "",
+    "note": "Night05には被害者生存判定がない（美咲は安全な状態）"
+  },
+  "defaultEndState": "VoiceLost",
+  "defaultEndingId": "ending_voice_lost",
+  "endings": [
+    {
+      "endingId": "ending_voice_reached",
+      "title": "届いた声",
+      "description": "小さな声が、確かに届いた。\n\nその先に何があるのかは、まだ分からない。",
+      "endingType": "VoiceReached"
+    },
+    {
+      "endingId": "ending_voice_distant",
+      "title": "遠い声",
+      "description": "声は聞こえた。でも、手を伸ばすには遠すぎた。\n\n誰かがそこにいたことだけは、覚えている。",
+      "endingType": "VoiceDistant"
+    },
+    {
+      "endingId": "ending_voice_lost",
+      "title": "消えた声",
+      "description": "電話は鳴り、そして静かになった。\n\n誰かが何かを言おうとしていた——気がする。",
+      "endingType": "VoiceLost"
+    }
+  ],
+  "night04EndStateEffects": {
+    "description": "Night04のエンドステートがNight05に与える影響",
+    "effects": [
+      {
+        "night04EndState": "WitnessConnected",
+        "effect": "会社調査シーンが詳細に発生",
+        "addFlags": ["detailed_research"]
+      },
+      {
+        "night04EndState": "WitnessOnly",
+        "effect": "会社調査シーンが発生",
+        "addFlags": []
+      },
+      {
+        "night04EndState": "ConnectedOnly",
+        "effect": "会社調査シーンが簡易版で発生",
+        "addFlags": ["simple_research"]
+      },
+      {
+        "night04EndState": "Neither",
+        "effect": "会社調査シーンが発生しない（思考のみ）",
+        "addFlags": ["thought_only"]
+      }
+    ],
+    "note": "Night04での調査度合いに応じて、Night05の会社調査シーンの詳細度が変わる"
+  },
+  "foreshadowingPlanted": [
+    {
+      "id": "boss_name",
+      "description": "組織トップの名前（工藤主任の会話から）",
+      "payoffNight": "Night07以降",
+      "flagId": "heard_boss_name"
+    },
+    {
+      "id": "demo_man_fate",
+      "description": "デモの男性の運命（会社に連絡した場合）",
+      "payoffNight": "Night06",
+      "flagId": "contacted_company_demo"
+    },
+    {
+      "id": "misaki_usb",
+      "description": "美咲が持っているUSBキーホルダー（Night05では言及なし）",
+      "payoffNight": "Night06以降",
+      "note": "プレイヤーはまだこの存在を知らない"
+    },
+    {
+      "id": "drug_victims",
+      "description": "組織の違法な薬の被害者",
+      "payoffNight": "Night06以降",
+      "flagId": "drug_connection"
+    }
+  ]
+}

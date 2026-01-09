@@ -132,7 +132,17 @@ namespace LifeLike.Data
         ConnectedOnly,
 
         /// <summary>どちらもなし — 情報も少なく、繋がりも伝えなかった</summary>
-        Neither
+        Neither,
+
+        // === Night05 追加 ===
+        /// <summary>届いた声 — 情報を多く集め、繋がりを見つけた</summary>
+        VoiceReached,
+
+        /// <summary>遠い声 — 部分的に情報を得た</summary>
+        VoiceDistant,
+
+        /// <summary>消えた声 — ほとんど情報を得られなかった</summary>
+        VoiceLost
     }
 
     /// <summary>

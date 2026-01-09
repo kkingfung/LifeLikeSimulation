@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f24c282a3f12e64aa75308b10806407, type: 3}
+  m_Name: neighbor
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.CallerData
+  callerId: neighbor
+  displayName: "\u8FD1\u96A3\u4F4F\u6C11"
+  phoneNumber: "\u975E\u901A\u77E5"
+  realName: "\u4E0D\u660E"
+  description: "\u88FD\u85AC\u4F1A\u793E\u306E\u8FD1\u304F\u306B\u4F4F\u3080/\u5E97\u3092\u69CB\u3048\u308B\u4EBA\u3002\u9A12\u97F3\u3067\u8FF7\u60D1\u3057\u3066\u3044\u308B\u3002"
+  silhouetteImage: {fileID: 0}
+  revealedImage: {fileID: 0}
+  silhouetteColor: {r: 1, g: 1, b: 1, a: 1}
+  voiceDescription: "\u30A4\u30E9\u30A4\u30E9\u3057\u305F\u4E2D\u5E74\u306E\u58F0\u3002"
+  voicePitch: 1
+  personality:
+    honesty: 80
+    stability: 70
+    cooperation: 60
+    aggression: 30
+  relations: []
+  hiddenInfo: "\u7279\u306B\u306A\u3057\u3002\u9A12\u97F3\u304C\u8FF7\u60D1\u306A\u3060\u3051\u3002"
+  trueMotivation: "\u9A12\u97F3\u3092\u6B62\u3081\u3066\u307B\u3057\u3044"

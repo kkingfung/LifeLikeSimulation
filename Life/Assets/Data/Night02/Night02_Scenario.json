@@ -7,7 +7,7 @@
   "realSecondsPerGameMinute": 2.0,
   "difficulty": 4,
   "estimatedPlayTimeMinutes": 20,
-  "theTruth": "倉庫火災は組織のフロント企業「アラートセキュリティ」の倉庫で発生した危険物事故。真の原因は不明だが、証拠隠滅の可能性がある。高齢者の吉田和子は林遥の隣人で、遥と美咲のことを知っているが、遥の死をまだ知らない。不審者として通報された人物は、遥の友人・渡辺真理で、遥の死後に行方不明の美咲を探している。工藤主任はNight01の報告書から「不要な詳細」を削除するよう圧力をかけてくる。",
+  "theTruth": "倉庫火災は組織のフロント企業「アラートセキュリティ」の倉庫で発生した純粋な事故（危険物の不適切な保管による自然発火）。証拠隠滅ではない。しかし、この車両はNight04の遺体遺棄現場でも目撃される。高齢者の吉田和子は渡辺真理の家の近くに住み、遥と美咲を気にかけているが、遥の事故をまだ知らない。美咲は真理の家で暮らしており、吉田和子が時々気にかけて招いている。不審者として通報された人物は、遥の友人・渡辺真理で、遥の事故後に美咲の安全を心配して神経質になっている。工藤主任はNight01の報告書から「不要な詳細」を削除するよう圧力をかけてくる。",
   "callSchedule": [
     {
       "callId": "call_fire_elderly",
@@ -76,6 +76,7 @@
       }
     }
   ],
+  "specialEvents": [],
   "initialWorldStates": [
     {
       "stateId": "warehouse_fire",
@@ -85,15 +86,15 @@
       "isKnownToPlayer": false
     },
     {
-      "stateId": "haruka_neighbor_unaware",
-      "description": "吉田和子は遥の隣人だが、遥の死を知らない",
+      "stateId": "yoshida_unaware_accident",
+      "description": "吉田和子は真理の隣人で、遥の事故を知らない",
       "timeMinutes": 1380,
       "involvedCallerIds": ["yoshida_kazuko"],
       "isKnownToPlayer": false
     },
     {
-      "stateId": "watanabe_searching",
-      "description": "渡辺真理が美咲を探している",
+      "stateId": "watanabe_worried",
+      "description": "渡辺真理が美咲の安全を心配して周囲を警戒している",
       "timeMinutes": 1380,
       "involvedCallerIds": [],
       "isKnownToPlayer": false
@@ -103,6 +104,13 @@
       "description": "組織が昨夜の事件の痕跡を消そうとしている",
       "timeMinutes": 1380,
       "involvedCallerIds": ["kudo_shinji"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "misaki_at_mari",
+      "description": "美咲は真理の家で暮らしている。吉田和子が時々気にかけて招いている",
+      "timeMinutes": 1380,
+      "involvedCallerIds": [],
       "isKnownToPlayer": false
     }
   ],
@@ -138,7 +146,7 @@
       "category": "Person"
     }
   ],
-  "night01EndStateEffects": {
+  "previousNightEffects": {
     "Exposed": {
       "description": "工藤主任が「良い対応だった」と言いつつ、より慎重な対応を求める",
       "modifiesCall": "call_supervisor_records",

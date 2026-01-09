@@ -145,6 +145,54 @@
           "nextSegmentId": "clerk_people",
           "setFlags": ["security_company_noted"],
           "clearFlags": []
+        },
+        {
+          "responseId": "clerk_company_behavior",
+          "text": "その車、何か変な動きはしていましたか？",
+          "nextSegmentId": "clerk_behavior",
+          "setFlags": ["security_company_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_behavior",
+      "callerLines": [
+        "うーん...そう言えば、倉庫の裏口から入っていったんですよ。",
+        "普通、正面から入るじゃないですか。でも、わざわざ裏に回って...",
+        "何か荷物を運んでるみたいでした。重そうな...袋？みたいな。"
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_behavior_bag",
+          "text": "重そうな袋...何が入っていたか分かりますか？",
+          "nextSegmentId": "clerk_bag",
+          "setFlags": ["suspicious_cargo_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clerk_behavior_note",
+          "text": "分かりました。記録しておきます。",
+          "nextSegmentId": "clerk_end",
+          "setFlags": ["suspicious_cargo_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "clerk_bag",
+      "callerLines": [
+        "分からないです。暗かったし...でも、二人がかりで運んでて。",
+        "...あ、一人が女性だったかも。声が聞こえた気がして...",
+        "やっぱり、何かあったんですかね..."
+      ],
+      "responses": [
+        {
+          "responseId": "clerk_bag_thanks",
+          "text": "貴重な情報です。ありがとうございます。",
+          "nextSegmentId": "clerk_end",
+          "setFlags": ["female_accomplice_hinted", "organization_activity_noted"],
+          "clearFlags": []
         }
       ]
     },

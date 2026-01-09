@@ -160,7 +160,31 @@
           "responseId": "fire_vehicle_dispatch_now",
           "text": "消防を手配します。あなたはその場から離れてください。ありがとうございました。",
           "nextSegmentId": "fire_end",
-          "setFlags": ["fire_reported"],
+          "setFlags": ["fire_reported", "security_vehicle_seen"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fire_vehicle_try_remember",
+          "text": "セキュリティ会社の車...他に何か覚えていませんか？",
+          "nextSegmentId": "fire_vehicle_more",
+          "setFlags": ["asked_about_vehicle"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fire_vehicle_more",
+      "callerLines": [
+        "う〜ん...赤い字で...「アラート」...だったような...",
+        "よく見る車じゃなくて...普通の警備会社じゃない気がして...",
+        "ごめんなさい、これ以上は思い出せなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "fire_vehicle_more_ok",
+          "text": "十分です。消防を手配します。離れていてください。",
+          "nextSegmentId": "fire_end",
+          "setFlags": ["fire_reported", "alert_security_partial"],
           "clearFlags": []
         }
       ]

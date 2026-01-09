@@ -100,6 +100,7 @@
       "description": "主任からの介入。システムの圧力。情報の封じ込め。"
     }
   ],
+  "specialEvents": [],
   "initialWorldStates": [
     {
       "stateId": "victim_hit",
@@ -155,5 +156,6 @@
       "content": "車が何かに衝突した可能性",
       "category": "Incident"
     }
-  ]
+  ],
+  "previousNightEffects": null
 }

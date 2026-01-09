@@ -1,0 +1,567 @@
+{
+  "callId": "call_misaki",
+  "callerId": "hayashi_misaki",
+  "title": "ママどこ？",
+  "description": "5歳の美咲からの電話。ママに繋いでほしいと頼む。真理の家で一人、真理は仕事中。",
+  "segments": [
+    {
+      "segmentId": "initial_call",
+      "callerLines": [
+        "あの...",
+        "ママどこにいるか、しってますか？"
+      ],
+      "responses": [
+        {
+          "responseId": "gentle_response",
+          "text": "こんにちは。お電話ありがとう。どうしたの？",
+          "nextSegmentId": "explain_gentle",
+          "setFlags": ["misaki_called"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "direct_response",
+          "text": "ここは110番だよ。ママの電話番号は分かる？",
+          "nextSegmentId": "explain_direct",
+          "setFlags": ["misaki_called"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "cold_response",
+          "text": "ここは緊急通報センターです。何かあったの？",
+          "nextSegmentId": "explain_cold",
+          "setFlags": ["misaki_called"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "explain_gentle",
+      "callerLines": [
+        "ママにでんわしたいの",
+        "でも、つながらないの...",
+        "110ならつながるかなっておもって..."
+      ],
+      "responses": [
+        {
+          "responseId": "ask_about_home",
+          "text": "そうなんだ。今、おうちにいるの？",
+          "nextSegmentId": "at_home",
+          "setFlags": ["misaki_comforted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_about_adult",
+          "text": "今、だれかおとなの人はいる？",
+          "nextSegmentId": "alone_at_home",
+          "setFlags": ["misaki_comforted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "explain_direct",
+      "callerLines": [
+        "ばんごう...わかんない...",
+        "ママにでんわしたいだけなの...",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "soften_and_ask",
+          "text": "そっか。大丈夫だよ。今、おうちにいるの？",
+          "nextSegmentId": "at_home",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_adult_direct",
+          "text": "おうちにおとなの人はいる？",
+          "nextSegmentId": "alone_at_home",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "explain_cold",
+      "callerLines": [
+        "...ママにあいたいの...",
+        "...でんわしたいだけ..."
+      ],
+      "responses": [
+        {
+          "responseId": "soften_cold",
+          "text": "分かったよ。今どこにいるの？",
+          "nextSegmentId": "at_home",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "end_cold",
+          "text": "ママの電話番号が分からないと繋げられないよ。",
+          "nextSegmentId": "call_end_early",
+          "setFlags": ["misaki_call_ended_early"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "at_home",
+      "callerLines": [
+        "うん、おうち",
+        "まりおばちゃんのおうち"
+      ],
+      "responses": [
+        {
+          "responseId": "ask_mari_name",
+          "text": "まりおばちゃん？まりおばちゃんのお名前、わかる？",
+          "nextSegmentId": "mari_name",
+          "setFlags": ["learned_mari_name"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_mari_location",
+          "text": "まりおばちゃんは今どこにいるの？",
+          "nextSegmentId": "mari_at_work",
+          "setFlags": ["learned_mari_name"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "alone_at_home",
+      "callerLines": [
+        "いない...",
+        "まりおばちゃん、おしごといってる..."
+      ],
+      "responses": [
+        {
+          "responseId": "ask_mari_from_alone",
+          "text": "まりおばちゃんって誰？お名前わかる？",
+          "nextSegmentId": "mari_name",
+          "setFlags": ["learned_mari_name"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_when_back",
+          "text": "まりおばちゃんはいつ帰ってくるの？",
+          "nextSegmentId": "mari_coming_back",
+          "setFlags": ["learned_mari_name"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_name",
+      "callerLines": [
+        "わたなべまり",
+        "ママのおともだち"
+      ],
+      "responses": [
+        {
+          "responseId": "ask_mama_name",
+          "text": "ママのお名前は？",
+          "nextSegmentId": "mama_name_unknown",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_about_grandma",
+          "text": "おばあちゃんやおじいちゃんはいる？",
+          "nextSegmentId": "yoshida_mention",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_address",
+          "text": "おうちのじゅうしょ、わかる？",
+          "nextSegmentId": "address_unknown",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_at_work",
+      "callerLines": [
+        "おしごと...",
+        "まりおばちゃん、いつもよるにかえってくるの"
+      ],
+      "responses": [
+        {
+          "responseId": "ask_wait_mari",
+          "text": "そうなんだ。まりおばちゃんが帰ってくるまで待てる？",
+          "nextSegmentId": "wait_for_mari",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_grandma_from_mari",
+          "text": "他に知ってるおとなの人はいる？おばあちゃんとか。",
+          "nextSegmentId": "yoshida_mention",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_coming_back",
+      "callerLines": [
+        "よるになったらかえってくるって...",
+        "でもまだくらくないよ..."
+      ],
+      "responses": [
+        {
+          "responseId": "comfort_wait",
+          "text": "大丈夫、もうすぐ暗くなるよ。待っていられる？",
+          "nextSegmentId": "wait_for_mari",
+          "setFlags": ["misaki_comforted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_other_adults",
+          "text": "他に知ってるおとなの人はいる？",
+          "nextSegmentId": "yoshida_mention",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mama_name_unknown",
+      "callerLines": [
+        "ママはママだよ",
+        "...なまえ？",
+        "ママのなまえはママ..."
+      ],
+      "responses": [
+        {
+          "responseId": "try_grandma",
+          "text": "そうだね。おばあちゃんやおじいちゃんはいる？",
+          "nextSegmentId": "yoshida_mention",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "try_mama_job",
+          "text": "ママのおしごとは何？",
+          "nextSegmentId": "mama_job_unknown",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mama_job_unknown",
+      "callerLines": [
+        "しらない...",
+        "ママ、いつもいそがしいっていってた..."
+      ],
+      "responses": [
+        {
+          "responseId": "to_grandma",
+          "text": "そうなんだ。おばあちゃんは知ってる？",
+          "nextSegmentId": "yoshida_mention",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "address_unknown",
+      "callerLines": [
+        "じゅうしょ...？",
+        "わかんない..."
+      ],
+      "responses": [
+        {
+          "responseId": "to_grandma_from_address",
+          "text": "大丈夫だよ。他に知ってるおとなの人はいる？",
+          "nextSegmentId": "yoshida_mention",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_mention",
+      "callerLines": [
+        "あ、やさしいおばあちゃんがいるよ！",
+        "ときどきおやつくれるの",
+        "まりおばちゃんのおうちのちかくにすんでるの"
+      ],
+      "responses": [
+        {
+          "responseId": "ask_yoshida_name",
+          "text": "そのおばあちゃんのお名前は？",
+          "nextSegmentId": "yoshida_name_attempt",
+          "setFlags": ["learned_yoshida_existence"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "suggest_yoshida",
+          "text": "そのおばあちゃんのところに行ける？",
+          "nextSegmentId": "yoshida_visit_question",
+          "setFlags": ["learned_yoshida_existence"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_name_attempt",
+      "callerLines": [
+        "えーと...よしだ...さん...かな？",
+        "まりおばちゃんがそうよんでた"
+      ],
+      "responses": [
+        {
+          "responseId": "good_info",
+          "text": "よしださん、覚えてるんだね。えらいね。",
+          "nextSegmentId": "wait_for_mari",
+          "setFlags": ["heard_yoshida_name", "misaki_comforted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_visit_question",
+      "callerLines": [
+        "ひとりでいっちゃだめっていわれてる...",
+        "まりおばちゃんがかえってくるまでまってて、って..."
+      ],
+      "responses": [
+        {
+          "responseId": "praise_good_girl",
+          "text": "えらいね、ちゃんと言われたこと守ってるんだね。",
+          "nextSegmentId": "wait_for_mari",
+          "setFlags": ["misaki_comforted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "wait_for_mari",
+      "callerLines": [
+        "...うん...",
+        "でもママにあいたいな...",
+        "ママ、さいきんでんわでないの..."
+      ],
+      "responses": [
+        {
+          "responseId": "comfort_about_mama",
+          "text": "ママも忙しいのかもしれないね。まりおばちゃんが帰ってきたら聞いてみよう。",
+          "nextSegmentId": "waiting_decision",
+          "setFlags": ["misaki_comforted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "promise_to_check",
+          "text": "ママのこと、調べてみるね。まりおばちゃんが帰ってくるまで待っててね。",
+          "nextSegmentId": "waiting_decision",
+          "setFlags": ["misaki_comforted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "waiting_decision",
+      "callerLines": [
+        "...うん...",
+        "まってる..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_gentle",
+          "text": "いい子だね。まりおばちゃんが帰ってくるまで待っててね。",
+          "nextSegmentId": "wait_for_mari_return",
+          "setFlags": ["misaki_info_gathered"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "dispatch_police",
+          "text": "心配だから、おまわりさんに様子を見に行ってもらうね。",
+          "nextSegmentId": "police_dispatch_response",
+          "setFlags": ["police_dispatched_misaki", "misaki_info_gathered"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_dispatch_response",
+      "callerLines": [
+        "おまわりさん...？",
+        "わるいことしてないよ...？"
+      ],
+      "responses": [
+        {
+          "responseId": "reassure_police",
+          "text": "大丈夫だよ、悪いことしてないよ。優しいおまわりさんが来てくれるだけだよ。",
+          "nextSegmentId": "wait_for_mari_return",
+          "setFlags": ["misaki_comforted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "wait_for_mari_return",
+      "callerLines": [
+        "...うん...",
+        "...",
+        "..."
+      ],
+      "note": "この後、真理が帰宅する可能性がある（時間経過で自動発生）",
+      "responses": [
+        {
+          "responseId": "keep_talking",
+          "text": "もう少しお話しよう。何か好きなものある？",
+          "nextSegmentId": "small_talk",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "end_call_here",
+          "text": "じゃあ、まりおばちゃんが帰ってくるまで待っててね。",
+          "nextSegmentId": "call_end_normal",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "small_talk",
+      "callerLines": [
+        "すきなもの...？",
+        "えーと...うさぎさん！",
+        "ママがくれたうさぎのキーホルダーもってるの"
+      ],
+      "note": "USBが入ったキーホルダーへの伏線。美咲は中身を知らない。",
+      "responses": [
+        {
+          "responseId": "react_to_keychain",
+          "text": "うさぎのキーホルダー、大事にしてるんだね。",
+          "nextSegmentId": "mari_returns",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_returns",
+      "callerLines": [
+        "あ！",
+        "まりおばちゃん、かえってきた！"
+      ],
+      "backgroundSound": "door_opening",
+      "responses": [
+        {
+          "responseId": "react_mari_return",
+          "text": "よかったね！",
+          "nextSegmentId": "mari_notices",
+          "setFlags": ["heard_mari_voice"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_notices",
+      "callerLines": [
+        "（背景）「美咲ちゃん、ただいまー...あれ、電話してるの？」",
+        "（背景）「今日は一人で出かけてないよね？」",
+        "（美咲）......"
+      ],
+      "responses": [
+        {
+          "responseId": "wait_for_mari_reaction",
+          "text": "...",
+          "nextSegmentId": "mari_takes_phone",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_takes_phone",
+      "callerLines": [
+        "（背景）「またママに電話しようとしたの？」",
+        "（背景）「...誰もいないみたい...」",
+        "ツーツーツー..."
+      ],
+      "note": "真理は誰も電話の向こうにいないと思って切る",
+      "responses": [
+        {
+          "responseId": "call_disconnected",
+          "text": "（電話が切れた）",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "call_end_normal",
+      "callerLines": [
+        "うん...",
+        "ばいばい..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_reply",
+          "text": "ばいばい。気をつけてね。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "call_end_early",
+      "callerLines": [
+        "...わかった...",
+        "ごめんなさい..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_cold_reply",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "initial_call",
+  "conditionalBranches": [
+    {
+      "branchId": "mari_return_timing",
+      "description": "通話が長く続くと真理が帰宅するイベントが発生",
+      "triggerCondition": {
+        "segmentsPassed": 6,
+        "orTimeElapsed": 180
+      },
+      "targetSegmentId": "mari_returns"
+    }
+  ],
+  "operatorThoughts": [
+    {
+      "triggerId": "mari_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "learned_mari_name"
+      },
+      "triggerTiming": "after_call",
+      "content": "渡辺真理...どこかで聞いた名前..."
+    },
+    {
+      "triggerId": "yoshida_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "heard_yoshida_name"
+      },
+      "triggerTiming": "after_call",
+      "content": "吉田さん...あの火事の通報者と同じ名前..."
+    }
+  ],
+  "note": "美咲は5歳なので、短い文とひらがなを多用。母親の名前や住所は知らない。USBキーホルダーは間接的に言及されるが、プレイヤーはまだその重要性を知らない。真理が帰宅すると電話が切られる。"
+}

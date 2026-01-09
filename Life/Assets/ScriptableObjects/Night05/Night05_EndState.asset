@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98530dacedb0bb84c965271d31722dd6, type: 3}
+  m_Name: Night05_EndState
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.EndState.EndStateDefinition
+  nightId: night_05
+  conditions:
+  - endStateType: 18
+    priority: 1
+    scoreConditions:
+    - category: 7
+      comparison: 0
+      value: 0
+    flagConditions:
+    - flagId: misaki_info_gathered
+      requiredValue: 1
+    description: "\u5C4A\u3044\u305F\u58F0 \u2014 \u60C5\u5831\u3092\u591A\u304F\u96C6\u3081\u3001\u7E4B\u304C\u308A\u3092\u898B\u3064\u3051\u305F"
+  - endStateType: 19
+    priority: 2
+    scoreConditions:
+    - category: 7
+      comparison: 0
+      value: 0
+    flagConditions: []
+    description: "\u9060\u3044\u58F0 \u2014 \u90E8\u5206\u7684\u306B\u60C5\u5831\u3092\u5F97\u305F"
+  - endStateType: 20
+    priority: 100
+    scoreConditions: []
+    flagConditions: []
+    description: "\u6D88\u3048\u305F\u58F0 \u2014 \u307B\u3068\u3093\u3069\u60C5\u5831\u3092\u5F97\u3089\u308C\u306A\u304B\u3063\u305F"
+  endingMappings:
+  - endState: 18
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_voice_reached
+  - endState: 19
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_voice_distant
+  - endState: 20
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_voice_lost
+  victimSurvival:
+    requiresDispatch: 0
+    maxDispatchTimeMinutes: 0
+    dispatchFlagId: 
+  defaultEndState: 20
+  defaultEndingId: ending_voice_lost
+  endings:
+  - endingId: ending_voice_reached
+    title: "\u5C4A\u3044\u305F\u58F0"
+    description: "\u5C0F\u3055\u306A\u58F0\u304C\u3001\u78BA\u304B\u306B\u5C4A\u3044\u305F\u3002\n\n\u305D\u306E\u5148\u306B\u4F55\u304C\u3042\u308B\u306E\u304B\u306F\u3001\u307E\u3060\u5206\u304B\u3089\u306A\u3044\u3002"
+    conditions: []
+    endingType: 23
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_voice_distant
+    title: "\u9060\u3044\u58F0"
+    description: "\u58F0\u306F\u805E\u3053\u3048\u305F\u3002\u3067\u3082\u3001\u624B\u3092\u4F38\u3070\u3059\u306B\u306F\u9060\u3059\u304E\u305F\u3002\n\n\u8AB0\u304B\u304C\u305D\u3053\u306B\u3044\u305F\u3053\u3068\u3060\u3051\u306F\u3001\u899A\u3048\u3066\u3044\u308B\u3002"
+    conditions: []
+    endingType: 24
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_voice_lost
+    title: "\u6D88\u3048\u305F\u58F0"
+    description: "\u96FB\u8A71\u306F\u9CF4\u308A\u3001\u305D\u3057\u3066\u9759\u304B\u306B\u306A\u3063\u305F\u3002\n\n\u8AB0\u304B\u304C\u4F55\u304B\u3092\u8A00\u304A\u3046\u3068\u3057\u3066\u3044\u305F\u2014\u2014\u6C17\u304C\u3059\u308B\u3002"
+    conditions: []
+    endingType: 25
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0

@@ -42,7 +42,7 @@
       "callerId": "watanabe_mari",
       "displayName": "渡辺真理",
       "realName": "渡辺真理",
-      "description": "29歳、会社員。林遥の高校時代からの親友。遥の死後、行方不明の美咲を探している。Night02では「不審者」として間接的に登場。",
+      "description": "29歳、会社員。林遥の高校時代からの親友。遥の事故前から美咲を預かっている。Night02では美咲の安全を心配して周囲を警戒しているところを「不審者」として通報された。",
       "voiceDescription": "切迫した女性の声。最初は必死、後に感情的になる。",
       "voicePitch": 1.1,
       "personality": {
@@ -51,8 +51,8 @@
         "cooperation": 85,
         "aggression": 25
       },
-      "hiddenInfo": "遥が「何かあったら真理おばちゃんに渡して」と美咲に言っていたことを知っている。封筒の中身は知らない。",
-      "trueMotivation": "美咲を見つけて保護したい、遥の死の真相を知りたい",
+      "hiddenInfo": "遥が「何かあったら真理おばちゃんに渡して」と美咲に言っていたことを知っている。USBキーホルダーの中身は知らない。美咲を自宅で預かっているが、組織の存在を薄々感じており、美咲の安全を心配している。",
+      "trueMotivation": "美咲を安全に守りたい、遥の事故の真相を知りたい",
       "relations": [
         { "targetCallerId": "hayashi_haruka", "relationType": "Friend", "description": "高校時代からの親友", "isKnown": false }
       ],
@@ -103,7 +103,7 @@
       "callerId": "yoshida_kazuko",
       "displayName": "吉田和子",
       "realName": "吉田和子",
-      "description": "72歳、一人暮らしの高齢女性。Night02で火災を通報。林遥の隣人として、遥と美咲を気にかけていた。渡辺真理と話をした。",
+      "description": "72歳、一人暮らしの高齢女性。Night02で火災を通報。渡辺真理の家の近くに住む。遥と真理が休日に美咲を連れて出かける時、よく顔を合わせていた。",
       "voiceDescription": "震えた高齢女性の声。心配そう。",
       "voicePitch": 1.1,
       "personality": {
@@ -112,11 +112,12 @@
         "cooperation": 90,
         "aggression": 5
       },
-      "hiddenInfo": "渡辺真理が訪ねてきて、遥の死を知った。美咲のことが心配でたまらない。",
-      "trueMotivation": "美咲の安全を確認したい",
+      "hiddenInfo": "渡辺真理の家の近くに住む優しいおばあちゃん。美咲と仲が良い。真理が仕事で不在の時、美咲が一人でいると心配して、時々家に招いている。遥の事故を知り、美咲のことをより気にかけている。",
+      "trueMotivation": "美咲の安全を見守りたい",
       "relations": [
-        { "targetCallerId": "hayashi_haruka", "relationType": "Neighbor", "description": "隣人として見守っていた", "isKnown": true },
-        { "targetCallerId": "watanabe_mari", "relationType": "Acquaintance", "description": "渡辺が訪ねてきた", "isKnown": true }
+        { "targetCallerId": "hayashi_haruka", "relationType": "Acquaintance", "description": "近所の若いお母さんとして知っていた", "isKnown": true },
+        { "targetCallerId": "watanabe_mari", "relationType": "Neighbor", "description": "近所の人", "isKnown": true },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Acquaintance", "description": "可愛がっている子", "isKnown": true }
       ],
       "organizationRelation": "none"
     },
@@ -141,8 +142,8 @@
     {
       "callerId": "unknown_voice",
       "displayName": "???",
-      "realName": "不明",
-      "description": "組織に誘拐された人物。何かを伝えようとしているが、話せない状況にある。",
+      "realName": "不明（内部告発者）",
+      "description": "組織の中間管理職だった内部告発者。林遥を逃がそうとして組織に捕まった。何かを伝えようとしているが、話せない状況にある。Night04で遺体として発見される。",
       "voiceDescription": "無言。時折かすかな呼吸音が聞こえるかもしれない。",
       "voicePitch": 1.0,
       "personality": {
@@ -151,10 +152,12 @@
         "cooperation": 100,
         "aggression": 0
       },
-      "hiddenInfo": "組織に誘拐されている。電話をかけることはできたが、話すことができない状況。",
-      "trueMotivation": "助けを求めている",
-      "relations": [],
-      "organizationRelation": "victim"
+      "hiddenInfo": "林遥を逃がそうとした内部告発者。組織に捕まり、この通話の後に殺害される。所持していた証拠は全て組織に回収された。",
+      "trueMotivation": "助けを求めている、あるいは何かを伝えようとしている",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Protected", "description": "逃がそうとした", "isKnown": false }
+      ],
+      "organizationRelation": "former_member"
     }
   ]
 }

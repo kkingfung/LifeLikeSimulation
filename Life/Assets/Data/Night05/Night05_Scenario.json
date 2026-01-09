@@ -1,0 +1,141 @@
+{
+  "scenarioId": "night_05",
+  "title": "小さな声",
+  "description": "夕暮れ時、緊急通報センターに子供の声が届く。「ママどこにいるか知ってますか？」——5歳の少女は母親を探している。そして、街のどこかで、一人の男が声を上げ始める。",
+  "startTimeMinutes": 1080,
+  "endTimeMinutes": 1320,
+  "realSecondsPerGameMinute": 2.0,
+  "difficulty": 3,
+  "estimatedPlayTimeMinutes": 20,
+  "theTruth": "美咲（5歳）は母・林遥の事故を知らない（生存/死亡はNight01の結果による）。遥は美咲を親友の渡辺真理に預け、「何かあったら真理おばちゃんに渡して」とUSBが入ったキーホルダーを持たせていた。真理が仕事で不在の間、美咲はママに電話しようとするが繋がらず、110番なら繋がると思って緊急通報センターに電話する。一方、組織の違法な薬で子供を失った男性が、製薬会社の前で抗議活動を始める。組織のトップは慈善活動家として知られている。",
+  "callSchedule": [
+    {
+      "callId": "call_misaki",
+      "callerId": "hayashi_misaki",
+      "title": "ママどこ？",
+      "incomingTimeMinutes": 1110,
+      "ringDuration": 60,
+      "priority": 10,
+      "isCritical": true,
+      "description": "5歳の美咲からの電話。ママに繋いでほしいと頼む。"
+    },
+    {
+      "callId": "call_demo_report",
+      "callerId": "neighbor",
+      "title": "騒音の通報",
+      "incomingTimeMinutes": 1230,
+      "ringDuration": 45,
+      "priority": 6,
+      "isCritical": false,
+      "description": "近隣住民からの騒音通報。男性が会社の前で抗議している。"
+    }
+  ],
+  "specialEvents": [
+    {
+      "eventId": "event_company_research",
+      "title": "会社調査",
+      "triggerTimeMinutes": 1170,
+      "description": "フラグ依存。オペレーターが休憩時間にアラートセキュリティを調べる。",
+      "triggerCondition": {
+        "requiresAnyFlag": ["security_company_noted", "evidence_company_car", "vehicles_match"]
+      }
+    },
+    {
+      "eventId": "event_kudo_conversation",
+      "title": "工藤主任の会話",
+      "triggerTimeMinutes": 1200,
+      "description": "工藤主任が他の同僚とニュースについて話している。組織トップの名前が出る。"
+    }
+  ],
+  "initialWorldStates": [
+    {
+      "stateId": "misaki_alone",
+      "description": "美咲が真理の家で一人で待っている",
+      "timeMinutes": 1080,
+      "involvedCallerIds": ["hayashi_misaki"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "mari_at_work",
+      "description": "渡辺真理は仕事中",
+      "timeMinutes": 1080,
+      "involvedCallerIds": ["watanabe_mari"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "misaki_has_usb",
+      "description": "美咲はUSBが入ったキーホルダーを持っている（遥から渡されたもの）",
+      "timeMinutes": 1080,
+      "involvedCallerIds": ["hayashi_misaki"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "organization_inactive",
+      "description": "組織はNight05では美咲を探していない（別のことに集中）",
+      "timeMinutes": 1080,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "demo_man_grieving",
+      "description": "デモの男性は違法な薬で子供を失い、警察が動かないことに絶望している",
+      "timeMinutes": 1080,
+      "involvedCallerIds": ["demo_man"],
+      "isKnownToPlayer": false
+    }
+  ],
+  "evidenceTemplates": [
+    {
+      "evidenceId": "evidence_misaki_exists",
+      "title": "美咲の存在",
+      "content": "林遥には5歳の娘・美咲がいる",
+      "category": "Connection"
+    },
+    {
+      "evidenceId": "evidence_mari_guardian",
+      "title": "真理が美咲を預かっている",
+      "content": "美咲は「まりおばちゃん」と一緒に住んでいる",
+      "category": "Connection"
+    },
+    {
+      "evidenceId": "evidence_company_no_info",
+      "title": "情報のない会社",
+      "content": "アラートセキュリティについて調べても何も出てこない",
+      "category": "Suspicion"
+    },
+    {
+      "evidenceId": "evidence_drug_victim",
+      "title": "薬害被害者",
+      "content": "違法な薬で子供を亡くした父親がいる",
+      "category": "Incident"
+    },
+    {
+      "evidenceId": "evidence_boss_name",
+      "title": "慈善活動家の名前",
+      "content": "ニュースで報じられた慈善活動家の名前",
+      "category": "Foreshadowing"
+    }
+  ],
+  "night04EndStateEffects": {
+    "WitnessConnected": {
+      "description": "会社調査シーンが詳細に発生",
+      "modifiesEvent": "event_company_research",
+      "addFlags": ["detailed_research"]
+    },
+    "WitnessOnly": {
+      "description": "会社調査シーンが発生",
+      "modifiesEvent": "event_company_research",
+      "addFlags": []
+    },
+    "ConnectedOnly": {
+      "description": "会社調査シーンが簡易版で発生",
+      "modifiesEvent": "event_company_research",
+      "addFlags": ["simple_research"]
+    },
+    "Neither": {
+      "description": "会社調査シーンが発生しない（思考のみ）",
+      "modifiesEvent": null,
+      "addFlags": ["thought_only"]
+    }
+  }
+}

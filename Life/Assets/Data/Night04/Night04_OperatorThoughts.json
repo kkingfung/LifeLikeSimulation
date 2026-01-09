@@ -1,0 +1,66 @@
+{
+  "nightId": "night_04",
+  "description": "Night04「沈黙の証人」のオペレーター思考。通話後に表示される内心の声。",
+  "thoughts": [
+    {
+      "thoughtId": "car_connection",
+      "category": "Connection",
+      "content": "あの車...どこかで見たロゴ...",
+      "note": "詳細情報を得た場合のみ表示。Night02との繋がりを示唆。",
+      "timing": "AfterCall",
+      "relatedCallId": "call_body_discovery",
+      "triggerTimeMinutes": 0,
+      "triggerFlagId": "witness_detailed_info",
+      "suppressFlags": [],
+      "displayDuration": 3.0,
+      "fadeInDuration": 0.5,
+      "fadeOutDuration": 0.5,
+      "priority": 10
+    },
+    {
+      "thoughtId": "silent_call_memory",
+      "category": "Memory",
+      "content": "無言電話...あの夜と同じような...",
+      "note": "警察から無言電話について聞かれた後。Night03との繋がり。",
+      "timing": "AfterCall",
+      "relatedCallId": "call_police_inquiry",
+      "triggerTimeMinutes": 0,
+      "triggerFlagId": "police_asked_silent_call",
+      "suppressFlags": [],
+      "displayDuration": 2.5,
+      "fadeInDuration": 0.5,
+      "fadeOutDuration": 0.5,
+      "priority": 5
+    },
+    {
+      "thoughtId": "connected_realization",
+      "category": "Connection",
+      "content": "偶然じゃない...これは全部繋がっている...",
+      "note": "両方のフラグを得た場合のみ。プレイヤーが接続に成功した時。",
+      "timing": "EndOfNight",
+      "relatedCallId": "",
+      "triggerTimeMinutes": 0,
+      "triggerFlagId": "connected_nights",
+      "suppressFlags": [],
+      "displayDuration": 3.5,
+      "fadeInDuration": 0.8,
+      "fadeOutDuration": 0.8,
+      "priority": 20
+    },
+    {
+      "thoughtId": "elderly_empathy",
+      "category": "Emotion",
+      "content": "あの人の震える声...忘れられない...",
+      "note": "老人を落ち着かせるのに成功した場合。",
+      "timing": "AfterCall",
+      "relatedCallId": "call_body_discovery",
+      "triggerTimeMinutes": 0,
+      "triggerFlagId": "caller_calmed",
+      "suppressFlags": [],
+      "displayDuration": 2.5,
+      "fadeInDuration": 0.5,
+      "fadeOutDuration": 0.5,
+      "priority": 3
+    }
+  ]
+}

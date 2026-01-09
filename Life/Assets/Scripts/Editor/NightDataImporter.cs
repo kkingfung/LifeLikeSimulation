@@ -18,7 +18,7 @@ namespace LifeLike.Editor
     public class NightDataImporter : EditorWindow
     {
         private string _selectedNight = "Night01";
-        private readonly string[] _nightOptions = { "Night01", "Night02", "Night03", "Night04" };
+        private readonly string[] _nightOptions = { "Night01", "Night02", "Night03", "Night04", "Night05" };
         private int _selectedNightIndex = 0;
 
         private string JsonDataPath => $"Assets/Data/{_selectedNight}";
@@ -76,10 +76,16 @@ namespace LifeLike.Editor
             }
             GUILayout.EndHorizontal();
 
+            GUILayout.BeginHorizontal();
             if (GUILayout.Button("Import Calls"))
             {
                 ImportCalls();
             }
+            if (GUILayout.Button("Thoughts"))
+            {
+                ImportOperatorThoughts();
+            }
+            GUILayout.EndHorizontal();
         }
 
         private void ImportAllData()
@@ -91,6 +97,7 @@ namespace LifeLike.Editor
             ImportEndStateDefinition();
             ImportScenario();
             ImportCalls();
+            ImportOperatorThoughts();
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -274,6 +281,8 @@ namespace LifeLike.Editor
                 "Night02Effect" => FlagCategory.Night02Effect,
                 // Night04追加
                 "Night03Effect" => FlagCategory.Night03Effect,
+                // Night05追加
+                "Night04Effect" => FlagCategory.Night04Effect,
                 _ => FlagCategory.Event
             };
         }
@@ -449,6 +458,10 @@ namespace LifeLike.Editor
                 "WitnessOnly" => EndStateType.WitnessOnly,
                 "ConnectedOnly" => EndStateType.ConnectedOnly,
                 "Neither" => EndStateType.Neither,
+                // Night05追加
+                "VoiceReached" => EndStateType.VoiceReached,
+                "VoiceDistant" => EndStateType.VoiceDistant,
+                "VoiceLost" => EndStateType.VoiceLost,
                 _ => EndStateType.Contained
             };
         }
@@ -497,6 +510,10 @@ namespace LifeLike.Editor
                 "WitnessOnly" => EndingType.WitnessOnly,
                 "ConnectedOnly" => EndingType.ConnectedOnly,
                 "Neither" => EndingType.Neither,
+                // Night05追加
+                "VoiceReached" => EndingType.VoiceReached,
+                "VoiceDistant" => EndingType.VoiceDistant,
+                "VoiceLost" => EndingType.VoiceLost,
                 _ => EndingType.Neutral
             };
         }
@@ -783,6 +800,93 @@ namespace LifeLike.Editor
 
         #endregion
 
+        #region Operator Thoughts Import
+
+        private void ImportOperatorThoughts()
+        {
+            string jsonPath = $"{JsonDataPath}/{_selectedNight}_OperatorThoughts.json";
+            string jsonContent = ReadJsonFile(jsonPath);
+
+            if (string.IsNullOrEmpty(jsonContent))
+            {
+                Debug.Log($"[NightDataImporter] オペレーター思考ファイルが見つかりません（オプション）: {jsonPath}");
+                return;
+            }
+
+            var thoughtsData = JsonUtility.FromJson<OperatorThoughtsJsonWrapper>(jsonContent);
+            if (thoughtsData == null)
+            {
+                Debug.LogError("[NightDataImporter] OperatorThoughtsデータのパースに失敗しました。");
+                return;
+            }
+
+            EnsureOutputDirectories();
+
+            var thoughtsAsset = CreateOrLoadAsset<OperatorThoughtsDefinition>($"{OutputPath}/{_selectedNight}_Thoughts.asset");
+            thoughtsAsset.nightId = thoughtsData.nightId;
+            thoughtsAsset.description = thoughtsData.description;
+            thoughtsAsset.thoughts = new List<OperatorThought>();
+
+            if (thoughtsData.thoughts != null)
+            {
+                foreach (var thoughtJson in thoughtsData.thoughts)
+                {
+                    var thought = new OperatorThought
+                    {
+                        thoughtId = thoughtJson.thoughtId,
+                        category = ParseThoughtCategory(thoughtJson.category),
+                        content = LocalizedString.Create(thoughtJson.content),
+                        note = thoughtJson.note,
+                        timing = ParseThoughtTiming(thoughtJson.timing),
+                        relatedCallId = thoughtJson.relatedCallId,
+                        triggerTimeMinutes = thoughtJson.triggerTimeMinutes,
+                        triggerFlagId = thoughtJson.triggerFlagId,
+                        suppressFlags = thoughtJson.suppressFlags ?? new List<string>(),
+                        displayDuration = thoughtJson.displayDuration,
+                        fadeInDuration = thoughtJson.fadeInDuration > 0 ? thoughtJson.fadeInDuration : 0.5f,
+                        fadeOutDuration = thoughtJson.fadeOutDuration > 0 ? thoughtJson.fadeOutDuration : 0.5f,
+                        priority = thoughtJson.priority
+                    };
+
+                    thoughtsAsset.thoughts.Add(thought);
+                }
+            }
+
+            EditorUtility.SetDirty(thoughtsAsset);
+            AssetDatabase.SaveAssets();
+            Debug.Log($"[NightDataImporter] {thoughtsAsset.thoughts.Count}個のオペレーター思考をインポートしました。");
+        }
+
+        private ThoughtTiming ParseThoughtTiming(string timing)
+        {
+            return timing switch
+            {
+                "AfterCall" => ThoughtTiming.AfterCall,
+                "EndOfNight" => ThoughtTiming.EndOfNight,
+                "OnFlagSet" => ThoughtTiming.OnFlagSet,
+                "AtTime" => ThoughtTiming.AtTime,
+                "OnEvidenceDiscovered" => ThoughtTiming.OnEvidenceDiscovered,
+                _ => ThoughtTiming.AfterCall
+            };
+        }
+
+        private ThoughtCategory ParseThoughtCategory(string category)
+        {
+            return category switch
+            {
+                "Suspicion" => ThoughtCategory.Suspicion,
+                "Memory" => ThoughtCategory.Memory,
+                "Connection" => ThoughtCategory.Connection,
+                "Emotion" => ThoughtCategory.Emotion,
+                "SystemDoubt" => ThoughtCategory.SystemDoubt,
+                "Regret" => ThoughtCategory.Regret,
+                "Resolve" => ThoughtCategory.Resolve,
+                _ => ThoughtCategory.Suspicion
+            };
+        }
+
+        #endregion
+
         #region Utility Methods
 
         private string ReadJsonFile(string path)
@@ -1024,6 +1128,32 @@ namespace LifeLike.Editor
             public List<string>? setFlags;
             public List<string>? clearFlags;
             public bool isDispatchAction;
+        }
+
+        [Serializable]
+        private class OperatorThoughtsJsonWrapper
+        {
+            public string nightId = string.Empty;
+            public string description = string.Empty;
+            public List<OperatorThoughtJson>? thoughts;
+        }
+
+        [Serializable]
+        private class OperatorThoughtJson
+        {
+            public string thoughtId = string.Empty;
+            public string category = string.Empty;
+            public string content = string.Empty;
+            public string note = string.Empty;
+            public string timing = string.Empty;
+            public string relatedCallId = string.Empty;
+            public int triggerTimeMinutes;
+            public string triggerFlagId = string.Empty;
+            public List<string>? suppressFlags;
+            public float displayDuration;
+            public float fadeInDuration;
+            public float fadeOutDuration;
+            public int priority;
         }
 
         #endregion

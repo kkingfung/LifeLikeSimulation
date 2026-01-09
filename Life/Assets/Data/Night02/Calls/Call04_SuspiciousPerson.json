@@ -73,6 +73,61 @@
           "nextSegmentId": "suspicious_wait",
           "setFlags": ["suspicious_person_noted"],
           "clearFlags": []
+        },
+        {
+          "responseId": "suspicious_describe_looking",
+          "text": "何かを探している...人を探しているようには見えませんか？",
+          "nextSegmentId": "suspicious_looking_for",
+          "setFlags": ["suspicious_person_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "suspicious_looking_for",
+      "callerLines": [
+        "人を...？そう言われると...そうかもしれない。",
+        "さっき、携帯で写真みたいなものを見てたんです。",
+        "それで周りをキョロキョロして...誰かを待ってるとか、探してるとか..."
+      ],
+      "responses": [
+        {
+          "responseId": "suspicious_looking_photo",
+          "text": "写真を見ていた...子供の写真ではないですよね？",
+          "nextSegmentId": "suspicious_child_photo",
+          "setFlags": ["photo_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "suspicious_looking_police",
+          "text": "念のため警察に連絡しましょう。",
+          "nextSegmentId": "suspicious_dispatch",
+          "setFlags": ["police_dispatched_suspicious", "suspicious_person_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "suspicious_child_photo",
+      "callerLines": [
+        "子供...？分からないです、遠くて...",
+        "でも、確かに小さい写真だった気がします。",
+        "...まさか、迷子を探してるとか？でも、こんな時間に子供なんて..."
+      ],
+      "responses": [
+        {
+          "responseId": "suspicious_child_maybe",
+          "text": "迷子...かもしれませんね。警察に連絡しておきます。",
+          "nextSegmentId": "suspicious_dispatch",
+          "setFlags": ["police_dispatched_suspicious", "child_search_hinted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "suspicious_child_wait",
+          "text": "様子を見てください。何かあればまた連絡を。",
+          "nextSegmentId": "suspicious_end_no_police",
+          "setFlags": ["child_search_hinted"],
+          "clearFlags": []
         }
       ]
     },
@@ -145,6 +200,61 @@
           "nextSegmentId": "suspicious_dispatch",
           "setFlags": ["police_dispatched_suspicious", "suspicious_person_noted"],
           "clearFlags": []
+        },
+        {
+          "responseId": "suspicious_wait_hear",
+          "text": "何か話しているのが聞こえますか？",
+          "nextSegmentId": "suspicious_hear_voice",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "suspicious_hear_voice",
+      "callerLines": [
+        "えっと...窓を少し開けてみます...",
+        "「...見つからない」って言ってるような...「どこにいるの」とか...",
+        "泣いてる...？怒ってる...？何か切羽詰まった感じ..."
+      ],
+      "responses": [
+        {
+          "responseId": "suspicious_hear_desperate",
+          "text": "誰かを探して困っているようですね...迷子の親かもしれません。",
+          "nextSegmentId": "suspicious_maybe_parent",
+          "setFlags": ["desperate_search_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "suspicious_hear_police",
+          "text": "分かりました。念のため警察に連絡します。",
+          "nextSegmentId": "suspicious_dispatch",
+          "setFlags": ["police_dispatched_suspicious", "desperate_search_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "suspicious_maybe_parent",
+      "callerLines": [
+        "迷子...？でも、この時間に子供が外にいるわけ...",
+        "あ、その人、どこかに歩いていきます。住宅街の方に...",
+        "何かを探しながら...家を一軒一軒見てるみたい..."
+      ],
+      "responses": [
+        {
+          "responseId": "suspicious_maybe_end",
+          "text": "分かりました。何かあればまた連絡ください。",
+          "nextSegmentId": "suspicious_end_no_police",
+          "setFlags": ["searching_houses_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "suspicious_maybe_police",
+          "text": "念のため警察に伝えておきます。",
+          "nextSegmentId": "suspicious_dispatch",
+          "setFlags": ["police_dispatched_suspicious", "searching_houses_noted"],
+          "clearFlags": []
         }
       ]
     },
@@ -203,5 +313,5 @@
     }
   ],
   "startSegmentId": "suspicious_intro",
-  "note": "不審者の正体は渡辺真理（遥の友人）で、美咲を探している。プレイヤーはそれを知らない。警察を派遣した場合、フォローアップ通話がトリガーされる。"
+  "note": "不審者の正体は渡辺真理（遥の友人）で、美咲を探している。プレイヤーはそれを知らない。追加対話で「誰かを探している」「見つからない」等の伏線あり。警察を派遣した場合、フォローアップ通話がトリガーされる。Night03で真理が直接電話してくる際の伏線。"
 }

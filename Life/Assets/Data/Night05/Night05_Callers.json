@@ -1,0 +1,125 @@
+{
+  "nightId": "night_05",
+  "description": "第5夜「小さな声」発信者データ",
+  "callers": [
+    {
+      "callerId": "hayashi_misaki",
+      "displayName": "???",
+      "realName": "林美咲",
+      "description": "5歳、林遥の娘。母親の死を知らず、渡辺真理の家で暮らしている。ママに電話したいが繋がらないので、110番に電話した。",
+      "voiceDescription": "幼い女の子の声。最初は普通だが、徐々に不安になる。",
+      "voicePitch": 1.3,
+      "personality": {
+        "honesty": 100,
+        "stability": 60,
+        "cooperation": 90,
+        "aggression": 0
+      },
+      "hiddenInfo": "遥から「何かあったら真理おばちゃんに渡して」と言われ、USBが入ったキーホルダーを持っている。中身は知らない。",
+      "trueMotivation": "ママと話したい、ママに会いたい",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Family", "description": "母親", "isKnown": false },
+        { "targetCallerId": "watanabe_mari", "relationType": "Family", "description": "まりおばちゃん（預かり親）", "isKnown": false },
+        { "targetCallerId": "yoshida_kazuko", "relationType": "Acquaintance", "description": "やさしいおばあちゃん", "isKnown": false }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "watanabe_mari",
+      "displayName": "渡辺真理",
+      "realName": "渡辺真理",
+      "description": "29歳、林遥の親友。美咲を預かっている。Night03で組織に見つかり保護された女性。Night05では直接通話しないが、声が聞こえる。",
+      "voiceDescription": "疲れた女性の声。美咲を心配している。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 90,
+        "stability": 55,
+        "cooperation": 85,
+        "aggression": 25
+      },
+      "hiddenInfo": "遥の事故後、美咲を守ろうとしている。遥が何かを隠していたことを薄々感じている。",
+      "trueMotivation": "美咲を安全に守りたい",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Friend", "description": "親友", "isKnown": true },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Family", "description": "預かっている", "isKnown": true },
+        { "targetCallerId": "yoshida_kazuko", "relationType": "Neighbor", "description": "近所のおばあちゃん", "isKnown": true }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "neighbor",
+      "displayName": "近隣住民",
+      "realName": "不明",
+      "description": "製薬会社の近くに住む/店を構える人。騒音で迷惑している。",
+      "voiceDescription": "イライラした中年の声。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 80,
+        "stability": 70,
+        "cooperation": 60,
+        "aggression": 30
+      },
+      "hiddenInfo": "特になし。騒音が迷惑なだけ。",
+      "trueMotivation": "騒音を止めてほしい",
+      "relations": [],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "demo_man",
+      "displayName": "抗議する男性",
+      "realName": "不明",
+      "description": "40代男性。組織が作った違法な薬/偽薬が原因で子供を亡くした。警察に訴えたが動かなかったため、自分で声を上げることにした。",
+      "voiceDescription": "怒りと悲しみが混じった声。叫んでいる。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 95,
+        "stability": 30,
+        "cooperation": 40,
+        "aggression": 60
+      },
+      "hiddenInfo": "組織の違法な薬で子供を失った。証拠は持っていないが、確信している。警察への不信感が強い。",
+      "trueMotivation": "子供の死の真相を明らかにしたい、組織を告発したい",
+      "relations": [],
+      "organizationRelation": "victim"
+    },
+    {
+      "callerId": "kudo_shinji",
+      "displayName": "工藤真司",
+      "realName": "工藤真司",
+      "description": "45歳、緊急通報センター当直主任。Night05では他の同僚とニュースについて話している。",
+      "voiceDescription": "落ち着いた低い声。",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 60,
+        "stability": 85,
+        "cooperation": 50,
+        "aggression": 20
+      },
+      "hiddenInfo": "組織のトップを立派な人だと思っている。組織との繋がりは全く知らない。",
+      "trueMotivation": "平穏に仕事をしたい",
+      "relations": [],
+      "organizationRelation": "system_aligned"
+    },
+    {
+      "callerId": "yoshida_kazuko",
+      "displayName": "吉田和子",
+      "realName": "吉田和子",
+      "description": "72歳、一人暮らしの高齢女性。渡辺真理の家の近くに住む。美咲と仲が良く、時々家に招いている。Night05では直接登場しないが、名前が言及される。",
+      "voiceDescription": "優しい高齢女性の声。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 95,
+        "stability": 60,
+        "cooperation": 90,
+        "aggression": 5
+      },
+      "hiddenInfo": "美咲を気にかけている。真理が仕事の時、美咲が一人でいると心配。",
+      "trueMotivation": "美咲の安全を見守りたい",
+      "relations": [
+        { "targetCallerId": "watanabe_mari", "relationType": "Neighbor", "description": "近所の人", "isKnown": true },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Acquaintance", "description": "可愛がっている子", "isKnown": true }
+      ],
+      "organizationRelation": "none"
+    }
+  ]
+}

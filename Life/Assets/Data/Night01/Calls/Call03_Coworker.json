@@ -118,10 +118,17 @@
       "segmentId": "coworker_dodge",
       "callerLines": [
         "今の勤め先は...ちょっと言えないんですけど。",
-        "個人的な事情で。",
+        "...セキュリティ関係の仕事なんで、あまり詳しくは。",
         "...とにかく、何もないならいいんです。"
       ],
       "responses": [
+        {
+          "responseId": "coworker_dodge_security_question",
+          "text": "セキュリティ関係...警備会社ですか？",
+          "nextSegmentId": "coworker_security_hint",
+          "setFlags": ["sato_contradiction_noted", "security_work_mentioned"],
+          "clearFlags": []
+        },
         {
           "responseId": "coworker_dodge_suspicious",
           "text": "そうですか。何かあればまたお電話ください。",
@@ -130,6 +137,48 @@
           "clearFlags": []
         }
       ]
+    },
+    {
+      "segmentId": "coworker_security_hint",
+      "callerLines": [
+        "...ええ、まあ、そういう感じです。",
+        "いろいろ機密が多くて。守秘義務があるんで。",
+        "...林さんとは前の職場で一緒だっただけです。"
+      ],
+      "responses": [
+        {
+          "responseId": "coworker_security_noted",
+          "text": "わかりました。何かあればまたお電話ください。",
+          "nextSegmentId": "coworker_end_quick",
+          "setFlags": ["sato_security_job_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "coworker_security_probe",
+          "text": "守秘義務...それで林さんのことを心配されてるんですか？",
+          "nextSegmentId": "coworker_defensive",
+          "setFlags": ["sato_security_job_noted", "pressed_sato"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "coworker_defensive",
+      "callerLines": [
+        "...友人として心配してるだけです。",
+        "変な詮索はやめてもらえますか。",
+        "...失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "coworker_defensive_end",
+          "text": "失礼しました。お電話ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["sato_hung_up_quickly", "sato_defensive_behavior"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
     },
     {
       "segmentId": "coworker_pressure",

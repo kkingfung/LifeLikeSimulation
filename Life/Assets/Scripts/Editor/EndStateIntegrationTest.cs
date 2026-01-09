@@ -78,6 +78,15 @@ namespace LifeLike.Editor
                     Debug.Log($"[EndStateIntegrationTest] Night04テスト完了: {_testResults.FindAll(r => r.passed).Count}/{_testResults.Count} passed");
                 }
             }
+            if (GUILayout.Button("Run Night05 Tests"))
+            {
+                _testResults.Clear();
+                if (_flagDefinition != null && _endStateDefinition != null)
+                {
+                    RunNight05Tests();
+                    Debug.Log($"[EndStateIntegrationTest] Night05テスト完了: {_testResults.FindAll(r => r.passed).Count}/{_testResults.Count} passed");
+                }
+            }
             GUILayout.EndHorizontal();
 
             GUILayout.Space(10);
@@ -798,6 +807,154 @@ namespace LifeLike.Editor
                 expected = "ending_neither",
                 actual = endingId,
                 passed = endingId == "ending_neither"
+            });
+        }
+
+        #endregion
+
+        #region Night05 Tests
+
+        /// <summary>
+        /// Night05テストを実行
+        /// Night05は情報収集量でエンドステートが決まる
+        /// 3パターン: VoiceReached（多い）、VoiceDistant（中程度）、VoiceLost（少ない）
+        /// </summary>
+        public void RunNight05Tests()
+        {
+            TestVoiceReached();
+            TestVoiceDistant();
+            TestVoiceLost();
+        }
+
+        /// <summary>
+        /// テスト: VoiceReached → ending_voice_reached
+        /// 条件: 美咲から多くの情報を得て、調査も行い、デモの話も聞いた
+        /// パターン: 情報収集を徹底した
+        /// 必須: misaki_info_gathered = true, スコア >= 6
+        /// スコア計算: learned_mari_name(2) + learned_yoshida_existence(1) + heard_mari_voice(2) +
+        ///            heard_yoshida_name(1) + misaki_comforted(1) + noticed_no_info(1) +
+        ///            listened_demo_story(2) + drug_connection(1) = 11
+        /// </summary>
+        private void TestVoiceReached()
+        {
+            var flagService = new FlagService();
+            flagService.Initialize(_flagDefinition!.nightId, _flagDefinition!);
+
+            // 美咲からの情報収集（スコア計算対象）
+            flagService.SetFlag("misaki_called", 30);
+            flagService.SetFlag("learned_mari_name", 35);              // weight: 2
+            flagService.SetFlag("learned_yoshida_existence", 40);     // weight: 1
+            flagService.SetFlag("heard_mari_voice", 45);              // weight: 2
+            flagService.SetFlag("heard_yoshida_name", 50);            // weight: 1
+            flagService.SetFlag("misaki_comforted", 55);              // weight: 1
+            // 小計: 7
+
+            // 必須フラグ：美咲から十分な情報を集めた
+            flagService.SetFlag("misaki_info_gathered", 56);          // 必須条件
+
+            // 調査関連（スコア計算対象）
+            flagService.SetFlag("researched_company", 60);
+            flagService.SetFlag("noticed_no_info", 65);               // weight: 1
+            // 小計: 8
+
+            // デモ関連（スコア計算対象）
+            flagService.SetFlag("demo_reported", 70);
+            flagService.SetFlag("listened_demo_story", 75);           // weight: 2
+            flagService.SetFlag("drug_connection", 80);               // weight: 1
+            // 合計: 11
+
+            // 組織トップの名前（スコア計算対象外）
+            flagService.SetFlag("heard_boss_name", 85);
+
+            var endStateService = new EndStateService(flagService);
+            endStateService.Initialize(_endStateDefinition!);
+
+            string endingId = endStateService.DetermineEnding(null);
+
+            _testResults.Add(new TestResult
+            {
+                testName = "VOICE_REACHED → ending_voice_reached",
+                expected = "ending_voice_reached",
+                actual = endingId,
+                passed = endingId == "ending_voice_reached"
+            });
+        }
+
+        /// <summary>
+        /// テスト: VoiceDistant → ending_voice_distant
+        /// 条件: 部分的に情報を得た
+        /// パターン: 一部の情報のみ収集
+        /// 必須: スコア 3-5（misaki_info_gathered なしでも可）
+        /// スコア計算: learned_mari_name(2) + misaki_comforted(1) + learned_yoshida_existence(1) = 4
+        /// </summary>
+        private void TestVoiceDistant()
+        {
+            var flagService = new FlagService();
+            flagService.Initialize(_flagDefinition!.nightId, _flagDefinition!);
+
+            // 美咲からの部分的な情報収集（スコア計算対象）
+            flagService.SetFlag("misaki_called", 30);
+            flagService.SetFlag("learned_mari_name", 35);              // weight: 2
+            flagService.SetFlag("learned_yoshida_existence", 38);     // weight: 1
+            flagService.SetFlag("misaki_comforted", 40);              // weight: 1
+            // 合計: 4 (スコア範囲 3-5 に収まる)
+
+            // heard_mari_voice は設定しない（真理の声を聞いていない）
+            // misaki_info_gathered も設定しない
+
+            // 調査は行わなかった
+            // researched_company は設定しない
+
+            // デモの通報だけ受けた（スコア計算対象外）
+            flagService.SetFlag("demo_reported", 50);
+            // listened_demo_story は設定しない（話を聞いていない）
+
+            var endStateService = new EndStateService(flagService);
+            endStateService.Initialize(_endStateDefinition!);
+
+            string endingId = endStateService.DetermineEnding(null);
+
+            _testResults.Add(new TestResult
+            {
+                testName = "VOICE_DISTANT → ending_voice_distant",
+                expected = "ending_voice_distant",
+                actual = endingId,
+                passed = endingId == "ending_voice_distant"
+            });
+        }
+
+        /// <summary>
+        /// テスト: VoiceLost → ending_voice_lost
+        /// 条件: ほとんど情報を得られなかった
+        /// パターン: 美咲との会話を早く切り上げた
+        /// 必須: スコア < 3 または他の条件を満たさない（デフォルト）
+        /// スコア計算: misaki_called(0) + misaki_call_ended_early(-1) = -1
+        /// </summary>
+        private void TestVoiceLost()
+        {
+            var flagService = new FlagService();
+            flagService.Initialize(_flagDefinition!.nightId, _flagDefinition!);
+
+            // 美咲からの電話を受けたが、すぐに切った
+            flagService.SetFlag("misaki_called", 30);                  // weight: 0
+            flagService.SetFlag("misaki_call_ended_early", 35);       // weight: -1
+            // 合計: -1 (スコア < 3)
+
+            // 他の情報は何も得ていない
+            // デモも無視した（スコア計算対象外）
+            flagService.SetFlag("demo_ignored", 50);                   // weight: 0
+
+            var endStateService = new EndStateService(flagService);
+            endStateService.Initialize(_endStateDefinition!);
+
+            string endingId = endStateService.DetermineEnding(null);
+
+            _testResults.Add(new TestResult
+            {
+                testName = "VOICE_LOST → ending_voice_lost",
+                expected = "ending_voice_lost",
+                actual = endingId,
+                passed = endingId == "ending_voice_lost"
             });
         }
 

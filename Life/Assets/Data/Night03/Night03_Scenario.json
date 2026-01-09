@@ -7,7 +7,7 @@
   "realSecondsPerGameMinute": 2.0,
   "difficulty": 5,
   "estimatedPlayTimeMinutes": 25,
-  "theTruth": "口論している二人は、渡辺真理（林遥の親友）と組織の人間。真理は美咲を探しているが、組織に見つかってしまった。佐藤浩二は林遥がどこにいるか知らない（遥の死を知らない）。無言電話は組織に誘拐された人物からの電話で、何かを伝えようとしているが話せない状況にある。",
+  "theTruth": "口論している二人は、渡辺真理（林遥の親友）と組織の人間（林健二）。通報者は「カップルの口論」と思い込んでいるが、実際は全く関係ない二人。林健二は遥を探す過程で、遥の友人である真理に辿り着いた。真理は美咲を預かっているが、組織に見つかってしまった。佐藤浩二は林遥がどこにいるか知らない（遥の事故を知らない）。無言電話は組織に誘拐された内部告発者からの電話で、何かを伝えようとしているが話せない状況にある。この人物はNight04で遺体として発見される。",
   "callSchedule": [
     {
       "callId": "call_argument_witness",
@@ -87,8 +87,8 @@
       "isKnownToPlayer": false
     },
     {
-      "stateId": "sato_unaware_haruka_death",
-      "description": "佐藤浩二は林遥の死を知らない",
+      "stateId": "sato_unaware_haruka_accident",
+      "description": "佐藤浩二は林遥の事故を知らない",
       "timeMinutes": 0,
       "involvedCallerIds": ["sato_koji"],
       "isKnownToPlayer": false
@@ -117,7 +117,7 @@
     {
       "evidenceId": "evidence_sato_unaware",
       "title": "佐藤の無知",
-      "content": "佐藤浩二は林遥の死を知らない",
+      "content": "佐藤浩二は林遥の事故を知らない",
       "category": "Contradiction"
     },
     {

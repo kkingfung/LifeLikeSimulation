@@ -311,7 +311,7 @@
       "callerLines": [
         "矛盾...？どんな矛盾だ？",
         "...いや、詳しくは聞かない方がいいな。",
-        "とにかく、記録は慎重に。余計なことは書くな。"
+        "とにかく、記録は慎重に。余計なことは書くな。変な組織に目をつけられたくないだろう。"
       ],
       "responses": [
         {
@@ -322,10 +322,41 @@
           "clearFlags": []
         },
         {
+          "responseId": "supervisor_interest_org",
+          "text": "変な組織...？",
+          "nextSegmentId": "supervisor_org_hint",
+          "setFlags": ["questioned_organization"],
+          "clearFlags": []
+        },
+        {
           "responseId": "supervisor_interest_comply",
           "text": "わかりました。",
           "nextSegmentId": "supervisor_end_compliant",
           "setFlags": ["aligned_language"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_org_hint",
+      "callerLines": [
+        "...言葉のアヤだ。気にするな。",
+        "ただ、この業界には...色んな人間がいる。",
+        "警備会社とか、情報を欲しがる連中とか。記録が外部に流れることもある。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_org_hint_understand",
+          "text": "...わかりました。気をつけます。",
+          "nextSegmentId": "supervisor_end_compliant",
+          "setFlags": ["aligned_language", "organization_awareness"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_org_hint_question",
+          "text": "記録が外部に？それは問題では？",
+          "nextSegmentId": "supervisor_final_warning",
+          "setFlags": ["resisted_rewrite", "questioned_organization"],
           "clearFlags": []
         }
       ]
@@ -502,14 +533,39 @@
       "callerLines": [
         "何がある...？",
         "さあな。だが、この仕事は長くやってると色々見えてくる。",
-        "深入りしない方が身のためだ。...切るぞ。"
+        "...上には上がいる。お前が思ってるより、この街は複雑なんだ。"
       ],
       "responses": [
         {
           "responseId": "supervisor_threat_end",
           "text": "...失礼します。",
           "nextSegmentId": null,
+          "setFlags": ["supervisor_flagged", "external_pressure_hinted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_threat_ask",
+          "text": "上には上...どういう意味ですか？",
+          "nextSegmentId": "supervisor_cryptic",
           "setFlags": ["supervisor_flagged"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": false
+    },
+    {
+      "segmentId": "supervisor_cryptic",
+      "callerLines": [
+        "...聞かなかったことにしろ。",
+        "ただな、セキュリティ関係の案件には...あまり深入りするな。",
+        "特に、民間の警備会社が絡んでる時は。...分かるな？"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_cryptic_end",
+          "text": "...はい。失礼します。",
+          "nextSegmentId": null,
+          "setFlags": ["security_company_warned", "external_pressure_hinted"],
           "clearFlags": []
         }
       ],

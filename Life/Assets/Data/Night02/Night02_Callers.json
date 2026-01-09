@@ -6,7 +6,7 @@
       "callerId": "yoshida_kazuko",
       "displayName": "吉田和子",
       "realName": "吉田和子",
-      "description": "72歳、一人暮らしの高齢女性。夫を5年前に亡くし、子供は遠方に住んでいる。夜間の病院帰りに倉庫火災を目撃。林遥の隣人で、遥と美咲のことを気にかけていた。",
+      "description": "72歳、一人暮らしの高齢女性。夫を5年前に亡くし、子供は遠方に住んでいる。夜間の病院帰りに倉庫火災を目撃。渡辺真理の家の近くに住んでいる。遥と真理が休日に美咲を連れて出かける時、よく顔を合わせていた。",
       "voiceDescription": "震えた高齢女性の声。最初はパニック状態、後に落ち着く。",
       "voicePitch": 1.1,
       "personality": {
@@ -15,10 +15,12 @@
         "cooperation": 90,
         "aggression": 5
       },
-      "hiddenInfo": "林遥の隣人。遥と美咲を「若いお母さんと子供」として知っている。遥が最近姿を見せないことを心配している。火災前に見た車の会社名（アラートセキュリティ）を後で思い出す可能性がある。",
+      "hiddenInfo": "渡辺真理の家の近くに住む。遥と美咲を「近所の若いお母さんと子供」として知っている。遥が最近姿を見せないことを心配している。火災前に見た車の会社名（アラートセキュリティ）を後で思い出す可能性がある。真理が仕事で不在の時、美咲が一人でいると時々家に招いている。",
       "trueMotivation": "火災の通報、孤独",
       "relations": [
-        { "targetCallerId": "hayashi_haruka", "relationType": "Neighbor", "description": "近所に住む若い母親として認識", "isKnown": false }
+        { "targetCallerId": "hayashi_haruka", "relationType": "Acquaintance", "description": "近所の若いお母さんとして知っていた", "isKnown": false },
+        { "targetCallerId": "watanabe_mari", "relationType": "Neighbor", "description": "近所の人", "isKnown": true },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Acquaintance", "description": "可愛がっている子", "isKnown": true }
       ],
       "organizationRelation": "none",
       "note": "Night01の林遥との接点を持つ人物。プレイヤーが気づけば接続できる。"
@@ -81,7 +83,7 @@
       "callerId": "watanabe_mari",
       "displayName": "（不審者）",
       "realName": "渡辺真理",
-      "description": "29歳、林遥の親友。遥の死後、行方不明の美咲を探している。Night02では直接登場しない（不審者として言及されるのみ）。Night03で本人として登場予定。",
+      "description": "29歳、林遥の親友。遥の事故前から美咲を預かっている。Night02では美咲の安全を心配して周囲を警戒しているところを「不審者」として通報された。Night03で本人として登場予定。",
       "voiceDescription": "N/A（Night02では登場しない）",
       "voicePitch": 1.1,
       "personality": {
@@ -90,10 +92,11 @@
         "cooperation": 70,
         "aggression": 20
       },
-      "hiddenInfo": "遥の親友。遥の死を知り、美咲を心配して探している。Night02では山本裕子の通報を通じて間接的に存在が示される。",
-      "trueMotivation": "美咲を見つけて保護したい",
+      "hiddenInfo": "遥の親友。美咲を自宅で預かっている。遥の事故を知り、組織の存在を薄々感じて神経質になっている。Night02では山本裕子の通報を通じて間接的に存在が示される。",
+      "trueMotivation": "美咲を安全に守りたい",
       "relations": [
-        { "targetCallerId": "hayashi_haruka", "relationType": "Friend", "description": "高校時代からの親友", "isKnown": false }
+        { "targetCallerId": "hayashi_haruka", "relationType": "Friend", "description": "高校時代からの親友", "isKnown": false },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Family", "description": "預かっている子", "isKnown": true }
       ],
       "organizationRelation": "none",
       "note": "Night03への伏線キャラクター"

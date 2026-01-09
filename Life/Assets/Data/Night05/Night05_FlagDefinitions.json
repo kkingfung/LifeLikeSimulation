@@ -1,0 +1,221 @@
+{
+  "nightId": "night_05",
+  "description": "Night05「小さな声」フラグ定義",
+  "flagDefinitions": [
+    {
+      "flagId": "misaki_called",
+      "category": "Event",
+      "description": "美咲からの電話を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "learned_mari_name",
+      "category": "Evidence",
+      "description": "「まりおばちゃん」の名前を知った",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "渡辺真理との繋がりを発見"
+    },
+    {
+      "flagId": "learned_yoshida_existence",
+      "category": "Evidence",
+      "description": "やさしいおばあちゃんの存在を知った",
+      "weight": 1,
+      "persistsAcrossNights": true,
+      "note": "吉田和子の存在が示唆される"
+    },
+    {
+      "flagId": "heard_mari_voice",
+      "category": "Evidence",
+      "description": "真理の声を聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "真理が帰宅するまで電話を続けた"
+    },
+    {
+      "flagId": "heard_yoshida_name",
+      "category": "Evidence",
+      "description": "「吉田」の名前を聞いた",
+      "weight": 1,
+      "persistsAcrossNights": true,
+      "note": "真理が帰宅時に言及"
+    },
+    {
+      "flagId": "misaki_comforted",
+      "category": "Alignment",
+      "description": "美咲を安心させた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "police_dispatched_misaki",
+      "category": "Event",
+      "description": "美咲の件で警察を派遣した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "misaki_call_ended_early",
+      "category": "Event",
+      "description": "美咲との電話を早く切り上げた",
+      "weight": -1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "researched_company",
+      "category": "Event",
+      "description": "会社を調べた",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "フラグ依存でシーンが発生"
+    },
+    {
+      "flagId": "noticed_no_info",
+      "category": "Evidence",
+      "description": "情報がないことに気づいた",
+      "weight": 1,
+      "persistsAcrossNights": true,
+      "note": "アラートセキュリティに関する疑念"
+    },
+    {
+      "flagId": "detailed_research",
+      "category": "Event",
+      "description": "詳細な調査を行った",
+      "weight": 1,
+      "persistsAcrossNights": false,
+      "note": "Night04 WitnessConnected時"
+    },
+    {
+      "flagId": "simple_research",
+      "category": "Event",
+      "description": "簡易的な調査を行った",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night04 ConnectedOnly時"
+    },
+    {
+      "flagId": "thought_only",
+      "category": "Event",
+      "description": "調査せず考えただけ",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night04 Neither時"
+    },
+    {
+      "flagId": "demo_reported",
+      "category": "Event",
+      "description": "デモの通報を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "police_dispatched_demo",
+      "category": "Event",
+      "description": "デモに警察を派遣した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "contacted_company_demo",
+      "category": "Event",
+      "description": "会社に連絡した",
+      "weight": -2,
+      "persistsAcrossNights": true,
+      "note": "危険な選択。男性に何かが起きる伏線"
+    },
+    {
+      "flagId": "listened_demo_story",
+      "category": "Evidence",
+      "description": "男性の話を聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "子供が薬で死んだ経緯の一部を知る"
+    },
+    {
+      "flagId": "demo_ignored",
+      "category": "Event",
+      "description": "デモを無視した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "heard_boss_name",
+      "category": "Foreshadowing",
+      "description": "組織トップの名前を聞いた",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "工藤主任の会話から。最終ボスの伏線"
+    },
+    {
+      "flagId": "drug_connection",
+      "category": "Evidence",
+      "description": "薬の関連を知った",
+      "weight": 1,
+      "persistsAcrossNights": true,
+      "note": "デモの男性の話から"
+    },
+    {
+      "flagId": "misaki_info_gathered",
+      "category": "Event",
+      "description": "美咲から十分な情報を集めた",
+      "weight": 2,
+      "persistsAcrossNights": false,
+      "note": "メイン軸の判定用"
+    },
+    {
+      "flagId": "security_company_noted",
+      "category": "Night04Effect",
+      "description": "Night04で警備会社を記録した",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night04からの引き継ぎ"
+    },
+    {
+      "flagId": "evidence_company_car",
+      "category": "Night04Effect",
+      "description": "Night04で会社の車を目撃した",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night04からの引き継ぎ"
+    },
+    {
+      "flagId": "vehicles_match",
+      "category": "Night04Effect",
+      "description": "Night02とNight04の車両が一致した",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night02-04からの引き継ぎ"
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "misaki_comforted",
+      "cancelFlags": ["misaki_call_ended_early"]
+    },
+    {
+      "whenFlagSet": "detailed_research",
+      "cancelFlags": ["simple_research", "thought_only"]
+    },
+    {
+      "whenFlagSet": "simple_research",
+      "cancelFlags": ["detailed_research", "thought_only"]
+    },
+    {
+      "whenFlagSet": "thought_only",
+      "cancelFlags": ["detailed_research", "simple_research"]
+    },
+    {
+      "whenFlagSet": "police_dispatched_demo",
+      "cancelFlags": ["contacted_company_demo", "demo_ignored"]
+    },
+    {
+      "whenFlagSet": "contacted_company_demo",
+      "cancelFlags": ["police_dispatched_demo", "demo_ignored"]
+    },
+    {
+      "whenFlagSet": "demo_ignored",
+      "cancelFlags": ["police_dispatched_demo", "contacted_company_demo"]
+    }
+  ]
+}

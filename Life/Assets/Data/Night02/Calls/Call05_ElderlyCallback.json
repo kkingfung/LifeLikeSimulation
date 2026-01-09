@@ -160,8 +160,97 @@
       ],
       "responses": [
         {
+          "responseId": "callback_hayashi_child",
+          "text": "お子さん...小さいお子さんですか？",
+          "nextSegmentId": "callback_child_detail",
+          "setFlags": ["young_mother_mentioned", "child_mentioned"],
+          "clearFlags": []
+        },
+        {
           "responseId": "callback_hayashi_end",
           "text": "そうですか...。何かあればまた連絡くださいね。お休みなさい。",
+          "nextSegmentId": "callback_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_child_detail",
+      "callerLines": [
+        "ええ、5歳くらいの女の子。美咲ちゃんっていうの。",
+        "かわいい子で...お母さんのこと「ママ」って呼んでて...",
+        "最近は、お友達の真理さんのところに預けられてることが多かったみたい。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_child_mari",
+          "text": "真理さん？どなたですか？",
+          "nextSegmentId": "callback_mari_hint",
+          "setFlags": ["misaki_existence_hinted", "mari_existence_hinted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_child_worried",
+          "text": "5歳...それで最近見かけないのは心配ですね。",
+          "nextSegmentId": "callback_worried",
+          "setFlags": ["misaki_existence_hinted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_mari_hint",
+      "callerLines": [
+        "林さんのお友達みたい。同じくらいの年の女性で...",
+        "休みの日に、二人で美咲ちゃんを連れて公園に行ってるのを見かけたわ。",
+        "...でも最近は林さん、何か心配事があるみたいで...怖い顔してたの。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_mari_scared",
+          "text": "怖い顔...何か問題があったんでしょうか。",
+          "nextSegmentId": "callback_scared",
+          "setFlags": ["haruka_seemed_scared"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_mari_end",
+          "text": "そうですか...。詳しい情報をありがとうございます。",
+          "nextSegmentId": "callback_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_scared",
+      "callerLines": [
+        "わからないけど...何かに怯えてるような...",
+        "一度、「誰かに見られてる気がする」って言ってたわ。",
+        "...考えすぎかしら。でも、ずっと気になってて..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_scared_end",
+          "text": "貴重な情報をありがとうございます。夜遅くにすみません。",
+          "nextSegmentId": "callback_end",
+          "setFlags": ["haruka_felt_watched"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_worried",
+      "callerLines": [
+        "ええ...林さんがいないと、美咲ちゃんどうしてるのかしら...",
+        "真理さんが見てくれてるといいんだけど...",
+        "...あ、すみません、お仕事中にこんな話..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_worried_end",
+          "text": "いえ、大事なことです。何かあればまたご連絡ください。",
           "nextSegmentId": "callback_end",
           "setFlags": [],
           "clearFlags": []
