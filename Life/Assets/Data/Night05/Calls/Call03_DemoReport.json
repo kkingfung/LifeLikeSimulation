@@ -1,0 +1,267 @@
+{
+  "callId": "call_demo_report",
+  "callerId": "neighbor",
+  "title": "騒音の通報",
+  "description": "近隣住民からの騒音通報。男性が製薬会社の前で抗議活動をしている。",
+  "segments": [
+    {
+      "segmentId": "initial_report",
+      "callerLines": [
+        "もしもし、騒音の通報なんですが...",
+        "うちの店の前で、男の人が叫んでて...",
+        "お客さんも怖がってるんです"
+      ],
+      "responses": [
+        {
+          "responseId": "ask_location",
+          "text": "場所を教えてください。",
+          "nextSegmentId": "location_info",
+          "setFlags": ["demo_reported"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_situation",
+          "text": "どんな状況ですか？",
+          "nextSegmentId": "situation_info",
+          "setFlags": ["demo_reported"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "location_info",
+      "callerLines": [
+        "誠和製薬の本社ビルの前です",
+        "うちは向かいの飲食店なんですが...",
+        "1時間くらい前から始まって..."
+      ],
+      "responses": [
+        {
+          "responseId": "ask_what_shouting",
+          "text": "何を叫んでいるか分かりますか？",
+          "nextSegmentId": "shouting_content",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_man_description",
+          "text": "男性はどんな人ですか？",
+          "nextSegmentId": "man_description",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "situation_info",
+      "callerLines": [
+        "一人の男の人が、会社の前で看板持って叫んでるんです",
+        "「不正」とか「薬」とか聞こえて...",
+        "危険ってわけじゃないんですけど、うるさくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "ask_location_from_situation",
+          "text": "場所はどこですか？",
+          "nextSegmentId": "location_info",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "ask_details",
+          "text": "もう少し詳しく聞こえますか？",
+          "nextSegmentId": "shouting_content",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "shouting_content",
+      "callerLines": [
+        "えーと...「子供を返せ」とか...",
+        "「警察は何もしない」とか...",
+        "「この会社が殺したんだ」みたいなことを..."
+      ],
+      "responses": [
+        {
+          "responseId": "interested_in_story",
+          "text": "何があったか、もう少し聞こえますか？",
+          "nextSegmentId": "demo_man_story",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "proceed_to_response",
+          "text": "分かりました。対応を決めます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "man_description",
+      "callerLines": [
+        "40代くらいの普通の人...スーツは着てないけど...",
+        "怖い人ってわけじゃなさそうなんですけど...",
+        "ただ、すごく必死で..."
+      ],
+      "responses": [
+        {
+          "responseId": "ask_shouting_from_desc",
+          "text": "何を叫んでいるか聞こえますか？",
+          "nextSegmentId": "shouting_content",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "demo_man_story",
+      "callerLines": [
+        "えーと...今近づいて聞いてみますね...",
+        "...",
+        "「息子は薬のせいで死んだ」「この会社の薬だ」って..."
+      ],
+      "responses": [
+        {
+          "responseId": "ask_more_story",
+          "text": "もっと聞けますか？",
+          "nextSegmentId": "demo_man_detail",
+          "setFlags": ["listened_demo_story"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "enough_info",
+          "text": "ありがとうございます。対応を決めます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["listened_demo_story"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "demo_man_detail",
+      "callerLines": [
+        "「警察に言っても動かない」「誰も助けてくれない」...",
+        "「だから自分が声を上げるしかない」って...",
+        "...なんか、かわいそうになってきました..."
+      ],
+      "responses": [
+        {
+          "responseId": "to_response_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["drug_connection"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "response_decision",
+      "callerLines": [
+        "どうしますか？",
+        "このままだとお客さん来なくなっちゃうんですけど..."
+      ],
+      "responses": [
+        {
+          "responseId": "dispatch_police",
+          "text": "警察を向かわせます。少々お待ちください。",
+          "nextSegmentId": "police_dispatched",
+          "setFlags": ["police_dispatched_demo"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "wait_and_see",
+          "text": "もう少し様子を見てください。危険がなければ自然に終わるかもしれません。",
+          "nextSegmentId": "wait_response",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_dispatched",
+      "callerLines": [
+        "はい、ありがとうございます",
+        "...",
+        "（しばらく後）警察が来ました...説得してるみたいです..."
+      ],
+      "responses": [
+        {
+          "responseId": "ask_result",
+          "text": "どうなりましたか？",
+          "nextSegmentId": "police_result",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_result",
+      "callerLines": [
+        "男の人、肩を落として歩いていきました...",
+        "警察の人が話を聞いてたみたいで...",
+        "とりあえず静かになりました。ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_police",
+          "text": "お電話ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "wait_response",
+      "callerLines": [
+        "えー...そうですか...",
+        "まあ、危なくはないですけど...",
+        "分かりました、もう少し見てみます..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_wait",
+          "text": "何かあればまたお電話ください。",
+          "nextSegmentId": "wait_result",
+          "setFlags": ["demo_ignored"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "wait_result",
+      "callerLines": [
+        "（30分後）",
+        "あの男の人、疲れたみたいで自分で帰っていきました...",
+        "まあ、よかったです。お騒がせしました。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_wait_final",
+          "text": "お電話ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "initial_report",
+  "operatorThoughts": [
+    {
+      "triggerId": "drug_victim_thought",
+      "triggerCondition": {
+        "requiresFlag": "drug_connection"
+      },
+      "triggerTiming": "after_call",
+      "content": "薬で子供を失った...この会社が...？"
+    }
+  ],
+  "note": "デモの男性は組織（アラートセキュリティの親会社/関連会社）の違法な薬で子供を失った被害者。警察に訴えても動かなかったため、自分で声を上げることにした。警察派遣でも様子見でも、一旦は収束するが、Night06で再登場する可能性あり。"
+}

@@ -78,7 +78,84 @@ namespace LifeLike.Data.EndState
         VoiceDistant,
 
         /// <summary>消えた声 — ほとんど情報を得られなかった</summary>
-        VoiceLost
+        VoiceLost,
+
+        // === Night06 追加 ===
+        /// <summary>嵐への備え — 多くの繋がりを見つけ、対策を講じた</summary>
+        StormPrepared,
+
+        /// <summary>嵐の予感 — 繋がりに気づいたが、完全な対策は取れなかった</summary>
+        StormAware,
+
+        /// <summary>遠い雷鳴 — 部分的な情報しか得られなかった</summary>
+        StormDistant,
+
+        /// <summary>静かな午後 — 嵐が来ることを知らない</summary>
+        StormUnaware,
+
+        // === Night07 追加 ===
+        /// <summary>小さな光 — 美咲は安全、真相に迫った</summary>
+        MisakiProtected,
+
+        /// <summary>守られた秘密 — 美咲は安全だが、全容は見えない</summary>
+        MisakiSafeUnaware,
+
+        /// <summary>崩壊 — 美咲も連れ去られた</summary>
+        MisakiTaken,
+
+        /// <summary>崩壊の夜 — 真理は連れ去られ、美咲の運命は不明</summary>
+        CollapseWitnessed,
+
+        // === Night08 追加 ===
+        /// <summary>真実を追う者 — 警察に全面協力し、組織に逆らった</summary>
+        TruthSeeker,
+
+        /// <summary>慎重な知識 — 多くの情報を得たが、組織には従った</summary>
+        InformedCaution,
+
+        /// <summary>沈黙の証人 — 情報を得たが、警察にも組織にも協力的ではなかった</summary>
+        SilentWitness,
+
+        /// <summary>無知な生存者 — 情報をほとんど得ずに夜を終えた</summary>
+        UnawareSurvivor,
+
+        // === Night09 追加 ===
+        /// <summary>完全な同盟 — 警察と同盟を結び、告発者を保護し、全てを話すことを決意</summary>
+        FullAlliance,
+
+        /// <summary>積極的な協力 — 警察と協力し、全てを話すことを決意</summary>
+        ActiveAlliance,
+
+        /// <summary>真実を知った沈黙 — 多くの真実を知ったが、沈黙を選んだ</summary>
+        PassiveTruth,
+
+        /// <summary>告発者を救った — 告発者を警察に保護させることに成功</summary>
+        WhistleblowerSaved,
+
+        /// <summary>告発者の危機 — 告発者を助けられなかった</summary>
+        WhistleblowerEndangered,
+
+        /// <summary>美咲の存在を知った — オペレーターが美咲の存在と居場所を知った</summary>
+        MisakiDiscovered,
+
+        /// <summary>真実が明らかに — 誠和製薬の闘の全容が明らかになった</summary>
+        TruthRevealed,
+
+        /// <summary>不確かな未来 — 多くの情報を得たが、決定的な行動は取れなかった</summary>
+        UncertainFuture,
+
+        // === Night10 追加 ===
+        /// <summary>真実の夜明け — 美咲救出、USB発見、誠和製薬壊滅</summary>
+        TruthDawn,
+
+        /// <summary>捜査は続く — 美咲救出、USB未発見、捜査継続</summary>
+        InvestigationContinues,
+
+        /// <summary>闇の中へ — 美咲死亡、隠蔽成功</summary>
+        IntoDarkness,
+
+        /// <summary>不確かな夜明け — 美咲の運命不明</summary>
+        UncertainDawn
     }
 
     /// <summary>

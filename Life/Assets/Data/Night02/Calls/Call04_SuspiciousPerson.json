@@ -2,51 +2,27 @@
   "callId": "call_suspicious_person",
   "callerId": "yamamoto_yuko",
   "title": "公園に不審な人がいて...",
-  "description": "住宅街住人からの不審者通報。子供を見ている人物。実は遥の友人・渡辺真理が美咲を探している。",
+  "description": "住宅街住人からの不審者通報。実は遥の友人・渡辺真理が美咲を探している。警察派遣すると真理は職質で時間を取られ、Night03で準備不足になる。",
   "segments": [
     {
       "segmentId": "suspicious_intro",
       "callerLines": [
         "あの...すみません。",
         "公園に不審な人がいるんですけど...",
-        "通報した方がいいか分からなくて..."
+        "こんな時間に一人でベンチに座ってて、キョロキョロしてて..."
       ],
       "responses": [
         {
-          "responseId": "suspicious_intro_listen",
-          "text": "どのような状況ですか？詳しく教えてください。",
+          "responseId": "suspicious_intro_details",
+          "text": "どのような人ですか？",
           "nextSegmentId": "suspicious_describe",
           "setFlags": [],
           "clearFlags": []
         },
         {
-          "responseId": "suspicious_intro_calm",
-          "text": "落ち着いてください。まず、お名前と場所を教えてください。",
-          "nextSegmentId": "suspicious_info",
-          "setFlags": ["reassured_reporter"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "suspicious_info",
-      "callerLines": [
-        "山本です。○○公園の近くに住んでて...",
-        "さっき窓から外を見たら、公園のベンチに誰か座ってて...",
-        "こんな時間に、一人で...子供の遊具の方をじっと見てるんです。"
-      ],
-      "responses": [
-        {
-          "responseId": "suspicious_info_details",
-          "text": "子供の遊具を見ている...どんな人でしたか？",
+          "responseId": "suspicious_intro_location",
+          "text": "場所を教えてください。",
           "nextSegmentId": "suspicious_describe",
-          "setFlags": ["suspicious_watching_children", "asked_reporter_details"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "suspicious_info_child",
-          "text": "今、公園に子供はいますか？",
-          "nextSegmentId": "suspicious_child",
           "setFlags": [],
           "clearFlags": []
         }
@@ -55,222 +31,30 @@
     {
       "segmentId": "suspicious_describe",
       "callerLines": [
-        "女の人...だと思います。暗いからはっきり見えないけど。",
-        "コートを着てて、フードを被ってます。",
-        "ずっとキョロキョロしてて...何かを探してるみたいで怖くて..."
+        "女の人...だと思います。コートを着てて、フードを被ってます。",
+        "○○公園です。さっき携帯で写真みたいなものを見てて...",
+        "何かを探してるみたいで...怖くて..."
       ],
       "responses": [
         {
           "responseId": "suspicious_describe_police",
-          "text": "分かりました。警察に連絡します。",
-          "nextSegmentId": "suspicious_dispatch",
-          "setFlags": ["police_dispatched_suspicious", "suspicious_person_noted"],
+          "text": "分かりました。警察に連絡しておきます。",
+          "nextSegmentId": "suspicious_end",
+          "setFlags": ["mari_delayed_by_police"],
           "clearFlags": []
         },
         {
           "responseId": "suspicious_describe_watch",
-          "text": "もう少し様子を見てもらえますか？犯罪行為は確認できていないので...",
-          "nextSegmentId": "suspicious_wait",
-          "setFlags": ["suspicious_person_noted"],
+          "text": "犯罪行為は確認できていないので、様子を見てください。",
+          "nextSegmentId": "suspicious_end_no_police",
+          "setFlags": ["mari_search_uninterrupted"],
           "clearFlags": []
         },
         {
           "responseId": "suspicious_describe_looking",
-          "text": "何かを探している...人を探しているようには見えませんか？",
-          "nextSegmentId": "suspicious_looking_for",
-          "setFlags": ["suspicious_person_noted"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "suspicious_looking_for",
-      "callerLines": [
-        "人を...？そう言われると...そうかもしれない。",
-        "さっき、携帯で写真みたいなものを見てたんです。",
-        "それで周りをキョロキョロして...誰かを待ってるとか、探してるとか..."
-      ],
-      "responses": [
-        {
-          "responseId": "suspicious_looking_photo",
-          "text": "写真を見ていた...子供の写真ではないですよね？",
-          "nextSegmentId": "suspicious_child_photo",
-          "setFlags": ["photo_noted"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "suspicious_looking_police",
-          "text": "念のため警察に連絡しましょう。",
-          "nextSegmentId": "suspicious_dispatch",
-          "setFlags": ["police_dispatched_suspicious", "suspicious_person_noted"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "suspicious_child_photo",
-      "callerLines": [
-        "子供...？分からないです、遠くて...",
-        "でも、確かに小さい写真だった気がします。",
-        "...まさか、迷子を探してるとか？でも、こんな時間に子供なんて..."
-      ],
-      "responses": [
-        {
-          "responseId": "suspicious_child_maybe",
-          "text": "迷子...かもしれませんね。警察に連絡しておきます。",
-          "nextSegmentId": "suspicious_dispatch",
-          "setFlags": ["police_dispatched_suspicious", "child_search_hinted"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "suspicious_child_wait",
-          "text": "様子を見てください。何かあればまた連絡を。",
+          "text": "人を探しているのかもしれませんね。",
           "nextSegmentId": "suspicious_end_no_police",
-          "setFlags": ["child_search_hinted"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "suspicious_child",
-      "callerLines": [
-        "今は誰もいません。こんな時間ですから。",
-        "でも、日中は子供がよく遊んでて...",
-        "もしこの人が...変な人だったら、と思うと..."
-      ],
-      "responses": [
-        {
-          "responseId": "suspicious_child_police",
-          "text": "念のため警察に連絡しましょう。場所を確認します。",
-          "nextSegmentId": "suspicious_dispatch",
-          "setFlags": ["police_dispatched_suspicious", "suspicious_person_noted"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "suspicious_child_describe",
-          "text": "その人の特徴をもう少し教えてください。",
-          "nextSegmentId": "suspicious_describe",
-          "setFlags": ["asked_reporter_details"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "suspicious_dispatch",
-      "callerLines": [
-        "警察が来てくれるんですか？よかった...",
-        "○○公園です。○○町の角のところ。",
-        "あ、今...その人、立ち上がりました。どこか行くみたい..."
-      ],
-      "responses": [
-        {
-          "responseId": "suspicious_dispatch_direction",
-          "text": "どちらの方向に行きましたか？",
-          "nextSegmentId": "suspicious_leave",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "suspicious_dispatch_stay",
-          "text": "危険ですので、外に出ないでください。警察が向かいます。",
-          "nextSegmentId": "suspicious_end",
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "suspicious_wait",
-      "callerLines": [
-        "そうですか...でも、気持ち悪くて...",
-        "あ、今...その人、携帯を見てます。誰かに電話してるのかな...",
-        "...あ、立ち上がって歩き始めました。"
-      ],
-      "responses": [
-        {
-          "responseId": "suspicious_wait_gone",
-          "text": "立ち去ったのなら、今回は様子見で大丈夫そうですね。",
-          "nextSegmentId": "suspicious_end_no_police",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "suspicious_wait_police",
-          "text": "念のため警察に連絡しておきましょうか？",
-          "nextSegmentId": "suspicious_dispatch",
-          "setFlags": ["police_dispatched_suspicious", "suspicious_person_noted"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "suspicious_wait_hear",
-          "text": "何か話しているのが聞こえますか？",
-          "nextSegmentId": "suspicious_hear_voice",
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "suspicious_hear_voice",
-      "callerLines": [
-        "えっと...窓を少し開けてみます...",
-        "「...見つからない」って言ってるような...「どこにいるの」とか...",
-        "泣いてる...？怒ってる...？何か切羽詰まった感じ..."
-      ],
-      "responses": [
-        {
-          "responseId": "suspicious_hear_desperate",
-          "text": "誰かを探して困っているようですね...迷子の親かもしれません。",
-          "nextSegmentId": "suspicious_maybe_parent",
-          "setFlags": ["desperate_search_noted"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "suspicious_hear_police",
-          "text": "分かりました。念のため警察に連絡します。",
-          "nextSegmentId": "suspicious_dispatch",
-          "setFlags": ["police_dispatched_suspicious", "desperate_search_noted"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "suspicious_maybe_parent",
-      "callerLines": [
-        "迷子...？でも、この時間に子供が外にいるわけ...",
-        "あ、その人、どこかに歩いていきます。住宅街の方に...",
-        "何かを探しながら...家を一軒一軒見てるみたい..."
-      ],
-      "responses": [
-        {
-          "responseId": "suspicious_maybe_end",
-          "text": "分かりました。何かあればまた連絡ください。",
-          "nextSegmentId": "suspicious_end_no_police",
-          "setFlags": ["searching_houses_noted"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "suspicious_maybe_police",
-          "text": "念のため警察に伝えておきます。",
-          "nextSegmentId": "suspicious_dispatch",
-          "setFlags": ["police_dispatched_suspicious", "searching_houses_noted"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "suspicious_leave",
-      "callerLines": [
-        "え〜と...住宅街の方に...ゆっくり歩いてます。",
-        "何かを探すみたいにキョロキョロしながら...",
-        "家を見てるのかな...怖い..."
-      ],
-      "responses": [
-        {
-          "responseId": "suspicious_leave_police",
-          "text": "警察に伝えます。外に出ないで、様子を見ていてください。",
-          "nextSegmentId": "suspicious_end",
-          "setFlags": [],
+          "setFlags": ["mari_search_uninterrupted"],
           "clearFlags": []
         }
       ]
@@ -278,9 +62,9 @@
     {
       "segmentId": "suspicious_end",
       "callerLines": [
-        "はい、分かりました。",
-        "警察が来るまで見てます。",
-        "ありがとうございます..."
+        "ありがとうございます。",
+        "あ、今...その人、立ち上がってどこか行きます。",
+        "警察が来るまで見てます..."
       ],
       "responses": [
         {
@@ -297,8 +81,8 @@
       "segmentId": "suspicious_end_no_police",
       "callerLines": [
         "そうですか...でも、また来たらどうしよう...",
-        "一応、気をつけておきます。",
-        "ありがとうございました。"
+        "あ、その人、どこかに歩いていきました。",
+        "一応、気をつけておきます。ありがとうございました。"
       ],
       "responses": [
         {
@@ -313,5 +97,5 @@
     }
   ],
   "startSegmentId": "suspicious_intro",
-  "note": "不審者の正体は渡辺真理（遥の友人）で、美咲を探している。プレイヤーはそれを知らない。追加対話で「誰かを探している」「見つからない」等の伏線あり。警察を派遣した場合、フォローアップ通話がトリガーされる。Night03で真理が直接電話してくる際の伏線。"
+  "note": "不審者通報。実は遥の友人・渡辺真理が美咲を探している。警察派遣すると真理は職質で時間を取られ、Night03で林健二と対峙した時に準備不足（美咲を安全な場所に預けられていない）になる。警察派遣しなければ、真理は美咲を見つけて安全な場所に預けた状態でNight03を迎える。"
 }

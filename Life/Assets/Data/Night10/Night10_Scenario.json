@@ -1,0 +1,192 @@
+{
+  "scenarioId": "night_10",
+  "title": "夜明け前",
+  "description": "最後の夜。釣り人からの通報で真理の遺体が発見される。オペレーターは最後の決断を迫られる。すべての選択が、ここで結実する。",
+  "startTimeMinutes": 240,
+  "endTimeMinutes": 420,
+  "realSecondsPerGameMinute": 2.0,
+  "difficulty": 5,
+  "estimatedPlayTimeMinutes": 30,
+  "theTruth": "渡辺真理は川の近くで遺体で発見された。組織に殺害された。真理が死んだことで、組織は美咲と吉田を探し出す。吉田は美咲を守るために戦うが、殺される。オペレーターの過去の選択と最後の決断が、美咲の運命を決める。内部告発者が生き残っていれば、美咲を見つけてキーホルダーの使い方を教えることができる。USBが見つかれば、誠和製薬は壊滅する。",
+  "callSchedule": [
+    {
+      "callId": "call_fisherman_report",
+      "callerId": "fisherman",
+      "title": "釣り人からの通報",
+      "incomingTimeMinutes": 270,
+      "ringDuration": 60,
+      "priority": 9,
+      "isCritical": true,
+      "description": "早朝の釣り人が川の近くで女性の遺体を発見。"
+    },
+    {
+      "callId": "call_police_confirmation",
+      "callerId": "police_detective",
+      "title": "警察からの身元確認",
+      "incomingTimeMinutes": 320,
+      "ringDuration": 45,
+      "priority": 8,
+      "isCritical": true,
+      "description": "警察が遺体の身元を確認。渡辺真理と判明。オペレーターに報告。"
+    },
+    {
+      "callId": "call_police_report",
+      "callerId": "police_detective",
+      "title": "警察からの報告",
+      "incomingTimeMinutes": 380,
+      "ringDuration": 45,
+      "priority": 9,
+      "isCritical": true,
+      "description": "警察からの報告。吉田の家に行った結果を報告。フラグによって内容が変わる。"
+    }
+  ],
+  "specialEvents": [
+    {
+      "eventId": "event_operator_choice",
+      "title": "オペレーターの選択",
+      "triggerTimeMinutes": 350,
+      "description": "真理の死を知ったオペレーター。警察を吉田の家に送るかどうかの選択。フラグによって選択肢の有無が変わる。",
+      "eventType": "choice"
+    },
+    {
+      "eventId": "event_whistleblower_contact",
+      "title": "内部告発者への連絡",
+      "triggerTimeMinutes": 400,
+      "description": "内部告発者に連絡して美咲を見つけてもらう。whistleblower_likely_safeフラグが必要。",
+      "eventType": "outgoing_call",
+      "conditions": {
+        "requiresFlag": "whistleblower_likely_safe"
+      }
+    },
+    {
+      "eventId": "event_epilogue",
+      "title": "エピローグ",
+      "triggerTimeMinutes": 415,
+      "description": "すべての結末が明らかになる。",
+      "eventType": "epilogue"
+    }
+  ],
+  "initialWorldStates": [
+    {
+      "stateId": "mari_dead",
+      "description": "真理は組織に殺害され、川の近くに遺棄された",
+      "timeMinutes": 240,
+      "involvedCallerIds": ["watanabe_mari"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "organization_hunting_misaki",
+      "description": "組織は真理の死後、美咲と吉田を探し始めた",
+      "timeMinutes": 240,
+      "involvedCallerIds": ["hayashi_misaki", "yoshida_kazuko"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "yoshida_protecting",
+      "description": "吉田は美咲を守っている",
+      "timeMinutes": 240,
+      "involvedCallerIds": ["yoshida_kazuko", "hayashi_misaki"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "whistleblower_status",
+      "description": "内部告発者の状態はNight09の選択による",
+      "timeMinutes": 240,
+      "involvedCallerIds": ["whistleblower"],
+      "isKnownToPlayer": false
+    }
+  ],
+  "evidenceTemplates": [
+    {
+      "evidenceId": "evidence_mari_dead",
+      "title": "真理の死",
+      "content": "渡辺真理が川の近くで遺体で発見された",
+      "category": "Event"
+    },
+    {
+      "evidenceId": "evidence_yoshida_death",
+      "title": "吉田の死",
+      "content": "吉田和子が美咲を守ろうとして殺された",
+      "category": "Event"
+    },
+    {
+      "evidenceId": "evidence_misaki_saved",
+      "title": "美咲の救出",
+      "content": "美咲が警察に保護され、オペレーターが引き取った",
+      "category": "Resolution"
+    },
+    {
+      "evidenceId": "evidence_usb_found",
+      "title": "USBの発見",
+      "content": "美咲のキーホルダーからUSBが発見された。誠和製薬の不正の証拠。",
+      "category": "Evidence"
+    },
+    {
+      "evidenceId": "evidence_company_destroyed",
+      "title": "誠和製薬の壊滅",
+      "content": "USBの証拠により、誠和製薬は壊滅した",
+      "category": "Resolution"
+    }
+  ],
+  "night09EndStateEffects": {
+    "operator_will_tell_police": {
+      "description": "オペレーターは警察に協力する意思がある",
+      "addFlags": ["police_cooperation"]
+    },
+    "operator_will_stay_silent": {
+      "description": "オペレーターは沈黙を守る",
+      "addFlags": ["operator_passive"]
+    },
+    "whistleblower_likely_safe": {
+      "description": "内部告発者は警察に保護された",
+      "addFlags": ["whistleblower_available"]
+    },
+    "whistleblower_fate_unknown": {
+      "description": "内部告発者の運命は不明",
+      "addFlags": ["whistleblower_uncertain"]
+    },
+    "whistleblower_in_danger": {
+      "description": "内部告発者は危険な状態",
+      "addFlags": ["whistleblower_unavailable"]
+    }
+  },
+  "endingConditions": {
+    "ending_best": {
+      "title": "真実の夜明け",
+      "description": "美咲救出、USB発見、誠和製薬壊滅",
+      "requiredFlags": ["misaki_saved", "usb_found"],
+      "resultFlags": ["company_destroyed"]
+    },
+    "ending_good": {
+      "title": "捜査は続く",
+      "description": "美咲救出、USBは見つからず、捜査継続",
+      "requiredFlags": ["misaki_saved"],
+      "requiredNotFlags": ["usb_found"],
+      "resultFlags": ["investigation_ongoing"]
+    },
+    "ending_bad": {
+      "title": "闇の中へ",
+      "description": "美咲死亡、証拠なし、隠蔽成功",
+      "requiredFlags": ["misaki_dead"],
+      "resultFlags": ["coverup_success"]
+    }
+  },
+  "epilogueForeshadowing": [
+    {
+      "id": "murakami_mystery",
+      "content": "慈善活動家・村上誠一郎の名前は、今回の事件では一度も出てこなかった...",
+      "category": "未解決"
+    },
+    {
+      "id": "security_company_logo",
+      "content": "白い車に描かれていたロゴ。アラートセキュリティ。その会社は今も存在している。",
+      "category": "未解決"
+    },
+    {
+      "id": "sato_whereabouts",
+      "content": "佐藤浩二という名前。林遥の「同僚」を名乗った男。彼の行方は分からない。",
+      "category": "未解決"
+    }
+  ],
+  "note": "Night10は最終夜。真理の遺体発見から始まり、オペレーターの最後の選択、そしてエピローグへ。美咲の運命はプレイヤーの過去の選択と最終決断による。USB発見には内部告発者の生存が必要。続編への伏線として村上誠一郎、アラートセキュリティ、佐藤浩二を残す。"
+}

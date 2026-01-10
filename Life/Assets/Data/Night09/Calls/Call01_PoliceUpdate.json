@@ -1,0 +1,242 @@
+{
+  "callId": "call_police_update",
+  "callerId": "police_detective",
+  "title": "警察からの進展報告",
+  "description": "警察が捜査の進展を報告。真理はまだ見つかっていないが、品川ナンバーの車を追っている。",
+  "segments": [
+    {
+      "segmentId": "police_intro",
+      "callerLines": [
+        "○○署の山田です。",
+        "渡辺真理さんの件で進展がありまして。",
+        "ご報告に上がりました。"
+      ],
+      "responses": [
+        {
+          "responseId": "intro_listen",
+          "text": "お願いします。",
+          "nextSegmentId": "police_progress",
+          "setFlags": ["police_update_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "intro_ask_found",
+          "text": "渡辺さんは見つかりましたか？",
+          "nextSegmentId": "police_not_found",
+          "setFlags": ["police_update_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_not_found",
+      "callerLines": [
+        "残念ながら、まだ発見には至っていません。",
+        "ただ、手がかりは掴めてきています。",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "not_found_ask",
+          "text": "どんな手がかりですか？",
+          "nextSegmentId": "police_progress",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_progress",
+      "callerLines": [
+        "目撃情報のあった品川ナンバーの車ですが...",
+        "防犯カメラの映像を追跡しています。",
+        "どうやら北の方に向かったようです。"
+      ],
+      "responses": [
+        {
+          "responseId": "progress_ask_where",
+          "text": "北というと？",
+          "nextSegmentId": "police_direction",
+          "setFlags": ["tracking_car"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "progress_ask_company",
+          "text": "誠和製薬との関連は？",
+          "nextSegmentId": "police_seiwaq",
+          "setFlags": ["tracking_car"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_direction",
+      "callerLines": [
+        "県境を越えた辺りで映像が途切れました。",
+        "山間部に入ったようで...",
+        "捜索範囲を広げています。"
+      ],
+      "responses": [
+        {
+          "responseId": "direction_ask_seiwaq",
+          "text": "誠和製薬との関連は調べていますか？",
+          "nextSegmentId": "police_seiwaq",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "direction_understood",
+          "text": "分かりました。",
+          "nextSegmentId": "police_ask_info",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_seiwaq",
+      "callerLines": [
+        "...正直に言いますと、難航しています。",
+        "上からの指示で、あまり深入りするなと。",
+        "でも、個人的には...気になっています。"
+      ],
+      "responses": [
+        {
+          "responseId": "seiwaq_encourage",
+          "text": "諦めないでください。",
+          "nextSegmentId": "police_determination",
+          "setFlags": ["encouraged_police"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "seiwaq_understand",
+          "text": "大変ですね...",
+          "nextSegmentId": "police_ask_info",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_determination",
+      "callerLines": [
+        "ええ...渡辺さんを見つけたいですからね。",
+        "中村さんの件も、林さんの件も...",
+        "このまま終わらせたくない。"
+      ],
+      "responses": [
+        {
+          "responseId": "determination_agree",
+          "text": "私もそう思います。",
+          "nextSegmentId": "police_alliance",
+          "setFlags": ["police_ally"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "determination_careful",
+          "text": "気をつけてください。",
+          "nextSegmentId": "police_ask_info",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_alliance",
+      "callerLines": [
+        "...ありがとうございます。",
+        "何か分かったら、お互い連絡しましょう。",
+        "この番号でいいですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "alliance_yes",
+          "text": "はい、お願いします。",
+          "nextSegmentId": "police_end_positive",
+          "setFlags": ["police_alliance_formed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_ask_info",
+      "callerLines": [
+        "そちらで何か新しい情報はありましたか？",
+        "どんな小さなことでも構いません。"
+      ],
+      "responses": [
+        {
+          "responseId": "info_nothing",
+          "text": "今のところは...特に。",
+          "nextSegmentId": "police_end_normal",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "info_will_tell",
+          "text": "何かあればお伝えします。",
+          "nextSegmentId": "police_end_normal",
+          "setFlags": ["will_share_info"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_end_positive",
+      "callerLines": [
+        "よろしくお願いします。",
+        "きっと真実に辿り着けます。",
+        "では、また。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_positive",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_end_normal",
+      "callerLines": [
+        "分かりました。",
+        "何かあればご連絡ください。",
+        "では、失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_normal",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "police_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "police_ally_thought",
+      "triggerCondition": {
+        "requiresFlag": "police_alliance_formed"
+      },
+      "triggerTiming": "after_call",
+      "content": "山田刑事は味方になってくれた...一人じゃない..."
+    },
+    {
+      "triggerId": "pressure_thought",
+      "triggerCondition": {
+        "requiresFlag": "tracking_car",
+        "requiresNotFlag": "police_alliance_formed"
+      },
+      "triggerTiming": "after_call",
+      "content": "警察も上からの圧力で動けない...誠和製薬の力は本当に大きい..."
+    }
+  ],
+  "note": "Night09最初の通話。警察が捜査の進展を報告。真理はまだ見つかっていないが、品川ナンバーの車を追跡中。誠和製薬の件は上からの圧力で難航。オペレーターの対応次第で、警察との同盟関係が築ける。"
+}

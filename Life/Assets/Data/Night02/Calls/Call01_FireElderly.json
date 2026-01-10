@@ -218,36 +218,12 @@
       "callerLines": [
         "はい...分かりました...",
         "病院の帰り道でこんなことになるなんて...",
-        "近所の若いお母さんがいつも心配してくれてたのに...最近、見かけなくて..."
+        "一人暮らしだと、こういう時心細くて..."
       ],
       "responses": [
         {
           "responseId": "fire_lonely_ignore",
           "text": "消防が向かっています。ご協力ありがとうございました。",
-          "nextSegmentId": "fire_end",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "fire_lonely_listen",
-          "text": "近所の方が見かけない？お名前は分かりますか？",
-          "nextSegmentId": "fire_haruka_mention",
-          "setFlags": ["young_mother_mentioned"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "fire_haruka_mention",
-      "callerLines": [
-        "お名前...林さん、だったかしら。お子さんと二人暮らしで...",
-        "よく買い物を手伝ってくれて...優しい人なんです。",
-        "最近、引っ越したのかしら...挨拶もなく..."
-      ],
-      "responses": [
-        {
-          "responseId": "fire_haruka_end",
-          "text": "そうですか...。消防が到着したら、お家に帰ってゆっくり休んでください。",
           "nextSegmentId": "fire_end",
           "setFlags": [],
           "clearFlags": []
@@ -274,5 +250,5 @@
     }
   ],
   "startSegmentId": "fire_panic_intro",
-  "note": "吉田和子が「近所の若いお母さん」として林遥に言及する。プレイヤーがNight01と接続できるかの伏線。車について質問した場合、折り返し通話がトリガーされる。"
+  "note": "高齢者からの火災第一報。車について質問した場合、折り返し通話がトリガーされる。"
 }

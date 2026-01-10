@@ -1,0 +1,237 @@
+{
+  "eventId": "event_epilogue",
+  "eventType": "epilogue",
+  "title": "エピローグ",
+  "description": "すべての結末が明らかになる。",
+  "triggerTimeMinutes": 415,
+  "endings": {
+    "ending_best": {
+      "id": "truth_dawn",
+      "title": "真実の夜明け",
+      "conditions": {
+        "requiredFlags": ["misaki_saved", "usb_can_be_found", "whistleblower_contact_completed"]
+      },
+      "resultFlags": ["usb_found", "company_destroyed"],
+      "scenes": [
+        {
+          "sceneId": "best_1",
+          "type": "text",
+          "content": "美咲のキーホルダーからUSBが見つかった。",
+          "delaySeconds": 3
+        },
+        {
+          "sceneId": "best_2",
+          "type": "text",
+          "content": "遥が命がけで集めた証拠。\n副作用の隠蔽データ、子会社の活動記録...\nすべてが明らかになった。",
+          "delaySeconds": 5
+        },
+        {
+          "sceneId": "best_3",
+          "type": "news",
+          "headline": "誠和製薬、組織的隠蔽で摘発",
+          "content": "製薬大手・誠和製薬が副作用データの改ざん、子会社を通じた違法活動で摘発された。複数の幹部が逮捕される見込み。",
+          "delaySeconds": 5
+        },
+        {
+          "sceneId": "best_4",
+          "type": "text",
+          "content": "林遥、渡辺真理、林健二、中村浩二...\n彼らの死は無駄ではなかった。",
+          "delaySeconds": 4
+        },
+        {
+          "sceneId": "best_5",
+          "type": "text",
+          "content": "美咲は私のところに来た。\n「ママの大事なもの」を守ってくれて、ありがとう。\nそう言って、笑った。",
+          "delaySeconds": 4,
+          "conditions": {
+            "requiresFlag": "operator_adopts_misaki"
+          }
+        },
+        {
+          "sceneId": "best_6",
+          "type": "text",
+          "content": "夜が明ける。\n長い長い夜が、ようやく終わる。",
+          "delaySeconds": 4
+        }
+      ],
+      "foreshadowing": [
+        {
+          "id": "murakami_shadow",
+          "content": "しかし、慈善活動家・村上誠一郎の名前は、\n今回の捜査では一度も出てこなかった...",
+          "delaySeconds": 4
+        },
+        {
+          "id": "sato_unknown",
+          "content": "佐藤浩二。\n林遥の「同僚」を名乗った男。\nその行方は、まだ分からない。",
+          "delaySeconds": 4
+        }
+      ]
+    },
+    "ending_good": {
+      "id": "investigation_continues",
+      "title": "捜査は続く",
+      "conditions": {
+        "requiredFlags": ["misaki_saved"],
+        "requiredNotFlags": ["usb_can_be_found"]
+      },
+      "resultFlags": ["investigation_ongoing"],
+      "scenes": [
+        {
+          "sceneId": "good_1",
+          "type": "text",
+          "content": "美咲は無事だった。\n吉田さんが命がけで守ってくれた。",
+          "delaySeconds": 4
+        },
+        {
+          "sceneId": "good_2",
+          "type": "text",
+          "content": "しかし、決定的な証拠は見つからなかった。\n誠和製薬への捜査は続いているが...\n進展は遅い。",
+          "delaySeconds": 5
+        },
+        {
+          "sceneId": "good_3",
+          "type": "news",
+          "headline": "誠和製薬、捜査中も業務継続",
+          "content": "製薬大手・誠和製薬に対する捜査が続いているが、現時点で起訴には至っていない。会社側は「全面的に協力している」とコメント。",
+          "delaySeconds": 5
+        },
+        {
+          "sceneId": "good_4",
+          "type": "text",
+          "content": "美咲は私のところに来た。\n「おばちゃん、ママはいつ帰ってくるの？」\n私は...何も言えなかった。",
+          "delaySeconds": 4,
+          "conditions": {
+            "requiresFlag": "operator_adopts_misaki"
+          }
+        },
+        {
+          "sceneId": "good_5",
+          "type": "text",
+          "content": "夜は明けた。\nでも、真実はまだ闇の中にある。",
+          "delaySeconds": 4
+        }
+      ],
+      "foreshadowing": [
+        {
+          "id": "keyholder_mystery",
+          "content": "美咲が持っていたキーホルダー。\nママの大事なもの。\nその中に何があるのか、誰も知らない...",
+          "delaySeconds": 4
+        },
+        {
+          "id": "logo_unseen",
+          "content": "白い車に描かれていたロゴ。\nアラートセキュリティ。\nその会社は今も存在している。",
+          "delaySeconds": 4
+        }
+      ]
+    },
+    "ending_bad": {
+      "id": "into_darkness",
+      "title": "闇の中へ",
+      "conditions": {
+        "requiredFlags": ["misaki_dead"]
+      },
+      "resultFlags": ["coverup_success"],
+      "scenes": [
+        {
+          "sceneId": "bad_1",
+          "type": "text",
+          "content": "吉田さんは殺された。\n美咲ちゃんの行方は分からない。",
+          "delaySeconds": 4
+        },
+        {
+          "sceneId": "bad_2",
+          "type": "text",
+          "content": "証拠は何もない。\n誠和製薬に対する捜査は、証拠不十分で打ち切られた。",
+          "delaySeconds": 4
+        },
+        {
+          "sceneId": "bad_3",
+          "type": "news",
+          "headline": "連続殺人事件、捜査難航",
+          "content": "渡辺真理さん、吉田和子さんの殺害事件について、警察は捜査を続けているが、有力な手がかりは得られていない。",
+          "delaySeconds": 5
+        },
+        {
+          "sceneId": "bad_4",
+          "type": "text",
+          "content": "林遥、渡辺真理、林健二、中村浩二、吉田和子...\nそして美咲...\n\nすべてが闇に葬られた。",
+          "delaySeconds": 5
+        },
+        {
+          "sceneId": "bad_5",
+          "type": "text",
+          "content": "私は何もできなかった。\nただ電話を受けていただけ。\n\n...本当にそれだけだったのか？",
+          "delaySeconds": 5
+        },
+        {
+          "sceneId": "bad_6",
+          "type": "text",
+          "content": "夜が明ける。\nでも、私の中の夜は終わらない。",
+          "delaySeconds": 4
+        }
+      ],
+      "foreshadowing": [
+        {
+          "id": "company_standing",
+          "content": "誠和製薬は今日も営業している。\n慈善活動家・村上誠一郎は、\n今日もテレビで微笑んでいる。",
+          "delaySeconds": 4
+        },
+        {
+          "id": "sato_shadow",
+          "content": "佐藤浩二という名前。\n林遥の「同僚」を名乗った男。\n\nあの男は今も、どこかで誰かを見ている。",
+          "delaySeconds": 4
+        }
+      ]
+    },
+    "ending_neutral": {
+      "id": "unknown_fate",
+      "title": "不確かな夜明け",
+      "conditions": {
+        "requiredFlags": ["misaki_fate_unknown"]
+      },
+      "resultFlags": ["fate_uncertain"],
+      "scenes": [
+        {
+          "sceneId": "neutral_1",
+          "type": "text",
+          "content": "吉田さんは殺された。\n美咲ちゃんは見つからなかった。",
+          "delaySeconds": 4
+        },
+        {
+          "sceneId": "neutral_2",
+          "type": "text",
+          "content": "生きているのか、死んでいるのか。\n誰にも分からない。",
+          "delaySeconds": 4
+        },
+        {
+          "sceneId": "neutral_3",
+          "type": "text",
+          "content": "捜査は続いている。\nでも、希望は薄い。",
+          "delaySeconds": 4
+        },
+        {
+          "sceneId": "neutral_4",
+          "type": "text",
+          "content": "夜が明ける。\n不確かな光の中で、私は電話を待っている。\n\nいつか、美咲ちゃんからの電話が来ることを願って。",
+          "delaySeconds": 5
+        }
+      ],
+      "foreshadowing": [
+        {
+          "id": "hope_remains",
+          "content": "どこかで、美咲ちゃんは生きている。\nそう信じたい。\n\n「ママの大事なもの」を持って。",
+          "delaySeconds": 4
+        }
+      ]
+    }
+  },
+  "finalMessage": {
+    "content": "Operator: Night Signal\n\n- END -",
+    "delaySeconds": 3
+  },
+  "credits": {
+    "thankYou": "プレイしていただきありがとうございました。",
+    "continueHint": "続編へ続く...？"
+  },
+  "note": "Night10のエピローグ。プレイヤーの選択によって4つのエンディングに分岐。Best=USB発見、誠和製薬壊滅。Good=美咲救出、証拠なし、捜査継続。Bad=美咲死亡、隠蔽成功。Neutral=美咲の運命不明。すべてのエンディングで続編への伏線を残す。"
+}

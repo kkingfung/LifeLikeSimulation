@@ -1,0 +1,252 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9535fc71e96294eb329dbb589284f2, type: 3}
+  m_Name: Night06_Flags
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.Flag.NightFlagsDefinition
+  nightId: night_06
+  flagDefinitions:
+  - flagId: demo_argument_reported
+    category: 7
+    description: "\u53E3\u8AD6\u306E\u901A\u5831\u3092\u53D7\u3051\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: nakamura_calm
+    category: 14
+    description: "\u4E2D\u6751\u306F\u843D\u3061\u7740\u3044\u3066\u3044\u308B\uFF08Night05\u3067\u8B66\u5BDF\u6D3E\u9063\uFF09"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: nakamura_desperate
+    category: 14
+    description: "\u4E2D\u6751\u306F\u7D76\u671B\u7684\uFF08Night05\u3067\u69D8\u5B50\u898B\uFF09"
+    weight: -1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: heard_nakamura_claim
+    category: 4
+    description: "\u4E2D\u6751\u306E\u4E3B\u5F35\uFF08\u606F\u5B50\u304C\u85AC\u3067\u6B7B\u3093\u3060\uFF09\u3092\u805E\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nakamura_name_known
+    category: 4
+    description: "\u4E2D\u6751\u6D69\u4E8C\u306E\u540D\u524D\u3092\u77E5\u3063\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: police_dispatched_argument
+    category: 8
+    description: "\u53E3\u8AD6\u306B\u8B66\u5BDF\u3092\u6D3E\u9063\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: nakamura_taken_by_police
+    category: 7
+    description: "\u4E2D\u6751\u306F\u8B66\u5BDF\u306B\u9023\u308C\u3066\u3044\u304B\u308C\u305F"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nakamura_left_alone
+    category: 7
+    description: "\u4E2D\u6751\u306F\u4E00\u4EBA\u3067\u53BB\u3063\u305F"
+    weight: -1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kindergarten_contacted
+    category: 7
+    description: "\u4FDD\u80B2\u5712\u304B\u3089\u9023\u7D61\u304C\u3042\u3063\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: heard_haruka_missing
+    category: 4
+    description: "\u9065\u304C5\u65E5\u9593\u9023\u7D61\u4E0D\u901A\u3068\u77E5\u3063\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_last_seen_noted
+    category: 4
+    description: "\u9065\u306E\u6700\u5F8C\u306E\u76EE\u6483\u60C5\u5831\u3092\u5F97\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: encouraged_kindergarten_police
+    category: 3
+    description: "\u4FDD\u80B2\u5712\u306B\u8B66\u5BDF\u76F8\u8AC7\u3092\u52E7\u3081\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: kindergarten_will_contact_police
+    category: 7
+    description: "\u4FDD\u80B2\u5712\u304C\u8B66\u5BDF\u306B\u76F8\u8AC7\u3059\u308B"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kindergarten_will_visit_mari
+    category: 7
+    description: "\u4FDD\u80B2\u5712\u304C\u771F\u7406\u306E\u5BB6\u3092\u8A2A\u554F\u3059\u308B"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kindergarten_will_try_again
+    category: 7
+    description: "\u4FDD\u80B2\u5712\u304C\u3082\u3046\u5C11\u3057\u9023\u7D61\u3092\u8A66\u307F\u308B"
+    weight: -1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kindergarten_waiting
+    category: 7
+    description: "\u4FDD\u80B2\u5712\u306F\u69D8\u5B50\u898B\u3057\u3066\u3044\u308B"
+    weight: -1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: noticed_hayashi_name
+    category: 4
+    description: "\u6797\u3068\u3044\u3046\u540D\u524D\u306B\u6C17\u3065\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: hesitated_about_hayashi
+    category: 6
+    description: "\u6797\u306E\u540D\u524D\u306B\u53CD\u5FDC\u3057\u3066\u3057\u307E\u3063\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: yoshida_reported_again
+    category: 7
+    description: "\u5409\u7530\u3055\u3093\u304C\u518D\u3073\u901A\u5831\u3057\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: multiple_cars_noted
+    category: 4
+    description: "\u8ECA\u304C\u8907\u6570\u53F0\u3044\u308B\u3053\u3068\u3092\u8A18\u9332"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: watanabe_area_noted
+    category: 4
+    description: "\u6E21\u8FBA\u5BB6\u5468\u8FBA\u304C\u8A18\u9332\u3055\u308C\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: yoshida_knows_misaki
+    category: 4
+    description: "\u5409\u7530\u3055\u3093\u304C\u7F8E\u54B2\u3092\u77E5\u3063\u3066\u3044\u308B"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: yoshida_mentioned_misaki
+    category: 4
+    description: "\u5409\u7530\u3055\u3093\u304C\u7F8E\u54B2\u306E\u540D\u524D\u3092\u8A00\u3063\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: shinagawa_32_confirmed
+    category: 4
+    description: "\u54C1\u5DDD\u30CA\u30F3\u30D0\u30FC32\u3092\u78BA\u8A8D"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: patrol_dispatched_yoshida
+    category: 8
+    description: "\u5409\u7530\u3055\u3093\u306E\u901A\u5831\u3067\u30D1\u30C8\u30ED\u30FC\u30EB\u3092\u6D3E\u9063"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: yoshida_will_warn_mari
+    category: 7
+    description: "\u5409\u7530\u3055\u3093\u304C\u771F\u7406\u306B\u8B66\u544A\u3059\u308B"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: night06_ominous_end
+    category: 6
+    description: "\u4E0D\u7A4F\u306A\u7D42\u308F\u308A\u65B9\u3092\u3057\u305F"
+    weight: -2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kenji_identified
+    category: 4
+    description: "\u907A\u4F53\u304C\u6797\u5065\u4E8C\u3068\u5224\u660E"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kudo_mentioned_son
+    category: 4
+    description: "\u5DE5\u85E4\u4E3B\u4EFB\u304C\u4E2D\u6751\u306E\u606F\u5B50\u306B\u3064\u3044\u3066\u8A00\u53CA\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: asked_about_drug
+    category: 4
+    description: "\u85AC\u306B\u3064\u3044\u3066\u8CEA\u554F\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: noticed_seiwa_connection
+    category: 4
+    description: "\u8AA0\u548C\u88FD\u85AC\u3068\u4E2D\u6751\u306E\u95A2\u4FC2\u306B\u6C17\u3065\u3044\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kudo_told_seiwa
+    category: 4
+    description: "\u5DE5\u85E4\u4E3B\u4EFB\u304B\u3089\u8AA0\u548C\u88FD\u85AC\u306E\u540D\u524D\u3092\u805E\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kudo_warned_operator
+    category: 3
+    description: "\u5DE5\u85E4\u4E3B\u4EFB\u304B\u3089\u300C\u6DF1\u5165\u308A\u3059\u308B\u306A\u300D\u3068\u8B66\u544A\u3055\u308C\u305F"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: questioned_kudo
+    category: 3
+    description: "\u5DE5\u85E4\u4E3B\u4EFB\u306B\u7591\u554F\u3092\u6295\u3052\u304B\u3051\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kudo_told_about_son
+    category: 4
+    description: "\u5DE5\u85E4\u4E3B\u4EFB\u304B\u3089\u606F\u5B50\u306E\u6B7B\u306B\u3064\u3044\u3066\u805E\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  mutualExclusionRules:
+  - whenFlagSet: nakamura_calm
+    cancelFlags:
+    - nakamura_desperate
+  - whenFlagSet: nakamura_desperate
+    cancelFlags:
+    - nakamura_calm
+  - whenFlagSet: nakamura_taken_by_police
+    cancelFlags:
+    - nakamura_left_alone
+  - whenFlagSet: nakamura_left_alone
+    cancelFlags:
+    - nakamura_taken_by_police
+  - whenFlagSet: kindergarten_will_contact_police
+    cancelFlags:
+    - kindergarten_will_try_again
+    - kindergarten_waiting
+  - whenFlagSet: kindergarten_will_visit_mari
+    cancelFlags:
+    - kindergarten_waiting
+  - whenFlagSet: patrol_dispatched_yoshida
+    cancelFlags:
+    - night06_ominous_end
+  - whenFlagSet: yoshida_will_warn_mari
+    cancelFlags:
+    - night06_ominous_end

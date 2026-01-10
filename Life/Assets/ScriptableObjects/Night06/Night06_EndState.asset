@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98530dacedb0bb84c965271d31722dd6, type: 3}
+  m_Name: Night06_EndState
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.EndState.EndStateDefinition
+  nightId: night_06
+  conditions:
+  - endStateType: 21
+    priority: 1
+    scoreConditions:
+    - category: 4
+      comparison: 3
+      value: 6
+    flagConditions:
+    - flagId: patrol_dispatched_yoshida
+      requiredValue: 1
+    description: "\u5D50\u3078\u306E\u5099\u3048 \u2014 \u591A\u304F\u306E\u7E4B\u304C\u308A\u3092\u898B\u3064\u3051\u3001\u5BFE\u7B56\u3092\u8B1B\u3058\u305F"
+  - endStateType: 22
+    priority: 2
+    scoreConditions:
+    - category: 4
+      comparison: 3
+      value: 4
+    flagConditions: []
+    description: "\u5D50\u306E\u4E88\u611F \u2014 \u7E4B\u304C\u308A\u306B\u6C17\u3065\u3044\u305F\u304C\u3001\u5B8C\u5168\u306A\u5BFE\u7B56\u306F\u53D6\u308C\u306A\u304B\u3063\u305F"
+  - endStateType: 23
+    priority: 3
+    scoreConditions:
+    - category: 4
+      comparison: 3
+      value: 2
+    flagConditions: []
+    description: "\u9060\u3044\u96F7\u9CF4 \u2014 \u90E8\u5206\u7684\u306A\u60C5\u5831\u3057\u304B\u5F97\u3089\u308C\u306A\u304B\u3063\u305F"
+  - endStateType: 24
+    priority: 100
+    scoreConditions: []
+    flagConditions: []
+    description: "\u9759\u304B\u306A\u5348\u5F8C \u2014 \u5D50\u304C\u6765\u308B\u3053\u3068\u3092\u77E5\u3089\u306A\u3044"
+  endingMappings:
+  - endState: 21
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_storm_prepared
+  - endState: 22
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_storm_aware
+  - endState: 23
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_storm_distant
+  - endState: 24
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_storm_unaware
+  victimSurvival:
+    requiresDispatch: 0
+    maxDispatchTimeMinutes: 0
+    dispatchFlagId: 
+  defaultEndState: 24
+  defaultEndingId: ending_storm_unaware
+  endings:
+  - endingId: ending_storm_prepared
+    title: "\u5D50\u3078\u306E\u5099\u3048"
+    description: "\u70B9\u3068\u70B9\u304C\u7DDA\u306B\u306A\u308A\u3001\u7DDA\u304C\u7D75\u3092\u63CF\u304D\u59CB\u3081\u305F\u3002\n\n\u5D50\u304C\u6765\u308B\u3002\u3067\u3082\u3001\u5C11\u306A\u304F\u3068\u3082\u305D\u308C\u3092\u77E5\u3063\u3066\u3044\u308B\u3002"
+    conditions: []
+    endingType: 26
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_storm_aware
+    title: "\u5D50\u306E\u4E88\u611F"
+    description: "\u4F55\u304B\u304C\u8FD1\u3065\u3044\u3066\u3044\u308B\u3002\u305D\u308C\u3060\u3051\u306F\u5206\u304B\u308B\u3002\n\n\u3067\u3082\u3001\u307E\u3060\u5168\u8C8C\u306F\u898B\u3048\u306A\u3044\u3002"
+    conditions: []
+    endingType: 27
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_storm_distant
+    title: "\u9060\u3044\u96F7\u9CF4"
+    description: "\u9060\u304F\u3067\u96F7\u304C\u9CF4\u3063\u3066\u3044\u308B\u3002\n\n\u305D\u308C\u304C\u3053\u3061\u3089\u306B\u5411\u304B\u3063\u3066\u304F\u308B\u3068\u306F\u3001\u307E\u3060\u6C17\u3065\u3044\u3066\u3044\u306A\u3044\u3002"
+    conditions: []
+    endingType: 28
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_storm_unaware
+    title: "\u9759\u304B\u306A\u5348\u5F8C"
+    description: "\u9759\u304B\u306A\u5348\u5F8C\u3060\u3063\u305F\u3002\n\n\u660E\u65E5\u3082\u540C\u3058\u3088\u3046\u306A\u65E5\u3060\u3068\u601D\u3063\u3066\u3044\u305F\u2014\u2014\u3042\u306E\u591C\u307E\u3067\u306F\u3002"
+    conditions: []
+    endingType: 29
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0

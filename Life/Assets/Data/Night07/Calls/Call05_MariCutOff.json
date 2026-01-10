@@ -1,0 +1,242 @@
+{
+  "callId": "call_mari_cutoff",
+  "callerId": "watanabe_mari",
+  "title": "真理の電話が切れる",
+  "description": "yoshida_will_warn_mariフラグがない場合のみ発生。真理からの電話が途中で切れて終わる。吉田からの警告がなかったため、真理は美咲と一緒にいる状態で連れ去られる。",
+  "conditions": {
+    "requiresNotFlag": "yoshida_will_warn_mari"
+  },
+  "segments": [
+    {
+      "segmentId": "mari_call",
+      "callerLines": [
+        "...もしもし...",
+        "誰か...聞こえますか...",
+        "助けて..."
+      ],
+      "responses": [
+        {
+          "responseId": "call_ask_who",
+          "text": "どなたですか？何があったんですか？",
+          "nextSegmentId": "mari_whisper",
+          "setFlags": ["mari_cutoff_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "call_ask_location",
+          "text": "場所を教えてください。",
+          "nextSegmentId": "mari_location",
+          "setFlags": ["mari_cutoff_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_whisper",
+      "callerLines": [
+        "渡辺...真理です...",
+        "外に...車が...",
+        "（小さな声で）美咲を..."
+      ],
+      "responses": [
+        {
+          "responseId": "whisper_ask_child",
+          "text": "美咲ちゃん？一緒にいるんですか？",
+          "nextSegmentId": "mari_with_misaki",
+          "setFlags": ["mari_mentioned_misaki"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "whisper_dispatch",
+          "text": "警察を向かわせます。住所は？",
+          "nextSegmentId": "mari_address_attempt",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_location",
+      "callerLines": [
+        "自宅...○○町の...",
+        "（ドアを叩く音）",
+        "...っ！来た..."
+      ],
+      "responses": [
+        {
+          "responseId": "location_dispatch",
+          "text": "警察を向かわせます！隠れて！",
+          "nextSegmentId": "mari_hiding_attempt",
+          "setFlags": ["mari_address_partial"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_with_misaki",
+      "callerLines": [
+        "はい...美咲と一緒に...",
+        "（ドアを叩く音）",
+        "...もう時間がない..."
+      ],
+      "note": "吉田警告なしルートでは美咲も一緒",
+      "responses": [
+        {
+          "responseId": "misaki_dispatch",
+          "text": "警察を向かわせます！二人とも隠れて！",
+          "nextSegmentId": "mari_hiding_attempt",
+          "setFlags": ["misaki_with_mari_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_address_attempt",
+      "callerLines": [
+        "○○町...2丁目の...",
+        "（ドアが開く音）",
+        "...！"
+      ],
+      "responses": [
+        {
+          "responseId": "address_call_out",
+          "text": "渡辺さん！？",
+          "nextSegmentId": "call_cut",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_hiding_attempt",
+      "callerLines": [
+        "隠れる場所が...",
+        "（ドアが開く音）",
+        "（美咲の声「まりおばちゃん...」）"
+      ],
+      "responses": [
+        {
+          "responseId": "hiding_call_out",
+          "text": "渡辺さん！美咲ちゃん！！",
+          "nextSegmentId": "call_cut_with_misaki",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "call_cut",
+      "callerLines": [
+        "（男の声「こっちだ」）",
+        "（真理の悲鳴）",
+        "（通話が切れる）"
+      ],
+      "responses": [
+        {
+          "responseId": "cut_end",
+          "text": "...",
+          "nextSegmentId": "after_cut",
+          "setFlags": ["mari_taken"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "call_cut_with_misaki",
+      "callerLines": [
+        "（男の声「二人とも連れていけ」）",
+        "（美咲の泣き声）",
+        "（通話が切れる）"
+      ],
+      "note": "吉田警告なしルートでは美咲も連れ去られる",
+      "responses": [
+        {
+          "responseId": "cut_misaki_end",
+          "text": "...",
+          "nextSegmentId": "after_cut_misaki",
+          "setFlags": ["mari_taken", "misaki_taken"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "after_cut",
+      "callerLines": [
+        "（通話終了）",
+        "...",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "after_dispatch",
+          "text": "...（警察に連絡しなければ）",
+          "nextSegmentId": null,
+          "setFlags": ["will_dispatch_to_mari"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "after_nothing",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "after_cut_misaki",
+      "callerLines": [
+        "（通話終了）",
+        "...",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "after_misaki_dispatch",
+          "text": "...（警察に連絡しなければ）",
+          "nextSegmentId": null,
+          "setFlags": ["will_dispatch_to_mari"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "after_misaki_nothing",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "mari_call",
+  "operatorThoughts": [
+    {
+      "triggerId": "mari_taken_thought",
+      "triggerCondition": {
+        "requiresFlag": "mari_taken"
+      },
+      "triggerTiming": "after_call",
+      "content": "渡辺さん...電話が切れた...間に合わなかった..."
+    },
+    {
+      "triggerId": "misaki_taken_thought",
+      "triggerCondition": {
+        "requiresFlag": "misaki_taken"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃんも...二人とも連れていかれた...助けられなかった..."
+    },
+    {
+      "triggerId": "should_have_warned_thought",
+      "triggerCondition": {
+        "requiresFlag": "mari_taken",
+        "requiresAnyFlag": ["yoshida_reported_again", "multiple_cars_noted"]
+      },
+      "triggerTiming": "after_call",
+      "content": "吉田さんに渡辺さんに知らせてもらっていれば...もしかしたら..."
+    }
+  ],
+  "note": "yoshida_will_warn_mariフラグがない場合のNight07の最後の電話。吉田からの警告がなかったため、真理は美咲を吉田に預けておらず、二人とも連れ去られる。電話が途中で切れて終わる。最悪のルート。"
+}

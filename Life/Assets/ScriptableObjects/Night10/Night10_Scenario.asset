@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d34f36aed81da45b07e6f6f91a17ea, type: 3}
+  m_Name: Night10_Scenario
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.NightScenarioData
+  scenarioId: night_10
+  title: "\u591C\u660E\u3051\u524D"
+  description: "\u6700\u5F8C\u306E\u591C\u3002\u91E3\u308A\u4EBA\u304B\u3089\u306E\u901A\u5831\u3067\u771F\u7406\u306E\u907A\u4F53\u304C\u767A\u898B\u3055\u308C\u308B\u3002\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u306F\u6700\u5F8C\u306E\u6C7A\u65AD\u3092\u8FEB\u3089\u308C\u308B\u3002\u3059\u3079\u3066\u306E\u9078\u629E\u304C\u3001\u3053\u3053\u3067\u7D50\u5B9F\u3059\u308B\u3002"
+  startTimeMinutes: 240
+  endTimeMinutes: 420
+  realSecondsPerGameMinute: 2
+  callers:
+  - {fileID: 11400000, guid: 0904e5501c61334478417578d6f0d93f, type: 2}
+  - {fileID: 11400000, guid: cf84f4362494b7147905afed5b247da1, type: 2}
+  calls:
+  - {fileID: 11400000, guid: 982f0872661bd82419dd2e5823e6bc5c, type: 2}
+  - {fileID: 11400000, guid: b9f85840a8eb3a349b0aa6d7a86f7f44, type: 2}
+  - {fileID: 11400000, guid: a19385c375918cd4fa7c2dce85fa6412, type: 2}
+  evidenceTemplates:
+  - {fileID: 11400000, guid: fd1455f438f4c2e4f88e7723e8f46a7e, type: 2}
+  - {fileID: 11400000, guid: 6bdd7adb54044c64eb8cd39e81713017, type: 2}
+  - {fileID: 11400000, guid: 7c2be8c5e7174f845a54a83337299774, type: 2}
+  - {fileID: 11400000, guid: 9cdbee57d3bcf8e4e8a87e2fe4e583d7, type: 2}
+  - {fileID: 11400000, guid: cabe5c618fd0be744a82c878168b57cc, type: 2}
+  initialWorldStates:
+  - stateId: mari_dead
+    description: "\u771F\u7406\u306F\u7D44\u7E54\u306B\u6BBA\u5BB3\u3055\u308C\u3001\u5DDD\u306E\u8FD1\u304F\u306B\u907A\u68C4\u3055\u308C\u305F"
+    timeMinutes: 240
+    involvedCallerIds:
+    - watanabe_mari
+    isKnownToPlayer: 0
+  - stateId: organization_hunting_misaki
+    description: "\u7D44\u7E54\u306F\u771F\u7406\u306E\u6B7B\u5F8C\u3001\u7F8E\u54B2\u3068\u5409\u7530\u3092\u63A2\u3057\u59CB\u3081\u305F"
+    timeMinutes: 240
+    involvedCallerIds:
+    - hayashi_misaki
+    - yoshida_kazuko
+    isKnownToPlayer: 0
+  - stateId: yoshida_protecting
+    description: "\u5409\u7530\u306F\u7F8E\u54B2\u3092\u5B88\u3063\u3066\u3044\u308B"
+    timeMinutes: 240
+    involvedCallerIds:
+    - yoshida_kazuko
+    - hayashi_misaki
+    isKnownToPlayer: 0
+  - stateId: whistleblower_status
+    description: "\u5185\u90E8\u544A\u767A\u8005\u306E\u72B6\u614B\u306FNight09\u306E\u9078\u629E\u306B\u3088\u308B"
+    timeMinutes: 240
+    involvedCallerIds:
+    - whistleblower
+    isKnownToPlayer: 0
+  theTruth: "\u6E21\u8FBA\u771F\u7406\u306F\u5DDD\u306E\u8FD1\u304F\u3067\u907A\u4F53\u3067\u767A\u898B\u3055\u308C\u305F\u3002\u7D44\u7E54\u306B\u6BBA\u5BB3\u3055\u308C\u305F\u3002\u771F\u7406\u304C\u6B7B\u3093\u3060\u3053\u3068\u3067\u3001\u7D44\u7E54\u306F\u7F8E\u54B2\u3068\u5409\u7530\u3092\u63A2\u3057\u51FA\u3059\u3002\u5409\u7530\u306F\u7F8E\u54B2\u3092\u5B88\u308B\u305F\u3081\u306B\u6226\u3046\u304C\u3001\u6BBA\u3055\u308C\u308B\u3002\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u306E\u904E\u53BB\u306E\u9078\u629E\u3068\u6700\u5F8C\u306E\u6C7A\u65AD\u304C\u3001\u7F8E\u54B2\u306E\u904B\u547D\u3092\u6C7A\u3081\u308B\u3002\u5185\u90E8\u544A\u767A\u8005\u304C\u751F\u304D\u6B8B\u3063\u3066\u3044\u308C\u3070\u3001\u7F8E\u54B2\u3092\u898B\u3064\u3051\u3066\u30AD\u30FC\u30DB\u30EB\u30C0\u30FC\u306E\u4F7F\u3044\u65B9\u3092\u6559\u3048\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u3002USB\u304C\u898B\u3064\u304B\u308C\u3070\u3001\u8AA0\u548C\u88FD\u85AC\u306F\u58CA\u6EC5\u3059\u308B\u3002"
+  endings: []
+  dialogueDatabase: {fileID: 0}
+  difficulty: 5
+  estimatedPlayTimeMinutes: 30

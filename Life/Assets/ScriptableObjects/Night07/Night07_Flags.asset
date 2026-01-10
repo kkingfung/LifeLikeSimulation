@@ -1,0 +1,267 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9535fc71e96294eb329dbb589284f2, type: 3}
+  m_Name: Night07_Flags
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.Flag.NightFlagsDefinition
+  nightId: night_07
+  flagDefinitions:
+  - flagId: yoshida_will_warn_mari
+    category: 15
+    description: "\u5409\u7530\u304C\u771F\u7406\u306B\u8B66\u544A\u3057\u305F\uFF08Night06\u304B\u3089\u7D99\u627F\uFF09"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: misaki_safe_at_yoshida
+    category: 15
+    description: "\u7F8E\u54B2\u306F\u5409\u7530\u306E\u5BB6\u306B\u9810\u3051\u3089\u308C\u3066\u3044\u308B"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: mari_unwarned
+    category: 15
+    description: "\u771F\u7406\u306F\u8B66\u544A\u3092\u53D7\u3051\u3066\u3044\u306A\u3044"
+    weight: -2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: landlord_reported
+    category: 7
+    description: "\u5927\u5BB6\u304C\u901A\u5831\u3057\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: nakamura_address_known
+    category: 4
+    description: "\u4E2D\u6751\u6D69\u4E8C\u306E\u4F4F\u6240\u304C\u5224\u660E"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nakamura_hanging_confirmed
+    category: 4
+    description: "\u4E2D\u6751\u304C\u9996\u3092\u540A\u3063\u3066\u3044\u308B\u72B6\u614B\u3067\u767A\u898B\u3055\u308C\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: police_dispatched_nakamura
+    category: 8
+    description: "\u4E2D\u6751\u306E\u4F4F\u6240\u306B\u8B66\u5BDF\u3092\u6D3E\u9063\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: room_ransacked_noted
+    category: 4
+    description: "\u90E8\u5C4B\u304C\u8352\u3089\u3055\u308C\u3066\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: no_note_suspicious
+    category: 4
+    description: "\u907A\u66F8\u304C\u306A\u3044\u3053\u3068\u3092\u4E0D\u5BE9\u306B\u601D\u3063\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nakamura_recent_noted
+    category: 4
+    description: "\u4E2D\u6751\u306E\u6700\u8FD1\u306E\u69D8\u5B50\u3092\u8A18\u9332"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nakamura_phone_noted
+    category: 4
+    description: "\u4E2D\u6751\u304C\u8AB0\u304B\u3068\u96FB\u8A71\u3057\u3066\u3044\u305F\u3053\u3068\u3092\u8A18\u9332"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: landlord_call_ended
+    category: 7
+    description: "\u5927\u5BB6\u3068\u306E\u901A\u8A71\u304C\u7D42\u4E86"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: mari_emergency_call
+    category: 7
+    description: "\u771F\u7406\u304B\u3089\u7DCA\u6025\u96FB\u8A71\u304C\u3042\u3063\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: mari_address_partial
+    category: 4
+    description: "\u771F\u7406\u306E\u4F4F\u6240\u306E\u4E00\u90E8\u3092\u628A\u63E1"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: mari_call_cut
+    category: 7
+    description: "\u771F\u7406\u3068\u306E\u901A\u8A71\u304C\u9014\u4E2D\u3067\u5207\u308C\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: mari_abducted
+    category: 7
+    description: "\u771F\u7406\u304C\u9023\u308C\u53BB\u3089\u308C\u305F"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: dispatched_to_mari_house
+    category: 8
+    description: "\u771F\u7406\u306E\u5BB6\u306B\u8B66\u5BDF\u3092\u6D3E\u9063\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: mari_not_helped
+    category: 3
+    description: "\u771F\u7406\u3092\u52A9\u3051\u3089\u308C\u306A\u304B\u3063\u305F"
+    weight: -1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: police_inquiry_started
+    category: 7
+    description: "\u8B66\u5BDF\u304B\u3089\u306E\u554F\u3044\u5408\u308F\u305B\u304C\u3042\u3063\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: told_police_about_demo
+    category: 4
+    description: "\u8B66\u5BDF\u306B\u6297\u8B70\u6D3B\u52D5\u306B\u3064\u3044\u3066\u4F1D\u3048\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: told_police_son_claim
+    category: 4
+    description: "\u8B66\u5BDF\u306B\u606F\u5B50\u306E\u85AC\u5BB3\u306B\u3064\u3044\u3066\u4F1D\u3048\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: asked_about_murder
+    category: 3
+    description: "\u6BBA\u5BB3\u306E\u53EF\u80FD\u6027\u306B\u3064\u3044\u3066\u8CEA\u554F\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: police_treating_as_suicide
+    category: 7
+    description: "\u8B66\u5BDF\u306F\u81EA\u6BBA\u3068\u3057\u3066\u51E6\u7406\u3057\u3066\u3044\u308B"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: operator_suspicious
+    category: 3
+    description: "\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u306F\u4E0D\u5BE9\u306B\u601D\u3063\u3066\u3044\u308B"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: yoshida_witness_call
+    category: 7
+    description: "\u5409\u7530\u304B\u3089\u76EE\u6483\u5831\u544A\u304C\u3042\u3063\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: mari_taken_witnessed
+    category: 4
+    description: "\u771F\u7406\u304C\u9023\u308C\u53BB\u3089\u308C\u308B\u306E\u3092\u76EE\u6483\u3055\u308C\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: shinagawa_32_abduction
+    category: 4
+    description: "\u54C1\u5DDD\u30CA\u30F3\u30D0\u30FC32\u306E\u8ECA\u3067\u9023\u308C\u53BB\u3089\u308C\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: abduction_direction_known
+    category: 4
+    description: "\u8ECA\u304C\u5317\u306B\u5411\u304B\u3063\u305F\u3053\u3068\u3092\u8A18\u9332"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: police_notified_abduction
+    category: 8
+    description: "\u8B66\u5BDF\u306B\u9023\u308C\u53BB\u308A\u3092\u901A\u5831\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: yoshida_call_ended
+    category: 7
+    description: "\u5409\u7530\u3068\u306E\u901A\u8A71\u304C\u7D42\u4E86"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: mari_cutoff_call
+    category: 7
+    description: "\u771F\u7406\u304B\u3089\u9014\u5207\u308C\u308B\u96FB\u8A71\u304C\u3042\u3063\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: mari_mentioned_misaki
+    category: 4
+    description: "\u771F\u7406\u304C\u7F8E\u54B2\u306E\u540D\u524D\u3092\u8A00\u3063\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: misaki_with_mari_confirmed
+    category: 4
+    description: "\u7F8E\u54B2\u304C\u771F\u7406\u3068\u4E00\u7DD2\u306B\u3044\u308B\u3053\u3068\u3092\u78BA\u8A8D"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: mari_taken
+    category: 7
+    description: "\u771F\u7406\u304C\u9023\u308C\u53BB\u3089\u308C\u305F"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: misaki_taken
+    category: 7
+    description: "\u7F8E\u54B2\u3082\u9023\u308C\u53BB\u3089\u308C\u305F"
+    weight: -3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: will_dispatch_to_mari
+    category: 8
+    description: "\u771F\u7406\u306E\u5BB6\u306B\u8B66\u5BDF\u3092\u5411\u304B\u308F\u305B\u308B"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: noticed_cloth_in_mouth
+    category: 4
+    description: "\u4E2D\u6751\u306E\u53E3\u306B\u5E03\u304C\u8A70\u307E\u3063\u3066\u3044\u308B\u3053\u3068\u306B\u6C17\u3065\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: cloth_detail_noted
+    category: 4
+    description: "\u5E03\u306E\u8A73\u7D30\u3092\u8A18\u9332\u3057\u305F\uFF08\u5236\u670D\u306E\u3088\u3046\u306A\u7D20\u6750\uFF09"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  mutualExclusionRules:
+  - whenFlagSet: yoshida_will_warn_mari
+    cancelFlags:
+    - mari_unwarned
+  - whenFlagSet: mari_unwarned
+    cancelFlags:
+    - yoshida_will_warn_mari
+  - whenFlagSet: misaki_safe_at_yoshida
+    cancelFlags:
+    - misaki_taken
+    - misaki_with_mari_confirmed
+  - whenFlagSet: misaki_taken
+    cancelFlags:
+    - misaki_safe_at_yoshida
+  - whenFlagSet: mari_abducted
+    cancelFlags:
+    - mari_taken
+  - whenFlagSet: mari_taken
+    cancelFlags:
+    - mari_abducted
+  - whenFlagSet: dispatched_to_mari_house
+    cancelFlags:
+    - mari_not_helped

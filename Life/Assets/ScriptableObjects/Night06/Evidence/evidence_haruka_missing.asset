@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: evidence_haruka_missing
+  m_EditorClassIdentifier: Assembly-CSharp:LifeLike.Data:EvidenceTemplate
+  data:
+    evidenceId: evidence_haruka_missing
+    title: "\u9065\u306E\u4E0D\u5728"
+    evidenceType: 0
+    content: "\u6797\u9065\u306F\u4FDD\u80B2\u5712\u306B\u9023\u7D61\u305B\u305A\u3001\u7F8E\u54B2\u3092\u9810\u3051\u306B\u6765\u306A\u304F\u306A\u3063\u305F"
+    description: 
+    sourceCallerId: 
+    sourceCallId: 
+    timestamp: 
+    reliability: 0
+    isActuallyTrue: 1
+    relatedCallerIds: []
+    contradictingEvidenceIds: []
+    supportingEvidenceIds: []
+    isDiscovered: 0
+    isUsable: 1
+    useCount: 0
+  discoveryConditions: []
+  useEffects: []

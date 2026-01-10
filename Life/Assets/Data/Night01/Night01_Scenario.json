@@ -7,7 +7,7 @@
   "realSecondsPerGameMinute": 2.0,
   "difficulty": 3,
   "estimatedPlayTimeMinutes": 20,
-  "theTruth": "林遥（27歳）は組織から逃げている最中、疲労困憊の山田美咲の車に轢かれた。林は組織の末端工作員で、守ろうとした子供と共に逃走中だった。彼女が持つ情報は組織トップの正体を暴露する致命的な秘密。偽の兄（組織の中間管理職）と偽の同僚（佐藤浩二）は彼女を追跡している。服装の矛盾（反射ジャケット vs パーカー）は追跡者が古い情報しか持っていないことを示す。",
+  "theTruth": "林遥（27歳）は組織から逃げている最中、疲労困憊の山田美咲の車に轢かれた。林は組織の末端工作員で、守ろうとした子供と共に逃走中だった。彼女が持つ情報は組織トップの正体を暴露する致命的な秘密。偽の兄（組織の中間管理職）と偽の同僚（佐藤浩二）は彼女を追跡している。服装の矛盾（反射ジャケット vs パーカー）は追跡者が古い情報しか持っていないことを示す。偽兄は林遥を見つけられないと組織に殺される。",
   "callSchedule": [
     {
       "callId": "call_retirement",
@@ -17,7 +17,7 @@
       "ringDuration": 30,
       "priority": 2,
       "isCritical": false,
-      "description": "ウォームアップ。普通の夜の演出。"
+      "description": "ウォームアップ。普通の夜の演出。優しく対応するとNight05で情報提供。"
     },
     {
       "callId": "call_shift",
@@ -27,7 +27,7 @@
       "ringDuration": 45,
       "priority": 5,
       "isCritical": false,
-      "description": "林遥の不在を報告。最初の種を蒔く。"
+      "description": "林遥の不在を報告。基本情報のみ。"
     },
     {
       "callId": "call_coworker",
@@ -37,7 +37,7 @@
       "ringDuration": 30,
       "priority": 4,
       "isCritical": false,
-      "description": "偽の同僚。林遥についての情報を探る。伏線。"
+      "description": "偽の同僚。普通の心配する友人に見える。情報を漏らすと後で再登場。"
     },
     {
       "callId": "call_discovery",
@@ -47,7 +47,7 @@
       "ringDuration": 60,
       "priority": 9,
       "isCritical": true,
-      "description": "遺体発見。認識を強制。派遣の機会。"
+      "description": "被害者発見。即座に派遣しないと林遥が死亡。"
     },
     {
       "callId": "call_hit",
@@ -57,7 +57,7 @@
       "ringDuration": 60,
       "priority": 10,
       "isCritical": true,
-      "description": "ドライバーからの告白。感情的な重さ。"
+      "description": "ドライバーからの告白。感情的な重さ。Night02で再登場。"
     },
     {
       "callId": "call_missing",
@@ -67,37 +67,17 @@
       "ringDuration": 45,
       "priority": 7,
       "isCritical": true,
-      "description": "偽の兄。服装矛盾の伏線。"
-    },
-    {
-      "callId": "call_callback_driver",
-      "callerId": "yamada_misaki",
-      "title": "考えてたんだけど",
-      "incomingTimeMinutes": 185,
-      "ringDuration": 30,
-      "priority": 8,
-      "isCritical": false,
-      "description": "ドライバーコールバック。話の修正。ナラティブ不安定性。"
+      "description": "偽の兄。普通の心配する兄に見える。服装矛盾が唯一の伏線。情報を漏らすと組織が現場に来る。"
     },
     {
       "callId": "call_callback_family",
       "callerId": "hayashi_kenji",
-      "title": "あなたなら分かるって",
-      "incomingTimeMinutes": 192,
+      "title": "頼むから教えてくれ",
+      "incomingTimeMinutes": 190,
       "ringDuration": 45,
       "priority": 8,
       "isCritical": false,
-      "description": "家族コールバック。責任追及。オペレーターの言葉が証拠に。"
-    },
-    {
-      "callId": "call_supervisor",
-      "callerId": "kudo_shinji",
-      "title": "記録のためだけど",
-      "incomingTimeMinutes": 198,
-      "ringDuration": 60,
-      "priority": 6,
-      "isCritical": true,
-      "description": "主任からの介入。システムの圧力。情報の封じ込め。"
+      "description": "偽兄コールバック。林遥を見つけられないと組織に殺されるため必死。Night04で遺体として発見。"
     }
   ],
   "specialEvents": [],
@@ -129,6 +109,13 @@
       "timeMinutes": 137,
       "involvedCallerIds": ["sato_koji", "hayashi_kenji"],
       "isKnownToPlayer": false
+    },
+    {
+      "stateId": "fake_brother_deadline",
+      "description": "偽兄は林遥を見つけられないと組織に殺される",
+      "timeMinutes": 137,
+      "involvedCallerIds": ["hayashi_kenji"],
+      "isKnownToPlayer": false
     }
   ],
   "evidenceTemplates": [
@@ -155,6 +142,12 @@
       "title": "車両の関与",
       "content": "車が何かに衝突した可能性",
       "category": "Incident"
+    },
+    {
+      "evidenceId": "evidence_fleeing_person",
+      "title": "走り去る人影",
+      "content": "警備員が誰かが走り去るのを目撃",
+      "category": "Witness"
     }
   ],
   "previousNightEffects": null

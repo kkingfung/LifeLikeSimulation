@@ -1,0 +1,388 @@
+{
+  "callId": "call_kudo_call",
+  "callerId": "kudo_shinji",
+  "title": "業務連絡",
+  "description": "工藤主任からの電話。業務連絡から始まり、Night04の遺体発見の話題、そしてニュースで見た慈善活動家・村上誠一郎の話へ。",
+  "segments": [
+    {
+      "segmentId": "kudo_intro",
+      "callerLines": [
+        "工藤だ。今、大丈夫か？",
+        "いくつか確認したいことがあってな。"
+      ],
+      "responses": [
+        {
+          "responseId": "kudo_intro_yes",
+          "text": "はい、どうぞ。",
+          "nextSegmentId": "business_matter",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "kudo_intro_busy",
+          "text": "少し立て込んでいますが...",
+          "nextSegmentId": "kudo_brief",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "kudo_brief",
+      "callerLines": [
+        "そうか、じゃあ手短にな。",
+        "今夜のシフト、人が足りてるか確認したかっただけだ。"
+      ],
+      "responses": [
+        {
+          "responseId": "kudo_brief_ok",
+          "text": "大丈夫です、問題ありません。",
+          "nextSegmentId": "body_topic_brief",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "business_matter",
+      "callerLines": [
+        "今夜のシフト、問題ないか？",
+        "昨日、一人体調崩したって聞いたからな。"
+      ],
+      "responses": [
+        {
+          "responseId": "business_ok",
+          "text": "今のところ大丈夫です。",
+          "nextSegmentId": "body_topic",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "business_concern",
+          "text": "私も少し疲れが溜まってきていますが...",
+          "nextSegmentId": "kudo_concern",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "kudo_concern",
+      "callerLines": [
+        "そうか...無理するなよ。",
+        "この仕事、精神的にくるからな。",
+        "何かあったら言ってくれ。"
+      ],
+      "responses": [
+        {
+          "responseId": "concern_thanks",
+          "text": "ありがとうございます。",
+          "nextSegmentId": "body_topic",
+          "setFlags": ["kudo_supportive"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "body_topic",
+      "callerLines": [
+        "それと...昨日の件だが。",
+        "山で遺体が見つかった件、警察から何か連絡あったか？"
+      ],
+      "responses": [
+        {
+          "responseId": "body_yes",
+          "text": "はい、確認の電話がありました。",
+          "nextSegmentId": "kudo_body_response",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "body_no",
+          "text": "いいえ、特には。",
+          "nextSegmentId": "kudo_body_no",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "body_vague",
+          "text": "...少しだけ。",
+          "nextSegmentId": "kudo_body_response",
+          "setFlags": ["evasive_with_kudo"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "body_topic_brief",
+      "callerLines": [
+        "あと、昨日の山の遺体の件...警察から何か言われたか？"
+      ],
+      "responses": [
+        {
+          "responseId": "body_brief_yes",
+          "text": "確認がありました。",
+          "nextSegmentId": "kudo_body_response",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "body_brief_no",
+          "text": "いいえ。",
+          "nextSegmentId": "kudo_body_no",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "kudo_body_response",
+      "callerLines": [
+        "そうか...まあ、普通の対応をしてくれればいい。",
+        "余計なことは言わなくていいからな。",
+        "...いや、変な意味じゃなくて。仕事の範囲でってことだ。"
+      ],
+      "responses": [
+        {
+          "responseId": "body_response_understand",
+          "text": "分かっています。",
+          "nextSegmentId": "news_transition",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "body_response_question",
+          "text": "何か気になることでも？",
+          "nextSegmentId": "kudo_uneasy",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "kudo_body_no",
+      "callerLines": [
+        "そうか、ならいい。",
+        "まあ、何かあっても普通に対応すればいいからな。"
+      ],
+      "responses": [
+        {
+          "responseId": "body_no_ok",
+          "text": "はい。",
+          "nextSegmentId": "news_transition",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "kudo_uneasy",
+      "callerLines": [
+        "いや...別に。",
+        "ただ、最近物騒だからな。",
+        "...まあ、気にするな。"
+      ],
+      "responses": [
+        {
+          "responseId": "uneasy_ok",
+          "text": "...分かりました。",
+          "nextSegmentId": "news_transition",
+          "setFlags": ["kudo_seemed_uneasy"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "news_transition",
+      "callerLines": [
+        "そういえば、さっきニュース見てたんだが...",
+        "村上誠一郎って知ってるか？"
+      ],
+      "responses": [
+        {
+          "responseId": "news_know",
+          "text": "名前は聞いたことがあります。",
+          "nextSegmentId": "murakami_detail",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "news_dont_know",
+          "text": "いいえ、誰ですか？",
+          "nextSegmentId": "murakami_explain",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "murakami_explain",
+      "callerLines": [
+        "誠和製薬の元社長だよ。",
+        "今は引退して慈善活動やってるらしい。",
+        "病院や学校に寄付したり、孤児院を支援したり..."
+      ],
+      "responses": [
+        {
+          "responseId": "explain_interest",
+          "text": "立派な方なんですね。",
+          "nextSegmentId": "murakami_praise",
+          "setFlags": ["heard_murakami_name"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "explain_neutral",
+          "text": "へえ...",
+          "nextSegmentId": "murakami_praise",
+          "setFlags": ["heard_murakami_name"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "murakami_detail",
+      "callerLines": [
+        "誠和製薬の元社長だな。",
+        "今は慈善活動家として有名だ。"
+      ],
+      "responses": [
+        {
+          "responseId": "detail_continue",
+          "text": "ニュースで何か？",
+          "nextSegmentId": "murakami_praise",
+          "setFlags": ["heard_murakami_name"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "murakami_praise",
+      "callerLines": [
+        "今日のニュースで、また大きな寄付をしたって。",
+        "子供の医療支援に10億円だと。",
+        "世の中にはすごい人がいるもんだな..."
+      ],
+      "responses": [
+        {
+          "responseId": "praise_agree",
+          "text": "そうですね...",
+          "nextSegmentId": "kudo_end",
+          "setFlags": ["murakami_charity_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "praise_skeptical",
+          "text": "...そうですか。",
+          "nextSegmentId": "kudo_notice_tone",
+          "setFlags": ["murakami_charity_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "kudo_notice_tone",
+      "callerLines": [
+        "...何か思うところでもあるのか？",
+        "まあ、金持ちの道楽だって言う人もいるけどな。",
+        "俺はいいことだと思うけど。"
+      ],
+      "responses": [
+        {
+          "responseId": "notice_nothing",
+          "text": "いえ、何でもないです。",
+          "nextSegmentId": "kudo_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "notice_curious",
+          "text": "誠和製薬って、どんな会社なんですか？",
+          "nextSegmentId": "seiwa_info",
+          "setFlags": ["asked_about_seiwa"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "seiwa_info",
+      "callerLines": [
+        "大手の製薬会社だよ。色んな薬作ってる。",
+        "まあ、今は村上さんは経営から離れてるらしいけどな。",
+        "...なんでそんなこと気になるんだ？"
+      ],
+      "responses": [
+        {
+          "responseId": "seiwa_nothing",
+          "text": "いえ、ただの興味です。",
+          "nextSegmentId": "kudo_end",
+          "setFlags": ["seiwa_info_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "seiwa_heard",
+          "text": "どこかで聞いた気がして...",
+          "nextSegmentId": "kudo_curious",
+          "setFlags": ["seiwa_info_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "kudo_curious",
+      "callerLines": [
+        "...そうか？",
+        "まあ、大きい会社だからな。テレビでもよく見るし。",
+        "...じゃあ、そろそろ切るわ。"
+      ],
+      "responses": [
+        {
+          "responseId": "curious_end",
+          "text": "はい、お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "kudo_end",
+      "callerLines": [
+        "まあ、そんなところだ。",
+        "何かあったら連絡してくれ。",
+        "じゃあな。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_reply",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "kudo_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "murakami_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "murakami_charity_noted",
+        "requiresAnyFlag": ["drug_connection", "listened_demo_story"]
+      },
+      "triggerTiming": "after_call",
+      "content": "誠和製薬...村上誠一郎...さっきのデモの男性が言っていた会社と同じ...？"
+    },
+    {
+      "triggerId": "kudo_uneasy_thought",
+      "triggerCondition": {
+        "requiresFlag": "kudo_seemed_uneasy"
+      },
+      "triggerTiming": "after_call",
+      "content": "工藤主任、何か気にしている様子だった...遺体の件で何を知っているんだろう..."
+    }
+  ],
+  "note": "工藤主任からの業務連絡電話。Night04の遺体発見について確認した後、ニュースで見た村上誠一郎（誠和製薬の元社長、現在は慈善活動家）の話をする。村上は組織のトップであり、誠和製薬はアラートセキュリティの親会社。工藤は組織のことを知らないが、無意識に情報を提供している。デモ通報（Call03）の後だと、プレイヤーは誠和製薬との繋がりに気づく可能性がある。"
+}

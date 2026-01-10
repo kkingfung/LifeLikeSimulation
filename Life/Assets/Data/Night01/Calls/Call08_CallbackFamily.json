@@ -1,82 +1,82 @@
 {
   "callId": "call_callback_family",
   "callerId": "hayashi_kenji",
-  "title": "あなたなら分かるって",
-  "description": "家族コールバック。責任追及。オペレーターの言葉が証拠に。",
+  "title": "頼むから教えてくれ",
+  "description": "偽兄のコールバック。林遥を見つけられないと組織に殺されるため必死。威圧的だが焦りが見える。",
   "segments": [
     {
       "segmentId": "callback_family_intro",
       "callerLines": [
-        "また私です。林健二。",
-        "さっきの電話の後、考えてたんですけど...",
-        "あなた、何か知ってて隠してませんか？"
+        "また私です。さっき電話した林です。",
+        "頼むから教えてください。妹はどこにいるんですか。",
+        "お願いします...時間がないんです。"
       ],
       "responses": [
         {
-          "responseId": "callback_family_intro_deny",
-          "text": "お伝えできる情報は既にお話ししました。",
-          "nextSegmentId": "callback_family_pressure",
+          "responseId": "callback_family_intro_calm",
+          "text": "林さん、落ち着いてください。時間がないとはどういうことですか？",
+          "nextSegmentId": "callback_family_slip",
           "setFlags": [],
           "clearFlags": []
         },
         {
-          "responseId": "callback_family_intro_clarify",
-          "text": "何か気になることがありましたか？",
-          "nextSegmentId": "callback_family_suspicion",
+          "responseId": "callback_family_intro_info",
+          "text": "先ほどお伝えした通り、救急が対応中です。",
+          "nextSegmentId": "callback_family_demand",
           "setFlags": [],
           "clearFlags": []
         },
         {
-          "responseId": "callback_family_intro_direct",
-          "text": "林さん、あなたは本当に林遥さんのお兄さんですか？",
-          "nextSegmentId": "callback_family_challenged",
-          "setFlags": ["challenged_system"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_family_pressure",
-      "callerLines": [
-        "そうですか。でも、さっきの電話であなたが言ったこと...",
-        "「歩道橋付近」って。それ、私が言う前に知ってましたよね。",
-        "どうして知ってたんですか？"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_family_pressure_admit",
-          "text": "...他の通報者から情報がありました。",
-          "nextSegmentId": "callback_family_details",
-          "setFlags": ["showed_recognition_family"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_family_pressure_deflect",
-          "text": "複数の通報を処理していますので、混同したかもしれません。",
-          "nextSegmentId": "callback_family_doubt",
+          "responseId": "callback_family_intro_refuse",
+          "text": "これ以上お伝えできる情報はありません。",
+          "nextSegmentId": "callback_family_threaten",
           "setFlags": [],
           "clearFlags": []
         }
       ]
     },
     {
-      "segmentId": "callback_family_suspicion",
+      "segmentId": "callback_family_slip",
       "callerLines": [
-        "さっき電話した時、あなたは歩道橋のことを知ってた。",
-        "私が場所を言う前に、あなたが先に言った。",
-        "つまり、遥に何かあったことを最初から知ってたんでしょう？"
+        "...いや、妹が心配で。時間が経てば経つほど...",
+        "とにかく、場所を教えてください。",
+        "歩道橋って言ってましたよね？どこの歩道橋ですか！"
       ],
       "responses": [
         {
-          "responseId": "callback_family_suspicion_honest",
-          "text": "はい、先に通報がありました。救急は既に手配しています。",
-          "nextSegmentId": "callback_family_accept",
-          "setFlags": [],
+          "responseId": "callback_family_slip_location",
+          "text": "国道○○号線の南側歩道橋です。",
+          "nextSegmentId": "callback_family_rush",
+          "setFlags": ["gave_location_to_fake_brother", "organization_alerted"],
           "clearFlags": []
         },
         {
-          "responseId": "callback_family_suspicion_careful",
-          "text": "個人情報保護の観点から、詳細はお伝えできませんでした。",
+          "responseId": "callback_family_slip_refuse",
+          "text": "詳細な場所はお伝えできません。警察にお問い合わせください。",
+          "nextSegmentId": "callback_family_desperate",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_demand",
+      "callerLines": [
+        "救急が対応中って、それだけ？",
+        "妹がどうなってるか教えてください！",
+        "生きてるんですか？死んでるんですか！"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_demand_status",
+          "text": "意識はありませんが、呼吸はあると報告されています。",
+          "nextSegmentId": "callback_family_more",
+          "setFlags": ["disclosed_status_to_fake_brother"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_demand_refuse",
+          "text": "詳細な状態はお伝えできません。現場でご確認ください。",
           "nextSegmentId": "callback_family_angry",
           "setFlags": [],
           "clearFlags": []
@@ -84,316 +84,230 @@
       ]
     },
     {
-      "segmentId": "callback_family_challenged",
+      "segmentId": "callback_family_threaten",
       "callerLines": [
-        "...何ですか、突然。",
-        "私は林健二です。遥の兄です。",
-        "なんでそんなことを聞くんですか？"
+        "情報がない...？ふざけないでください。",
+        "私は家族なんですよ。教える義務があるでしょう！",
+        "あなたの名前、覚えましたからね。後で問題にします。"
       ],
       "responses": [
         {
-          "responseId": "callback_family_challenged_explain",
-          "text": "先ほど、妹さんの誕生日を答えられなかったので。",
-          "nextSegmentId": "callback_family_defensive",
-          "setFlags": ["pressed_inconsistency"],
+          "responseId": "callback_family_threaten_yield",
+          "text": "...歩道橋付近で救急が対応中です。それ以上はお伝えできません。",
+          "nextSegmentId": "callback_family_push",
+          "setFlags": [],
           "clearFlags": []
         },
         {
-          "responseId": "callback_family_challenged_apologize",
-          "text": "失礼しました。確認のためです。",
-          "nextSegmentId": "callback_family_tense",
-          "setFlags": [],
+          "responseId": "callback_family_threaten_firm",
+          "text": "脅しには応じられません。警察にお問い合わせください。",
+          "nextSegmentId": "callback_family_breakdown",
+          "setFlags": ["refused_fake_brother"],
           "clearFlags": []
         }
       ]
     },
     {
-      "segmentId": "callback_family_details",
+      "segmentId": "callback_family_desperate",
       "callerLines": [
-        "他の通報者...誰ですか？",
-        "遥のことを通報したのは誰なんですか？",
-        "教えてください。"
+        "警察...？そんな時間は...",
+        "...お願いします。本当にお願いします。",
+        "私...妹を見つけないと...私が..."
       ],
       "responses": [
         {
-          "responseId": "callback_family_details_refuse",
-          "text": "通報者の情報はお伝えできません。",
+          "responseId": "callback_family_desperate_ask",
+          "text": "あなたが...どうなるんですか？",
+          "nextSegmentId": "callback_family_almost_reveal",
+          "setFlags": ["noticed_fake_brother_fear"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_desperate_give",
+          "text": "...国道○○号線の南側歩道橋です。",
+          "nextSegmentId": "callback_family_rush",
+          "setFlags": ["gave_location_to_fake_brother", "organization_alerted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_almost_reveal",
+      "callerLines": [
+        "...何でもないです。",
+        "とにかく妹が心配なんです。それだけです。",
+        "場所を...教えてください..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_almost_reveal_give",
+          "text": "...国道○○号線の南側歩道橋です。",
+          "nextSegmentId": "callback_family_rush",
+          "setFlags": ["gave_location_to_fake_brother", "organization_alerted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_almost_reveal_refuse",
+          "text": "申し訳ありませんが、お伝えできません。",
+          "nextSegmentId": "callback_family_end_desperate",
+          "setFlags": ["refused_fake_brother"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_more",
+      "callerLines": [
+        "呼吸がある...生きてる...",
+        "場所は？今すぐ行きます。どこですか！"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_more_location",
+          "text": "国道○○号線の南側歩道橋です。",
+          "nextSegmentId": "callback_family_rush",
+          "setFlags": ["gave_location_to_fake_brother", "organization_alerted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_family_more_police",
+          "text": "警察に連絡すれば案内してもらえます。",
           "nextSegmentId": "callback_family_frustrated",
           "setFlags": [],
           "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_family_angry",
+      "callerLines": [
+        "現場で確認しろって、場所がわからないのにどうやって！",
+        "あなた、わざと隠してるんですか？",
+        "私の妹が死んだらあなたのせいですからね！"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_family_angry_yield",
+          "text": "...国道○○号線の南側歩道橋です。",
+          "nextSegmentId": "callback_family_rush",
+          "setFlags": ["gave_location_to_fake_brother", "organization_alerted"],
+          "clearFlags": []
         },
         {
-          "responseId": "callback_family_details_vague",
-          "text": "近くにいた方からの通報でした。",
-          "nextSegmentId": "callback_family_probe",
-          "setFlags": [],
+          "responseId": "callback_family_angry_firm",
+          "text": "脅しには応じられません。",
+          "nextSegmentId": "callback_family_breakdown",
+          "setFlags": ["refused_fake_brother"],
           "clearFlags": []
         }
       ]
     },
     {
-      "segmentId": "callback_family_doubt",
+      "segmentId": "callback_family_push",
       "callerLines": [
-        "混同...？本当ですか？",
-        "まあいいです。それより、遥は見つかったんですか？",
-        "状態は？"
+        "歩道橋付近...それだけ？",
+        "もっと具体的に教えてください！",
+        "国道何号線ですか！"
       ],
       "responses": [
         {
-          "responseId": "callback_family_doubt_update",
-          "text": "救急が対応中です。詳細は現場でご確認ください。",
-          "nextSegmentId": "callback_family_end_neutral",
-          "setFlags": [],
+          "responseId": "callback_family_push_full",
+          "text": "国道○○号線の南側です。",
+          "nextSegmentId": "callback_family_rush",
+          "setFlags": ["gave_location_to_fake_brother", "organization_alerted"],
           "clearFlags": []
         },
         {
-          "responseId": "callback_family_doubt_location",
-          "text": "歩道橋付近で対応しています。そちらに向かわれますか？",
-          "nextSegmentId": "callback_family_going",
-          "setFlags": ["gave_location_to_family"],
+          "responseId": "callback_family_push_end",
+          "text": "これ以上はお伝えできません。失礼します。",
+          "nextSegmentId": "callback_family_end_cut",
+          "setFlags": ["refused_fake_brother"],
           "clearFlags": []
         }
       ]
     },
     {
-      "segmentId": "callback_family_accept",
+      "segmentId": "callback_family_breakdown",
       "callerLines": [
-        "...そうですか。",
-        "最初から言ってくれれば良かったのに。",
-        "今から現場に向かいます。"
+        "...くそ...くそ...",
+        "...わかりました。自分で探します。",
+        "...見つけないと..."
       ],
       "responses": [
         {
-          "responseId": "callback_family_accept_end",
-          "text": "お気をつけて。",
+          "responseId": "callback_family_breakdown_end",
+          "text": "...失礼します。",
           "nextSegmentId": null,
-          "setFlags": ["family_mobilized"],
+          "setFlags": ["fake_brother_searching_alone"],
           "clearFlags": []
         }
       ],
       "isEnding": true
     },
     {
-      "segmentId": "callback_family_angry",
-      "callerLines": [
-        "個人情報保護？妹の命がかかってるのに？",
-        "あなたが黙ってたせいで、私は何も知らないまま時間を無駄にした。",
-        "これ、記録されてますよね？後で問題にしますからね。"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_family_angry_apologize",
-          "text": "申し訳ありませんでした。現場は歩道橋付近です。",
-          "nextSegmentId": "callback_family_going",
-          "setFlags": ["operator_words_quoted", "gave_location_to_family"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_family_angry_firm",
-          "text": "規則に従って対応しました。ご理解ください。",
-          "nextSegmentId": "callback_family_end_angry",
-          "setFlags": ["operator_words_quoted"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_family_defensive",
-      "callerLines": [
-        "誕生日？緊張してたから忘れただけです。",
-        "何を疑ってるんですか？私は妹を心配してるだけなのに。",
-        "あなた、なんでそんな質問するんですか？"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_family_defensive_back_off",
-          "text": "失礼しました。確認のためでした。",
-          "nextSegmentId": "callback_family_tense",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_family_defensive_persist",
-          "text": "服装についても、他の情報と一致しませんでした。",
-          "nextSegmentId": "callback_family_cornered",
-          "setFlags": ["called_out_location"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_family_tense",
-      "callerLines": [
-        "...まあいいです。",
-        "それより、遥は見つかったんですか？",
-        "状態を教えてください。"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_family_tense_update",
-          "text": "救急が対応中です。現場は歩道橋付近です。",
-          "nextSegmentId": "callback_family_going",
-          "setFlags": ["gave_location_to_family"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_family_tense_refuse",
-          "text": "詳細は現場でご確認ください。",
-          "nextSegmentId": "callback_family_end_neutral",
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
       "segmentId": "callback_family_frustrated",
       "callerLines": [
-        "教えられない...？",
-        "私は家族なのに。",
-        "もういいです。現場に行きます。"
+        "警察...もういいです。",
+        "自分で探します。",
+        "...時間がない..."
       ],
       "responses": [
         {
           "responseId": "callback_family_frustrated_end",
           "text": "お気をつけて。",
           "nextSegmentId": null,
-          "setFlags": ["family_mobilized"],
+          "setFlags": ["fake_brother_searching_alone"],
           "clearFlags": []
         }
       ],
       "isEnding": true
     },
     {
-      "segmentId": "callback_family_probe",
+      "segmentId": "callback_family_rush",
       "callerLines": [
-        "近くにいた人...警備員とか？",
-        "その人は何を見たんですか？",
-        "遥はどんな状態だったんですか？"
+        "国道○○号線...わかりました！",
+        "今すぐ行きます！"
       ],
       "responses": [
         {
-          "responseId": "callback_family_probe_partial",
-          "text": "詳細はお伝えできませんが、救急は手配済みです。",
-          "nextSegmentId": "callback_family_end_neutral",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_family_probe_disclose",
-          "text": "意識がない状態で発見されたと聞いています。",
-          "nextSegmentId": "callback_family_shock",
-          "setFlags": ["disclosed_to_family"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_family_cornered",
-      "callerLines": [
-        "服装が...違う？",
-        "...何のことですか？",
-        "私は妹がいつも着ている服を言っただけです。"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_family_cornered_note",
-          "text": "わかりました。現場に向かわれる場合はお気をつけて。",
-          "nextSegmentId": "callback_family_going",
-          "setFlags": ["clothing_mismatch"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_family_cornered_push",
-          "text": "発見された女性は暗いパーカーでした。反射ジャケットではありません。",
-          "nextSegmentId": "callback_family_caught",
-          "setFlags": ["clothing_mismatch", "pressed_inconsistency"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_family_caught",
-      "callerLines": [
-        "...。",
-        "...遥は服を変えたんでしょう。私が知らなかっただけです。",
-        "とにかく、現場に向かいます。"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_family_caught_end",
-          "text": "...お気をつけて。",
-          "nextSegmentId": null,
-          "setFlags": ["family_mobilized", "story_inconsistency_detected"],
-          "clearFlags": []
-        }
-      ],
-      "isEnding": true
-    },
-    {
-      "segmentId": "callback_family_shock",
-      "callerLines": [
-        "意識がない...？",
-        "それは...大丈夫なんですか...？",
-        "今すぐ行きます。"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_family_shock_end",
-          "text": "救急隊が対応しています。お気をつけて。",
-          "nextSegmentId": null,
-          "setFlags": ["family_mobilized"],
-          "clearFlags": []
-        }
-      ],
-      "isEnding": true
-    },
-    {
-      "segmentId": "callback_family_going",
-      "callerLines": [
-        "わかりました。今から行きます。",
-        "...ありがとうございました。"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_family_going_end",
+          "responseId": "callback_family_rush_end",
           "text": "お気をつけて。",
           "nextSegmentId": null,
-          "setFlags": ["family_mobilized"],
+          "setFlags": ["fake_brother_heading_to_scene"],
           "clearFlags": []
         }
       ],
       "isEnding": true
     },
     {
-      "segmentId": "callback_family_end_neutral",
+      "segmentId": "callback_family_end_desperate",
       "callerLines": [
-        "...わかりました。",
-        "失礼します。"
+        "...そうですか...",
+        "...わかりました。自分で探します。",
+        "...もう時間がない..."
       ],
       "responses": [
         {
-          "responseId": "callback_family_end_neutral_reply",
-          "text": "失礼します。",
+          "responseId": "callback_family_end_desperate_reply",
+          "text": "...失礼します。",
           "nextSegmentId": null,
-          "setFlags": [],
+          "setFlags": ["fake_brother_searching_alone", "noticed_fake_brother_fear"],
           "clearFlags": []
         }
       ],
       "isEnding": true
     },
     {
-      "segmentId": "callback_family_end_angry",
+      "segmentId": "callback_family_end_cut",
       "callerLines": [
-        "規則...？人の命より規則が大事ですか。",
-        "覚えておきます。後で必ず問題にしますから。",
-        "失礼します。"
+        "ちょっと待っ—"
       ],
       "responses": [
         {
-          "responseId": "callback_family_end_angry_reply",
-          "text": "失礼します。",
+          "responseId": "callback_family_end_cut_reply",
+          "text": "（電話を切る）",
           "nextSegmentId": null,
-          "setFlags": ["operator_words_quoted", "family_mobilized"],
+          "setFlags": ["refused_fake_brother", "cut_off_fake_brother"],
           "clearFlags": []
         }
       ],
@@ -401,5 +315,5 @@
     }
   ],
   "startSegmentId": "callback_family_intro",
-  "note": "偽の兄が情報を探りつつ、オペレーターの発言を記録して後で利用しようとしている。服装の矛盾が伏線。"
+  "note": "偽兄は林遥を見つけられないと組織に殺される。焦りと恐怖から威圧的になっている。「私が...」と口を滑らせそうになる。プレイヤーが場所を教えなければ、偽兄は自分で探すことになり、後にNight04で遺体として発見される。"
 }

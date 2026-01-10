@@ -1,0 +1,298 @@
+{
+  "callId": "call_yoshida_info",
+  "callerId": "yoshida_kazuko",
+  "title": "吉田からの電話",
+  "description": "吉田が真理が以前話していたことを思い出して電話。「姉（遥）が危険なことに巻き込まれている」と言っていたことを伝える。",
+  "segments": [
+    {
+      "segmentId": "yoshida_intro",
+      "callerLines": [
+        "あの...吉田です...",
+        "夜分にすみません...",
+        "渡辺さんのことで、思い出したことがあって..."
+      ],
+      "responses": [
+        {
+          "responseId": "intro_listen",
+          "text": "どうぞ、お話しください。",
+          "nextSegmentId": "yoshida_remember",
+          "setFlags": ["yoshida_info_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "intro_ask",
+          "text": "渡辺さんのことで何か？",
+          "nextSegmentId": "yoshida_remember",
+          "setFlags": ["yoshida_info_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_remember",
+      "callerLines": [
+        "前に渡辺さんが言ってたんです...",
+        "「お姉さんが危険なことに巻き込まれている」って...",
+        "その時は何のことか分からなかったんですけど..."
+      ],
+      "responses": [
+        {
+          "responseId": "remember_ask_sister",
+          "text": "お姉さんというと？",
+          "nextSegmentId": "yoshida_sister",
+          "setFlags": ["heard_about_sister"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "remember_ask_danger",
+          "text": "危険というのは？",
+          "nextSegmentId": "yoshida_danger",
+          "setFlags": ["heard_about_sister"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_sister",
+      "callerLines": [
+        "林さん...遥さんって言ってました。",
+        "美咲ちゃんのお母さんですよね...",
+        "渡辺さんの本当のお姉さんみたいで..."
+      ],
+      "responses": [
+        {
+          "responseId": "sister_ask_danger",
+          "text": "遥さんが何に巻き込まれていたんですか？",
+          "nextSegmentId": "yoshida_danger",
+          "setFlags": ["haruka_mari_sisters_confirmed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "sister_ask_misaki",
+          "text": "美咲ちゃんは...？",
+          "nextSegmentId": "yoshida_misaki_safe",
+          "setFlags": ["haruka_mari_sisters_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_danger",
+      "callerLines": [
+        "詳しくは言ってくれなかったんですけど...",
+        "「夫のことで何か知ってしまった」とか...",
+        "「守らなければいけない」とか..."
+      ],
+      "responses": [
+        {
+          "responseId": "danger_ask_husband",
+          "text": "夫というと...林健二さん？",
+          "nextSegmentId": "yoshida_kenji",
+          "setFlags": ["heard_about_kenji_secret"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "danger_ask_protect",
+          "text": "守らなければいけないのは誰を？",
+          "nextSegmentId": "yoshida_protect",
+          "setFlags": ["heard_about_protect"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_kenji",
+      "callerLines": [
+        "そう...だと思います。",
+        "「健二さんが何か知っていた」って...",
+        "「それで狙われている」って..."
+      ],
+      "responses": [
+        {
+          "responseId": "kenji_ask_what",
+          "text": "何を知っていたんですか？",
+          "nextSegmentId": "yoshida_dont_know",
+          "setFlags": ["kenji_knew_something"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "kenji_ask_company",
+          "text": "誠和製薬のことですか？",
+          "nextSegmentId": "yoshida_seiwaq",
+          "setFlags": ["kenji_knew_something"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_protect",
+      "callerLines": [
+        "美咲ちゃんのことだと思います...",
+        "「あの子だけは守る」って...",
+        "だから私のところに預けたんだと思う..."
+      ],
+      "responses": [
+        {
+          "responseId": "protect_confirm",
+          "text": "美咲ちゃんは今、吉田さんのところに？",
+          "nextSegmentId": "yoshida_misaki_safe",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "protect_ask_why",
+          "text": "なぜ美咲ちゃんが狙われるんですか？",
+          "nextSegmentId": "yoshida_dont_know",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_seiwaq",
+      "callerLines": [
+        "その名前...聞いたことがあります...",
+        "渡辺さんが「あの会社が」って...",
+        "でも、それ以上は..."
+      ],
+      "responses": [
+        {
+          "responseId": "seiwaq_understand",
+          "text": "分かりました。ありがとうございます。",
+          "nextSegmentId": "yoshida_worry",
+          "setFlags": ["seiwaq_mentioned_by_mari"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_dont_know",
+      "callerLines": [
+        "それは...私には分からなくて...",
+        "でも、渡辺さんはすごく怖がってました...",
+        "「見つかったら終わりだ」って..."
+      ],
+      "responses": [
+        {
+          "responseId": "dont_know_end",
+          "text": "分かりました。教えてくれてありがとうございます。",
+          "nextSegmentId": "yoshida_worry",
+          "setFlags": ["mari_was_afraid"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_misaki_safe",
+      "callerLines": [
+        "はい...今、うちにいます...",
+        "怖がってるけど...元気です...",
+        "私が守りますから..."
+      ],
+      "note": "吉田が美咲を守る決意",
+      "responses": [
+        {
+          "responseId": "safe_reassure",
+          "text": "吉田さん、ありがとうございます。",
+          "nextSegmentId": "yoshida_resolve",
+          "setFlags": ["misaki_confirmed_safe"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "safe_warn",
+          "text": "気をつけてください。危険かもしれません。",
+          "nextSegmentId": "yoshida_resolve",
+          "setFlags": ["misaki_confirmed_safe", "warned_yoshida"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_resolve",
+      "callerLines": [
+        "大丈夫です...",
+        "渡辺さんに頼まれたんです...",
+        "「何があっても美咲を守って」って..."
+      ],
+      "responses": [
+        {
+          "responseId": "resolve_support",
+          "text": "何かあればすぐに連絡してください。",
+          "nextSegmentId": "yoshida_end",
+          "setFlags": ["yoshida_will_protect"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_worry",
+      "callerLines": [
+        "渡辺さん...大丈夫かしら...",
+        "あんないい人なのに...",
+        "どうか無事でいてほしい..."
+      ],
+      "responses": [
+        {
+          "responseId": "worry_reassure",
+          "text": "警察も動いています。きっと見つかります。",
+          "nextSegmentId": "yoshida_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "worry_promise",
+          "text": "私も何かできることがあれば...。",
+          "nextSegmentId": "yoshida_end",
+          "setFlags": ["operator_involved"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_end",
+      "callerLines": [
+        "ありがとうございます...",
+        "すみません、夜遅くに...",
+        "美咲ちゃんのこと、よろしくお願いします..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_close",
+          "text": "吉田さんも、気をつけてください。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "yoshida_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "sisters_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_mari_sisters_confirmed"
+      },
+      "triggerTiming": "after_call",
+      "content": "渡辺真理と林遥は姉妹...美咲ちゃんのおばさん...だから守ろうとしていたのか..."
+    },
+    {
+      "triggerId": "kenji_secret_thought",
+      "triggerCondition": {
+        "requiresFlag": "kenji_knew_something"
+      },
+      "triggerTiming": "after_call",
+      "content": "林健二は何かを知っていた...それで殺された...遥も、真理も..."
+    },
+    {
+      "triggerId": "misaki_safe_thought",
+      "triggerCondition": {
+        "requiresFlag": "misaki_confirmed_safe"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃんは吉田さんのところにいる...良かった...でも、いつまで安全でいられるか..."
+    }
+  ],
+  "note": "Night08の2番目の通話。吉田が真理から聞いていた情報を思い出して伝える。遥と真理が姉妹であること、林健二が何かを知っていたこと、誠和製薬の名前などが明らかになる。美咲が吉田の家で安全であることも確認できる。"
+}

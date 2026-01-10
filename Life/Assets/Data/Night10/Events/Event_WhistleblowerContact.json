@@ -1,0 +1,138 @@
+{
+  "eventId": "event_whistleblower_contact",
+  "eventType": "outgoing_call",
+  "title": "内部告発者への連絡",
+  "description": "オペレーターが内部告発者に連絡し、美咲を見つけてキーホルダーの使い方を教えてもらう。",
+  "triggerTimeMinutes": 400,
+  "triggerCondition": {
+    "requiresAllFlags": ["whistleblower_likely_safe", "misaki_saved", "told_police_about_whistleblower"]
+  },
+  "preCallMonologue": [
+    {
+      "lineId": "pre_1",
+      "content": "内部告発者に連絡を取らなければ...",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "pre_2",
+      "content": "美咲ちゃんのキーホルダー...何か秘密があるはず...",
+      "delaySeconds": 2
+    }
+  ],
+  "callSegments": [
+    {
+      "segmentId": "whistleblower_answer",
+      "callerLines": [
+        "...もしもし？",
+        "あなたは...あの夜の...",
+        "まだ生きてたんですね..."
+      ],
+      "responses": [
+        {
+          "responseId": "answer_explain",
+          "text": "美咲ちゃんが見つかりました。キーホルダーを持っています。",
+          "nextSegmentId": "whistleblower_keyholder",
+          "setFlags": ["contacted_whistleblower"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_keyholder",
+      "callerLines": [
+        "キーホルダー...!",
+        "遥さんが持たせていたやつだ...",
+        "あれにはUSBが隠されてるんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "keyholder_how",
+          "text": "どうやって取り出すんですか？",
+          "nextSegmentId": "whistleblower_instructions",
+          "setFlags": ["knows_usb_exists"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_instructions",
+      "callerLines": [
+        "キーホルダーの底を時計回りに回してください。",
+        "カチッと音がしたら引っ張る。",
+        "中にUSBが入っているはずです。"
+      ],
+      "responses": [
+        {
+          "responseId": "instructions_understand",
+          "text": "分かりました。",
+          "nextSegmentId": "whistleblower_content",
+          "setFlags": ["knows_usb_method"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_content",
+      "callerLines": [
+        "あのUSBには...誠和製薬の全ての秘密が入っています。",
+        "遥さんが命がけで集めた証拠...",
+        "副作用のデータ、子会社の活動記録、すべて..."
+      ],
+      "responses": [
+        {
+          "responseId": "content_thanks",
+          "text": "ありがとうございます。これで...",
+          "nextSegmentId": "whistleblower_hope",
+          "setFlags": ["knows_usb_content"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_hope",
+      "callerLines": [
+        "健二の仇を...遥さんの仇を...",
+        "取れるかもしれない...",
+        "美咲ちゃんを...よろしくお願いします..."
+      ],
+      "responses": [
+        {
+          "responseId": "hope_promise",
+          "text": "約束します。",
+          "nextSegmentId": null,
+          "setFlags": ["whistleblower_contact_completed", "usb_can_be_found"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "postCallMonologue": [
+    {
+      "lineId": "post_1",
+      "content": "美咲ちゃんのキーホルダー...",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "post_2",
+      "content": "遥さんが命がけで集めた証拠...",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "post_3",
+      "content": "これで...すべてが変わる...",
+      "delaySeconds": 2
+    }
+  ],
+  "operatorThoughts": [
+    {
+      "triggerId": "usb_hope_thought",
+      "triggerCondition": {
+        "requiresFlag": "whistleblower_contact_completed"
+      },
+      "triggerTiming": "after_event",
+      "content": "USBがあれば...誠和製薬を終わらせられる..."
+    }
+  ],
+  "note": "オペレーターから内部告発者への電話。美咲が救出され、内部告発者が生き残っている場合のみ発生。キーホルダーの使い方を教わり、USB発見への道が開ける。"
+}

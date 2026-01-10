@@ -1,0 +1,303 @@
+{
+  "callId": "call_yoshida_status",
+  "callerId": "yoshida_kazuko",
+  "title": "吉田からの報告",
+  "description": "吉田が美咲の様子を報告。美咲は元気だが、ママとまりおばちゃんのことを心配している。",
+  "segments": [
+    {
+      "segmentId": "yoshida_intro",
+      "callerLines": [
+        "あの、吉田です。",
+        "美咲ちゃんのこと、報告しておこうと思って...",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "intro_ask",
+          "text": "美咲ちゃんは元気ですか？",
+          "nextSegmentId": "misaki_status",
+          "setFlags": ["yoshida_status_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "intro_listen",
+          "text": "どうぞ。",
+          "nextSegmentId": "misaki_status",
+          "setFlags": ["yoshida_status_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "misaki_status",
+      "callerLines": [
+        "ええ、元気にしてます。",
+        "ご飯もちゃんと食べてるし...",
+        "でも、時々泣くんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "status_ask_cry",
+          "text": "泣く？",
+          "nextSegmentId": "misaki_crying",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "status_ask_worry",
+          "text": "何か心配なことが？",
+          "nextSegmentId": "misaki_worry",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "misaki_crying",
+      "callerLines": [
+        "「ママはいつ来るの」って...",
+        "「まりおばちゃんは」って...",
+        "私、何て言ったらいいか分からなくて...",
+        "...あ、ちょっと待ってね。",
+        "[背景で子供の声が聞こえる]",
+        "...うん、おばあちゃんお電話してるの。すぐ終わるからね。",
+        "[吉田が電話に戻る]",
+        "すみません、美咲ちゃんが..."
+      ],
+      "responses": [
+        {
+          "responseId": "crying_ask_misaki",
+          "text": "...美咲ちゃん、一緒にいるんですか？",
+          "nextSegmentId": "yoshida_confirms_misaki",
+          "setFlags": ["operator_knows_misaki_with_yoshida"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "crying_comfort",
+          "text": "吉田さんがそばにいてくれるだけで十分です。",
+          "nextSegmentId": "yoshida_thanks",
+          "setFlags": ["comforted_yoshida", "operator_knows_misaki_with_yoshida"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_confirms_misaki",
+      "callerLines": [
+        "え...はい。",
+        "渡辺さんからお預かりして...",
+        "あの晩、急に連れてこられて..."
+      ],
+      "responses": [
+        {
+          "responseId": "confirms_understand",
+          "text": "そうだったんですね...",
+          "nextSegmentId": "yoshida_thanks",
+          "setFlags": ["comforted_yoshida"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "confirms_ask_safe",
+          "text": "美咲ちゃんは安全ですか？",
+          "nextSegmentId": "yoshida_safe",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "misaki_worry",
+      "callerLines": [
+        "ママとまりおばちゃんのことを聞いてくるんです...",
+        "「いつ帰ってくるの」って...",
+        "あの子なりに、何か感じてるみたいで..."
+      ],
+      "responses": [
+        {
+          "responseId": "worry_comfort",
+          "text": "美咲ちゃんは強い子ですね。",
+          "nextSegmentId": "yoshida_agree",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "worry_ask_safe",
+          "text": "吉田さんの家は安全ですか？",
+          "nextSegmentId": "yoshida_safe",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_explanation",
+      "callerLines": [
+        "「ちょっと遠くに行ってる」って...",
+        "「すぐ帰ってくるから」って...",
+        "嘘をついてるみたいで、辛いです..."
+      ],
+      "responses": [
+        {
+          "responseId": "explanation_ok",
+          "text": "今はそれでいいと思います。",
+          "nextSegmentId": "yoshida_thanks",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "explanation_ask_safe",
+          "text": "吉田さんの家は安全ですか？",
+          "nextSegmentId": "yoshida_safe",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_agree",
+      "callerLines": [
+        "ええ...本当に。",
+        "あの子、私のことも気遣ってくれて...",
+        "「おばあちゃん、大丈夫？」って..."
+      ],
+      "responses": [
+        {
+          "responseId": "agree_ask_safe",
+          "text": "周りに変わったことはありませんか？",
+          "nextSegmentId": "yoshida_safe",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "agree_thanks",
+          "text": "美咲ちゃんをお願いしますね。",
+          "nextSegmentId": "yoshida_promise",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_safe",
+      "callerLines": [
+        "今のところは...大丈夫だと思います。",
+        "あの車も、最近は見かけなくなって...",
+        "でも、油断はできないですよね..."
+      ],
+      "responses": [
+        {
+          "responseId": "safe_warn",
+          "text": "何か変なことがあったらすぐに連絡してください。",
+          "nextSegmentId": "yoshida_promise",
+          "setFlags": ["warned_yoshida_again"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "safe_reassure",
+          "text": "警察も動いています。きっと大丈夫です。",
+          "nextSegmentId": "yoshida_hope",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_thanks",
+      "callerLines": [
+        "ありがとうございます...",
+        "そう言ってもらえると、少し楽になります...",
+        "美咲ちゃん、絶対守りますから..."
+      ],
+      "responses": [
+        {
+          "responseId": "thanks_promise",
+          "text": "お願いします。何かあればすぐに連絡を。",
+          "nextSegmentId": "yoshida_end",
+          "setFlags": ["yoshida_will_protect_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_promise",
+      "callerLines": [
+        "はい...必ず。",
+        "美咲ちゃんは私が守ります。",
+        "渡辺さんとの約束ですから..."
+      ],
+      "responses": [
+        {
+          "responseId": "promise_end",
+          "text": "吉田さん、ありがとうございます。",
+          "nextSegmentId": "yoshida_end",
+          "setFlags": ["yoshida_will_protect_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_hope",
+      "callerLines": [
+        "そうですよね...きっと大丈夫...",
+        "渡辺さんも、きっと見つかりますよね...",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "hope_end",
+          "text": "きっと。",
+          "nextSegmentId": "yoshida_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_end",
+      "callerLines": [
+        "また何かあったら連絡します。",
+        "夜遅くにすみませんでした。",
+        "おやすみなさい..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_close",
+          "text": "おやすみなさい。お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "yoshida_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "misaki_discovered_thought",
+      "triggerCondition": {
+        "requiresFlag": "operator_knows_misaki_with_yoshida"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃん...遥さんの娘が吉田さんのところに...真理さんが預けたんだ..."
+    },
+    {
+      "triggerId": "misaki_safe_thought",
+      "triggerCondition": {
+        "requiresFlag": "yoshida_will_protect_confirmed"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃんは吉田さんが守ってくれている...今は安全..."
+    },
+    {
+      "triggerId": "misaki_lonely_thought",
+      "triggerCondition": {
+        "requiresFlag": "yoshida_status_call",
+        "requiresNotFlag": "operator_knows_misaki_with_yoshida"
+      },
+      "triggerTiming": "after_call",
+      "content": "吉田さんは誰かの世話をしている...ママとまりおばちゃんを待っている子...?"
+    }
+  ],
+  "note": "Night09の2番目の通話。吉田が美咲の様子を報告。通話中に美咲の声が聞こえ、オペレーターは初めて美咲が吉田のところにいることを知る。美咲はママ（遥）とまりおばちゃん（真理）のことを心配している。吉田は美咲を守る決意を新たにする。"
+}

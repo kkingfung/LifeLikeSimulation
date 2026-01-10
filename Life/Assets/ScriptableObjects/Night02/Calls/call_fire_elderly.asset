@@ -15,9 +15,9 @@ MonoBehaviour:
   callId: call_fire_elderly
   caller: {fileID: 11400000, guid: 0b8c4037bce951b4bbc94b3e5b28d2e8, type: 2}
   description: "\u9AD8\u9F62\u8005\u304B\u3089\u306E\u706B\u707D\u7B2C\u4E00\u5831\u3002\u30D1\u30CB\u30C3\u30AF\u72B6\u614B\u3001\u7206\u767A\u97F3\u3092\u805E\u3044\u305F\u3001\u75C5\u9662\u5E30\u308A\u3002Night01\u306E\u6797\u9065\u3068\u306E\u63A5\u70B9\u3092\u6301\u3064\u3002"
-  incomingTimeMinutes: 0
-  ringDuration: 30
-  priority: 5
+  incomingTimeMinutes: 1385
+  ringDuration: 45
+  priority: 9
   startSegmentId: fire_panic_intro
   segments:
   - segmentId: fire_panic_intro
@@ -584,6 +584,94 @@ MonoBehaviour:
       trustImpact: 0
       setFlags:
       - fire_reported
+      - security_vehicle_seen
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: fire_end
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: fire_vehicle_try_remember
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u30BB\u30AD\u30E5\u30EA\u30C6\u30A3\u4F1A\u793E\u306E\u8ECA...\u4ED6\u306B\u4F55\u304B\u899A\u3048\u3066\u3044\u307E\u305B\u3093\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - asked_about_vehicle
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: fire_vehicle_more
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: fire_vehicle_more
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u3046\u301C\u3093...\u8D64\u3044\u5B57\u3067...\u300C\u30A2\u30E9\u30FC\u30C8\u300D...\u3060\u3063\u305F\u3088\u3046\u306A...\n\u3088\u304F\u898B\u308B\u8ECA\u3058\u3083\u306A\u304F\u3066...\u666E\u901A\u306E\u8B66\u5099\u4F1A\u793E\u3058\u3083\u306A\u3044\u6C17\u304C\u3057\u3066...\n\u3054\u3081\u3093\u306A\u3055\u3044\u3001\u3053\u308C\u4EE5\u4E0A\u306F\u601D\u3044\u51FA\u305B\u306A\u304F\u3066..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: fire_vehicle_more_ok
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u5341\u5206\u3067\u3059\u3002\u6D88\u9632\u3092\u624B\u914D\u3057\u307E\u3059\u3002\u96E2\u308C\u3066\u3044\u3066\u304F\u3060\u3055\u3044\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - fire_reported
+      - alert_security_partial
       clearFlags: []
       isDispatchAction: 0
       nextSegmentId: fire_end
@@ -686,7 +774,7 @@ MonoBehaviour:
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\u306F\u3044...\u5206\u304B\u308A\u307E\u3057\u305F...\n\u75C5\u9662\u306E\u5E30\u308A\u9053\u3067\u3053\u3093\u306A\u3053\u3068\u306B\u306A\u308B\u306A\u3093\u3066...\n\u8FD1\u6240\u306E\u82E5\u3044\u304A\u6BCD\u3055\u3093\u304C\u3044\u3064\u3082\u5FC3\u914D\u3057\u3066\u304F\u308C\u3066\u305F\u306E\u306B...\u6700\u8FD1\u3001\u898B\u304B\u3051\u306A\u304F\u3066..."
+          text: "\u306F\u3044...\u5206\u304B\u308A\u307E\u3057\u305F...\n\u75C5\u9662\u306E\u5E30\u308A\u9053\u3067\u3053\u3093\u306A\u3053\u3068\u306B\u306A\u308B\u306A\u3093\u3066...\n\u4E00\u4EBA\u66AE\u3089\u3057\u3060\u3068\u3001\u3053\u3046\u3044\u3046\u6642\u5FC3\u7D30\u304F\u3066..."
       textSpeed: 30
       subtitleTrackId: 
       inlineSubtitles:
@@ -713,91 +801,6 @@ MonoBehaviour:
         entries:
         - language: 0
           text: "\u6D88\u9632\u304C\u5411\u304B\u3063\u3066\u3044\u307E\u3059\u3002\u3054\u5354\u529B\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3057\u305F\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: fire_end
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    - responseId: fire_lonely_listen
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u8FD1\u6240\u306E\u65B9\u304C\u898B\u304B\u3051\u306A\u3044\uFF1F\u304A\u540D\u524D\u306F\u5206\u304B\u308A\u307E\u3059\u304B\uFF1F"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags:
-      - young_mother_mentioned
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: fire_haruka_mention
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    responseTimeLimit: 0
-    timeoutResponseId: 
-    autoDiscoveredEvidenceIds: []
-    conditions: []
-  - segmentId: fire_haruka_mention
-    media:
-      mediaType: 0
-      dialogueText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u304A\u540D\u524D...\u6797\u3055\u3093\u3001\u3060\u3063\u305F\u304B\u3057\u3089\u3002\u304A\u5B50\u3055\u3093\u3068\u4E8C\u4EBA\u66AE\u3089\u3057\u3067...\n\u3088\u304F\u8CB7\u3044\u7269\u3092\u624B\u4F1D\u3063\u3066\u304F\u308C\u3066...\u512A\u3057\u3044\u4EBA\u306A\u3093\u3067\u3059\u3002\n\u6700\u8FD1\u3001\u5F15\u3063\u8D8A\u3057\u305F\u306E\u304B\u3057\u3089...\u6328\u62F6\u3082\u306A\u304F..."
-      textSpeed: 30
-      subtitleTrackId: 
-      inlineSubtitles:
-        trackId: 
-        entries: []
-      localAudioClip: {fileID: 0}
-      audioBundleName: 
-      audioAssetName: 
-      videoReference:
-        source: 0
-        localClip: {fileID: 0}
-        streamingAssetsPath: 
-        bundleName: 
-        assetName: 
-        bundleVersion: 1
-        directUrl: 
-      duration: 0
-      emotionalState: 0
-    responses:
-    - responseId: fire_haruka_end
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u305D\u3046\u3067\u3059\u304B...\u3002\u6D88\u9632\u304C\u5230\u7740\u3057\u305F\u3089\u3001\u304A\u5BB6\u306B\u5E30\u3063\u3066\u3086\u3063\u304F\u308A\u4F11\u3093\u3067\u304F\u3060\u3055\u3044\u3002"
       actualText:
         key: 
         defaultLanguage: 0
@@ -882,5 +885,5 @@ MonoBehaviour:
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []
-  isCritical: 0
+  isCritical: 1
   canRepeat: 0

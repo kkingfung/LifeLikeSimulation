@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f24c282a3f12e64aa75308b10806407, type: 3}
+  m_Name: yoshida_kazuko
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.CallerData
+  callerId: yoshida_kazuko
+  displayName: "\u5409\u7530\u548C\u5B50"
+  phoneNumber: "\u975E\u901A\u77E5"
+  realName: "\u5409\u7530\u548C\u5B50"
+  description: "Night02\u304B\u3089\u7D99\u7D9A\u3002\u771F\u7406\u306E\u96A3\u4EBA\u3002\u7F8E\u54B2\u3092\u9810\u304B\u3063\u3066\u3044\u308B\uFF08yoshida_will_warn_mari\u30EB\u30FC\u30C8\uFF09\u3002"
+  silhouetteImage: {fileID: 0}
+  revealedImage: {fileID: 0}
+  silhouetteColor: {r: 1, g: 1, b: 1, a: 1}
+  voiceDescription: "70\u4EE3\u5973\u6027\u3002\u75B2\u308C\u3066\u3044\u308B\u304C\u3001\u5F37\u3044\u610F\u5FD7\u3092\u611F\u3058\u308B\u58F0\u3002"
+  voicePitch: 1
+  personality:
+    honesty: 95
+    stability: 60
+    cooperation: 85
+    aggression: 5
+  relations:
+  - targetCallerId: hayashi_misaki
+    relationType: 13
+    description: "\u9810\u304B\u3063\u3066\u3044\u308B\u5B50\u4F9B"
+    isKnown: 1
+  - targetCallerId: watanabe_mari
+    relationType: 12
+    description: "\u884C\u65B9\u4E0D\u660E\u306E\u96A3\u4EBA"
+    isKnown: 1
+  hiddenInfo: "\u7F8E\u54B2\u3092\u5B88\u308B\u3068\u6C7A\u610F\u3057\u3066\u3044\u308B\u3002\u771F\u7406\u306E\u3053\u3068\u3092\u5FC3\u914D\u3057\u3066\u3044\u308B\u3002"
+  trueMotivation: "\u7F8E\u54B2\u3092\u5B88\u308A\u629C\u304F\u3053\u3068"

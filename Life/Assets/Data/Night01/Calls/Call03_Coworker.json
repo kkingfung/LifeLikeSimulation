@@ -2,33 +2,57 @@
   "callId": "call_coworker",
   "callerId": "sato_koji",
   "title": "林さんのことで",
-  "description": "偽の同僚。林遥についての情報を探る。伏線。",
+  "description": "偽の同僚。普通に心配しているように見える。情報を漏らすと後で再登場。",
   "segments": [
     {
       "segmentId": "coworker_intro",
       "callerLines": [
-        "あ、もしもし。緊急通報センターですか。",
-        "佐藤といいます。林遥さんの同僚なんですけど。",
-        "彼女のことで何か連絡入ってないかと思って。"
+        "もしもし、緊急通報センターですか。",
+        "すみません、佐藤といいます。",
+        "友人の林遥のことで...連絡が取れなくて心配してるんです。"
       ],
       "responses": [
         {
-          "responseId": "coworker_intro_standard",
-          "text": "佐藤さんですね。林遥さんについて、どういったご用件でしょうか？",
-          "nextSegmentId": "coworker_reason",
+          "responseId": "coworker_intro_listen",
+          "text": "林遥さんのご友人ですね。どういった状況でしょうか？",
+          "nextSegmentId": "coworker_worry",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "coworker_intro_name",
+          "text": "佐藤さん。フルネームを教えていただけますか？",
+          "nextSegmentId": "coworker_fullname",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "coworker_intro_clarify",
+          "text": "緊急通報センターです。何かあったのですか？",
+          "nextSegmentId": "coworker_worry",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "coworker_fullname",
+      "callerLines": [
+        "あ、はい。佐藤浩二です。",
+        "林さんとは...職場が近くて。よく一緒にランチを食べてるんです。",
+        "今夜も約束してたんですけど..."
+      ],
+      "responses": [
+        {
+          "responseId": "fullname_continue",
+          "text": "佐藤浩二さんですね。どういった状況でしょうか？",
+          "nextSegmentId": "coworker_worry",
           "setFlags": ["sato_name_recorded"],
           "clearFlags": []
         },
         {
-          "responseId": "coworker_intro_cautious",
-          "text": "恐れ入りますが、通報内容についてはお答えできません。",
-          "nextSegmentId": "coworker_push",
-          "setFlags": ["sato_name_recorded"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "coworker_intro_question",
-          "text": "同僚の方ですか。どちらの職場でしょうか？",
+          "responseId": "fullname_question",
+          "text": "職場が近い...同じ会社ではないんですか？",
           "nextSegmentId": "coworker_workplace",
           "setFlags": ["sato_name_recorded", "questioned_sato"],
           "clearFlags": []
@@ -36,178 +60,165 @@
       ]
     },
     {
-      "segmentId": "coworker_reason",
-      "callerLines": [
-        "いや、彼女が連絡取れなくて心配してるんです。",
-        "今夜会う約束してたんですけど、来なくて。",
-        "事故とか、何か通報があったりしてないですか？"
-      ],
-      "responses": [
-        {
-          "responseId": "coworker_reason_deny",
-          "text": "申し訳ありませんが、個人情報に関わる内容はお伝えできません。",
-          "nextSegmentId": "coworker_pressure",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "coworker_reason_vague",
-          "text": "現時点で、林さんに関する特定の通報はありません。",
-          "nextSegmentId": "coworker_relief",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "coworker_reason_redirect",
-          "text": "ご心配でしたら、警察にお問い合わせください。",
-          "nextSegmentId": "coworker_decline",
-          "setFlags": ["redirected_to_police"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
       "segmentId": "coworker_workplace",
       "callerLines": [
-        "えっと...物流センターです。",
-        "...あ、いや、前の職場の話です。今は別のところで。",
-        "とにかく、彼女のことが心配なんです。"
+        "...いえ、違います。",
+        "私は...別の会社です。近くのビルで。",
+        "...それが何か？"
       ],
       "responses": [
         {
-          "responseId": "coworker_workplace_note",
-          "text": "前の職場...そうですか。今のお勤め先は？",
-          "nextSegmentId": "coworker_dodge",
-          "setFlags": ["sato_contradiction_noted"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "coworker_workplace_accept",
-          "text": "わかりました。林さんについての通報は入っていません。",
-          "nextSegmentId": "coworker_relief",
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "coworker_push",
-      "callerLines": [
-        "いや、答えられないって...本当に心配してるんです。",
-        "友人として当然でしょう？",
-        "何か知ってるなら教えてください。"
-      ],
-      "responses": [
-        {
-          "responseId": "coworker_push_firm",
-          "text": "お気持ちはわかりますが、規則ですのでご了承ください。",
-          "nextSegmentId": "coworker_give_up",
+          "responseId": "workplace_nothing",
+          "text": "いえ、確認です。それで、林さんのことは？",
+          "nextSegmentId": "coworker_worry",
           "setFlags": [],
           "clearFlags": []
         },
         {
-          "responseId": "coworker_push_question",
-          "text": "失礼ですが、どのような関係の方でしょうか？",
-          "nextSegmentId": "coworker_relationship",
+          "responseId": "workplace_press",
+          "text": "どちらの会社ですか？",
+          "nextSegmentId": "coworker_evasive",
           "setFlags": ["pressed_sato"],
           "clearFlags": []
         }
       ]
     },
     {
-      "segmentId": "coworker_dodge",
+      "segmentId": "coworker_evasive",
       "callerLines": [
-        "今の勤め先は...ちょっと言えないんですけど。",
-        "...セキュリティ関係の仕事なんで、あまり詳しくは。",
-        "...とにかく、何もないならいいんです。"
+        "...それは関係ないでしょう。",
+        "林さんのことで電話したんです。",
+        "...すみません、もういいです。"
       ],
       "responses": [
         {
-          "responseId": "coworker_dodge_security_question",
-          "text": "セキュリティ関係...警備会社ですか？",
-          "nextSegmentId": "coworker_security_hint",
-          "setFlags": ["sato_contradiction_noted", "security_work_mentioned"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "coworker_dodge_suspicious",
-          "text": "そうですか。何かあればまたお電話ください。",
-          "nextSegmentId": "coworker_end_quick",
-          "setFlags": ["sato_contradiction_noted"],
+          "responseId": "evasive_wait",
+          "text": "お待ちください。林さんのことで何かご存知なら—",
+          "nextSegmentId": "coworker_hangup",
+          "setFlags": ["sato_hung_up_quickly"],
           "clearFlags": []
         }
       ]
     },
     {
-      "segmentId": "coworker_security_hint",
+      "segmentId": "coworker_hangup",
       "callerLines": [
-        "...ええ、まあ、そういう感じです。",
-        "いろいろ機密が多くて。守秘義務があるんで。",
-        "...林さんとは前の職場で一緒だっただけです。"
+        "いえ、大丈夫です。自分で探します。",
+        "失礼しま—"
       ],
+      "note": "佐藤が急いで電話を切る。追及されて焦っている。",
       "responses": [
         {
-          "responseId": "coworker_security_noted",
-          "text": "わかりました。何かあればまたお電話ください。",
-          "nextSegmentId": "coworker_end_quick",
-          "setFlags": ["sato_security_job_noted"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "coworker_security_probe",
-          "text": "守秘義務...それで林さんのことを心配されてるんですか？",
-          "nextSegmentId": "coworker_defensive",
-          "setFlags": ["sato_security_job_noted", "pressed_sato"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "coworker_defensive",
-      "callerLines": [
-        "...友人として心配してるだけです。",
-        "変な詮索はやめてもらえますか。",
-        "...失礼します。"
-      ],
-      "responses": [
-        {
-          "responseId": "coworker_defensive_end",
-          "text": "失礼しました。お電話ありがとうございました。",
+          "responseId": "hangup_end",
+          "text": "（電話が切れた）",
           "nextSegmentId": null,
-          "setFlags": ["sato_hung_up_quickly", "sato_defensive_behavior"],
+          "setFlags": [],
           "clearFlags": []
         }
       ],
       "isEnding": true
     },
     {
-      "segmentId": "coworker_pressure",
+      "segmentId": "coworker_worry",
       "callerLines": [
-        "個人情報って...彼女の安否を心配してるだけなんですけど。",
-        "まあいいです。何も起きてないんですね？",
-        "それだけ確認できれば。"
+        "今夜、一緒に食事する約束だったんです。",
+        "でも待ち合わせに来なくて、電話も出なくて。",
+        "事故とか...何か通報入ってないですか？"
       ],
       "responses": [
         {
-          "responseId": "coworker_pressure_neutral",
-          "text": "現時点でお伝えできることはありません。",
-          "nextSegmentId": "coworker_end",
+          "responseId": "coworker_worry_deny",
+          "text": "申し訳ありませんが、通報内容についてはお答えできません。",
+          "nextSegmentId": "coworker_understand",
+          "setFlags": ["sato_denied_info"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "coworker_worry_confirm",
+          "text": "林遥さんですね...少々お待ちください。",
+          "nextSegmentId": "coworker_check",
           "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "coworker_worry_police",
+          "text": "ご心配でしたら、警察にお問い合わせください。",
+          "nextSegmentId": "coworker_accept",
+          "setFlags": ["sato_denied_info"],
           "clearFlags": []
         }
       ]
     },
     {
-      "segmentId": "coworker_relief",
+      "segmentId": "coworker_check",
+      "callerLines": [
+        "はい、お願いします。",
+        "...彼女、最近疲れてる様子だったので。",
+        "何もなければいいんですけど。"
+      ],
+      "responses": [
+        {
+          "responseId": "coworker_check_nothing",
+          "text": "現時点で林遥さんに関する通報は入っていません。",
+          "nextSegmentId": "coworker_relieved",
+          "setFlags": ["sato_told_no_report"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "coworker_check_vague",
+          "text": "詳細はお伝えできませんが...何かあればまたお電話ください。",
+          "nextSegmentId": "coworker_confused",
+          "setFlags": ["sato_given_vague_info"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "coworker_understand",
+      "callerLines": [
+        "そうですか...そうですよね。",
+        "すみません、心配で電話してしまって。",
+        "もう少し待ってみます。"
+      ],
+      "responses": [
+        {
+          "responseId": "coworker_understand_end",
+          "text": "何かあればまたお電話ください。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "coworker_accept",
+      "callerLines": [
+        "警察...そうですね。",
+        "ありがとうございます。そうしてみます。"
+      ],
+      "responses": [
+        {
+          "responseId": "coworker_accept_end",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "coworker_relieved",
       "callerLines": [
         "そうですか...よかった。",
-        "じゃあ、ただ連絡取れないだけですね。",
-        "ありがとうございました。また何かあれば。"
+        "じゃあ、ただ遅れてるだけですね。",
+        "ありがとうございました。安心しました。"
       ],
       "responses": [
         {
-          "responseId": "coworker_relief_end",
-          "text": "はい、何かあればお電話ください。",
+          "responseId": "coworker_relieved_end",
+          "text": "はい、お気をつけて。",
           "nextSegmentId": null,
           "setFlags": [],
           "clearFlags": []
@@ -216,83 +227,14 @@
       "isEnding": true
     },
     {
-      "segmentId": "coworker_relationship",
+      "segmentId": "coworker_confused",
       "callerLines": [
-        "関係...ですか。",
-        "...同僚って言いましたよね。それ以上でもそれ以下でもないです。",
-        "もういいです。失礼します。"
+        "...何かあればって、どういう意味ですか？",
+        "...まあ、いいです。ありがとうございました。"
       ],
       "responses": [
         {
-          "responseId": "coworker_relationship_end",
-          "text": "お電話ありがとうございました。",
-          "nextSegmentId": null,
-          "setFlags": ["sato_hung_up_quickly"],
-          "clearFlags": []
-        }
-      ],
-      "isEnding": true
-    },
-    {
-      "segmentId": "coworker_decline",
-      "callerLines": [
-        "警察ですか...まあ、そうですね。",
-        "お手数おかけしました。",
-        "失礼します。"
-      ],
-      "responses": [
-        {
-          "responseId": "coworker_decline_end",
-          "text": "失礼します。",
-          "nextSegmentId": null,
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ],
-      "isEnding": true
-    },
-    {
-      "segmentId": "coworker_give_up",
-      "callerLines": [
-        "...わかりました。",
-        "すみません、お手数おかけしました。"
-      ],
-      "responses": [
-        {
-          "responseId": "coworker_give_up_end",
-          "text": "いえ、何かあればまたお電話ください。",
-          "nextSegmentId": null,
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ],
-      "isEnding": true
-    },
-    {
-      "segmentId": "coworker_end_quick",
-      "callerLines": [
-        "...ええ。では失礼します。"
-      ],
-      "responses": [
-        {
-          "responseId": "coworker_end_quick_reply",
-          "text": "失礼します。",
-          "nextSegmentId": null,
-          "setFlags": ["sato_hung_up_quickly"],
-          "clearFlags": []
-        }
-      ],
-      "isEnding": true
-    },
-    {
-      "segmentId": "coworker_end",
-      "callerLines": [
-        "わかりました。",
-        "失礼します。"
-      ],
-      "responses": [
-        {
-          "responseId": "coworker_end_reply",
+          "responseId": "coworker_confused_end",
           "text": "失礼します。",
           "nextSegmentId": null,
           "setFlags": [],

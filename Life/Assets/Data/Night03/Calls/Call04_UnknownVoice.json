@@ -2,13 +2,13 @@
   "callId": "call_unknown_voice",
   "callerId": "unknown_voice",
   "title": "無言",
-  "description": "組織に誘拐された人物からの電話。何かを伝えようとしているが、話せない状況にある。",
+  "description": "組織に拘束された林健二（偽兄）からの電話。口を塞がれて話せない状況にある。Night04で遺体として発見される。",
   "segments": [
     {
       "segmentId": "unknown_silence",
       "callerLines": [
         "...",
-        "...",
+        "（くぐもった音）",
         "..."
       ],
       "responses": [
@@ -16,7 +16,7 @@
           "responseId": "unknown_silence_hello",
           "text": "もしもし？緊急通報センターです。",
           "nextSegmentId": "unknown_silence_2",
-          "setFlags": ["silent_call_received", "tried_to_talk_silent"],
+          "setFlags": ["silent_call_received"],
           "clearFlags": []
         },
         {
@@ -32,22 +32,22 @@
       "segmentId": "unknown_silence_2",
       "callerLines": [
         "...",
-        "（かすかな呼吸音が聞こえる）",
-        "..."
+        "（必死に何か言おうとする音、しかし口が塞がれている）",
+        "んん...んんん..."
       ],
       "responses": [
         {
           "responseId": "unknown_silence_2_ask",
-          "text": "大丈夫ですか？何かあったのですか？",
+          "text": "話せないのですか？大丈夫ですか？",
           "nextSegmentId": "unknown_silence_3",
-          "setFlags": ["tried_to_talk_silent"],
+          "setFlags": [],
           "clearFlags": []
         },
         {
-          "responseId": "unknown_silence_2_location",
-          "text": "場所を教えてください。助けに行きます。",
+          "responseId": "unknown_silence_2_help",
+          "text": "助けが必要ですか？何か音を立てて教えてください。",
           "nextSegmentId": "unknown_silence_3",
-          "setFlags": ["tried_to_talk_silent"],
+          "setFlags": [],
           "clearFlags": []
         },
         {
@@ -62,30 +62,47 @@
     {
       "segmentId": "unknown_silence_3",
       "callerLines": [
-        "...",
-        "（微かな物音）",
-        "..."
+        "（激しく呼吸する音）",
+        "（何かを叩く音...床？壁？）",
+        "んん！んんん！"
       ],
       "responses": [
         {
-          "responseId": "unknown_silence_3_speak",
-          "text": "話せないなら、何か音を立ててください。",
-          "nextSegmentId": "unknown_end",
-          "setFlags": ["tried_to_talk_silent"],
+          "responseId": "unknown_silence_3_trace",
+          "text": "この電話を追跡します。そのままでいてください。",
+          "nextSegmentId": "unknown_interrupted",
+          "setFlags": ["tried_to_trace"],
           "clearFlags": []
         },
         {
-          "responseId": "unknown_silence_3_trace",
-          "text": "この電話を追跡します。そのままでいてください。",
-          "nextSegmentId": "unknown_end",
-          "setFlags": ["tried_to_talk_silent"],
+          "responseId": "unknown_silence_3_stay",
+          "text": "切らないでください。助けに行きます。",
+          "nextSegmentId": "unknown_interrupted",
+          "setFlags": [],
           "clearFlags": []
         },
         {
           "responseId": "unknown_silence_3_wait",
           "text": "（待ち続ける）",
-          "nextSegmentId": "unknown_end",
+          "nextSegmentId": "unknown_interrupted",
           "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "unknown_interrupted",
+      "callerLines": [
+        "（遠くで声が聞こえる）「...何してる」",
+        "（電話が奪われる音）",
+        "（電話が切れる）"
+      ],
+      "responses": [
+        {
+          "responseId": "unknown_interrupted_reply",
+          "text": "...もしもし？",
+          "nextSegmentId": "unknown_end",
+          "setFlags": ["heard_other_voice"],
           "clearFlags": []
         }
       ]
@@ -93,8 +110,6 @@
     {
       "segmentId": "unknown_end",
       "callerLines": [
-        "...",
-        "（電話が切れる音）",
         "ツー...ツー...ツー..."
       ],
       "responses": [
@@ -110,5 +125,5 @@
     }
   ],
   "startSegmentId": "unknown_silence",
-  "note": "組織に誘拐された人物からの電話。話せない状況にあり、何かを伝えようとしているが、最終的に電話は切れる。Night03の締めくくり。"
+  "note": "林健二（偽兄/組織の中間管理職）が組織に拘束されている。林遥を見つけられなかったため、組織に「処分」されることになった。必死に助けを求めようとしているが、口を塞がれて話せない。Night04で遺体として発見される。"
 }

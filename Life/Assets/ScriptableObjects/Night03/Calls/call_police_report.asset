@@ -15,9 +15,9 @@ MonoBehaviour:
   callId: call_police_report
   caller: {fileID: 11400000, guid: 49f8771c93a8612469d50d7dd84bf3a8, type: 2}
   description: "\u8B66\u5BDF\u304B\u3089\u306E\u5831\u544A\u3002\u771F\u7406\u3092\u52A9\u3051\u305F\u5834\u5408\u306E\u307F\u767A\u751F\u3002\u300C\u5973\u6027\u3092\u4FDD\u8B77\u3057\u307E\u3057\u305F\u3002\u7537\u306F\u9003\u8D70\u300D"
-  incomingTimeMinutes: 0
+  incomingTimeMinutes: 110
   ringDuration: 30
-  priority: 5
+  priority: 7
   startSegmentId: police_intro
   segments:
   - segmentId: police_intro

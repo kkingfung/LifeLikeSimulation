@@ -1,0 +1,463 @@
+{
+  "callId": "call_demo_argument",
+  "callerId": "passerby",
+  "title": "口論の通報",
+  "description": "通りがかりの人からの通報。誠和製薬前で中村浩二と近隣店舗の店員が口論している。Night05で警察派遣された場合は中村は落ち着いている、様子見だった場合はより激しく絶望的。",
+  "segments": [
+    {
+      "segmentId": "argument_intro",
+      "callerLines": [
+        "あの、すみません。",
+        "道で男の人と店員さんが口論してて...",
+        "ちょっと怖いんですけど..."
+      ],
+      "responses": [
+        {
+          "responseId": "argument_ask_location",
+          "text": "場所を教えてください。",
+          "nextSegmentId": "argument_location",
+          "setFlags": ["demo_argument_reported"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "argument_ask_situation",
+          "text": "どんな状況ですか？",
+          "nextSegmentId": "argument_situation",
+          "setFlags": ["demo_argument_reported"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_location",
+      "callerLines": [
+        "誠和製薬のビルの前です。",
+        "向かいの飲食店の店員さんと...",
+        "何か揉めてるみたいで..."
+      ],
+      "responses": [
+        {
+          "responseId": "location_ask_detail",
+          "text": "どんな口論ですか？",
+          "nextSegmentId": "argument_detail_calm",
+          "setFlags": [],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "police_dispatched_demo"
+          }
+        },
+        {
+          "responseId": "location_ask_detail_desperate",
+          "text": "どんな口論ですか？",
+          "nextSegmentId": "argument_detail_desperate",
+          "setFlags": [],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "demo_ignored"
+          }
+        },
+        {
+          "responseId": "location_ask_detail_default",
+          "text": "どんな口論ですか？",
+          "nextSegmentId": "argument_detail_calm",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_situation",
+      "callerLines": [
+        "男の人が看板を持ってて...",
+        "店員さんが「営業妨害だ」って怒ってて...",
+        "男の人は「話を聞いてくれ」って..."
+      ],
+      "responses": [
+        {
+          "responseId": "situation_ask_location",
+          "text": "場所はどこですか？",
+          "nextSegmentId": "argument_location",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "situation_ask_man",
+          "text": "男性はどんな様子ですか？",
+          "nextSegmentId": "man_description_calm",
+          "setFlags": [],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "police_dispatched_demo"
+          }
+        },
+        {
+          "responseId": "situation_ask_man_desperate",
+          "text": "男性はどんな様子ですか？",
+          "nextSegmentId": "man_description_desperate",
+          "setFlags": [],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "demo_ignored"
+          }
+        },
+        {
+          "responseId": "situation_ask_man_default",
+          "text": "男性はどんな様子ですか？",
+          "nextSegmentId": "man_description_calm",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_detail_calm",
+      "callerLines": [
+        "男の人は...声は大きいけど、暴力とかはなさそうです。",
+        "「息子のことを知ってほしい」って言ってて...",
+        "店員さんは「警察呼ぶぞ」って言ってます。"
+      ],
+      "note": "Night05で警察派遣された場合。中村は落ち着いているが、諦めていない。",
+      "responses": [
+        {
+          "responseId": "calm_ask_content",
+          "text": "息子のこと、とは？",
+          "nextSegmentId": "nakamura_story_calm",
+          "setFlags": ["nakamura_calm"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "calm_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["nakamura_calm"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_detail_desperate",
+      "callerLines": [
+        "男の人、すごく興奮してて...",
+        "「誰も聞いてくれない」「俺の息子は殺されたんだ」って叫んでて...",
+        "店員さんも怖がってます..."
+      ],
+      "note": "Night05で様子見だった場合。中村は絶望的で激しい。",
+      "responses": [
+        {
+          "responseId": "desperate_ask_content",
+          "text": "殺された、とは？",
+          "nextSegmentId": "nakamura_story_desperate",
+          "setFlags": ["nakamura_desperate"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "desperate_to_decision",
+          "text": "分かりました。すぐに対応します。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["nakamura_desperate"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "man_description_calm",
+      "callerLines": [
+        "40代くらいの男の人...疲れた顔してます。",
+        "でも、暴れたりはしてなくて...",
+        "ただ、とにかく話を聞いてほしいって感じで..."
+      ],
+      "responses": [
+        {
+          "responseId": "man_calm_ask_content",
+          "text": "何を訴えているんですか？",
+          "nextSegmentId": "nakamura_story_calm",
+          "setFlags": ["nakamura_calm"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "man_calm_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["nakamura_calm"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "man_description_desperate",
+      "callerLines": [
+        "40代くらい...目が血走ってて...",
+        "何日も寝てないみたいな顔で...",
+        "「もう誰も信じられない」とか言ってて、怖いです..."
+      ],
+      "responses": [
+        {
+          "responseId": "man_desperate_ask_content",
+          "text": "何を訴えているんですか？",
+          "nextSegmentId": "nakamura_story_desperate",
+          "setFlags": ["nakamura_desperate"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "man_desperate_to_decision",
+          "text": "分かりました。すぐに対応します。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["nakamura_desperate"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nakamura_story_calm",
+      "callerLines": [
+        "えーと...看板に「息子を返せ」って書いてあります。",
+        "「この会社の薬のせいで息子が死んだ」って...",
+        "「警察は動いてくれない」とも言ってました。"
+      ],
+      "responses": [
+        {
+          "responseId": "story_calm_ask_name",
+          "text": "男性の名前は分かりますか？",
+          "nextSegmentId": "nakamura_name",
+          "setFlags": ["heard_nakamura_claim"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "story_calm_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["heard_nakamura_claim"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nakamura_story_desperate",
+      "callerLines": [
+        "「誠和製薬が息子を殺した」「隠蔽してる」って...",
+        "「警察もグルだ」「誰も助けてくれない」って...",
+        "...なんか、かわいそうになってきました..."
+      ],
+      "responses": [
+        {
+          "responseId": "story_desperate_ask_name",
+          "text": "男性の名前は分かりますか？",
+          "nextSegmentId": "nakamura_name",
+          "setFlags": ["heard_nakamura_claim"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "story_desperate_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["heard_nakamura_claim"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nakamura_name",
+      "callerLines": [
+        "えーと...看板の下に名前が書いてあります...",
+        "「中村浩二」って..."
+      ],
+      "responses": [
+        {
+          "responseId": "name_noted",
+          "text": "分かりました。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["nakamura_name_known"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "response_decision",
+      "callerLines": [
+        "どうしたらいいですか？",
+        "このまま見てた方がいいですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "dispatch_police",
+          "text": "警察を向かわせます。安全な場所で待っていてください。",
+          "nextSegmentId": "police_dispatch",
+          "setFlags": ["police_dispatched_argument"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "try_mediate",
+          "text": "店員さんか男性に話しかけられますか？",
+          "nextSegmentId": "try_talk",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "just_watch",
+          "text": "危険がなければ様子を見てください。",
+          "nextSegmentId": "watch_result",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_dispatch",
+      "callerLines": [
+        "はい、分かりました。",
+        "あ、今店員さんが中に戻っていきました...",
+        "男の人は一人で立ってます..."
+      ],
+      "responses": [
+        {
+          "responseId": "dispatch_wait",
+          "text": "警察が来るまでその場で待っていてください。",
+          "nextSegmentId": "police_arrive",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_arrive",
+      "callerLines": [
+        "（しばらく後）",
+        "警察が来ました...",
+        "男の人、座り込んでます...疲れたみたいで..."
+      ],
+      "responses": [
+        {
+          "responseId": "arrive_ask_result",
+          "text": "どうなりましたか？",
+          "nextSegmentId": "police_result",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_result",
+      "callerLines": [
+        "警察が話を聞いてます...",
+        "男の人、泣いてるみたい...",
+        "...連れていかれました。ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "result_end",
+          "text": "ご協力ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["nakamura_taken_by_police"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "try_talk",
+      "callerLines": [
+        "えーと...ちょっと近づいてみます...",
+        "...男の人に「大丈夫ですか」って聞いたら...",
+        "「放っておいてくれ」って言われました..."
+      ],
+      "responses": [
+        {
+          "responseId": "talk_dispatch",
+          "text": "無理しないでください。警察を向かわせます。",
+          "nextSegmentId": "police_dispatch",
+          "setFlags": ["police_dispatched_argument"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "talk_leave",
+          "text": "分かりました。その場を離れてください。",
+          "nextSegmentId": "leave_scene",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "watch_result",
+      "callerLines": [
+        "分かりました...",
+        "あ、店員さんがまた出てきて...",
+        "「もう帰ってくれ」って言ってます..."
+      ],
+      "responses": [
+        {
+          "responseId": "watch_continue",
+          "text": "その後どうなりましたか？",
+          "nextSegmentId": "watch_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "watch_end",
+      "callerLines": [
+        "男の人...肩を落として歩いていきました...",
+        "すごく寂しそうな背中で...",
+        "とりあえず収まったみたいです。ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "watch_end_reply",
+          "text": "ご連絡ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["nakamura_left_alone"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "leave_scene",
+      "callerLines": [
+        "はい、離れます...",
+        "...男の人、一人で座り込んでます...",
+        "大丈夫ですかね...ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "leave_end",
+          "text": "ご協力ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["nakamura_left_alone"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "argument_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "same_man_thought",
+      "triggerCondition": {
+        "requiresFlag": "heard_nakamura_claim",
+        "requiresAnyFlag": ["demo_reported", "listened_demo_story"]
+      },
+      "triggerTiming": "after_call",
+      "content": "誠和製薬...息子が薬で死んだ...昨日の抗議の人と同じか..."
+    },
+    {
+      "triggerId": "nakamura_desperate_thought",
+      "triggerCondition": {
+        "requiresFlag": "nakamura_desperate"
+      },
+      "triggerTiming": "after_call",
+      "content": "あの人、追い詰められている...誰も話を聞いてくれないから..."
+    },
+    {
+      "triggerId": "nakamura_taken_thought",
+      "triggerCondition": {
+        "requiresFlag": "nakamura_taken_by_police"
+      },
+      "triggerTiming": "after_call",
+      "content": "また警察に連れていかれた...でも、彼の言っていることが本当だとしたら..."
+    }
+  ],
+  "note": "中村浩二が再び誠和製薬前で抗議。Night05で警察派遣された場合は落ち着いているが諦めていない（nakamura_calm）、様子見だった場合は激しく絶望的（nakamura_desperate）。通りがかりの人が口論を目撃して通報。中村の名前と主張（息子が薬で死んだ）が明らかになる。警察に連れていかれるか、一人で去るかで後の展開が変わる可能性。"
+}

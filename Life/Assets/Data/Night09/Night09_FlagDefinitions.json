@@ -1,0 +1,275 @@
+{
+  "nightId": "night_09",
+  "description": "Night09「告発者」フラグ定義。警察との同盟、美咲の発見、内部告発者との接触、オペレーターの決断が軸。",
+  "flagDefinitions": [
+    {
+      "flagId": "police_knows_connection",
+      "category": "Night08Effect",
+      "description": "警察が繋がりに気づいている（Night08から継承）",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "Night08で警察に情報を提供した結果"
+    },
+    {
+      "flagId": "defied_organization",
+      "category": "Night08Effect",
+      "description": "組織の警告を拒否した（Night08から継承）",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "submitted_to_warning",
+      "category": "Night08Effect",
+      "description": "組織の警告に従った（Night08から継承）",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_update_call",
+      "category": "Event",
+      "description": "警察からの進展報告を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "tracking_car",
+      "category": "Evidence",
+      "description": "警察が品川ナンバーの車を追跡中と聞いた",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "encouraged_police",
+      "category": "Alignment",
+      "description": "警察を励ました",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "police_ally",
+      "category": "Alignment",
+      "description": "警察に味方であることを示した",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_alliance_formed",
+      "category": "Event",
+      "description": "警察との同盟関係が築かれた",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "山田刑事と連絡を取り合うことに"
+    },
+    {
+      "flagId": "will_share_info",
+      "category": "Alignment",
+      "description": "警察に情報を共有すると約束した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "yoshida_status_call",
+      "category": "Event",
+      "description": "吉田からの報告を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "operator_knows_misaki_with_yoshida",
+      "category": "Evidence",
+      "description": "オペレーターが美咲が吉田のところにいることを知った",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "通話中に美咲の声が聞こえて判明"
+    },
+    {
+      "flagId": "comforted_yoshida",
+      "category": "Alignment",
+      "description": "吉田を励ました",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "warned_yoshida_again",
+      "category": "Dispatch",
+      "description": "吉田に再度警告した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "yoshida_will_protect_confirmed",
+      "category": "Event",
+      "description": "吉田が美咲を守る決意を再確認",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "whistleblower_call",
+      "category": "Event",
+      "description": "内部告発者からの電話を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "heard_whistleblower_seiwaq",
+      "category": "Evidence",
+      "description": "告発者から誠和製薬について聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "heard_whistleblower_identity",
+      "category": "Evidence",
+      "description": "告発者の正体（林健二の同僚）を知った",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "kenji_murder_confirmed",
+      "category": "Evidence",
+      "description": "林健二が殺されたことを確認",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "heard_side_effects",
+      "category": "Evidence",
+      "description": "誠和製薬の副作用隠蔽について聞いた",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "heard_coverup",
+      "category": "Evidence",
+      "description": "誠和製薬の隠蔽工作について聞いた",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "heard_subsidiary_truth",
+      "category": "Evidence",
+      "description": "子会社（警備会社）の正体について聞いた",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "警備会社が殺人に関与"
+    },
+    {
+      "flagId": "haruka_knew_secret",
+      "category": "Evidence",
+      "description": "遥が秘密を知っていたことを聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_had_evidence",
+      "category": "Evidence",
+      "description": "遥が証拠を持っていたことを聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "kenji_got_involved",
+      "category": "Evidence",
+      "description": "健二が遥を守ろうとして巻き込まれたことを聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "mari_may_have_evidence",
+      "category": "Evidence",
+      "description": "真理が遥から何かを託された可能性を聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "told_whistleblower_police",
+      "category": "Dispatch",
+      "description": "告発者に山田刑事のことを教えた",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "whistleblower_going_to_police",
+      "category": "Event",
+      "description": "告発者が警察に向かった（信頼あり）",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "whistleblower_going_to_police_uncertain",
+      "category": "Event",
+      "description": "告発者が警察に向かった（不確定）",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "whistleblower_in_danger",
+      "category": "Threat",
+      "description": "告発者が危険な状況にある",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "whistleblower_fled",
+      "category": "Event",
+      "description": "告発者が追われて逃げた",
+      "weight": -1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "whistleblower_likely_safe",
+      "category": "Event",
+      "description": "告発者が安全になる可能性が高い",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "whistleblower_fate_unknown",
+      "category": "Event",
+      "description": "告発者の運命が不明",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "told_kudo_worried",
+      "category": "Event",
+      "description": "工藤主任に心配していることを伝えた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "operator_will_tell_police",
+      "category": "Decision",
+      "description": "警察に全てを話すことを決意",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "Night10で警察と協力するエンディングへ"
+    },
+    {
+      "flagId": "operator_will_stay_silent",
+      "category": "Decision",
+      "description": "沈黙を守ることを決意",
+      "weight": -2,
+      "persistsAcrossNights": true,
+      "note": "Night10で受動的なエンディングへ"
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "operator_will_tell_police",
+      "cancelFlags": ["operator_will_stay_silent"]
+    },
+    {
+      "whenFlagSet": "operator_will_stay_silent",
+      "cancelFlags": ["operator_will_tell_police"]
+    },
+    {
+      "whenFlagSet": "whistleblower_likely_safe",
+      "cancelFlags": ["whistleblower_fate_unknown", "whistleblower_in_danger"]
+    },
+    {
+      "whenFlagSet": "whistleblower_fate_unknown",
+      "cancelFlags": ["whistleblower_likely_safe"]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "callId": "call_argument_witness",
   "callerId": "passerby",
   "title": "口論の通報",
-  "description": "通りすがりの市民が口論を目撃。女性が怖がり、男が怒鳴っている。実は渡辺真理と組織の人間。",
+  "description": "通りすがりの市民が口論を目撃。女性が怖がり、男が怒鳴っている。実は渡辺真理と林健二（偽兄）。即座に警察派遣すれば真理は助かるが、躊躇すると手遅れになる。",
   "segments": [
     {
       "segmentId": "argument_intro",
@@ -13,16 +13,16 @@
       ],
       "responses": [
         {
-          "responseId": "argument_intro_details",
-          "text": "どのような状況ですか？詳しく教えてください。",
-          "nextSegmentId": "argument_describe",
-          "setFlags": ["argument_reported"],
+          "responseId": "argument_intro_urgent",
+          "text": "場所を教えてください。すぐに警察を派遣します。",
+          "nextSegmentId": "argument_dispatch_immediate",
+          "setFlags": ["argument_reported", "immediate_dispatch"],
           "clearFlags": []
         },
         {
-          "responseId": "argument_intro_location",
-          "text": "場所はどちらですか？",
-          "nextSegmentId": "argument_location",
+          "responseId": "argument_intro_details",
+          "text": "どのような状況ですか？詳しく教えてください。",
+          "nextSegmentId": "argument_describe",
           "setFlags": ["argument_reported"],
           "clearFlags": []
         }
@@ -37,9 +37,9 @@
       ],
       "responses": [
         {
-          "responseId": "argument_describe_location",
-          "text": "場所を教えてください。すぐに警察を向かわせます。",
-          "nextSegmentId": "argument_dispatch",
+          "responseId": "argument_describe_dispatch",
+          "text": "場所を教えてください。警察を向かわせます。",
+          "nextSegmentId": "argument_dispatch_delayed",
           "setFlags": ["woman_scared_noted", "man_yelling_noted", "police_dispatched_argument"],
           "clearFlags": []
         },
@@ -53,28 +53,56 @@
       ]
     },
     {
-      "segmentId": "argument_location",
+      "segmentId": "argument_dispatch_immediate",
       "callerLines": [
-        "○○通りの...えーと、コンビニの近くです。",
-        "女の人が「やめて」って言ってます。",
-        "男の人がすごい剣幕で..."
+        "○○通り、コンビニの角のところです。",
+        "女の人が「やめて」って泣いてます。",
+        "急いでください..."
       ],
       "responses": [
         {
-          "responseId": "argument_location_dispatch",
-          "text": "分かりました。警察を向かわせます。",
-          "nextSegmentId": "argument_dispatch",
-          "setFlags": ["argument_location_noted", "police_dispatched_argument"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "argument_location_watch",
-          "text": "どのような口論ですか？暴力はありますか？",
-          "nextSegmentId": "argument_describe",
-          "setFlags": ["argument_location_noted"],
+          "responseId": "argument_dispatch_immediate_confirm",
+          "text": "警察が向かいます。危険ですので、近づかないでください。",
+          "nextSegmentId": "argument_end_saved",
+          "setFlags": ["mari_saved", "police_dispatched_argument"],
           "clearFlags": []
         }
       ]
+    },
+    {
+      "segmentId": "argument_dispatch_delayed",
+      "callerLines": [
+        "○○通り、コンビニの角...あ、今...",
+        "男の人が女の人を車に押し込んでます！",
+        "早く！早くしてください！"
+      ],
+      "responses": [
+        {
+          "responseId": "argument_dispatch_delayed_confirm",
+          "text": "警察が向かいます！車のナンバーは見えますか？",
+          "nextSegmentId": "argument_car_escape",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "argument_car_escape",
+      "callerLines": [
+        "ナンバーは...暗くて...白いバンです！",
+        "あ、走っていきました...",
+        "間に合わなかった..."
+      ],
+      "responses": [
+        {
+          "responseId": "argument_car_escape_end",
+          "text": "白いバン...警察に伝えます。ご通報ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["mari_taken", "white_van_noted"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
     },
     {
       "segmentId": "argument_hesitate",
@@ -87,7 +115,7 @@
         {
           "responseId": "argument_hesitate_dispatch",
           "text": "すみません、やはり警察を派遣します。場所を教えてください。",
-          "nextSegmentId": "argument_dispatch",
+          "nextSegmentId": "argument_too_late",
           "setFlags": ["police_dispatched_argument"],
           "clearFlags": []
         },
@@ -101,75 +129,77 @@
       ]
     },
     {
-      "segmentId": "argument_dispatch",
-      "callerLines": [
-        "○○通り、コンビニの角のところです。",
-        "あ、今...男の人が何か言って、女の人を引っ張っていこうとしてます。",
-        "急いでください..."
-      ],
-      "responses": [
-        {
-          "responseId": "argument_dispatch_confirm",
-          "text": "警察が向かいます。危険ですので、近づかないでください。",
-          "nextSegmentId": "argument_end_dispatch",
-          "setFlags": ["mari_saved"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
       "segmentId": "argument_no_dispatch",
       "callerLines": [
         "そうですか...でも、あの女の人、本当に怖がってて...",
         "...あ、二人ともどこかに行きました。",
-        "男の人が女の人を連れて行った感じで..."
+        "男の人が女の人を車に乗せて..."
       ],
       "responses": [
         {
           "responseId": "argument_no_dispatch_end",
           "text": "ご通報ありがとうございました。何かあればまた連絡ください。",
           "nextSegmentId": null,
-          "setFlags": ["mari_not_saved"],
+          "setFlags": ["mari_taken"],
           "clearFlags": []
         },
         {
           "responseId": "argument_no_dispatch_late",
-          "text": "待ってください、やはり警察を...どちらの方向に行きましたか？",
-          "nextSegmentId": "argument_too_late",
+          "text": "待ってください、車のナンバーは見えましたか？",
+          "nextSegmentId": "argument_no_dispatch_car",
           "setFlags": [],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "argument_too_late",
-      "callerLines": [
-        "住宅街の方に...もう見えなくなりました。",
-        "すみません、もっと早く通報すればよかった...",
-        "大丈夫ですかね、あの女の人..."
-      ],
-      "responses": [
-        {
-          "responseId": "argument_too_late_end",
-          "text": "警察にパトロールを依頼します。ご通報ありがとうございました。",
-          "nextSegmentId": null,
-          "setFlags": ["mari_not_saved"],
           "clearFlags": []
         }
       ],
       "isEnding": true
     },
     {
-      "segmentId": "argument_end_dispatch",
+      "segmentId": "argument_no_dispatch_car",
       "callerLines": [
-        "はい、分かりました。離れて見てます。",
-        "早く来てくださいね...",
-        "あの女の人、助けてあげてください。"
+        "ナンバーは...見えませんでした。白いバンでした。",
+        "もう行っちゃいました...",
+        "すみません、もっと早く通報すればよかった..."
       ],
       "responses": [
         {
-          "responseId": "argument_end_dispatch_reply",
-          "text": "ご協力ありがとうございます。警察がすぐ到着します。",
+          "responseId": "argument_no_dispatch_car_end",
+          "text": "いえ、ご通報ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["mari_taken", "white_van_noted"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "argument_too_late",
+      "callerLines": [
+        "○○通りの...あ、もう車が出ていきます！",
+        "女の人を乗せて...白いバンが...",
+        "間に合わなかった..."
+      ],
+      "responses": [
+        {
+          "responseId": "argument_too_late_end",
+          "text": "白いバン...警察にパトロールを依頼します。ご通報ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["mari_taken", "white_van_noted"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "argument_end_saved",
+      "callerLines": [
+        "はい、分かりました。離れて見てます。",
+        "あ、男の人が周りをキョロキョロして...",
+        "逃げた！女の人を置いて走っていきました！"
+      ],
+      "responses": [
+        {
+          "responseId": "argument_end_saved_reply",
+          "text": "女性は大丈夫ですか？警察がすぐ到着します。",
           "nextSegmentId": null,
           "setFlags": [],
           "clearFlags": []
@@ -179,5 +209,5 @@
     }
   ],
   "startSegmentId": "argument_intro",
-  "note": "口論している二人は渡辺真理（遥の親友）と組織の人間。プレイヤーはそれを知らない。35分以内に警察を派遣すれば真理は助かる。"
+  "note": "口論している二人は渡辺真理（遥の親友）と林健二（偽兄/組織の中間管理職）。最初の応答で即座に派遣すれば真理は助かる。詳細を聞いてから派遣すると、車で連れ去られる。躊躇すると完全に手遅れ。白いバンは組織の車両（Night02の火災現場と同じ）。"
 }

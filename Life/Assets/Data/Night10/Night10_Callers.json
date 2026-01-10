@@ -1,0 +1,47 @@
+{
+  "nightId": "night_10",
+  "callers": [
+    {
+      "callerId": "fisherman",
+      "displayName": "釣り人",
+      "realName": "田中一郎",
+      "description": "早朝に川で釣りをしていた男性。遺体を発見して通報。",
+      "personality": {
+        "honesty": 10,
+        "stability": 6,
+        "cooperativeness": 8,
+        "aggressiveness": 1
+      },
+      "isRevealed": true,
+      "note": "一般市民。事件とは無関係。"
+    },
+    {
+      "callerId": "police_detective",
+      "displayName": "山田刑事",
+      "realName": "山田浩介",
+      "description": "事件を担当している刑事。オペレーターと信頼関係を築いている場合、協力的。",
+      "personality": {
+        "honesty": 9,
+        "stability": 8,
+        "cooperativeness": 7,
+        "aggressiveness": 2
+      },
+      "isRevealed": true,
+      "note": "Night09で同盟を結んだ場合、より協力的。"
+    },
+    {
+      "callerId": "whistleblower",
+      "displayName": "内部告発者",
+      "realName": "不明",
+      "description": "林健二の元同僚。Night09で逃げた後、警察に保護された可能性がある。キーホルダーの使い方を知っている。",
+      "personality": {
+        "honesty": 9,
+        "stability": 4,
+        "cooperativeness": 8,
+        "aggressiveness": 1
+      },
+      "isRevealed": false,
+      "note": "whistleblower_likely_safeフラグがある場合のみ連絡可能。美咲を見つけてUSBの使い方を教える。"
+    }
+  ]
+}

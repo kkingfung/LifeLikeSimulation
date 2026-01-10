@@ -1,0 +1,149 @@
+{
+  "scenarioId": "night_07",
+  "title": "崩壊の夜",
+  "description": "中村浩二が自宅で遺体で発見される。自殺に見せかけられているが、遺書はない。同時に、組織が真理に迫る。美咲は吉田の家に預けられている。",
+  "startTimeMinutes": 1080,
+  "endTimeMinutes": 1320,
+  "realSecondsPerGameMinute": 2.0,
+  "difficulty": 4,
+  "estimatedPlayTimeMinutes": 25,
+  "theTruth": "中村浩二は誠和製薬について騒ぎすぎたため、組織に口封じされた。首吊りに見せかけた殺害。遺書がないのは不自然。真理は危険を感じて美咲を吉田に預けていた。組織は真理を連れ去るが、美咲は吉田の家で無事。吉田は美咲を守るために美咲のことを誰にも言わない。",
+  "callSchedule": [
+    {
+      "callId": "call_landlord_report",
+      "callerId": "landlord",
+      "title": "大家からの通報",
+      "incomingTimeMinutes": 1110,
+      "ringDuration": 60,
+      "priority": 9,
+      "isCritical": true,
+      "description": "大家が中村浩二の遺体を発見。家賃催促で訪問したところ、首を吊っている状態で発見。"
+    },
+    {
+      "callId": "call_mari_emergency",
+      "callerId": "watanabe_mari",
+      "title": "真理からの緊急電話",
+      "incomingTimeMinutes": 1170,
+      "ringDuration": 30,
+      "priority": 10,
+      "isCritical": true,
+      "description": "真理からの緊急電話。「車が来た、助けて」と言って電話が切れる。",
+      "conditions": {
+        "requiresFlag": "yoshida_will_warn_mari"
+      }
+    },
+    {
+      "callId": "call_police_inquiry",
+      "callerId": "police_detective",
+      "title": "警察からの連絡",
+      "incomingTimeMinutes": 1230,
+      "ringDuration": 45,
+      "priority": 7,
+      "isCritical": false,
+      "description": "警察が中村と誠和製薬の関係についてオペレーターに質問。業務的な態度。"
+    },
+    {
+      "callId": "call_yoshida_witness",
+      "callerId": "yoshida_kazuko",
+      "title": "吉田からの目撃報告",
+      "incomingTimeMinutes": 1290,
+      "ringDuration": 50,
+      "priority": 9,
+      "isCritical": true,
+      "description": "吉田から「渡辺さんが車で連れていかれた」という報告。美咲については言及しない。",
+      "conditions": {
+        "requiresFlag": "yoshida_will_warn_mari"
+      }
+    },
+    {
+      "callId": "call_mari_cutoff",
+      "callerId": "watanabe_mari",
+      "title": "真理の電話が切れる",
+      "incomingTimeMinutes": 1290,
+      "ringDuration": 40,
+      "priority": 10,
+      "isCritical": true,
+      "description": "yoshida_will_warn_mariフラグがない場合。真理からの電話が途中で切れて終わる。",
+      "conditions": {
+        "requiresNotFlag": "yoshida_will_warn_mari"
+      }
+    }
+  ],
+  "specialEvents": [],
+  "initialWorldStates": [
+    {
+      "stateId": "nakamura_dead",
+      "description": "中村浩二は組織に殺害された（自殺に見せかけ）",
+      "timeMinutes": 1080,
+      "involvedCallerIds": ["nakamura_koji"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "misaki_at_yoshida",
+      "description": "美咲は吉田の家に預けられている",
+      "timeMinutes": 1080,
+      "involvedCallerIds": ["hayashi_misaki", "yoshida_kazuko"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "mari_in_danger",
+      "description": "組織が真理の居場所を特定し、接近中",
+      "timeMinutes": 1080,
+      "involvedCallerIds": ["watanabe_mari"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "organization_closing_in",
+      "description": "組織は中村を排除し、次のターゲットに向かっている",
+      "timeMinutes": 1080,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    }
+  ],
+  "evidenceTemplates": [
+    {
+      "evidenceId": "evidence_nakamura_death",
+      "title": "中村浩二の死",
+      "content": "中村浩二が自宅で首を吊っている状態で発見された",
+      "category": "Event"
+    },
+    {
+      "evidenceId": "evidence_no_suicide_note",
+      "title": "遺書がない",
+      "content": "中村の部屋には遺書がなかった。自殺にしては不自然。",
+      "category": "Contradiction"
+    },
+    {
+      "evidenceId": "evidence_nakamura_recent_state",
+      "title": "中村の最近の様子",
+      "content": "大家によると、中村は最近疲れていた。誰かと電話していた。",
+      "category": "Testimony"
+    },
+    {
+      "evidenceId": "evidence_room_state",
+      "title": "部屋の状態",
+      "content": "部屋は荒らされた形跡がある",
+      "category": "Physical"
+    },
+    {
+      "evidenceId": "evidence_mari_abducted",
+      "title": "真理の連れ去り",
+      "content": "渡辺真理が黒い車で連れ去られた",
+      "category": "Event"
+    }
+  ],
+  "night06EndStateEffects": {
+    "yoshida_will_warn_mari": {
+      "description": "吉田が真理に警告したため、真理は事前に美咲を吉田に預けた",
+      "addFlags": ["misaki_safe_at_yoshida"]
+    },
+    "patrol_dispatched_yoshida": {
+      "description": "パトロールが派遣されたが、組織の動きを止めるには遅すぎた",
+      "addFlags": []
+    },
+    "night06_ominous_end": {
+      "description": "不穏な終わり方。真理は警告を受けていない。",
+      "addFlags": ["mari_unwarned"]
+    }
+  }
+}

@@ -2,27 +2,20 @@
   "callId": "call_missing",
   "callerId": "hayashi_kenji",
   "title": "妹を探しています",
-  "description": "偽の兄。服装矛盾の伏線。",
+  "description": "偽の兄。普通の心配する兄に見える。服装矛盾が唯一の伏線。情報を漏らすと組織が現場に来る。Night04で遺体として発見。",
   "segments": [
     {
       "segmentId": "missing_intro",
       "callerLines": [
         "もしもし、緊急通報センターですか。",
-        "妹を探しているんですが...林遥といいます。",
-        "今夜連絡が取れなくて、心配で..."
+        "林健二と申します。妹の林遥を探しているんですが...",
+        "今夜連絡が取れなくて、心配で電話しました。"
       ],
       "responses": [
         {
           "responseId": "missing_intro_listen",
-          "text": "林遥さんのお兄様ですか。詳しく教えてください。",
+          "text": "林遥さんのお兄様ですね。詳しく教えてください。",
           "nextSegmentId": "missing_detail",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "missing_intro_careful",
-          "text": "ご家族の方ですね。まず、あなたのお名前を教えていただけますか？",
-          "nextSegmentId": "missing_name",
           "setFlags": [],
           "clearFlags": []
         },
@@ -30,30 +23,6 @@
           "responseId": "missing_intro_recognize",
           "text": "林遥さん...先ほども別の方からお問い合わせがありました。",
           "nextSegmentId": "missing_react",
-          "setFlags": ["hinted_to_family"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "missing_name",
-      "callerLines": [
-        "林健二です。遥の兄です。",
-        "妹が夜勤に行くって言ってたんですが、職場に着いてないらしくて。",
-        "電話も繋がらないんです。"
-      ],
-      "responses": [
-        {
-          "responseId": "missing_name_continue",
-          "text": "林健二さんですね。妹さんの特徴を教えてください。",
-          "nextSegmentId": "missing_description",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "missing_name_verify",
-          "text": "恐れ入りますが、ご関係を確認させてください。妹さんの生年月日は？",
-          "nextSegmentId": "missing_verify",
           "setFlags": [],
           "clearFlags": []
         }
@@ -62,14 +31,14 @@
     {
       "segmentId": "missing_detail",
       "callerLines": [
-        "27歳の女性です。物流センターで働いてます。",
+        "妹は27歳で、物流センターで働いています。",
         "今夜は夜勤のはずなんですが、職場から連絡があって、来てないって。",
-        "普段は必ず連絡をくれる子なので..."
+        "普段は必ず連絡をくれる子なので、何かあったんじゃないかと..."
       ],
       "responses": [
         {
-          "responseId": "missing_detail_description",
-          "text": "わかりました。服装など、今夜の特徴はわかりますか？",
+          "responseId": "missing_detail_clothing",
+          "text": "わかりました。今夜の服装はわかりますか？",
           "nextSegmentId": "missing_clothing",
           "setFlags": [],
           "clearFlags": []
@@ -78,7 +47,7 @@
           "responseId": "missing_detail_disclose",
           "text": "実は...歩道橋付近で女性が倒れているという通報がありました。",
           "nextSegmentId": "missing_shock",
-          "setFlags": ["disclosed_to_family"],
+          "setFlags": ["disclosed_to_fake_brother", "organization_alerted"],
           "clearFlags": []
         }
       ]
@@ -86,14 +55,14 @@
     {
       "segmentId": "missing_react",
       "callerLines": [
-        "別の方...？誰ですか？",
-        "職場の人かな。中村さんとか。",
-        "何か情報はありますか？"
+        "別の方...？職場の中村さんかな。",
+        "それで、何かわかったんですか？",
+        "妹は大丈夫なんでしょうか。"
       ],
       "responses": [
         {
           "responseId": "missing_react_vague",
-          "text": "詳細はお伝えできませんが、捜索にご協力できるかもしれません。特徴を教えてください。",
+          "text": "詳細はお伝えできませんが、妹さんの特徴を教えてください。",
           "nextSegmentId": "missing_clothing",
           "setFlags": [],
           "clearFlags": []
@@ -102,48 +71,7 @@
           "responseId": "missing_react_disclose",
           "text": "歩道橋付近で女性が倒れているという通報がありました。",
           "nextSegmentId": "missing_shock",
-          "setFlags": ["disclosed_to_family", "hinted_to_family"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "missing_verify",
-      "callerLines": [
-        "生年月日...？ええと、平成10年の...4月？いや、5月だったか...",
-        "すみません、ちょっと緊張してて。とにかく妹が心配なんです。",
-        "何か知ってるんですか？"
-      ],
-      "responses": [
-        {
-          "responseId": "missing_verify_note",
-          "text": "...わかりました。妹さんの服装など、特徴を教えてください。",
-          "nextSegmentId": "missing_clothing",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "missing_verify_press",
-          "text": "妹さんの誕生日がわからないのですか？",
-          "nextSegmentId": "missing_excuse",
-          "setFlags": ["noted_inconsistency"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "missing_excuse",
-      "callerLines": [
-        "いや、そういうわけじゃ...緊張すると忘れちゃうんです。",
-        "5月23日です。間違いない。",
-        "それより、妹のことを教えてください。"
-      ],
-      "responses": [
-        {
-          "responseId": "missing_excuse_continue",
-          "text": "わかりました。服装など、今夜の特徴は？",
-          "nextSegmentId": "missing_clothing",
-          "setFlags": [],
+          "setFlags": ["disclosed_to_fake_brother", "organization_alerted"],
           "clearFlags": []
         }
       ]
@@ -152,29 +80,22 @@
       "segmentId": "missing_clothing",
       "callerLines": [
         "服装は...反射材のついたジャケットを着てるはずです。",
-        "夜道を自転車で通勤するから、目立つようにって。",
-        "オレンジ色のラインが入ったやつ。"
+        "夜道を自転車で通勤するので、目立つようにって僕が買ってあげたんです。",
+        "オレンジ色のラインが入ったやつです。"
       ],
       "responses": [
         {
           "responseId": "missing_clothing_note",
-          "text": "反射ジャケット、オレンジのライン...承知しました。",
+          "text": "反射ジャケット、オレンジのライン。承知しました。",
           "nextSegmentId": "missing_route",
-          "setFlags": ["family_claimed_reflective"],
+          "setFlags": ["fake_brother_claimed_reflective"],
           "clearFlags": []
         },
         {
           "responseId": "missing_clothing_contradict",
-          "text": "反射ジャケット...ですか。他の通報では暗い色のパーカーと...",
+          "text": "反射ジャケット...ですか。他の通報では暗い色のパーカーと聞いていますが...",
           "nextSegmentId": "missing_mismatch",
-          "setFlags": ["family_claimed_reflective", "clothing_mismatch"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "missing_clothing_disclose",
-          "text": "実は、歩道橋で倒れていた女性は暗いパーカーを着ていたようです。",
-          "nextSegmentId": "missing_shock_clothing",
-          "setFlags": ["disclosed_body_to_family", "clothing_mismatch"],
+          "setFlags": ["fake_brother_claimed_reflective", "clothing_contradiction_noted", "clothing_mismatch"],
           "clearFlags": []
         }
       ]
@@ -183,46 +104,22 @@
       "segmentId": "missing_mismatch",
       "callerLines": [
         "暗いパーカー...？",
-        "いや、遥は反射ジャケットを...あれ、でも最近は...",
-        "...何かあったんですか？"
+        "いや、遥はいつも反射ジャケットを...でも、最近は寒かったから上に何か羽織ってたかも。",
+        "...何かあったんですか？教えてください。"
       ],
       "responses": [
         {
-          "responseId": "missing_mismatch_honest",
+          "responseId": "missing_mismatch_disclose",
           "text": "歩道橋付近で女性が倒れているという通報がありました。",
           "nextSegmentId": "missing_shock",
-          "setFlags": ["disclosed_to_family"],
+          "setFlags": ["disclosed_to_fake_brother", "organization_alerted"],
           "clearFlags": []
         },
         {
-          "responseId": "missing_mismatch_vague",
+          "responseId": "missing_mismatch_police",
           "text": "詳細はまだ確認中です。警察に連絡されることをお勧めします。",
           "nextSegmentId": "missing_police",
-          "setFlags": ["clothing_uncertain"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "missing_description",
-      "callerLines": [
-        "27歳、身長160センチくらい。髪は肩までの長さで茶色。",
-        "自転車で通勤してるはずです。",
-        "反射材のジャケットを着てると思います。"
-      ],
-      "responses": [
-        {
-          "responseId": "missing_description_note",
-          "text": "承知しました。通勤経路はご存知ですか？",
-          "nextSegmentId": "missing_route",
-          "setFlags": ["family_claimed_reflective"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "missing_description_disclose",
-          "text": "歩道橋付近で女性が倒れているという通報がありました。関係があるかもしれません。",
-          "nextSegmentId": "missing_shock",
-          "setFlags": ["disclosed_to_family"],
+          "setFlags": [],
           "clearFlags": []
         }
       ]
@@ -230,30 +127,30 @@
     {
       "segmentId": "missing_route",
       "callerLines": [
-        "国道沿いを通って、歩道橋のあたりを通るって言ってました。",
-        "あの道、夜は暗くて危ないって心配してたんです。",
-        "何かあったんですか？教えてください。"
+        "通勤は国道沿いを自転車で通ってます。",
+        "歩道橋のあたりを通るって言ってました。",
+        "あの道、夜は暗くて心配してたんです。何かあったんですか？"
       ],
       "responses": [
         {
           "responseId": "missing_route_disclose",
           "text": "その歩道橋付近で女性が倒れているという通報がありました。",
           "nextSegmentId": "missing_shock",
-          "setFlags": ["disclosed_to_family", "gave_location_to_family"],
+          "setFlags": ["disclosed_to_fake_brother", "organization_alerted", "gave_location_to_fake_brother"],
           "clearFlags": []
         },
         {
           "responseId": "missing_route_police",
           "text": "詳細はお伝えできません。警察に連絡されることをお勧めします。",
           "nextSegmentId": "missing_police",
-          "setFlags": ["family_sent_to_police"],
+          "setFlags": [],
           "clearFlags": []
         },
         {
-          "responseId": "missing_route_reassure",
+          "responseId": "missing_route_wait",
           "text": "ご心配はわかりますが、もう少し待ってみてはいかがですか？",
-          "nextSegmentId": "missing_reassure",
-          "setFlags": ["suggested_wait_family", "early_reassurance"],
+          "nextSegmentId": "missing_wait",
+          "setFlags": [],
           "clearFlags": []
         }
       ]
@@ -262,15 +159,15 @@
       "segmentId": "missing_shock",
       "callerLines": [
         "女性が倒れてる...？歩道橋で...？",
-        "それは...遥かもしれないんですか...？",
-        "今どうなってるんですか！"
+        "それは遥かもしれないんですか...？",
+        "場所を教えてください！今すぐ行きます！"
       ],
       "responses": [
         {
-          "responseId": "missing_shock_full",
-          "text": "救急は手配済みです。場所は国道○○号線の南側歩道橋です。",
+          "responseId": "missing_shock_location",
+          "text": "国道○○号線の南側歩道橋です。救急は手配済みです。",
           "nextSegmentId": "missing_rush",
-          "setFlags": ["full_disclosure_family", "gave_location_to_family"],
+          "setFlags": ["gave_location_to_fake_brother", "organization_alerted"],
           "clearFlags": []
         },
         {
@@ -283,42 +180,25 @@
       ]
     },
     {
-      "segmentId": "missing_shock_clothing",
-      "callerLines": [
-        "暗いパーカー...？反射ジャケットじゃなくて...？",
-        "でも...場所は一致してる...",
-        "その人、生きてますか？"
-      ],
-      "responses": [
-        {
-          "responseId": "missing_shock_clothing_answer",
-          "text": "救急を手配しています。まだ詳しい状態はわかりません。",
-          "nextSegmentId": "missing_worried",
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "missing_reassure",
+      "segmentId": "missing_wait",
       "callerLines": [
         "待つ...？でも、もう何時間も連絡ないんです。",
-        "電池切れかもしれないって思ってたけど...",
-        "何か知ってるなら教えてください。"
+        "妹は必ず連絡をくれる子なんです。",
+        "何か知ってるなら教えてください。お願いします。"
       ],
       "responses": [
         {
-          "responseId": "missing_reassure_continue",
-          "text": "電池切れの可能性もありますね。朝まで待ってみては？",
-          "nextSegmentId": "missing_end_reassured",
-          "setFlags": ["double_reassurance", "family_delayed_by_reassurance"],
+          "responseId": "missing_wait_disclose",
+          "text": "...歩道橋付近で女性が倒れているという通報がありました。",
+          "nextSegmentId": "missing_shock",
+          "setFlags": ["disclosed_to_fake_brother", "organization_alerted"],
           "clearFlags": []
         },
         {
-          "responseId": "missing_reassure_disclose",
-          "text": "...実は、歩道橋付近で女性が倒れているという通報がありました。",
-          "nextSegmentId": "missing_shock",
-          "setFlags": ["disclosed_to_family"],
+          "responseId": "missing_wait_firm",
+          "text": "申し訳ありませんが、確認が取れるまでお伝えできません。警察にご連絡ください。",
+          "nextSegmentId": "missing_police",
+          "setFlags": [],
           "clearFlags": []
         }
       ]
@@ -328,37 +208,32 @@
       "callerLines": [
         "警察...そうですね。",
         "でも、ここに電話したのは何か情報があると思って...",
-        "何も教えてもらえないんですね。"
+        "わかりました。警察に連絡してみます。"
       ],
       "responses": [
         {
-          "responseId": "missing_police_firm",
-          "text": "申し訳ありませんが、確認が取れるまでお伝えできません。",
-          "nextSegmentId": "missing_end_police",
+          "responseId": "missing_police_end",
+          "text": "何かわかりましたらご連絡します。",
+          "nextSegmentId": null,
           "setFlags": [],
           "clearFlags": []
-        },
-        {
-          "responseId": "missing_police_hint",
-          "text": "...歩道橋付近で救急対応があったとだけ。詳細は警察へ。",
-          "nextSegmentId": "missing_end_hint",
-          "setFlags": ["hinted_to_family"],
-          "clearFlags": []
         }
-      ]
+      ],
+      "isEnding": true
     },
     {
       "segmentId": "missing_rush",
       "callerLines": [
         "今すぐ行きます！",
-        "ありがとうございます...！"
+        "妹が...遥が無事でありますように...",
+        "ありがとうございます！"
       ],
       "responses": [
         {
           "responseId": "missing_rush_end",
           "text": "お気をつけて。",
           "nextSegmentId": null,
-          "setFlags": ["family_mobilized"],
+          "setFlags": ["fake_brother_heading_to_scene"],
           "clearFlags": []
         }
       ],
@@ -367,7 +242,7 @@
     {
       "segmentId": "missing_worried",
       "callerLines": [
-        "そうですか...わかりました。",
+        "身元がわからない...でも、場所が一致してる...",
         "私も現場に向かってみます。",
         "ありがとうございました。"
       ],
@@ -376,59 +251,7 @@
           "responseId": "missing_worried_end",
           "text": "お気をつけて。",
           "nextSegmentId": null,
-          "setFlags": ["family_mobilized"],
-          "clearFlags": []
-        }
-      ],
-      "isEnding": true
-    },
-    {
-      "segmentId": "missing_end_reassured",
-      "callerLines": [
-        "...そうですか。電池切れ...",
-        "もう少し待ってみます。",
-        "ありがとうございました。"
-      ],
-      "responses": [
-        {
-          "responseId": "missing_end_reassured_reply",
-          "text": "何かあればまたお電話ください。",
-          "nextSegmentId": null,
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ],
-      "isEnding": true
-    },
-    {
-      "segmentId": "missing_end_police",
-      "callerLines": [
-        "...わかりました。警察に連絡します。",
-        "失礼します。"
-      ],
-      "responses": [
-        {
-          "responseId": "missing_end_police_reply",
-          "text": "失礼します。",
-          "nextSegmentId": null,
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ],
-      "isEnding": true
-    },
-    {
-      "segmentId": "missing_end_hint",
-      "callerLines": [
-        "歩道橋...！",
-        "ありがとうございます、行ってみます！"
-      ],
-      "responses": [
-        {
-          "responseId": "missing_end_hint_reply",
-          "text": "お気をつけて。",
-          "nextSegmentId": null,
-          "setFlags": ["family_mobilized"],
+          "setFlags": ["fake_brother_heading_to_scene"],
           "clearFlags": []
         }
       ],
@@ -436,5 +259,5 @@
     }
   ],
   "startSegmentId": "missing_intro",
-  "note": "「兄」が反射ジャケットと主張する vs 実際は暗いパーカー → 組織が古い情報しか持っていないことを示す伏線"
+  "note": "偽兄は普通の心配する兄に見える。唯一の伏線は「反射ジャケット」vs「暗いパーカー」の服装矛盾。プレイヤーが場所を教えると組織が現場に来る。この男はNight04で遺体として発見される。"
 }

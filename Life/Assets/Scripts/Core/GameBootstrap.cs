@@ -28,9 +28,6 @@ namespace LifeLike.Core
     /// </summary>
     public class GameBootstrap : MonoBehaviour
     {
-        [Header("Game Data")]
-        [SerializeField] private GameStateData? _gameStateData;
-
         [Header("Transition UI")]
         [SerializeField] private CanvasGroup? _fadeCanvasGroup;
         [SerializeField] private Image? _fadeImage;
@@ -167,11 +164,9 @@ namespace LifeLike.Core
                 clockService);
             ServiceLocator.Instance.Register<ICallFlowService>(callFlowService);
 
-            // GameStateDataが設定されていれば、キャラクターを登録
-            if (_gameStateData != null)
-            {
-                relationshipService.RegisterCharacters(_gameStateData.characters);
-            }
+            // OperatorSaveServiceを作成・登録（夜間進行のセーブ/ロード用）
+            var operatorSaveService = new OperatorSaveService();
+            ServiceLocator.Instance.Register<IOperatorSaveService>(operatorSaveService);
 
             Debug.Log("[GameBootstrap] すべてのサービスを登録しました。");
         }

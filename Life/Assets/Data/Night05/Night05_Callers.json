@@ -65,10 +65,10 @@
       "organizationRelation": "none"
     },
     {
-      "callerId": "demo_man",
+      "callerId": "nakamura_koji",
       "displayName": "抗議する男性",
-      "realName": "不明",
-      "description": "40代男性。組織が作った違法な薬/偽薬が原因で子供を亡くした。警察に訴えたが動かなかったため、自分で声を上げることにした。",
+      "realName": "中村浩二",
+      "description": "40代男性。誠和製薬の違法な薬の副作用で息子を亡くした。警察に訴えたが動かなかったため、自分で声を上げることにした。Night06で再登場。",
       "voiceDescription": "怒りと悲しみが混じった声。叫んでいる。",
       "voicePitch": 0.95,
       "personality": {
@@ -77,8 +77,8 @@
         "cooperation": 40,
         "aggression": 60
       },
-      "hiddenInfo": "組織の違法な薬で子供を失った。証拠は持っていないが、確信している。警察への不信感が強い。",
-      "trueMotivation": "子供の死の真相を明らかにしたい、組織を告発したい",
+      "hiddenInfo": "組織の違法な薬で息子を失った。証拠は持っていないが、確信している。警察への不信感が強い。息子の名前は浩太。",
+      "trueMotivation": "息子の死の真相を明らかにしたい、組織を告発したい",
       "relations": [],
       "organizationRelation": "victim"
     },
@@ -120,6 +120,43 @@
         { "targetCallerId": "hayashi_misaki", "relationType": "Acquaintance", "description": "可愛がっている子", "isKnown": true }
       ],
       "organizationRelation": "none"
+    },
+    {
+      "callerId": "unknown_caller",
+      "displayName": "不明",
+      "realName": "不明（組織関係者）",
+      "description": "組織の関係者。美咲の叔父または病院関係者を装って美咲の居場所を探る。",
+      "voiceDescription": "普通の中年男性の声。丁寧だが、どこか冷たい。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 10,
+        "stability": 85,
+        "cooperation": 60,
+        "aggression": 30
+      },
+      "hiddenInfo": "組織の情報収集係。美咲の電話を傍受し、その存在を把握した。居場所を特定しようとしている。",
+      "trueMotivation": "美咲の居場所の特定、USBの回収",
+      "relations": [],
+      "organizationRelation": "member"
+    },
+    {
+      "callerId": "residential_caller",
+      "displayName": "住民",
+      "realName": "不明",
+      "description": "住宅街の住民。不審な車が何度も同じ道を通っていることを通報。",
+      "voiceDescription": "中年女性の声。心配そう。",
+      "voicePitch": 1.05,
+      "personality": {
+        "honesty": 90,
+        "stability": 70,
+        "cooperation": 85,
+        "aggression": 10
+      },
+      "hiddenInfo": "特になし。本当に車を見ただけ。",
+      "trueMotivation": "不審な車の通報",
+      "relations": [],
+      "organizationRelation": "none",
+      "note": "目撃した車は組織の監視車両"
     }
   ]
 }

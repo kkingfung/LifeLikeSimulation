@@ -1,0 +1,182 @@
+{
+  "eventId": "event_kudo_chat_3",
+  "eventType": "chat",
+  "title": "工藤主任からのチャット",
+  "description": "工藤主任からチャットが届く。オペレーターの様子を心配している。",
+  "triggerTimeMinutes": 1330,
+  "messages": [
+    {
+      "messageId": "kudo_chat3_1",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "最近、大丈夫か？",
+      "timestamp": "22:10"
+    },
+    {
+      "messageId": "kudo_chat3_2",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "なんか疲れてるように見えるぞ",
+      "timestamp": "22:10",
+      "delaySeconds": 3
+    }
+  ],
+  "responses": [
+    {
+      "responseId": "chat3_fine",
+      "text": "大丈夫です",
+      "triggersMessages": ["kudo_chat3_really"]
+    },
+    {
+      "responseId": "chat3_tired",
+      "text": "少し疲れてるかもしれません",
+      "triggersMessages": ["kudo_chat3_rest"]
+    },
+    {
+      "responseId": "chat3_worried",
+      "text": "色々あって...",
+      "triggersMessages": ["kudo_chat3_listen"],
+      "setFlags": ["told_kudo_worried"]
+    }
+  ],
+  "followUpMessages": {
+    "kudo_chat3_really": [
+      {
+        "messageId": "kudo_really_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "本当か？",
+        "timestamp": "22:11"
+      },
+      {
+        "messageId": "kudo_really_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "無理するなよ",
+        "timestamp": "22:11",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_chat3_rest": [
+      {
+        "messageId": "kudo_rest_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "だろうな",
+        "timestamp": "22:11"
+      },
+      {
+        "messageId": "kudo_rest_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "今日終わったらちゃんと休めよ",
+        "timestamp": "22:11",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_chat3_listen": [
+      {
+        "messageId": "kudo_listen_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "何かあったのか？",
+        "timestamp": "22:11"
+      },
+      {
+        "messageId": "kudo_listen_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "話聞くぞ",
+        "timestamp": "22:11",
+        "delaySeconds": 2
+      }
+    ]
+  },
+  "secondResponses": {
+    "kudo_chat3_really": [
+      {
+        "responseId": "really_thanks",
+        "text": "ありがとうございます",
+        "triggersMessages": ["kudo_end_care"],
+        "setFlags": []
+      }
+    ],
+    "kudo_chat3_rest": [
+      {
+        "responseId": "rest_will",
+        "text": "そうします",
+        "triggersMessages": ["kudo_end_care"],
+        "setFlags": []
+      }
+    ],
+    "kudo_chat3_listen": [
+      {
+        "responseId": "listen_cant_say",
+        "text": "...うまく言えないんですけど",
+        "triggersMessages": ["kudo_understand"],
+        "setFlags": []
+      },
+      {
+        "responseId": "listen_nothing",
+        "text": "なんでもないです",
+        "triggersMessages": ["kudo_end_care"],
+        "setFlags": []
+      }
+    ]
+  },
+  "secondFollowUpMessages": {
+    "kudo_end_care": [
+      {
+        "messageId": "kudo_care_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "何かあったら言えよ",
+        "timestamp": "22:12"
+      },
+      {
+        "messageId": "kudo_care_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "一人で抱え込むなよ",
+        "timestamp": "22:12",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_understand": [
+      {
+        "messageId": "kudo_understand_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "分かった",
+        "timestamp": "22:12"
+      },
+      {
+        "messageId": "kudo_understand_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "言いたくなったらいつでも言え",
+        "timestamp": "22:12",
+        "delaySeconds": 2
+      },
+      {
+        "messageId": "kudo_understand_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "俺は味方だからな",
+        "timestamp": "22:13",
+        "delaySeconds": 3
+      }
+    ]
+  },
+  "operatorThoughts": [
+    {
+      "triggerId": "kudo_support_thought",
+      "triggerCondition": {
+        "requiresFlag": "told_kudo_worried"
+      },
+      "triggerTiming": "after_event",
+      "content": "工藤主任は心配してくれている...味方がいる..."
+    }
+  ],
+  "note": "Night09の工藤チャット。オペレーターの様子を心配している。直接的な情報提供はないが、工藤が味方であることを再確認できる。オペレーターの孤独感を和らげる役割。"
+}

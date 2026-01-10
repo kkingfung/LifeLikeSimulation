@@ -1,0 +1,128 @@
+{
+  "callId": "call_fisherman_report",
+  "callerId": "fisherman",
+  "title": "釣り人からの通報",
+  "description": "早朝の釣り人が川の近くで女性の遺体を発見して通報。",
+  "segments": [
+    {
+      "segmentId": "fisherman_panic",
+      "callerLines": [
+        "も、もしもし...！",
+        "川で...人が...",
+        "女の人が倒れてて...動かないんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "panic_calm",
+          "text": "落ち着いてください。どこにいますか？",
+          "nextSegmentId": "fisherman_location",
+          "setFlags": ["fisherman_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "panic_ask",
+          "text": "その人は息をしていますか？",
+          "nextSegmentId": "fisherman_confirm_dead",
+          "setFlags": ["fisherman_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fisherman_confirm_dead",
+      "callerLines": [
+        "い、息...してない...と思います...",
+        "顔が...青くて...",
+        "水から上がってたみたいで..."
+      ],
+      "responses": [
+        {
+          "responseId": "dead_location",
+          "text": "場所を教えてください。",
+          "nextSegmentId": "fisherman_location",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fisherman_location",
+      "callerLines": [
+        "○○川の...河川敷です...",
+        "○○橋から下流に500メートルくらい...",
+        "朝釣りしてたら...見つけて..."
+      ],
+      "responses": [
+        {
+          "responseId": "location_details",
+          "text": "女性はどんな様子ですか？",
+          "nextSegmentId": "fisherman_description",
+          "setFlags": ["location_confirmed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "location_dispatch",
+          "text": "分かりました。警察を向かわせます。",
+          "nextSegmentId": "fisherman_wait",
+          "setFlags": ["location_confirmed", "police_dispatched_river"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fisherman_description",
+      "callerLines": [
+        "30代くらいの...女の人です...",
+        "髪が長くて...服はよく見えないけど...",
+        "首に...痕みたいなのが..."
+      ],
+      "responses": [
+        {
+          "responseId": "description_dispatch",
+          "text": "分かりました。警察と救急を向かわせます。その場を離れないでください。",
+          "nextSegmentId": "fisherman_wait",
+          "setFlags": ["police_dispatched_river", "body_description_heard"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "fisherman_wait",
+      "callerLines": [
+        "は、はい...",
+        "ここで待ってます...",
+        "早く来てください..."
+      ],
+      "responses": [
+        {
+          "responseId": "wait_end",
+          "text": "すぐに向かいます。お電話ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["fisherman_call_completed"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "fisherman_panic",
+  "operatorThoughts": [
+    {
+      "triggerId": "river_body_thought",
+      "triggerCondition": {
+        "requiresFlag": "body_description_heard"
+      },
+      "triggerTiming": "after_call",
+      "content": "30代の女性...首に痕...まさか..."
+    },
+    {
+      "triggerId": "mari_fear_thought",
+      "triggerCondition": {
+        "requiresFlag": "fisherman_call_completed"
+      },
+      "triggerTiming": "after_call",
+      "content": "渡辺さん...? 嫌な予感がする..."
+    }
+  ],
+  "note": "Night10最初の通話。釣り人が真理の遺体を発見して通報。オペレーターはまだ誰の遺体か分からないが、不安を感じる。"
+}

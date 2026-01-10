@@ -7,7 +7,7 @@
       "priority": 1,
       "description": "届いた声 — 情報を多く集め、繋がりを見つけた",
       "scoreConditions": [
-        { "minScore": 6, "maxScore": 999 }
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 6 }
       ],
       "flagConditions": [
         { "flagId": "misaki_info_gathered", "requiredValue": true }
@@ -19,7 +19,7 @@
       "priority": 2,
       "description": "遠い声 — 部分的に情報を得た",
       "scoreConditions": [
-        { "minScore": 3, "maxScore": 5 }
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 3 }
       ],
       "flagConditions": [],
       "note": "一部の情報は得たが、全体像は見えていない"

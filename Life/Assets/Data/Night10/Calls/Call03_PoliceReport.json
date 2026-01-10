@@ -1,0 +1,336 @@
+{
+  "callId": "call_police_report",
+  "callerId": "police_detective",
+  "title": "警察からの報告",
+  "description": "警察からの報告。吉田の家に行った結果を報告。フラグによって内容が変わる。",
+  "conditionalStart": {
+    "police_sent_to_yoshida": "police_arrived_in_time",
+    "tried_contact_yoshida": "police_arrived_late",
+    "did_not_act": "police_arrived_late",
+    "default": "police_news_report"
+  },
+  "segments": [
+    {
+      "segmentId": "police_arrived_in_time",
+      "callerLines": [
+        "山田です。吉田さんの家に行きました。",
+        "ギリギリでした...不審な車が近くにいて...",
+        "吉田さんは怪我をしましたが、命に別状はありません。"
+      ],
+      "responses": [
+        {
+          "responseId": "in_time_ask_misaki",
+          "text": "美咲ちゃんは...？",
+          "nextSegmentId": "misaki_found",
+          "setFlags": ["yoshida_injured", "police_in_time"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "misaki_found",
+      "callerLines": [
+        "5歳の女の子がいました。",
+        "吉田さんが押し入れに隠していたようです。",
+        "無事です。今、保護しています。"
+      ],
+      "responses": [
+        {
+          "responseId": "found_relief",
+          "text": "...よかった...",
+          "nextSegmentId": "yoshida_testimony",
+          "setFlags": ["misaki_saved", "misaki_found_by_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_testimony",
+      "callerLines": [
+        "吉田さんから話を聞きました。",
+        "渡辺さんから「姉が誠和製薬の秘密を知って追われている」と聞いていたそうです。",
+        "美咲ちゃんを守るために、ずっと隠していたと..."
+      ],
+      "responses": [
+        {
+          "responseId": "testimony_ask",
+          "text": "誠和製薬の秘密...？",
+          "nextSegmentId": "yoshida_seiwaq",
+          "setFlags": ["yoshida_testimony_heard"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_seiwaq",
+      "callerLines": [
+        "副作用の隠蔽、違法な活動...",
+        "渡辺さんはそれを知っていたから狙われた。",
+        "証拠があれば動けるんですが..."
+      ],
+      "responses": [
+        {
+          "responseId": "seiwaq_whistleblower",
+          "text": "証拠なら...心当たりがあるかもしれません。",
+          "nextSegmentId": "police_interested",
+          "setFlags": ["mentioned_evidence"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "whistleblower_likely_safe"
+          }
+        },
+        {
+          "responseId": "seiwaq_unknown",
+          "text": "...私には分かりません。",
+          "nextSegmentId": "police_end_success",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_interested",
+      "callerLines": [
+        "本当ですか？",
+        "何でも構いません。教えてください。"
+      ],
+      "responses": [
+        {
+          "responseId": "tell_about_whistleblower",
+          "text": "林健二さんの元同僚から連絡がありました。証拠のことを知っているかもしれません。",
+          "nextSegmentId": "police_will_investigate",
+          "setFlags": ["told_police_about_whistleblower"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_will_investigate",
+      "callerLines": [
+        "分かりました。その方に連絡を取ってみます。",
+        "美咲ちゃんのことは...どうしますか？",
+        "親族がいないようなので..."
+      ],
+      "responses": [
+        {
+          "responseId": "adopt_misaki",
+          "text": "...私が引き取ります。",
+          "nextSegmentId": "police_adoption",
+          "setFlags": ["operator_adopts_misaki"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresNotFlag": "haruka_alive"
+          }
+        },
+        {
+          "responseId": "let_authorities",
+          "text": "...行政に任せます。",
+          "nextSegmentId": "police_end_success",
+          "setFlags": ["misaki_to_authorities"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_adoption",
+      "callerLines": [
+        "...分かりました。",
+        "手続きが必要になりますが...きっとうまくいきます。",
+        "美咲ちゃんも、あなたのことを待っていると思います。"
+      ],
+      "responses": [
+        {
+          "responseId": "adoption_thanks",
+          "text": "ありがとうございます。",
+          "nextSegmentId": "police_end_success",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_end_success",
+      "callerLines": [
+        "これからも捜査を続けます。",
+        "あなたのおかげで、一歩前に進めました。",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "success_end",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": ["call_police_report_completed"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_arrived_late",
+      "callerLines": [
+        "山田です。吉田さんの家に行きました。",
+        "...遅かったです。",
+        "吉田さんは...亡くなっていました。"
+      ],
+      "responses": [
+        {
+          "responseId": "late_shock",
+          "text": "...そんな...",
+          "nextSegmentId": "yoshida_dead_details",
+          "setFlags": ["yoshida_dead", "police_too_late"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_dead_details",
+      "callerLines": [
+        "殺されていました。首を絞められて...",
+        "家の中は荒らされていて...",
+        "誰かを探していたようです。"
+      ],
+      "responses": [
+        {
+          "responseId": "dead_ask_child",
+          "text": "...子供は...？",
+          "nextSegmentId": "misaki_missing",
+          "setFlags": [],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "operator_knows_misaki_with_yoshida"
+          }
+        },
+        {
+          "responseId": "dead_silence",
+          "text": "...",
+          "nextSegmentId": "police_end_failure",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "misaki_missing",
+      "callerLines": [
+        "子供...？",
+        "家の中には子供はいませんでした。",
+        "...誰かがいたんですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "missing_explain",
+          "text": "美咲ちゃんという5歳の女の子が...吉田さんのところにいたはずです...",
+          "nextSegmentId": "misaki_unknown",
+          "setFlags": ["told_police_about_misaki_late"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "misaki_unknown",
+      "callerLines": [
+        "...探してみます。",
+        "でも、もし組織に連れ去られていたら...",
+        "...すみません。"
+      ],
+      "responses": [
+        {
+          "responseId": "unknown_despair",
+          "text": "...美咲ちゃん...",
+          "nextSegmentId": "police_end_failure",
+          "setFlags": ["misaki_fate_unknown"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_end_failure",
+      "callerLines": [
+        "...捜査は続けます。",
+        "でも...すみませんでした。",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "failure_end",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["call_police_report_completed"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_news_report",
+      "callerLines": [
+        "山田です。",
+        "ニュースでご覧になったかもしれませんが...",
+        "渡辺真理さんの近所で、もう一人の遺体が見つかりました。"
+      ],
+      "responses": [
+        {
+          "responseId": "news_ask",
+          "text": "...誰ですか？",
+          "nextSegmentId": "yoshida_dead_news",
+          "setFlags": ["yoshida_dead_from_news"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_dead_news",
+      "callerLines": [
+        "吉田和子さん、72歳。",
+        "殺害されていました。",
+        "渡辺さんとの関係を調べています。"
+      ],
+      "responses": [
+        {
+          "responseId": "news_end",
+          "text": "...分かりました。",
+          "nextSegmentId": "police_end_failure",
+          "setFlags": ["yoshida_dead", "misaki_dead"],
+          "clearFlags": []
+        }
+      ]
+    }
+  ],
+  "startSegmentId": "police_arrived_in_time",
+  "operatorThoughts": [
+    {
+      "triggerId": "misaki_saved_thought",
+      "triggerCondition": {
+        "requiresFlag": "misaki_saved"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃんは無事だった...吉田さんが守ってくれた..."
+    },
+    {
+      "triggerId": "yoshida_dead_thought",
+      "triggerCondition": {
+        "requiresFlag": "yoshida_dead"
+      },
+      "triggerTiming": "after_call",
+      "content": "吉田さんが死んだ...美咲ちゃんを守ろうとして..."
+    },
+    {
+      "triggerId": "too_late_thought",
+      "triggerCondition": {
+        "requiresFlag": "police_too_late"
+      },
+      "triggerTiming": "after_call",
+      "content": "もっと早く動いていれば...私が..."
+    },
+    {
+      "triggerId": "adoption_thought",
+      "triggerCondition": {
+        "requiresFlag": "operator_adopts_misaki"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃん...私が守る..."
+    }
+  ],
+  "note": "Night10の重要な通話。オペレーターの選択によって結果が大きく変わる。police_sent_to_yoshidaがあれば吉田は助かり（怪我のみ）、美咲は救出される。なければ吉田は死亡、美咲の運命は不明または死亡。遥が生きていない場合、オペレーターが美咲を引き取ることができる。"
+}

@@ -1,0 +1,548 @@
+{
+  "callId": "call_suspicious_inquiry",
+  "callerId": "unknown_caller",
+  "title": "お子さんの確認",
+  "description": "不審な電話。遥が死亡している場合は「叔父」を装い、生存している場合は「病院」を装って美咲を探す。組織が動き出した証拠。",
+  "segments": [
+    {
+      "segmentId": "inquiry_intro_uncle",
+      "callerLines": [
+        "あ、もしもし...",
+        "すみません、こちらに子供から電話があったと思うんですが...",
+        "私の姪の子供なんです。林...なんとかちゃんという..."
+      ],
+      "note": "遥が死亡している場合のルート。美咲のフルネームを知らない。",
+      "triggerCondition": {
+        "requiresFlag": "haruka_dead"
+      },
+      "responses": [
+        {
+          "responseId": "uncle_ask_name",
+          "text": "お子さんのお名前は？",
+          "nextSegmentId": "uncle_stumble_name",
+          "setFlags": ["suspicious_caller_contacted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "uncle_ask_relation",
+          "text": "ご関係は？",
+          "nextSegmentId": "uncle_explain_relation",
+          "setFlags": ["suspicious_caller_contacted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "uncle_deny",
+          "text": "そのような電話の記録はありませんが。",
+          "nextSegmentId": "uncle_press",
+          "setFlags": ["suspicious_caller_contacted", "denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "inquiry_intro_hospital",
+      "callerLines": [
+        "○○病院の者ですが...",
+        "入院中の林遥さんのお子さんについて確認したいことがありまして。",
+        "お子さんから緊急通報があったと聞いたのですが..."
+      ],
+      "note": "遥が生存している場合のルート。病院を装う。",
+      "triggerCondition": {
+        "requiresFlag": "haruka_alive"
+      },
+      "responses": [
+        {
+          "responseId": "hospital_ask_details",
+          "text": "どのようなご用件ですか？",
+          "nextSegmentId": "hospital_explain",
+          "setFlags": ["suspicious_caller_contacted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hospital_ask_name",
+          "text": "お子さんのお名前は？",
+          "nextSegmentId": "hospital_stumble_name",
+          "setFlags": ["suspicious_caller_contacted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hospital_verify",
+          "text": "病院名と担当者のお名前を教えていただけますか？",
+          "nextSegmentId": "hospital_hesitate",
+          "setFlags": ["suspicious_caller_contacted", "verified_caller"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "inquiry_intro_default",
+      "callerLines": [
+        "あ、もしもし...",
+        "すみません、こちらに子供から電話があったと思うんですが...",
+        "私の姪の子供なんです。林...なんとかちゃんという..."
+      ],
+      "note": "フラグがない場合のデフォルトルート（叔父バージョン）。",
+      "responses": [
+        {
+          "responseId": "default_ask_name",
+          "text": "お子さんのお名前は？",
+          "nextSegmentId": "uncle_stumble_name",
+          "setFlags": ["suspicious_caller_contacted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "default_ask_relation",
+          "text": "ご関係は？",
+          "nextSegmentId": "uncle_explain_relation",
+          "setFlags": ["suspicious_caller_contacted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "default_deny",
+          "text": "そのような電話の記録はありませんが。",
+          "nextSegmentId": "uncle_press",
+          "setFlags": ["suspicious_caller_contacted", "denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_stumble_name",
+      "callerLines": [
+        "えーと...み...みさき？みさきちゃん...だったかな...",
+        "すみません、ちょっと動揺してて...",
+        "姪が事故に遭って、その子供を探してるんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "uncle_name_confirm",
+          "text": "美咲ちゃんですね。何歳ですか？",
+          "nextSegmentId": "uncle_age_wrong",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "uncle_name_suspicious",
+          "text": "お子さんのフルネームを正確にお願いします。",
+          "nextSegmentId": "uncle_pressure",
+          "setFlags": ["operator_suspicious"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "uncle_name_deny",
+          "text": "通報者の情報はお伝えできません。",
+          "nextSegmentId": "uncle_frustrated",
+          "setFlags": ["denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_explain_relation",
+      "callerLines": [
+        "姪の...林遥の叔父です。",
+        "遥が事故に遭って、その子供を探してるんです。",
+        "心配で..."
+      ],
+      "responses": [
+        {
+          "responseId": "relation_ask_name",
+          "text": "お子さんのお名前は？",
+          "nextSegmentId": "uncle_stumble_name",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "relation_ask_uncle_name",
+          "text": "あなたのお名前は？",
+          "nextSegmentId": "uncle_give_fake_name",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "relation_deny",
+          "text": "通報者の情報はお伝えできません。",
+          "nextSegmentId": "uncle_frustrated",
+          "setFlags": ["denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_give_fake_name",
+      "callerLines": [
+        "私は...田中...田中健一です。",
+        "...それより、美咲ちゃんのことが心配で...",
+        "どこにいるか分かりませんか？"
+      ],
+      "responses": [
+        {
+          "responseId": "fake_name_ask_more",
+          "text": "美咲ちゃんの誕生日は分かりますか？",
+          "nextSegmentId": "uncle_cant_answer",
+          "setFlags": ["operator_suspicious"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fake_name_deny",
+          "text": "個人情報はお伝えできません。",
+          "nextSegmentId": "uncle_frustrated",
+          "setFlags": ["denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_press",
+      "callerLines": [
+        "いえ、確かにあったはずです。",
+        "知り合いから聞いたんです。",
+        "子供が110番にかけたって..."
+      ],
+      "responses": [
+        {
+          "responseId": "press_how_know",
+          "text": "どなたから聞いたんですか？",
+          "nextSegmentId": "uncle_evasive",
+          "setFlags": ["operator_suspicious"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "press_deny_again",
+          "text": "記録にはありません。",
+          "nextSegmentId": "uncle_frustrated",
+          "setFlags": ["denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_evasive",
+      "callerLines": [
+        "それは...その...近所の人から...",
+        "とにかく、美咲ちゃんがどこにいるか知りたいんです。",
+        "教えてもらえませんか？"
+      ],
+      "responses": [
+        {
+          "responseId": "evasive_deny",
+          "text": "申し訳ありませんが、お伝えできません。",
+          "nextSegmentId": "uncle_frustrated",
+          "setFlags": ["denied_information"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "evasive_suggest_police",
+          "text": "警察に相談されてはいかがですか？",
+          "nextSegmentId": "uncle_reject_police",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_age_wrong",
+      "callerLines": [
+        "えーと...6歳...いや、5歳だったかな...",
+        "すみません、最近会ってなくて...",
+        "でも心配なんです..."
+      ],
+      "note": "年齢を間違える、または曖昧にする。",
+      "responses": [
+        {
+          "responseId": "age_wrong_suspicious",
+          "text": "本当に親戚の方ですか？",
+          "nextSegmentId": "uncle_defensive",
+          "setFlags": ["operator_suspicious", "caught_lie"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "age_wrong_deny",
+          "text": "通報者の情報はお伝えできません。",
+          "nextSegmentId": "uncle_frustrated",
+          "setFlags": ["denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_pressure",
+      "callerLines": [
+        "...林美咲です。",
+        "それで、今どこにいるか分かりますか？",
+        "早く見つけないと..."
+      ],
+      "responses": [
+        {
+          "responseId": "pressure_birthday",
+          "text": "美咲ちゃんの誕生日は？",
+          "nextSegmentId": "uncle_cant_answer",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "pressure_deny",
+          "text": "個人情報はお伝えできません。",
+          "nextSegmentId": "uncle_frustrated",
+          "setFlags": ["denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_cant_answer",
+      "callerLines": [
+        "誕生日...？えーと...",
+        "...すみません、ちょっと...",
+        "......"
+      ],
+      "note": "答えられずに沈黙。偽者であることが明白に。",
+      "responses": [
+        {
+          "responseId": "cant_answer_confront",
+          "text": "本当に親戚の方ですか？",
+          "nextSegmentId": "uncle_defensive",
+          "setFlags": ["caught_lie"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "cant_answer_end",
+          "text": "お力になれず申し訳ありません。",
+          "nextSegmentId": "uncle_hang_up",
+          "setFlags": ["denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_defensive",
+      "callerLines": [
+        "...もちろんです。なぜそんなことを...",
+        "...もういいです。",
+        "ガチャ"
+      ],
+      "note": "問い詰められて電話を切る。",
+      "responses": [
+        {
+          "responseId": "defensive_end",
+          "text": "（電話が切れた）",
+          "nextSegmentId": null,
+          "setFlags": ["fake_relative_exposed"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "uncle_frustrated",
+      "callerLines": [
+        "...そうですか...",
+        "分かりました...",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "frustrated_end",
+          "text": "他にご用件は？",
+          "nextSegmentId": "uncle_hang_up",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "uncle_reject_police",
+      "callerLines": [
+        "警察は...いや、それは...",
+        "自分で探したいんです。",
+        "...もういいです。"
+      ],
+      "note": "警察を避ける反応。組織の人間であることを示唆。",
+      "responses": [
+        {
+          "responseId": "reject_police_end",
+          "text": "（電話が切れた）",
+          "nextSegmentId": null,
+          "setFlags": ["avoided_police", "fake_relative_exposed"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "uncle_hang_up",
+      "callerLines": [
+        "...失礼します。",
+        "ガチャ"
+      ],
+      "responses": [
+        {
+          "responseId": "hang_up_end",
+          "text": "（電話が切れた）",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "hospital_explain",
+      "callerLines": [
+        "林さんのお子さんが心配で...",
+        "お子さんが今どこにいるか確認したいのですが...",
+        "緊急の連絡があったと聞きまして..."
+      ],
+      "responses": [
+        {
+          "responseId": "hospital_ask_child_name",
+          "text": "お子さんのお名前は？",
+          "nextSegmentId": "hospital_stumble_name",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hospital_verify_again",
+          "text": "病院名と担当者のお名前を確認させてください。",
+          "nextSegmentId": "hospital_hesitate",
+          "setFlags": ["verified_caller"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hospital_stumble_name",
+      "callerLines": [
+        "お名前は...林...みさきちゃん...でしたっけ...",
+        "カルテを見れば分かるんですが、今手元になくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "hospital_name_suspicious",
+          "text": "病院からのお電話なのに、患者様のお子さんの名前が分からないんですか？",
+          "nextSegmentId": "hospital_defensive",
+          "setFlags": ["operator_suspicious", "caught_lie"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "hospital_name_deny",
+          "text": "通報者の情報はお伝えできません。",
+          "nextSegmentId": "hospital_frustrated",
+          "setFlags": ["denied_information"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hospital_hesitate",
+      "callerLines": [
+        "えーと...○○病院の...その...",
+        "...すみません、後でかけ直します。"
+      ],
+      "note": "病院名を聞かれて答えられない。",
+      "responses": [
+        {
+          "responseId": "hesitate_wait",
+          "text": "お待ちください。",
+          "nextSegmentId": "hospital_hang_up",
+          "setFlags": ["fake_hospital_exposed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hospital_defensive",
+      "callerLines": [
+        "...いえ、その...",
+        "...もういいです。",
+        "ガチャ"
+      ],
+      "responses": [
+        {
+          "responseId": "hospital_defensive_end",
+          "text": "（電話が切れた）",
+          "nextSegmentId": null,
+          "setFlags": ["fake_hospital_exposed"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "hospital_frustrated",
+      "callerLines": [
+        "そうですか...",
+        "分かりました...",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "hospital_frustrated_end",
+          "text": "他にご用件は？",
+          "nextSegmentId": "hospital_hang_up",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "hospital_hang_up",
+      "callerLines": [
+        "...失礼します。",
+        "ガチャ"
+      ],
+      "responses": [
+        {
+          "responseId": "hospital_hang_up_end",
+          "text": "（電話が切れた）",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "inquiry_intro_default",
+  "conditionalStartSegments": [
+    {
+      "segmentId": "inquiry_intro_uncle",
+      "condition": {
+        "requiresFlag": "haruka_dead"
+      }
+    },
+    {
+      "segmentId": "inquiry_intro_hospital",
+      "condition": {
+        "requiresFlag": "haruka_alive"
+      }
+    }
+  ],
+  "operatorThoughts": [
+    {
+      "triggerId": "fake_caller_thought",
+      "triggerCondition": {
+        "requiresAnyFlag": ["fake_relative_exposed", "fake_hospital_exposed"]
+      },
+      "triggerTiming": "after_call",
+      "content": "あの電話...本当に親戚/病院だったのか？美咲ちゃんのことを知っていたのに、名前も誕生日も分からなかった..."
+    },
+    {
+      "triggerId": "avoided_police_thought",
+      "triggerCondition": {
+        "requiresFlag": "avoided_police"
+      },
+      "triggerTiming": "after_call",
+      "content": "警察を避けた...なぜ？美咲ちゃんを探しているのは誰なんだ..."
+    },
+    {
+      "triggerId": "gave_info_thought",
+      "triggerCondition": {
+        "requiresFlag": "gave_misaki_info"
+      },
+      "triggerTiming": "after_call",
+      "content": "あの人に美咲ちゃんの情報を教えてしまった...本当に大丈夫だったのか..."
+    }
+  ],
+  "note": "組織が美咲を探し始めた証拠。遥の生死によって偽装が変わる：死亡→叔父を装う、生存→病院を装う。美咲のフルネームを知らない（「林...なんとかちゃん」）ことで偽者とバレる可能性がある。詳しく質問すると誕生日も答えられない。警察を勧めると拒否して電話を切る。このフラグはNight06以降の展開に影響する。"
+}

@@ -14,24 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.NightScenarioData
   scenarioId: night_03
   title: "\u63A2\u3059\u58F0"
-  description: "\u901A\u308A\u3059\u304C\u308A\u306E\u5E02\u6C11\u304C\u76EE\u6483\u3057\u305F\u53E3\u8AD6\u3002\u5973\u6027\u304C\u6016\u304C\u308A\u3001\u7537\u304C\u6012\u9CF4\u3063\u3066\u3044\u308B\u3002\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u306F\u8B66\u5BDF\u3092\u6D3E\u9063\u3059\u308B\u304B\u9078\u629E\u3067\u304D\u308B\u304C\u3001\u5DE5\u85E4\u4E3B\u4EFB\u306F\u300C\u30AB\u30C3\u30D7\u30EB\u306E\u53E3\u8AD6\u306F\u696D\u52D9\u5916\u300D\u3068\u8B66\u544A\u3059\u308B\u3002\u305D\u3057\u3066\u3001\u7D44\u7E54\u304B\u3089\u306E\u76F4\u63A5\u7684\u306A\u63A5\u89E6\u304C\u59CB\u307E\u308B\u3002"
+  description: "\u901A\u308A\u3059\u304C\u308A\u306E\u5E02\u6C11\u304C\u76EE\u6483\u3057\u305F\u53E3\u8AD6\u3002\u5973\u6027\u304C\u6016\u304C\u308A\u3001\u7537\u304C\u6012\u9CF4\u3063\u3066\u3044\u308B\u3002\u5373\u5EA7\u306B\u6D3E\u9063\u3059\u308C\u3070\u5973\u6027\u306F\u52A9\u304B\u308B\u304C\u3001\u8E8A\u8E87\u3059\u308B\u3068\u624B\u9045\u308C\u306B\u306A\u308B\u3002\u7D44\u7E54\u304B\u3089\u306E\u63A5\u89E6\u3082\u7D9A\u304F\u3002"
   startTimeMinutes: 0
   endTimeMinutes: 120
   realSecondsPerGameMinute: 2
-  callers: []
-  calls: []
+  callers:
+  - {fileID: 11400000, guid: 9579e6cd02072684ba104f771a09500c, type: 2}
+  - {fileID: 11400000, guid: 5634e175aa75f6942b400dc775dcbfa7, type: 2}
+  - {fileID: 11400000, guid: 838dd0434c9ef394ba8ed5a46803ca0e, type: 2}
+  - {fileID: 11400000, guid: 78301b12f2ef9e747a3026c4eff034f2, type: 2}
+  - {fileID: 11400000, guid: 49f8771c93a8612469d50d7dd84bf3a8, type: 2}
+  calls:
+  - {fileID: 11400000, guid: 51f0e17f05bdc2a489a3846d970c0692, type: 2}
+  - {fileID: 11400000, guid: 303322f88ffeeee4ea3a9724e839b61e, type: 2}
+  - {fileID: 11400000, guid: 40a0bbfa08da14f4e8b7f58340195a6a, type: 2}
+  - {fileID: 11400000, guid: 761b53fdd8c8dfd49a55a5732f18558f, type: 2}
+  - {fileID: 11400000, guid: cc6ad36110e742a4a84721afd12e547e, type: 2}
+  - {fileID: 11400000, guid: 12569d613dcacd6489e20b33b5200286, type: 2}
   evidenceTemplates:
   - {fileID: 11400000, guid: 1612b33775d892a44b84a54ddf9854cb, type: 2}
+  - {fileID: 11400000, guid: 092fc3e9422b6d143940669cef561990, type: 2}
   - {fileID: 11400000, guid: ef4a3d1eaef7dc341acb5e9f16155eab, type: 2}
-  - {fileID: 11400000, guid: 0b8bb6e0e826fb24aad978bac4bcdecc, type: 2}
   - {fileID: 11400000, guid: 6a71a39ce1d9a134887ab0e1e1bef9a8, type: 2}
   - {fileID: 11400000, guid: edb5c032a8ce7b64cbe680b8a3a18da2, type: 2}
   initialWorldStates:
-  - stateId: watanabe_searching
-    description: "\u6E21\u8FBA\u771F\u7406\u304C\u7F8E\u54B2\u3092\u63A2\u3057\u3066\u3044\u308B"
+  - stateId: mari_confronted
+    description: "\u771F\u7406\u304C\u6797\u5065\u4E8C\uFF08\u507D\u5144\uFF09\u3068\u5BFE\u5CD9\u3057\u3066\u3044\u308B"
     timeMinutes: 0
     involvedCallerIds:
     - watanabe_mari
+    - hayashi_kenji
     isKnownToPlayer: 0
   - stateId: organization_watching
     description: "\u7D44\u7E54\u304C\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u3092\u76E3\u8996\u3057\u3066\u3044\u308B"
@@ -39,25 +51,19 @@ MonoBehaviour:
     involvedCallerIds:
     - sato_koji
     isKnownToPlayer: 0
-  - stateId: mari_confronted
-    description: "\u771F\u7406\u304C\u7D44\u7E54\u306E\u4EBA\u9593\u3068\u5BFE\u5CD9\u3057\u3066\u3044\u308B"
+  - stateId: hayashi_kenji_desperate
+    description: "\u6797\u5065\u4E8C\u306F\u6797\u9065\u3092\u898B\u3064\u3051\u3089\u308C\u306A\u3044\u3068\u7D44\u7E54\u306B\u6BBA\u3055\u308C\u308B"
+    timeMinutes: 0
+    involvedCallerIds:
+    - hayashi_kenji
+    isKnownToPlayer: 0
+  - stateId: mari_protecting_misaki
+    description: "\u771F\u7406\u306F\u7F8E\u54B2\uFF08\u6797\u9065\u304C\u5B88\u308D\u3046\u3068\u3057\u305F\u5B50\u4F9B\uFF09\u3092\u9810\u304B\u3063\u3066\u3044\u308B"
     timeMinutes: 0
     involvedCallerIds:
     - watanabe_mari
     isKnownToPlayer: 0
-  - stateId: sato_unaware_haruka_death
-    description: "\u4F50\u85E4\u6D69\u4E8C\u306F\u6797\u9065\u306E\u6B7B\u3092\u77E5\u3089\u306A\u3044"
-    timeMinutes: 0
-    involvedCallerIds:
-    - sato_koji
-    isKnownToPlayer: 0
-  - stateId: kidnapped_person
-    description: "\u8AB0\u304B\u304C\u7D44\u7E54\u306B\u8A98\u62D0\u3055\u308C\u3066\u3044\u308B"
-    timeMinutes: 0
-    involvedCallerIds:
-    - unknown_voice
-    isKnownToPlayer: 0
-  theTruth: "\u53E3\u8AD6\u3057\u3066\u3044\u308B\u4E8C\u4EBA\u306F\u3001\u6E21\u8FBA\u771F\u7406\uFF08\u6797\u9065\u306E\u89AA\u53CB\uFF09\u3068\u7D44\u7E54\u306E\u4EBA\u9593\u3002\u771F\u7406\u306F\u7F8E\u54B2\u3092\u63A2\u3057\u3066\u3044\u308B\u304C\u3001\u7D44\u7E54\u306B\u898B\u3064\u304B\u3063\u3066\u3057\u307E\u3063\u305F\u3002\u4F50\u85E4\u6D69\u4E8C\u306F\u6797\u9065\u304C\u3069\u3053\u306B\u3044\u308B\u304B\u77E5\u3089\u306A\u3044\uFF08\u9065\u306E\u6B7B\u3092\u77E5\u3089\u306A\u3044\uFF09\u3002\u7121\u8A00\u96FB\u8A71\u306F\u7D44\u7E54\u306B\u8A98\u62D0\u3055\u308C\u305F\u4EBA\u7269\u304B\u3089\u306E\u96FB\u8A71\u3067\u3001\u4F55\u304B\u3092\u4F1D\u3048\u3088\u3046\u3068\u3057\u3066\u3044\u308B\u304C\u8A71\u305B\u306A\u3044\u72B6\u6CC1\u306B\u3042\u308B\u3002"
+  theTruth: "\u53E3\u8AD6\u3057\u3066\u3044\u308B\u4E8C\u4EBA\u306F\u3001\u6E21\u8FBA\u771F\u7406\uFF08\u6797\u9065\u306E\u89AA\u53CB\uFF09\u3068\u6797\u5065\u4E8C\uFF08\u507D\u5144/\u7D44\u7E54\u306E\u4E2D\u9593\u7BA1\u7406\u8077\uFF09\u3002\u6797\u5065\u4E8C\u306F\u9065\u3092\u898B\u3064\u3051\u3089\u308C\u306A\u304B\u3063\u305F\u305F\u3081\u3001\u9065\u306E\u53CB\u4EBA\u3067\u3042\u308B\u771F\u7406\u306B\u8FBF\u308A\u7740\u3044\u305F\u3002\u771F\u7406\u306F\u7F8E\u54B2\u3092\u9810\u304B\u3063\u3066\u3044\u308B\u3002\u4F50\u85E4\u6D69\u4E8C\u306F\u6797\u9065\u306E\u73FE\u5728\u306E\u72B6\u614B\uFF08\u751F\u5B58/\u6B7B\u4EA1\uFF09\u3092\u77E5\u3089\u306A\u3044\u3002\u7121\u8A00\u96FB\u8A71\u306F\u7D44\u7E54\u306B\u62D8\u675F\u3055\u308C\u305F\u6797\u5065\u4E8C\u304B\u3089\u306E\u96FB\u8A71\u3067\u3001\u53E3\u3092\u585E\u304C\u308C\u3066\u8A71\u305B\u306A\u3044\u72B6\u6CC1\u306B\u3042\u308B\u3002\u6797\u9065\u3092\u898B\u3064\u3051\u3089\u308C\u306A\u304B\u3063\u305F\u6797\u5065\u4E8C\u306F\u7D44\u7E54\u306B\u300C\u51E6\u5206\u300D\u3055\u308C\u308B\u3053\u3068\u306B\u306A\u308A\u3001Night04\u3067\u907A\u4F53\u3068\u3057\u3066\u767A\u898B\u3055\u308C\u308B\u3002"
   endings: []
   dialogueDatabase: {fileID: 0}
   difficulty: 5

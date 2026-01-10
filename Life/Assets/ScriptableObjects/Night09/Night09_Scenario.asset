@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d34f36aed81da45b07e6f6f91a17ea, type: 3}
+  m_Name: Night09_Scenario
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.NightScenarioData
+  scenarioId: night_09
+  title: "\u544A\u767A\u8005"
+  description: "\u771F\u7406\u306E\u884C\u65B9\u306F\u4F9D\u7136\u4E0D\u660E\u3002\u8B66\u5BDF\u306F\u635C\u67FB\u3092\u7D9A\u3051\u3066\u3044\u308B\u304C\u9032\u5C55\u306F\u9045\u3044\u3002\u305D\u3093\u306A\u4E2D\u3001\u6797\u5065\u4E8C\u306E\u5143\u540C\u50DA\u304B\u3089\u9023\u7D61\u304C\u5165\u308B\u3002\u5065\u4E8C\u306F\u9065\u306E\u4E0A\u53F8\u3060\u3063\u305F\u3002\u9065\u306E\u673A\u306E\u66F8\u985E\u304B\u3089\u79D8\u5BC6\u3092\u5C11\u3057\u77E5\u308A\u3001\u5DFB\u304D\u8FBC\u307E\u308C\u305F\u3002\u5185\u90E8\u544A\u767A\u8005\u306F\u81EA\u3089\u3082\u8FFD\u308F\u308C\u3066\u304A\u308A\u3001\u8AB0\u304B\u306B\u771F\u5B9F\u3092\u4F1D\u3048\u3088\u3046\u3068\u3059\u308B\u3002"
+  startTimeMinutes: 1200
+  endTimeMinutes: 1440
+  realSecondsPerGameMinute: 2
+  callers:
+  - {fileID: 11400000, guid: 5c124e3503d9f694283d2caa2124c27f, type: 2}
+  - {fileID: 11400000, guid: 981421be44c6c524fa42a88e44e28232, type: 2}
+  - {fileID: 11400000, guid: 46aa62a4ff4a0eb42a90a2de70f1585e, type: 2}
+  calls:
+  - {fileID: 11400000, guid: 3161769371a1a034cb1accf6e81de0f1, type: 2}
+  - {fileID: 11400000, guid: 128f7894769116c4a8c35905677202c2, type: 2}
+  - {fileID: 11400000, guid: d666c17b2d7d97247ba357f9b08f6f9c, type: 2}
+  evidenceTemplates:
+  - {fileID: 11400000, guid: 32219f5d8272b5a4492407731a255a11, type: 2}
+  - {fileID: 11400000, guid: 1a0a7eb925a3c4d4796ea8c371298e44, type: 2}
+  - {fileID: 11400000, guid: 1dfc32e2a4683eb41aefc482d09779fa, type: 2}
+  - {fileID: 11400000, guid: 73e1ec17e2cad3c4da12c526dcce2a51, type: 2}
+  initialWorldStates:
+  - stateId: mari_still_missing
+    description: "\u771F\u7406\u306F\u4F9D\u7136\u884C\u65B9\u4E0D\u660E\u3001\u751F\u6B7B\u4E0D\u660E"
+    timeMinutes: 1200
+    involvedCallerIds:
+    - watanabe_mari
+    isKnownToPlayer: 1
+  - stateId: misaki_still_safe
+    description: "\u7F8E\u54B2\u306F\u5409\u7530\u306E\u5BB6\u3067\u5B89\u5168\uFF08yoshida_will_warn_mari\u30D5\u30E9\u30B0\u3042\u308A\u306E\u5834\u5408\uFF09"
+    timeMinutes: 1200
+    involvedCallerIds:
+    - hayashi_misaki
+    - yoshida_kazuko
+    isKnownToPlayer: 0
+  - stateId: whistleblower_running
+    description: "\u5185\u90E8\u544A\u767A\u8005\uFF08\u5065\u4E8C\u306E\u5143\u540C\u50DA\uFF09\u306F\u7D44\u7E54\u304B\u3089\u9003\u3052\u3066\u3044\u308B"
+    timeMinutes: 1200
+    involvedCallerIds:
+    - whistleblower
+    isKnownToPlayer: 0
+  - stateId: organization_hunting
+    description: "\u7D44\u7E54\u306F\u8A3C\u62E0\u3092\u6301\u3064\u8005\u3068\u7F8E\u54B2\u3092\u63A2\u3057\u7D9A\u3051\u3066\u3044\u308B"
+    timeMinutes: 1200
+    involvedCallerIds: []
+    isKnownToPlayer: 0
+  theTruth: "\u6797\u5065\u4E8C\u306F\u8AA0\u548C\u88FD\u85AC\u306E\u7814\u7A76\u54E1\u3067\u3001\u9065\u306E\u76F4\u5C5E\u306E\u4E0A\u53F8\u3060\u3063\u305F\u3002\u9065\u304C\u79D8\u5BC6\u3092\u767A\u898B\u3057\u3001\u5065\u4E8C\u306F\u9065\u306E\u673A\u306E\u66F8\u985E\u304B\u3089\u5C11\u3057\u3060\u3051\u77E5\u308A\u3001\u5DFB\u304D\u8FBC\u307E\u308C\u305F\u3002\u5065\u4E8C\u306F\u9065\u3092\u5FC3\u914D\u3057\u3066Night01\u3067\u63A2\u3057\u3066\u3044\u305F\u304C\u3001\u305D\u306E\u5F8C\u6BBA\u3055\u308C\u305F\u3002\u5065\u4E8C\u306E\u5143\u540C\u50DA\u3067\u3042\u308B\u5185\u90E8\u544A\u767A\u8005\u3082\u8FFD\u308F\u308C\u3066\u3044\u308B\u3002\u5185\u90E8\u544A\u767A\u8005\u306F\u5065\u4E8C\u304B\u3089\u8A71\u3092\u805E\u3044\u305F\u304C\u3001\u9065\u304C\u672C\u5F53\u306E\u60C5\u5831\u6E90\u3060\u3068\u306F\u77E5\u3089\u306A\u3044\u3002\u7F8E\u54B2\u306E\u3053\u3068\u3082\u77E5\u3089\u306A\u3044\u3002\u771F\u7406\u306E\u751F\u6B7B\u306F\u4E0D\u660E\u3002"
+  endings: []
+  dialogueDatabase: {fileID: 0}
+  difficulty: 5
+  estimatedPlayTimeMinutes: 25

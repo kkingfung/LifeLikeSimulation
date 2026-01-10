@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe5531bea47f754f996e901c5f3a186, type: 3}
+  m_Name: evidence_haruka_danger
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.EvidenceTemplate
+  data:
+    evidenceId: evidence_haruka_danger
+    title: "\u9065\u306E\u5371\u967A"
+    evidenceType: 0
+    content: "\u771F\u7406\u306F\u300C\u59C9\uFF08\u9065\uFF09\u304C\u5371\u967A\u306A\u3053\u3068\u306B\u5DFB\u304D\u8FBC\u307E\u308C\u3066\u3044\u308B\u300D\u3068\u8A00\u3063\u3066\u3044\u305F"
+    description: 
+    sourceCallerId: 
+    sourceCallId: 
+    timestamp: 
+    reliability: 0
+    isActuallyTrue: 1
+    relatedCallerIds: []
+    contradictingEvidenceIds: []
+    supportingEvidenceIds: []
+    isDiscovered: 0
+    isUsable: 1
+    useCount: 0
+  discoveryConditions: []
+  useEffects: []

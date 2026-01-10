@@ -1,0 +1,249 @@
+{
+  "callId": "call_police_inquiry",
+  "callerId": "police_detective",
+  "title": "警察からの連絡",
+  "description": "警察が中村浩二と誠和製薬の関係についてオペレーターに質問。業務的な態度で、何も疑っていない様子。",
+  "segments": [
+    {
+      "segmentId": "police_intro",
+      "callerLines": [
+        "○○署の山田です。",
+        "本日通報のあった中村浩二さんの件で確認があります。",
+        "オペレーターの方ですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "intro_confirm",
+          "text": "はい、そうです。",
+          "nextSegmentId": "police_question",
+          "setFlags": ["police_inquiry_started"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "intro_ask_what",
+          "text": "どのようなご用件ですか？",
+          "nextSegmentId": "police_explain",
+          "setFlags": ["police_inquiry_started"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_explain",
+      "callerLines": [
+        "中村浩二さんの死亡事案について調べています。",
+        "過去にこの方から通報があったか確認したくて。",
+        "誠和製薬に関する通報とか、ありましたか？"
+      ],
+      "responses": [
+        {
+          "responseId": "explain_yes",
+          "text": "誠和製薬前での抗議活動の通報がありました。",
+          "nextSegmentId": "police_seiwaq",
+          "setFlags": ["told_police_about_demo"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "explain_vague",
+          "text": "記録を確認しないと...詳しくは分かりません。",
+          "nextSegmentId": "police_record",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_question",
+      "callerLines": [
+        "中村さんが誠和製薬について何か言っていたか、",
+        "通報記録があれば教えていただきたいのですが。"
+      ],
+      "responses": [
+        {
+          "responseId": "question_yes",
+          "text": "誠和製薬前で抗議活動をしていたという通報がありました。",
+          "nextSegmentId": "police_seiwaq",
+          "setFlags": ["told_police_about_demo"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "question_check",
+          "text": "記録を確認します。少々お待ちください。",
+          "nextSegmentId": "police_record",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_seiwaq",
+      "callerLines": [
+        "誠和製薬...なるほど。",
+        "息子さんの件で抗議していたと聞いています。",
+        "それ以外に何か言っていましたか？"
+      ],
+      "responses": [
+        {
+          "responseId": "seiwaq_detail",
+          "text": "「息子が薬の副作用で死んだ」と主張していました。",
+          "nextSegmentId": "police_note",
+          "setFlags": ["told_police_son_claim"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "seiwaq_nothing",
+          "text": "それ以上は...記録にありません。",
+          "nextSegmentId": "police_thanks",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_record",
+      "callerLines": [
+        "確認お願いします。",
+        "...お待ちしています。"
+      ],
+      "responses": [
+        {
+          "responseId": "record_found",
+          "text": "誠和製薬前での抗議活動の通報がありました。",
+          "nextSegmentId": "police_seiwaq",
+          "setFlags": ["told_police_about_demo"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "record_none",
+          "text": "特に関連する記録は見つかりませんでした。",
+          "nextSegmentId": "police_thanks",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_note",
+      "callerLines": [
+        "息子さんの件...なるほど。",
+        "参考になります。記録しておきます。",
+        "他に何かありますか？"
+      ],
+      "responses": [
+        {
+          "responseId": "note_suspicion",
+          "text": "...自殺ではない可能性はないんですか？",
+          "nextSegmentId": "police_dismiss",
+          "setFlags": ["asked_about_murder"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "note_nothing",
+          "text": "いえ、以上です。",
+          "nextSegmentId": "police_thanks",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_dismiss",
+      "callerLines": [
+        "今のところ自殺として処理しています。",
+        "遺書はありませんでしたが、精神的に追い詰められていたようですし。",
+        "何か気になることがあれば、また連絡ください。"
+      ],
+      "note": "警察は何も疑っていない。業務的に処理。",
+      "responses": [
+        {
+          "responseId": "dismiss_understood",
+          "text": "分かりました。",
+          "nextSegmentId": "police_end",
+          "setFlags": ["police_treating_as_suicide"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "dismiss_no_note",
+          "text": "遺書がないのは不自然では？",
+          "nextSegmentId": "police_no_note_response",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_no_note_response",
+      "callerLines": [
+        "自殺者の全員が遺書を残すわけではありませんからね。",
+        "ご心配は分かりますが、現場の状況から自殺と判断しています。",
+        "では、ご協力ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "no_note_end",
+          "text": "...分かりました。",
+          "nextSegmentId": null,
+          "setFlags": ["police_treating_as_suicide", "operator_suspicious"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_thanks",
+      "callerLines": [
+        "ご協力ありがとうございました。",
+        "何かあればまた連絡します。"
+      ],
+      "responses": [
+        {
+          "responseId": "thanks_end",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_end",
+      "callerLines": [
+        "では、失礼します。",
+        "ご協力ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_reply",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "police_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "suicide_doubt_thought",
+      "triggerCondition": {
+        "requiresFlag": "police_treating_as_suicide",
+        "requiresFlag2": "no_note_suspicious"
+      },
+      "triggerTiming": "after_call",
+      "content": "自殺として処理...でも遺書がない...本当に自殺なのか..."
+    },
+    {
+      "triggerId": "pattern_confirmed_thought",
+      "triggerCondition": {
+        "requiresFlag": "told_police_son_claim",
+        "requiresAnyFlag": ["kenji_dead_noted", "mari_abducted"]
+      },
+      "triggerTiming": "after_call",
+      "content": "誠和製薬に関わった人が次々と...偶然じゃない..."
+    }
+  ],
+  "note": "警察からの業務的な問い合わせ。中村と誠和製薬の関係を確認。警察は自殺として処理しており、何も疑っていない。プレイヤーが疑問を呈しても軽く流される。組織の力が警察にも及んでいることを示唆。"
+}

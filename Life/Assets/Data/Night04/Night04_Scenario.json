@@ -7,7 +7,15 @@
   "realSecondsPerGameMinute": 2.0,
   "difficulty": 4,
   "estimatedPlayTimeMinutes": 20,
-  "theTruth": "遺体は組織の内部告発者だった中間管理職の男性。林遥を逃がそうとして組織に捕まり、絞殺された。Night03の無言電話の主。所持品は全て回収され、身元不明の状態で発見される。現場に残された引きずり痕と、目撃された社用車はNight02の倉庫火災現場で見られた車と同じ。",
+  "theTruth": "遺体は林健二（林遥の偽兄/組織の中間管理職）。林遥を見つけられなかったため組織に「処分」された。Night03の無言電話の主。口を塞がれた状態で必死に助けを求めていた。所持品は全て回収され、身元不明の状態で発見される。現場に残された引きずり痕と、目撃された白いバンはNight02の倉庫火災現場・Night03の口論現場で見られた車と同じ。",
+  "eventSchedule": [
+    {
+      "eventId": "event_colleague_chat",
+      "title": "同僚との雑談",
+      "triggerTimeMinutes": 220,
+      "description": "休憩時間の同僚との雑談。山田美咲が弁護士をつけたという噂。"
+    }
+  ],
   "callSchedule": [
     {
       "callId": "call_body_discovery",
@@ -17,7 +25,7 @@
       "ringDuration": 45,
       "priority": 10,
       "isCritical": true,
-      "description": "眠れずに深夜の散歩をしていた高齢男性が、山中の登山道脇で遺体を発見。パニック状態で通報。"
+      "description": "眠れずに深夜の散歩をしていた高齢男性が、山中の登山道脇で遺体（林健二）を発見。パニック状態で通報。"
     },
     {
       "callId": "call_police_inquiry",
@@ -28,14 +36,27 @@
       "priority": 8,
       "isCritical": true,
       "description": "警察からの確認連絡。Night03の無言電話について質問してくる。"
+    },
+    {
+      "callId": "call_resident_witness",
+      "callerId": "mountain_resident",
+      "title": "昨夜の車のこと",
+      "incomingTimeMinutes": 250,
+      "ringDuration": 30,
+      "priority": 5,
+      "isCritical": false,
+      "description": "山の麓の住民から。昨夜深夜に白いバンが林道を通ったのを目撃。夜の最後の電話。",
+      "triggerCondition": {
+        "requiresFlag": "body_reported"
+      }
     }
   ],
   "initialWorldStates": [
     {
-      "stateId": "whistleblower_killed",
-      "description": "内部告発者が組織に殺された",
+      "stateId": "hayashi_kenji_killed",
+      "description": "林健二（偽兄）が組織に殺された。林遥を見つけられなかったため「処分」された。",
       "timeMinutes": 0,
-      "involvedCallerIds": ["unknown_voice"],
+      "involvedCallerIds": ["hayashi_kenji_fake"],
       "isKnownToPlayer": false
     },
     {
@@ -53,8 +74,8 @@
       "isKnownToPlayer": false
     },
     {
-      "stateId": "same_car",
-      "description": "Night02の火災現場で目撃された車と同じ社用車が使われた",
+      "stateId": "same_white_van",
+      "description": "Night02の火災現場、Night03の口論現場で目撃された白いバンと同じ",
       "timeMinutes": 0,
       "involvedCallerIds": [],
       "isKnownToPlayer": false
@@ -80,15 +101,15 @@
       "category": "Physical"
     },
     {
-      "evidenceId": "evidence_company_car",
-      "title": "社用車の目撃",
-      "content": "現場付近で見慣れない社用車が目撃された",
+      "evidenceId": "evidence_white_van",
+      "title": "白いバンの目撃",
+      "content": "現場付近で白いバンが目撃された",
       "category": "Testimony"
     },
     {
-      "evidenceId": "evidence_car_connection",
-      "title": "車の繋がり",
-      "content": "目撃された車はNight02の火災現場付近でも見られた車と同じ",
+      "evidenceId": "evidence_van_connection",
+      "title": "白いバンの繋がり",
+      "content": "目撃された白いバンはNight02の火災現場、Night03の口論現場でも見られた",
       "category": "Connection"
     },
     {

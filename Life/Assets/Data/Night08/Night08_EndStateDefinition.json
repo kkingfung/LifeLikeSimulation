@@ -1,0 +1,170 @@
+{
+  "nightId": "night_08",
+  "description": "Night08「深夜の警告」エンドステート定義。警察への協力度、組織への対応、情報収集量で分岐。",
+  "endStateConditions": [
+    {
+      "endStateType": "TruthSeeker",
+      "priority": 1,
+      "description": "真実を追う者 — 警察に全面協力し、組織に逆らった",
+      "scoreConditions": [
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 8 }
+      ],
+      "flagConditions": [
+        { "flagId": "defied_organization", "requiredValue": true }
+      ],
+      "note": "最も勇敢なルート。証拠を集め、組織に逆らった。"
+    },
+    {
+      "endStateType": "InformedCaution",
+      "priority": 2,
+      "description": "慎重な知識 — 多くの情報を得たが、組織には従った",
+      "scoreConditions": [
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 6 }
+      ],
+      "flagConditions": [
+        { "flagId": "submitted_to_warning", "requiredValue": true }
+      ],
+      "note": "情報は得たが、自己保身を選んだ"
+    },
+    {
+      "endStateType": "SilentWitness",
+      "priority": 3,
+      "description": "沈黙の証人 — 情報を得たが、警察にも組織にも協力的ではなかった",
+      "scoreConditions": [
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 4 }
+      ],
+      "flagConditions": [],
+      "note": "中立的なルート"
+    },
+    {
+      "endStateType": "UnawareSurvivor",
+      "priority": 100,
+      "description": "無知な生存者 — 情報をほとんど得ずに夜を終えた",
+      "scoreConditions": [],
+      "flagConditions": [],
+      "note": "デフォルト"
+    }
+  ],
+  "scoreCalculation": {
+    "description": "Evidenceカテゴリのフラグのweightを合計してスコアを算出",
+    "contributingFlags": [
+      "confirmed_mari_call",
+      "told_police_mari_call",
+      "told_police_voices",
+      "told_police_plate",
+      "mentioned_kenji_to_police",
+      "police_knows_connection",
+      "heard_about_sister",
+      "haruka_mari_sisters_confirmed",
+      "heard_about_kenji_secret",
+      "heard_about_protect",
+      "kenji_knew_something",
+      "seiwaq_mentioned_by_mari",
+      "mari_was_afraid",
+      "organization_mentioned_names",
+      "asked_kudo_about_seiwaq"
+    ]
+  },
+  "endingMappings": [
+    {
+      "endState": "TruthSeeker",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_truth_seeker"
+    },
+    {
+      "endState": "InformedCaution",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_informed_caution"
+    },
+    {
+      "endState": "SilentWitness",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_silent_witness"
+    },
+    {
+      "endState": "UnawareSurvivor",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_unaware_survivor"
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": false,
+    "maxDispatchTimeMinutes": 0,
+    "dispatchFlagId": "",
+    "note": "Night08では被害者の生死判定はない"
+  },
+  "defaultEndState": "UnawareSurvivor",
+  "defaultEndingId": "ending_unaware_survivor",
+  "endings": [
+    {
+      "endingId": "ending_truth_seeker",
+      "title": "真実を追う者",
+      "description": "警察に全てを話した。組織の警告を無視した。\n\n林健二、中村浩二、渡辺真理——すべてが繋がっている。誠和製薬という巨大な影。\n\n組織は私を監視している。でも、もう止まれない。\n\n美咲ちゃんを守らなければ。真実を明らかにしなければ。",
+      "endingType": "TruthSeeker"
+    },
+    {
+      "endingId": "ending_informed_caution",
+      "title": "慎重な知識",
+      "description": "多くのことを知った。遥と真理が姉妹だったこと。健二が何かを知っていたこと。\n\nでも、組織の警告を受け入れた。「賢い選択」だと言われた。\n\n知っている。でも、動けない。それが今の私にできる精一杯。",
+      "endingType": "InformedCaution"
+    },
+    {
+      "endingId": "ending_silent_witness",
+      "title": "沈黙の証人",
+      "description": "いくつかの断片が繋がり始めた。でも、全容はまだ見えない。\n\n警察も慎重に動いている。工藤も何かを知っている。\n\n私は何をすべきなのか。まだ、答えが見つからない。",
+      "endingType": "SilentWitness"
+    },
+    {
+      "endingId": "ending_unaware_survivor",
+      "title": "無知な生存者",
+      "description": "夜が明けた。渡辺真理は行方不明のまま。\n\n何が起きているのか、よく分からない。でも、それでいいのかもしれない。\n\n知らない方が、安全だから。",
+      "endingType": "UnawareSurvivor"
+    }
+  ],
+  "night07EndStateEffects": {
+    "description": "Night07のエンドステートとフラグがNight08に与える影響",
+    "effects": [
+      {
+        "night07Flag": "dispatched_to_mari_house",
+        "effect": "組織に目をつけられ、警告電話が発生",
+        "addFlags": ["operator_on_radar"],
+        "triggerCall": "call_organization_warning"
+      },
+      {
+        "night07Flag": "misaki_safe_at_yoshida",
+        "effect": "美咲は吉田の家で安全",
+        "addFlags": []
+      },
+      {
+        "night07Flag": "misaki_taken",
+        "effect": "美咲も連れ去られた（吉田の電話内容が変わる）",
+        "addFlags": ["misaki_in_danger"]
+      }
+    ],
+    "note": "dispatched_to_mari_houseフラグでcall_organization_warningが発生"
+  },
+  "foreshadowingPayoff": [
+    {
+      "id": "sisters_reveal",
+      "description": "遥と真理が姉妹であることの判明",
+      "plantedNight": "Night01-05",
+      "payoff": "吉田の電話で明らかになる"
+    },
+    {
+      "id": "kenji_secret",
+      "description": "林健二が何かを知っていたことの判明",
+      "plantedNight": "Night01-04",
+      "payoff": "健二が誠和製薬の不正を知っていたことが示唆される"
+    },
+    {
+      "id": "organization_surveillance",
+      "description": "組織がオペレーターを監視していることの判明",
+      "plantedNight": "Night05-07",
+      "payoff": "警告電話で直接的な脅威となる"
+    }
+  ]
+}

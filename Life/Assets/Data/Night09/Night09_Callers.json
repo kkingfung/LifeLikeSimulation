@@ -1,0 +1,113 @@
+{
+  "nightId": "night_09",
+  "description": "Night09「告発者」発信者定義。警察、吉田、内部告発者が登場。",
+  "callers": [
+    {
+      "callerId": "police_detective",
+      "displayName": "山田刑事",
+      "realName": "山田（○○署）",
+      "description": "Night08から継続。真理の行方不明と中村の件を捜査している。誠和製薬との繋がりに気づいている。",
+      "voiceDescription": "30代男性。真剣だが疲労が見える声。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 85,
+        "stability": 70,
+        "cooperation": 80,
+        "aggression": 20
+      },
+      "hiddenInfo": "上からの圧力を感じているが、真実を追っている。オペレーターを信頼し始めている。",
+      "trueMotivation": "事件の真相解明と被害者の救出",
+      "relations": [
+        {
+          "targetCallerId": "operator",
+          "relationType": "Ally",
+          "description": "協力関係にあるオペレーター",
+          "isKnown": true
+        }
+      ],
+      "organizationRelation": "opposed"
+    },
+    {
+      "callerId": "yoshida_kazuko",
+      "displayName": "吉田和子",
+      "realName": "吉田和子",
+      "description": "Night02から継続。真理の隣人。美咲を預かっている（yoshida_will_warn_mariルート）。",
+      "voiceDescription": "70代女性。疲れているが、強い意志を感じる声。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 95,
+        "stability": 60,
+        "cooperation": 85,
+        "aggression": 5
+      },
+      "hiddenInfo": "美咲を守ると決意している。真理のことを心配している。",
+      "trueMotivation": "美咲を守り抜くこと",
+      "relations": [
+        {
+          "targetCallerId": "hayashi_misaki",
+          "relationType": "Protected",
+          "description": "預かっている子供",
+          "isKnown": true
+        },
+        {
+          "targetCallerId": "watanabe_mari",
+          "relationType": "Neighbor",
+          "description": "行方不明の隣人",
+          "isKnown": true
+        }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "whistleblower",
+      "displayName": "不明",
+      "realName": "田村健一",
+      "description": "誠和製薬の元研究員。林健二の同僚だった。健二が殺される前に真実を聞いた。組織から逃げている。",
+      "voiceDescription": "40代男性。恐怖と焦りが混じった声。息切れしている。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 90,
+        "stability": 40,
+        "cooperation": 75,
+        "aggression": 10
+      },
+      "hiddenInfo": "健二から誠和製薬の秘密を聞いた。健二は遥の机の書類から真実を知ったと聞いている。美咲のことは知らない。遥が真の情報源だと知っている。",
+      "trueMotivation": "真実を伝えて、健二の死を無駄にしないこと",
+      "relations": [
+        {
+          "targetCallerId": "hayashi_kenji",
+          "relationType": "Colleague",
+          "description": "元同僚（故人）",
+          "isKnown": true
+        }
+      ],
+      "organizationRelation": "victim",
+      "note": "健二と遥は同じ苗字だが家族ではなく偶然。告発者は遥が秘密を発見した本人であり、健二は遥の机の書類から少しだけ知って巻き込まれたと理解している。"
+    },
+    {
+      "callerId": "kudo_shinji",
+      "displayName": "工藤主任",
+      "realName": "工藤真司",
+      "description": "緊急通報センターの主任。オペレーターを心配している。",
+      "voiceDescription": "40代男性。落ち着いた声だが、心配が滲む。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 70,
+        "stability": 80,
+        "cooperation": 65,
+        "aggression": 15
+      },
+      "hiddenInfo": "オペレーターが何かに巻き込まれていることに気づいている。助けたいが、どこまで踏み込んでいいか分からない。",
+      "trueMotivation": "部下を守りたい",
+      "relations": [
+        {
+          "targetCallerId": "operator",
+          "relationType": "Colleague",
+          "description": "部下のオペレーター",
+          "isKnown": true
+        }
+      ],
+      "organizationRelation": "system_aligned"
+    }
+  ]
+}

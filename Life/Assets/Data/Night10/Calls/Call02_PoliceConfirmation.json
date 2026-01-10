@@ -1,0 +1,205 @@
+{
+  "callId": "call_police_confirmation",
+  "callerId": "police_detective",
+  "title": "警察からの身元確認",
+  "description": "警察が遺体の身元を確認。渡辺真理と判明。オペレーターに報告。",
+  "segments": [
+    {
+      "segmentId": "police_intro",
+      "callerLines": [
+        "○○署の山田です。",
+        "先ほどの河川敷の件で、ご報告があります。",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "intro_listen",
+          "text": "お願いします。",
+          "nextSegmentId": "police_identification",
+          "setFlags": ["police_confirmation_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_identification",
+      "callerLines": [
+        "遺体の身元が判明しました。",
+        "渡辺真理さん、32歳。",
+        "...行方不明届が出ていた方です。"
+      ],
+      "responses": [
+        {
+          "responseId": "id_shock",
+          "text": "...渡辺さん...",
+          "nextSegmentId": "police_details",
+          "setFlags": ["mari_death_confirmed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "id_ask_cause",
+          "text": "死因は分かりましたか？",
+          "nextSegmentId": "police_cause",
+          "setFlags": ["mari_death_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_cause",
+      "callerLines": [
+        "検視はこれからですが...",
+        "首に絞められた痕がありました。",
+        "他殺と見て捜査しています。"
+      ],
+      "responses": [
+        {
+          "responseId": "cause_continue",
+          "text": "...",
+          "nextSegmentId": "police_details",
+          "setFlags": ["mari_murdered"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_details",
+      "callerLines": [
+        "渡辺さんは林遥さんの姉でしたね。",
+        "林健二の件、中村浩二の件...",
+        "すべて繋がっているように見えます。"
+      ],
+      "responses": [
+        {
+          "responseId": "details_agree",
+          "text": "私もそう思います。",
+          "nextSegmentId": "police_ask_info",
+          "setFlags": ["connection_acknowledged"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "details_ask_next",
+          "text": "これからどうするんですか？",
+          "nextSegmentId": "police_next_steps",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_ask_info",
+      "callerLines": [
+        "渡辺さんについて、何か知っていることはありますか？",
+        "誰かと一緒だったとか...",
+        "どこに住んでいたとか..."
+      ],
+      "responses": [
+        {
+          "responseId": "info_yoshida",
+          "text": "吉田さんという方が、渡辺さんの近所に住んでいました。",
+          "nextSegmentId": "police_yoshida_info",
+          "setFlags": ["told_police_yoshida"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresAnyFlag": ["yoshida_status_call", "operator_knows_misaki_with_yoshida"]
+          }
+        },
+        {
+          "responseId": "info_nothing",
+          "text": "私が知っているのは通話の内容だけです。",
+          "nextSegmentId": "police_next_steps",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_yoshida_info",
+      "callerLines": [
+        "吉田さん...? 詳しく教えてください。",
+        "住所は分かりますか？"
+      ],
+      "responses": [
+        {
+          "responseId": "yoshida_address",
+          "text": "通話記録から確認できます。",
+          "nextSegmentId": "police_will_check",
+          "setFlags": ["police_knows_yoshida"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_will_check",
+      "callerLines": [
+        "分かりました。確認してみます。",
+        "何か分かったら連絡します。",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "check_end",
+          "text": "お願いします。",
+          "nextSegmentId": null,
+          "setFlags": ["police_checking_yoshida"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_next_steps",
+      "callerLines": [
+        "誠和製薬との関連を調べています。",
+        "まだ証拠が足りませんが...",
+        "諦めるつもりはありません。"
+      ],
+      "responses": [
+        {
+          "responseId": "next_encourage",
+          "text": "お願いします。",
+          "nextSegmentId": "police_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_end",
+      "callerLines": [
+        "何か新しいことが分かったら連絡します。",
+        "では。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_close",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "police_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "mari_dead_thought",
+      "triggerCondition": {
+        "requiresFlag": "mari_death_confirmed"
+      },
+      "triggerTiming": "after_call",
+      "content": "真理さんが死んだ...殺された...美咲ちゃんは...!?"
+    },
+    {
+      "triggerId": "must_act_thought",
+      "triggerCondition": {
+        "requiresFlag": "police_knows_yoshida"
+      },
+      "triggerTiming": "after_call",
+      "content": "吉田さんのところに警察が行けば...美咲ちゃんを守れるかもしれない..."
+    }
+  ],
+  "note": "Night10の2番目の通話。警察が真理の死を確認。オペレーターは衝撃を受ける。吉田のことを警察に伝えるかどうかで分岐。この通話の後、オペレーターの選択イベントが発生。"
+}

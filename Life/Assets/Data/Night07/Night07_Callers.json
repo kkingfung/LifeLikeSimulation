@@ -1,0 +1,128 @@
+{
+  "nightId": "night_07",
+  "description": "第7夜「崩壊の夜」発信者データ。中村浩二の死、真理の連れ去り、組織の最終攻撃。",
+  "callers": [
+    {
+      "callerId": "landlord",
+      "displayName": "大家",
+      "realName": "不明",
+      "description": "中村浩二が住んでいたアパートの大家。家賃催促で訪問し、中村の遺体を発見した。",
+      "voiceDescription": "50代男性。最初はイライラしているが、遺体発見後は動揺している。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 85,
+        "stability": 60,
+        "cooperation": 75,
+        "aggression": 25
+      },
+      "hiddenInfo": "特になし。家賃を払わない住人に文句を言いに来たら遺体を発見してしまった不運な人。",
+      "trueMotivation": "家賃を回収したかった。遺体発見後は恐怖と義務感。",
+      "relations": [
+        { "targetCallerId": "nakamura_koji", "relationType": "Acquaintance", "description": "住人（滞納気味）", "isKnown": true }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "watanabe_mari",
+      "displayName": "渡辺真理",
+      "realName": "渡辺真理",
+      "description": "林遥の親友。美咲を預かっている。組織に狙われている。Night06で吉田から警告を受けた場合、事前に美咲を吉田に預けていた。",
+      "voiceDescription": "切迫した女性の声。恐怖と決意が混じっている。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 90,
+        "stability": 40,
+        "cooperation": 85,
+        "aggression": 30
+      },
+      "hiddenInfo": "遥から美咲を託された。USBのことは知らないが、何か重要なものがあると薄々感じている。組織の存在を認識し、逃げる準備をしていた。",
+      "trueMotivation": "美咲を守りたい。生き延びたい。",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Friend", "description": "親友（故人）", "isKnown": true },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Family", "description": "預かっている子", "isKnown": true },
+        { "targetCallerId": "yoshida_kazuko", "relationType": "Neighbor", "description": "隣人", "isKnown": true }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "police_detective",
+      "displayName": "刑事",
+      "realName": "不明",
+      "description": "中村浩二の死を調査している刑事。自殺として処理しようとしているが、いくつか不審点がある。",
+      "voiceDescription": "40代男性の事務的な声。疲れている。",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 70,
+        "stability": 80,
+        "cooperation": 60,
+        "aggression": 20
+      },
+      "hiddenInfo": "上からの圧力を感じている。自殺として処理するよう暗に指示されているが、遺書がないことに引っかかっている。",
+      "trueMotivation": "事件を穏便に処理したい。でも真実も気になる。",
+      "relations": [],
+      "organizationRelation": "system_aligned",
+      "note": "組織の手先ではないが、組織の影響下にある上層部の指示に従っている"
+    },
+    {
+      "callerId": "yoshida_kazuko",
+      "displayName": "吉田和子",
+      "realName": "吉田和子",
+      "description": "真理の隣人。Night06で警告した場合、真理から美咲を預かっている。真理が連れ去られるのを目撃する。",
+      "voiceDescription": "震えた高齢女性の声。恐怖と決意が混じっている。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 95,
+        "stability": 50,
+        "cooperation": 90,
+        "aggression": 5
+      },
+      "hiddenInfo": "美咲を預かっている（yoshida_will_warn_mari の場合）。美咲のことは誰にも言わない決意をしている。",
+      "trueMotivation": "美咲を守りたい。真理を助けたい。",
+      "relations": [
+        { "targetCallerId": "watanabe_mari", "relationType": "Neighbor", "description": "隣人", "isKnown": true },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Protected", "description": "預かっている子", "isKnown": true }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "nakamura_koji",
+      "displayName": "中村浩二",
+      "realName": "中村浩二",
+      "description": "Night05-06で抗議活動をしていた男性。息子を誠和製薬の薬で亡くした。Night07では遺体として発見される。",
+      "voiceDescription": "（Night07では登場しない — 遺体として発見されるのみ）",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 95,
+        "stability": 30,
+        "cooperation": 40,
+        "aggression": 60
+      },
+      "hiddenInfo": "組織に口封じされた。自殺に見せかけられたが、遺書がない。",
+      "trueMotivation": "（死亡）息子の仇を取りたかった",
+      "relations": [],
+      "organizationRelation": "victim",
+      "note": "Night05-06で組織について騒ぎすぎたため、排除された"
+    },
+    {
+      "callerId": "hayashi_misaki",
+      "displayName": "林美咲",
+      "realName": "林美咲",
+      "description": "林遥の娘、5歳。吉田の家に預けられている（yoshida_will_warn_mari の場合）か、真理と一緒にいる。",
+      "voiceDescription": "怯えた幼い女の子の声。",
+      "voicePitch": 1.3,
+      "personality": {
+        "honesty": 100,
+        "stability": 40,
+        "cooperation": 90,
+        "aggression": 0
+      },
+      "hiddenInfo": "USBが入ったキーホルダーを持っている。中身は知らない。",
+      "trueMotivation": "安全でいたい。ママに会いたい。",
+      "relations": [
+        { "targetCallerId": "watanabe_mari", "relationType": "Family", "description": "まりおばちゃん", "isKnown": true },
+        { "targetCallerId": "yoshida_kazuko", "relationType": "Acquaintance", "description": "やさしいおばあちゃん", "isKnown": true }
+      ],
+      "organizationRelation": "none"
+    }
+  ]
+}

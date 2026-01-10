@@ -183,25 +183,25 @@ MonoBehaviour:
     persistsAcrossNights: 1
     cancelsFlags: []
   - flagId: supervisor_wary
-    category: 7
+    category: 10
     description: "Night01\u306EExposed\u306B\u3088\u308A\u4E3B\u4EFB\u304C\u8B66\u6212"
     weight: 0
     persistsAcrossNights: 0
     cancelsFlags: []
   - flagId: supervisor_trusting
-    category: 7
+    category: 10
     description: "Night01\u306EComplicit\u306B\u3088\u308A\u4E3B\u4EFB\u304C\u4FE1\u983C"
     weight: 0
     persistsAcrossNights: 0
     cancelsFlags: []
   - flagId: supervisor_suspicious
-    category: 7
+    category: 10
     description: "Night01\u306EFlagged\u306B\u3088\u308A\u4E3B\u4EFB\u304C\u7591\u60D1"
     weight: 0
     persistsAcrossNights: 0
     cancelsFlags: []
   - flagId: supervisor_dismissive
-    category: 7
+    category: 10
     description: "Night01\u306EAbsorbed\u306B\u3088\u308A\u4E3B\u4EFB\u304C\u7121\u95A2\u5FC3"
     weight: 0
     persistsAcrossNights: 0

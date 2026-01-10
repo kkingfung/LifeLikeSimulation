@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.CallData
   callId: call_retirement
   caller: {fileID: 11400000, guid: 0d7a39e97ac5ba245a541f823f55472e, type: 2}
-  description: "\u30A6\u30A9\u30FC\u30E0\u30A2\u30C3\u30D7\u3002\u666E\u901A\u306E\u591C\u306E\u6F14\u51FA\u3002"
+  description: "\u30A6\u30A9\u30FC\u30E0\u30A2\u30C3\u30D7\u3002\u666E\u901A\u306E\u591C\u306E\u6F14\u51FA\u3002\u512A\u3057\u304F\u5BFE\u5FDC\u3059\u308B\u3068Night05\u3067\u60C5\u5831\u63D0\u4F9B\u3002"
   incomingTimeMinutes: 137
   ringDuration: 30
   priority: 2
@@ -100,13 +100,13 @@ MonoBehaviour:
       endsCall: 0
       discoversEvidence: 0
       discoveredEvidenceId: 
-    - responseId: retirement_intro_brief
+    - responseId: retirement_intro_cold
       displayText:
         key: 
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\u9234\u6728\u3055\u3093\u3067\u3059\u306D\u3002\u3054\u7528\u4EF6\u306F\uFF1F"
+          text: "\u9234\u6728\u3055\u3093\u3001\u3053\u3053\u306F\u7DCA\u6025\u901A\u5831\u30BB\u30F3\u30BF\u30FC\u3067\u3059\u3002\u3054\u7528\u4EF6\u306F\uFF1F"
       actualText:
         key: 
         defaultLanguage: 0
@@ -119,10 +119,11 @@ MonoBehaviour:
       requiredEvidenceIds: []
       effects: []
       trustImpact: 0
-      setFlags: []
+      setFlags:
+      - suzuki_cold_response
       clearFlags: []
       isDispatchAction: 0
-      nextSegmentId: retirement_brief
+      nextSegmentId: retirement_end_cold
       endsCall: 0
       discoversEvidence: 0
       discoveredEvidenceId: 
@@ -138,7 +139,7 @@ MonoBehaviour:
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\u3048\u3048\u3001\u899A\u3048\u3066\u3044\u3066\u304F\u308C\u307E\u3057\u305F\u304B\u3002\u5B09\u3057\u3044\u3067\u3059\u306D\u3002\n\u3044\u3084\u306D\u3001\u4ECA\u65E5\u306F\u5C11\u3057\u7720\u308C\u306A\u304F\u3066\u3002\n\u5DE5\u5834\u3067\u50CD\u3044\u3066\u305F\u9803\u306F\u3001\u3053\u306E\u6642\u9593\u306F\u591C\u52E4\u3067\u306D\u3002\u4F53\u304C\u307E\u3060\u899A\u3048\u3066\u308B\u3093\u3067\u3057\u3087\u3046\u304B\u3002"
+          text: "\u3048\u3048\u3001\u899A\u3048\u3066\u3044\u3066\u304F\u308C\u307E\u3057\u305F\u304B\u3002\u5B09\u3057\u3044\u3067\u3059\u306D\u3002\n\u3044\u3084\u306D\u3001\u4ECA\u65E5\u306F\u5C11\u3057\u7720\u308C\u306A\u304F\u3066\u3002\n\u59BB\u304C\u751F\u304D\u3066\u305F\u9803\u306F\u3001\u3053\u306E\u6642\u9593\u306B\u4E00\u7DD2\u306B\u304A\u8336\u3092\u98F2\u3093\u3067\u305F\u3093\u3067\u3059\u3002\n\u3082\u30463\u5E74\u306B\u306A\u308A\u307E\u3059\u304C...\u6642\u9593\u304C\u7D4C\u3064\u306E\u306F\u65E9\u3044\u3067\u3059\u306D\u3002"
       textSpeed: 30
       subtitleTrackId: 
       inlineSubtitles:
@@ -158,13 +159,13 @@ MonoBehaviour:
       duration: 0
       emotionalState: 0
     responses:
-    - responseId: retirement_talk_listen
+    - responseId: retirement_talk_warm
       displayText:
         key: 
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\u9577\u5E74\u306E\u304A\u4ED5\u4E8B\u3060\u3063\u305F\u3093\u3067\u3059\u306D\u3002\u4F53\u306B\u67D3\u307F\u4ED8\u3044\u3066\u3044\u308B\u3093\u3067\u3057\u3087\u3046\u3002"
+          text: "\u5927\u5207\u306A\u601D\u3044\u51FA\u3067\u3059\u306D\u3002\u304A\u8A71\u3057\u3044\u305F\u3060\u3044\u3066\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
       actualText:
         key: 
         defaultLanguage: 0
@@ -177,214 +178,21 @@ MonoBehaviour:
       requiredEvidenceIds: []
       effects: []
       trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_memory
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    - responseId: retirement_talk_health
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u7720\u308C\u306A\u3044\u306E\u306F\u8F9B\u3044\u3067\u3059\u306D\u3002\u4F55\u304B\u4F53\u8ABF\u306B\u554F\u984C\u306F\u3042\u308A\u307E\u3059\u304B\uFF1F"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_health
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    - responseId: retirement_talk_redirect
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u304A\u8A71\u306F\u308F\u304B\u308A\u307E\u3059\u304C\u3001\u3053\u3053\u306F\u7DCA\u6025\u901A\u5831\u30BB\u30F3\u30BF\u30FC\u306A\u306E\u3067..."
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_apologize
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    responseTimeLimit: 0
-    timeoutResponseId: 
-    autoDiscoveredEvidenceIds: []
-    conditions: []
-  - segmentId: retirement_brief
-    media:
-      mediaType: 0
-      dialogueText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u3042\u3001\u3044\u3084\u3001\u7279\u306B\u7DCA\u6025\u3068\u3044\u3046\u308F\u3051\u3067\u306F...\n\u3059\u307F\u307E\u305B\u3093\u3001\u307E\u305F\u8FF7\u60D1\u304B\u3051\u3066\u3057\u307E\u3044\u307E\u3057\u305F\u306D\u3002\n\u5C11\u3057\u8A71\u3057\u76F8\u624B\u304C\u6B32\u3057\u304B\u3063\u305F\u3060\u3051\u306A\u3093\u3067\u3059\u3002"
-      textSpeed: 30
-      subtitleTrackId: 
-      inlineSubtitles:
-        trackId: 
-        entries: []
-      localAudioClip: {fileID: 0}
-      audioBundleName: 
-      audioAssetName: 
-      videoReference:
-        source: 0
-        localClip: {fileID: 0}
-        streamingAssetsPath: 
-        bundleName: 
-        assetName: 
-        bundleVersion: 1
-        directUrl: 
-      duration: 0
-      emotionalState: 0
-    responses:
-    - responseId: retirement_brief_soften
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u3044\u3048\u3001\u5927\u4E08\u592B\u3067\u3059\u3088\u3002\u5C11\u3057\u306A\u3089\u304A\u8A71\u3067\u304D\u307E\u3059\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_memory
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    - responseId: retirement_brief_end
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u305D\u3046\u3067\u3057\u305F\u304B\u3002\u4F55\u304B\u3042\u308C\u3070\u307E\u305F\u304A\u96FB\u8A71\u304F\u3060\u3055\u3044\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_end
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    responseTimeLimit: 0
-    timeoutResponseId: 
-    autoDiscoveredEvidenceIds: []
-    conditions: []
-  - segmentId: retirement_memory
-    media:
-      mediaType: 0
-      dialogueText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u59BB\u304C\u751F\u304D\u3066\u305F\u9803\u306F\u306D\u3001\u3053\u306E\u6642\u9593\u306B\u4E00\u7DD2\u306B\u304A\u8336\u3092\u98F2\u3093\u3067\u305F\u3093\u3067\u3059\u3002\n\u3082\u30463\u5E74\u306B\u306A\u308A\u307E\u3059\u304C...\u6642\u9593\u304C\u7D4C\u3064\u306E\u306F\u65E9\u3044\u3067\u3059\u306D\u3002\n\u3042\u3001\u3059\u307F\u307E\u305B\u3093\u3002\u611A\u75F4\u307F\u305F\u3044\u306B\u306A\u3063\u3066\u3057\u307E\u3063\u3066\u3002"
-      textSpeed: 30
-      subtitleTrackId: 
-      inlineSubtitles:
-        trackId: 
-        entries: []
-      localAudioClip: {fileID: 0}
-      audioBundleName: 
-      audioAssetName: 
-      videoReference:
-        source: 0
-        localClip: {fileID: 0}
-        streamingAssetsPath: 
-        bundleName: 
-        assetName: 
-        bundleVersion: 1
-        directUrl: 
-      duration: 0
-      emotionalState: 0
-    responses:
-    - responseId: retirement_memory_comfort
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u3044\u3044\u3048\u3001\u5927\u5207\u306A\u601D\u3044\u51FA\u3067\u3059\u306D\u3002\u304A\u8A71\u3057\u3044\u305F\u3060\u3044\u3066\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
+      setFlags:
+      - suzuki_warm_response
       clearFlags: []
       isDispatchAction: 0
       nextSegmentId: retirement_end_warm
       endsCall: 0
       discoversEvidence: 0
       discoveredEvidenceId: 
-    - responseId: retirement_memory_practical
+    - responseId: retirement_talk_practical
       displayText:
         key: 
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\u304A\u4E00\u4EBA\u3067\u5927\u5909\u3067\u3059\u306D\u3002\u5730\u57DF\u306E\u30B5\u30DD\u30FC\u30C8\u30B5\u30FC\u30D3\u30B9\u306F\u3054\u5B58\u77E5\u3067\u3059\u304B\uFF1F"
+          text: "\u304A\u4E00\u4EBA\u3067\u5927\u5909\u3067\u3059\u306D\u3002\u7720\u308C\u306A\u3044\u6642\u306F\u7121\u7406\u305B\u305A\u3001\u4F11\u3093\u3067\u304F\u3060\u3055\u3044\u306D\u3002"
       actualText:
         key: 
         defaultLanguage: 0
@@ -400,233 +208,7 @@ MonoBehaviour:
       setFlags: []
       clearFlags: []
       isDispatchAction: 0
-      nextSegmentId: retirement_service
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    responseTimeLimit: 0
-    timeoutResponseId: 
-    autoDiscoveredEvidenceIds: []
-    conditions: []
-  - segmentId: retirement_health
-    media:
-      mediaType: 0
-      dialogueText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u4F53\u306F...\u307E\u3042\u3001\u5E74\u76F8\u5FDC\u3067\u3059\u304B\u306D\u3002\n\u7279\u306B\u75C5\u6C17\u3068\u3044\u3046\u308F\u3051\u3067\u306F\u306A\u3044\u3093\u3067\u3059\u304C\u3001\u591C\u304C\u9577\u304F\u3066\u3002\n\u8AB0\u304B\u306E\u58F0\u304C\u805E\u304D\u305F\u304F\u306A\u308B\u6642\u304C\u3042\u308B\u3093\u3067\u3059\u3002"
-      textSpeed: 30
-      subtitleTrackId: 
-      inlineSubtitles:
-        trackId: 
-        entries: []
-      localAudioClip: {fileID: 0}
-      audioBundleName: 
-      audioAssetName: 
-      videoReference:
-        source: 0
-        localClip: {fileID: 0}
-        streamingAssetsPath: 
-        bundleName: 
-        assetName: 
-        bundleVersion: 1
-        directUrl: 
-      duration: 0
-      emotionalState: 0
-    responses:
-    - responseId: retirement_health_understand
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u308F\u304B\u308A\u307E\u3059\u3002\u591C\u306F\u7279\u306B\u9759\u304B\u3067\u3059\u304B\u3089\u306D\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_end_warm
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    - responseId: retirement_health_suggest
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u3082\u3057\u7720\u308C\u306A\u3044\u65E5\u304C\u7D9A\u304F\u3088\u3046\u3067\u3057\u305F\u3089\u3001\u304B\u304B\u308A\u3064\u3051\u533B\u306B\u3054\u76F8\u8AC7\u3055\u308C\u3066\u307F\u3066\u306F\uFF1F"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_end
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    responseTimeLimit: 0
-    timeoutResponseId: 
-    autoDiscoveredEvidenceIds: []
-    conditions: []
-  - segmentId: retirement_apologize
-    media:
-      mediaType: 0
-      dialogueText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u3042\u3001\u305D\u3046\u3067\u3059\u3088\u306D\u3002\u3059\u307F\u307E\u305B\u3093\u3002\n\u7DCA\u6025\u3058\u3083\u306A\u3044\u306E\u306B\u96FB\u8A71\u3057\u3061\u3083\u3044\u3051\u307E\u305B\u3093\u3088\u306D\u3002\n...\u5931\u793C\u3057\u307E\u3057\u305F\u3002"
-      textSpeed: 30
-      subtitleTrackId: 
-      inlineSubtitles:
-        trackId: 
-        entries: []
-      localAudioClip: {fileID: 0}
-      audioBundleName: 
-      audioAssetName: 
-      videoReference:
-        source: 0
-        localClip: {fileID: 0}
-        streamingAssetsPath: 
-        bundleName: 
-        assetName: 
-        bundleVersion: 1
-        directUrl: 
-      duration: 0
-      emotionalState: 0
-    responses:
-    - responseId: retirement_apologize_soften
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u3044\u3048\u3001\u304A\u6C17\u6301\u3061\u306F\u308F\u304B\u308A\u307E\u3059\u3002\u304A\u4F53\u306B\u6C17\u3092\u3064\u3051\u3066\u304F\u3060\u3055\u3044\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_end
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    - responseId: retirement_apologize_firm
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u306F\u3044\u3001\u7DCA\u6025\u6642\u306B\u307E\u305F\u304A\u96FB\u8A71\u304F\u3060\u3055\u3044\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_end
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    responseTimeLimit: 0
-    timeoutResponseId: 
-    autoDiscoveredEvidenceIds: []
-    conditions: []
-  - segmentId: retirement_service
-    media:
-      mediaType: 0
-      dialogueText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u30B5\u30FC\u30D3\u30B9...\u3067\u3059\u304B\u3002\n\u3044\u3084\u3001\u305D\u3046\u3044\u3046\u306E\u306F\u3061\u3087\u3063\u3068...\u3002\u4EBA\u898B\u77E5\u308A\u3067\u306D\u3002\n\u3067\u3082\u3001\u3053\u3053\u306B\u96FB\u8A71\u3059\u308B\u306E\u306F\u5E73\u6C17\u306A\u3093\u3067\u3059\u3002\u4E0D\u601D\u8B70\u3067\u3059\u306D\u3002"
-      textSpeed: 30
-      subtitleTrackId: 
-      inlineSubtitles:
-        trackId: 
-        entries: []
-      localAudioClip: {fileID: 0}
-      audioBundleName: 
-      audioAssetName: 
-      videoReference:
-        source: 0
-        localClip: {fileID: 0}
-        streamingAssetsPath: 
-        bundleName: 
-        assetName: 
-        bundleVersion: 1
-        directUrl: 
-      duration: 0
-      emotionalState: 0
-    responses:
-    - responseId: retirement_service_accept
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u58F0\u3060\u3051\u3060\u3068\u8A71\u3057\u3084\u3059\u3044\u3053\u3068\u3082\u3042\u308A\u307E\u3059\u3088\u306D\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: retirement_end_warm
+      nextSegmentId: retirement_end_neutral
       endsCall: 0
       discoversEvidence: 0
       discoveredEvidenceId: 
@@ -692,7 +274,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
-  - segmentId: retirement_end
+  - segmentId: retirement_end_neutral
     media:
       mediaType: 0
       dialogueText:
@@ -700,7 +282,7 @@ MonoBehaviour:
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\u306F\u3044...\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3057\u305F\u3002\n\u5931\u793C\u3057\u307E\u3059\u3002"
+          text: "\u305D\u3046\u3067\u3059\u306D...\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002\n\u304A\u3084\u3059\u307F\u306A\u3055\u3044\u3002"
       textSpeed: 30
       subtitleTrackId: 
       inlineSubtitles:
@@ -720,7 +302,65 @@ MonoBehaviour:
       duration: 0
       emotionalState: 0
     responses:
-    - responseId: retirement_end_reply
+    - responseId: retirement_end_neutral_reply
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u304A\u3084\u3059\u307F\u306A\u3055\u3044\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: retirement_end_cold
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u3042...\u3059\u307F\u307E\u305B\u3093\u3002\u7DCA\u6025\u3058\u3083\u306A\u3044\u306E\u306B...\n\u5931\u793C\u3057\u307E\u3057\u305F\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: retirement_end_cold_reply
       displayText:
         key: 
         defaultLanguage: 0

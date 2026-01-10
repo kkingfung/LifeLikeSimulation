@@ -18,21 +18,27 @@ MonoBehaviour:
   startTimeMinutes: 1320
   endTimeMinutes: 360
   realSecondsPerGameMinute: 2
-  callers: []
-  calls: []
+  callers:
+  - {fileID: 11400000, guid: e241fea61071fa141ae6c5296126d686, type: 2}
+  - {fileID: 11400000, guid: 437be28581271e14484617b73644b077, type: 2}
+  - {fileID: 11400000, guid: ab5fef4a5a88dad4c8d086ac2fd09c18, type: 2}
+  calls:
+  - {fileID: 11400000, guid: 23a73381e19a7aa40ae7d7a658e72d15, type: 2}
+  - {fileID: 11400000, guid: cdbdcd99a8f1f0b46b90fd7bc325d15c, type: 2}
+  - {fileID: 11400000, guid: ef9c0566e9d87ba43998152c3b70cc97, type: 2}
   evidenceTemplates:
   - {fileID: 11400000, guid: 4e58d7285962f1646903e29b333faebc, type: 2}
   - {fileID: 11400000, guid: 54b8afb833929924986ad216f396efc3, type: 2}
   - {fileID: 11400000, guid: 301c3bb6adce2b246b6216550a3c36c4, type: 2}
-  - {fileID: 11400000, guid: c043305d860946d4a9e03753501a51e5, type: 2}
-  - {fileID: 11400000, guid: af2a5b792c25e7c4b9548d61df9b3365, type: 2}
+  - {fileID: 11400000, guid: b17ac613fe0a3b34881a2b5968408f3b, type: 2}
+  - {fileID: 11400000, guid: 48d1494831fb5094a8ed21c861fbbbc0, type: 2}
   - {fileID: 11400000, guid: 2627bd77ccf8f1247bcdd3ce31dd0aab, type: 2}
   initialWorldStates:
-  - stateId: whistleblower_killed
-    description: "\u5185\u90E8\u544A\u767A\u8005\u304C\u7D44\u7E54\u306B\u6BBA\u3055\u308C\u305F"
+  - stateId: hayashi_kenji_killed
+    description: "\u6797\u5065\u4E8C\uFF08\u507D\u5144\uFF09\u304C\u7D44\u7E54\u306B\u6BBA\u3055\u308C\u305F\u3002\u6797\u9065\u3092\u898B\u3064\u3051\u3089\u308C\u306A\u304B\u3063\u305F\u305F\u3081\u300C\u51E6\u5206\u300D\u3055\u308C\u305F\u3002"
     timeMinutes: 0
     involvedCallerIds:
-    - unknown_voice
+    - hayashi_kenji_fake
     isKnownToPlayer: 0
   - stateId: body_dumped
     description: "\u907A\u4F53\u304C\u5C71\u4E2D\u306B\u907A\u68C4\u3055\u308C\u305F"
@@ -44,12 +50,12 @@ MonoBehaviour:
     timeMinutes: 0
     involvedCallerIds: []
     isKnownToPlayer: 0
-  - stateId: same_car
-    description: "Night02\u306E\u706B\u707D\u73FE\u5834\u3067\u76EE\u6483\u3055\u308C\u305F\u8ECA\u3068\u540C\u3058\u793E\u7528\u8ECA\u304C\u4F7F\u308F\u308C\u305F"
+  - stateId: same_white_van
+    description: "Night02\u306E\u706B\u707D\u73FE\u5834\u3001Night03\u306E\u53E3\u8AD6\u73FE\u5834\u3067\u76EE\u6483\u3055\u308C\u305F\u767D\u3044\u30D0\u30F3\u3068\u540C\u3058"
     timeMinutes: 0
     involvedCallerIds: []
     isKnownToPlayer: 0
-  theTruth: "\u907A\u4F53\u306F\u7D44\u7E54\u306E\u5185\u90E8\u544A\u767A\u8005\u3060\u3063\u305F\u4E2D\u9593\u7BA1\u7406\u8077\u306E\u7537\u6027\u3002\u6797\u9065\u3092\u9003\u304C\u305D\u3046\u3068\u3057\u3066\u7D44\u7E54\u306B\u6355\u307E\u308A\u3001\u7D5E\u6BBA\u3055\u308C\u305F\u3002Night03\u306E\u7121\u8A00\u96FB\u8A71\u306E\u4E3B\u3002\u6240\u6301\u54C1\u306F\u5168\u3066\u56DE\u53CE\u3055\u308C\u3001\u8EAB\u5143\u4E0D\u660E\u306E\u72B6\u614B\u3067\u767A\u898B\u3055\u308C\u308B\u3002\u73FE\u5834\u306B\u6B8B\u3055\u308C\u305F\u5F15\u304D\u305A\u308A\u75D5\u3068\u3001\u76EE\u6483\u3055\u308C\u305F\u793E\u7528\u8ECA\u306FNight02\u306E\u5009\u5EAB\u706B\u707D\u73FE\u5834\u3067\u898B\u3089\u308C\u305F\u8ECA\u3068\u540C\u3058\u3002"
+  theTruth: "\u907A\u4F53\u306F\u6797\u5065\u4E8C\uFF08\u6797\u9065\u306E\u507D\u5144/\u7D44\u7E54\u306E\u4E2D\u9593\u7BA1\u7406\u8077\uFF09\u3002\u6797\u9065\u3092\u898B\u3064\u3051\u3089\u308C\u306A\u304B\u3063\u305F\u305F\u3081\u7D44\u7E54\u306B\u300C\u51E6\u5206\u300D\u3055\u308C\u305F\u3002Night03\u306E\u7121\u8A00\u96FB\u8A71\u306E\u4E3B\u3002\u53E3\u3092\u585E\u304C\u308C\u305F\u72B6\u614B\u3067\u5FC5\u6B7B\u306B\u52A9\u3051\u3092\u6C42\u3081\u3066\u3044\u305F\u3002\u6240\u6301\u54C1\u306F\u5168\u3066\u56DE\u53CE\u3055\u308C\u3001\u8EAB\u5143\u4E0D\u660E\u306E\u72B6\u614B\u3067\u767A\u898B\u3055\u308C\u308B\u3002\u73FE\u5834\u306B\u6B8B\u3055\u308C\u305F\u5F15\u304D\u305A\u308A\u75D5\u3068\u3001\u76EE\u6483\u3055\u308C\u305F\u767D\u3044\u30D0\u30F3\u306FNight02\u306E\u5009\u5EAB\u706B\u707D\u73FE\u5834\u30FBNight03\u306E\u53E3\u8AD6\u73FE\u5834\u3067\u898B\u3089\u308C\u305F\u8ECA\u3068\u540C\u3058\u3002"
   endings: []
   dialogueDatabase: {fileID: 0}
   difficulty: 4

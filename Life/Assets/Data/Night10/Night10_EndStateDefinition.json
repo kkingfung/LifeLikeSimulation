@@ -1,0 +1,150 @@
+{
+  "nightId": "night_10",
+  "description": "Night10「最終夜」終了状態定義。美咲の運命とUSB発見が最終エンディングを決定。",
+  "endStateConditions": [
+    {
+      "endStateType": "TruthDawn",
+      "priority": 1,
+      "description": "真実の夜明け — 美咲救出、USB発見、誠和製薬壊滅",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "misaki_saved", "requiredValue": true },
+        { "flagId": "usb_can_be_found", "requiredValue": true },
+        { "flagId": "whistleblower_contact_completed", "requiredValue": true }
+      ],
+      "note": "ベストエンディング。全ての条件を満たした場合。"
+    },
+    {
+      "endStateType": "InvestigationContinues",
+      "priority": 2,
+      "description": "捜査は続く — 美咲救出、USB未発見、捜査継続",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "misaki_saved", "requiredValue": true }
+      ],
+      "note": "グッドエンディング。美咲は救われたがUSBは見つからなかった。"
+    },
+    {
+      "endStateType": "IntoDarkness",
+      "priority": 3,
+      "description": "闇の中へ — 美咲死亡、隠蔽成功",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "misaki_dead", "requiredValue": true }
+      ],
+      "note": "バッドエンディング。美咲が殺された。"
+    },
+    {
+      "endStateType": "UncertainDawn",
+      "priority": 100,
+      "description": "不確かな夜明け — 美咲の運命不明",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "misaki_fate_unknown", "requiredValue": true }
+      ],
+      "note": "ニュートラルエンディング。美咲の運命が分からない。"
+    }
+  ],
+  "endingMappings": [
+    {
+      "endState": "TruthDawn",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_truth_dawn"
+    },
+    {
+      "endState": "InvestigationContinues",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_investigation_continues"
+    },
+    {
+      "endState": "IntoDarkness",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_into_darkness"
+    },
+    {
+      "endState": "UncertainDawn",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_uncertain_dawn"
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": false,
+    "maxDispatchTimeMinutes": 0,
+    "dispatchFlagId": "",
+    "note": "Night10では美咲の生存はフラグで判定（misaki_saved/misaki_dead/misaki_fate_unknown）"
+  },
+  "defaultEndState": "UncertainDawn",
+  "defaultEndingId": "ending_uncertain_dawn",
+  "endings": [
+    {
+      "endingId": "ending_truth_dawn",
+      "title": "真実の夜明け",
+      "description": "美咲は救われ、USBから証拠が見つかり、誠和製薬は壊滅した。\n\n長い夜がようやく終わる。",
+      "endingType": "TruthDawn"
+    },
+    {
+      "endingId": "ending_investigation_continues",
+      "title": "捜査は続く",
+      "description": "美咲は無事だった。\nでも、決定的な証拠は見つからなかった。\n\n捜査は続いているが、真実はまだ闇の中。",
+      "endingType": "InvestigationContinues"
+    },
+    {
+      "endingId": "ending_into_darkness",
+      "title": "闇の中へ",
+      "description": "美咲も吉田も殺された。\n証拠は消え、誠和製薬は今も営業している。\n\nすべてが闇に葬られた。",
+      "endingType": "IntoDarkness"
+    },
+    {
+      "endingId": "ending_uncertain_dawn",
+      "title": "不確かな夜明け",
+      "description": "吉田は殺されたが、美咲は見つからなかった。\n生きているのか、死んでいるのか。\n\n不確かな光の中で、電話を待っている。",
+      "endingType": "UncertainDawn"
+    }
+  ],
+  "night09EndStateEffects": {
+    "description": "Night09のエンドステートがNight10に与える影響",
+    "effects": [
+      {
+        "night09EndState": "FullAlliance",
+        "effect": "警察との完全な同盟。告発者の情報も得られる。",
+        "addFlags": ["police_alliance_formed", "whistleblower_likely_safe"]
+      },
+      {
+        "night09EndState": "ActiveAlliance",
+        "effect": "警察と協力。全てを話すことを決意。",
+        "addFlags": ["operator_will_tell_police"]
+      },
+      {
+        "night09EndState": "PassiveTruth",
+        "effect": "沈黙を選んだ。傍観者として夜を迎える。",
+        "addFlags": ["operator_will_stay_silent"]
+      }
+    ]
+  },
+  "foreshadowing": {
+    "unresolved": [
+      {
+        "id": "murakami_shadow",
+        "character": "村上誠一郎",
+        "description": "慈善活動家・村上誠一郎の名前は今回の捜査では一度も出てこなかった",
+        "note": "続編への伏線"
+      },
+      {
+        "id": "sato_unknown",
+        "character": "佐藤浩二",
+        "description": "林遥の「同僚」を名乗った男。アラートセキュリティの社長。行方不明。",
+        "note": "続編への伏線"
+      },
+      {
+        "id": "alert_security",
+        "company": "アラートセキュリティ",
+        "description": "白い車に描かれていたロゴ。その会社は今も存在している。",
+        "note": "続編への伏線"
+      }
+    ]
+  }
+}

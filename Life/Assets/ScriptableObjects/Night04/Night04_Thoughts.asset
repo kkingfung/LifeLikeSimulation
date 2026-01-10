@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Night04_Thoughts
+  m_EditorClassIdentifier: Assembly-CSharp:LifeLike.Data:OperatorThoughtsDefinition
+  nightId: night_04
+  description: "Night04\u300C\u6C88\u9ED9\u306E\u8A3C\u4EBA\u300D\u306E\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u601D\u8003\u3002\u901A\u8A71\u5F8C\u306B\u8868\u793A\u3055\u308C\u308B\u5185\u5FC3\u306E\u58F0\u3002"
+  thoughts:
+  - thoughtId: car_connection
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u3042\u306E\u8ECA...\u3069\u3053\u304B\u3067\u898B\u305F\u30ED\u30B4..."
+    note: "\u8A73\u7D30\u60C5\u5831\u3092\u5F97\u305F\u5834\u5408\u306E\u307F\u8868\u793A\u3002Night02\u3068\u306E\u7E4B\u304C\u308A\u3092\u793A\u5506\u3002"
+    timing: 0
+    relatedCallId: call_body_discovery
+    triggerTimeMinutes: 0
+    triggerFlagId: witness_detailed_info
+    conditions: []
+    suppressFlags: []
+    displayDuration: 3
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 10
+  - thoughtId: silent_call_memory
+    category: 1
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u7121\u8A00\u96FB\u8A71...\u3042\u306E\u591C\u3068\u540C\u3058\u3088\u3046\u306A..."
+    note: "\u8B66\u5BDF\u304B\u3089\u7121\u8A00\u96FB\u8A71\u306B\u3064\u3044\u3066\u805E\u304B\u308C\u305F\u5F8C\u3002Night03\u3068\u306E\u7E4B\u304C\u308A\u3002"
+    timing: 0
+    relatedCallId: call_police_inquiry
+    triggerTimeMinutes: 0
+    triggerFlagId: police_asked_silent_call
+    conditions: []
+    suppressFlags: []
+    displayDuration: 2.5
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 5
+  - thoughtId: connected_realization
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u5076\u7136\u3058\u3083\u306A\u3044...\u3053\u308C\u306F\u5168\u90E8\u7E4B\u304C\u3063\u3066\u3044\u308B..."
+    note: "\u4E21\u65B9\u306E\u30D5\u30E9\u30B0\u3092\u5F97\u305F\u5834\u5408\u306E\u307F\u3002\u30D7\u30EC\u30A4\u30E4\u30FC\u304C\u63A5\u7D9A\u306B\u6210\u529F\u3057\u305F\u6642\u3002"
+    timing: 1
+    relatedCallId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: connected_nights
+    conditions: []
+    suppressFlags: []
+    displayDuration: 3.5
+    fadeInDuration: 0.8
+    fadeOutDuration: 0.8
+    priority: 20
+  - thoughtId: elderly_empathy
+    category: 3
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u3042\u306E\u4EBA\u306E\u9707\u3048\u308B\u58F0...\u5FD8\u308C\u3089\u308C\u306A\u3044..."
+    note: "\u8001\u4EBA\u3092\u843D\u3061\u7740\u304B\u305B\u308B\u306E\u306B\u6210\u529F\u3057\u305F\u5834\u5408\u3002"
+    timing: 0
+    relatedCallId: call_body_discovery
+    triggerTimeMinutes: 0
+    triggerFlagId: caller_calmed
+    conditions: []
+    suppressFlags: []
+    displayDuration: 2.5
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 3

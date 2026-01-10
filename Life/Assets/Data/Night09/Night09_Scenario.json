@@ -1,0 +1,129 @@
+{
+  "scenarioId": "night_09",
+  "title": "告発者",
+  "description": "真理の行方は依然不明。警察は捜査を続けているが進展は遅い。そんな中、林健二の元同僚から連絡が入る。健二は遥の上司だった。遥の机の書類から秘密を少し知り、巻き込まれた。内部告発者は自らも追われており、誰かに真実を伝えようとする。",
+  "startTimeMinutes": 1200,
+  "endTimeMinutes": 1440,
+  "realSecondsPerGameMinute": 2.0,
+  "difficulty": 5,
+  "estimatedPlayTimeMinutes": 25,
+  "theTruth": "林健二は誠和製薬の研究員で、遥の直属の上司だった。遥が秘密を発見し、健二は遥の机の書類から少しだけ知り、巻き込まれた。健二は遥を心配してNight01で探していたが、その後殺された。健二の元同僚である内部告発者も追われている。内部告発者は健二から話を聞いたが、遥が本当の情報源だとは知らない。美咲のことも知らない。真理の生死は不明。",
+  "callSchedule": [
+    {
+      "callId": "call_police_update",
+      "callerId": "police_detective",
+      "title": "警察からの進展報告",
+      "incomingTimeMinutes": 1230,
+      "ringDuration": 45,
+      "priority": 6,
+      "isCritical": false,
+      "description": "警察が捜査の進展を報告。真理はまだ見つかっていない。品川ナンバーの車を追っている。"
+    },
+    {
+      "callId": "call_yoshida_status",
+      "callerId": "yoshida_kazuko",
+      "title": "吉田からの報告",
+      "incomingTimeMinutes": 1290,
+      "ringDuration": 50,
+      "priority": 5,
+      "isCritical": false,
+      "description": "吉田が美咲の様子を報告。美咲は元気だが、ママとまりおばちゃんのことを心配している。"
+    },
+    {
+      "callId": "call_whistleblower",
+      "callerId": "whistleblower",
+      "title": "内部告発者からの電話",
+      "incomingTimeMinutes": 1380,
+      "ringDuration": 60,
+      "priority": 9,
+      "isCritical": true,
+      "description": "林健二の元同僚からの電話。健二が知っていた真実と証拠の存在を伝える。自らも追われている。"
+    }
+  ],
+  "specialEvents": [
+    {
+      "eventId": "event_kudo_chat_3",
+      "title": "工藤主任からのチャット",
+      "triggerTimeMinutes": 1330,
+      "description": "工藤主任からチャットが届く。オペレーターの様子を心配している。",
+      "eventType": "chat"
+    },
+    {
+      "eventId": "event_ending_choice",
+      "title": "オペレーターの決断",
+      "triggerTimeMinutes": 1435,
+      "description": "Night09終了時、オペレーターは警察に全てを話すか、沈黙を守るかを選ぶ。この選択がNight10のエンディング分岐に直接影響する。",
+      "eventType": "monologue_choice"
+    }
+  ],
+  "initialWorldStates": [
+    {
+      "stateId": "mari_still_missing",
+      "description": "真理は依然行方不明、生死不明",
+      "timeMinutes": 1200,
+      "involvedCallerIds": ["watanabe_mari"],
+      "isKnownToPlayer": true
+    },
+    {
+      "stateId": "misaki_still_safe",
+      "description": "美咲は吉田の家で安全（yoshida_will_warn_mariフラグありの場合）",
+      "timeMinutes": 1200,
+      "involvedCallerIds": ["hayashi_misaki", "yoshida_kazuko"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "whistleblower_running",
+      "description": "内部告発者（健二の元同僚）は組織から逃げている",
+      "timeMinutes": 1200,
+      "involvedCallerIds": ["whistleblower"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "organization_hunting",
+      "description": "組織は証拠を持つ者と美咲を探し続けている",
+      "timeMinutes": 1200,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    }
+  ],
+  "evidenceTemplates": [
+    {
+      "evidenceId": "evidence_kenji_researcher",
+      "title": "林健二の職業",
+      "content": "林健二は誠和製薬の研究員で、遥の直属の上司だった",
+      "category": "Revelation"
+    },
+    {
+      "evidenceId": "evidence_side_effects",
+      "title": "副作用データ",
+      "content": "誠和製薬は薬の副作用データを隠蔽していた",
+      "category": "Evidence"
+    },
+    {
+      "evidenceId": "evidence_subsidiary",
+      "title": "子会社の違法活動",
+      "content": "誠和製薬の子会社が違法な活動に関与している",
+      "category": "Evidence"
+    },
+    {
+      "evidenceId": "evidence_haruka_knew",
+      "title": "遥が秘密を知っていた",
+      "content": "遥が誠和製薬の秘密を発見した。健二は遥の机の書類から少しだけ知った。",
+      "category": "Clue"
+    }
+  ],
+  "night08EndStateEffects": {
+    "police_knows_connection": {
+      "description": "警察が繋がりに気づいている。内部告発者を保護できる可能性。",
+      "addFlags": ["police_can_help"]
+    },
+    "defied_organization": {
+      "description": "組織の警告を拒否した。オペレーターも危険に。",
+      "addFlags": ["operator_targeted"]
+    },
+    "submitted_to_warning": {
+      "description": "組織の警告に従った。内部告発者を助けにくい。",
+      "addFlags": ["operator_hesitant"]
+    }
+  }
+}

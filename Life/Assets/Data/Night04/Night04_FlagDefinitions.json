@@ -166,6 +166,51 @@
       "persistsAcrossNights": true
     },
     {
+      "flagId": "mentioned_clothing_to_police",
+      "category": "Evidence",
+      "description": "警察に服装の矛盾について言及した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "told_police_clothing_mismatch",
+      "category": "Evidence",
+      "description": "警察に服装矛盾の詳細を伝えた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "偽兄の正体への手がかり"
+    },
+    {
+      "flagId": "told_police_fake_brother_behavior",
+      "category": "Evidence",
+      "description": "警察に偽兄の異常な行動を伝えた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_investigating_fake_brother",
+      "category": "Event",
+      "description": "警察が偽兄について調査を開始した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "Night05以降に影響"
+    },
+    {
+      "flagId": "evidence_white_van_seen",
+      "category": "Evidence",
+      "description": "白いバンの目撃情報を得た",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "evidence_white_van_details",
+      "category": "Evidence",
+      "description": "白いバンの詳細を得た",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "倉庫火災との繋がり"
+    },
+    {
       "flagId": "mari_saved_n03",
       "category": "Night03Effect",
       "description": "Night03で真理を助けた",

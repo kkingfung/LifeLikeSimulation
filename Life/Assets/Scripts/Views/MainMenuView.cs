@@ -13,25 +13,67 @@ namespace LifeLike.Views
 {
     /// <summary>
     /// メインメニュー画面のView
+    /// オペレーターモードとストーリーモードの両方に対応
     /// </summary>
     public class MainMenuView : MonoBehaviour
     {
+        [Header("Game Mode")]
+        [SerializeField] private bool _useOperatorMode = true;
+
         [Header("UI References")]
-        [SerializeField] private Button? _newGameButton;
-        [SerializeField] private Button? _continueButton;
+        [SerializeField] private Button? _startButton;
         [SerializeField] private Button? _settingsButton;
         [SerializeField] private Button? _quitButton;
-        [SerializeField] private Text? _lastSaveText;
+        [SerializeField] private Button? _deleteSaveButton;
 
-        [Header("Settings")]
-        [SerializeField] private string _storySceneName = "StoryScene";
+        [Header("Info Display")]
+        [SerializeField] private Text? _lastSaveText;
+        [SerializeField] private Text? _currentNightText;
+        [SerializeField] private Text? _titleText;
+        [SerializeField] private Text? _versionText;
+
+        [Header("Scene Settings")]
+        [SerializeField] private string _chapterSelectSceneName = "ChapterSelect";
+        [SerializeField] private string _operatorSceneName = "Operator";
+
+        [Header("Story Mode Settings (Optional)")]
         [SerializeField] private GameStateData? _gameStateData;
 
         private MainMenuViewModel? _viewModel;
 
         private void Awake()
         {
-            // サービスを取得
+            if (_useOperatorMode)
+            {
+                InitializeOperatorMode();
+            }
+            else
+            {
+                InitializeStoryMode();
+            }
+        }
+
+        /// <summary>
+        /// オペレーターモード用の初期化
+        /// </summary>
+        private void InitializeOperatorMode()
+        {
+            var operatorSaveService = ServiceLocator.Instance.Get<IOperatorSaveService>();
+
+            if (operatorSaveService == null)
+            {
+                Debug.LogError("[MainMenuView] IOperatorSaveServiceが見つかりません。");
+                return;
+            }
+
+            _viewModel = new MainMenuViewModel(operatorSaveService);
+        }
+
+        /// <summary>
+        /// ストーリーモード用の初期化
+        /// </summary>
+        private void InitializeStoryMode()
+        {
             var storyService = ServiceLocator.Instance.Get<IStoryService>();
             var saveService = ServiceLocator.Instance.Get<ISaveService>();
 
@@ -41,7 +83,6 @@ namespace LifeLike.Views
                 return;
             }
 
-            // ViewModelを作成
             _viewModel = new MainMenuViewModel(storyService, saveService, _gameStateData);
         }
 
@@ -52,16 +93,29 @@ namespace LifeLike.Views
                 return;
             }
 
-            // UIを初期化
+            // UIをセットアップ
             SetupUI();
 
             // ViewModelのイベントを購読
             _viewModel.PropertyChanged += OnViewModelPropertyChanged;
             _viewModel.OnGameStartRequested += OnGameStartRequested;
             _viewModel.OnOpenSettingsRequested += OnOpenSettingsRequested;
+            _viewModel.OnChapterSelectRequested += OnChapterSelectRequested;
 
             // 初期状態を反映
             UpdateUI();
+
+            // タイトルを設定
+            if (_titleText != null)
+            {
+                _titleText.text = _useOperatorMode ? "Operator: Night Signal" : "LifeLike";
+            }
+
+            // バージョンを設定
+            if (_versionText != null)
+            {
+                _versionText.text = $"v{Application.version}";
+            }
         }
 
         private void OnDestroy()
@@ -71,6 +125,7 @@ namespace LifeLike.Views
                 _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
                 _viewModel.OnGameStartRequested -= OnGameStartRequested;
                 _viewModel.OnOpenSettingsRequested -= OnOpenSettingsRequested;
+                _viewModel.OnChapterSelectRequested -= OnChapterSelectRequested;
                 _viewModel.Dispose();
             }
         }
@@ -80,14 +135,9 @@ namespace LifeLike.Views
         /// </summary>
         private void SetupUI()
         {
-            if (_newGameButton != null)
+            if (_startButton != null)
             {
-                _newGameButton.onClick.AddListener(OnNewGameClicked);
-            }
-
-            if (_continueButton != null)
-            {
-                _continueButton.onClick.AddListener(OnContinueClicked);
+                _startButton.onClick.AddListener(OnStartClicked);
             }
 
             if (_settingsButton != null)
@@ -98,6 +148,11 @@ namespace LifeLike.Views
             if (_quitButton != null)
             {
                 _quitButton.onClick.AddListener(OnQuitClicked);
+            }
+
+            if (_deleteSaveButton != null)
+            {
+                _deleteSaveButton.onClick.AddListener(OnDeleteSaveClicked);
             }
         }
 
@@ -111,10 +166,11 @@ namespace LifeLike.Views
                 return;
             }
 
-            // コンティニューボタンの有効/無効
-            if (_continueButton != null)
+            // 削除ボタンの有効/無効（セーブがある時のみ表示）
+            if (_deleteSaveButton != null)
             {
-                _continueButton.interactable = _viewModel.CanContinue;
+                _deleteSaveButton.interactable = _viewModel.CanContinue;
+                _deleteSaveButton.gameObject.SetActive(_viewModel.CanContinue);
             }
 
             // 最後のセーブ情報
@@ -122,6 +178,13 @@ namespace LifeLike.Views
             {
                 _lastSaveText.text = _viewModel.LastSaveInfo;
                 _lastSaveText.gameObject.SetActive(!string.IsNullOrEmpty(_viewModel.LastSaveInfo));
+            }
+
+            // 現在の夜情報（オペレーターモード用）
+            if (_currentNightText != null)
+            {
+                _currentNightText.text = _viewModel.CurrentNightInfo;
+                _currentNightText.gameObject.SetActive(!string.IsNullOrEmpty(_viewModel.CurrentNightInfo));
             }
         }
 
@@ -134,18 +197,18 @@ namespace LifeLike.Views
             {
                 case nameof(MainMenuViewModel.CanContinue):
                 case nameof(MainMenuViewModel.LastSaveInfo):
+                case nameof(MainMenuViewModel.CurrentNightInfo):
                     UpdateUI();
                     break;
             }
         }
 
         /// <summary>
-        /// ゲーム開始要求時の処理
+        /// ストーリーモードゲーム開始要求時の処理
         /// </summary>
         private void OnGameStartRequested()
         {
-            // ストーリーシーンに遷移
-            SceneManager.LoadScene(_storySceneName);
+            SceneManager.LoadScene(_operatorSceneName);
         }
 
         /// <summary>
@@ -153,24 +216,23 @@ namespace LifeLike.Views
         /// </summary>
         private void OnOpenSettingsRequested()
         {
-            // TODO: 設定画面を実装
             Debug.Log("[MainMenuView] 設定画面は未実装です。");
         }
 
         /// <summary>
-        /// 新規ゲームボタンクリック時の処理
+        /// チャプター選択画面を開く要求時の処理
         /// </summary>
-        private void OnNewGameClicked()
+        private void OnChapterSelectRequested()
         {
-            _viewModel?.NewGameCommand.Execute(null);
+            SceneManager.LoadScene(_chapterSelectSceneName);
         }
 
         /// <summary>
-        /// コンティニューボタンクリック時の処理
+        /// スタートボタンクリック時の処理
         /// </summary>
-        private void OnContinueClicked()
+        private void OnStartClicked()
         {
-            _viewModel?.ContinueCommand.Execute(null);
+            _viewModel?.StartCommand.Execute(null);
         }
 
         /// <summary>
@@ -187,6 +249,14 @@ namespace LifeLike.Views
         private void OnQuitClicked()
         {
             _viewModel?.QuitGameCommand.Execute(null);
+        }
+
+        /// <summary>
+        /// セーブデータ削除ボタンクリック時の処理
+        /// </summary>
+        private void OnDeleteSaveClicked()
+        {
+            _viewModel?.DeleteSaveCommand.Execute(null);
         }
     }
 }

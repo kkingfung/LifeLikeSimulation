@@ -320,6 +320,56 @@
           "nextSegmentId": "wait_for_mari",
           "setFlags": ["heard_yoshida_name", "misaki_comforted"],
           "clearFlags": []
+        },
+        {
+          "responseId": "ask_yoshida_detail",
+          "text": "よしださんって、どんなおばあちゃん？",
+          "nextSegmentId": "yoshida_description",
+          "setFlags": ["heard_yoshida_name"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_description",
+      "callerLines": [
+        "やさしいおばあちゃん！",
+        "ひとりですんでて、さびしそうだから、ときどきはなしにいくの",
+        "このまえ、こうじょうがもえたとき、すごくこわがってた..."
+      ],
+      "note": "Night02の倉庫火災のこと。吉田がこの近辺に住んでいて、火事を目撃したことを示唆。",
+      "responses": [
+        {
+          "responseId": "react_to_fire",
+          "text": "工場が燃えた...？",
+          "nextSegmentId": "yoshida_fire_detail",
+          "setFlags": ["yoshida_fire_connection"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "comfort_yoshida_story",
+          "text": "そうなんだ。優しいおばあちゃんなんだね。",
+          "nextSegmentId": "wait_for_mari",
+          "setFlags": ["misaki_comforted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_fire_detail",
+      "callerLines": [
+        "うん、まっくろいけむりがみえたって",
+        "おばあちゃん、110にでんわしたんだって",
+        "わたしもおばあちゃんみたいにでんわできるかなっておもったの"
+      ],
+      "note": "吉田がNight02で火災を通報したことを確認。美咲が110に電話した理由の一つでもある。",
+      "responses": [
+        {
+          "responseId": "realize_connection",
+          "text": "...そうだったんだ。",
+          "nextSegmentId": "wait_for_mari",
+          "setFlags": ["yoshida_reporter_confirmed", "misaki_comforted"],
+          "clearFlags": []
         }
       ]
     },
@@ -561,7 +611,15 @@
       },
       "triggerTiming": "after_call",
       "content": "吉田さん...あの火事の通報者と同じ名前..."
+    },
+    {
+      "triggerId": "yoshida_confirmed_thought",
+      "triggerCondition": {
+        "requiresFlag": "yoshida_reporter_confirmed"
+      },
+      "triggerTiming": "after_call",
+      "content": "火事を通報した吉田さんと同一人物...あの工業地帯の近くに住んでいるのか...真理もこの子も..."
     }
   ],
-  "note": "美咲は5歳なので、短い文とひらがなを多用。母親の名前や住所は知らない。USBキーホルダーは間接的に言及されるが、プレイヤーはまだその重要性を知らない。真理が帰宅すると電話が切られる。"
+  "note": "美咲は5歳なので、短い文とひらがなを多用。母親の名前や住所は知らない。USBキーホルダーは間接的に言及されるが、プレイヤーはまだその重要性を知らない。真理が帰宅すると電話が切られる。吉田さんへの追加質問でNight02の火災通報者との繋がりが確認できる。yoshida_reporter_confirmedフラグで「あの吉田さん」と確定。"
 }

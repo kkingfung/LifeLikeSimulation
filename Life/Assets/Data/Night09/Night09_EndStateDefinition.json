@@ -1,0 +1,231 @@
+{
+  "nightId": "night_09",
+  "description": "Night09「告発者」終了状態定義。オペレーターの決断がNight10のエンディング分岐に直接影響。",
+  "endStateConditions": [
+    {
+      "endStateType": "FullAlliance",
+      "priority": 1,
+      "description": "完全な同盟 — 警察と同盟を結び、告発者を保護し、全てを話すことを決意",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "police_alliance_formed", "requiredValue": true },
+        { "flagId": "whistleblower_likely_safe", "requiredValue": true },
+        { "flagId": "operator_will_tell_police", "requiredValue": true }
+      ],
+      "note": "Night10で最も有利な状態。"
+    },
+    {
+      "endStateType": "ActiveAlliance",
+      "priority": 2,
+      "description": "積極的な協力 — 警察と協力し、全てを話すことを決意",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "operator_will_tell_police", "requiredValue": true }
+      ],
+      "note": "告発者の状況は不確定。"
+    },
+    {
+      "endStateType": "WhistleblowerSaved",
+      "priority": 3,
+      "description": "告発者を救った — 告発者を警察に保護させることに成功",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "whistleblower_likely_safe", "requiredValue": true },
+        { "flagId": "told_whistleblower_police", "requiredValue": true }
+      ],
+      "note": "重要な証言者が生き残る。"
+    },
+    {
+      "endStateType": "TruthRevealed",
+      "priority": 4,
+      "description": "真実が明らかに — 誠和製薬の闘の全容が明らかになった",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "heard_coverup", "requiredValue": true },
+        { "flagId": "heard_subsidiary_truth", "requiredValue": true }
+      ],
+      "note": "副作用隠蔽、子会社による殺人が判明。"
+    },
+    {
+      "endStateType": "MisakiDiscovered",
+      "priority": 5,
+      "description": "美咲の存在を知った — オペレーターが美咲の存在と居場所を知った",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "operator_knows_misaki_with_yoshida", "requiredValue": true }
+      ],
+      "note": "守らなければならない命がある。"
+    },
+    {
+      "endStateType": "PassiveTruth",
+      "priority": 6,
+      "description": "真実を知った沈黙 — 多くの真実を知ったが、沈黙を選んだ",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "operator_will_stay_silent", "requiredValue": true },
+        { "flagId": "heard_coverup", "requiredValue": true }
+      ],
+      "note": "罪悪感が残る。"
+    },
+    {
+      "endStateType": "WhistleblowerEndangered",
+      "priority": 7,
+      "description": "告発者の危機 — 告発者を助けられなかった",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "whistleblower_in_danger", "requiredValue": true }
+      ],
+      "note": "組織に追われている。"
+    },
+    {
+      "endStateType": "UncertainFuture",
+      "priority": 100,
+      "description": "不確かな未来 — 多くの情報を得たが、決定的な行動は取れなかった",
+      "scoreConditions": [],
+      "flagConditions": [],
+      "note": "デフォルトのエンディング。"
+    }
+  ],
+  "endingMappings": [
+    {
+      "endState": "FullAlliance",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_full_alliance"
+    },
+    {
+      "endState": "ActiveAlliance",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_active_alliance"
+    },
+    {
+      "endState": "WhistleblowerSaved",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_whistleblower_saved"
+    },
+    {
+      "endState": "TruthRevealed",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_truth_revealed"
+    },
+    {
+      "endState": "MisakiDiscovered",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_misaki_discovered"
+    },
+    {
+      "endState": "PassiveTruth",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_passive_truth"
+    },
+    {
+      "endState": "WhistleblowerEndangered",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_whistleblower_endangered"
+    },
+    {
+      "endState": "UncertainFuture",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_uncertain_future"
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": false,
+    "maxDispatchTimeMinutes": 0,
+    "dispatchFlagId": "",
+    "note": "Night09には被害者生存判定がない"
+  },
+  "defaultEndState": "UncertainFuture",
+  "defaultEndingId": "ending_uncertain_future",
+  "endings": [
+    {
+      "endingId": "ending_full_alliance",
+      "title": "完全な同盟",
+      "description": "山田刑事との同盟、告発者の保護、そしてオペレーター自身の決意。\nすべてが揃った。\n\nNight10で真実が明らかになる。",
+      "endingType": "FullAlliance"
+    },
+    {
+      "endingId": "ending_active_alliance",
+      "title": "積極的な協力",
+      "description": "オペレーターは真実を伝えることを決意した。\nたとえ危険があっても。",
+      "endingType": "ActiveAlliance"
+    },
+    {
+      "endingId": "ending_whistleblower_saved",
+      "title": "告発者を救った",
+      "description": "告発者は山田刑事のもとへ向かった。\n健二の真実が伝えられる希望がある。",
+      "endingType": "WhistleblowerSaved"
+    },
+    {
+      "endingId": "ending_truth_revealed",
+      "title": "真実が明らかに",
+      "description": "誠和製薬の真実が見えた。\n副作用の隠蔽、子会社による口封じ。\n\nすべてが繋がった。",
+      "endingType": "TruthRevealed"
+    },
+    {
+      "endingId": "ending_misaki_discovered",
+      "title": "美咲の存在を知った",
+      "description": "美咲ちゃん...遥さんの娘が吉田さんのところにいる。\n\n守らなければならない命がある。",
+      "endingType": "MisakiDiscovered"
+    },
+    {
+      "endingId": "ending_passive_truth",
+      "title": "真実を知った沈黙",
+      "description": "真実を知りながら沈黙を選んだ。\n\nオペレーターは自分の選択に疑問を抱き続ける。",
+      "endingType": "PassiveTruth"
+    },
+    {
+      "endingId": "ending_whistleblower_endangered",
+      "title": "告発者の危機",
+      "description": "告発者は追われて逃げた。\n彼の運命は分からない。\n\nもう一人の犠牲者になるかもしれない。",
+      "endingType": "WhistleblowerEndangered"
+    },
+    {
+      "endingId": "ending_uncertain_future",
+      "title": "不確かな未来",
+      "description": "夜は終わる。答えは出ていない。\n\n明日また電話が鳴る。",
+      "endingType": "UncertainFuture"
+    }
+  ],
+  "night08EndStateEffects": {
+    "description": "Night08のエンドステートがNight09に与える影響",
+    "carryOverFlags": [
+      "police_knows_connection",
+      "defied_organization",
+      "submitted_to_warning",
+      "operator_in_danger",
+      "misaki_safe_at_yoshida",
+      "cloth_matched_haruka_company",
+      "haruka_knew_something"
+    ]
+  },
+  "night10Impact": {
+    "operator_will_tell_police": {
+      "description": "Night10で警察と積極的に協力。真実解明ルート。",
+      "unlocks": ["police_raid_route", "truth_ending"]
+    },
+    "operator_will_stay_silent": {
+      "description": "Night10で受動的な展開。傍観者エンディングへ。",
+      "unlocks": ["bystander_route", "guilt_ending"]
+    },
+    "whistleblower_likely_safe": {
+      "description": "Night10で告発者が証言。証拠が増える。",
+      "unlocks": ["testimony_available"]
+    },
+    "whistleblower_in_danger": {
+      "description": "Night10で告発者の死が報告される可能性。",
+      "unlocks": ["another_victim_route"]
+    },
+    "police_alliance_formed": {
+      "description": "Night10で山田刑事と直接連絡が取れる。",
+      "unlocks": ["direct_police_contact"]
+    }
+  }
+}

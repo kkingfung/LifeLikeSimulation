@@ -1,0 +1,309 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9535fc71e96294eb329dbb589284f2, type: 3}
+  m_Name: Night08_Flags
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.Flag.NightFlagsDefinition
+  nightId: night_08
+  flagDefinitions:
+  - flagId: misaki_safe_at_yoshida
+    category: 15
+    description: "\u7F8E\u54B2\u306F\u5409\u7530\u306E\u5BB6\u306B\u9810\u3051\u3089\u308C\u3066\u3044\u308B\uFF08Night06-07\u304B\u3089\u7D99\u627F\uFF09"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: dispatched_to_mari_house
+    category: 16
+    description: "Night07\u3067\u771F\u7406\u306E\u5BB6\u306B\u8B66\u5BDF\u3092\u6D3E\u9063\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: operator_on_radar
+    category: 16
+    description: "\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u304C\u7D44\u7E54\u306B\u76EE\u3092\u3064\u3051\u3089\u308C\u305F"
+    weight: -2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: operator_guilt
+    category: 16
+    description: "\u771F\u7406\u3092\u52A9\u3051\u3089\u308C\u306A\u304B\u3063\u305F\u7F6A\u60AA\u611F"
+    weight: -1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: misaki_in_danger
+    category: 16
+    description: "\u7F8E\u54B2\u3082\u9023\u308C\u53BB\u3089\u308C\u305F\uFF08\u6700\u60AA\u30EB\u30FC\u30C8\uFF09"
+    weight: -3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: confirmed_mari_call
+    category: 4
+    description: "\u8B66\u5BDF\u306B\u771F\u7406\u304B\u3089\u306E\u901A\u5831\u304C\u3042\u3063\u305F\u3053\u3068\u3092\u78BA\u8A8D\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: told_police_mari_call
+    category: 4
+    description: "\u8B66\u5BDF\u306B\u771F\u7406\u306E\u901A\u5831\u5185\u5BB9\u3092\u4F1D\u3048\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: told_police_voices
+    category: 4
+    description: "\u8B66\u5BDF\u306B\u7537\u306E\u58F0\u304C\u805E\u3053\u3048\u305F\u3053\u3068\u3092\u4F1D\u3048\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: told_police_plate
+    category: 4
+    description: "\u8B66\u5BDF\u306B\u30CA\u30F3\u30D0\u30FC\u30D7\u30EC\u30FC\u30C8\u60C5\u5831\u3092\u4F1D\u3048\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: police_taking_seriously
+    category: 7
+    description: "\u8B66\u5BDF\u304C\u4E8B\u4EF6\u3092\u771F\u5263\u306B\u53D7\u3051\u6B62\u3081\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: agreed_with_police
+    category: 3
+    description: "\u8B66\u5BDF\u306E\u898B\u89E3\u306B\u540C\u610F\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: police_warned_operator
+    category: 7
+    description: "\u8B66\u5BDF\u304C\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u306B\u6CE8\u610F\u3059\u308B\u3088\u3046\u8B66\u544A\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: mentioned_kenji_to_police
+    category: 4
+    description: "\u8B66\u5BDF\u306B\u6797\u5065\u4E8C\u306E\u540D\u524D\u3092\u8A00\u53CA\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: police_knows_connection
+    category: 4
+    description: "\u8B66\u5BDF\u304C\u7E4B\u304C\u308A\u306B\u6C17\u3065\u3044\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: yoshida_info_call
+    category: 7
+    description: "\u5409\u7530\u304B\u3089\u60C5\u5831\u63D0\u4F9B\u306E\u96FB\u8A71\u304C\u3042\u3063\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: heard_about_sister
+    category: 4
+    description: "\u771F\u7406\u306B\u59C9\u304C\u3044\u308B\u3053\u3068\u3092\u805E\u3044\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_mari_sisters_confirmed
+    category: 4
+    description: "\u9065\u3068\u771F\u7406\u304C\u59C9\u59B9\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: heard_about_kenji_secret
+    category: 4
+    description: "\u5065\u4E8C\u304C\u4F55\u304B\u3092\u77E5\u3063\u3066\u3044\u305F\u3053\u3068\u3092\u805E\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: heard_about_protect
+    category: 4
+    description: "\u300C\u5B88\u3089\u306A\u3051\u308C\u3070\u3044\u3051\u306A\u3044\u300D\u3068\u8A00\u3063\u3066\u3044\u305F\u3053\u3068\u3092\u805E\u3044\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kenji_knew_something
+    category: 4
+    description: "\u5065\u4E8C\u304C\u4F55\u304B\u3092\u77E5\u3063\u3066\u3044\u3066\u72D9\u308F\u308C\u3066\u3044\u305F\u3053\u3068\u3092\u78BA\u8A8D"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: seiwaq_mentioned_by_mari
+    category: 4
+    description: "\u771F\u7406\u304C\u8AA0\u548C\u88FD\u85AC\u306B\u3064\u3044\u3066\u8A00\u53CA\u3057\u3066\u3044\u305F\u3053\u3068\u3092\u78BA\u8A8D"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: mari_was_afraid
+    category: 4
+    description: "\u771F\u7406\u304C\u602F\u3048\u3066\u3044\u305F\u3053\u3068\u3092\u78BA\u8A8D"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: misaki_confirmed_safe
+    category: 7
+    description: "\u7F8E\u54B2\u304C\u5409\u7530\u306E\u5BB6\u3067\u5B89\u5168\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: warned_yoshida
+    category: 8
+    description: "\u5409\u7530\u306B\u5371\u967A\u3092\u8B66\u544A\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: yoshida_will_protect
+    category: 7
+    description: "\u5409\u7530\u304C\u7F8E\u54B2\u3092\u5B88\u308B\u6C7A\u610F\u3092\u793A\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: operator_involved
+    category: 3
+    description: "\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u304C\u7A4D\u6975\u7684\u306B\u95A2\u308F\u308B\u59FF\u52E2\u3092\u793A\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: received_warning_call
+    category: 9
+    description: "\u7D44\u7E54\u304B\u3089\u306E\u8B66\u544A\u96FB\u8A71\u3092\u53D7\u3051\u305F"
+    weight: -1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: asked_how_know
+    category: 7
+    description: "\u7D44\u7E54\u306B\u300C\u306A\u305C\u77E5\u3063\u3066\u3044\u308B\u306E\u304B\u300D\u3068\u8CEA\u554F\u3057\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: felt_threatened
+    category: 9
+    description: "\u7D44\u7E54\u304B\u3089\u306E\u8105\u5A01\u3092\u611F\u3058\u305F"
+    weight: -1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: organization_mentioned_names
+    category: 4
+    description: "\u7D44\u7E54\u304C\u771F\u7406\u3001\u6797\u5065\u4E8C\u3001\u4E2D\u6751\u306E\u540D\u524D\u3092\u8A00\u53CA\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: accepted_warning
+    category: 3
+    description: "\u7D44\u7E54\u306E\u8B66\u544A\u3092\u53D7\u3051\u5165\u308C\u305F"
+    weight: -2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: rejected_warning
+    category: 3
+    description: "\u7D44\u7E54\u306E\u8B66\u544A\u3092\u62D2\u5426\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: submitted_to_warning
+    category: 3
+    description: "\u7D44\u7E54\u306E\u8B66\u544A\u306B\u5F93\u3063\u305F"
+    weight: -2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: defied_organization
+    category: 3
+    description: "\u7D44\u7E54\u306B\u9006\u3089\u3063\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: warning_call_ended
+    category: 7
+    description: "\u8B66\u544A\u306E\u96FB\u8A71\u304C\u7D42\u4E86\u3057\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: operator_in_danger
+    category: 9
+    description: "\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u304C\u7D44\u7E54\u304B\u3089\u5371\u967A\u8996\u3055\u308C\u3066\u3044\u308B"
+    weight: -3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: asked_kudo_about_seiwaq
+    category: 4
+    description: "\u5DE5\u85E4\u306B\u8AA0\u548C\u88FD\u85AC\u306B\u3064\u3044\u3066\u8CEA\u554F\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kudo_chat2_completed
+    category: 7
+    description: "\u5DE5\u85E4\u3068\u306E\u30C1\u30E3\u30C3\u30C8\u304C\u5B8C\u4E86\u3057\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: asked_about_cloth
+    category: 4
+    description: "\u4E2D\u6751\u306E\u53E3\u306B\u3042\u3063\u305F\u5E03\u306B\u3064\u3044\u3066\u8CEA\u554F\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: cloth_matched_haruka_company
+    category: 4
+    description: "\u5E03\u304C\u6797\u9065\u306E\u7269\u6D41\u4F1A\u793E\u306E\u5236\u670D\u3068\u4E00\u81F4\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: suspected_company_front
+    category: 4
+    description: "\u7269\u6D41\u4F1A\u793E\u304C\u30D5\u30ED\u30F3\u30C8\u4F01\u696D\u3067\u3042\u308B\u53EF\u80FD\u6027"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_knew_something
+    category: 4
+    description: "\u6797\u9065\u304C\u4F55\u304B\u3092\u77E5\u3063\u3066\u3044\u3066\u6D88\u3055\u308C\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: suspected_drug_transport
+    category: 4
+    description: "\u7269\u6D41\u4F1A\u793E\u304C\u9055\u6CD5\u306A\u85AC\u3092\u904B\u3093\u3067\u3044\u305F\u53EF\u80FD\u6027"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: connected_drug_to_nakamura
+    category: 4
+    description: "\u4E2D\u6751\u306E\u606F\u5B50\u306E\u6B7B\u3068\u9055\u6CD5\u85AC\u7269\u8F38\u9001\u3092\u7D50\u3073\u3064\u3051\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: police_knows_full_picture
+    category: 4
+    description: "\u8B66\u5BDF\u304C\u5168\u4F53\u50CF\u3092\u628A\u63E1\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: police_confirmed_murder
+    category: 4
+    description: "\u8B66\u5BDF\u304C\u4E2D\u6751\u306E\u6B7B\u3092\u6BBA\u4EBA\u3068\u78BA\u8A8D\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  mutualExclusionRules:
+  - whenFlagSet: accepted_warning
+    cancelFlags:
+    - rejected_warning
+    - defied_organization
+  - whenFlagSet: rejected_warning
+    cancelFlags:
+    - accepted_warning
+    - submitted_to_warning
+  - whenFlagSet: submitted_to_warning
+    cancelFlags:
+    - defied_organization
+    - rejected_warning
+  - whenFlagSet: defied_organization
+    cancelFlags:
+    - submitted_to_warning
+    - accepted_warning

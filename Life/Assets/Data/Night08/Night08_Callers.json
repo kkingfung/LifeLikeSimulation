@@ -1,0 +1,151 @@
+{
+  "nightId": "night_08",
+  "description": "第8夜「深夜の警告」発信者データ。真理が連れ去られた後、警察が動き出し、組織からの警告が届く。",
+  "callers": [
+    {
+      "callerId": "police_detective",
+      "displayName": "刑事",
+      "realName": "山田",
+      "description": "○○署の刑事。真理の行方不明届の確認で連絡。中村の件との関連も探っている。上からの圧力を感じながらも真実を追っている。",
+      "voiceDescription": "40代男性の落ち着いた声。事務的だが、時折踏み込んだ質問をする。",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 80,
+        "stability": 75,
+        "cooperation": 70,
+        "aggression": 15
+      },
+      "hiddenInfo": "林健二と中村の件に同じ人間が動いているという情報を掴んでいる。誠和製薬との繋がりにも気づき始めている。上からの圧力で慎重に動いている。",
+      "trueMotivation": "真実を知りたいが、自分の立場も守りたい",
+      "relations": [],
+      "organizationRelation": "system_aligned",
+      "note": "Night07の刑事と同一人物"
+    },
+    {
+      "callerId": "yoshida_kazuko",
+      "displayName": "吉田和子",
+      "realName": "吉田和子",
+      "description": "真理の隣人。Night06で警告した場合、真理から美咲を預かっている。真理が以前話していたことを思い出して電話する。",
+      "voiceDescription": "心配そうな高齢女性の声。震えているが、決意を持っている。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 95,
+        "stability": 55,
+        "cooperation": 95,
+        "aggression": 5
+      },
+      "hiddenInfo": "美咲を預かっている（yoshida_will_warn_mariフラグありの場合）。真理から聞いた話を思い出している。遥と真理が姉妹であること、健二が何かを知っていたこと。",
+      "trueMotivation": "美咲を守る、真理を助けたい",
+      "relations": [
+        { "targetCallerId": "watanabe_mari", "relationType": "Neighbor", "description": "隣人、信頼関係", "isKnown": true },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Protected", "description": "預かっている子", "isKnown": true },
+        { "targetCallerId": "hayashi_haruka", "relationType": "Acquaintance", "description": "真理の姉として知っている", "isKnown": true }
+      ],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "unknown_male",
+      "displayName": "不明な男性",
+      "realName": "不明",
+      "description": "組織からの警告を伝える男性。オペレーターの個人情報を知っていることを匂わせ、「これ以上首を突っ込むな」と忠告する。",
+      "voiceDescription": "低く落ち着いた男性の声。感情がなく、機械的。威圧感がある。",
+      "voicePitch": 0.85,
+      "personality": {
+        "honesty": 10,
+        "stability": 95,
+        "cooperation": 5,
+        "aggression": 60
+      },
+      "hiddenInfo": "組織の連絡係。オペレーターを監視しており、勤務先と住所を把握している。脅迫ではなく「忠告」という形で警告する。",
+      "trueMotivation": "オペレーターを沈黙させる",
+      "relations": [],
+      "organizationRelation": "member",
+      "note": "dispatched_to_mari_houseフラグがある場合のみ登場"
+    },
+    {
+      "callerId": "kudo_shinji",
+      "displayName": "工藤主任",
+      "realName": "工藤真司",
+      "description": "緊急通報センター当直主任。チャットで警察内部の噂を伝える。林健二と中村の件に同じ人間が動いているという情報。",
+      "voiceDescription": "（チャットのみ、音声なし）",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 65,
+        "stability": 80,
+        "cooperation": 70,
+        "aggression": 15
+      },
+      "hiddenInfo": "刑事課に知り合いがおり、警察内部の情報を得ている。オペレーターを心配している。",
+      "trueMotivation": "部下を守りたい、真実も気になる",
+      "relations": [],
+      "organizationRelation": "system_aligned",
+      "note": "チャットイベントで登場"
+    },
+    {
+      "callerId": "watanabe_mari",
+      "displayName": "渡辺真理",
+      "realName": "渡辺真理",
+      "description": "Night07で組織に連れ去られた。Night08では行方不明として警察に届出が出ている。",
+      "voiceDescription": "（Night08では登場しない — 行方不明）",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 90,
+        "stability": 40,
+        "cooperation": 85,
+        "aggression": 30
+      },
+      "hiddenInfo": "組織に拘束されている。美咲を守るため、何も話していない。",
+      "trueMotivation": "美咲を守る",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Family", "description": "姉（義姉）", "isKnown": false },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Family", "description": "姪", "isKnown": true },
+        { "targetCallerId": "yoshida_kazuko", "relationType": "Neighbor", "description": "隣人", "isKnown": true }
+      ],
+      "organizationRelation": "victim",
+      "note": "Night08では直接登場しない。吉田の話で言及される。"
+    },
+    {
+      "callerId": "hayashi_misaki",
+      "displayName": "林美咲",
+      "realName": "林美咲",
+      "description": "林遥の娘、5歳。吉田の家に預けられている（yoshida_will_warn_mariフラグありの場合）。",
+      "voiceDescription": "（Night08では直接話さない）",
+      "voicePitch": 1.3,
+      "personality": {
+        "honesty": 100,
+        "stability": 35,
+        "cooperation": 90,
+        "aggression": 0
+      },
+      "hiddenInfo": "USBが入ったキーホルダーを持っている。吉田の家で怯えながらも守られている。",
+      "trueMotivation": "安全でいたい、ママに会いたい",
+      "relations": [
+        { "targetCallerId": "yoshida_kazuko", "relationType": "Protected", "description": "守ってくれる人", "isKnown": true }
+      ],
+      "organizationRelation": "none",
+      "note": "Night08では吉田の話で言及される"
+    },
+    {
+      "callerId": "hayashi_kenji_real",
+      "displayName": "林健二",
+      "realName": "林健二",
+      "description": "林遥の夫、美咲の父。誠和製薬で働いていた。何かを知ってしまい、殺された（Night04で遺体発見）。",
+      "voiceDescription": "（故人 — Night08では登場しない）",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 70,
+        "stability": 60,
+        "cooperation": 50,
+        "aggression": 30
+      },
+      "hiddenInfo": "誠和製薬の不正を知っていた。妻・遥に情報を託した後、殺された。",
+      "trueMotivation": "（故人）家族を守りたかった",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Family", "description": "妻", "isKnown": false },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Family", "description": "娘", "isKnown": false }
+      ],
+      "organizationRelation": "victim",
+      "note": "Night08では吉田の話で言及される。Night01-04の「林健二（偽）」とは別人。"
+    }
+  ]
+}

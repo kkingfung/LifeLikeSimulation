@@ -1,0 +1,167 @@
+{
+  "eventId": "event_kudo_chat",
+  "eventType": "chat",
+  "title": "工藤主任からのチャット",
+  "description": "工藤主任からチャットが届く。Night04で発見された遺体が林健二と判明したことを知らせる。",
+  "triggerTimeMinutes": 840,
+  "messages": [
+    {
+      "messageId": "kudo_chat_1",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "今ちょっといいか？",
+      "timestamp": "14:00"
+    },
+    {
+      "messageId": "kudo_chat_2",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "例の山の遺体の件、身元が分かったらしい",
+      "timestamp": "14:00",
+      "delaySeconds": 3
+    },
+    {
+      "messageId": "kudo_chat_3",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "林健二って名前らしい。詳しいことはまだ分からないみたいだ",
+      "timestamp": "14:01",
+      "delaySeconds": 5
+    }
+  ],
+  "responses": [
+    {
+      "responseId": "chat_ask_more",
+      "text": "どこで分かったんですか？",
+      "triggersMessages": ["kudo_chat_source"]
+    },
+    {
+      "responseId": "chat_ask_connection",
+      "text": "林...？",
+      "triggersMessages": ["kudo_chat_common_name"],
+      "setFlags": ["noticed_hayashi_name"]
+    },
+    {
+      "responseId": "chat_neutral",
+      "text": "そうですか",
+      "triggersMessages": ["kudo_chat_end"]
+    }
+  ],
+  "followUpMessages": {
+    "kudo_chat_source": [
+      {
+        "messageId": "kudo_chat_source_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "上から聞いた。まだ公式発表前だけど",
+        "timestamp": "14:02"
+      },
+      {
+        "messageId": "kudo_chat_source_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "まあ、とりあえず報告な。仕事に戻ってくれ",
+        "timestamp": "14:02",
+        "delaySeconds": 3
+      }
+    ],
+    "kudo_chat_common_name": [
+      {
+        "messageId": "kudo_chat_common_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "ああ、よくある名前だよな",
+        "timestamp": "14:02"
+      },
+      {
+        "messageId": "kudo_chat_common_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "知り合いにいるのか？",
+        "timestamp": "14:02",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_chat_end": [
+      {
+        "messageId": "kudo_chat_end_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "まあ、とりあえず報告な",
+        "timestamp": "14:02"
+      }
+    ]
+  },
+  "secondResponses": {
+    "kudo_chat_common_name": [
+      {
+        "responseId": "chat_deny",
+        "text": "いえ、別に",
+        "triggersMessages": ["kudo_chat_deny_end"],
+        "setFlags": []
+      },
+      {
+        "responseId": "chat_hesitate",
+        "text": "...いえ、なんでもないです",
+        "triggersMessages": ["kudo_chat_hesitate_end"],
+        "setFlags": ["hesitated_about_hayashi"]
+      }
+    ]
+  },
+  "secondFollowUpMessages": {
+    "kudo_chat_deny_end": [
+      {
+        "messageId": "kudo_deny_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "そうか。じゃあ仕事に戻ってくれ",
+        "timestamp": "14:03"
+      }
+    ],
+    "kudo_chat_hesitate_end": [
+      {
+        "messageId": "kudo_hesitate_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "...何かあるのか？",
+        "timestamp": "14:03"
+      },
+      {
+        "messageId": "kudo_hesitate_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "まあ、言いたくなければいいけど",
+        "timestamp": "14:03",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_hesitate_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "何かあったら相談しろよ",
+        "timestamp": "14:04",
+        "delaySeconds": 2
+      }
+    ]
+  },
+  "operatorThoughts": [
+    {
+      "triggerId": "hayashi_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "noticed_hayashi_name",
+        "requiresAnyFlag": ["misaki_called", "learned_mari_name"]
+      },
+      "triggerTiming": "after_event",
+      "content": "林健二...美咲ちゃんの苗字も林...偶然か...？"
+    },
+    {
+      "triggerId": "kenji_dead_thought",
+      "triggerCondition": {
+        "requiresAnyFlag": ["heard_kenji_name", "kenji_mentioned"]
+      },
+      "triggerTiming": "after_event",
+      "content": "林健二...あの「兄」を名乗っていた男...やはり死んでいたのか..."
+    }
+  ],
+  "note": "工藤主任からのチャットでNight04の遺体が林健二と判明。プレイヤーがNight03で「健二」の名前を聞いていたり、Night05で美咲から「林」の名前を聞いていた場合、繋がりに気づく可能性がある。工藤は単なる業務連絡として伝えているだけで、深い意味は分かっていない。"
+}

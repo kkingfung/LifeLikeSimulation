@@ -15,9 +15,9 @@ MonoBehaviour:
   callId: call_police_inquiry
   caller: {fileID: 11400000, guid: 437be28581271e14484617b73644b077, type: 2}
   description: "\u8B66\u5BDF\u304B\u3089\u306E\u78BA\u8A8D\u9023\u7D61\u3002Night03\u306E\u7121\u8A00\u96FB\u8A71\u306B\u3064\u3044\u3066\u8CEA\u554F\u3057\u3066\u304F\u308B\u3002"
-  incomingTimeMinutes: 0
+  incomingTimeMinutes: 180
   ringDuration: 30
-  priority: 5
+  priority: 8
   startSegmentId: police_intro
   segments:
   - segmentId: police_intro
@@ -359,6 +359,264 @@ MonoBehaviour:
       endsCall: 0
       discoversEvidence: 0
       discoveredEvidenceId: 
+    - responseId: details_gagged
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u53E3\u3092\u585E\u304C\u308C\u3066\u3044\u308B\u3088\u3046\u3067\u3057\u305F\u3002\u5FC5\u6B7B\u306B\u4F55\u304B\u8A00\u304A\u3046\u3068\u3057\u3066\u3044\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - detailed_silent_call_info
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: ask_gagged
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: details_other_voice
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6700\u5F8C\u306B\u5225\u306E\u58F0\u304C\u805E\u3053\u3048\u3066\u3001\u96FB\u8A71\u304C\u5207\u308C\u307E\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - heard_captor_voice
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: ask_other_voice
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: ask_gagged
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u53E3\u3092\u585E\u304C\u308C\u3066\u3044\u308B...\uFF1F\n\u305D\u308C\u306F\u91CD\u8981\u306A\u60C5\u5831\u3067\u3059\u3002\n\u62D8\u675F\u3055\u308C\u3066\u3044\u305F\u53EF\u80FD\u6027\u304C\u3042\u308B...\u4ED6\u306B\u4F55\u304B\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: gagged_other_voice
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6700\u5F8C\u306B\u5225\u306E\u58F0\u304C\u805E\u3053\u3048\u307E\u3057\u305F\u3002\u300C\u4F55\u3057\u3066\u308B\u300D\u3068\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - heard_captor_voice
+      - full_silent_call_detail
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: police_very_interested
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: gagged_nothing_else
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u308C\u3060\u3051\u3067\u3059\u3002\u305D\u306E\u5F8C\u3001\u96FB\u8A71\u304C\u5207\u308C\u307E\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: check_connection
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: ask_other_voice
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u5225\u306E\u58F0...\uFF1F\n\u4F55\u3068\u8A00\u3063\u3066\u3044\u307E\u3057\u305F\u304B\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: other_voice_detail
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u300C\u4F55\u3057\u3066\u308B\u300D\u3068\u805E\u3053\u3048\u307E\u3057\u305F\u3002\u305D\u306E\u5F8C\u3059\u3050\u5207\u308C\u3066\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - full_silent_call_detail
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: police_very_interested
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+  - segmentId: police_very_interested
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u306A\u308B\u307B\u3069\u3002\u62D8\u675F\u3055\u308C\u305F\u72B6\u614B\u3067\u96FB\u8A71\u3092\u304B\u3051\u3066\u304D\u305F\u3002\n\u305D\u3057\u3066\u8AB0\u304B\u306B\u898B\u3064\u304B\u3063\u3066\u5207\u3089\u308C\u305F\u3002\n\u3053\u308C\u306F...\u88AB\u5BB3\u8005\u304C\u52A9\u3051\u3092\u6C42\u3081\u3066\u3044\u305F\u53EF\u80FD\u6027\u304C\u9AD8\u3044\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: very_interested_continue
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u52A9\u3051\u3089\u308C\u306A\u304B\u3063\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - police_has_strong_lead
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: check_connection
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
     responseTimeLimit: 0
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
@@ -507,13 +765,13 @@ MonoBehaviour:
       duration: 0
       emotionalState: 0
     responses:
-    - responseId: mention_car
+    - responseId: mention_van
       displayText:
         key: 
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\u3042\u306E...\u5148\u307B\u3069\u306E\u901A\u5831\u3067\u3001\u793E\u7528\u8ECA\u306E\u76EE\u6483\u60C5\u5831\u304C\u3042\u308A\u307E\u3057\u305F\u3002\u4EE5\u524D\u3082\u540C\u3058\u3088\u3046\u306A\u8ECA\u3092..."
+          text: "\u3042\u306E...\u5148\u307B\u3069\u306E\u901A\u5831\u3067\u3001\u767D\u3044\u30D0\u30F3\u306E\u76EE\u6483\u60C5\u5831\u304C\u3042\u308A\u307E\u3057\u305F\u3002\u4EE5\u524D\u3082\u540C\u3058\u3088\u3046\u306A\u8ECA\u3092..."
       actualText:
         key: 
         defaultLanguage: 0
@@ -530,7 +788,7 @@ MonoBehaviour:
       - connected_nights
       clearFlags: []
       isDispatchAction: 0
-      nextSegmentId: car_connection
+      nextSegmentId: van_connection
       endsCall: 0
       discoversEvidence: 0
       discoveredEvidenceId: 
@@ -622,7 +880,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
-  - segmentId: car_connection
+  - segmentId: van_connection
     media:
       mediaType: 0
       dialogueText:
@@ -650,13 +908,13 @@ MonoBehaviour:
       duration: 0
       emotionalState: 0
     responses:
-    - responseId: explain_night02
+    - responseId: explain_night02_03
       displayText:
         key: 
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\u5009\u5EAB\u706B\u707D\u306E\u6642\u306B\u3082\u3001\u540C\u3058\u3088\u3046\u306A\u793E\u7528\u8ECA\u304C\u76EE\u6483\u3055\u308C\u3066\u3044\u307E\u3057\u305F\u3002"
+          text: "\u5009\u5EAB\u706B\u707D\u306E\u6642\u3068\u3001\u53E3\u8AD6\u306E\u901A\u5831\u306E\u6642\u306B\u3082\u3001\u540C\u3058\u767D\u3044\u30D0\u30F3\u304C\u76EE\u6483\u3055\u308C\u3066\u3044\u307E\u3057\u305F\u3002"
       actualText:
         key: 
         defaultLanguage: 0
@@ -918,5 +1176,5 @@ MonoBehaviour:
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []
-  isCritical: 0
+  isCritical: 1
   canRepeat: 0

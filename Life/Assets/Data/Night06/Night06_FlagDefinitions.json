@@ -1,0 +1,320 @@
+{
+  "nightId": "night_06",
+  "description": "Night06「静かな午後」フラグ定義。嵐の前の静けさ。中村の運命、保育園からの接触、吉田の警告が軸。",
+  "flagDefinitions": [
+    {
+      "flagId": "demo_argument_reported",
+      "category": "Event",
+      "description": "口論の通報を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "nakamura_calm",
+      "category": "Night05Effect",
+      "description": "中村は落ち着いている（Night05で警察派遣）",
+      "weight": 1,
+      "persistsAcrossNights": false,
+      "note": "Night05の結果を反映"
+    },
+    {
+      "flagId": "nakamura_desperate",
+      "category": "Night05Effect",
+      "description": "中村は絶望的（Night05で様子見）",
+      "weight": -1,
+      "persistsAcrossNights": false,
+      "note": "Night05の結果を反映"
+    },
+    {
+      "flagId": "heard_nakamura_claim",
+      "category": "Evidence",
+      "description": "中村の主張（息子が薬で死んだ）を聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "誠和製薬との繋がりの証拠"
+    },
+    {
+      "flagId": "nakamura_name_known",
+      "category": "Evidence",
+      "description": "中村浩二の名前を知った",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_dispatched_argument",
+      "category": "Dispatch",
+      "description": "口論に警察を派遣した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "nakamura_taken_by_police",
+      "category": "Event",
+      "description": "中村は警察に連れていかれた",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "中村の運命に影響"
+    },
+    {
+      "flagId": "nakamura_left_alone",
+      "category": "Event",
+      "description": "中村は一人で去った",
+      "weight": -1,
+      "persistsAcrossNights": true,
+      "note": "中村の運命に影響"
+    },
+    {
+      "flagId": "kindergarten_contacted",
+      "category": "Event",
+      "description": "保育園から連絡があった",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "heard_haruka_missing",
+      "category": "Evidence",
+      "description": "遥が5日間連絡不通と知った",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "Night01との繋がり"
+    },
+    {
+      "flagId": "haruka_last_seen_noted",
+      "category": "Evidence",
+      "description": "遥の最後の目撃情報を得た",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "encouraged_kindergarten_police",
+      "category": "Alignment",
+      "description": "保育園に警察相談を勧めた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "kindergarten_will_contact_police",
+      "category": "Event",
+      "description": "保育園が警察に相談する",
+      "weight": 1,
+      "persistsAcrossNights": true,
+      "note": "美咲捜索に影響"
+    },
+    {
+      "flagId": "kindergarten_will_visit_mari",
+      "category": "Event",
+      "description": "保育園が真理の家を訪問する",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "Night07で発生するイベントに影響"
+    },
+    {
+      "flagId": "kindergarten_will_try_again",
+      "category": "Event",
+      "description": "保育園がもう少し連絡を試みる",
+      "weight": -1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "kindergarten_waiting",
+      "category": "Event",
+      "description": "保育園は様子見している",
+      "weight": -1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "noticed_hayashi_name",
+      "category": "Evidence",
+      "description": "林という名前に気づいた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "美咲・遥・健二の繋がり"
+    },
+    {
+      "flagId": "hesitated_about_hayashi",
+      "category": "Foreshadowing",
+      "description": "林の名前に反応してしまった",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "yoshida_reported_again",
+      "category": "Event",
+      "description": "吉田さんが再び通報した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "multiple_cars_noted",
+      "category": "Evidence",
+      "description": "車が複数台いることを記録",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "組織の動きが活発化"
+    },
+    {
+      "flagId": "watanabe_area_noted",
+      "category": "Evidence",
+      "description": "渡辺家周辺が記録された",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "yoshida_knows_misaki",
+      "category": "Evidence",
+      "description": "吉田さんが美咲を知っている",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "yoshida_mentioned_misaki",
+      "category": "Evidence",
+      "description": "吉田さんが美咲の名前を言った",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "shinagawa_32_confirmed",
+      "category": "Evidence",
+      "description": "品川ナンバー32を確認",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "Night05と同じ車"
+    },
+    {
+      "flagId": "patrol_dispatched_yoshida",
+      "category": "Dispatch",
+      "description": "吉田さんの通報でパトロールを派遣",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "yoshida_will_warn_mari",
+      "category": "Event",
+      "description": "吉田さんが真理に警告する",
+      "weight": 1,
+      "persistsAcrossNights": true,
+      "note": "真理が危険を認識"
+    },
+    {
+      "flagId": "night06_ominous_end",
+      "category": "Foreshadowing",
+      "description": "不穏な終わり方をした",
+      "weight": -2,
+      "persistsAcrossNights": true,
+      "note": "組織が近づいている"
+    },
+    {
+      "flagId": "kenji_identified",
+      "category": "Evidence",
+      "description": "遺体が林健二と判明",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "チャットイベントで発生"
+    },
+    {
+      "flagId": "kudo_mentioned_son",
+      "category": "Evidence",
+      "description": "工藤主任が中村の息子について言及した",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "中村浩太の死亡を確認"
+    },
+    {
+      "flagId": "asked_about_drug",
+      "category": "Evidence",
+      "description": "薬について質問した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "noticed_seiwa_connection",
+      "category": "Evidence",
+      "description": "誠和製薬と中村の関係に気づいた",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "デモの理由が判明"
+    },
+    {
+      "flagId": "kudo_told_seiwa",
+      "category": "Evidence",
+      "description": "工藤主任から誠和製薬の名前を聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "kudo_warned_operator",
+      "category": "Alignment",
+      "description": "工藤主任から「深入りするな」と警告された",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "工藤主任の立場が示唆される"
+    },
+    {
+      "flagId": "questioned_kudo",
+      "category": "Alignment",
+      "description": "工藤主任に疑問を投げかけた",
+      "weight": 1,
+      "persistsAcrossNights": true,
+      "note": "オペレーターの独立性"
+    },
+    {
+      "flagId": "kudo_told_about_son",
+      "category": "Evidence",
+      "description": "工藤主任から息子の死について聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "イベント完了時に設定"
+    },
+    {
+      "flagId": "all_seiwa_connected",
+      "category": "Evidence",
+      "description": "全ての事件が誠和製薬に繋がっていることに気づいた",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "中村の息子、林健二、デモ...全てが誠和製薬"
+    },
+    {
+      "flagId": "kenji_was_researcher",
+      "category": "Evidence",
+      "description": "林健二が誠和製薬の研究員だったと知った",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "Night09で内部告発者との会話に影響"
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "nakamura_calm",
+      "cancelFlags": ["nakamura_desperate"]
+    },
+    {
+      "whenFlagSet": "nakamura_desperate",
+      "cancelFlags": ["nakamura_calm"]
+    },
+    {
+      "whenFlagSet": "nakamura_taken_by_police",
+      "cancelFlags": ["nakamura_left_alone"]
+    },
+    {
+      "whenFlagSet": "nakamura_left_alone",
+      "cancelFlags": ["nakamura_taken_by_police"]
+    },
+    {
+      "whenFlagSet": "kindergarten_will_contact_police",
+      "cancelFlags": ["kindergarten_will_try_again", "kindergarten_waiting"]
+    },
+    {
+      "whenFlagSet": "kindergarten_will_visit_mari",
+      "cancelFlags": ["kindergarten_waiting"]
+    },
+    {
+      "whenFlagSet": "patrol_dispatched_yoshida",
+      "cancelFlags": ["night06_ominous_end"]
+    },
+    {
+      "whenFlagSet": "yoshida_will_warn_mari",
+      "cancelFlags": ["night06_ominous_end"]
+    }
+  ]
+}

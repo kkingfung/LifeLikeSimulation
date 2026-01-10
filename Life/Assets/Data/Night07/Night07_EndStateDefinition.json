@@ -1,0 +1,166 @@
+{
+  "nightId": "night_07",
+  "description": "Night07「崩壊の夜」エンドステート定義。崩壊の夜。真理は必ず連れ去られる。美咲の運命と、真相への理解度で分岐。",
+  "endStateConditions": [
+    {
+      "endStateType": "MisakiProtected",
+      "priority": 1,
+      "description": "小さな光 — 美咲は安全、真相に迫った",
+      "scoreConditions": [
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 6 }
+      ],
+      "flagConditions": [
+        { "flagId": "misaki_safe_at_yoshida", "requiredValue": true }
+      ],
+      "note": "美咲は吉田のもとで安全、多くの証拠を集めた"
+    },
+    {
+      "endStateType": "MisakiSafeUnaware",
+      "priority": 2,
+      "description": "守られた秘密 — 美咲は安全だが、全容は見えない",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "misaki_safe_at_yoshida", "requiredValue": true }
+      ],
+      "note": "美咲は安全だが、証拠が不十分"
+    },
+    {
+      "endStateType": "MisakiTaken",
+      "priority": 3,
+      "description": "崩壊 — 美咲も連れ去られた",
+      "scoreConditions": [],
+      "flagConditions": [
+        { "flagId": "misaki_taken", "requiredValue": true }
+      ],
+      "note": "最悪の結果"
+    },
+    {
+      "endStateType": "CollapseWitnessed",
+      "priority": 100,
+      "description": "崩壊の夜 — 真理は連れ去られ、美咲の運命は不明",
+      "scoreConditions": [],
+      "flagConditions": [],
+      "note": "デフォルト（yoshida_will_warn_mariなしルートで、misaki_takenが設定されなかった場合）"
+    }
+  ],
+  "scoreCalculation": {
+    "description": "Evidenceカテゴリのフラグのweightを合計してスコアを算出",
+    "contributingFlags": [
+      "nakamura_address_known",
+      "nakamura_hanging_confirmed",
+      "room_ransacked_noted",
+      "no_note_suspicious",
+      "nakamura_recent_noted",
+      "nakamura_phone_noted",
+      "mari_address_partial",
+      "told_police_about_demo",
+      "told_police_son_claim",
+      "mari_taken_witnessed",
+      "shinagawa_32_abduction",
+      "abduction_direction_known",
+      "mari_mentioned_misaki",
+      "misaki_with_mari_confirmed"
+    ]
+  },
+  "endingMappings": [
+    {
+      "endState": "MisakiProtected",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_misaki_protected"
+    },
+    {
+      "endState": "MisakiSafeUnaware",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_misaki_safe_unaware"
+    },
+    {
+      "endState": "MisakiTaken",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_misaki_taken"
+    },
+    {
+      "endState": "CollapseWitnessed",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_collapse_witnessed"
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": false,
+    "maxDispatchTimeMinutes": 0,
+    "dispatchFlagId": "",
+    "note": "Night07では真理は必ず連れ去られる。美咲の運命のみがNight06の選択で決まる。"
+  },
+  "defaultEndState": "CollapseWitnessed",
+  "defaultEndingId": "ending_collapse_witnessed",
+  "endings": [
+    {
+      "endingId": "ending_misaki_protected",
+      "title": "小さな光",
+      "description": "真理は連れ去られた。でも、美咲は吉田の家で眠っている。\n\n点と点が繋がっていく。誠和製薬、白いバン、中村浩二の死——そして、林遥の事故。\n\n美咲が持っている、あのキーホルダー。遥が何を託そうとしたのか。\n\n全てはこれから始まる。",
+      "endingType": "MisakiProtected"
+    },
+    {
+      "endingId": "ending_misaki_safe_unaware",
+      "title": "守られた秘密",
+      "description": "真理は連れ去られた。でも、美咲は吉田の家にいる。\n\n吉田さんは何も言わなかった。美咲のことを、守っている。\n\n何が起きているのか、まだ全容は見えない。でも、小さな命は今夜、守られた。",
+      "endingType": "MisakiSafeUnaware"
+    },
+    {
+      "endingId": "ending_misaki_taken",
+      "title": "崩壊",
+      "description": "電話が切れた。二人とも、連れていかれた。\n\n真理と美咲。「二人とも連れていけ」——あの声が、耳から離れない。\n\n5歳の少女の泣き声。助けを求める声。\n\n何もできなかった。",
+      "endingType": "MisakiTaken"
+    },
+    {
+      "endingId": "ending_collapse_witnessed",
+      "title": "崩壊の夜",
+      "description": "電話が切れた。真理は連れ去られた。\n\n美咲はどこにいるのか。真理と一緒だったのか。\n\n答えは、闇の中。",
+      "endingType": "CollapseWitnessed"
+    }
+  ],
+  "night06EndStateEffects": {
+    "description": "Night06のエンドステートとフラグがNight07に与える影響",
+    "effects": [
+      {
+        "night06Flag": "yoshida_will_warn_mari",
+        "effect": "真理は美咲を吉田に預けていた",
+        "addFlags": ["misaki_safe_at_yoshida"]
+      },
+      {
+        "night06Flag": "patrol_dispatched_yoshida",
+        "effect": "パトロール派遣済み（組織の動きを止めるには遅すぎた）",
+        "addFlags": []
+      },
+      {
+        "night06Flag": "night06_ominous_end",
+        "effect": "真理は警告を受けていない",
+        "addFlags": ["mari_unwarned"]
+      }
+    ],
+    "note": "yoshida_will_warn_mariがNight07の分岐を決定"
+  },
+  "foreshadowingPayoff": [
+    {
+      "id": "nakamura_fate",
+      "description": "中村浩二の死",
+      "plantedNight": "Night05-06",
+      "payoff": "組織に口封じされた。自殺に見せかけられているが、遺書がない。"
+    },
+    {
+      "id": "organization_vehicles",
+      "description": "品川ナンバー32の車",
+      "plantedNight": "Night05-06",
+      "payoff": "真理の連れ去りに使われた"
+    },
+    {
+      "id": "yoshida_warning",
+      "description": "吉田の警告",
+      "plantedNight": "Night06",
+      "payoff": "真理が美咲を吉田に預けるかどうかを決定"
+    }
+  ]
+}

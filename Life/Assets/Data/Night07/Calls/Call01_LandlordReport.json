@@ -1,0 +1,387 @@
+{
+  "callId": "call_landlord_report",
+  "callerId": "landlord",
+  "title": "大家からの通報",
+  "description": "大家（中年女性）が中村浩二の遺体を発見。家賃催促で訪問したところ、首を吊っている状態で発見。遺書はなく、部屋は荒らされた形跡がある。",
+  "segments": [
+    {
+      "segmentId": "landlord_intro",
+      "callerLines": [
+        "も、もしもし！警察ですか！？",
+        "大変なんです！人が...人が死んでるんです！",
+        "中村さんが...首を吊って..."
+      ],
+      "responses": [
+        {
+          "responseId": "intro_calm_down",
+          "text": "落ち着いてください。場所を教えてください。",
+          "nextSegmentId": "location_info",
+          "setFlags": ["landlord_reported"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "intro_ask_situation",
+          "text": "どういう状況ですか？",
+          "nextSegmentId": "situation_detail",
+          "setFlags": ["landlord_reported"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "location_info",
+      "callerLines": [
+        "○○町のアパートです...2階の...203号室...",
+        "中村浩二さんのお部屋で...",
+        "私、大家なんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "location_ask_detail",
+          "text": "どのような状態ですか？",
+          "nextSegmentId": "body_description",
+          "setFlags": ["nakamura_address_known"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "location_ask_why",
+          "text": "なぜ部屋に入ったんですか？",
+          "nextSegmentId": "why_entered",
+          "setFlags": ["nakamura_address_known"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "situation_detail",
+      "callerLines": [
+        "家賃を催促しに行ったんです...",
+        "ドアをノックしても返事がなくて...",
+        "合鍵で開けたら...中村さんが..."
+      ],
+      "responses": [
+        {
+          "responseId": "situation_ask_body",
+          "text": "中村さんはどのような状態ですか？",
+          "nextSegmentId": "body_description",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "situation_ask_location",
+          "text": "住所を教えてください。",
+          "nextSegmentId": "location_info",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "why_entered",
+      "callerLines": [
+        "家賃が2ヶ月滞納で...",
+        "何度電話しても出ないし...",
+        "心配になって..."
+      ],
+      "responses": [
+        {
+          "responseId": "why_ask_body",
+          "text": "中村さんの状態を教えてください。",
+          "nextSegmentId": "body_description",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "body_description",
+      "callerLines": [
+        "首を...吊ってるんです...",
+        "ロープで...天井から...",
+        "もう動いてない...冷たくなってる..."
+      ],
+      "responses": [
+        {
+          "responseId": "body_ask_detail",
+          "text": "他に気づいたことはありますか？",
+          "nextSegmentId": "body_detail",
+          "setFlags": ["nakamura_hanging_confirmed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "body_ask_room",
+          "text": "部屋の様子はどうですか？",
+          "nextSegmentId": "room_state",
+          "setFlags": ["nakamura_hanging_confirmed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "body_ask_recent",
+          "text": "中村さんの最近の様子は？",
+          "nextSegmentId": "recent_state",
+          "setFlags": ["nakamura_hanging_confirmed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "body_dispatch",
+          "text": "分かりました。すぐに警察と救急を向かわせます。",
+          "nextSegmentId": "dispatch_response",
+          "setFlags": ["nakamura_hanging_confirmed", "police_dispatched_nakamura"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "body_detail",
+      "callerLines": [
+        "えっと...あの...",
+        "口に...何か詰まってるみたいで...",
+        "黒っぽい布...？"
+      ],
+      "note": "警備員のコートと同じ素材。後の夜で判明する伏線。",
+      "responses": [
+        {
+          "responseId": "detail_cloth",
+          "text": "布？どんな布ですか？",
+          "nextSegmentId": "cloth_description",
+          "setFlags": ["noticed_cloth_in_mouth"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "detail_ask_room",
+          "text": "部屋の様子はどうですか？",
+          "nextSegmentId": "room_state",
+          "setFlags": ["noticed_cloth_in_mouth"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "detail_dispatch",
+          "text": "警察を向かわせます。何も触らないでください。",
+          "nextSegmentId": "dispatch_response",
+          "setFlags": ["noticed_cloth_in_mouth", "police_dispatched_nakamura"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "cloth_description",
+      "callerLines": [
+        "厚手の...なんだろう...",
+        "制服みたいな素材...？作業着かな...",
+        "よく見えないですけど...ボタンみたいなのも..."
+      ],
+      "note": "警備会社の制服の一部。アラートセキュリティの者が殺害に関与した証拠。",
+      "responses": [
+        {
+          "responseId": "cloth_ask_room",
+          "text": "部屋の様子はどうですか？",
+          "nextSegmentId": "room_state",
+          "setFlags": ["cloth_detail_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "cloth_dispatch",
+          "text": "大事な証拠になるかもしれません。触らないでください。警察を向かわせます。",
+          "nextSegmentId": "dispatch_response",
+          "setFlags": ["cloth_detail_noted", "police_dispatched_nakamura"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "room_state",
+      "callerLines": [
+        "部屋が...荒らされてるみたいで...",
+        "物が散らばってて...",
+        "でも、遺書とかは...見当たらないんです..."
+      ],
+      "note": "遺書がないことが不自然さを示唆",
+      "responses": [
+        {
+          "responseId": "room_ask_note",
+          "text": "遺書はないんですか？",
+          "nextSegmentId": "no_suicide_note",
+          "setFlags": ["room_ransacked_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "room_ask_recent",
+          "text": "中村さんの最近の様子は？",
+          "nextSegmentId": "recent_state",
+          "setFlags": ["room_ransacked_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "room_dispatch",
+          "text": "警察を向かわせます。部屋には触らないでください。",
+          "nextSegmentId": "dispatch_response",
+          "setFlags": ["room_ransacked_noted", "police_dispatched_nakamura"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "no_suicide_note",
+      "callerLines": [
+        "探したんですけど...見つからなくて...",
+        "普通、遺書って残すものですよね...",
+        "なんか...おかしいなって..."
+      ],
+      "responses": [
+        {
+          "responseId": "note_ask_recent",
+          "text": "最近の中村さんの様子は？",
+          "nextSegmentId": "recent_state",
+          "setFlags": ["no_note_suspicious"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "note_dispatch",
+          "text": "警察を向かわせます。何も触らないでください。",
+          "nextSegmentId": "dispatch_response",
+          "setFlags": ["no_note_suspicious", "police_dispatched_nakamura"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "recent_state",
+      "callerLines": [
+        "最近...すごく疲れた顔してました...",
+        "よく誰かと電話してて...",
+        "「もう終わりだ」とか言ってるのを聞いたことが..."
+      ],
+      "responses": [
+        {
+          "responseId": "recent_ask_phone",
+          "text": "誰と電話していたか分かりますか？",
+          "nextSegmentId": "phone_calls",
+          "setFlags": ["nakamura_recent_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "recent_ask_room",
+          "text": "部屋の様子はどうですか？",
+          "nextSegmentId": "room_state",
+          "setFlags": ["nakamura_recent_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "recent_dispatch",
+          "text": "分かりました。警察を向かわせます。",
+          "nextSegmentId": "dispatch_response",
+          "setFlags": ["nakamura_recent_noted", "police_dispatched_nakamura"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "phone_calls",
+      "callerLines": [
+        "分からないです...でも...",
+        "怒鳴ってることもあったし...",
+        "「息子のことを忘れない」とか言ってました..."
+      ],
+      "responses": [
+        {
+          "responseId": "phone_dispatch",
+          "text": "分かりました。警察を向かわせます。",
+          "nextSegmentId": "dispatch_response",
+          "setFlags": ["nakamura_phone_noted", "police_dispatched_nakamura"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "dispatch_response",
+      "callerLines": [
+        "はい...お願いします...",
+        "私、どうしたら...",
+        "怖くて..."
+      ],
+      "responses": [
+        {
+          "responseId": "dispatch_stay",
+          "text": "部屋の外で待っていてください。何も触らないように。",
+          "nextSegmentId": "waiting",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "dispatch_leave",
+          "text": "建物の外に出て、警察を待ってください。",
+          "nextSegmentId": "waiting",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "waiting",
+      "callerLines": [
+        "分かりました...",
+        "中村さん...かわいそうに...",
+        "息子さんのことずっと言ってたのに..."
+      ],
+      "responses": [
+        {
+          "responseId": "waiting_end",
+          "text": "警察が来るまでそこで待っていてください。",
+          "nextSegmentId": null,
+          "setFlags": ["landlord_call_ended"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "landlord_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "nakamura_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "nakamura_hanging_confirmed",
+        "requiresAnyFlag": ["heard_nakamura_claim", "nakamura_name_known", "demo_argument_reported"]
+      },
+      "triggerTiming": "after_call",
+      "content": "中村浩二...誠和製薬に抗議していた人...自殺..."
+    },
+    {
+      "triggerId": "no_note_thought",
+      "triggerCondition": {
+        "requiresFlag": "no_note_suspicious"
+      },
+      "triggerTiming": "after_call",
+      "content": "遺書がない...部屋が荒らされている...本当に自殺なのか..."
+    },
+    {
+      "triggerId": "pattern_thought",
+      "triggerCondition": {
+        "requiresFlag": "nakamura_hanging_confirmed",
+        "requiresAnyFlag": ["kenji_dead_noted", "noticed_hayashi_name"]
+      },
+      "triggerTiming": "after_call",
+      "content": "中村さんも...誠和製薬に関わった人が次々と..."
+    },
+    {
+      "triggerId": "cloth_warehouse_connection",
+      "triggerCondition": {
+        "requiresFlag": "cloth_detail_noted",
+        "requiresAnyFlag": ["warehouse_connection", "security_company_noted"]
+      },
+      "triggerTiming": "after_segment",
+      "triggerSegmentId": "cloth_description",
+      "content": "制服みたいな素材...まさか、あの倉庫火災で見たアラートセキュリティの...？"
+    },
+    {
+      "triggerId": "uniform_security_thought",
+      "triggerCondition": {
+        "requiresFlag": "cloth_detail_noted",
+        "requiresAnyFlag": ["warehouse_connection", "security_company_noted"]
+      },
+      "triggerTiming": "after_call",
+      "content": "警備会社の制服...倉庫火災の現場にいた白いバン...アラートセキュリティ...全部繋がってる..."
+    }
+  ],
+  "note": "Night07最初の通報。大家（中年女性）が家賃催促で中村の部屋を訪れ、首を吊っている遺体を発見。遺書がなく、部屋が荒らされているのは殺害を示唆。大家は中村の最近の様子（疲れていた、電話していた、息子のことを言っていた）も証言できる。"
+}

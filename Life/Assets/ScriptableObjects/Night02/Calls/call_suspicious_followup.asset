@@ -15,9 +15,9 @@ MonoBehaviour:
   callId: call_suspicious_followup
   caller: {fileID: 11400000, guid: 4c6c40675939c97448e9f2d288318801, type: 2}
   description: "\u4E0D\u5BE9\u8005\u901A\u5831\u306E\u30D5\u30A9\u30ED\u30FC\u30A2\u30C3\u30D7\u3002\u8B66\u5BDF\u3092\u6D3E\u9063\u3057\u305F\u5834\u5408\u306E\u307F\u767A\u751F\u3002\u4E0D\u5BE9\u8005\u306F\u3044\u306A\u304B\u3063\u305F\u3002"
-  incomingTimeMinutes: 0
+  incomingTimeMinutes: 1475
   ringDuration: 30
-  priority: 5
+  priority: 4
   startSegmentId: followup_intro
   segments:
   - segmentId: followup_intro

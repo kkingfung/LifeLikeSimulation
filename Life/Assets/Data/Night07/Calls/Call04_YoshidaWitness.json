@@ -1,0 +1,255 @@
+{
+  "callId": "call_yoshida_witness",
+  "callerId": "yoshida_kazuko",
+  "title": "吉田からの目撃報告",
+  "description": "yoshida_will_warn_mariフラグがある場合のみ発生。吉田から「渡辺さんが車で連れていかれた」という報告。美咲については言及しない（守っている）。",
+  "conditions": {
+    "requiresFlag": "yoshida_will_warn_mari"
+  },
+  "segments": [
+    {
+      "segmentId": "yoshida_panic",
+      "callerLines": [
+        "あ、あの...吉田です...",
+        "大変なことが...渡辺さんが...",
+        "車で...連れていかれた..."
+      ],
+      "responses": [
+        {
+          "responseId": "panic_ask_detail",
+          "text": "落ち着いて。何があったんですか？",
+          "nextSegmentId": "yoshida_explain",
+          "setFlags": ["yoshida_witness_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "panic_ask_when",
+          "text": "いつのことですか？",
+          "nextSegmentId": "yoshida_timing",
+          "setFlags": ["yoshida_witness_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_explain",
+      "callerLines": [
+        "さっき...窓から見てたら...",
+        "黒い車が渡辺さんの家の前に止まって...",
+        "男の人たちが...渡辺さんを車に乗せて..."
+      ],
+      "responses": [
+        {
+          "responseId": "explain_ask_men",
+          "text": "男の人たちはどんな様子でしたか？",
+          "nextSegmentId": "yoshida_men",
+          "setFlags": ["mari_taken_witnessed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "explain_ask_mari",
+          "text": "渡辺さんは抵抗していましたか？",
+          "nextSegmentId": "yoshida_mari_state",
+          "setFlags": ["mari_taken_witnessed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_timing",
+      "callerLines": [
+        "ついさっきです...10分くらい前...",
+        "車が止まったと思ったら...",
+        "あっという間に..."
+      ],
+      "responses": [
+        {
+          "responseId": "timing_ask_detail",
+          "text": "詳しく教えてください。",
+          "nextSegmentId": "yoshida_explain",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_men",
+      "callerLines": [
+        "スーツを着た男の人が2、3人...",
+        "怖い顔して...",
+        "渡辺さんを両側から挟んで..."
+      ],
+      "responses": [
+        {
+          "responseId": "men_ask_car",
+          "text": "車のナンバーは見えましたか？",
+          "nextSegmentId": "yoshida_car",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "men_ask_direction",
+          "text": "車はどちらに行きましたか？",
+          "nextSegmentId": "yoshida_direction",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_mari_state",
+      "callerLines": [
+        "最初は何か言ってたみたいだけど...",
+        "すぐに車に押し込まれて...",
+        "私、怖くて声も出せなかった..."
+      ],
+      "responses": [
+        {
+          "responseId": "mari_ask_car",
+          "text": "車のナンバーは？",
+          "nextSegmentId": "yoshida_car",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "mari_ask_direction",
+          "text": "車はどこへ？",
+          "nextSegmentId": "yoshida_direction",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_car",
+      "callerLines": [
+        "品川ナンバー...前と同じ車だと思います...",
+        "32...で終わる...",
+        "また別の車も来てた..."
+      ],
+      "responses": [
+        {
+          "responseId": "car_ask_direction",
+          "text": "どちらに行きましたか？",
+          "nextSegmentId": "yoshida_direction",
+          "setFlags": ["shinagawa_32_abduction"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "car_dispatch",
+          "text": "警察に連絡します。",
+          "nextSegmentId": "yoshida_police",
+          "setFlags": ["shinagawa_32_abduction"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_direction",
+      "callerLines": [
+        "北の方に...走っていきました...",
+        "すごいスピードで...",
+        "渡辺さん...大丈夫かしら..."
+      ],
+      "responses": [
+        {
+          "responseId": "direction_dispatch",
+          "text": "警察に連絡します。吉田さんは家にいてください。",
+          "nextSegmentId": "yoshida_police",
+          "setFlags": ["abduction_direction_known"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "direction_ask_self",
+          "text": "吉田さんは大丈夫ですか？",
+          "nextSegmentId": "yoshida_self",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_self",
+      "callerLines": [
+        "私は...大丈夫です...",
+        "でも、渡辺さんが...",
+        "どうしたらいいの..."
+      ],
+      "responses": [
+        {
+          "responseId": "self_dispatch",
+          "text": "警察に連絡します。家から出ないでください。",
+          "nextSegmentId": "yoshida_police",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_police",
+      "callerLines": [
+        "警察...お願いします...",
+        "渡辺さんを助けて...",
+        "あの人たち...怖かった..."
+      ],
+      "responses": [
+        {
+          "responseId": "police_reassure",
+          "text": "すぐに対応します。吉田さんも気をつけて。",
+          "nextSegmentId": "yoshida_end",
+          "setFlags": ["police_notified_abduction"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "yoshida_end",
+      "callerLines": [
+        "はい...ありがとうございます...",
+        "渡辺さん...無事でいて...",
+        "..."
+      ],
+      "note": "吉田は美咲のことを言わない。守っている。",
+      "responses": [
+        {
+          "responseId": "end_close",
+          "text": "何かあればまた連絡してください。",
+          "nextSegmentId": null,
+          "setFlags": ["yoshida_call_ended"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "yoshida_panic",
+  "operatorThoughts": [
+    {
+      "triggerId": "mari_abducted_confirmed_thought",
+      "triggerCondition": {
+        "requiresFlag": "mari_taken_witnessed"
+      },
+      "triggerTiming": "after_call",
+      "content": "渡辺さんが連れ去られた...あの車で..."
+    },
+    {
+      "triggerId": "same_car_thought",
+      "triggerCondition": {
+        "requiresFlag": "shinagawa_32_abduction",
+        "requiresFlag2": "shinagawa_32_confirmed"
+      },
+      "triggerTiming": "after_call",
+      "content": "品川ナンバー32...やはりあの車...すべて繋がっている..."
+    },
+    {
+      "triggerId": "misaki_safe_thought",
+      "triggerCondition": {
+        "requiresFlag": "yoshida_call_ended",
+        "requiresAnyFlag": ["misaki_called", "yoshida_mentioned_misaki"]
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃんは...吉田さんは何も言わなかった...もしかして..."
+    }
+  ],
+  "note": "yoshida_will_warn_mariフラグがある場合の最後の電話。吉田が真理の連れ去りを目撃して通報。美咲については一切言及しない（吉田が守っている）。品川ナンバー32の車が確認される。Night06からの伏線回収。"
+}

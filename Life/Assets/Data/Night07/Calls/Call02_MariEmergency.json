@@ -1,0 +1,198 @@
+{
+  "callId": "call_mari_emergency",
+  "callerId": "watanabe_mari",
+  "title": "真理からの緊急電話",
+  "description": "yoshida_will_warn_mariフラグがある場合のみ発生。真理からの緊急電話。「車が来た、助けて」と言って電話が切れる。美咲は既に吉田の家に預けられている。",
+  "conditions": {
+    "requiresFlag": "yoshida_will_warn_mari"
+  },
+  "segments": [
+    {
+      "segmentId": "mari_panic",
+      "callerLines": [
+        "...もしもし！？",
+        "車が...車が来た！",
+        "黒い車が...何台も..."
+      ],
+      "responses": [
+        {
+          "responseId": "panic_ask_location",
+          "text": "渡辺さん？今どこにいますか？",
+          "nextSegmentId": "mari_location",
+          "setFlags": ["mari_emergency_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "panic_ask_situation",
+          "text": "何が起きてるんですか？",
+          "nextSegmentId": "mari_explain",
+          "setFlags": ["mari_emergency_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_location",
+      "callerLines": [
+        "家です...自分の家...",
+        "窓の外に...止まってる...",
+        "助けて...お願い..."
+      ],
+      "responses": [
+        {
+          "responseId": "location_dispatch",
+          "text": "警察を向かわせます。住所は？",
+          "nextSegmentId": "mari_address",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "location_ask_who",
+          "text": "誰が来たんですか？",
+          "nextSegmentId": "mari_who",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_explain",
+      "callerLines": [
+        "ずっと見張られてて...",
+        "今、車が止まった...",
+        "ドアの前に誰かいる..."
+      ],
+      "responses": [
+        {
+          "responseId": "explain_dispatch",
+          "text": "警察を向かわせます。住所を教えて！",
+          "nextSegmentId": "mari_address",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "explain_hide",
+          "text": "どこかに隠れて！",
+          "nextSegmentId": "mari_hiding",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_who",
+      "callerLines": [
+        "分からない...でも...",
+        "あの車...前から見てた車...",
+        "（ドアを叩く音）...来た..."
+      ],
+      "responses": [
+        {
+          "responseId": "who_dispatch",
+          "text": "警察を向かわせます！住所は！？",
+          "nextSegmentId": "mari_address",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_address",
+      "callerLines": [
+        "○○町の...（ドアを叩く激しい音）",
+        "...っ！",
+        "（電話が落ちる音）"
+      ],
+      "responses": [
+        {
+          "responseId": "address_call_out",
+          "text": "渡辺さん！？渡辺さん！！",
+          "nextSegmentId": "call_cutoff",
+          "setFlags": ["mari_address_partial"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_hiding",
+      "callerLines": [
+        "隠れる場所が...",
+        "（ドアが開く音）",
+        "...っ！誰...！"
+      ],
+      "responses": [
+        {
+          "responseId": "hiding_call_out",
+          "text": "渡辺さん！！",
+          "nextSegmentId": "call_cutoff",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "call_cutoff",
+      "callerLines": [
+        "（男の声「こっちだ」）",
+        "（真理の悲鳴）",
+        "（通話が切れる）"
+      ],
+      "responses": [
+        {
+          "responseId": "cutoff_dispatch",
+          "text": "...（警察に連絡しなければ）",
+          "nextSegmentId": "after_cutoff",
+          "setFlags": ["mari_call_cut", "mari_abducted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "after_cutoff",
+      "callerLines": [
+        "（通話終了）",
+        "...",
+        "..."
+      ],
+      "note": "プレイヤーに選択肢を提示：警察に通報/住所を伝える",
+      "responses": [
+        {
+          "responseId": "after_dispatch_police",
+          "text": "警察に渡辺さんの住所を伝える",
+          "nextSegmentId": null,
+          "setFlags": ["dispatched_to_mari_house"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "after_wait",
+          "text": "...（何もできない）",
+          "nextSegmentId": null,
+          "setFlags": ["mari_not_helped"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "mari_panic",
+  "operatorThoughts": [
+    {
+      "triggerId": "mari_danger_thought",
+      "triggerCondition": {
+        "requiresFlag": "mari_call_cut"
+      },
+      "triggerTiming": "after_call",
+      "content": "真理さん...電話が切れた...間に合わなかった..."
+    },
+    {
+      "triggerId": "misaki_worry_thought",
+      "triggerCondition": {
+        "requiresFlag": "mari_abducted",
+        "requiresAnyFlag": ["misaki_called", "yoshida_mentioned_misaki"]
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃんは...真理さんと一緒だったのか...?"
+    }
+  ],
+  "note": "yoshida_will_warn_mariフラグがある場合のみ発生。真理は吉田からの警告を受けて美咲を吉田に預けていたが、自分は逃げ遅れた。「車が来た、助けて」→電話が切れる。プレイヤーは警察に住所を伝えるか選択できるが、間に合わない。"
+}

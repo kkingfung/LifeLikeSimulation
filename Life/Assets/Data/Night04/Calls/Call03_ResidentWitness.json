@@ -1,0 +1,150 @@
+{
+  "callId": "call_resident_witness",
+  "callerId": "mountain_resident",
+  "title": "昨夜の車のこと",
+  "description": "山の麓に住む住民からの電話。昨夜、深夜に白いバンが林道を上っていくのを見た。人影と大きな荷物も目撃。",
+  "triggerCondition": {
+    "flagRequired": "body_reported",
+    "delayMinutes": 60
+  },
+  "segments": [
+    {
+      "segmentId": "resident_intro",
+      "callerLines": [
+        "あの、すみません。ニュースで山の遺体のこと見て...",
+        "昨日の夜、うちの前を車が通ったんです。",
+        "深夜だったから、おかしいなって思って..."
+      ],
+      "responses": [
+        {
+          "responseId": "resident_intro_listen",
+          "text": "どんな車でしたか？",
+          "nextSegmentId": "resident_car",
+          "setFlags": ["resident_witness_contacted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "resident_car",
+      "callerLines": [
+        "白いバン...業務用みたいな。",
+        "横に何か書いてあった気がするんですけど...暗くて。",
+        "アラーム...アラームサービス？だったかな..."
+      ],
+      "responses": [
+        {
+          "responseId": "resident_car_more",
+          "text": "他に何か見ましたか？",
+          "nextSegmentId": "resident_people",
+          "setFlags": ["white_van_noted", "partial_company_name"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "resident_people",
+      "callerLines": [
+        "二人くらい...男だと思います。",
+        "車から何か降ろしてました。大きな袋みたいな...",
+        "人が入るくらいの大きさで..."
+      ],
+      "responses": [
+        {
+          "responseId": "resident_people_bag",
+          "text": "大きな袋...？",
+          "nextSegmentId": "resident_realize",
+          "setFlags": ["two_people_seen", "suspicious_cargo_seen"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "resident_realize",
+      "callerLines": [
+        "...まさか、それが...",
+        "今朝のニュースを見て、もしかしてって...",
+        "警察に言った方がいいですか？"
+      ],
+      "responses": [
+        {
+          "responseId": "resident_realize_police",
+          "text": "重要な情報です。ぜひ警察に連絡してください。",
+          "nextSegmentId": "resident_will_call_police",
+          "setFlags": ["body_transport_witnessed", "encouraged_police_contact"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "resident_realize_note",
+          "text": "記録しました。こちらから警察に伝えておきます。",
+          "nextSegmentId": "resident_end_passive",
+          "setFlags": ["body_transport_witnessed", "operator_will_report"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "resident_realize_quiet",
+          "text": "...今は様子を見た方がいいかもしれません。",
+          "nextSegmentId": "resident_confused",
+          "setFlags": ["body_transport_witnessed", "discouraged_reporting"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "resident_will_call_police",
+      "callerLines": [
+        "そうですね...怖いけど、言わないと。",
+        "警察に電話します。",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "resident_will_call_reply",
+          "text": "勇気ある判断です。お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": ["resident_will_contact_police"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "resident_end_passive",
+      "callerLines": [
+        "そうですか...お任せします。",
+        "...怖いですね、こんな近くで...",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "resident_end_passive_reply",
+          "text": "ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "resident_confused",
+      "callerLines": [
+        "え...？様子を見る...？",
+        "でも、人が死んでるんですよね...？",
+        "...分かりました。でも、やっぱり怖いです..."
+      ],
+      "responses": [
+        {
+          "responseId": "resident_confused_reply",
+          "text": "...ご協力ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["witness_silenced"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "resident_intro",
+  "note": "山の麓の住民が遺体遺棄の時間帯に白いバンを目撃。会社名を「アラームサービス」と誤認（実際はアラートセキュリティ）。オペレーターの対応で証言の扱いが変わる：encouraged_police_contact → 住民が直接警察に連絡、正式な証言として記録される。operator_will_report → オペレーター経由の二次情報として処理。discouraged_reporting → 証言が埋もれる可能性、witness_silencedフラグ。夜の最後の電話。"
+}

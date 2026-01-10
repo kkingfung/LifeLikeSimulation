@@ -142,22 +142,23 @@
     {
       "callerId": "unknown_voice",
       "displayName": "???",
-      "realName": "不明（内部告発者）",
-      "description": "組織の中間管理職だった内部告発者。林遥を逃がそうとして組織に捕まった。何かを伝えようとしているが、話せない状況にある。Night04で遺体として発見される。",
-      "voiceDescription": "無言。時折かすかな呼吸音が聞こえるかもしれない。",
+      "realName": "林健二（偽）",
+      "description": "Night01で「林遥の兄」を装っていた組織の中間管理職。林遥を見つけられなかったため組織に捕まった。口を塞がれた状態で必死に助けを求めている。Night04で遺体として発見される。",
+      "voiceDescription": "無言。時折かすかな呼吸音や押し殺した声が聞こえる。",
       "voicePitch": 1.0,
       "personality": {
-        "honesty": 100,
-        "stability": 20,
+        "honesty": 15,
+        "stability": 10,
         "cooperation": 100,
         "aggression": 0
       },
-      "hiddenInfo": "林遥を逃がそうとした内部告発者。組織に捕まり、この通話の後に殺害される。所持していた証拠は全て組織に回収された。",
-      "trueMotivation": "助けを求めている、あるいは何かを伝えようとしている",
+      "hiddenInfo": "組織の中間管理職。林遥の逃亡を阻止できなかった責任を問われ、「処分」される。この通話の後に殺害される。",
+      "trueMotivation": "助けを求めている",
       "relations": [
-        { "targetCallerId": "hayashi_haruka", "relationType": "Protected", "description": "逃がそうとした", "isKnown": false }
+        { "targetCallerId": "hayashi_haruka", "relationType": "Enemy", "description": "追跡対象だった", "isKnown": false },
+        { "targetCallerId": "sato_koji", "relationType": "Colleague", "description": "同じ組織のメンバー", "isKnown": false }
       ],
-      "organizationRelation": "former_member"
+      "organizationRelation": "member"
     }
   ]
 }

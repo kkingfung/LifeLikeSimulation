@@ -287,6 +287,32 @@ namespace LifeLike.Services.Flag
             return _flagStates;
         }
 
+        public List<FlagState> GetAllFlags()
+        {
+            return _flagStates.Values.ToList();
+        }
+
+        public List<FlagState> GetPersistentFlags()
+        {
+            if (_flagsDefinition == null)
+            {
+                return new List<FlagState>();
+            }
+
+            var persistentFlags = new List<FlagState>();
+
+            foreach (var kvp in _flagStates)
+            {
+                var flagDef = _flagsDefinition.GetFlagDefinition(kvp.Key);
+                if (flagDef != null && flagDef.persistsAcrossNights && kvp.Value.isSet)
+                {
+                    persistentFlags.Add(kvp.Value);
+                }
+            }
+
+            return persistentFlags;
+        }
+
         #endregion
 
         #region 永続化

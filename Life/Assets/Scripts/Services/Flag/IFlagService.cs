@@ -119,6 +119,16 @@ namespace LifeLike.Services.Flag
         /// </summary>
         IReadOnlyDictionary<string, FlagState> GetAllFlagStates();
 
+        /// <summary>
+        /// すべてのフラグをリスト形式で取得
+        /// </summary>
+        List<FlagState> GetAllFlags();
+
+        /// <summary>
+        /// 永続化フラグをリスト形式で取得（夜をまたぐ用）
+        /// </summary>
+        List<FlagState> GetPersistentFlags();
+
         #endregion
 
         #region 永続化

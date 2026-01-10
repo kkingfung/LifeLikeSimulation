@@ -1,0 +1,528 @@
+{
+  "callId": "call_police_missing",
+  "callerId": "police_detective",
+  "title": "警察からの連絡",
+  "description": "警察が真理の行方不明について確認。オペレーターに情報提供を求めつつ、中村の件との関連も探っている。",
+  "segments": [
+    {
+      "segmentId": "police_intro",
+      "callerLines": [
+        "○○署の山田です。夜分に失礼します。",
+        "渡辺真理さんの行方不明届が出ていまして。",
+        "昨夜、そちらに通報があったと聞いたのですが。"
+      ],
+      "responses": [
+        {
+          "responseId": "intro_confirm",
+          "text": "はい、通報がありました。",
+          "nextSegmentId": "police_ask_detail",
+          "setFlags": ["confirmed_mari_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "intro_ask_届",
+          "text": "行方不明届ですか？",
+          "nextSegmentId": "police_explain_missing",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_explain_missing",
+      "callerLines": [
+        "はい、ご近所の方から届出がありまして。",
+        "昨夜から連絡が取れないと。",
+        "何か情報があればと思いまして。"
+      ],
+      "responses": [
+        {
+          "responseId": "explain_confirm",
+          "text": "昨夜、緊急の通報がありました。",
+          "nextSegmentId": "police_ask_detail",
+          "setFlags": ["confirmed_mari_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "explain_vague",
+          "text": "記録を確認しないと詳しくは...。",
+          "nextSegmentId": "police_push",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_push",
+      "callerLines": [
+        "お願いします。",
+        "実は、昨日の中村浩二さんの件とも関係があるかもしれなくて。",
+        "何でもいいので、教えていただけますか。"
+      ],
+      "responses": [
+        {
+          "responseId": "push_tell",
+          "text": "渡辺さんから緊急の電話がありました。「車が来た」と。",
+          "nextSegmentId": "police_car_info",
+          "setFlags": ["told_police_mari_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "push_minimal",
+          "text": "通報はありましたが、詳細は記録を確認します。",
+          "nextSegmentId": "police_nakamura_connection",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_ask_detail",
+      "callerLines": [
+        "どのような内容でしたか？",
+        "何か具体的なことを言っていましたか？"
+      ],
+      "responses": [
+        {
+          "responseId": "detail_tell_car",
+          "text": "「車が来た、助けて」と言って電話が切れました。",
+          "nextSegmentId": "police_car_info",
+          "setFlags": ["told_police_mari_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "detail_tell_minimal",
+          "text": "緊急の様子でしたが、途中で切れてしまいました。",
+          "nextSegmentId": "police_ask_more",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_ask_more",
+      "callerLines": [
+        "途中で切れた...。",
+        "何か他に聞こえましたか？",
+        "背景の音とか、誰かの声とか。"
+      ],
+      "responses": [
+        {
+          "responseId": "more_tell_voices",
+          "text": "男の声が聞こえました。「こっちだ」と。",
+          "nextSegmentId": "police_serious",
+          "setFlags": ["told_police_voices"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "more_nothing",
+          "text": "はっきりとは覚えていません...。",
+          "nextSegmentId": "police_nakamura_connection",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_car_info",
+      "callerLines": [
+        "車...ですか。",
+        "実は、近所の方も黒い車を目撃しているんです。",
+        "品川ナンバーだったとか。"
+      ],
+      "responses": [
+        {
+          "responseId": "car_confirm",
+          "text": "はい、品川ナンバー32という情報もありました。",
+          "nextSegmentId": "police_serious",
+          "setFlags": ["told_police_plate"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "car_ask_nakamura",
+          "text": "中村さんの件と関係があるんですか？",
+          "nextSegmentId": "police_nakamura_connection",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_serious",
+      "callerLines": [
+        "...なるほど。",
+        "これは単なる行方不明ではないかもしれませんね。",
+        "上に報告します。"
+      ],
+      "responses": [
+        {
+          "responseId": "serious_ask_connection",
+          "text": "中村さんの件と関係があるんですか？",
+          "nextSegmentId": "police_nakamura_connection",
+          "setFlags": ["police_taking_seriously"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "serious_end",
+          "text": "お願いします。",
+          "nextSegmentId": "police_thanks",
+          "setFlags": ["police_taking_seriously"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_nakamura_connection",
+      "callerLines": [
+        "...正直に言うと、気になることがあるんです。",
+        "中村さんも、この渡辺さんも、誠和製薬と何か関係があるみたいで。",
+        "偶然にしては...ね。"
+      ],
+      "responses": [
+        {
+          "responseId": "connection_agree",
+          "text": "私もそう思っていました。",
+          "nextSegmentId": "police_careful",
+          "setFlags": ["agreed_with_police"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "connection_ask_nakamura",
+          "text": "中村さんの件、何か分かったことは？",
+          "nextSegmentId": "police_nakamura_detail",
+          "setFlags": [],
+          "clearFlags": [],
+          "conditions": {
+            "requiresAnyFlag": ["noticed_cloth_in_mouth", "nakamura_hanging_confirmed"]
+          }
+        },
+        {
+          "responseId": "connection_ask",
+          "text": "誠和製薬と渡辺さんの関係は？",
+          "nextSegmentId": "police_dont_know",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "connection_neutral",
+          "text": "...そうですか。",
+          "nextSegmentId": "police_thanks",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_nakamura_detail",
+      "callerLines": [
+        "...これは、まだ公式には言えないんですが。",
+        "口の中に布が詰められていたんです。",
+        "最初は自殺に見せかけようとしたんでしょうが、証拠を残してしまった。"
+      ],
+      "responses": [
+        {
+          "responseId": "nakamura_detail_cloth",
+          "text": "その布は...？",
+          "nextSegmentId": "police_cloth_reveal",
+          "setFlags": ["asked_about_cloth"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "nakamura_detail_murder",
+          "text": "つまり、殺人...。",
+          "nextSegmentId": "police_murder_confirm",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_cloth_reveal",
+      "callerLines": [
+        "鑑識の結果...物流会社の制服と同じ素材でした。",
+        "林遥さんが働いていた会社と同じです。",
+        "偶然とは思えない。"
+      ],
+      "note": "林遥が働いていた物流会社の制服。組織が物流会社を使って犯行に及んだ証拠。",
+      "responses": [
+        {
+          "responseId": "cloth_haruka_company",
+          "text": "林遥さんの会社...？",
+          "nextSegmentId": "police_haruka_connection",
+          "setFlags": ["cloth_matched_haruka_company"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "cloth_shocked",
+          "text": "同じ会社の人間が...？",
+          "nextSegmentId": "police_company_suspicion",
+          "setFlags": ["cloth_matched_haruka_company"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_haruka_connection",
+      "callerLines": [
+        "ええ。林健二さんも、林遥さんも、この物流会社と繋がりがある。",
+        "そして今度は中村さんの現場から、その会社の制服が出てきた。",
+        "この会社、何かおかしい。"
+      ],
+      "responses": [
+        {
+          "responseId": "haruka_company_front",
+          "text": "もしかして...フロント企業...？",
+          "nextSegmentId": "police_front_confirm",
+          "setFlags": ["suspected_company_front"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "haruka_company_careful",
+          "text": "...調べているんですか？",
+          "nextSegmentId": "police_careful",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_company_suspicion",
+      "callerLines": [
+        "可能性はあります。",
+        "林遥さんはこの会社で何かを知ってしまった。",
+        "だから消された...そう考えると辻褄が合う。"
+      ],
+      "responses": [
+        {
+          "responseId": "suspicion_agree",
+          "text": "林健二さんも...同じ理由で...。",
+          "nextSegmentId": "police_front_confirm",
+          "setFlags": ["haruka_knew_something"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "suspicion_careful",
+          "text": "...危険ですね。",
+          "nextSegmentId": "police_careful",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_front_confirm",
+      "callerLines": [
+        "...その可能性を調べています。",
+        "誠和製薬との繋がりも見えてきた。",
+        "物流で何かを運んでいたのかもしれない。"
+      ],
+      "note": "物流会社が誠和製薬の違法な薬を運んでいた可能性。",
+      "responses": [
+        {
+          "responseId": "front_drug",
+          "text": "薬を...？",
+          "nextSegmentId": "police_drug_suspicion",
+          "setFlags": ["suspected_drug_transport"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "front_careful",
+          "text": "...危険な話ですね。",
+          "nextSegmentId": "police_careful",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_drug_suspicion",
+      "callerLines": [
+        "まだ推測ですが...。",
+        "誠和製薬には認可されていない薬があるという噂がある。",
+        "それを物流会社を使って流していたとしたら...。"
+      ],
+      "responses": [
+        {
+          "responseId": "drug_nakamura_son",
+          "text": "中村さんの息子は、その薬で...。",
+          "nextSegmentId": "police_all_connected",
+          "setFlags": ["connected_drug_to_nakamura"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresAnyFlag": ["kudo_told_about_son", "listened_demo_story"]
+          }
+        },
+        {
+          "responseId": "drug_understand",
+          "text": "...なるほど。",
+          "nextSegmentId": "police_careful",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_all_connected",
+      "callerLines": [
+        "...ご存知でしたか。",
+        "そうです。全部繋がっているんです。",
+        "中村さんの息子、林遥さん、林健二さん、そして渡辺真理さん...",
+        "誰かが口封じをしている。"
+      ],
+      "responses": [
+        {
+          "responseId": "all_connected_end",
+          "text": "...。",
+          "nextSegmentId": "police_careful",
+          "setFlags": ["police_knows_full_picture"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_murder_confirm",
+      "callerLines": [
+        "可能性は高いです。",
+        "遺書もなかった。部屋も荒らされていた。",
+        "自殺に見せかけた殺人と見ています。"
+      ],
+      "responses": [
+        {
+          "responseId": "murder_agree",
+          "text": "私もおかしいと思っていました。",
+          "nextSegmentId": "police_careful",
+          "setFlags": ["police_confirmed_murder"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "murder_neutral",
+          "text": "...そうですか。",
+          "nextSegmentId": "police_careful",
+          "setFlags": ["police_confirmed_murder"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_careful",
+      "callerLines": [
+        "...あまり大きな声では言えませんが。",
+        "この件、慎重に扱った方がいいかもしれません。",
+        "上からの圧力を感じることもあるので。"
+      ],
+      "responses": [
+        {
+          "responseId": "careful_understand",
+          "text": "分かりました。気をつけます。",
+          "nextSegmentId": "police_thanks",
+          "setFlags": ["police_warned_operator"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "careful_ask",
+          "text": "圧力というと...？",
+          "nextSegmentId": "police_cant_say",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_dont_know",
+      "callerLines": [
+        "まだ分かりません。",
+        "ただ、林健二という人物とも繋がりがあるかもしれない。",
+        "調査中です。"
+      ],
+      "responses": [
+        {
+          "responseId": "dont_know_kenji",
+          "text": "林健二...山で見つかった遺体の...。",
+          "nextSegmentId": "police_surprised",
+          "setFlags": ["mentioned_kenji_to_police"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "dont_know_end",
+          "text": "分かりました。何かあればまた連絡します。",
+          "nextSegmentId": "police_thanks",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_surprised",
+      "callerLines": [
+        "...ご存知でしたか。",
+        "なるほど...やはり繋がっているんですね。",
+        "ありがとうございます。参考になりました。"
+      ],
+      "responses": [
+        {
+          "responseId": "surprised_end",
+          "text": "お役に立てれば。",
+          "nextSegmentId": "police_thanks",
+          "setFlags": ["police_knows_connection"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_cant_say",
+      "callerLines": [
+        "...これ以上は、ちょっと。",
+        "とにかく、気をつけてください。",
+        "何かあれば、また連絡します。"
+      ],
+      "responses": [
+        {
+          "responseId": "cant_say_end",
+          "text": "分かりました。ありがとうございます。",
+          "nextSegmentId": null,
+          "setFlags": ["police_warned_operator"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "police_thanks",
+      "callerLines": [
+        "ご協力ありがとうございました。",
+        "何か思い出したことがあれば、連絡ください。",
+        "では、失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "thanks_end",
+          "text": "お疲れ様です。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "police_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "connection_confirmed_thought",
+      "triggerCondition": {
+        "requiresFlag": "police_knows_connection"
+      },
+      "triggerTiming": "after_call",
+      "content": "警察も気づき始めている...林健二、中村、渡辺真理...すべて繋がっている..."
+    },
+    {
+      "triggerId": "pressure_thought",
+      "triggerCondition": {
+        "requiresFlag": "police_warned_operator"
+      },
+      "triggerTiming": "after_call",
+      "content": "上からの圧力...誠和製薬の力は警察にも及んでいるのか..."
+    }
+  ],
+  "note": "Night08最初の通話。警察が真理の行方不明届について確認。中村の件との関連を探っており、誠和製薬の名前も出る。オペレーターの情報提供次第で、警察が繋がりに気づく。警察も上からの圧力を感じている。"
+}

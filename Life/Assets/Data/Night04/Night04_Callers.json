@@ -39,24 +39,62 @@
       "organizationRelation": "none"
     },
     {
-      "callerId": "whistleblower",
-      "displayName": "不明",
-      "realName": "不明",
-      "description": "Night03の無言電話の主。組織の中間管理職で、内部告発者だった。林遥を逃がそうとして組織に捕まり、殺された。Night04では遺体として発見される。",
-      "voiceDescription": "（Night04では登場しない — 遺体として言及されるのみ）",
+      "callerId": "hayashi_kenji_fake",
+      "displayName": "遺体（身元不明）",
+      "realName": "林健二（偽）",
+      "description": "Night01で「林遥の兄」を装っていた組織の中間管理職。Night03の無言電話の主。林遥を見つけられなかったため組織に「処分」された。Night04では山中で遺体として発見される。",
+      "voiceDescription": "（Night04では登場しない — 遺体として発見されるのみ）",
       "voicePitch": 1.0,
       "personality": {
-        "honesty": 80,
-        "stability": 50,
-        "cooperation": 70,
-        "aggression": 20
+        "honesty": 15,
+        "stability": 75,
+        "cooperation": 65,
+        "aggression": 40
       },
-      "hiddenInfo": "組織の中間管理職だった。林遥の逃亡を手助けしようとしたが、発覚して捕まった。Night03で最後の電話をかけようとしたが、話すことができなかった。",
-      "trueMotivation": "（死亡）組織の不正を暴きたかった、遥を救いたかった",
+      "hiddenInfo": "組織の中間管理職。林遥の逃亡を阻止できなかった責任を問われた。Night03で最後の電話をかけようとしたが、口を塞がれて話すことができなかった。所持品は全て組織に回収された。",
+      "trueMotivation": "（死亡）林遥を確保する任務に失敗した",
       "relations": [
-        { "targetCallerId": "hayashi_haruka", "relationType": "Protected", "description": "逃がそうとした", "isKnown": false }
+        { "targetCallerId": "hayashi_haruka", "relationType": "Enemy", "description": "追跡対象だった", "isKnown": false },
+        { "targetCallerId": "sato_koji", "relationType": "Colleague", "description": "同じ組織のメンバー", "isKnown": false }
       ],
-      "organizationRelation": "former_member"
+      "organizationRelation": "member",
+      "note": "Night01の「林健二」と同一人物。本当の林健二（遥の兄）は組織に殺されており、この人物が成りすましていた。"
+    },
+    {
+      "callerId": "colleague",
+      "displayName": "同僚",
+      "realName": "不明",
+      "description": "緊急通報センターの同僚。休憩時間に雑談する相手。",
+      "voiceDescription": "普通の中年女性の声。フレンドリー。",
+      "voicePitch": 1.05,
+      "personality": {
+        "honesty": 80,
+        "stability": 75,
+        "cooperation": 85,
+        "aggression": 10
+      },
+      "hiddenInfo": "特になし。噂話が好きな普通の同僚。",
+      "trueMotivation": "世間話、情報交換",
+      "relations": [],
+      "organizationRelation": "none"
+    },
+    {
+      "callerId": "mountain_resident",
+      "displayName": "住民",
+      "realName": "不明",
+      "description": "山の麓に住む住民。昨夜、林道を通った不審な白いバンを目撃した。",
+      "voiceDescription": "中年男性の声。田舎のなまりがある。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 90,
+        "stability": 80,
+        "cooperation": 85,
+        "aggression": 10
+      },
+      "hiddenInfo": "特になし。本当に車を見ただけ。",
+      "trueMotivation": "遺体発見のニュースを聞いて情報提供",
+      "relations": [],
+      "organizationRelation": "none"
     }
   ]
 }

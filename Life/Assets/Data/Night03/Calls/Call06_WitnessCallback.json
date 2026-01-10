@@ -1,0 +1,89 @@
+{
+  "callId": "call_witness_callback",
+  "callerId": "witness_passerby",
+  "title": "さっきの通報の件で...",
+  "description": "口論の目撃者からの折り返し。「ハルカ」という名前を聞いた。",
+  "triggerCondition": {
+    "flagRequired": "argument_reported",
+    "delayMinutes": 15
+  },
+  "segments": [
+    {
+      "segmentId": "callback_intro",
+      "callerLines": [
+        "あ、すみません、さっき口論を見たって電話した者なんですけど...",
+        "あの後、気になってもう少し近くで見てしまって。",
+        "追加で伝えた方がいいかと思って。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_intro_listen",
+          "text": "ありがとうございます。何が見えましたか？",
+          "nextSegmentId": "callback_details",
+          "setFlags": ["witness_callback_received"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_details",
+      "callerLines": [
+        "男の人が何か名前を叫んでたんです。",
+        "「ハルカはどこだ」って...何度も。",
+        "女性は「知らない」って泣いてました。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_details_haruka",
+          "text": "ハルカ...。他に何か聞こえましたか？",
+          "nextSegmentId": "callback_more",
+          "setFlags": ["haruka_name_heard", "argument_about_haruka"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_details_note",
+          "text": "記録しました。ありがとうございます。",
+          "nextSegmentId": "callback_end",
+          "setFlags": ["haruka_name_heard"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_more",
+      "callerLines": [
+        "あとは...「逃げても無駄だ」とか言ってた気がします。",
+        "すごく怖い雰囲気でした。",
+        "私、怖くなってその場を離れちゃって..."
+      ],
+      "responses": [
+        {
+          "responseId": "callback_more_thanks",
+          "text": "分かりました。貴重な情報をありがとうございます。",
+          "nextSegmentId": "callback_end",
+          "setFlags": ["threatening_behavior_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_end",
+      "callerLines": [
+        "はい...お役に立てたなら良かったです。",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_end_reply",
+          "text": "ありがとうございました。お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "callback_intro",
+  "note": "口論の目撃者からの折り返し。「ハルカはどこだ」という発言を聞いた。Night01の林遥との接続をプレイヤーが気づく。"
+}

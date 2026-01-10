@@ -16,7 +16,7 @@ MonoBehaviour:
     evidenceId: evidence_silent_call
     title: "\u7121\u8A00\u96FB\u8A71"
     evidenceType: 7
-    content: "\u4F55\u3082\u8A00\u308F\u305A\u306B\u5207\u308C\u305F\u96FB\u8A71"
+    content: "\u53E3\u3092\u585E\u304C\u308C\u3066\u8A71\u305B\u306A\u3044\u4EBA\u7269\u304B\u3089\u306E\u96FB\u8A71\u3002\u5FC5\u6B7B\u306B\u52A9\u3051\u3092\u6C42\u3081\u3066\u3044\u305F\u3002"
     description: 
     sourceCallerId: 
     sourceCallId: 

@@ -1,0 +1,169 @@
+{
+  "nightId": "night_06",
+  "description": "Night06「静かな午後」エンドステート定義。嵐の前の静けさ。3つの軸：中村の運命、保育園との接触、吉田からの警告。どれだけ「気づいた」か、「備えた」かで分岐。",
+  "endStateConditions": [
+    {
+      "endStateType": "StormPrepared",
+      "priority": 1,
+      "description": "嵐への備え — 多くの繋がりを見つけ、対策を講じた",
+      "scoreConditions": [
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 6 }
+      ],
+      "flagConditions": [
+        { "flagId": "patrol_dispatched_yoshida", "requiredValue": true }
+      ],
+      "note": "証拠を十分に集め、パトロールを派遣した場合"
+    },
+    {
+      "endStateType": "StormAware",
+      "priority": 2,
+      "description": "嵐の予感 — 繋がりに気づいたが、完全な対策は取れなかった",
+      "scoreConditions": [
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 4 }
+      ],
+      "flagConditions": [],
+      "note": "証拠は集めたが、パトロール派遣していない"
+    },
+    {
+      "endStateType": "StormDistant",
+      "priority": 3,
+      "description": "遠い雷鳴 — 部分的な情報しか得られなかった",
+      "scoreConditions": [
+        { "category": "Evidence", "comparison": "GreaterThanOrEqual", "value": 2 }
+      ],
+      "flagConditions": [],
+      "note": "いくつかの情報は得たが、全体像は見えていない"
+    },
+    {
+      "endStateType": "StormUnaware",
+      "priority": 100,
+      "description": "静かな午後 — 嵐が来ることを知らない",
+      "scoreConditions": [],
+      "flagConditions": [],
+      "note": "ほとんど情報を得られなかった（デフォルト）"
+    }
+  ],
+  "scoreCalculation": {
+    "description": "Evidenceカテゴリのフラグのweightを合計してスコアを算出",
+    "contributingFlags": [
+      "heard_nakamura_claim",
+      "nakamura_name_known",
+      "heard_haruka_missing",
+      "haruka_last_seen_noted",
+      "noticed_hayashi_name",
+      "multiple_cars_noted",
+      "watanabe_area_noted",
+      "yoshida_knows_misaki",
+      "yoshida_mentioned_misaki",
+      "shinagawa_32_confirmed",
+      "kenji_identified"
+    ]
+  },
+  "endingMappings": [
+    {
+      "endState": "StormPrepared",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_storm_prepared"
+    },
+    {
+      "endState": "StormAware",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_storm_aware"
+    },
+    {
+      "endState": "StormDistant",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_storm_distant"
+    },
+    {
+      "endState": "StormUnaware",
+      "endingIdIfSurvived": "",
+      "endingIdIfDied": "",
+      "endingIdRegardless": "ending_storm_unaware"
+    }
+  ],
+  "victimSurvival": {
+    "requiresDispatch": false,
+    "maxDispatchTimeMinutes": 0,
+    "dispatchFlagId": "",
+    "note": "Night06には直接的な被害者生存判定がない（まだ嵐の前）"
+  },
+  "defaultEndState": "StormUnaware",
+  "defaultEndingId": "ending_storm_unaware",
+  "endings": [
+    {
+      "endingId": "ending_storm_prepared",
+      "title": "嵐への備え",
+      "description": "点と点が線になり、線が絵を描き始めた。\n\n嵐が来る。でも、少なくともそれを知っている。",
+      "endingType": "StormPrepared"
+    },
+    {
+      "endingId": "ending_storm_aware",
+      "title": "嵐の予感",
+      "description": "何かが近づいている。それだけは分かる。\n\nでも、まだ全貌は見えない。",
+      "endingType": "StormAware"
+    },
+    {
+      "endingId": "ending_storm_distant",
+      "title": "遠い雷鳴",
+      "description": "遠くで雷が鳴っている。\n\nそれがこちらに向かってくるとは、まだ気づいていない。",
+      "endingType": "StormDistant"
+    },
+    {
+      "endingId": "ending_storm_unaware",
+      "title": "静かな午後",
+      "description": "静かな午後だった。\n\n明日も同じような日だと思っていた——あの夜までは。",
+      "endingType": "StormUnaware"
+    }
+  ],
+  "night05EndStateEffects": {
+    "description": "Night05のエンドステートがNight06に与える影響",
+    "effects": [
+      {
+        "night05EndState": "VoiceReached",
+        "effect": "中村は落ち着いている（警察派遣済み）、会社調査の記憶あり",
+        "addFlags": ["nakamura_calm", "detailed_research"]
+      },
+      {
+        "night05EndState": "VoiceDistant",
+        "effect": "中村は落ち着いている（警察派遣済み）",
+        "addFlags": ["nakamura_calm"]
+      },
+      {
+        "night05EndState": "VoiceLost",
+        "effect": "中村は絶望的（様子見だった）",
+        "addFlags": ["nakamura_desperate"]
+      }
+    ],
+    "note": "Night05のデモ対応によって中村の状態が変わる"
+  },
+  "foreshadowingPlanted": [
+    {
+      "id": "kenji_identity",
+      "description": "遺体が林健二と判明",
+      "payoffNight": "Night07以降",
+      "flagId": "kenji_identified"
+    },
+    {
+      "id": "organization_closing",
+      "description": "組織の車が増えている",
+      "payoffNight": "Night07",
+      "flagId": "multiple_cars_noted"
+    },
+    {
+      "id": "kindergarten_search",
+      "description": "保育園が美咲を探している",
+      "payoffNight": "Night07以降",
+      "flagId": "kindergarten_contacted"
+    },
+    {
+      "id": "nakamura_fate",
+      "description": "中村の運命（警察か孤独か）",
+      "payoffNight": "Night07以降",
+      "flagIds": ["nakamura_taken_by_police", "nakamura_left_alone"]
+    }
+  ]
+}

@@ -15,9 +15,9 @@ MonoBehaviour:
   callId: call_demo_report
   caller: {fileID: 11400000, guid: 3196f5a9a9df8194f9a886948af7c8f4, type: 2}
   description: "\u8FD1\u96A3\u4F4F\u6C11\u304B\u3089\u306E\u9A12\u97F3\u901A\u5831\u3002\u7537\u6027\u304C\u88FD\u85AC\u4F1A\u793E\u306E\u524D\u3067\u6297\u8B70\u6D3B\u52D5\u3092\u3057\u3066\u3044\u308B\u3002"
-  incomingTimeMinutes: 0
-  ringDuration: 30
-  priority: 5
+  incomingTimeMinutes: 1230
+  ringDuration: 45
+  priority: 6
   startSegmentId: initial_report
   segments:
   - segmentId: initial_report
@@ -114,7 +114,7 @@ MonoBehaviour:
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\u25CB\u25CB\u88FD\u85AC\u306E\u672C\u793E\u30D3\u30EB\u306E\u524D\u3067\u3059\n\u3046\u3061\u306F\u5411\u304B\u3044\u306E\u98F2\u98DF\u5E97\u306A\u3093\u3067\u3059\u304C...\n1\u6642\u9593\u304F\u3089\u3044\u524D\u304B\u3089\u59CB\u307E\u3063\u3066..."
+          text: "\u8AA0\u548C\u88FD\u85AC\u306E\u672C\u793E\u30D3\u30EB\u306E\u524D\u3067\u3059\n\u3046\u3061\u306F\u5411\u304B\u3044\u306E\u98F2\u98DF\u5E97\u306A\u3093\u3067\u3059\u304C...\n1\u6642\u9593\u304F\u3089\u3044\u524D\u304B\u3089\u59CB\u307E\u3063\u3066..."
       textSpeed: 30
       subtitleTrackId: 
       inlineSubtitles:
@@ -616,33 +616,6 @@ MonoBehaviour:
       endsCall: 0
       discoversEvidence: 0
       discoveredEvidenceId: 
-    - responseId: contact_company
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u4F1A\u793E\u306E\u8B66\u5099\u306B\u9023\u7D61\u3057\u3066\u307F\u3066\u304F\u3060\u3055\u3044\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags:
-      - contacted_company_demo
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: company_contacted
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
     - responseId: wait_and_see
       displayText:
         key: 
@@ -760,122 +733,6 @@ MonoBehaviour:
       emotionalState: 0
     responses:
     - responseId: end_police
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u304A\u96FB\u8A71\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3057\u305F\u3002"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: 
-      endsCall: 1
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    responseTimeLimit: 0
-    timeoutResponseId: 
-    autoDiscoveredEvidenceIds: []
-    conditions: []
-  - segmentId: company_contacted
-    media:
-      mediaType: 0
-      dialogueText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u5206\u304B\u308A\u307E\u3057\u305F\u3001\u9023\u7D61\u3057\u3066\u307F\u307E\u3059...\n...\n\uFF08\u3057\u3070\u3089\u304F\u5F8C\uFF09\u4F1A\u793E\u304B\u3089\u4EBA\u304C\u51FA\u3066\u304D\u307E\u3057\u305F...\u7537\u306E\u4EBA\u3068\u8A71\u3057\u3066\u307E\u3059..."
-      textSpeed: 30
-      subtitleTrackId: 
-      inlineSubtitles:
-        trackId: 
-        entries: []
-      localAudioClip: {fileID: 0}
-      audioBundleName: 
-      audioAssetName: 
-      videoReference:
-        source: 0
-        localClip: {fileID: 0}
-        streamingAssetsPath: 
-        bundleName: 
-        assetName: 
-        bundleVersion: 1
-        directUrl: 
-      duration: 0
-      emotionalState: 0
-    responses:
-    - responseId: ask_company_result
-      displayText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u3069\u3046\u306A\u308A\u307E\u3057\u305F\u304B\uFF1F"
-      actualText:
-        key: 
-        defaultLanguage: 0
-        entries: []
-      isSilence: 0
-      isLie: 0
-      presentsEvidence: 0
-      evidenceIdToPresent: 
-      conditions: []
-      requiredEvidenceIds: []
-      effects: []
-      trustImpact: 0
-      setFlags: []
-      clearFlags: []
-      isDispatchAction: 0
-      nextSegmentId: company_result
-      endsCall: 0
-      discoversEvidence: 0
-      discoveredEvidenceId: 
-    responseTimeLimit: 0
-    timeoutResponseId: 
-    autoDiscoveredEvidenceIds: []
-    conditions: []
-  - segmentId: company_result
-    media:
-      mediaType: 0
-      dialogueText:
-        key: 
-        defaultLanguage: 0
-        entries:
-        - language: 0
-          text: "\u7537\u306E\u4EBA\u3001\u4F1A\u793E\u306E\u4EBA\u306B\u9023\u308C\u3066\u3044\u304B\u308C\u307E\u3057\u305F...\n\u4E2D\u3067\u8A71\u3059\u3063\u3066\u8A00\u3063\u3066\u305F\u307F\u305F\u3044\u3067\u3059\u3051\u3069...\n\u307E\u3042\u3001\u9759\u304B\u306B\u306A\u3063\u305F\u304B\u3089\u3044\u3044\u304B..."
-      textSpeed: 30
-      subtitleTrackId: 
-      inlineSubtitles:
-        trackId: 
-        entries: []
-      localAudioClip: {fileID: 0}
-      audioBundleName: 
-      audioAssetName: 
-      videoReference:
-        source: 0
-        localClip: {fileID: 0}
-        streamingAssetsPath: 
-        bundleName: 
-        assetName: 
-        bundleVersion: 1
-        directUrl: 
-      duration: 0
-      emotionalState: 0
-    responses:
-    - responseId: end_company
       displayText:
         key: 
         defaultLanguage: 0

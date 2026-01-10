@@ -1,0 +1,125 @@
+{
+  "scenarioId": "night_08",
+  "title": "深夜の警告",
+  "description": "真理が連れ去られた夜。警察は行方不明届の確認に動き、吉田は真理が話していたことを思い出す。工藤からは不穏な噂が届く。そして、深入りしたオペレーターには組織からの警告が届く。",
+  "startTimeMinutes": 1320,
+  "endTimeMinutes": 1440,
+  "realSecondsPerGameMinute": 2.0,
+  "difficulty": 4,
+  "estimatedPlayTimeMinutes": 20,
+  "theTruth": "真理は組織に連れ去られた。警察は行方不明届を受理したが、誠和製薬との繋がりには気づいていない。しかし、林健二と中村浩二の事件に同じ人間が関わっているという噂が警察内部で流れている。組織はオペレーターの動きを監視しており、深入りした者には警告を送る。美咲は吉田の家で安全に守られている。",
+  "callSchedule": [
+    {
+      "callId": "call_police_missing",
+      "callerId": "police_detective",
+      "title": "警察からの連絡",
+      "incomingTimeMinutes": 1350,
+      "ringDuration": 45,
+      "priority": 7,
+      "isCritical": false,
+      "description": "警察が真理の行方不明について確認。中村の件との関連も探っている。"
+    },
+    {
+      "callId": "call_yoshida_info",
+      "callerId": "yoshida_kazuko",
+      "title": "吉田からの電話",
+      "incomingTimeMinutes": 1380,
+      "ringDuration": 50,
+      "priority": 6,
+      "isCritical": false,
+      "description": "吉田が真理が以前話していたことを思い出して電話。「姉が危険なことに巻き込まれている」と言っていた。"
+    },
+    {
+      "callId": "call_organization_warning",
+      "callerId": "unknown_male",
+      "title": "不審な電話",
+      "incomingTimeMinutes": 1420,
+      "ringDuration": 30,
+      "priority": 8,
+      "isCritical": false,
+      "description": "組織からの間接的な警告。「お仕事大変ですね」と監視していることを匂わせる。",
+      "conditions": {
+        "requiresFlag": "dispatched_to_mari_house"
+      }
+    }
+  ],
+  "specialEvents": [
+    {
+      "eventId": "event_kudo_chat_2",
+      "title": "工藤主任からのチャット",
+      "triggerTimeMinutes": 1400,
+      "description": "工藤主任からチャットが届く。林健二の件と中村の件に同じ人間が動いているという警察内部の噂。",
+      "eventType": "chat"
+    }
+  ],
+  "initialWorldStates": [
+    {
+      "stateId": "mari_missing",
+      "description": "真理は組織に連れ去られ、行方不明",
+      "timeMinutes": 1320,
+      "involvedCallerIds": ["watanabe_mari"],
+      "isKnownToPlayer": true
+    },
+    {
+      "stateId": "misaki_safe",
+      "description": "美咲は吉田の家で安全に隠れている（yoshida_will_warn_mariフラグありの場合）",
+      "timeMinutes": 1320,
+      "involvedCallerIds": ["hayashi_misaki", "yoshida_kazuko"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "police_investigating",
+      "description": "警察は行方不明届を受理し、調査を開始",
+      "timeMinutes": 1320,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "organization_watching",
+      "description": "組織はオペレーターの動きを監視している",
+      "timeMinutes": 1320,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    }
+  ],
+  "evidenceTemplates": [
+    {
+      "evidenceId": "evidence_mari_missing_report",
+      "title": "真理の行方不明届",
+      "content": "渡辺真理の行方不明届が警察に提出された",
+      "category": "Event"
+    },
+    {
+      "evidenceId": "evidence_haruka_danger",
+      "title": "遥の危険",
+      "content": "真理は「姉（遥）が危険なことに巻き込まれている」と言っていた",
+      "category": "Testimony"
+    },
+    {
+      "evidenceId": "evidence_same_person",
+      "title": "同一人物の関与",
+      "content": "林健二の件と中村の件に同じ人間が動いているという噂",
+      "category": "Rumor"
+    },
+    {
+      "evidenceId": "evidence_being_watched",
+      "title": "監視されている",
+      "content": "組織がオペレーターの動きを監視していることを示唆する電話",
+      "category": "Threat"
+    }
+  ],
+  "night07EndStateEffects": {
+    "dispatched_to_mari_house": {
+      "description": "真理の家に警察を派遣したことで、組織に目をつけられた",
+      "addFlags": ["operator_on_radar"]
+    },
+    "mari_not_helped": {
+      "description": "真理を助けなかった罪悪感",
+      "addFlags": ["operator_guilt"]
+    },
+    "misaki_taken": {
+      "description": "美咲も連れ去られた（最悪ルート）",
+      "addFlags": ["misaki_in_danger"]
+    }
+  }
+}

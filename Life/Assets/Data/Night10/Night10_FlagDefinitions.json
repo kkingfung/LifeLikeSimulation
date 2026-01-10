@@ -1,0 +1,297 @@
+{
+  "nightId": "night_10",
+  "description": "Night10「最終夜」フラグ定義。真理の遺体発見、美咲の運命、USBの発見が軸。",
+  "flagDefinitions": [
+    {
+      "flagId": "police_alliance_formed",
+      "category": "Night09Effect",
+      "description": "警察との同盟関係が築かれた（Night09から継承）",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "Night09で山田刑事と連絡を取り合うことに"
+    },
+    {
+      "flagId": "operator_will_tell_police",
+      "category": "Night09Effect",
+      "description": "警察に全てを話すことを決意（Night09から継承）",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "operator_will_stay_silent",
+      "category": "Night09Effect",
+      "description": "沈黙を守ることを決意（Night09から継承）",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "whistleblower_likely_safe",
+      "category": "Night09Effect",
+      "description": "内部告発者が安全になる可能性が高い（Night09から継承）",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "operator_knows_misaki_with_yoshida",
+      "category": "Night09Effect",
+      "description": "オペレーターが美咲が吉田のところにいることを知っている（Night09から継承）",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "mari_body_found",
+      "category": "Event",
+      "description": "真理の遺体が発見された",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "釣り人からの通報で判明"
+    },
+    {
+      "flagId": "mari_found_near_river",
+      "category": "Evidence",
+      "description": "真理が川辺で発見されたことを聞いた",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "mari_identity_confirmed",
+      "category": "Event",
+      "description": "遺体が真理であることが確認された",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "mari_wounds_reported",
+      "category": "Evidence",
+      "description": "真理の遺体の傷跡について聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "殺害の証拠"
+    },
+    {
+      "flagId": "operator_choice_event",
+      "category": "Event",
+      "description": "オペレーターが重大な選択を迫られた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "sent_police_to_yoshida",
+      "category": "Dispatch",
+      "description": "警察を吉田の家に派遣した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "美咲救出のための重要な選択"
+    },
+    {
+      "flagId": "did_not_send_police",
+      "category": "Dispatch",
+      "description": "警察を派遣しなかった",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_arrived_in_time",
+      "category": "Event",
+      "description": "警察が間に合った",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "吉田が殺される前に到着"
+    },
+    {
+      "flagId": "police_arrived_too_late",
+      "category": "Event",
+      "description": "警察が間に合わなかった",
+      "weight": -2,
+      "persistsAcrossNights": true,
+      "note": "吉田は既に死亡"
+    },
+    {
+      "flagId": "yoshida_dead",
+      "category": "Event",
+      "description": "吉田が殺された",
+      "weight": -3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "yoshida_saved",
+      "category": "Event",
+      "description": "吉田が救われた",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "misaki_saved",
+      "category": "FinalResult",
+      "description": "美咲が救出された",
+      "weight": 5,
+      "persistsAcrossNights": true,
+      "note": "グッドエンディング条件"
+    },
+    {
+      "flagId": "misaki_dead",
+      "category": "FinalResult",
+      "description": "美咲が殺された",
+      "weight": -5,
+      "persistsAcrossNights": true,
+      "note": "バッドエンディング条件"
+    },
+    {
+      "flagId": "misaki_fate_unknown",
+      "category": "FinalResult",
+      "description": "美咲の運命が不明",
+      "weight": -2,
+      "persistsAcrossNights": true,
+      "note": "ニュートラルエンディング条件"
+    },
+    {
+      "flagId": "told_police_about_whistleblower",
+      "category": "Evidence",
+      "description": "警察に内部告発者のことを伝えた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "contacted_whistleblower",
+      "category": "Event",
+      "description": "内部告発者に連絡した",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "knows_usb_exists",
+      "category": "Evidence",
+      "description": "キーホルダーにUSBが隠されていることを知った",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "knows_usb_method",
+      "category": "Evidence",
+      "description": "USBの取り出し方を知った",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "knows_usb_content",
+      "category": "Evidence",
+      "description": "USBの内容について聞いた",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "誠和製薬の秘密が入っている"
+    },
+    {
+      "flagId": "whistleblower_contact_completed",
+      "category": "Event",
+      "description": "内部告発者との通話が完了した",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "usb_can_be_found",
+      "category": "FinalResult",
+      "description": "USBを発見できる状態",
+      "weight": 5,
+      "persistsAcrossNights": true,
+      "note": "ベストエンディング条件"
+    },
+    {
+      "flagId": "usb_found",
+      "category": "FinalResult",
+      "description": "USBが発見された",
+      "weight": 5,
+      "persistsAcrossNights": true,
+      "note": "エピローグで設定"
+    },
+    {
+      "flagId": "company_destroyed",
+      "category": "FinalResult",
+      "description": "誠和製薬が壊滅した",
+      "weight": 5,
+      "persistsAcrossNights": true,
+      "note": "ベストエンディング結果"
+    },
+    {
+      "flagId": "investigation_ongoing",
+      "category": "FinalResult",
+      "description": "捜査が継続中",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "グッドエンディング結果"
+    },
+    {
+      "flagId": "coverup_success",
+      "category": "FinalResult",
+      "description": "隠蔽が成功した",
+      "weight": -5,
+      "persistsAcrossNights": true,
+      "note": "バッドエンディング結果"
+    },
+    {
+      "flagId": "fate_uncertain",
+      "category": "FinalResult",
+      "description": "運命が不確定",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "ニュートラルエンディング結果"
+    },
+    {
+      "flagId": "operator_adopts_misaki",
+      "category": "FinalResult",
+      "description": "オペレーターが美咲を引き取った",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "条件: 遥が死亡 + 美咲救出 + 十分な関係性"
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "sent_police_to_yoshida",
+      "cancelFlags": ["did_not_send_police"]
+    },
+    {
+      "whenFlagSet": "did_not_send_police",
+      "cancelFlags": ["sent_police_to_yoshida"]
+    },
+    {
+      "whenFlagSet": "police_arrived_in_time",
+      "cancelFlags": ["police_arrived_too_late"]
+    },
+    {
+      "whenFlagSet": "police_arrived_too_late",
+      "cancelFlags": ["police_arrived_in_time"]
+    },
+    {
+      "whenFlagSet": "yoshida_saved",
+      "cancelFlags": ["yoshida_dead"]
+    },
+    {
+      "whenFlagSet": "yoshida_dead",
+      "cancelFlags": ["yoshida_saved"]
+    },
+    {
+      "whenFlagSet": "misaki_saved",
+      "cancelFlags": ["misaki_dead", "misaki_fate_unknown"]
+    },
+    {
+      "whenFlagSet": "misaki_dead",
+      "cancelFlags": ["misaki_saved", "misaki_fate_unknown"]
+    },
+    {
+      "whenFlagSet": "misaki_fate_unknown",
+      "cancelFlags": ["misaki_saved", "misaki_dead"]
+    },
+    {
+      "whenFlagSet": "usb_found",
+      "cancelFlags": []
+    },
+    {
+      "whenFlagSet": "company_destroyed",
+      "cancelFlags": ["investigation_ongoing", "coverup_success"]
+    },
+    {
+      "whenFlagSet": "coverup_success",
+      "cancelFlags": ["company_destroyed", "investigation_ongoing"]
+    }
+  ]
+}

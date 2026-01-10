@@ -53,7 +53,33 @@ namespace LifeLike.Data.Flag
 
         // === Night05 追加 ===
         /// <summary>Night04の影響フラグ</summary>
-        Night04Effect
+        Night04Effect,
+
+        // === Night06 追加 ===
+        /// <summary>Night05の影響フラグ</summary>
+        Night05Effect,
+
+        // === Night07 追加 ===
+        /// <summary>Night06の影響フラグ</summary>
+        Night06Effect,
+
+        // === Night08 追加 ===
+        /// <summary>Night07の影響フラグ</summary>
+        Night07Effect,
+
+        // === Night09 追加 ===
+        /// <summary>Night08の影響フラグ</summary>
+        Night08Effect,
+
+        /// <summary>決断フラグ — オペレーターの最終的な選択</summary>
+        Decision,
+
+        // === Night10 追加 ===
+        /// <summary>Night09の影響フラグ</summary>
+        Night09Effect,
+
+        /// <summary>最終結果フラグ — エンディング判定用</summary>
+        FinalResult
     }
 
     /// <summary>

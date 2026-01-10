@@ -1,0 +1,253 @@
+{
+  "eventId": "event_kudo_chat_2",
+  "eventType": "chat",
+  "title": "工藤主任からのチャット",
+  "description": "工藤主任からチャットが届く。林健二の件と中村の件に同じ人間が動いているという警察内部の噂を伝える。",
+  "triggerTimeMinutes": 1400,
+  "messages": [
+    {
+      "messageId": "kudo_chat2_1",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "まだ起きてるか？",
+      "timestamp": "23:20"
+    },
+    {
+      "messageId": "kudo_chat2_2",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "ちょっと気になる話を聞いた",
+      "timestamp": "23:20",
+      "delaySeconds": 3
+    },
+    {
+      "messageId": "kudo_chat2_3",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "例の山の遺体の件と、昨日の自殺の件",
+      "timestamp": "23:21",
+      "delaySeconds": 4
+    },
+    {
+      "messageId": "kudo_chat2_4",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "同じ人間が動いてるって噂がある",
+      "timestamp": "23:21",
+      "delaySeconds": 3
+    }
+  ],
+  "responses": [
+    {
+      "responseId": "chat2_ask_who",
+      "text": "同じ人間って誰ですか？",
+      "triggersMessages": ["kudo_chat2_who"]
+    },
+    {
+      "responseId": "chat2_ask_source",
+      "text": "どこで聞いたんですか？",
+      "triggersMessages": ["kudo_chat2_source"]
+    },
+    {
+      "responseId": "chat2_neutral",
+      "text": "...そうですか",
+      "triggersMessages": ["kudo_chat2_careful"]
+    }
+  ],
+  "followUpMessages": {
+    "kudo_chat2_who": [
+      {
+        "messageId": "kudo_who_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "名前までは分からない",
+        "timestamp": "23:22"
+      },
+      {
+        "messageId": "kudo_who_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "ただ、企業絡みらしい",
+        "timestamp": "23:22",
+        "delaySeconds": 2
+      },
+      {
+        "messageId": "kudo_who_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "製薬会社がどうとか",
+        "timestamp": "23:22",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_chat2_source": [
+      {
+        "messageId": "kudo_source_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "刑事課の知り合いから",
+        "timestamp": "23:22"
+      },
+      {
+        "messageId": "kudo_source_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "公式には言えないみたいだが",
+        "timestamp": "23:22",
+        "delaySeconds": 2
+      },
+      {
+        "messageId": "kudo_source_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "上から圧力がかかってるとか",
+        "timestamp": "23:23",
+        "delaySeconds": 3
+      }
+    ],
+    "kudo_chat2_careful": [
+      {
+        "messageId": "kudo_careful_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "まあ、噂だけどな",
+        "timestamp": "23:22"
+      },
+      {
+        "messageId": "kudo_careful_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "気をつけろよ",
+        "timestamp": "23:22",
+        "delaySeconds": 2
+      }
+    ]
+  },
+  "secondResponses": {
+    "kudo_chat2_who": [
+      {
+        "responseId": "who_ask_seiwaq",
+        "text": "誠和製薬ですか？",
+        "triggersMessages": ["kudo_seiwaq_confirm"],
+        "setFlags": ["asked_kudo_about_seiwaq"]
+      },
+      {
+        "responseId": "who_understood",
+        "text": "分かりました",
+        "triggersMessages": ["kudo_end_careful"],
+        "setFlags": []
+      }
+    ],
+    "kudo_chat2_source": [
+      {
+        "responseId": "source_ask_more",
+        "text": "他に何か聞いてますか？",
+        "triggersMessages": ["kudo_no_more"],
+        "setFlags": []
+      },
+      {
+        "responseId": "source_understood",
+        "text": "分かりました、気をつけます",
+        "triggersMessages": ["kudo_end_careful"],
+        "setFlags": []
+      }
+    ],
+    "kudo_chat2_careful": [
+      {
+        "responseId": "careful_thanks",
+        "text": "ありがとうございます",
+        "triggersMessages": ["kudo_end_simple"],
+        "setFlags": []
+      }
+    ]
+  },
+  "secondFollowUpMessages": {
+    "kudo_seiwaq_confirm": [
+      {
+        "messageId": "kudo_seiwaq_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "...お前、何か知ってるのか？",
+        "timestamp": "23:23"
+      },
+      {
+        "messageId": "kudo_seiwaq_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "まあいい、深入りするなよ",
+        "timestamp": "23:23",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_seiwaq_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "何かあったら俺に言え",
+        "timestamp": "23:24",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_no_more": [
+      {
+        "messageId": "kudo_nomore_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "これ以上は俺も知らん",
+        "timestamp": "23:23"
+      },
+      {
+        "messageId": "kudo_nomore_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "とにかく気をつけろ",
+        "timestamp": "23:23",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_end_careful": [
+      {
+        "messageId": "kudo_end_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "何かあったら連絡しろ",
+        "timestamp": "23:24"
+      },
+      {
+        "messageId": "kudo_end_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "無理するなよ",
+        "timestamp": "23:24",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_end_simple": [
+      {
+        "messageId": "kudo_simple_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "ああ、じゃあな",
+        "timestamp": "23:23"
+      }
+    ]
+  },
+  "operatorThoughts": [
+    {
+      "triggerId": "same_person_thought",
+      "triggerCondition": {
+        "requiresAnyFlag": ["asked_kudo_about_seiwaq", "kudo_chat2_completed"]
+      },
+      "triggerTiming": "after_event",
+      "content": "林健二と中村浩二...同じ人間が動いている...誠和製薬が関わっている..."
+    },
+    {
+      "triggerId": "pressure_thought",
+      "triggerCondition": {
+        "requiresAnyFlag": ["kudo_chat2_completed"]
+      },
+      "triggerTiming": "after_event",
+      "content": "上からの圧力...警察も動けない...どれだけ大きな力なんだ..."
+    }
+  ],
+  "note": "Night08の工藤チャット。林健二の件と中村の件に同じ人間が動いているという警察内部の噂を伝える。製薬会社（誠和製薬）の名前も出る。警察内部でも圧力がかかっていることが示唆される。"
+}

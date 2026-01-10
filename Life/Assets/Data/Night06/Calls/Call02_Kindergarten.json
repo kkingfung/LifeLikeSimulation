@@ -1,0 +1,447 @@
+{
+  "callId": "call_kindergarten",
+  "callerId": "kindergarten_teacher",
+  "title": "園児の確認",
+  "description": "美咲が通っていた保育園からの電話。遥からの連絡が途絶えて心配している。美咲は正式に真理に預けられたわけではなく、保育園には来なくなった状態。",
+  "segments": [
+    {
+      "segmentId": "kindergarten_intro",
+      "callerLines": [
+        "すみません、ひまわり保育園の田中と申します。",
+        "園児の保護者の方と連絡が取れなくて...",
+        "緊急連絡先としてこちらの番号があったので..."
+      ],
+      "responses": [
+        {
+          "responseId": "intro_ask_situation",
+          "text": "どのような状況ですか？",
+          "nextSegmentId": "explain_situation",
+          "setFlags": ["kindergarten_contacted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "intro_ask_child",
+          "text": "どのお子さんですか？",
+          "nextSegmentId": "child_info",
+          "setFlags": ["kindergarten_contacted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "explain_situation",
+      "callerLines": [
+        "林美咲ちゃんという園児なんですが...",
+        "お母さんの林遥さんと連絡が取れなくなって...",
+        "もう5日くらい、電話もメールも返事がないんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "situation_ask_last_contact",
+          "text": "最後に連絡があったのはいつですか？",
+          "nextSegmentId": "last_contact",
+          "setFlags": ["heard_haruka_missing"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "situation_ask_child_ok",
+          "text": "美咲ちゃんは保育園に来ていないんですか？",
+          "nextSegmentId": "child_not_coming",
+          "setFlags": ["heard_haruka_missing"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "child_info",
+      "callerLines": [
+        "林美咲ちゃん、5歳です。",
+        "お母さんの林遥さんと二人暮らしで...",
+        "最近、保育園に来なくなったんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "child_ask_when",
+          "text": "いつから来なくなったんですか？",
+          "nextSegmentId": "last_contact",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "child_ask_contact",
+          "text": "お母さんには連絡したんですか？",
+          "nextSegmentId": "no_contact",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "last_contact",
+      "callerLines": [
+        "5日前です。その日は普通に迎えに来て...",
+        "「明日も来ます」って言ってたのに...",
+        "次の日から連絡が取れなくなって..."
+      ],
+      "note": "5日前 = Night01の事故の日",
+      "responses": [
+        {
+          "responseId": "last_ask_message",
+          "text": "何か変わった様子はありましたか？",
+          "nextSegmentId": "haruka_last_day",
+          "setFlags": ["haruka_last_seen_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "last_ask_emergency",
+          "text": "緊急連絡先は他にありますか？",
+          "nextSegmentId": "emergency_contact",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "no_contact",
+      "callerLines": [
+        "もちろん、何度も電話しました。",
+        "でも、ずっと繋がらなくて...",
+        "メールも返事がないんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "no_contact_last",
+          "text": "最後に会ったのはいつですか？",
+          "nextSegmentId": "last_contact",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "no_contact_emergency",
+          "text": "緊急連絡先は？",
+          "nextSegmentId": "emergency_contact",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "haruka_last_day",
+      "callerLines": [
+        "いつも通りでしたけど...",
+        "ただ、少し急いでる様子で...",
+        "「ちょっと用事がある」って言ってました..."
+      ],
+      "responses": [
+        {
+          "responseId": "last_day_emergency",
+          "text": "緊急連絡先は他にありますか？",
+          "nextSegmentId": "emergency_contact",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "last_day_worry",
+          "text": "心配ですね...",
+          "nextSegmentId": "teacher_worried",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "child_not_coming",
+      "callerLines": [
+        "はい、5日前から来てません...",
+        "連絡もなしに休むのは初めてで...",
+        "何かあったんじゃないかと心配で..."
+      ],
+      "responses": [
+        {
+          "responseId": "not_coming_last",
+          "text": "最後に見た時の様子は？",
+          "nextSegmentId": "haruka_last_day",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "not_coming_emergency",
+          "text": "緊急連絡先はありますか？",
+          "nextSegmentId": "emergency_contact",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "emergency_contact",
+      "callerLines": [
+        "緊急連絡先には渡辺真理さんという方がいます。",
+        "でも、その方にも何度も電話したんですが...",
+        "全然繋がらなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "emergency_ask_mari",
+          "text": "渡辺さんにも連絡がつかないんですか？",
+          "nextSegmentId": "mari_unreachable",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "emergency_ask_haruka",
+          "text": "林さん本人にも連絡がつかないんですね？",
+          "nextSegmentId": "haruka_unreachable",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "emergency_why_110",
+          "text": "それでこちらに電話を？",
+          "nextSegmentId": "why_called_110",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_unreachable",
+      "callerLines": [
+        "はい、何度かけても出なくて...",
+        "林さんも渡辺さんも連絡がつかないなんて...",
+        "何かあったんじゃないかと心配で..."
+      ],
+      "responses": [
+        {
+          "responseId": "mari_unreachable_why_110",
+          "text": "それでこちらに電話を？",
+          "nextSegmentId": "why_called_110",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "mari_unreachable_police",
+          "text": "警察に相談されましたか？",
+          "nextSegmentId": "police_suggestion",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "why_called_110",
+      "callerLines": [
+        "はい...もうどこに連絡していいか分からなくて...",
+        "110番なら何か分かるかと思って...",
+        "美咲ちゃんに何かあったら大変ですから..."
+      ],
+      "responses": [
+        {
+          "responseId": "why_suggest_police",
+          "text": "警察に相談されてはいかがですか？",
+          "nextSegmentId": "police_suggestion",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "why_ask_address",
+          "text": "渡辺さんの住所は分かりますか？",
+          "nextSegmentId": "mari_address",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_address",
+      "callerLines": [
+        "住所は...緊急連絡先に書いてあります。",
+        "○○町の方ですね...",
+        "直接行ってみた方がいいでしょうか..."
+      ],
+      "responses": [
+        {
+          "responseId": "address_go",
+          "text": "一度訪ねてみてはいかがですか？",
+          "nextSegmentId": "will_visit",
+          "setFlags": ["kindergarten_will_visit_mari"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "address_police",
+          "text": "警察に相談してから動いた方がいいかもしれません。",
+          "nextSegmentId": "police_suggestion",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "will_visit",
+      "callerLines": [
+        "そうですね...行ってみます。",
+        "美咲ちゃんが無事だといいんですが...",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "will_visit_end",
+          "text": "何かあればまたご連絡ください。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "haruka_unreachable",
+      "callerLines": [
+        "はい、林さんの電話はずっと繋がりません...",
+        "自宅にも行ったんですけど、誰もいなくて...",
+        "何かあったんじゃないかと..."
+      ],
+      "responses": [
+        {
+          "responseId": "unreachable_police",
+          "text": "警察に相談されましたか？",
+          "nextSegmentId": "police_suggestion",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "unreachable_mari",
+          "text": "渡辺さんには連絡できたんですよね？",
+          "nextSegmentId": "mari_response",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "teacher_worried",
+      "callerLines": [
+        "はい...美咲ちゃん、いつも元気な子で...",
+        "お母さんとも仲良しで...",
+        "何かあったんじゃないかと心配で..."
+      ],
+      "responses": [
+        {
+          "responseId": "worried_emergency",
+          "text": "緊急連絡先には連絡しましたか？",
+          "nextSegmentId": "emergency_contact",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_suggestion",
+      "callerLines": [
+        "警察...そうですよね...",
+        "でも、大げさかなとも思って...",
+        "でも、連絡が取れないのは事実だし..."
+      ],
+      "responses": [
+        {
+          "responseId": "police_encourage",
+          "text": "念のため、相談だけでもしてみてください。",
+          "nextSegmentId": "will_contact_police",
+          "setFlags": ["encouraged_kindergarten_police"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "police_alternative",
+          "text": "もう少し連絡を試みてはどうですか？",
+          "nextSegmentId": "will_try_again",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "wait_suggestion",
+      "callerLines": [
+        "そうですかね...",
+        "でも、やっぱり心配で...",
+        "もう少し様子を見てみます..."
+      ],
+      "responses": [
+        {
+          "responseId": "wait_end",
+          "text": "何かあればまたご連絡ください。",
+          "nextSegmentId": null,
+          "setFlags": ["kindergarten_waiting"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "will_contact_police",
+      "callerLines": [
+        "そうですね...相談してみます。",
+        "美咲ちゃんのことが心配で...",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "will_police_end",
+          "text": "お電話ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["kindergarten_will_contact_police"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "will_try_again",
+      "callerLines": [
+        "そうですね...もう少し連絡してみます。",
+        "繋がるといいんですが...",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "will_try_end",
+          "text": "何かあればまたご連絡ください。",
+          "nextSegmentId": null,
+          "setFlags": ["kindergarten_will_try_again"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "kindergarten_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "misaki_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "kindergarten_contacted",
+        "requiresFlag2": "misaki_called"
+      },
+      "triggerTiming": "after_call",
+      "content": "林美咲...昨日電話してきた子と同じ名前...お母さんと連絡が取れない..."
+    },
+    {
+      "triggerId": "haruka_accident_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_last_seen_noted"
+      },
+      "triggerTiming": "after_call",
+      "content": "5日前から連絡が取れない...あの歩道橋の事故の日..."
+    },
+    {
+      "triggerId": "mari_unreachable_thought",
+      "triggerCondition": {
+        "requiresFlag": "kindergarten_contacted",
+        "requiresFlag2": "learned_mari_name"
+      },
+      "triggerTiming": "after_call",
+      "content": "渡辺真理さんにも連絡がつかない...美咲ちゃんの「まりおばちゃん」...二人とも大丈夫なのか..."
+    }
+  ],
+  "note": "美咲が通っていた保育園からの電話。遥が5日前（Night01の事故の日）から連絡が取れない。緊急連絡先の真理にも電話が繋がらない。保育園は最後の手段として110番に電話してきた。プレイヤーがNight05で美咲と話していれば、繋がりに気づく。警察に相談を勧めるか、直接訪問を勧めるかで後の展開に影響。"
+}

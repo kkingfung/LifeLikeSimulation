@@ -17,9 +17,9 @@ MonoBehaviour:
   - endStateType: 18
     priority: 1
     scoreConditions:
-    - category: 7
-      comparison: 0
-      value: 0
+    - category: 4
+      comparison: 3
+      value: 6
     flagConditions:
     - flagId: misaki_info_gathered
       requiredValue: 1
@@ -27,9 +27,9 @@ MonoBehaviour:
   - endStateType: 19
     priority: 2
     scoreConditions:
-    - category: 7
-      comparison: 0
-      value: 0
+    - category: 4
+      comparison: 3
+      value: 3
     flagConditions: []
     description: "\u9060\u3044\u58F0 \u2014 \u90E8\u5206\u7684\u306B\u60C5\u5831\u3092\u5F97\u305F"
   - endStateType: 20

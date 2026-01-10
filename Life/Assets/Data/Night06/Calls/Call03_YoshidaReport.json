@@ -1,0 +1,309 @@
+{
+  "callId": "call_yoshida_report",
+  "callerId": "yoshida",
+  "title": "不審な車が増えてる",
+  "description": "吉田さん（Night02の火災通報者、Night05で美咲が言及した近所のおばあちゃん）からの通報。真理の家の近くを不審な車が周回している。車が増えている。Night06の最後、不穏な予兆として終わる。",
+  "segments": [
+    {
+      "segmentId": "yoshida_intro",
+      "callerLines": [
+        "あの、すみません。吉田です。",
+        "前にも不審な車のことで電話したんですけど...",
+        "また来てるんです。しかも、今度は台数が増えてて..."
+      ],
+      "responses": [
+        {
+          "responseId": "yoshida_ask_car",
+          "text": "どんな車ですか？",
+          "nextSegmentId": "car_description",
+          "setFlags": ["yoshida_reported_again"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "yoshida_ask_location",
+          "text": "場所を教えてください。",
+          "nextSegmentId": "location_info",
+          "setFlags": ["yoshida_reported_again"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "car_description",
+      "callerLines": [
+        "黒い車が2台になってるんです。",
+        "前は1台だったのに...",
+        "何度もうちの前を通るんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "car_ask_number",
+          "text": "ナンバーは見えますか？",
+          "nextSegmentId": "number_plate",
+          "setFlags": ["multiple_cars_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "car_ask_where",
+          "text": "今どの辺りにいますか？",
+          "nextSegmentId": "location_info",
+          "setFlags": ["multiple_cars_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "location_info",
+      "callerLines": [
+        "渡辺さんの家の近くです。",
+        "この辺りをぐるぐる回ってて...",
+        "何か探してるみたいで怖いんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "location_ask_watanabe",
+          "text": "渡辺さんのお宅ですか？",
+          "nextSegmentId": "watanabe_neighbor",
+          "setFlags": ["watanabe_area_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "location_ask_number",
+          "text": "車のナンバーは見えますか？",
+          "nextSegmentId": "number_plate",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "watanabe_neighbor",
+      "callerLines": [
+        "ええ、お隣の渡辺さん。",
+        "若い女の人で、最近よく子供を預かってて...",
+        "かわいい女の子なんですけど..."
+      ],
+      "responses": [
+        {
+          "responseId": "watanabe_ask_child",
+          "text": "子供というと？",
+          "nextSegmentId": "child_mention",
+          "setFlags": ["yoshida_knows_misaki"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "watanabe_ask_number",
+          "text": "車のナンバーは見えますか？",
+          "nextSegmentId": "number_plate",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "child_mention",
+      "callerLines": [
+        "5歳くらいの女の子...美咲ちゃんって言うんです。",
+        "時々うちにも遊びに来てくれて...",
+        "あの子、大丈夫かしら..."
+      ],
+      "responses": [
+        {
+          "responseId": "child_ask_number",
+          "text": "車のナンバーは見えますか？",
+          "nextSegmentId": "number_plate",
+          "setFlags": ["yoshida_mentioned_misaki"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "child_ask_now",
+          "text": "今、渡辺さんと美咲ちゃんは家にいますか？",
+          "nextSegmentId": "inside_house",
+          "setFlags": ["yoshida_mentioned_misaki"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "inside_house",
+      "callerLines": [
+        "さっき窓から見えたから、いると思います。",
+        "電気もついてますし...",
+        "でも、あの車が気になって..."
+      ],
+      "responses": [
+        {
+          "responseId": "inside_ask_number",
+          "text": "車のナンバーは見えますか？",
+          "nextSegmentId": "number_plate",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "inside_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "number_plate",
+      "callerLines": [
+        "えーと...今また通ってる...",
+        "品川ナンバーです。前と同じ。",
+        "最後が32...だったと思います。"
+      ],
+      "note": "Night05と同じナンバー。組織の車であることを示唆。",
+      "responses": [
+        {
+          "responseId": "number_same",
+          "text": "品川ナンバー、32...前と同じですね。",
+          "nextSegmentId": "same_car_confirm",
+          "setFlags": ["shinagawa_32_confirmed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "number_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["shinagawa_32_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "same_car_confirm",
+      "callerLines": [
+        "ええ、同じ車だと思います。",
+        "でも今日は2台いるんです。",
+        "何か嫌な予感がして..."
+      ],
+      "responses": [
+        {
+          "responseId": "confirm_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "response_decision",
+      "callerLines": [
+        "どうしたらいいですか？",
+        "渡辺さんに知らせた方がいいかしら..."
+      ],
+      "responses": [
+        {
+          "responseId": "dispatch_patrol",
+          "text": "パトロールを依頼します。家から出ないでください。",
+          "nextSegmentId": "patrol_dispatched",
+          "setFlags": ["patrol_dispatched_yoshida"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "tell_watanabe",
+          "text": "渡辺さんに知らせてあげてください。",
+          "nextSegmentId": "will_tell_watanabe",
+          "setFlags": ["yoshida_will_warn_mari"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "watch_only",
+          "text": "もう少し様子を見てください。",
+          "nextSegmentId": "watch_end_ominous",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "patrol_dispatched",
+      "callerLines": [
+        "ありがとうございます。",
+        "パトカーが来るまで見ておきますね。",
+        "...あ、また車が通った。こっち見てる気がする..."
+      ],
+      "responses": [
+        {
+          "responseId": "patrol_end",
+          "text": "家から出ないでください。パトロールが向かいます。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "will_tell_watanabe",
+      "callerLines": [
+        "そうですね、知らせてあげます。",
+        "あの子たちが心配で...",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "tell_end",
+          "text": "お気をつけて。何かあればまた連絡してください。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "watch_end_ominous",
+      "callerLines": [
+        "分かりました...",
+        "あ、また通った...ゆっくり...",
+        "...こっち見てた気がする..."
+      ],
+      "responses": [
+        {
+          "responseId": "ominous_end",
+          "text": "何かあればすぐに連絡してください。",
+          "nextSegmentId": null,
+          "setFlags": ["night06_ominous_end"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "yoshida_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "same_car_thought",
+      "triggerCondition": {
+        "requiresFlag": "shinagawa_32_confirmed",
+        "requiresAnyFlag": ["shinagawa_number_noted", "partial_plate_32"]
+      },
+      "triggerTiming": "after_call",
+      "content": "品川ナンバー、32...昨日と同じ車。しかも増えている...何が起きようとしている..."
+    },
+    {
+      "triggerId": "misaki_danger_thought",
+      "triggerCondition": {
+        "requiresFlag": "yoshida_mentioned_misaki",
+        "requiresFlag2": "misaki_called"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃんが渡辺さんの家にいる...あの車は美咲ちゃんを探しているのか..."
+    },
+    {
+      "triggerId": "organization_closing_thought",
+      "triggerCondition": {
+        "requiresFlag": "multiple_cars_noted",
+        "requiresAnyFlag": ["organization_searching_misaki", "suspicious_caller_contacted"]
+      },
+      "triggerTiming": "after_call",
+      "content": "車が増えている...組織が本格的に動き出した...美咲ちゃんたちが危ない..."
+    }
+  ],
+  "note": "Night06の最後の通話。吉田さん（Night02の火災通報者）が再び不審な車を通報。車が1台から2台に増えている。品川ナンバー32で、Night05と同じ車。真理の家の近くを周回しており、組織が居場所を特定しつつあることを示唆。警察派遣→パトカーが来るまで見守る。渡辺さんに知らせる→吉田が真理に警告。様子見→「また通った...こっち見てた...」で不穏に終わる。嵐の前の静けさの終わり、Night07への予兆。"
+}

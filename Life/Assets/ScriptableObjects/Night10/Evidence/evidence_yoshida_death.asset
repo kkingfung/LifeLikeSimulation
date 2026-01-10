@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: evidence_yoshida_death
+  m_EditorClassIdentifier: Assembly-CSharp:LifeLike.Data:EvidenceTemplate
+  data:
+    evidenceId: evidence_yoshida_death
+    title: "\u5409\u7530\u306E\u6B7B"
+    evidenceType: 0
+    content: "\u5409\u7530\u548C\u5B50\u304C\u7F8E\u54B2\u3092\u5B88\u308D\u3046\u3068\u3057\u3066\u6BBA\u3055\u308C\u305F"
+    description: 
+    sourceCallerId: 
+    sourceCallId: 
+    timestamp: 
+    reliability: 0
+    isActuallyTrue: 1
+    relatedCallerIds: []
+    contradictingEvidenceIds: []
+    supportingEvidenceIds: []
+    isDiscovered: 0
+    isUsable: 1
+    useCount: 0
+  discoveryConditions: []
+  useEffects: []

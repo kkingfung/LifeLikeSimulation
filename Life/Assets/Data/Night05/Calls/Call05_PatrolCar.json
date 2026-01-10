@@ -1,0 +1,374 @@
+{
+  "callId": "call_patrol_car",
+  "callerId": "residential_caller",
+  "title": "不審な車",
+  "description": "住宅街の住民からの通報。黒い車が何度も同じ道を通っている。地元ではないナンバー。組織の監視車両で、後の誘拐事件の手がかりになる。",
+  "segments": [
+    {
+      "segmentId": "patrol_intro",
+      "callerLines": [
+        "あの、すみません...",
+        "うちの前を何度も同じ車が通るんです。",
+        "さっきから3回くらい..."
+      ],
+      "responses": [
+        {
+          "responseId": "patrol_ask_car",
+          "text": "どんな車ですか？",
+          "nextSegmentId": "car_description",
+          "setFlags": ["patrol_car_reported"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "patrol_ask_location",
+          "text": "場所を教えてください。",
+          "nextSegmentId": "location_first",
+          "setFlags": ["patrol_car_reported"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "location_first",
+      "callerLines": [
+        "○○町の住宅街です。",
+        "静かな場所なので、同じ車が何度も通ると目立つんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "location_ask_car",
+          "text": "どんな車ですか？",
+          "nextSegmentId": "car_description",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "car_description",
+      "callerLines": [
+        "黒いセダンです。ちょっと高そうな車...",
+        "窓が暗くて中が見えないんです。",
+        "なんか、こっちを見てるみたいで怖くて..."
+      ],
+      "responses": [
+        {
+          "responseId": "car_ask_number",
+          "text": "ナンバーは分かりますか？",
+          "nextSegmentId": "number_plate",
+          "setFlags": ["car_description_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "car_ask_people",
+          "text": "中に人は見えましたか？",
+          "nextSegmentId": "people_inside",
+          "setFlags": ["car_description_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "car_ask_behavior",
+          "text": "車は何をしていますか？",
+          "nextSegmentId": "car_behavior",
+          "setFlags": ["car_description_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "number_plate",
+      "callerLines": [
+        "全部は見えなかったんですけど...",
+        "品川ナンバーでした。",
+        "ここ、地方なんで品川ナンバーって珍しくて..."
+      ],
+      "note": "品川ナンバー = 地元ではない。後の誘拐事件で同じナンバーの車が関係する。",
+      "responses": [
+        {
+          "responseId": "number_note",
+          "text": "品川ナンバー、分かりました。",
+          "nextSegmentId": "more_details",
+          "setFlags": ["shinagawa_number_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "number_ask_digits",
+          "text": "数字は覚えていますか？",
+          "nextSegmentId": "partial_digits",
+          "setFlags": ["shinagawa_number_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "partial_digits",
+      "callerLines": [
+        "えーと...最後が「32」だったような...",
+        "暗くてよく見えなかったんですけど...",
+        "すみません、それくらいしか..."
+      ],
+      "responses": [
+        {
+          "responseId": "digits_ok",
+          "text": "ありがとうございます。十分です。",
+          "nextSegmentId": "more_details",
+          "setFlags": ["partial_plate_32"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "people_inside",
+      "callerLines": [
+        "窓が暗くてよく見えないんですけど...",
+        "運転席に一人はいると思います。",
+        "もしかしたら助手席にも..."
+      ],
+      "responses": [
+        {
+          "responseId": "people_ask_number",
+          "text": "ナンバーは見えましたか？",
+          "nextSegmentId": "number_plate",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "people_ask_behavior",
+          "text": "その車は何をしていますか？",
+          "nextSegmentId": "car_behavior",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "car_behavior",
+      "callerLines": [
+        "ゆっくり通り過ぎて、角を曲がって...",
+        "しばらくしたらまた来るんです。",
+        "何かを探してるみたいな..."
+      ],
+      "responses": [
+        {
+          "responseId": "behavior_ask_number",
+          "text": "ナンバーは分かりますか？",
+          "nextSegmentId": "number_plate",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "behavior_ask_time",
+          "text": "いつ頃から始まりましたか？",
+          "nextSegmentId": "time_started",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "time_started",
+      "callerLines": [
+        "30分くらい前からです。",
+        "最初は気にしなかったんですけど...",
+        "何度も来るから怖くなって..."
+      ],
+      "responses": [
+        {
+          "responseId": "time_ask_number",
+          "text": "ナンバーは見えましたか？",
+          "nextSegmentId": "number_plate",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "time_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "more_details",
+      "callerLines": [
+        "あと、さっき車が止まった時...",
+        "運転手が窓を開けて、通りがかりの人に何か聞いてたんです。",
+        "道を聞いてるのかと思ったんですけど..."
+      ],
+      "responses": [
+        {
+          "responseId": "details_ask_what",
+          "text": "何を聞いていたか分かりますか？",
+          "nextSegmentId": "asking_around",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "details_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "asking_around",
+      "callerLines": [
+        "よく聞こえなかったんですけど...",
+        "「子供」とか「女の子」とか言ってた気がして...",
+        "誰かを探してるみたいでした。"
+      ],
+      "note": "組織が美咲を探している。まだ居場所は特定していない。",
+      "responses": [
+        {
+          "responseId": "asking_more",
+          "text": "子供の名前は聞こえましたか？",
+          "nextSegmentId": "name_not_heard",
+          "setFlags": ["organization_searching_misaki"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "asking_to_decision",
+          "text": "分かりました。対応を考えます。",
+          "nextSegmentId": "response_decision",
+          "setFlags": ["organization_searching_misaki"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "name_not_heard",
+      "callerLines": [
+        "名前は...聞こえなかったです。",
+        "でも何回も同じ辺りを回ってるから...",
+        "この辺にいる子供を探してるんじゃないかな..."
+      ],
+      "note": "組織は美咲の居場所をまだ特定していない。探している最中。",
+      "responses": [
+        {
+          "responseId": "name_to_decision",
+          "text": "分かりました。",
+          "nextSegmentId": "response_decision",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "response_decision",
+      "callerLines": [
+        "どうしたらいいですか？",
+        "今も外にいるんですけど..."
+      ],
+      "responses": [
+        {
+          "responseId": "dispatch_patrol",
+          "text": "パトロールを依頼します。念のため家から出ないでください。",
+          "nextSegmentId": "patrol_dispatched",
+          "setFlags": ["patrol_dispatched_car"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "watch_and_report",
+          "text": "もう少し様子を見てください。また来たら通報してください。",
+          "nextSegmentId": "watch_response",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "stay_safe",
+          "text": "今夜は外出を控えて、戸締りを確認してください。",
+          "nextSegmentId": "safety_advice",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "patrol_dispatched",
+      "callerLines": [
+        "ありがとうございます...",
+        "あ、今また通りました...ゆっくり...",
+        "...行っちゃいました。"
+      ],
+      "responses": [
+        {
+          "responseId": "patrol_confirm",
+          "text": "パトロールが向かいます。何かあればまた連絡してください。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "watch_response",
+      "callerLines": [
+        "分かりました...",
+        "でも怖いので、戸締りはしっかりしておきます...",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "watch_end",
+          "text": "お気をつけて。何かあればすぐに連絡してください。",
+          "nextSegmentId": null,
+          "setFlags": ["car_not_investigated"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "safety_advice",
+      "callerLines": [
+        "はい、そうします...",
+        "なんか、最近この辺物騒で...",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "safety_end",
+          "text": "お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "patrol_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "searching_child_thought",
+      "triggerCondition": {
+        "requiresFlag": "organization_searching_misaki",
+        "requiresFlag2": "suspicious_caller_contacted"
+      },
+      "triggerTiming": "after_call",
+      "content": "さっきの不審な電話...そして今度は車で子供を探している...美咲ちゃんを狙っているのか...？"
+    },
+    {
+      "triggerId": "shinagawa_thought",
+      "triggerCondition": {
+        "requiresFlag": "shinagawa_number_noted"
+      },
+      "triggerTiming": "after_call",
+      "content": "品川ナンバー...この辺りでは珍しい。わざわざ遠くから来ている..."
+    },
+    {
+      "triggerId": "child_danger_thought",
+      "triggerCondition": {
+        "requiresFlag": "organization_searching_misaki",
+        "requiresFlag2": "misaki_called"
+      },
+      "triggerTiming": "after_call",
+      "content": "子供を探している車...さっき電話してきた美咲ちゃん...まさか..."
+    }
+  ],
+  "note": "組織が美咲を探している。住宅街を何度も周回し、通行人に子供について聞いている。品川ナンバー（地元ではない）で、最後が「32」。まだ美咲の居場所は特定していない。このナンバー情報は後の誘拐事件（Night06以降）で重要な手がかりになる。patrol_dispatched_carフラグがあると、警察が組織の車を認識する可能性がある。"
+}

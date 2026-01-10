@@ -114,15 +114,39 @@
       "segmentId": "callback_other",
       "callerLines": [
         "他は...そうですね...",
-        "車が倉庫に入っていく時、運転手以外にも人が乗ってた気がします。",
-        "でも、暗くて顔までは..."
+        "車が倉庫に入る前に、何か荷物みたいなものを降ろしてたような...",
+        "大きな箱みたいな...でも、暗くてよく見えなくて..."
       ],
       "responses": [
+        {
+          "responseId": "callback_other_box",
+          "text": "荷物を降ろしていた...どのくらいの大きさでしたか？",
+          "nextSegmentId": "callback_box_detail",
+          "setFlags": ["cargo_noted"],
+          "clearFlags": []
+        },
         {
           "responseId": "callback_other_thanks",
           "text": "十分です。ありがとうございました。",
           "nextSegmentId": "callback_thanks",
-          "setFlags": [],
+          "setFlags": ["cargo_noted"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_box_detail",
+      "callerLines": [
+        "大きさは...人が持てるくらいの箱が何個か。",
+        "二人がかりで運んでたから、重そうでした。",
+        "倉庫の中に運び込んでたと思います。"
+      ],
+      "responses": [
+        {
+          "responseId": "callback_box_detail_thanks",
+          "text": "貴重な情報です。ありがとうございました。",
+          "nextSegmentId": "callback_thanks",
+          "setFlags": ["multiple_people_noted"],
           "clearFlags": []
         }
       ]
@@ -132,125 +156,12 @@
       "callerLines": [
         "いえいえ...お役に立てたなら...",
         "あの火事、大変でしたね。消防の人たち、大丈夫かしら...",
-        "...そういえば、近所の林さん、最近見かけないわ。心配..."
+        "...夜遅くにすみませんでした。"
       ],
       "responses": [
         {
           "responseId": "callback_thanks_end",
-          "text": "夜遅くにありがとうございました。ゆっくりお休みください。",
-          "nextSegmentId": "callback_end",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_thanks_hayashi",
-          "text": "林さん？さっきもおっしゃってましたね。",
-          "nextSegmentId": "callback_hayashi",
-          "setFlags": ["young_mother_mentioned"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_hayashi",
-      "callerLines": [
-        "ええ...優しい人なんです。お子さんと二人暮らしで...",
-        "よく買い物を手伝ってくれて...最近、挨拶もなく姿を見かけなくて...",
-        "引っ越したのかしら...でも、荷物を運ぶところも見てないし..."
-      ],
-      "responses": [
-        {
-          "responseId": "callback_hayashi_child",
-          "text": "お子さん...小さいお子さんですか？",
-          "nextSegmentId": "callback_child_detail",
-          "setFlags": ["young_mother_mentioned", "child_mentioned"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_hayashi_end",
-          "text": "そうですか...。何かあればまた連絡くださいね。お休みなさい。",
-          "nextSegmentId": "callback_end",
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_child_detail",
-      "callerLines": [
-        "ええ、5歳くらいの女の子。美咲ちゃんっていうの。",
-        "かわいい子で...お母さんのこと「ママ」って呼んでて...",
-        "最近は、お友達の真理さんのところに預けられてることが多かったみたい。"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_child_mari",
-          "text": "真理さん？どなたですか？",
-          "nextSegmentId": "callback_mari_hint",
-          "setFlags": ["misaki_existence_hinted", "mari_existence_hinted"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_child_worried",
-          "text": "5歳...それで最近見かけないのは心配ですね。",
-          "nextSegmentId": "callback_worried",
-          "setFlags": ["misaki_existence_hinted"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_mari_hint",
-      "callerLines": [
-        "林さんのお友達みたい。同じくらいの年の女性で...",
-        "休みの日に、二人で美咲ちゃんを連れて公園に行ってるのを見かけたわ。",
-        "...でも最近は林さん、何か心配事があるみたいで...怖い顔してたの。"
-      ],
-      "responses": [
-        {
-          "responseId": "callback_mari_scared",
-          "text": "怖い顔...何か問題があったんでしょうか。",
-          "nextSegmentId": "callback_scared",
-          "setFlags": ["haruka_seemed_scared"],
-          "clearFlags": []
-        },
-        {
-          "responseId": "callback_mari_end",
-          "text": "そうですか...。詳しい情報をありがとうございます。",
-          "nextSegmentId": "callback_end",
-          "setFlags": [],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_scared",
-      "callerLines": [
-        "わからないけど...何かに怯えてるような...",
-        "一度、「誰かに見られてる気がする」って言ってたわ。",
-        "...考えすぎかしら。でも、ずっと気になってて..."
-      ],
-      "responses": [
-        {
-          "responseId": "callback_scared_end",
-          "text": "貴重な情報をありがとうございます。夜遅くにすみません。",
-          "nextSegmentId": "callback_end",
-          "setFlags": ["haruka_felt_watched"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "callback_worried",
-      "callerLines": [
-        "ええ...林さんがいないと、美咲ちゃんどうしてるのかしら...",
-        "真理さんが見てくれてるといいんだけど...",
-        "...あ、すみません、お仕事中にこんな話..."
-      ],
-      "responses": [
-        {
-          "responseId": "callback_worried_end",
-          "text": "いえ、大事なことです。何かあればまたご連絡ください。",
+          "text": "いえ、ありがとうございました。ゆっくりお休みください。",
           "nextSegmentId": "callback_end",
           "setFlags": [],
           "clearFlags": []
@@ -277,5 +188,5 @@
     }
   ],
   "startSegmentId": "callback_intro",
-  "note": "最初の通話で車について質問した場合（asked_about_vehicle フラグ）にのみ発生。アラートセキュリティの名前を得られる重要な通話。林遥への言及がNight01との接点。"
+  "note": "最初の通話で車について質問した場合（asked_about_vehicle フラグ）にのみ発生。アラートセキュリティの名前と、倉庫に荷物を運び込んでいたという証拠を得られる。"
 }

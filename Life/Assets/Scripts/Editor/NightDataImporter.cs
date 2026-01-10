@@ -18,7 +18,7 @@ namespace LifeLike.Editor
     public class NightDataImporter : EditorWindow
     {
         private string _selectedNight = "Night01";
-        private readonly string[] _nightOptions = { "Night01", "Night02", "Night03", "Night04", "Night05" };
+        private readonly string[] _nightOptions = { "Night01", "Night02", "Night03", "Night04", "Night05", "Night06", "Night07", "Night08", "Night09", "Night10" };
         private int _selectedNightIndex = 0;
 
         private string JsonDataPath => $"Assets/Data/{_selectedNight}";
@@ -283,6 +283,18 @@ namespace LifeLike.Editor
                 "Night03Effect" => FlagCategory.Night03Effect,
                 // Night05追加
                 "Night04Effect" => FlagCategory.Night04Effect,
+                // Night06追加
+                "Night05Effect" => FlagCategory.Night05Effect,
+                // Night07追加
+                "Night06Effect" => FlagCategory.Night06Effect,
+                // Night08追加
+                "Night07Effect" => FlagCategory.Night07Effect,
+                // Night09追加
+                "Night08Effect" => FlagCategory.Night08Effect,
+                "Decision" => FlagCategory.Decision,
+                // Night10追加
+                "Night09Effect" => FlagCategory.Night09Effect,
+                "FinalResult" => FlagCategory.FinalResult,
                 _ => FlagCategory.Event
             };
         }
@@ -462,6 +474,35 @@ namespace LifeLike.Editor
                 "VoiceReached" => EndStateType.VoiceReached,
                 "VoiceDistant" => EndStateType.VoiceDistant,
                 "VoiceLost" => EndStateType.VoiceLost,
+                // Night06追加
+                "StormPrepared" => EndStateType.StormPrepared,
+                "StormAware" => EndStateType.StormAware,
+                "StormDistant" => EndStateType.StormDistant,
+                "StormUnaware" => EndStateType.StormUnaware,
+                // Night07追加
+                "MisakiProtected" => EndStateType.MisakiProtected,
+                "MisakiSafeUnaware" => EndStateType.MisakiSafeUnaware,
+                "MisakiTaken" => EndStateType.MisakiTaken,
+                "CollapseWitnessed" => EndStateType.CollapseWitnessed,
+                // Night08追加
+                "TruthSeeker" => EndStateType.TruthSeeker,
+                "InformedCaution" => EndStateType.InformedCaution,
+                "SilentWitness" => EndStateType.SilentWitness,
+                "UnawareSurvivor" => EndStateType.UnawareSurvivor,
+                // Night09追加
+                "FullAlliance" => EndStateType.FullAlliance,
+                "ActiveAlliance" => EndStateType.ActiveAlliance,
+                "PassiveTruth" => EndStateType.PassiveTruth,
+                "WhistleblowerSaved" => EndStateType.WhistleblowerSaved,
+                "WhistleblowerEndangered" => EndStateType.WhistleblowerEndangered,
+                "MisakiDiscovered" => EndStateType.MisakiDiscovered,
+                "TruthRevealed" => EndStateType.TruthRevealed,
+                "UncertainFuture" => EndStateType.UncertainFuture,
+                // Night10追加
+                "TruthDawn" => EndStateType.TruthDawn,
+                "InvestigationContinues" => EndStateType.InvestigationContinues,
+                "IntoDarkness" => EndStateType.IntoDarkness,
+                "UncertainDawn" => EndStateType.UncertainDawn,
                 _ => EndStateType.Contained
             };
         }
@@ -514,6 +555,34 @@ namespace LifeLike.Editor
                 "VoiceReached" => EndingType.VoiceReached,
                 "VoiceDistant" => EndingType.VoiceDistant,
                 "VoiceLost" => EndingType.VoiceLost,
+                // Night06追加
+                "StormPrepared" => EndingType.StormPrepared,
+                "StormAware" => EndingType.StormAware,
+                "StormDistant" => EndingType.StormDistant,
+                "StormUnaware" => EndingType.StormUnaware,
+                // Night07追加
+                "MisakiProtected" => EndingType.MisakiProtected,
+                "MisakiSafeUnaware" => EndingType.MisakiSafeUnaware,
+                "MisakiTaken" => EndingType.MisakiTaken,
+                "CollapseWitnessed" => EndingType.CollapseWitnessed,
+                // Night08追加
+                "TruthSeeker" => EndingType.TruthSeeker,
+                "InformedCaution" => EndingType.InformedCaution,
+                "SilentWitness" => EndingType.SilentWitness,
+                "UnawareSurvivor" => EndingType.UnawareSurvivor,
+                // Night09追加
+                "FullAlliance" => EndingType.FullAlliance,
+                "ActiveAlliance" => EndingType.ActiveAlliance,
+                "PassiveTruth" => EndingType.PassiveTruth,
+                "WhistleblowerSaved" => EndingType.WhistleblowerSaved,
+                "WhistleblowerEndangered" => EndingType.WhistleblowerEndangered,
+                "MisakiDiscovered" => EndingType.MisakiDiscovered,
+                "UncertainFuture" => EndingType.UncertainFuture,
+                // Night10追加
+                "TruthDawn" => EndingType.TruthDawn,
+                "InvestigationContinues" => EndingType.InvestigationContinues,
+                "IntoDarkness" => EndingType.IntoDarkness,
+                "UncertainDawn" => EndingType.UncertainDawn,
                 _ => EndingType.Neutral
             };
         }
@@ -721,6 +790,12 @@ namespace LifeLike.Editor
                     continue;
                 }
 
+                if (string.IsNullOrEmpty(callData.callId))
+                {
+                    Debug.LogWarning($"[NightDataImporter] callIdが空です: {filePath}");
+                    continue;
+                }
+
                 var callAsset = CreateOrLoadAsset<CallData>($"{OutputPath}/Calls/{callData.callId}.asset");
 
                 callAsset.callId = callData.callId;
@@ -804,51 +879,132 @@ namespace LifeLike.Editor
 
         private void ImportOperatorThoughts()
         {
-            string jsonPath = $"{JsonDataPath}/{_selectedNight}_OperatorThoughts.json";
-            string jsonContent = ReadJsonFile(jsonPath);
-
-            if (string.IsNullOrEmpty(jsonContent))
-            {
-                Debug.Log($"[NightDataImporter] オペレーター思考ファイルが見つかりません（オプション）: {jsonPath}");
-                return;
-            }
-
-            var thoughtsData = JsonUtility.FromJson<OperatorThoughtsJsonWrapper>(jsonContent);
-            if (thoughtsData == null)
-            {
-                Debug.LogError("[NightDataImporter] OperatorThoughtsデータのパースに失敗しました。");
-                return;
-            }
-
             EnsureOutputDirectories();
 
             var thoughtsAsset = CreateOrLoadAsset<OperatorThoughtsDefinition>($"{OutputPath}/{_selectedNight}_Thoughts.asset");
-            thoughtsAsset.nightId = thoughtsData.nightId;
-            thoughtsAsset.description = thoughtsData.description;
+            thoughtsAsset.nightId = _selectedNight.ToLower().Replace("night", "night_");
+            thoughtsAsset.description = $"{_selectedNight}のオペレーター思考";
             thoughtsAsset.thoughts = new List<OperatorThought>();
 
-            if (thoughtsData.thoughts != null)
-            {
-                foreach (var thoughtJson in thoughtsData.thoughts)
-                {
-                    var thought = new OperatorThought
-                    {
-                        thoughtId = thoughtJson.thoughtId,
-                        category = ParseThoughtCategory(thoughtJson.category),
-                        content = LocalizedString.Create(thoughtJson.content),
-                        note = thoughtJson.note,
-                        timing = ParseThoughtTiming(thoughtJson.timing),
-                        relatedCallId = thoughtJson.relatedCallId,
-                        triggerTimeMinutes = thoughtJson.triggerTimeMinutes,
-                        triggerFlagId = thoughtJson.triggerFlagId,
-                        suppressFlags = thoughtJson.suppressFlags ?? new List<string>(),
-                        displayDuration = thoughtJson.displayDuration,
-                        fadeInDuration = thoughtJson.fadeInDuration > 0 ? thoughtJson.fadeInDuration : 0.5f,
-                        fadeOutDuration = thoughtJson.fadeOutDuration > 0 ? thoughtJson.fadeOutDuration : 0.5f,
-                        priority = thoughtJson.priority
-                    };
+            // 1. 専用のOperatorThoughts.jsonファイルからインポート
+            string jsonPath = $"{JsonDataPath}/{_selectedNight}_OperatorThoughts.json";
+            string jsonContent = ReadJsonFile(jsonPath);
 
-                    thoughtsAsset.thoughts.Add(thought);
+            if (!string.IsNullOrEmpty(jsonContent))
+            {
+                var thoughtsData = JsonUtility.FromJson<OperatorThoughtsJsonWrapper>(jsonContent);
+                if (thoughtsData?.thoughts != null)
+                {
+                    thoughtsAsset.nightId = thoughtsData.nightId;
+                    thoughtsAsset.description = thoughtsData.description;
+
+                    foreach (var thoughtJson in thoughtsData.thoughts)
+                    {
+                        var thought = new OperatorThought
+                        {
+                            thoughtId = thoughtJson.thoughtId,
+                            category = ParseThoughtCategory(thoughtJson.category),
+                            content = LocalizedString.Create(thoughtJson.content),
+                            note = thoughtJson.note,
+                            timing = ParseThoughtTiming(thoughtJson.timing),
+                            relatedCallId = thoughtJson.relatedCallId,
+                            triggerSegmentId = thoughtJson.triggerSegmentId,
+                            triggerTimeMinutes = thoughtJson.triggerTimeMinutes,
+                            triggerFlagId = thoughtJson.triggerFlagId,
+                            suppressFlags = thoughtJson.suppressFlags ?? new List<string>(),
+                            displayDuration = thoughtJson.displayDuration,
+                            fadeInDuration = thoughtJson.fadeInDuration > 0 ? thoughtJson.fadeInDuration : 0.5f,
+                            fadeOutDuration = thoughtJson.fadeOutDuration > 0 ? thoughtJson.fadeOutDuration : 0.5f,
+                            priority = thoughtJson.priority
+                        };
+
+                        thoughtsAsset.thoughts.Add(thought);
+                    }
+                }
+            }
+
+            // 2. Callファイルからoperator thoughtsをインポート
+            string callsPath = $"{JsonDataPath}/Calls";
+            if (Directory.Exists(callsPath))
+            {
+                var callFiles = Directory.GetFiles(callsPath, "*.json");
+                foreach (var filePath in callFiles)
+                {
+                    string callJsonContent = File.ReadAllText(filePath);
+                    var callData = JsonUtility.FromJson<CallJsonWrapper>(callJsonContent);
+
+                    if (callData?.operatorThoughts != null)
+                    {
+                        foreach (var thoughtJson in callData.operatorThoughts)
+                        {
+                            var thought = new OperatorThought
+                            {
+                                thoughtId = thoughtJson.triggerId,
+                                category = ThoughtCategory.Connection,
+                                content = LocalizedString.Create(thoughtJson.content),
+                                note = $"From call: {callData.callId}",
+                                timing = ParseThoughtTiming(thoughtJson.triggerTiming),
+                                relatedCallId = callData.callId,
+                                triggerSegmentId = thoughtJson.triggerSegmentId,
+                                triggerFlagId = thoughtJson.triggerCondition?.requiresFlag ?? string.Empty,
+                                fadeInDuration = 0.5f,
+                                fadeOutDuration = 0.5f
+                            };
+
+                            // requiresAnyFlagはconditionsとして処理が必要だが、
+                            // 現在のOperatorThoughtの構造では直接サポートされていないため、
+                            // triggerFlagIdに最初のフラグを設定
+                            if (string.IsNullOrEmpty(thought.triggerFlagId) &&
+                                thoughtJson.triggerCondition?.requiresAnyFlag != null &&
+                                thoughtJson.triggerCondition.requiresAnyFlag.Count > 0)
+                            {
+                                thought.triggerFlagId = thoughtJson.triggerCondition.requiresAnyFlag[0];
+                            }
+
+                            thoughtsAsset.thoughts.Add(thought);
+                        }
+                    }
+                }
+            }
+
+            // 3. Eventsフォルダからもインポート
+            string eventsPath = $"{JsonDataPath}/Events";
+            if (Directory.Exists(eventsPath))
+            {
+                var eventFiles = Directory.GetFiles(eventsPath, "*.json");
+                foreach (var filePath in eventFiles)
+                {
+                    string eventJsonContent = File.ReadAllText(filePath);
+                    var eventData = JsonUtility.FromJson<CallJsonWrapper>(eventJsonContent);
+
+                    if (eventData?.operatorThoughts != null)
+                    {
+                        foreach (var thoughtJson in eventData.operatorThoughts)
+                        {
+                            var thought = new OperatorThought
+                            {
+                                thoughtId = thoughtJson.triggerId,
+                                category = ThoughtCategory.Connection,
+                                content = LocalizedString.Create(thoughtJson.content),
+                                note = $"From event: {eventData.callId}",
+                                timing = ParseThoughtTiming(thoughtJson.triggerTiming),
+                                relatedCallId = eventData.callId,
+                                triggerSegmentId = thoughtJson.triggerSegmentId,
+                                triggerFlagId = thoughtJson.triggerCondition?.requiresFlag ?? string.Empty,
+                                fadeInDuration = 0.5f,
+                                fadeOutDuration = 0.5f
+                            };
+
+                            if (string.IsNullOrEmpty(thought.triggerFlagId) &&
+                                thoughtJson.triggerCondition?.requiresAnyFlag != null &&
+                                thoughtJson.triggerCondition.requiresAnyFlag.Count > 0)
+                            {
+                                thought.triggerFlagId = thoughtJson.triggerCondition.requiresAnyFlag[0];
+                            }
+
+                            thoughtsAsset.thoughts.Add(thought);
+                        }
+                    }
                 }
             }
 
@@ -859,13 +1015,14 @@ namespace LifeLike.Editor
 
         private ThoughtTiming ParseThoughtTiming(string timing)
         {
-            return timing switch
+            return timing?.ToLowerInvariant() switch
             {
-                "AfterCall" => ThoughtTiming.AfterCall,
-                "EndOfNight" => ThoughtTiming.EndOfNight,
-                "OnFlagSet" => ThoughtTiming.OnFlagSet,
-                "AtTime" => ThoughtTiming.AtTime,
-                "OnEvidenceDiscovered" => ThoughtTiming.OnEvidenceDiscovered,
+                "aftercall" or "after_call" => ThoughtTiming.AfterCall,
+                "endofnight" or "end_of_night" => ThoughtTiming.EndOfNight,
+                "onflagset" or "on_flag_set" => ThoughtTiming.OnFlagSet,
+                "attime" or "at_time" => ThoughtTiming.AtTime,
+                "onevidencediscovered" or "on_evidence_discovered" => ThoughtTiming.OnEvidenceDiscovered,
+                "aftersegment" or "after_segment" => ThoughtTiming.AfterSegment,
                 _ => ThoughtTiming.AfterCall
             };
         }
@@ -1108,6 +1265,24 @@ namespace LifeLike.Editor
             public string description = string.Empty;
             public string startSegmentId = string.Empty;
             public List<SegmentJson>? segments;
+            public List<CallOperatorThoughtJson>? operatorThoughts;
+        }
+
+        [Serializable]
+        private class CallOperatorThoughtJson
+        {
+            public string triggerId = string.Empty;
+            public CallTriggerConditionJson? triggerCondition;
+            public string triggerTiming = string.Empty;
+            public string triggerSegmentId = string.Empty;
+            public string content = string.Empty;
+        }
+
+        [Serializable]
+        private class CallTriggerConditionJson
+        {
+            public string? requiresFlag;
+            public List<string>? requiresAnyFlag;
         }
 
         [Serializable]
@@ -1147,6 +1322,7 @@ namespace LifeLike.Editor
             public string note = string.Empty;
             public string timing = string.Empty;
             public string relatedCallId = string.Empty;
+            public string triggerSegmentId = string.Empty;
             public int triggerTimeMinutes;
             public string triggerFlagId = string.Empty;
             public List<string>? suppressFlags;

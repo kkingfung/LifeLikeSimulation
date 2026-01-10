@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98530dacedb0bb84c965271d31722dd6, type: 3}
+  m_Name: Night10_EndState
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.EndState.EndStateDefinition
+  nightId: night_10
+  conditions:
+  - endStateType: 41
+    priority: 1
+    scoreConditions: []
+    flagConditions:
+    - flagId: misaki_saved
+      requiredValue: 1
+    - flagId: usb_can_be_found
+      requiredValue: 1
+    - flagId: whistleblower_contact_completed
+      requiredValue: 1
+    description: "\u771F\u5B9F\u306E\u591C\u660E\u3051 \u2014 \u7F8E\u54B2\u6551\u51FA\u3001USB\u767A\u898B\u3001\u8AA0\u548C\u88FD\u85AC\u58CA\u6EC5"
+  - endStateType: 42
+    priority: 2
+    scoreConditions: []
+    flagConditions:
+    - flagId: misaki_saved
+      requiredValue: 1
+    description: "\u635C\u67FB\u306F\u7D9A\u304F \u2014 \u7F8E\u54B2\u6551\u51FA\u3001USB\u672A\u767A\u898B\u3001\u635C\u67FB\u7D99\u7D9A"
+  - endStateType: 43
+    priority: 3
+    scoreConditions: []
+    flagConditions:
+    - flagId: misaki_dead
+      requiredValue: 1
+    description: "\u95C7\u306E\u4E2D\u3078 \u2014 \u7F8E\u54B2\u6B7B\u4EA1\u3001\u96A0\u853D\u6210\u529F"
+  - endStateType: 44
+    priority: 100
+    scoreConditions: []
+    flagConditions:
+    - flagId: misaki_fate_unknown
+      requiredValue: 1
+    description: "\u4E0D\u78BA\u304B\u306A\u591C\u660E\u3051 \u2014 \u7F8E\u54B2\u306E\u904B\u547D\u4E0D\u660E"
+  endingMappings:
+  - endState: 41
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_truth_dawn
+  - endState: 42
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_investigation_continues
+  - endState: 43
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_into_darkness
+  - endState: 44
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_uncertain_dawn
+  victimSurvival:
+    requiresDispatch: 0
+    maxDispatchTimeMinutes: 0
+    dispatchFlagId: 
+  defaultEndState: 44
+  defaultEndingId: ending_uncertain_dawn
+  endings:
+  - endingId: ending_truth_dawn
+    title: "\u771F\u5B9F\u306E\u591C\u660E\u3051"
+    description: "\u7F8E\u54B2\u306F\u6551\u308F\u308C\u3001USB\u304B\u3089\u8A3C\u62E0\u304C\u898B\u3064\u304B\u308A\u3001\u8AA0\u548C\u88FD\u85AC\u306F\u58CA\u6EC5\u3057\u305F\u3002\n\n\u9577\u3044\u591C\u304C\u3088\u3046\u3084\u304F\u7D42\u308F\u308B\u3002"
+    conditions: []
+    endingType: 45
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_investigation_continues
+    title: "\u635C\u67FB\u306F\u7D9A\u304F"
+    description: "\u7F8E\u54B2\u306F\u7121\u4E8B\u3060\u3063\u305F\u3002\n\u3067\u3082\u3001\u6C7A\u5B9A\u7684\u306A\u8A3C\u62E0\u306F\u898B\u3064\u304B\u3089\u306A\u304B\u3063\u305F\u3002\n\n\u635C\u67FB\u306F\u7D9A\u3044\u3066\u3044\u308B\u304C\u3001\u771F\u5B9F\u306F\u307E\u3060\u95C7\u306E\u4E2D\u3002"
+    conditions: []
+    endingType: 46
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_into_darkness
+    title: "\u95C7\u306E\u4E2D\u3078"
+    description: "\u7F8E\u54B2\u3082\u5409\u7530\u3082\u6BBA\u3055\u308C\u305F\u3002\n\u8A3C\u62E0\u306F\u6D88\u3048\u3001\u8AA0\u548C\u88FD\u85AC\u306F\u4ECA\u3082\u55B6\u696D\u3057\u3066\u3044\u308B\u3002\n\n\u3059\u3079\u3066\u304C\u95C7\u306B\u846C\u3089\u308C\u305F\u3002"
+    conditions: []
+    endingType: 47
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_uncertain_dawn
+    title: "\u4E0D\u78BA\u304B\u306A\u591C\u660E\u3051"
+    description: "\u5409\u7530\u306F\u6BBA\u3055\u308C\u305F\u304C\u3001\u7F8E\u54B2\u306F\u898B\u3064\u304B\u3089\u306A\u304B\u3063\u305F\u3002\n\u751F\u304D\u3066\u3044\u308B\u306E\u304B\u3001\u6B7B\u3093\u3067\u3044\u308B\u306E\u304B\u3002\n\n\u4E0D\u78BA\u304B\u306A\u5149\u306E\u4E2D\u3067\u3001\u96FB\u8A71\u3092\u5F85\u3063\u3066\u3044\u308B\u3002"
+    conditions: []
+    endingType: 48
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0

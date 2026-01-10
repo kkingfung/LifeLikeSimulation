@@ -1,0 +1,320 @@
+{
+  "nightId": "night_07",
+  "description": "Night07「崩壊の夜」フラグ定義。中村の死、真理の連れ去り、美咲の運命が軸。yoshida_will_warn_mariフラグで分岐。",
+  "flagDefinitions": [
+    {
+      "flagId": "yoshida_will_warn_mari",
+      "category": "Night06Effect",
+      "description": "吉田が真理に警告した（Night06から継承）",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "Night06の結果。Night07の分岐を決定"
+    },
+    {
+      "flagId": "misaki_safe_at_yoshida",
+      "category": "Night06Effect",
+      "description": "美咲は吉田の家に預けられている",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "yoshida_will_warn_mariの結果"
+    },
+    {
+      "flagId": "mari_unwarned",
+      "category": "Night06Effect",
+      "description": "真理は警告を受けていない",
+      "weight": -2,
+      "persistsAcrossNights": true,
+      "note": "Night06で吉田が警告しなかった"
+    },
+    {
+      "flagId": "landlord_reported",
+      "category": "Event",
+      "description": "大家が通報した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "nakamura_address_known",
+      "category": "Evidence",
+      "description": "中村浩二の住所が判明",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "nakamura_hanging_confirmed",
+      "category": "Evidence",
+      "description": "中村が首を吊っている状態で発見された",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "自殺に見せかけた殺害"
+    },
+    {
+      "flagId": "police_dispatched_nakamura",
+      "category": "Dispatch",
+      "description": "中村の住所に警察を派遣した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "room_ransacked_noted",
+      "category": "Evidence",
+      "description": "部屋が荒らされていた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "殺害を示唆"
+    },
+    {
+      "flagId": "no_note_suspicious",
+      "category": "Evidence",
+      "description": "遺書がないことを不審に思った",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "自殺ではない可能性"
+    },
+    {
+      "flagId": "nakamura_recent_noted",
+      "category": "Evidence",
+      "description": "中村の最近の様子を記録",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "nakamura_phone_noted",
+      "category": "Evidence",
+      "description": "中村が誰かと電話していたことを記録",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "landlord_call_ended",
+      "category": "Event",
+      "description": "大家との通話が終了",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "mari_emergency_call",
+      "category": "Event",
+      "description": "真理から緊急電話があった",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "yoshida_will_warn_mariルートのみ"
+    },
+    {
+      "flagId": "mari_address_partial",
+      "category": "Evidence",
+      "description": "真理の住所の一部を把握",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "mari_call_cut",
+      "category": "Event",
+      "description": "真理との通話が途中で切れた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "mari_abducted",
+      "category": "Event",
+      "description": "真理が連れ去られた",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "yoshida_will_warn_mariルート"
+    },
+    {
+      "flagId": "dispatched_to_mari_house",
+      "category": "Dispatch",
+      "description": "真理の家に警察を派遣した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "mari_not_helped",
+      "category": "Alignment",
+      "description": "真理を助けられなかった",
+      "weight": -1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "police_inquiry_started",
+      "category": "Event",
+      "description": "警察からの問い合わせがあった",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "told_police_about_demo",
+      "category": "Evidence",
+      "description": "警察に抗議活動について伝えた",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "told_police_son_claim",
+      "category": "Evidence",
+      "description": "警察に息子の薬害について伝えた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "asked_about_murder",
+      "category": "Alignment",
+      "description": "殺害の可能性について質問した",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "オペレーターが真実に迫っている"
+    },
+    {
+      "flagId": "police_treating_as_suicide",
+      "category": "Event",
+      "description": "警察は自殺として処理している",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "組織の影響"
+    },
+    {
+      "flagId": "operator_suspicious",
+      "category": "Alignment",
+      "description": "オペレーターは不審に思っている",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "yoshida_witness_call",
+      "category": "Event",
+      "description": "吉田から目撃報告があった",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "yoshida_will_warn_mariルートのみ"
+    },
+    {
+      "flagId": "mari_taken_witnessed",
+      "category": "Evidence",
+      "description": "真理が連れ去られるのを目撃された",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "shinagawa_32_abduction",
+      "category": "Evidence",
+      "description": "品川ナンバー32の車で連れ去られた",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "Night05-06と同じ車"
+    },
+    {
+      "flagId": "abduction_direction_known",
+      "category": "Evidence",
+      "description": "車が北に向かったことを記録",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_notified_abduction",
+      "category": "Dispatch",
+      "description": "警察に連れ去りを通報した",
+      "weight": 2,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "yoshida_call_ended",
+      "category": "Event",
+      "description": "吉田との通話が終了",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "mari_cutoff_call",
+      "category": "Event",
+      "description": "真理から途切れる電話があった",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "yoshida_will_warn_mariなしルートのみ"
+    },
+    {
+      "flagId": "mari_mentioned_misaki",
+      "category": "Evidence",
+      "description": "真理が美咲の名前を言った",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "misaki_with_mari_confirmed",
+      "category": "Evidence",
+      "description": "美咲が真理と一緒にいることを確認",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "yoshida_will_warn_mariなしルート"
+    },
+    {
+      "flagId": "mari_taken",
+      "category": "Event",
+      "description": "真理が連れ去られた",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "yoshida_will_warn_mariなしルート"
+    },
+    {
+      "flagId": "misaki_taken",
+      "category": "Event",
+      "description": "美咲も連れ去られた",
+      "weight": -3,
+      "persistsAcrossNights": true,
+      "note": "最悪の結果"
+    },
+    {
+      "flagId": "will_dispatch_to_mari",
+      "category": "Dispatch",
+      "description": "真理の家に警察を向かわせる",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "noticed_cloth_in_mouth",
+      "category": "Evidence",
+      "description": "中村の口に布が詰まっていることに気づいた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "殺害の証拠。自殺ではない。"
+    },
+    {
+      "flagId": "cloth_detail_noted",
+      "category": "Evidence",
+      "description": "布の詳細を記録した（制服のような素材）",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "警備会社の制服と同じ素材。Night08で判明。"
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "yoshida_will_warn_mari",
+      "cancelFlags": ["mari_unwarned"]
+    },
+    {
+      "whenFlagSet": "mari_unwarned",
+      "cancelFlags": ["yoshida_will_warn_mari"]
+    },
+    {
+      "whenFlagSet": "misaki_safe_at_yoshida",
+      "cancelFlags": ["misaki_taken", "misaki_with_mari_confirmed"]
+    },
+    {
+      "whenFlagSet": "misaki_taken",
+      "cancelFlags": ["misaki_safe_at_yoshida"]
+    },
+    {
+      "whenFlagSet": "mari_abducted",
+      "cancelFlags": ["mari_taken"]
+    },
+    {
+      "whenFlagSet": "mari_taken",
+      "cancelFlags": ["mari_abducted"]
+    },
+    {
+      "whenFlagSet": "dispatched_to_mari_house",
+      "cancelFlags": ["mari_not_helped"]
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "callId": "call_organization_warning",
+  "callerId": "unknown_male",
+  "title": "不審な電話",
+  "description": "dispatched_to_mari_houseフラグがある場合のみ発生。組織からの間接的な警告。「お仕事大変ですね」と監視していることを匂わせる。",
+  "conditions": {
+    "requiresFlag": "dispatched_to_mari_house"
+  },
+  "segments": [
+    {
+      "segmentId": "warning_intro",
+      "callerLines": [
+        "...",
+        "夜遅くまでお仕事、大変ですね。",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "intro_ask_who",
+          "text": "どちら様ですか？",
+          "nextSegmentId": "warning_no_answer",
+          "setFlags": ["received_warning_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "intro_ask_purpose",
+          "text": "ご用件は？",
+          "nextSegmentId": "warning_purpose",
+          "setFlags": ["received_warning_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_no_answer",
+      "callerLines": [
+        "名前は...必要ないでしょう。",
+        "ただ、忠告をしに来ただけです。",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "no_answer_ask",
+          "text": "忠告？",
+          "nextSegmentId": "warning_advice",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "no_answer_reject",
+          "text": "用件がないなら切りますよ。",
+          "nextSegmentId": "warning_dont_rush",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_purpose",
+      "callerLines": [
+        "用件...そうですね。",
+        "最近、色々とお忙しいようで。",
+        "行方不明の方のことで、警察に連絡されたとか。"
+      ],
+      "responses": [
+        {
+          "responseId": "purpose_how_know",
+          "text": "...なぜそれを？",
+          "nextSegmentId": "warning_watching",
+          "setFlags": ["asked_how_know"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "purpose_silent",
+          "text": "...",
+          "nextSegmentId": "warning_advice",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_dont_rush",
+      "callerLines": [
+        "そう急がないでください。",
+        "お互いのためになる話です。",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "rush_listen",
+          "text": "...何の話ですか。",
+          "nextSegmentId": "warning_advice",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_watching",
+      "callerLines": [
+        "...私たちは、色々なことを知っています。",
+        "あなたの勤務先も、住所も。",
+        "..."
+      ],
+      "note": "オペレーターの個人情報を知っていることを匂わせる",
+      "responses": [
+        {
+          "responseId": "watching_threat",
+          "text": "...脅迫ですか？",
+          "nextSegmentId": "warning_not_threat",
+          "setFlags": ["felt_threatened"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "watching_silent",
+          "text": "...",
+          "nextSegmentId": "warning_advice",
+          "setFlags": ["felt_threatened"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_not_threat",
+      "callerLines": [
+        "脅迫？とんでもない。",
+        "ただの親切な忠告です。",
+        "これ以上首を突っ込まない方がいい、という。"
+      ],
+      "responses": [
+        {
+          "responseId": "not_threat_ask",
+          "text": "何に首を突っ込むなと？",
+          "nextSegmentId": "warning_specific",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "not_threat_understand",
+          "text": "...分かりました。",
+          "nextSegmentId": "warning_good",
+          "setFlags": ["accepted_warning"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_advice",
+      "callerLines": [
+        "世の中には、知らない方がいいことがあります。",
+        "見ない方がいいものも。",
+        "賢い人は、それを分かっている。"
+      ],
+      "responses": [
+        {
+          "responseId": "advice_understand",
+          "text": "...何が言いたいんですか。",
+          "nextSegmentId": "warning_specific",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "advice_reject",
+          "text": "忠告は結構です。",
+          "nextSegmentId": "warning_choice",
+          "setFlags": ["rejected_warning"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_specific",
+      "callerLines": [
+        "渡辺真理、林健二、中村浩二...",
+        "これらの名前は、忘れた方がいい。",
+        "あなたのためにも。"
+      ],
+      "responses": [
+        {
+          "responseId": "specific_why",
+          "text": "なぜ？",
+          "nextSegmentId": "warning_no_more",
+          "setFlags": ["organization_mentioned_names"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "specific_silent",
+          "text": "...",
+          "nextSegmentId": "warning_end",
+          "setFlags": ["organization_mentioned_names"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_choice",
+      "callerLines": [
+        "...それは残念です。",
+        "でも、選ぶのはあなたです。",
+        "後悔しないといいですね。"
+      ],
+      "responses": [
+        {
+          "responseId": "choice_end",
+          "text": "...",
+          "nextSegmentId": "warning_end_ominous",
+          "setFlags": ["defied_organization"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_good",
+      "callerLines": [
+        "賢明です。",
+        "お仕事、頑張ってください。",
+        "...では。"
+      ],
+      "responses": [
+        {
+          "responseId": "good_end",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["submitted_to_warning"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "warning_no_more",
+      "callerLines": [
+        "...それ以上は、聞かない方がいい。",
+        "お元気で。",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "no_more_end",
+          "text": "待って...！",
+          "nextSegmentId": "warning_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "warning_end",
+      "callerLines": [
+        "（通話が切れる）",
+        "...",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_silent",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["warning_call_ended"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "warning_end_ominous",
+      "callerLines": [
+        "...お気をつけて。",
+        "（通話が切れる）",
+        "..."
+      ],
+      "responses": [
+        {
+          "responseId": "ominous_end",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["warning_call_ended", "operator_in_danger"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "warning_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "being_watched_thought",
+      "triggerCondition": {
+        "requiresFlag": "felt_threatened"
+      },
+      "triggerTiming": "after_call",
+      "content": "監視されている...私の住所まで知っている...どこまで見られているんだ..."
+    },
+    {
+      "triggerId": "all_connected_thought",
+      "triggerCondition": {
+        "requiresFlag": "organization_mentioned_names"
+      },
+      "triggerTiming": "after_call",
+      "content": "渡辺真理、林健二、中村浩二...やはりすべて繋がっている...組織が関わっている..."
+    },
+    {
+      "triggerId": "defiance_thought",
+      "triggerCondition": {
+        "requiresFlag": "defied_organization"
+      },
+      "triggerTiming": "after_call",
+      "content": "忠告を断った...これからどうなるんだ...でも、黙っていられない..."
+    },
+    {
+      "triggerId": "submission_thought",
+      "triggerCondition": {
+        "requiresFlag": "submitted_to_warning"
+      },
+      "triggerTiming": "after_call",
+      "content": "従うしかなかった...でも、本当にこれでいいのか..."
+    }
+  ],
+  "note": "Night08の最後の電話（フラグ依存）。dispatched_to_mari_houseフラグがある場合のみ発生。組織からの間接的な警告。オペレーターの個人情報を知っていることを匂わせ、「これ以上首を突っ込むな」と忠告する。真理、林健二、中村の名前を出し、すべてが繋がっていることを確認させる。オペレーターが従うか反抗するかで後の展開が変わる可能性。"
+}

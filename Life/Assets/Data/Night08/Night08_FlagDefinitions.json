@@ -1,0 +1,352 @@
+{
+  "nightId": "night_08",
+  "description": "Night08「深夜の警告」フラグ定義。真理の行方不明、警察の調査、組織からの警告が軸。",
+  "flagDefinitions": [
+    {
+      "flagId": "misaki_safe_at_yoshida",
+      "category": "Night06Effect",
+      "description": "美咲は吉田の家に預けられている（Night06-07から継承）",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "Night06の結果。美咲が安全かどうか"
+    },
+    {
+      "flagId": "dispatched_to_mari_house",
+      "category": "Night07Effect",
+      "description": "Night07で真理の家に警察を派遣した",
+      "weight": 1,
+      "persistsAcrossNights": true,
+      "note": "これにより組織に目をつけられた"
+    },
+    {
+      "flagId": "operator_on_radar",
+      "category": "Night07Effect",
+      "description": "オペレーターが組織に目をつけられた",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "operator_guilt",
+      "category": "Night07Effect",
+      "description": "真理を助けられなかった罪悪感",
+      "weight": -1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "misaki_in_danger",
+      "category": "Night07Effect",
+      "description": "美咲も連れ去られた（最悪ルート）",
+      "weight": -3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "confirmed_mari_call",
+      "category": "Evidence",
+      "description": "警察に真理からの通報があったことを確認した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "told_police_mari_call",
+      "category": "Evidence",
+      "description": "警察に真理の通報内容を伝えた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "told_police_voices",
+      "category": "Evidence",
+      "description": "警察に男の声が聞こえたことを伝えた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "told_police_plate",
+      "category": "Evidence",
+      "description": "警察にナンバープレート情報を伝えた",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_taking_seriously",
+      "category": "Event",
+      "description": "警察が事件を真剣に受け止めた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "agreed_with_police",
+      "category": "Alignment",
+      "description": "警察の見解に同意した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "police_warned_operator",
+      "category": "Event",
+      "description": "警察がオペレーターに注意するよう警告した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "mentioned_kenji_to_police",
+      "category": "Evidence",
+      "description": "警察に林健二の名前を言及した",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_knows_connection",
+      "category": "Evidence",
+      "description": "警察が繋がりに気づいた",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "yoshida_info_call",
+      "category": "Event",
+      "description": "吉田から情報提供の電話があった",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "heard_about_sister",
+      "category": "Evidence",
+      "description": "真理に姉がいることを聞いた",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_mari_sisters_confirmed",
+      "category": "Evidence",
+      "description": "遥と真理が姉妹であることを確認した",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "heard_about_kenji_secret",
+      "category": "Evidence",
+      "description": "健二が何かを知っていたことを聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "heard_about_protect",
+      "category": "Evidence",
+      "description": "「守らなければいけない」と言っていたことを聞いた",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "kenji_knew_something",
+      "category": "Evidence",
+      "description": "健二が何かを知っていて狙われていたことを確認",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "seiwaq_mentioned_by_mari",
+      "category": "Evidence",
+      "description": "真理が誠和製薬について言及していたことを確認",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "mari_was_afraid",
+      "category": "Evidence",
+      "description": "真理が怯えていたことを確認",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "misaki_confirmed_safe",
+      "category": "Event",
+      "description": "美咲が吉田の家で安全であることを確認",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "warned_yoshida",
+      "category": "Dispatch",
+      "description": "吉田に危険を警告した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "yoshida_will_protect",
+      "category": "Event",
+      "description": "吉田が美咲を守る決意を示した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "operator_involved",
+      "category": "Alignment",
+      "description": "オペレーターが積極的に関わる姿勢を示した",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "received_warning_call",
+      "category": "Threat",
+      "description": "組織からの警告電話を受けた",
+      "weight": -1,
+      "persistsAcrossNights": true,
+      "note": "dispatched_to_mari_houseフラグがある場合のみ"
+    },
+    {
+      "flagId": "asked_how_know",
+      "category": "Event",
+      "description": "組織に「なぜ知っているのか」と質問した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "felt_threatened",
+      "category": "Threat",
+      "description": "組織からの脅威を感じた",
+      "weight": -1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "organization_mentioned_names",
+      "category": "Evidence",
+      "description": "組織が真理、林健二、中村の名前を言及した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "すべてが繋がっていることの確認"
+    },
+    {
+      "flagId": "accepted_warning",
+      "category": "Alignment",
+      "description": "組織の警告を受け入れた",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "rejected_warning",
+      "category": "Alignment",
+      "description": "組織の警告を拒否した",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "submitted_to_warning",
+      "category": "Alignment",
+      "description": "組織の警告に従った",
+      "weight": -2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "defied_organization",
+      "category": "Alignment",
+      "description": "組織に逆らった",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "warning_call_ended",
+      "category": "Event",
+      "description": "警告の電話が終了した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "operator_in_danger",
+      "category": "Threat",
+      "description": "オペレーターが組織から危険視されている",
+      "weight": -3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "asked_kudo_about_seiwaq",
+      "category": "Evidence",
+      "description": "工藤に誠和製薬について質問した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "kudo_chat2_completed",
+      "category": "Event",
+      "description": "工藤とのチャットが完了した",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "asked_about_cloth",
+      "category": "Evidence",
+      "description": "中村の口にあった布について質問した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "cloth_matched_haruka_company",
+      "category": "Evidence",
+      "description": "布が林遥の物流会社の制服と一致した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "物流会社が殺害に関与した証拠"
+    },
+    {
+      "flagId": "suspected_company_front",
+      "category": "Evidence",
+      "description": "物流会社がフロント企業である可能性",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_knew_something",
+      "category": "Evidence",
+      "description": "林遥が何かを知っていて消された",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "suspected_drug_transport",
+      "category": "Evidence",
+      "description": "物流会社が違法な薬を運んでいた可能性",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "connected_drug_to_nakamura",
+      "category": "Evidence",
+      "description": "中村の息子の死と違法薬物輸送を結びつけた",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "police_knows_full_picture",
+      "category": "Evidence",
+      "description": "警察が全体像を把握した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "中村、林遥、林健二、渡辺真理が繋がっている"
+    },
+    {
+      "flagId": "police_confirmed_murder",
+      "category": "Evidence",
+      "description": "警察が中村の死を殺人と確認した",
+      "weight": 2,
+      "persistsAcrossNights": true
+    }
+  ],
+  "mutualExclusionRules": [
+    {
+      "whenFlagSet": "accepted_warning",
+      "cancelFlags": ["rejected_warning", "defied_organization"]
+    },
+    {
+      "whenFlagSet": "rejected_warning",
+      "cancelFlags": ["accepted_warning", "submitted_to_warning"]
+    },
+    {
+      "whenFlagSet": "submitted_to_warning",
+      "cancelFlags": ["defied_organization", "rejected_warning"]
+    },
+    {
+      "whenFlagSet": "defied_organization",
+      "cancelFlags": ["submitted_to_warning", "accepted_warning"]
+    }
+  ]
+}

@@ -96,6 +96,77 @@
           "nextSegmentId": "check_connection",
           "setFlags": [],
           "clearFlags": []
+        },
+        {
+          "responseId": "details_gagged",
+          "text": "口を塞がれているようでした。必死に何か言おうとしていた。",
+          "nextSegmentId": "ask_gagged",
+          "setFlags": ["detailed_silent_call_info"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "details_other_voice",
+          "text": "最後に別の声が聞こえて、電話が切れました。",
+          "nextSegmentId": "ask_other_voice",
+          "setFlags": ["heard_captor_voice"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "ask_gagged",
+      "callerLines": [
+        "口を塞がれている...？",
+        "それは重要な情報です。",
+        "拘束されていた可能性がある...他に何か？"
+      ],
+      "responses": [
+        {
+          "responseId": "gagged_other_voice",
+          "text": "最後に別の声が聞こえました。「何してる」と。",
+          "nextSegmentId": "police_very_interested",
+          "setFlags": ["heard_captor_voice", "full_silent_call_detail"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "gagged_nothing_else",
+          "text": "それだけです。その後、電話が切れました。",
+          "nextSegmentId": "check_connection",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "ask_other_voice",
+      "callerLines": [
+        "別の声...？",
+        "何と言っていましたか？"
+      ],
+      "responses": [
+        {
+          "responseId": "other_voice_detail",
+          "text": "「何してる」と聞こえました。その後すぐ切れて。",
+          "nextSegmentId": "police_very_interested",
+          "setFlags": ["full_silent_call_detail"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_very_interested",
+      "callerLines": [
+        "...なるほど。拘束された状態で電話をかけてきた。",
+        "そして誰かに見つかって切られた。",
+        "これは...被害者が助けを求めていた可能性が高い。"
+      ],
+      "responses": [
+        {
+          "responseId": "very_interested_continue",
+          "text": "...助けられなかった。",
+          "nextSegmentId": "check_connection",
+          "setFlags": ["police_has_strong_lead"],
+          "clearFlags": []
         }
       ]
     },
@@ -139,13 +210,23 @@
       ],
       "responses": [
         {
-          "responseId": "mention_car",
-          "text": "あの...先ほどの通報で、社用車の目撃情報がありました。以前も同じような車を...",
-          "nextSegmentId": "car_connection",
+          "responseId": "mention_van",
+          "text": "あの...先ほどの通報で、白いバンの目撃情報がありました。以前も同じような車を...",
+          "nextSegmentId": "van_connection",
           "setFlags": ["connected_nights"],
           "clearFlags": [],
           "conditions": {
             "requiresFlag": "witness_detailed_info"
+          }
+        },
+        {
+          "responseId": "mention_clothing",
+          "text": "一つ気になることが...遺体の服装なんですが。",
+          "nextSegmentId": "clothing_question",
+          "setFlags": ["mentioned_clothing_to_police"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "clothing_mismatch"
           }
         },
         {
@@ -156,6 +237,64 @@
           "clearFlags": []
         }
       ]
+    },
+    {
+      "segmentId": "clothing_question",
+      "callerLines": [
+        "服装？",
+        "何かありましたか？"
+      ],
+      "responses": [
+        {
+          "responseId": "explain_clothing",
+          "text": "以前「林遥さんの兄」を名乗る人から電話があり、反射ジャケットを着ていると言っていました。でも遺体はスーツ...",
+          "nextSegmentId": "police_clothing_interested",
+          "setFlags": ["told_police_clothing_mismatch"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_clothing_interested",
+      "callerLines": [
+        "...「兄」が別の服装を主張していた？",
+        "林遥さんの件は確認が必要ですね。",
+        "その「兄」について、他に何か覚えていますか？"
+      ],
+      "responses": [
+        {
+          "responseId": "clothing_fake_brother_detail",
+          "text": "とても焦っていました。「時間がない」と何度も。普通の心配とは違う感じでした。",
+          "nextSegmentId": "police_fake_brother_noted",
+          "setFlags": ["told_police_fake_brother_behavior"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "clothing_no_more",
+          "text": "それ以上は...覚えていません。",
+          "nextSegmentId": "police_end_normal",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "police_fake_brother_noted",
+      "callerLines": [
+        "「時間がない」...興味深いですね。",
+        "林遥さんの件と遺体の件、関連を調べます。",
+        "貴重な情報をありがとうございます。"
+      ],
+      "responses": [
+        {
+          "responseId": "fake_brother_end",
+          "text": "お役に立てれば。",
+          "nextSegmentId": null,
+          "setFlags": ["police_investigating_fake_brother"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
     },
     {
       "segmentId": "check_connection_brief",
@@ -173,15 +312,15 @@
       ]
     },
     {
-      "segmentId": "car_connection",
+      "segmentId": "van_connection",
       "callerLines": [
         "...以前も？",
         "詳しく聞かせてください。"
       ],
       "responses": [
         {
-          "responseId": "explain_night02",
-          "text": "倉庫火災の時にも、同じような社用車が目撃されていました。",
+          "responseId": "explain_night02_03",
+          "text": "倉庫火災の時と、口論の通報の時にも、同じ白いバンが目撃されていました。",
           "nextSegmentId": "police_interested",
           "setFlags": ["told_police_connection"],
           "clearFlags": []
@@ -260,5 +399,5 @@
     }
   ],
   "startSegmentId": "police_intro",
-  "note": "警察はNight03の無言電話を追跡している。オペレーターの回答によって警察との関係が変わる。車の情報を得ていた場合（witness_detailed_info）、Night02との繋がりを伝える選択肢が出現し、connected_nightsフラグを獲得できる。"
+  "note": "警察はNight03の無言電話を追跡している。無言電話の主は林健二（遺体）。オペレーターが詳細を伝えるかどうかで捜査の進展が変わる。full_silent_call_detail → 警察は「拘束された被害者が助けを求めていた」と理解し、組織犯罪の可能性を追う。詳細を伝えなければ、単なる無言電話として処理される。白いバンの情報を得ていた場合（witness_detailed_info）、Night02・Night03との繋がりを伝える選択肢が出現。"
 }

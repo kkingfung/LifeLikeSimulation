@@ -1,0 +1,143 @@
+{
+  "eventId": "event_ending_choice",
+  "eventType": "monologue_choice",
+  "title": "オペレーターの決断",
+  "description": "Night09終了時、オペレーターは自分がどう行動するか決断を迫られる。",
+  "triggerTimeMinutes": 1435,
+  "triggerCondition": {
+    "requiresAnyFlag": ["whistleblower_likely_safe", "whistleblower_fate_unknown", "whistleblower_in_danger", "whistleblower_fled"]
+  },
+  "monologue": [
+    {
+      "lineId": "mono_1",
+      "content": "...",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "mono_2",
+      "content": "今夜、色々なことが分かった。",
+      "delaySeconds": 3
+    },
+    {
+      "lineId": "mono_3",
+      "content": "誠和製薬の真実。副作用の隠蔽。子会社の正体。",
+      "delaySeconds": 3
+    },
+    {
+      "lineId": "mono_4",
+      "content": "林健二さんは殺された。中村さんも。",
+      "delaySeconds": 3
+    },
+    {
+      "lineId": "mono_5",
+      "content": "遥さんが秘密を知っていた。健二さんは遥さんを守ろうとして巻き込まれた。",
+      "delaySeconds": 3
+    },
+    {
+      "lineId": "mono_6",
+      "content": "真理さんは今も行方不明。",
+      "delaySeconds": 3
+    },
+    {
+      "lineId": "mono_7",
+      "content": "美咲ちゃんは吉田さんのところにいる。",
+      "delaySeconds": 2,
+      "condition": {
+        "requiresFlag": "operator_knows_misaki_with_yoshida"
+      }
+    },
+    {
+      "lineId": "mono_8",
+      "content": "私は...どうすればいい？",
+      "delaySeconds": 3
+    },
+    {
+      "lineId": "mono_9",
+      "content": "オペレーターとして、ただ電話を受けるだけでいいのか。",
+      "delaySeconds": 3
+    },
+    {
+      "lineId": "mono_10",
+      "content": "それとも...",
+      "delaySeconds": 2
+    }
+  ],
+  "choices": [
+    {
+      "choiceId": "choice_tell_police",
+      "text": "警察に全てを話す",
+      "description": "山田刑事に、今夜知ったことを全て伝える。",
+      "setFlags": ["operator_will_tell_police"],
+      "clearFlags": [],
+      "followUpMonologue": [
+        {
+          "lineId": "tell_1",
+          "content": "...山田刑事に連絡しよう。",
+          "delaySeconds": 2
+        },
+        {
+          "lineId": "tell_2",
+          "content": "今夜知ったこと、全部伝える。",
+          "delaySeconds": 2
+        },
+        {
+          "lineId": "tell_3",
+          "content": "これ以上、誰かが死ぬのを見ていられない。",
+          "delaySeconds": 3
+        },
+        {
+          "lineId": "tell_4",
+          "content": "たとえ私が危険になっても。",
+          "delaySeconds": 2
+        }
+      ]
+    },
+    {
+      "choiceId": "choice_stay_silent",
+      "text": "沈黙を守る",
+      "description": "オペレーターとしての立場を守り、何も言わない。",
+      "setFlags": ["operator_will_stay_silent"],
+      "clearFlags": [],
+      "followUpMonologue": [
+        {
+          "lineId": "silent_1",
+          "content": "...私はオペレーターだ。",
+          "delaySeconds": 2
+        },
+        {
+          "lineId": "silent_2",
+          "content": "電話を受けて、必要な対応をする。それだけ。",
+          "delaySeconds": 3
+        },
+        {
+          "lineId": "silent_3",
+          "content": "深入りすれば、私も危ない。",
+          "delaySeconds": 2
+        },
+        {
+          "lineId": "silent_4",
+          "content": "...本当に、それでいいのか？",
+          "delaySeconds": 3
+        }
+      ]
+    }
+  ],
+  "endingMonologue": [
+    {
+      "lineId": "end_1",
+      "content": "（時計を見る）",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "end_2",
+      "content": "もうすぐ夜が明ける。",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "end_3",
+      "content": "明日の夜も、電話は鳴る。",
+      "delaySeconds": 3
+    }
+  ],
+  "note": "Night09終了時のオペレーターのモノローグと選択。Q27-Q29の回答に基づく。選択は直接Night10のエンディング分岐に影響する。operator_will_tell_policeフラグがあればNight10で警察と協力、operator_will_stay_silentフラグがあれば受動的な展開。"
+}

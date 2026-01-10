@@ -1,0 +1,137 @@
+{
+  "scenarioId": "night_06",
+  "title": "静かな午後",
+  "description": "昼下がり、緊急通報センターに日常的な通報が入る。しかし、その裏では真実が少しずつ明らかになっていく。嵐の前の静けさ。",
+  "startTimeMinutes": 720,
+  "endTimeMinutes": 1080,
+  "realSecondsPerGameMinute": 2.0,
+  "difficulty": 3,
+  "estimatedPlayTimeMinutes": 20,
+  "theTruth": "中村浩二は誠和製薬の違法な薬で息子を失った。Night05で警察に説得されて帰ったが、諦めきれずに再び抗議に訪れる。一方、美咲が通っていた保育園は遥からの連絡が途絶え、緊急連絡先の真理にも繋がらず心配している。工藤主任からのチャットで、Night04で発見された遺体が林健二と判明する。組織の監視車両は増え、真理の家の近くを周回している。嵐の前の静けさ、しかし夜の終わりには不穏な予兆が現れる。",
+  "callSchedule": [
+    {
+      "callId": "call_demo_argument",
+      "callerId": "passerby",
+      "title": "口論の通報",
+      "incomingTimeMinutes": 780,
+      "ringDuration": 45,
+      "priority": 6,
+      "isCritical": false,
+      "description": "通りがかりの人からの通報。誠和製薬前で中村浩二と店員が口論している。"
+    },
+    {
+      "callId": "call_kindergarten",
+      "callerId": "kindergarten_teacher",
+      "title": "園児の確認",
+      "incomingTimeMinutes": 900,
+      "ringDuration": 50,
+      "priority": 7,
+      "isCritical": false,
+      "description": "保育園から。林遥さんと連絡が取れず、緊急連絡先の渡辺真理にも繋がらない。"
+    },
+    {
+      "callId": "call_yoshida_report",
+      "callerId": "yoshida_kazuko",
+      "title": "不審な車が増えてる",
+      "incomingTimeMinutes": 1020,
+      "ringDuration": 45,
+      "priority": 8,
+      "isCritical": false,
+      "description": "吉田さんからの通報。真理の家の近くを不審な車が周回。車が増えている。"
+    }
+  ],
+  "specialEvents": [
+    {
+      "eventId": "event_kudo_nakamura",
+      "title": "工藤主任からのチャット（中村の件）",
+      "triggerTimeMinutes": 820,
+      "description": "口論通報の記録を見た工藤主任が、中村という名前に反応。去年、息子の死亡記録を見たことを思い出した。",
+      "eventType": "chat",
+      "conditions": {
+        "requiresFlag": "demo_argument_reported"
+      }
+    },
+    {
+      "eventId": "event_kudo_chat",
+      "title": "工藤主任からのチャット（林健二の件）",
+      "triggerTimeMinutes": 860,
+      "description": "工藤主任からチャットが届く。Night04で発見された遺体が林健二と判明したことを知らせる。",
+      "eventType": "chat"
+    }
+  ],
+  "initialWorldStates": [
+    {
+      "stateId": "nakamura_returning",
+      "description": "中村浩二が再び誠和製薬前に現れる",
+      "timeMinutes": 720,
+      "involvedCallerIds": ["nakamura_koji"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "misaki_with_mari",
+      "description": "美咲は真理と一緒にいる（保育園には通っていない）",
+      "timeMinutes": 720,
+      "involvedCallerIds": ["hayashi_misaki", "watanabe_mari"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "kindergarten_worried",
+      "description": "美咲が通っていた保育園は遥からの連絡が途絶えて心配している",
+      "timeMinutes": 720,
+      "involvedCallerIds": ["kindergarten_teacher"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "body_identified",
+      "description": "Night04の遺体が林健二と判明（警察発表前）",
+      "timeMinutes": 720,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "organization_quiet",
+      "description": "組織は表立った動きを控えている（嵐の前の静けさ）",
+      "timeMinutes": 720,
+      "involvedCallerIds": [],
+      "isKnownToPlayer": false
+    }
+  ],
+  "evidenceTemplates": [
+    {
+      "evidenceId": "evidence_kenji_identified",
+      "title": "遺体の身元判明",
+      "content": "山で発見された遺体は林健二と判明",
+      "category": "Revelation"
+    },
+    {
+      "evidenceId": "evidence_haruka_missing",
+      "title": "遥の不在",
+      "content": "林遥は保育園に連絡せず、美咲を預けに来なくなった",
+      "category": "Connection"
+    },
+    {
+      "evidenceId": "evidence_mari_emergency_contact",
+      "title": "緊急連絡先",
+      "content": "美咲の緊急連絡先に渡辺真理の名前がある",
+      "category": "Connection"
+    },
+    {
+      "evidenceId": "evidence_nakamura_story",
+      "title": "中村の主張",
+      "content": "中村浩二は息子が誠和製薬の薬の副作用で亡くなったと主張",
+      "category": "Testimony"
+    }
+  ],
+  "night05EndStateEffects": {
+    "PoliceDispatched": {
+      "description": "デモ男性（中村）は落ち着いているが、まだ諦めていない",
+      "modifiesCall": "call_demo_argument",
+      "addFlags": ["nakamura_calm"]
+    },
+    "DemoIgnored": {
+      "description": "デモ男性（中村）はより激しく絶望的",
+      "modifiesCall": "call_demo_argument",
+      "addFlags": ["nakamura_desperate"]
+    }
+  }
+}

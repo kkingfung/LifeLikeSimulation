@@ -166,14 +166,14 @@
       "callerLines": [
         "あ...そういえば...",
         "さっき...来る途中で車を見ました...",
-        "社用車...会社のロゴが入った車..."
+        "白いバン...見慣れない車が..."
       ],
       "responses": [
         {
           "responseId": "ask_car_details",
           "text": "どんな車でしたか？覚えていますか？",
           "nextSegmentId": "car_details",
-          "setFlags": ["evidence_car_seen"],
+          "setFlags": ["evidence_white_van_seen"],
           "clearFlags": []
         }
       ]
@@ -181,7 +181,7 @@
     {
       "segmentId": "car_details",
       "callerLines": [
-        "暗くてはっきりとは...でも会社の車でした...",
+        "暗くてはっきりとは...でも白いバンでした...",
         "この辺では見慣れない車で...",
         "...あ、昨日の朝もここを歩きましたが、何もなかったんです..."
       ],
@@ -190,7 +190,7 @@
           "responseId": "car_to_location",
           "text": "分かりました。正確な場所を教えてください。警察を向かわせます。",
           "nextSegmentId": "location_details",
-          "setFlags": ["evidence_car_details", "evidence_time_info", "witness_detailed_info"],
+          "setFlags": ["evidence_white_van_details", "evidence_time_info", "witness_detailed_info"],
           "clearFlags": []
         }
       ]
@@ -267,13 +267,31 @@
   "startSegmentId": "panic_start",
   "operatorThoughts": [
     {
-      "triggerId": "car_connection_thought",
+      "triggerId": "van_connection_thought",
       "triggerCondition": {
         "requiresFlag": "witness_detailed_info"
       },
       "triggerTiming": "after_call",
-      "content": "あの車...どこかで見たロゴ..."
+      "content": "白いバン...どこかで..."
+    },
+    {
+      "triggerId": "clothing_mismatch_thought",
+      "triggerCondition": {
+        "requiresFlag": "clothing_contradiction_noted"
+      },
+      "triggerTiming": "after_segment",
+      "triggerSegmentId": "body_details",
+      "content": "スーツ...？林さんの兄は「反射ジャケット、オレンジのライン」と言っていた。なぜ服装が違う..."
+    },
+    {
+      "triggerId": "suit_fake_brother_thought",
+      "triggerCondition": {
+        "requiresFlag": "fake_brother_claimed_reflective"
+      },
+      "triggerTiming": "after_segment",
+      "triggerSegmentId": "body_details",
+      "content": "スーツを着た男性...あの「兄」が言っていた服装とは全然違う。"
     }
   ],
-  "note": "プレイヤーのアプローチによって得られる情報量が変わる。良いアプローチ（共感型・指示型）で詳細情報を得られ、悪いアプローチ（質問型から入る）だと最低限の情報しか得られない。車の情報を得た場合、Night02との繋がりに気づくヒントとなる。"
+  "note": "遺体は林健二（偽兄/組織の中間管理職）。林遥を見つけられなかったため組織に「処分」された。Night03の無言電話の主。プレイヤーのアプローチによって得られる情報量が変わる。白いバンの情報を得た場合、Night02・Night03との繋がりに気づくヒントとなる。"
 }

@@ -1,0 +1,597 @@
+{
+  "eventId": "event_kudo_nakamura",
+  "eventType": "chat",
+  "title": "工藤主任からのチャット（中村の件）",
+  "description": "口論通報の記録を見た工藤主任が、中村という名前に反応してチャットを送ってくる。去年、同じ名前の少年の搬送記録を見たことを思い出した。",
+  "triggerTimeMinutes": 820,
+  "triggerConditions": {
+    "requiresFlag": "demo_argument_reported"
+  },
+  "messages": [
+    {
+      "messageId": "kudo_nakamura_1",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "さっきの口論の通報、見たぞ",
+      "timestamp": "13:40"
+    },
+    {
+      "messageId": "kudo_nakamura_2",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "中村浩二って名前、記録に残ってるな",
+      "timestamp": "13:40",
+      "delaySeconds": 3
+    },
+    {
+      "messageId": "kudo_nakamura_3",
+      "sender": "kudo_shinji",
+      "senderDisplayName": "工藤主任",
+      "content": "...ちょっと気になることがある",
+      "timestamp": "13:41",
+      "delaySeconds": 4
+    }
+  ],
+  "responses": [
+    {
+      "responseId": "nakamura_what",
+      "text": "何がですか？",
+      "triggersMessages": ["kudo_remember"]
+    },
+    {
+      "responseId": "nakamura_busy",
+      "text": "今ちょっと...",
+      "triggersMessages": ["kudo_insist"]
+    }
+  ],
+  "followUpMessages": {
+    "kudo_insist": [
+      {
+        "messageId": "kudo_insist_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "すぐ終わる。聞いてくれ",
+        "timestamp": "13:41"
+      },
+      {
+        "messageId": "kudo_insist_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "去年、中村浩太って名前の搬送記録を見た",
+        "timestamp": "13:42",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_insist_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "17歳。急性薬物中毒で死亡",
+        "timestamp": "13:42",
+        "delaySeconds": 3
+      }
+    ],
+    "kudo_remember": [
+      {
+        "messageId": "kudo_remember_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "去年、中村浩太って名前の搬送記録を見たんだ",
+        "timestamp": "13:41"
+      },
+      {
+        "messageId": "kudo_remember_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "17歳。急性薬物中毒で死亡",
+        "timestamp": "13:42",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_remember_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "住所が同じなんだよ。さっきの中村浩二と",
+        "timestamp": "13:42",
+        "delaySeconds": 4
+      }
+    ]
+  },
+  "secondResponses": {
+    "kudo_insist": [
+      {
+        "responseId": "insist_address",
+        "text": "それで？",
+        "triggersMessages": ["kudo_address"]
+      }
+    ],
+    "kudo_remember": [
+      {
+        "responseId": "remember_son",
+        "text": "息子...？",
+        "triggersMessages": ["kudo_son_confirm"],
+        "setFlags": ["kudo_mentioned_son"]
+      },
+      {
+        "responseId": "remember_coincidence",
+        "text": "偶然じゃないですか",
+        "triggersMessages": ["kudo_not_coincidence"]
+      }
+    ]
+  },
+  "secondFollowUpMessages": {
+    "kudo_address": [
+      {
+        "messageId": "kudo_address_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "住所が同じなんだよ。さっきの中村浩二と",
+        "timestamp": "13:43"
+      },
+      {
+        "messageId": "kudo_address_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "親子だろうな",
+        "timestamp": "13:43",
+        "delaySeconds": 3
+      }
+    ],
+    "kudo_son_confirm": [
+      {
+        "messageId": "kudo_son_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "たぶんな。住所が同じだから",
+        "timestamp": "13:43"
+      },
+      {
+        "messageId": "kudo_son_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "息子を亡くして、それで製薬会社に...",
+        "timestamp": "13:43",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_son_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "気持ちは分かるが、どうしようもないよな",
+        "timestamp": "13:44",
+        "delaySeconds": 3
+      }
+    ],
+    "kudo_not_coincidence": [
+      {
+        "messageId": "kudo_not_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "住所まで同じ偶然があるか？",
+        "timestamp": "13:43"
+      },
+      {
+        "messageId": "kudo_not_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "親子だよ。息子を亡くして、製薬会社を恨んでる",
+        "timestamp": "13:43",
+        "delaySeconds": 3
+      }
+    ]
+  },
+  "thirdResponses": {
+    "kudo_address": [
+      {
+        "responseId": "address_drug",
+        "text": "薬物中毒って...何の薬ですか",
+        "triggersMessages": ["kudo_drug_info"],
+        "setFlags": ["asked_about_drug"]
+      },
+      {
+        "responseId": "address_understand",
+        "text": "なるほど...",
+        "triggersMessages": ["kudo_end_normal"]
+      }
+    ],
+    "kudo_son_confirm": [
+      {
+        "responseId": "son_drug",
+        "text": "何の薬だったんですか",
+        "triggersMessages": ["kudo_drug_info"],
+        "setFlags": ["asked_about_drug"]
+      },
+      {
+        "responseId": "son_sad",
+        "text": "...そうですか",
+        "triggersMessages": ["kudo_end_sympathy"]
+      }
+    ],
+    "kudo_not_coincidence": [
+      {
+        "responseId": "not_drug",
+        "text": "何の薬で？",
+        "triggersMessages": ["kudo_drug_info"],
+        "setFlags": ["asked_about_drug"]
+      },
+      {
+        "responseId": "not_understand",
+        "text": "そうですか...",
+        "triggersMessages": ["kudo_end_normal"]
+      }
+    ]
+  },
+  "thirdFollowUpMessages": {
+    "kudo_drug_info": [
+      {
+        "messageId": "kudo_drug_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "処方薬の過剰摂取、って書いてあった",
+        "timestamp": "13:44"
+      },
+      {
+        "messageId": "kudo_drug_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "製薬会社の名前は...確か",
+        "timestamp": "13:44",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_drug_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "誠和製薬",
+        "timestamp": "13:45",
+        "delaySeconds": 2
+      },
+      {
+        "messageId": "kudo_drug_4",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "さっき口論してた場所と同じ会社だな",
+        "timestamp": "13:45",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_drug_5",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "...そういえば",
+        "timestamp": "13:46",
+        "delaySeconds": 4
+      },
+      {
+        "messageId": "kudo_drug_6",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "あの山で見つかった遺体、身元が判明したらしい",
+        "timestamp": "13:46",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_drug_7",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "林健二。誠和製薬の研究員だったそうだ",
+        "timestamp": "13:47",
+        "delaySeconds": 3
+      }
+    ],
+    "kudo_end_normal": [
+      {
+        "messageId": "kudo_normal_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "まあ、ただの雑談だ。気にするな",
+        "timestamp": "13:44"
+      },
+      {
+        "messageId": "kudo_normal_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "仕事に戻れ",
+        "timestamp": "13:44",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_end_sympathy": [
+      {
+        "messageId": "kudo_sympathy_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "息子を亡くすってのは...辛いだろうな",
+        "timestamp": "13:44"
+      },
+      {
+        "messageId": "kudo_sympathy_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "でも俺たちにできることはない。仕事に戻れ",
+        "timestamp": "13:45",
+        "delaySeconds": 3
+      }
+    ]
+  },
+  "fourthResponses": {
+    "kudo_drug_info": [
+      {
+        "responseId": "drug_kenji",
+        "text": "林健二...あの遺体が誠和製薬の研究員？",
+        "triggersMessages": ["kudo_kenji_confirm"],
+        "setFlags": ["kenji_identified", "noticed_seiwa_connection"]
+      },
+      {
+        "responseId": "drug_same",
+        "text": "同じ会社...",
+        "triggersMessages": ["kudo_connection"],
+        "setFlags": ["noticed_seiwa_connection", "kenji_identified"]
+      },
+      {
+        "responseId": "drug_end",
+        "text": "わかりました",
+        "triggersMessages": ["kudo_end_warning"],
+        "setFlags": ["kudo_told_seiwa", "kenji_identified"]
+      }
+    ]
+  },
+  "fourthFollowUpMessages": {
+    "kudo_kenji_confirm": [
+      {
+        "messageId": "kudo_kenji_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "ああ、そうだ",
+        "timestamp": "13:47"
+      },
+      {
+        "messageId": "kudo_kenji_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "中村の息子が死んだのも誠和製薬の薬",
+        "timestamp": "13:47",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_kenji_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "あの山で見つかった遺体も誠和製薬の研究員",
+        "timestamp": "13:48",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_kenji_4",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "...繋がってると思うか？",
+        "timestamp": "13:48",
+        "delaySeconds": 3
+      }
+    ],
+    "kudo_connection": [
+      {
+        "messageId": "kudo_conn_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "ああ。だから抗議してるんだろう",
+        "timestamp": "13:45"
+      },
+      {
+        "messageId": "kudo_conn_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "...ただな",
+        "timestamp": "13:46",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_conn_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "あまり深入りするな。俺たちはただのオペレーターだ",
+        "timestamp": "13:46",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_conn_4",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "記録を取って、必要なら派遣する。それだけだ",
+        "timestamp": "13:46",
+        "delaySeconds": 3
+      }
+    ],
+    "kudo_end_warning": [
+      {
+        "messageId": "kudo_warn_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "...一応言っておくが",
+        "timestamp": "13:45"
+      },
+      {
+        "messageId": "kudo_warn_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "あまり首を突っ込むなよ。俺たちは記録を取るだけだ",
+        "timestamp": "13:46",
+        "delaySeconds": 3
+      }
+    ]
+  },
+  "fifthResponses": {
+    "kudo_kenji_confirm": [
+      {
+        "responseId": "kenji_connected",
+        "text": "繋がっている気がします...",
+        "triggersMessages": ["kudo_kenji_warning"],
+        "setFlags": ["kudo_warned_operator", "all_seiwa_connected"]
+      },
+      {
+        "responseId": "kenji_coincidence",
+        "text": "偶然...じゃないですよね",
+        "triggersMessages": ["kudo_kenji_warning"],
+        "setFlags": ["kudo_warned_operator"]
+      },
+      {
+        "responseId": "kenji_unsure",
+        "text": "わかりません",
+        "triggersMessages": ["kudo_kenji_end"],
+        "setFlags": []
+      }
+    ],
+    "kudo_connection": [
+      {
+        "responseId": "conn_understand",
+        "text": "...わかりました",
+        "triggersMessages": ["kudo_final"],
+        "setFlags": ["kudo_warned_operator"]
+      },
+      {
+        "responseId": "conn_but",
+        "text": "でも、息子が本当に薬で...",
+        "triggersMessages": ["kudo_cut_off"],
+        "setFlags": ["questioned_kudo"]
+      }
+    ]
+  },
+  "fifthFollowUpMessages": {
+    "kudo_kenji_warning": [
+      {
+        "messageId": "kudo_kenji_warn_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "...俺もそう思う",
+        "timestamp": "13:49"
+      },
+      {
+        "messageId": "kudo_kenji_warn_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "だからこそ言っておく",
+        "timestamp": "13:49",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_kenji_warn_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "深入りするな。俺たちはただのオペレーターだ",
+        "timestamp": "13:50",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_kenji_warn_4",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "余計なことを考えるな。仕事に戻れ",
+        "timestamp": "13:50",
+        "delaySeconds": 3
+      }
+    ],
+    "kudo_kenji_end": [
+      {
+        "messageId": "kudo_kenji_end_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "...そうか",
+        "timestamp": "13:49"
+      },
+      {
+        "messageId": "kudo_kenji_end_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "まあ、俺たちが考えることじゃないな",
+        "timestamp": "13:49",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_kenji_end_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "仕事に戻れ",
+        "timestamp": "13:50",
+        "delaySeconds": 2
+      }
+    ],
+    "kudo_final": [
+      {
+        "messageId": "kudo_final_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "よし。仕事に戻れ",
+        "timestamp": "13:47"
+      }
+    ],
+    "kudo_cut_off": [
+      {
+        "messageId": "kudo_cut_1",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "それを調べるのは警察の仕事だ",
+        "timestamp": "13:47"
+      },
+      {
+        "messageId": "kudo_cut_2",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "俺たちは余計なことを考えるな",
+        "timestamp": "13:47",
+        "delaySeconds": 3
+      },
+      {
+        "messageId": "kudo_cut_3",
+        "sender": "kudo_shinji",
+        "senderDisplayName": "工藤主任",
+        "content": "仕事に戻れ",
+        "timestamp": "13:48",
+        "delaySeconds": 2
+      }
+    ]
+  },
+  "operatorThoughts": [
+    {
+      "triggerId": "son_death_thought",
+      "triggerCondition": {
+        "requiresFlag": "kudo_mentioned_son"
+      },
+      "triggerTiming": "after_event",
+      "content": "あのデモの男性...息子を亡くしていた..."
+    },
+    {
+      "triggerId": "seiwa_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "noticed_seiwa_connection"
+      },
+      "triggerTiming": "after_event",
+      "content": "息子は誠和製薬の薬で死んだ。そして父親は同じ会社に抗議している..."
+    },
+    {
+      "triggerId": "kenji_identified_thought",
+      "triggerCondition": {
+        "requiresFlag": "kenji_identified"
+      },
+      "triggerTiming": "after_event",
+      "content": "林健二...あの山で見つかった遺体の人...誠和製薬の研究員だった..."
+    },
+    {
+      "triggerId": "all_connected_thought",
+      "triggerCondition": {
+        "requiresFlag": "all_seiwa_connected"
+      },
+      "triggerTiming": "after_event",
+      "content": "中村の息子、林健二...全部誠和製薬に繋がっている。偶然じゃない..."
+    },
+    {
+      "triggerId": "kudo_warning_thought",
+      "triggerCondition": {
+        "requiresFlag": "kudo_warned_operator"
+      },
+      "triggerTiming": "after_event",
+      "content": "工藤主任は何かを知っているのか...？それとも、ただの忠告か..."
+    }
+  ],
+  "setFlagsOnComplete": ["kudo_told_about_son"],
+  "note": "口論通報の後、工藤主任が記録を見て「中村」の名前に気づく。去年の中村浩太（息子）の死亡記録を思い出し、オペレーターに伝える。工藤主任は「深入りするな」と警告するが、これが単なる上司としての忠告なのか、何かを知っているのかは曖昧。Night05でデモの話を聞いていたプレイヤーは、ここで父親の話が真実だったと確認できる。"
+}

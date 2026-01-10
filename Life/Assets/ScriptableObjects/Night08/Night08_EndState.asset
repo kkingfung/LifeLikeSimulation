@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98530dacedb0bb84c965271d31722dd6, type: 3}
+  m_Name: Night08_EndState
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.EndState.EndStateDefinition
+  nightId: night_08
+  conditions:
+  - endStateType: 29
+    priority: 1
+    scoreConditions:
+    - category: 4
+      comparison: 3
+      value: 8
+    flagConditions:
+    - flagId: defied_organization
+      requiredValue: 1
+    description: "\u771F\u5B9F\u3092\u8FFD\u3046\u8005 \u2014 \u8B66\u5BDF\u306B\u5168\u9762\u5354\u529B\u3057\u3001\u7D44\u7E54\u306B\u9006\u3089\u3063\u305F"
+  - endStateType: 30
+    priority: 2
+    scoreConditions:
+    - category: 4
+      comparison: 3
+      value: 6
+    flagConditions:
+    - flagId: submitted_to_warning
+      requiredValue: 1
+    description: "\u614E\u91CD\u306A\u77E5\u8B58 \u2014 \u591A\u304F\u306E\u60C5\u5831\u3092\u5F97\u305F\u304C\u3001\u7D44\u7E54\u306B\u306F\u5F93\u3063\u305F"
+  - endStateType: 31
+    priority: 3
+    scoreConditions:
+    - category: 4
+      comparison: 3
+      value: 4
+    flagConditions: []
+    description: "\u6C88\u9ED9\u306E\u8A3C\u4EBA \u2014 \u60C5\u5831\u3092\u5F97\u305F\u304C\u3001\u8B66\u5BDF\u306B\u3082\u7D44\u7E54\u306B\u3082\u5354\u529B\u7684\u3067\u306F\u306A\u304B\u3063\u305F"
+  - endStateType: 32
+    priority: 100
+    scoreConditions: []
+    flagConditions: []
+    description: "\u7121\u77E5\u306A\u751F\u5B58\u8005 \u2014 \u60C5\u5831\u3092\u307B\u3068\u3093\u3069\u5F97\u305A\u306B\u591C\u3092\u7D42\u3048\u305F"
+  endingMappings:
+  - endState: 29
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_truth_seeker
+  - endState: 30
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_informed_caution
+  - endState: 31
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_silent_witness
+  - endState: 32
+    endingIdIfSurvived: 
+    endingIdIfDied: 
+    endingIdRegardless: ending_unaware_survivor
+  victimSurvival:
+    requiresDispatch: 0
+    maxDispatchTimeMinutes: 0
+    dispatchFlagId: 
+  defaultEndState: 32
+  defaultEndingId: ending_unaware_survivor
+  endings:
+  - endingId: ending_truth_seeker
+    title: "\u771F\u5B9F\u3092\u8FFD\u3046\u8005"
+    description: "\u8B66\u5BDF\u306B\u5168\u3066\u3092\u8A71\u3057\u305F\u3002\u7D44\u7E54\u306E\u8B66\u544A\u3092\u7121\u8996\u3057\u305F\u3002\n\n\u6797\u5065\u4E8C\u3001\u4E2D\u6751\u6D69\u4E8C\u3001\u6E21\u8FBA\u771F\u7406\u2014\u2014\u3059\u3079\u3066\u304C\u7E4B\u304C\u3063\u3066\u3044\u308B\u3002\u8AA0\u548C\u88FD\u85AC\u3068\u3044\u3046\u5DE8\u5927\u306A\u5F71\u3002\n\n\u7D44\u7E54\u306F\u79C1\u3092\u76E3\u8996\u3057\u3066\u3044\u308B\u3002\u3067\u3082\u3001\u3082\u3046\u6B62\u307E\u308C\u306A\u3044\u3002\n\n\u7F8E\u54B2\u3061\u3083\u3093\u3092\u5B88\u3089\u306A\u3051\u308C\u3070\u3002\u771F\u5B9F\u3092\u660E\u3089\u304B\u306B\u3057\u306A\u3051\u308C\u3070\u3002"
+    conditions: []
+    endingType: 34
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_informed_caution
+    title: "\u614E\u91CD\u306A\u77E5\u8B58"
+    description: "\u591A\u304F\u306E\u3053\u3068\u3092\u77E5\u3063\u305F\u3002\u9065\u3068\u771F\u7406\u304C\u59C9\u59B9\u3060\u3063\u305F\u3053\u3068\u3002\u5065\u4E8C\u304C\u4F55\u304B\u3092\u77E5\u3063\u3066\u3044\u305F\u3053\u3068\u3002\n\n\u3067\u3082\u3001\u7D44\u7E54\u306E\u8B66\u544A\u3092\u53D7\u3051\u5165\u308C\u305F\u3002\u300C\u8CE2\u3044\u9078\u629E\u300D\u3060\u3068\u8A00\u308F\u308C\u305F\u3002\n\n\u77E5\u3063\u3066\u3044\u308B\u3002\u3067\u3082\u3001\u52D5\u3051\u306A\u3044\u3002\u305D\u308C\u304C\u4ECA\u306E\u79C1\u306B\u3067\u304D\u308B\u7CBE\u4E00\u676F\u3002"
+    conditions: []
+    endingType: 35
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_silent_witness
+    title: "\u6C88\u9ED9\u306E\u8A3C\u4EBA"
+    description: "\u3044\u304F\u3064\u304B\u306E\u65AD\u7247\u304C\u7E4B\u304C\u308A\u59CB\u3081\u305F\u3002\u3067\u3082\u3001\u5168\u5BB9\u306F\u307E\u3060\u898B\u3048\u306A\u3044\u3002\n\n\u8B66\u5BDF\u3082\u614E\u91CD\u306B\u52D5\u3044\u3066\u3044\u308B\u3002\u5DE5\u85E4\u3082\u4F55\u304B\u3092\u77E5\u3063\u3066\u3044\u308B\u3002\n\n\u79C1\u306F\u4F55\u3092\u3059\u3079\u304D\u306A\u306E\u304B\u3002\u307E\u3060\u3001\u7B54\u3048\u304C\u898B\u3064\u304B\u3089\u306A\u3044\u3002"
+    conditions: []
+    endingType: 36
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+  - endingId: ending_unaware_survivor
+    title: "\u7121\u77E5\u306A\u751F\u5B58\u8005"
+    description: "\u591C\u304C\u660E\u3051\u305F\u3002\u6E21\u8FBA\u771F\u7406\u306F\u884C\u65B9\u4E0D\u660E\u306E\u307E\u307E\u3002\n\n\u4F55\u304C\u8D77\u304D\u3066\u3044\u308B\u306E\u304B\u3001\u3088\u304F\u5206\u304B\u3089\u306A\u3044\u3002\u3067\u3082\u3001\u305D\u308C\u3067\u3044\u3044\u306E\u304B\u3082\u3057\u308C\u306A\u3044\u3002\n\n\u77E5\u3089\u306A\u3044\u65B9\u304C\u3001\u5B89\u5168\u3060\u304B\u3089\u3002"
+    conditions: []
+    endingType: 37
+    endingMedia:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0

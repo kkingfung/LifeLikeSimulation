@@ -1,0 +1,162 @@
+{
+  "eventId": "event_operator_choice",
+  "eventType": "choice",
+  "title": "オペレーターの選択",
+  "description": "真理の死を知ったオペレーター。警察を吉田の家に送るかどうかの選択。",
+  "triggerTimeMinutes": 350,
+  "triggerCondition": {
+    "requiresFlag": "mari_death_confirmed"
+  },
+  "monologue": [
+    {
+      "lineId": "mono_1",
+      "content": "真理さんが死んだ...",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "mono_2",
+      "content": "殺された...",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "mono_3",
+      "content": "美咲ちゃんは吉田さんのところにいる...",
+      "delaySeconds": 2,
+      "condition": {
+        "requiresFlag": "operator_knows_misaki_with_yoshida"
+      }
+    },
+    {
+      "lineId": "mono_4",
+      "content": "組織は真理さんを殺した...次は...",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "mono_5",
+      "content": "吉田さんと美咲ちゃんも危ない...",
+      "delaySeconds": 2,
+      "condition": {
+        "requiresFlag": "operator_knows_misaki_with_yoshida"
+      }
+    }
+  ],
+  "choiceConditions": {
+    "choiceAvailable": {
+      "description": "選択肢が表示される条件",
+      "requiredFlags": ["operator_knows_misaki_with_yoshida", "operator_will_tell_police"],
+      "result": "full_choice"
+    },
+    "partialKnowledge": {
+      "description": "吉田のことは知っているが、警察との協力を選ばなかった",
+      "requiredFlags": ["operator_knows_misaki_with_yoshida"],
+      "requiredNotFlags": ["operator_will_tell_police"],
+      "result": "limited_choice"
+    },
+    "noKnowledge": {
+      "description": "美咲が吉田のところにいることを知らない",
+      "requiredNotFlags": ["operator_knows_misaki_with_yoshida"],
+      "result": "no_choice"
+    }
+  },
+  "choices": {
+    "full_choice": [
+      {
+        "choiceId": "send_police_now",
+        "text": "今すぐ警察を吉田さんの家に送る",
+        "description": "山田刑事に連絡し、吉田の家にパトカーを向かわせる",
+        "setFlags": ["police_sent_to_yoshida", "acted_to_save"],
+        "clearFlags": [],
+        "followUpMonologue": [
+          {
+            "lineId": "send_1",
+            "content": "山田刑事に連絡しなければ...",
+            "delaySeconds": 2
+          },
+          {
+            "lineId": "send_2",
+            "content": "間に合ってくれ...",
+            "delaySeconds": 2
+          }
+        ]
+      },
+      {
+        "choiceId": "wait_and_see",
+        "text": "様子を見る",
+        "description": "今は動かない。状況を見守る。",
+        "setFlags": ["did_not_act"],
+        "clearFlags": [],
+        "followUpMonologue": [
+          {
+            "lineId": "wait_1",
+            "content": "...私にできることは...",
+            "delaySeconds": 2
+          },
+          {
+            "lineId": "wait_2",
+            "content": "...ないのか...",
+            "delaySeconds": 2
+          }
+        ]
+      }
+    ],
+    "limited_choice": [
+      {
+        "choiceId": "try_contact",
+        "text": "吉田さんに連絡を試みる",
+        "description": "吉田さんに電話してみる",
+        "setFlags": ["tried_contact_yoshida"],
+        "clearFlags": [],
+        "followUpMonologue": [
+          {
+            "lineId": "try_1",
+            "content": "吉田さんに電話してみよう...",
+            "delaySeconds": 2
+          },
+          {
+            "lineId": "try_2",
+            "content": "...出ない...",
+            "delaySeconds": 3
+          }
+        ]
+      },
+      {
+        "choiceId": "do_nothing",
+        "text": "何もしない",
+        "description": "オペレーターとして、これ以上は踏み込めない",
+        "setFlags": ["did_not_act"],
+        "clearFlags": [],
+        "followUpMonologue": [
+          {
+            "lineId": "nothing_1",
+            "content": "私は...オペレーターだ...",
+            "delaySeconds": 2
+          },
+          {
+            "lineId": "nothing_2",
+            "content": "これ以上は...",
+            "delaySeconds": 2
+          }
+        ]
+      }
+    ],
+    "no_choice": []
+  },
+  "noChoiceMonologue": [
+    {
+      "lineId": "no_choice_1",
+      "content": "真理さんが死んだ...",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "no_choice_2",
+      "content": "私には何も分からない...",
+      "delaySeconds": 2
+    },
+    {
+      "lineId": "no_choice_3",
+      "content": "何もできない...",
+      "delaySeconds": 2
+    }
+  ],
+  "note": "Night10の重要な分岐点。オペレーターが警察を吉田の家に送るかどうかで、美咲の運命が決まる。police_sent_to_yoshidaフラグがあれば、吉田が死ぬ前に警察が到着し、美咲は救出される。なければ、吉田は殺され、美咲の運命は不明になる。"
+}

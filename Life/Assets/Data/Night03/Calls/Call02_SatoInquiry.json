@@ -2,7 +2,7 @@
   "callId": "call_sato_inquiry",
   "callerId": "sato_koji",
   "title": "林遥について",
-  "description": "佐藤浩二（組織）が林遥について探りを入れてくる。佐藤は遥の死を知らない。",
+  "description": "佐藤浩二（組織）が林遥について探りを入れてくる。佐藤は遥の現在の状態を知らない。",
   "segments": [
     {
       "segmentId": "sato_intro",
@@ -44,11 +44,20 @@
       ],
       "responses": [
         {
-          "responseId": "sato_introduce_truth",
+          "responseId": "sato_introduce_truth_dead",
           "text": "申し上げにくいのですが...林遥さんは亡くなられました。",
           "nextSegmentId": "sato_learn_death",
-          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
-          "clearFlags": []
+          "setFlags": ["told_sato_haruka_dead"],
+          "clearFlags": [],
+          "conditions": [{"flag": "hayashi_dead"}]
+        },
+        {
+          "responseId": "sato_introduce_truth_alive",
+          "text": "林遥さんは病院に搬送されました。",
+          "nextSegmentId": "sato_learn_hospital",
+          "setFlags": ["told_sato_haruka_hospital"],
+          "clearFlags": [],
+          "conditions": [{"flag": "hayashi_will_survive"}]
         },
         {
           "responseId": "sato_introduce_refuse",
@@ -75,11 +84,20 @@
       ],
       "responses": [
         {
-          "responseId": "sato_location_truth",
+          "responseId": "sato_location_truth_dead",
           "text": "林遥さんは...亡くなられました。",
           "nextSegmentId": "sato_learn_death",
-          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
-          "clearFlags": []
+          "setFlags": ["told_sato_haruka_dead"],
+          "clearFlags": [],
+          "conditions": [{"flag": "hayashi_dead"}]
+        },
+        {
+          "responseId": "sato_location_truth_alive",
+          "text": "林遥さんは病院に搬送されました。",
+          "nextSegmentId": "sato_learn_hospital",
+          "setFlags": ["told_sato_haruka_hospital"],
+          "clearFlags": [],
+          "conditions": [{"flag": "hayashi_will_survive"}]
         },
         {
           "responseId": "sato_location_refuse",
@@ -106,11 +124,20 @@
       ],
       "responses": [
         {
-          "responseId": "sato_push_truth",
+          "responseId": "sato_push_truth_dead",
           "text": "...林遥さんは亡くなりました。",
           "nextSegmentId": "sato_learn_death",
-          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
-          "clearFlags": []
+          "setFlags": ["told_sato_haruka_dead"],
+          "clearFlags": [],
+          "conditions": [{"flag": "hayashi_dead"}]
+        },
+        {
+          "responseId": "sato_push_truth_alive",
+          "text": "...林遥さんは病院にいます。",
+          "nextSegmentId": "sato_learn_hospital",
+          "setFlags": ["told_sato_haruka_hospital"],
+          "clearFlags": [],
+          "conditions": [{"flag": "hayashi_will_survive"}]
         },
         {
           "responseId": "sato_push_refuse",
@@ -126,19 +153,12 @@
       "callerLines": [
         "...亡くなった？",
         "...",
-        "それは...いつのことですか？"
+        "そうですか...それは残念です。"
       ],
       "responses": [
         {
-          "responseId": "sato_death_details",
-          "text": "数日前のことです。詳細は警察にお問い合わせください。",
-          "nextSegmentId": "sato_ask_more",
-          "setFlags": [],
-          "clearFlags": []
-        },
-        {
-          "responseId": "sato_death_no_more",
-          "text": "これ以上はお答えできません。",
+          "responseId": "sato_death_end",
+          "text": "詳細は警察にお問い合わせください。",
           "nextSegmentId": "sato_end_info",
           "setFlags": [],
           "clearFlags": []
@@ -146,42 +166,25 @@
       ]
     },
     {
-      "segmentId": "sato_ask_more",
+      "segmentId": "sato_learn_hospital",
       "callerLines": [
-        "...そうですか。",
-        "では、美咲ちゃんは？遥の娘です。",
-        "美咲ちゃんはどこにいますか？"
+        "病院...生きてるんですね。",
+        "どこの病院ですか？お見舞いに行きたいんです。",
+        "教えてもらえませんか？"
       ],
       "responses": [
         {
-          "responseId": "sato_more_refuse",
-          "text": "お子さんの情報はお伝えできません。",
-          "nextSegmentId": "sato_end_info",
-          "setFlags": [],
+          "responseId": "sato_hospital_tell",
+          "text": "○○病院に搬送されたと聞いています。",
+          "nextSegmentId": "sato_end_hospital_info",
+          "setFlags": ["told_sato_hospital_name"],
           "clearFlags": []
         },
         {
-          "responseId": "sato_more_why",
-          "text": "なぜそんなことを聞くのですか？",
-          "nextSegmentId": "sato_excuse",
-          "setFlags": ["questioned_sato"],
-          "clearFlags": []
-        }
-      ]
-    },
-    {
-      "segmentId": "sato_excuse",
-      "callerLines": [
-        "心配している友人として、当然でしょう。",
-        "遥が亡くなったなら、美咲ちゃんのことが心配です。",
-        "...誰か、面倒を見ているんですか？"
-      ],
-      "responses": [
-        {
-          "responseId": "sato_excuse_refuse",
-          "text": "個人情報に関わるため、お答えできません。",
+          "responseId": "sato_hospital_refuse",
+          "text": "病院名はお伝えできません。警察にお問い合わせください。",
           "nextSegmentId": "sato_end_info",
-          "setFlags": ["refused_sato"],
+          "setFlags": [],
           "clearFlags": []
         }
       ]
@@ -190,7 +193,7 @@
       "segmentId": "sato_test",
       "callerLines": [
         "そうですか。",
-        "でも、あなたは先日、林遥さんからの電話を受けましたよね？",
+        "でも、あなたは先日、林遥さんについての電話を受けましたよね？",
         "覚えていないはずがない。"
       ],
       "responses": [
@@ -219,11 +222,20 @@
       ],
       "responses": [
         {
-          "responseId": "sato_reveal_comply",
+          "responseId": "sato_reveal_comply_dead",
           "text": "...林遥さんは亡くなりました。それだけです。",
           "nextSegmentId": "sato_end_info",
-          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
-          "clearFlags": ["lied_to_sato"]
+          "setFlags": ["told_sato_haruka_dead"],
+          "clearFlags": ["lied_to_sato"],
+          "conditions": [{"flag": "hayashi_dead"}]
+        },
+        {
+          "responseId": "sato_reveal_comply_alive",
+          "text": "...林遥さんは病院にいます。それだけです。",
+          "nextSegmentId": "sato_end_info",
+          "setFlags": ["told_sato_haruka_hospital"],
+          "clearFlags": ["lied_to_sato"],
+          "conditions": [{"flag": "hayashi_will_survive"}]
         },
         {
           "responseId": "sato_reveal_refuse",
@@ -243,11 +255,20 @@
       ],
       "responses": [
         {
-          "responseId": "sato_pressure_truth",
+          "responseId": "sato_pressure_truth_dead",
           "text": "...林遥さんは亡くなりました。",
           "nextSegmentId": "sato_learn_death",
-          "setFlags": ["told_sato_haruka_dead", "told_sato_about_haruka"],
-          "clearFlags": []
+          "setFlags": ["told_sato_haruka_dead"],
+          "clearFlags": [],
+          "conditions": [{"flag": "hayashi_dead"}]
+        },
+        {
+          "responseId": "sato_pressure_truth_alive",
+          "text": "...林遥さんは病院にいます。",
+          "nextSegmentId": "sato_learn_hospital",
+          "setFlags": ["told_sato_haruka_hospital"],
+          "clearFlags": [],
+          "conditions": [{"flag": "hayashi_will_survive"}]
         },
         {
           "responseId": "sato_pressure_final_refuse",
@@ -293,8 +314,63 @@
         }
       ],
       "isEnding": true
+    },
+    {
+      "segmentId": "sato_end_hospital_info",
+      "callerLines": [
+        "○○病院...ありがとうございます。",
+        "すぐに行ってみます。",
+        "ご協力、感謝します。"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_end_hospital_reply",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["sato_satisfied", "sato_knows_hospital"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
     }
   ],
   "startSegmentId": "sato_intro",
-  "note": "佐藤浩二は組織の情報収集係。林遥の死を知らない。オペレーターの反応によって、組織の態度が変わる。"
+  "operatorThoughts": [
+    {
+      "triggerId": "recognize_sato_thought",
+      "triggerCondition": {
+        "requiresFlag": "sato_name_recorded"
+      },
+      "triggerTiming": "after_segment",
+      "triggerSegmentId": "sato_intro",
+      "content": "佐藤...佐藤浩二？前に電話してきた人だ..."
+    },
+    {
+      "triggerId": "remember_sato_evasive",
+      "triggerCondition": {
+        "requiresFlag": "pressed_sato"
+      },
+      "triggerTiming": "after_segment",
+      "triggerSegmentId": "sato_intro",
+      "content": "この声...あの時、会社名を聞いたら急に電話を切った人..."
+    },
+    {
+      "triggerId": "sato_suspicious_thought",
+      "triggerCondition": {
+        "requiresFlag": "sato_hung_up_quickly"
+      },
+      "triggerTiming": "after_segment",
+      "triggerSegmentId": "sato_intro",
+      "content": "佐藤...前に追及したら逃げるように電話を切った。何か隠してる..."
+    },
+    {
+      "triggerId": "sato_threat_thought",
+      "triggerCondition": {
+        "requiresFlag": "sato_threatened"
+      },
+      "triggerTiming": "after_call",
+      "content": "「覚えておく」...あれは脅しだ。この人は誰なんだ..."
+    }
+  ],
+  "note": "佐藤浩二は組織の情報収集係。林遥の現在の状態（生存/死亡）を知らない。オペレーターの反応によって組織の態度が変わる。病院名を教えた場合、組織が林遥を追う可能性がある。"
 }

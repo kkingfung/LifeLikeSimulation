@@ -1,0 +1,218 @@
+{
+  "eventId": "event_colleague_chat",
+  "title": "同僚との雑談",
+  "description": "同僚が休憩中にNight01の事故について話しかけてくる。山田真紀のその後についての情報。",
+  "eventType": "conversation",
+  "triggerTimeMinutes": 240,
+  "segments": [
+    {
+      "segmentId": "chat_intro",
+      "speakerLines": [
+        "ねえ、ちょっといい？",
+        "この前の歩道橋の件、覚えてる？",
+        "ひき逃げの...女の人が轢かれたやつ。"
+      ],
+      "responses": [
+        {
+          "responseId": "chat_intro_remember",
+          "text": "ああ、あの夜か。覚えてる。",
+          "nextSegmentId": "chat_yamada_news",
+          "setFlags": ["acknowledged_footbridge"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "chat_intro_vague",
+          "text": "...どの件だっけ。",
+          "nextSegmentId": "chat_reminder",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "chat_reminder",
+      "speakerLines": [
+        "ほら、深夜に轢かれた女の人。",
+        "ドライバーが自首してきたって話。",
+        "あの通報、あなたが受けてたよね？"
+      ],
+      "responses": [
+        {
+          "responseId": "chat_reminder_yes",
+          "text": "...そうだったかも。",
+          "nextSegmentId": "chat_yamada_news",
+          "setFlags": ["acknowledged_footbridge"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "chat_yamada_news",
+      "speakerLines": [
+        "あのドライバーの女の人、山田さんっていうんだって。",
+        "警察に出頭したらしいよ。",
+        "でもさ、なんか変な話があってね..."
+      ],
+      "responses": [
+        {
+          "responseId": "chat_yamada_what",
+          "text": "変な話？",
+          "nextSegmentId": "chat_strange",
+          "setFlags": ["yamada_followup_heard"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "chat_yamada_not_interested",
+          "text": "へえ...。",
+          "nextSegmentId": "chat_end_early",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "chat_strange",
+      "speakerLines": [
+        "山田さん、最初は素直に認めてたらしいんだけど...",
+        "途中から「動物だと思った」って言い始めたんだって。",
+        "弁護士がついた途端に、話がコロッと変わったらしい。"
+      ],
+      "responses": [
+        {
+          "responseId": "chat_strange_lawyer",
+          "text": "弁護士が...？",
+          "nextSegmentId": "chat_lawyer",
+          "setFlags": ["lawyer_involved_noted"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "chat_strange_story",
+          "text": "話が変わった...?",
+          "nextSegmentId": "chat_story_change",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "chat_lawyer",
+      "speakerLines": [
+        "そう。なんか、すごい高級な弁護士事務所の人らしいよ。",
+        "山田さん、普通の会社員でしょ？そんな弁護士、普通雇えないよね。",
+        "...誰かが手配したんじゃないかって、噂になってる。"
+      ],
+      "responses": [
+        {
+          "responseId": "chat_lawyer_who",
+          "text": "誰が手配したんだろう...。",
+          "nextSegmentId": "chat_speculation",
+          "setFlags": ["yamada_protected_speculation"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "chat_lawyer_hmm",
+          "text": "ふうん...。",
+          "nextSegmentId": "chat_end_neutral",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "chat_story_change",
+      "speakerLines": [
+        "最初は「人を轢いた」って言ってたのに、",
+        "今は「暗くてよく見えなかった」「動物だと思った」って。",
+        "...まあ、弁護士の入れ知恵だろうけど。"
+      ],
+      "responses": [
+        {
+          "responseId": "chat_story_typical",
+          "text": "まあ、そういうものか...。",
+          "nextSegmentId": "chat_end_neutral",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "chat_story_question",
+          "text": "...その弁護士、どこから来たの？",
+          "nextSegmentId": "chat_lawyer",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "chat_speculation",
+      "speakerLines": [
+        "さあね...でも、なんか不思議な話だよね。",
+        "弁護士がすぐについて、話が変わって...",
+        "...まあ、世の中色々あるか。休憩終わりだね。"
+      ],
+      "responses": [
+        {
+          "responseId": "chat_speculation_end",
+          "text": "...そうだね。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_conversation_complete"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "chat_end_early",
+      "speakerLines": [
+        "...あ、そう。興味ない？",
+        "まあいいや。休憩終わりだし。"
+      ],
+      "responses": [
+        {
+          "responseId": "chat_end_early_reply",
+          "text": "ああ...。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "chat_end_neutral",
+      "speakerLines": [
+        "まあ、そんな話。",
+        "...世の中、色々あるよね。休憩終わりだ。"
+      ],
+      "responses": [
+        {
+          "responseId": "chat_end_neutral_reply",
+          "text": "そうだね...。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_conversation_complete"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "chat_end_thoughtful",
+      "speakerLines": [
+        "...うん。",
+        "なんかさ、この仕事してると、色々考えちゃうよね。",
+        "...休憩終わり。戻ろっか。"
+      ],
+      "responses": [
+        {
+          "responseId": "chat_end_thoughtful_reply",
+          "text": "...ああ。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_conversation_complete"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "chat_intro",
+  "note": "Night01の山田真紀（ドライバー）のその後を伝える同僚との雑談イベント。山田に高級弁護士がついたことで「誰かが守っている」ことを示唆。林遥に子供がいたことを改めて認識させる。Night05での美咲の登場への布石。"
+}

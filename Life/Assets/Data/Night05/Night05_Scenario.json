@@ -7,7 +7,7 @@
   "realSecondsPerGameMinute": 2.0,
   "difficulty": 3,
   "estimatedPlayTimeMinutes": 20,
-  "theTruth": "美咲（5歳）は母・林遥の事故を知らない（生存/死亡はNight01の結果による）。遥は美咲を親友の渡辺真理に預け、「何かあったら真理おばちゃんに渡して」とUSBが入ったキーホルダーを持たせていた。真理が仕事で不在の間、美咲はママに電話しようとするが繋がらず、110番なら繋がると思って緊急通報センターに電話する。一方、組織の違法な薬で子供を失った男性が、製薬会社の前で抗議活動を始める。組織のトップは慈善活動家として知られている。",
+  "theTruth": "美咲（5歳）は母・林遥の事故を知らない（生存/死亡はNight01の結果による）。遥は美咲を親友の渡辺真理に預け、「何かあったら真理おばちゃんに渡して」とUSBが入ったキーホルダーを持たせていた。真理が仕事で不在の間、美咲はママに電話しようとするが繋がらず、110番なら繋がると思って緊急通報センターに電話する。一方、組織の違法な薬で子供を失った男性が、誠和製薬の前で抗議活動を始める。組織のトップ・村上誠一郎は慈善活動家として知られている。組織は美咲の存在に気づき、監視を開始した。",
   "callSchedule": [
     {
       "callId": "call_misaki",
@@ -20,6 +20,16 @@
       "description": "5歳の美咲からの電話。ママに繋いでほしいと頼む。"
     },
     {
+      "callId": "call_kudo_call",
+      "callerId": "kudo_shinji",
+      "title": "業務連絡",
+      "incomingTimeMinutes": 1200,
+      "ringDuration": 30,
+      "priority": 5,
+      "isCritical": false,
+      "description": "工藤主任からの電話。業務連絡から遺体の話題、そして慈善活動家・村上誠一郎の話へ。"
+    },
+    {
       "callId": "call_demo_report",
       "callerId": "neighbor",
       "title": "騒音の通報",
@@ -27,7 +37,30 @@
       "ringDuration": 45,
       "priority": 6,
       "isCritical": false,
-      "description": "近隣住民からの騒音通報。男性が会社の前で抗議している。"
+      "description": "近隣住民からの騒音通報。男性が誠和製薬の前で抗議している。"
+    },
+    {
+      "callId": "call_suspicious_inquiry",
+      "callerId": "unknown_caller",
+      "title": "お子さんの確認",
+      "incomingTimeMinutes": 1260,
+      "ringDuration": 40,
+      "priority": 7,
+      "isCritical": false,
+      "triggerCondition": {
+        "requiresFlag": "misaki_called"
+      },
+      "description": "不審な電話。叔父または病院を装って美咲を探す。組織が動き出した。"
+    },
+    {
+      "callId": "call_patrol_car",
+      "callerId": "residential_caller",
+      "title": "不審な車",
+      "incomingTimeMinutes": 1290,
+      "ringDuration": 45,
+      "priority": 5,
+      "isCritical": false,
+      "description": "住宅街の住民からの通報。黒い車が何度も同じ道を通っている。品川ナンバー。"
     }
   ],
   "specialEvents": [
@@ -39,12 +72,6 @@
       "triggerCondition": {
         "requiresAnyFlag": ["security_company_noted", "evidence_company_car", "vehicles_match"]
       }
-    },
-    {
-      "eventId": "event_kudo_conversation",
-      "title": "工藤主任の会話",
-      "triggerTimeMinutes": 1200,
-      "description": "工藤主任が他の同僚とニュースについて話している。組織トップの名前が出る。"
     }
   ],
   "initialWorldStates": [
@@ -77,10 +104,10 @@
       "isKnownToPlayer": false
     },
     {
-      "stateId": "demo_man_grieving",
-      "description": "デモの男性は違法な薬で子供を失い、警察が動かないことに絶望している",
+      "stateId": "nakamura_grieving",
+      "description": "中村浩二は誠和製薬の違法な薬で息子を失い、警察が動かないことに絶望している",
       "timeMinutes": 1080,
-      "involvedCallerIds": ["demo_man"],
+      "involvedCallerIds": ["nakamura_koji"],
       "isKnownToPlayer": false
     }
   ],

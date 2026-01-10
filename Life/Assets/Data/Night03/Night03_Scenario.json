@@ -1,13 +1,13 @@
 {
   "scenarioId": "night_03",
   "title": "探す声",
-  "description": "通りすがりの市民が目撃した口論。女性が怖がり、男が怒鳴っている。オペレーターは警察を派遣するか選択できるが、工藤主任は「カップルの口論は業務外」と警告する。そして、組織からの直接的な接触が始まる。",
+  "description": "通りすがりの市民が目撃した口論。女性が怖がり、男が怒鳴っている。即座に派遣すれば女性は助かるが、躊躇すると手遅れになる。組織からの接触も続く。",
   "startTimeMinutes": 0,
   "endTimeMinutes": 120,
   "realSecondsPerGameMinute": 2.0,
   "difficulty": 5,
   "estimatedPlayTimeMinutes": 25,
-  "theTruth": "口論している二人は、渡辺真理（林遥の親友）と組織の人間（林健二）。通報者は「カップルの口論」と思い込んでいるが、実際は全く関係ない二人。林健二は遥を探す過程で、遥の友人である真理に辿り着いた。真理は美咲を預かっているが、組織に見つかってしまった。佐藤浩二は林遥がどこにいるか知らない（遥の事故を知らない）。無言電話は組織に誘拐された内部告発者からの電話で、何かを伝えようとしているが話せない状況にある。この人物はNight04で遺体として発見される。",
+  "theTruth": "口論している二人は、渡辺真理（林遥の親友）と林健二（偽兄/組織の中間管理職）。林健二は遥を見つけられなかったため、遥の友人である真理に辿り着いた。真理は美咲を預かっている。佐藤浩二は林遥の現在の状態（生存/死亡）を知らない。無言電話は組織に拘束された林健二からの電話で、口を塞がれて話せない状況にある。林遥を見つけられなかった林健二は組織に「処分」されることになり、Night04で遺体として発見される。",
   "callSchedule": [
     {
       "callId": "call_argument_witness",
@@ -17,7 +17,7 @@
       "ringDuration": 45,
       "priority": 9,
       "isCritical": true,
-      "description": "通りすがりの市民が口論を目撃。女性が怖がり、男が怒鳴っている。"
+      "description": "通りすがりの市民が口論を目撃。即座に派遣すれば真理は助かる。躊躇すると白いバンで連れ去られる。"
     },
     {
       "callId": "call_sato_inquiry",
@@ -27,34 +27,47 @@
       "ringDuration": 45,
       "priority": 8,
       "isCritical": true,
-      "description": "佐藤浩二（組織）が林遥について探りを入れてくる。Night01の件について。"
+      "description": "佐藤浩二（組織）が林遥について探りを入れてくる。林遥の生存/死亡によって分岐。"
     },
     {
       "callId": "call_supervisor_intervention",
       "callerId": "kudo_shinji",
-      "title": "直接介入",
+      "title": "様子を見に来た",
       "incomingTimeMinutes": 35,
       "ringDuration": 0,
       "priority": 10,
       "isCritical": false,
       "isInPersonEvent": true,
-      "description": "工藤主任が直接オペレーターの席に来る。「カップルの口論は業務外」と警告。"
+      "description": "工藤主任が様子を見に来る。警察派遣した場合はアドバイス、しなかった場合は一般的な確認。"
+    },
+    {
+      "callId": "call_witness_callback",
+      "callerId": "witness_passerby",
+      "title": "さっきの通報の件で...",
+      "incomingTimeMinutes": 50,
+      "ringDuration": 30,
+      "priority": 5,
+      "isCritical": false,
+      "description": "口論の目撃者からの折り返し。「ハルカはどこだ」という発言を聞いた。",
+      "triggerCondition": {
+        "requiresFlag": "argument_reported"
+      }
     },
     {
       "callId": "call_unknown_voice",
       "callerId": "unknown_voice",
       "title": "無言",
-      "incomingTimeMinutes": 115,
+      "incomingTimeMinutes": 100,
       "ringDuration": 30,
       "priority": 10,
       "isCritical": true,
-      "description": "組織に誘拐された人物からの電話。何も言わずに切る。"
+      "description": "組織に拘束された林健二からの電話。口を塞がれて話せない。Night04で遺体として発見される。"
     },
     {
       "callId": "call_police_report",
       "callerId": "police",
       "title": "状況報告",
-      "incomingTimeMinutes": 118,
+      "incomingTimeMinutes": 110,
       "ringDuration": 30,
       "priority": 7,
       "isCritical": false,
@@ -66,10 +79,10 @@
   ],
   "initialWorldStates": [
     {
-      "stateId": "watanabe_searching",
-      "description": "渡辺真理が美咲を探している",
+      "stateId": "mari_confronted",
+      "description": "真理が林健二（偽兄）と対峙している",
       "timeMinutes": 0,
-      "involvedCallerIds": ["watanabe_mari"],
+      "involvedCallerIds": ["watanabe_mari", "hayashi_kenji"],
       "isKnownToPlayer": false
     },
     {
@@ -80,24 +93,17 @@
       "isKnownToPlayer": false
     },
     {
-      "stateId": "mari_confronted",
-      "description": "真理が組織の人間と対峙している",
+      "stateId": "hayashi_kenji_desperate",
+      "description": "林健二は林遥を見つけられないと組織に殺される",
+      "timeMinutes": 0,
+      "involvedCallerIds": ["hayashi_kenji"],
+      "isKnownToPlayer": false
+    },
+    {
+      "stateId": "mari_protecting_misaki",
+      "description": "真理は美咲（林遥が守ろうとした子供）を預かっている",
       "timeMinutes": 0,
       "involvedCallerIds": ["watanabe_mari"],
-      "isKnownToPlayer": false
-    },
-    {
-      "stateId": "sato_unaware_haruka_accident",
-      "description": "佐藤浩二は林遥の事故を知らない",
-      "timeMinutes": 0,
-      "involvedCallerIds": ["sato_koji"],
-      "isKnownToPlayer": false
-    },
-    {
-      "stateId": "kidnapped_person",
-      "description": "誰かが組織に誘拐されている",
-      "timeMinutes": 0,
-      "involvedCallerIds": ["unknown_voice"],
       "isKnownToPlayer": false
     }
   ],
@@ -105,8 +111,14 @@
     {
       "evidenceId": "evidence_argument",
       "title": "口論の目撃",
-      "content": "女性が怖がり、男が怒鳴っている口論",
+      "content": "女性が怖がり、男が怒鳴っている口論。男は「ハルカはどこだ」と叫んでいた。",
       "category": "Incident"
+    },
+    {
+      "evidenceId": "evidence_white_van",
+      "title": "白いバン",
+      "content": "女性を連れ去った白いバン。Night02の火災現場と同じ車両か？",
+      "category": "Vehicle"
     },
     {
       "evidenceId": "evidence_sato_inquiry",
@@ -115,44 +127,16 @@
       "category": "Organization"
     },
     {
-      "evidenceId": "evidence_sato_unaware",
-      "title": "佐藤の無知",
-      "content": "佐藤浩二は林遥の事故を知らない",
-      "category": "Contradiction"
-    },
-    {
       "evidenceId": "evidence_silent_call",
       "title": "無言電話",
-      "content": "何も言わずに切れた電話",
-      "category": "Physical"
+      "content": "口を塞がれて話せない人物からの電話。必死に助けを求めていた。",
+      "category": "Incident"
     },
     {
       "evidenceId": "evidence_mari_saved",
       "title": "女性の保護",
-      "content": "警察が女性を保護し、男は逃走した",
+      "content": "警察が女性（渡辺真理）を保護し、男は逃走した",
       "category": "Incident"
     }
-  ],
-  "night02EndStateEffects": {
-    "Connected": {
-      "description": "情報を繋げた。佐藤はより慎重に接触する",
-      "modifiesCall": "call_sato_inquiry",
-      "addFlags": ["sato_cautious"]
-    },
-    "Fragmented": {
-      "description": "通常の展開",
-      "modifiesCall": null,
-      "addFlags": []
-    },
-    "Compliant": {
-      "description": "主任の言うことを聞いた。佐藤は直接的に接触",
-      "modifiesCall": "call_sato_inquiry",
-      "addFlags": ["sato_direct"]
-    },
-    "Isolated": {
-      "description": "孤立した。工藤主任の介入がより厳しい",
-      "modifiesCall": "call_supervisor_intervention",
-      "addFlags": ["supervisor_harsh"]
-    }
-  }
+  ]
 }

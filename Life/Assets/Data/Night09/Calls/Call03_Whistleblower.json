@@ -1,0 +1,543 @@
+{
+  "callId": "call_whistleblower",
+  "callerId": "whistleblower",
+  "title": "内部告発者からの電話",
+  "description": "林健二の元同僚（誠和製薬の研究員）からの電話。健二は遥の直属の上司で、遥の机の書類から秘密を少し知った。告発者は健二から話を聞いたが、遥が本当の情報源だとは知らない。美咲のことも知らない。",
+  "segments": [
+    {
+      "segmentId": "whistleblower_intro",
+      "callerLines": [
+        "...もしもし。",
+        "110番ですよね。",
+        "話を聞いてほしいんです...時間がないから..."
+      ],
+      "responses": [
+        {
+          "responseId": "intro_listen",
+          "text": "どうしましたか？",
+          "nextSegmentId": "whistleblower_identify",
+          "setFlags": ["whistleblower_call"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "intro_emergency",
+          "text": "緊急ですか？",
+          "nextSegmentId": "whistleblower_urgent",
+          "setFlags": ["whistleblower_call"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_urgent",
+      "callerLines": [
+        "緊急...そうかもしれない。",
+        "私、追われてるんです。",
+        "だから、早く伝えたくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "urgent_ask_who",
+          "text": "誰に追われているんですか？",
+          "nextSegmentId": "whistleblower_chased",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "urgent_ask_what",
+          "text": "何を伝えたいんですか？",
+          "nextSegmentId": "whistleblower_identify",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_chased",
+      "callerLines": [
+        "誠和製薬...の人間だと思います。",
+        "私、あそこで働いてたんです。",
+        "林健二と同じ部署で..."
+      ],
+      "responses": [
+        {
+          "responseId": "chased_kenji",
+          "text": "林健二...？",
+          "nextSegmentId": "whistleblower_kenji",
+          "setFlags": ["heard_whistleblower_seiwaq"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "chased_ask_why",
+          "text": "なぜ追われているんですか？",
+          "nextSegmentId": "whistleblower_reason",
+          "setFlags": ["heard_whistleblower_seiwaq"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_identify",
+      "callerLines": [
+        "私は...誠和製薬の研究員でした。",
+        "林健二の同僚だったんです。",
+        "健二が...消される前に、私に話してくれたことがあって..."
+      ],
+      "responses": [
+        {
+          "responseId": "identify_ask_what",
+          "text": "何を話してくれたんですか？",
+          "nextSegmentId": "whistleblower_truth",
+          "setFlags": ["heard_whistleblower_identity"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "identify_ask_killed",
+          "text": "殺された...？",
+          "nextSegmentId": "whistleblower_kenji",
+          "setFlags": ["heard_whistleblower_identity"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_kenji",
+      "callerLines": [
+        "はい...健二は殺されたんです。",
+        "自殺じゃない。あの会社に消された。",
+        "私たちが知ってしまったことを、隠すために..."
+      ],
+      "responses": [
+        {
+          "responseId": "kenji_ask_what",
+          "text": "何を知ってしまったんですか？",
+          "nextSegmentId": "whistleblower_truth",
+          "setFlags": ["kenji_murder_confirmed"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "kenji_ask_proof",
+          "text": "証拠はあるんですか？",
+          "nextSegmentId": "whistleblower_evidence",
+          "setFlags": ["kenji_murder_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_reason",
+      "callerLines": [
+        "私も...健二と同じものを見てしまったから。",
+        "会社の秘密を。",
+        "逃げなきゃいけないって分かってたのに、遅かった..."
+      ],
+      "responses": [
+        {
+          "responseId": "reason_ask_secret",
+          "text": "会社の秘密とは？",
+          "nextSegmentId": "whistleblower_truth",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_truth",
+      "callerLines": [
+        "誠和製薬は...新薬の副作用を隠蔽してたんです。",
+        "臨床試験で死者が出てた。でも、データを改竄して承認を取った。",
+        "それだけじゃない...子会社を使って、邪魔者を消してた..."
+      ],
+      "responses": [
+        {
+          "responseId": "truth_ask_subsidiary",
+          "text": "子会社というと？",
+          "nextSegmentId": "whistleblower_subsidiary",
+          "setFlags": ["heard_side_effects", "heard_coverup"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "truth_ask_evidence",
+          "text": "証拠はあるんですか？",
+          "nextSegmentId": "whistleblower_evidence",
+          "setFlags": ["heard_side_effects", "heard_coverup"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_subsidiary",
+      "callerLines": [
+        "表向きは警備会社...でも実態は違う。",
+        "会社に都合の悪い人間を...始末する。",
+        "中村さんも、健二も、きっと渡辺さんも..."
+      ],
+      "responses": [
+        {
+          "responseId": "subsidiary_ask_evidence",
+          "text": "証拠はありますか？",
+          "nextSegmentId": "whistleblower_evidence",
+          "setFlags": ["heard_subsidiary_truth"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "subsidiary_ask_mari",
+          "text": "渡辺真理さんを知っているんですか？",
+          "nextSegmentId": "whistleblower_mari",
+          "setFlags": ["heard_subsidiary_truth"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_mari",
+      "callerLines": [
+        "直接は知らない...でも、健二の部下の家族だと聞いた。",
+        "健二は部下のことを心配してた...その姉か妹か...",
+        "何か知ってるから狙われてるんだと思う..."
+      ],
+      "responses": [
+        {
+          "responseId": "mari_ask_subordinate",
+          "text": "部下というのは？",
+          "nextSegmentId": "whistleblower_haruka",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_haruka",
+      "callerLines": [
+        "林遥さん...健二と同じ苗字だけど、偶然らしい。",
+        "遥さんは何か知ってたみたいで...健二は遥さんの机の書類を見て気づいたって...",
+        "でも遥さんは...もう..."
+      ],
+      "responses": [
+        {
+          "responseId": "haruka_ask_evidence",
+          "text": "証拠はあるんですか？",
+          "nextSegmentId": "whistleblower_evidence",
+          "setFlags": ["haruka_knew_secret"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_evidence",
+      "callerLines": [
+        "証拠...健二も何か持ってたかもしれない。",
+        "でも、本当のことは遥さんが知ってたんだと思う...",
+        "健二は遥さんの机の書類から気づいただけだから..."
+      ],
+      "responses": [
+        {
+          "responseId": "evidence_ask_where",
+          "text": "証拠はどこにあるんですか？",
+          "nextSegmentId": "whistleblower_dont_know",
+          "setFlags": ["haruka_had_evidence"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "evidence_ask_kenji",
+          "text": "健二さんは何を見たんですか？",
+          "nextSegmentId": "whistleblower_kenji_saw",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_kenji_saw",
+      "callerLines": [
+        "遥さんの机に副作用のデータがあったって...",
+        "健二はそれを見て、会社のやってることに気づいた。",
+        "遥さんを守ろうとして...巻き込まれた..."
+      ],
+      "responses": [
+        {
+          "responseId": "kenji_saw_ask_now",
+          "text": "あなたは今どこにいるんですか？",
+          "nextSegmentId": "whistleblower_location",
+          "setFlags": ["kenji_got_involved"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_dont_know",
+      "callerLines": [
+        "分からない...健二は言わなかった。",
+        "「知らない方がいい」って...",
+        "証拠は遥さんが持ってたんだと思う..."
+      ],
+      "responses": [
+        {
+          "responseId": "dont_know_ask_now",
+          "text": "あなたは今どこにいるんですか？",
+          "nextSegmentId": "whistleblower_location",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_mari_maybe",
+      "callerLines": [
+        "渡辺さん...遥さんの姉だって聞いた。",
+        "遥さんが何か託したのかもしれない...",
+        "だから狙われてるんじゃないかって..."
+      ],
+      "responses": [
+        {
+          "responseId": "mari_maybe_ask_now",
+          "text": "あなたは今どこに？",
+          "nextSegmentId": "whistleblower_location",
+          "setFlags": ["mari_may_have_evidence"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_location",
+      "callerLines": [
+        "今は...車で逃げてる。",
+        "どこに行けばいいか分からない...",
+        "警察に行っても、あの会社の力で握りつぶされる..."
+      ],
+      "responses": [
+        {
+          "responseId": "location_help",
+          "text": "警察に保護を求めてください。信頼できる刑事がいます。",
+          "nextSegmentId": "whistleblower_police_option",
+          "setFlags": [],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "police_knows_connection"
+          }
+        },
+        {
+          "responseId": "location_help_no_flag",
+          "text": "警察に行ってください。",
+          "nextSegmentId": "whistleblower_police_doubt",
+          "setFlags": [],
+          "clearFlags": [],
+          "conditions": {
+            "requiresNotFlag": "police_knows_connection"
+          }
+        },
+        {
+          "responseId": "location_hide",
+          "text": "どこか安全な場所に隠れてください。",
+          "nextSegmentId": "whistleblower_hide",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_police_option",
+      "callerLines": [
+        "信頼できる...？",
+        "本当に...？",
+        "...分かった。行ってみる..."
+      ],
+      "note": "police_knows_connectionフラグがある場合、告発者は警察に保護される可能性",
+      "responses": [
+        {
+          "responseId": "police_option_name",
+          "text": "山田刑事という人です。○○署に。",
+          "nextSegmentId": "whistleblower_hope",
+          "setFlags": ["told_whistleblower_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_police_doubt",
+      "callerLines": [
+        "警察...信用できない...",
+        "あの会社は警察にも手を回してる...",
+        "でも...もう選択肢がない..."
+      ],
+      "responses": [
+        {
+          "responseId": "doubt_encourage",
+          "text": "全員が買収されてるわけじゃない。行ってください。",
+          "nextSegmentId": "whistleblower_uncertain",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_hide",
+      "callerLines": [
+        "隠れる...そうだな...",
+        "でも、いつまでも逃げられない...",
+        "（車の音）...！誰か来た...！"
+      ],
+      "responses": [
+        {
+          "responseId": "hide_ask",
+          "text": "大丈夫ですか！？",
+          "nextSegmentId": "whistleblower_danger",
+          "setFlags": ["whistleblower_in_danger"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_hope",
+      "callerLines": [
+        "山田刑事...分かった。",
+        "ありがとう...あなたに話せて良かった...",
+        "健二の分も...真実を伝えて..."
+      ],
+      "responses": [
+        {
+          "responseId": "hope_promise",
+          "text": "必ず。気をつけて。",
+          "nextSegmentId": "whistleblower_end_hope",
+          "setFlags": ["whistleblower_going_to_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_uncertain",
+      "callerLines": [
+        "...分かった。行ってみる...",
+        "もし私に何かあっても...今話したこと、忘れないで...",
+        "誰かが真実を知ってなきゃいけない..."
+      ],
+      "responses": [
+        {
+          "responseId": "uncertain_promise",
+          "text": "忘れません。気をつけて。",
+          "nextSegmentId": "whistleblower_end_uncertain",
+          "setFlags": ["whistleblower_going_to_police_uncertain"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_danger",
+      "callerLines": [
+        "...やばい...見つかった...",
+        "逃げなきゃ...",
+        "（エンジン音）すまない、切る...！"
+      ],
+      "responses": [
+        {
+          "responseId": "danger_wait",
+          "text": "待って...！",
+          "nextSegmentId": "whistleblower_end_danger",
+          "setFlags": ["whistleblower_fled"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "whistleblower_end_hope",
+      "callerLines": [
+        "ありがとう...",
+        "健二の分も...真実を...",
+        "（通話終了）"
+      ],
+      "note": "告発者は警察に向かう。生存の可能性が高い。告発者は美咲のことを知らない。",
+      "responses": [
+        {
+          "responseId": "end_hope",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["whistleblower_likely_safe"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "whistleblower_end_uncertain",
+      "callerLines": [
+        "...じゃあ...",
+        "（通話終了）",
+        "..."
+      ],
+      "note": "告発者の運命は不確定。",
+      "responses": [
+        {
+          "responseId": "end_uncertain",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["whistleblower_fate_unknown"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "whistleblower_end_danger",
+      "callerLines": [
+        "（通話が切れる）",
+        "...",
+        "..."
+      ],
+      "note": "告発者は追われている。運命は不明。",
+      "responses": [
+        {
+          "responseId": "end_danger",
+          "text": "...",
+          "nextSegmentId": null,
+          "setFlags": ["whistleblower_in_danger"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "whistleblower_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "truth_revealed_thought",
+      "triggerCondition": {
+        "requiresFlag": "heard_coverup"
+      },
+      "triggerTiming": "after_call",
+      "content": "誠和製薬の真実...副作用の隠蔽、子会社による殺人...すべて繋がった..."
+    },
+    {
+      "triggerId": "kenji_murder_thought",
+      "triggerCondition": {
+        "requiresFlag": "kenji_murder_confirmed"
+      },
+      "triggerTiming": "after_call",
+      "content": "林健二は殺された...中村さんも...真理さんも危ない..."
+    },
+    {
+      "triggerId": "haruka_knew_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_knew_secret"
+      },
+      "triggerTiming": "after_call",
+      "content": "遥さんが秘密を知っていた...健二さんは遥さんを守ろうとして巻き込まれた..."
+    },
+    {
+      "triggerId": "kenji_involved_thought",
+      "triggerCondition": {
+        "requiresFlag": "kenji_got_involved"
+      },
+      "triggerTiming": "after_call",
+      "content": "健二さんは遥さんの机の書類を見て気づいた...だから殺された..."
+    },
+    {
+      "triggerId": "decision_thought",
+      "triggerCondition": {
+        "requiresAnyFlag": ["whistleblower_likely_safe", "whistleblower_fate_unknown", "whistleblower_in_danger"]
+      },
+      "triggerTiming": "after_call",
+      "content": "真実が見えてきた...でも、私に何ができる...このまま見ているだけでいいのか..."
+    }
+  ],
+  "note": "Night09のクライマックス。林健二の元同僚（誠和製薬の研究員）からの電話。重要：告発者は美咲のことを知らない。遥が秘密を発見した本人で、健二は遥の机の書類から少しだけ知って巻き込まれた。健二と遥は「林」という同じ苗字だが偶然であり家族ではない。告発者の運命はpolice_knows_connectionフラグで分岐：あり→警察に保護される可能性、なし→運命不確定。"
+}

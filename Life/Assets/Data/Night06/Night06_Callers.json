@@ -1,0 +1,131 @@
+{
+  "nightId": "night_06",
+  "description": "Night06「静かな午後」発信者定義。中村浩二が再登場、保育園の先生、吉田さんが登場。",
+  "callers": [
+    {
+      "callerId": "passerby",
+      "displayName": "通りがかりの人",
+      "realName": "通りがかりの人",
+      "description": "誠和製薬前で口論を目撃した通行人。",
+      "voiceDescription": "20代女性。やや不安そうな声。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 90,
+        "stability": 60,
+        "cooperation": 80,
+        "aggression": 10
+      },
+      "hiddenInfo": "",
+      "trueMotivation": "トラブルを避けたいが、放っておけない善意の人。",
+      "relations": []
+    },
+    {
+      "callerId": "nakamura_koji",
+      "displayName": "中村浩二",
+      "realName": "中村浩二",
+      "description": "Night05のデモの男性。息子を誠和製薬の薬で亡くした。Night06で再び抗議活動に訪れる。",
+      "voiceDescription": "40代男性。疲れた声、または絶望的な声（Night05の対応による）。",
+      "voicePitch": 0.9,
+      "personality": {
+        "honesty": 95,
+        "stability": 30,
+        "cooperation": 40,
+        "aggression": 50
+      },
+      "hiddenInfo": "息子は本当に誠和製薬の薬の副作用で死んだ。組織が隠蔽している。",
+      "trueMotivation": "息子の死の真相を世間に知らせたい。誰かに話を聞いてほしい。",
+      "relations": [
+        {
+          "targetCallerId": "murakami_seiichiro",
+          "relationType": "Enemy",
+          "description": "息子を殺した会社の元社長",
+          "isKnown": false
+        }
+      ]
+    },
+    {
+      "callerId": "kindergarten_teacher",
+      "displayName": "田中先生",
+      "realName": "田中（ひまわり保育園）",
+      "description": "美咲が通っていた保育園の先生。遥と連絡が取れず心配している。",
+      "voiceDescription": "30代女性。丁寧で優しい声だが、心配している様子。",
+      "voicePitch": 1.05,
+      "personality": {
+        "honesty": 95,
+        "stability": 70,
+        "cooperation": 90,
+        "aggression": 5
+      },
+      "hiddenInfo": "",
+      "trueMotivation": "美咲と遥の安否を確認したい。園児を守りたい。",
+      "relations": [
+        {
+          "targetCallerId": "hayashi_misaki",
+          "relationType": "Protected",
+          "description": "担当する園児",
+          "isKnown": true
+        },
+        {
+          "targetCallerId": "hayashi_haruka",
+          "relationType": "Acquaintance",
+          "description": "園児の保護者",
+          "isKnown": true
+        }
+      ]
+    },
+    {
+      "callerId": "yoshida_kazuko",
+      "displayName": "吉田和子",
+      "realName": "吉田和子",
+      "description": "Night02で火災を通報した高齢女性。真理の隣人。美咲を可愛がっている。",
+      "voiceDescription": "70代女性。落ち着いているが不安を隠せない声。",
+      "voicePitch": 1.0,
+      "personality": {
+        "honesty": 95,
+        "stability": 65,
+        "cooperation": 85,
+        "aggression": 5
+      },
+      "hiddenInfo": "真理と美咲の生活を間近で見ている。組織の車が何を探しているか気づいていない。",
+      "trueMotivation": "隣人として、真理と美咲を守りたい。異変を感じている。",
+      "relations": [
+        {
+          "targetCallerId": "watanabe_mari",
+          "relationType": "Neighbor",
+          "description": "お隣さん",
+          "isKnown": true
+        },
+        {
+          "targetCallerId": "hayashi_misaki",
+          "relationType": "Acquaintance",
+          "description": "可愛がっている近所の子",
+          "isKnown": true
+        }
+      ]
+    },
+    {
+      "callerId": "kudo_shinji",
+      "displayName": "工藤主任",
+      "realName": "工藤真司",
+      "description": "緊急通報センターの主任。チャットで遺体の身元判明を知らせる。",
+      "voiceDescription": "40代男性。落ち着いた上司の声。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 80,
+        "stability": 85,
+        "cooperation": 75,
+        "aggression": 20
+      },
+      "hiddenInfo": "組織のことは知らないが、何かおかしいと感じ始めている。",
+      "trueMotivation": "部下を守りたい。業務を円滑に進めたい。",
+      "relations": [
+        {
+          "targetCallerId": "operator",
+          "relationType": "Colleague",
+          "description": "部下のオペレーター",
+          "isKnown": true
+        }
+      ]
+    }
+  ]
+}
