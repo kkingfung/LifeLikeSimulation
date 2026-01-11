@@ -1,23 +1,26 @@
 #nullable enable
+using LifeLike.Core.Scene;
 using LifeLike.Core.Services;
 using LifeLike.Data;
-using LifeLike.Services.AssetBundle;
-using LifeLike.Services.CallFlow;
-using LifeLike.Services.Choice;
-using LifeLike.Services.Evidence;
-using LifeLike.Services.Relationship;
-using LifeLike.Services.Save;
-using LifeLike.Services.Story;
-using LifeLike.Services.Transition;
-using LifeLike.Services.Localization;
-using LifeLike.Services.TrustGraph;
-using LifeLike.Services.Video;
-using LifeLike.Services.WorldState;
-using LifeLike.Services.Flag;
-using LifeLike.Services.EndState;
-using LifeLike.Services.Clock;
+// Core Services
+using LifeLike.Services.Core.AssetBundle;
+using LifeLike.Services.Core.Audio;
+using LifeLike.Services.Core.Localization;
+using LifeLike.Services.Core.Save;
+using LifeLike.Services.Core.Story;
+using LifeLike.Services.Core.Subscene;
+using LifeLike.Services.Core.Transition;
+using LifeLike.Services.Core.Video;
+// Operator Services
+using LifeLike.Services.Operator.CallFlow;
+using LifeLike.Services.Operator.Choice;
+using LifeLike.Services.Operator.Clock;
+using LifeLike.Services.Operator.EndState;
+using LifeLike.Services.Operator.Evidence;
+using LifeLike.Services.Operator.Flag;
+using LifeLike.Services.Operator.TrustGraph;
+using LifeLike.Services.Operator.WorldState;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace LifeLike.Core
@@ -32,6 +35,12 @@ namespace LifeLike.Core
         [SerializeField] private CanvasGroup? _fadeCanvasGroup;
         [SerializeField] private Image? _fadeImage;
 
+        [Header("Audio Settings")]
+        [SerializeField] private UnityEngine.Audio.AudioMixer? _audioMixer;
+        [SerializeField] private AudioSource? _bgmSource;
+        [SerializeField] private AudioSource? _sfxSource;
+        [SerializeField] private AudioSource? _voiceSource;
+
         [Header("AssetBundle Settings")]
         [Tooltip("AssetBundleのダウンロード元ベースURL（空の場合はStreamingAssetsを使用）")]
         [SerializeField] private string _assetBundleBaseUrl = string.Empty;
@@ -41,7 +50,7 @@ namespace LifeLike.Core
         [SerializeField] private TrustGraphData? _trustGraphData;
 
         [Header("Settings")]
-        [SerializeField] private string _mainMenuSceneName = "MainMenu";
+        [SerializeField] private SceneReference _mainMenuScene = new();
         [SerializeField] private bool _loadMainMenuOnStart = true;
 
         private static bool _isInitialized = false;
@@ -68,9 +77,9 @@ namespace LifeLike.Core
 
         private void Start()
         {
-            if (_loadMainMenuOnStart && !string.IsNullOrEmpty(_mainMenuSceneName))
+            if (_loadMainMenuOnStart && _mainMenuScene.IsValid)
             {
-                SceneManager.LoadScene(_mainMenuSceneName);
+                _mainMenuScene.LoadScene();
             }
         }
 
@@ -85,6 +94,10 @@ namespace LifeLike.Core
             // LocalizationServiceを最初に作成・登録（他のサービスから参照される可能性があるため）
             var localizationService = new LocalizationService();
             ServiceLocator.Instance.Register<ILocalizationService>(localizationService);
+
+            // SubsceneServiceを作成・登録（サブシーン管理用）
+            var subsceneService = new SubsceneService();
+            ServiceLocator.Instance.Register<ISubsceneService>(subsceneService);
 
             // AssetBundleServiceを作成・登録
             var assetBundleService = new AssetBundleService();
@@ -106,10 +119,6 @@ namespace LifeLike.Core
             var choiceService = new ChoiceService(storyService);
             ServiceLocator.Instance.Register<IChoiceService>(choiceService);
 
-            // RelationshipServiceを作成・登録（StoryServiceに依存）
-            var relationshipService = new RelationshipService(storyService);
-            ServiceLocator.Instance.Register<IRelationshipService>(relationshipService);
-
             // SaveServiceを作成・登録（StoryServiceに依存）
             var saveService = new SaveService(storyService);
             ServiceLocator.Instance.Register<ISaveService>(saveService);
@@ -121,6 +130,14 @@ namespace LifeLike.Core
                 transitionService.Initialize(_fadeCanvasGroup, _fadeImage);
             }
             ServiceLocator.Instance.Register<ITransitionService>(transitionService);
+
+            // AudioServiceを作成・登録
+            var audioService = new AudioService();
+            if (_audioMixer != null && _bgmSource != null && _sfxSource != null && _voiceSource != null)
+            {
+                audioService.Initialize(_audioMixer, _bgmSource, _sfxSource, _voiceSource);
+            }
+            ServiceLocator.Instance.Register<IAudioService>(audioService);
 
             // === Night Signal Services (Flag/EndState/Clock) ===
             // これらは他のOperator Modeサービスより先に作成する必要がある

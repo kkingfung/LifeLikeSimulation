@@ -1,36 +1,37 @@
 #nullable enable
 using System.Collections.Generic;
-using LifeLike.Core.Services;
+using LifeLike.Core.Scene;
 using LifeLike.Data;
 using LifeLike.Data.EndState;
 using LifeLike.Data.Flag;
 using LifeLike.UI.Debug;
-using LifeLike.Services.CallFlow;
-using LifeLike.Services.Clock;
-using LifeLike.Services.EndState;
-using LifeLike.Services.Evidence;
-using LifeLike.Services.Flag;
-using LifeLike.Services.Save;
-using LifeLike.Services.TrustGraph;
-using LifeLike.Services.WorldState;
+using LifeLike.Services.Core.Save;
+using LifeLike.Services.Operator.CallFlow;
+using LifeLike.Services.Operator.Clock;
+using LifeLike.Services.Operator.EndState;
+using LifeLike.Services.Operator.Evidence;
+using LifeLike.Services.Operator.Flag;
+using LifeLike.Services.Operator.TrustGraph;
+using LifeLike.Services.Operator.WorldState;
+using LifeLike.Services.Core.Subscene;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace LifeLike.Controllers
 {
     /// <summary>
     /// オペレーターシーンのコントローラー
-    /// NightControllerとOperatorViewを橋渡しし、夜の進行を管理
+    /// 夜の進行を管理し、各サービスを初期化する
     /// </summary>
-    public class OperatorSceneController : MonoBehaviour
+    public class OperatorSceneController : SceneControllerBase
     {
         [Header("Night Data")]
         [SerializeField] private List<NightDataSet> _nightDataSets = new();
 
         [Header("Scene Settings")]
-        [SerializeField] private string _mainMenuSceneName = "MainMenu";
-        [SerializeField] private string _resultSceneName = "Result";
-        [SerializeField] private string _chapterSelectSceneName = "ChapterSelect";
+        [SerializeField] private SceneReference _mainMenuScene = new();
+        [SerializeField] private SceneReference _resultScene = new();
+        [SerializeField] private SceneReference _chapterSelectScene = new();
+        [SerializeField] private SceneReference _settingsScene = new();
 
         [Header("Debug")]
         [SerializeField] private DebugPanel? _debugPanel;
@@ -52,10 +53,52 @@ namespace LifeLike.Controllers
         private IClockService? _clockService;
         private IEndStateService? _endStateService;
         private IOperatorSaveService? _operatorSaveService;
+        private ISaveService? _saveService;
         private ICallFlowService? _callFlowService;
         private IWorldStateService? _worldStateService;
         private IEvidenceService? _evidenceService;
         private ITrustGraphService? _trustGraphService;
+        private ISubsceneService? _subsceneService;
+
+        /// <summary>
+        /// CallFlowサービス
+        /// </summary>
+        public ICallFlowService? CallFlowService => _callFlowService;
+
+        /// <summary>
+        /// WorldStateサービス
+        /// </summary>
+        public IWorldStateService? WorldStateService => _worldStateService;
+
+        /// <summary>
+        /// Evidenceサービス
+        /// </summary>
+        public IEvidenceService? EvidenceService => _evidenceService;
+
+        /// <summary>
+        /// TrustGraphサービス
+        /// </summary>
+        public ITrustGraphService? TrustGraphService => _trustGraphService;
+
+        /// <summary>
+        /// Operator Saveサービス（夜進行用）
+        /// </summary>
+        public IOperatorSaveService? OperatorSaveService => _operatorSaveService;
+
+        /// <summary>
+        /// Saveサービス（汎用）
+        /// </summary>
+        public ISaveService? SaveService => _saveService;
+
+        /// <summary>
+        /// Subsceneサービス
+        /// </summary>
+        public ISubsceneService? SubsceneService => _subsceneService;
+
+        /// <summary>
+        /// 設定シーンへの参照
+        /// </summary>
+        public SceneReference SettingsScene => _settingsScene;
 
         // 現在の状態
         private int _currentNightIndex = 0;
@@ -85,14 +128,16 @@ namespace LifeLike.Controllers
         private void Awake()
         {
             // サービスを取得
-            _flagService = ServiceLocator.Instance.Get<IFlagService>();
-            _clockService = ServiceLocator.Instance.Get<IClockService>();
-            _endStateService = ServiceLocator.Instance.Get<IEndStateService>();
-            _operatorSaveService = ServiceLocator.Instance.Get<IOperatorSaveService>();
-            _callFlowService = ServiceLocator.Instance.Get<ICallFlowService>();
-            _worldStateService = ServiceLocator.Instance.Get<IWorldStateService>();
-            _evidenceService = ServiceLocator.Instance.Get<IEvidenceService>();
-            _trustGraphService = ServiceLocator.Instance.Get<ITrustGraphService>();
+            _flagService = GetService<IFlagService>();
+            _clockService = GetService<IClockService>();
+            _endStateService = GetService<IEndStateService>();
+            _operatorSaveService = GetService<IOperatorSaveService>();
+            _saveService = GetService<ISaveService>();
+            _callFlowService = GetService<ICallFlowService>();
+            _worldStateService = GetService<IWorldStateService>();
+            _evidenceService = GetService<IEvidenceService>();
+            _trustGraphService = GetService<ITrustGraphService>();
+            _subsceneService = GetService<ISubsceneService>();
 
             // デバッグパネルのイベントを購読
             if (_debugPanel != null)
@@ -265,7 +310,7 @@ namespace LifeLike.Controllers
         private void OnAllNightsCompleted()
         {
             // 結果画面へ遷移
-            SceneManager.LoadScene(_resultSceneName);
+            NavigateTo(_resultScene);
         }
 
         /// <summary>
@@ -279,7 +324,7 @@ namespace LifeLike.Controllers
                 SaveMidNight();
             }
 
-            SceneManager.LoadScene(_mainMenuSceneName);
+            NavigateTo(_mainMenuScene);
         }
 
         /// <summary>
@@ -293,7 +338,7 @@ namespace LifeLike.Controllers
                 SaveMidNight();
             }
 
-            SceneManager.LoadScene(_chapterSelectSceneName);
+            NavigateTo(_chapterSelectScene);
         }
 
         /// <summary>

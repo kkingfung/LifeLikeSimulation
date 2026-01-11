@@ -335,9 +335,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Core.GameBootstrap
   _fadeCanvasGroup: {fileID: 2072009336}
   _fadeImage: {fileID: 2072009337}
+  _audioMixer: {fileID: 0}
+  _bgmSource: {fileID: 0}
+  _sfxSource: {fileID: 0}
+  _voiceSource: {fileID: 0}
   _assetBundleBaseUrl: 
   _trustGraphData: {fileID: 11400000, guid: e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0, type: 2}
-  _mainMenuSceneName: MainMenu
+  _mainMenuScene:
+    _sceneAsset: {fileID: 102900000, guid: 3d12e45683dd93e4d9d03d83362d53fe, type: 3}
+    _sceneName: MainMenu
   _loadMainMenuOnStart: 1
 --- !u!4 &955449443
 Transform:
@@ -446,6 +452,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 511315460}
   - {fileID: 955449443}
   - {fileID: 918503719}
+  - {fileID: 511315460}

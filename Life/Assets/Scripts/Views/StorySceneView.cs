@@ -1,15 +1,15 @@
 #nullable enable
 using System.Collections.Generic;
 using System.ComponentModel;
+using LifeLike.Core.Scene;
 using LifeLike.Core.Services;
 using LifeLike.Data;
-using LifeLike.Services.Choice;
-using LifeLike.Services.Save;
-using LifeLike.Services.Story;
-using LifeLike.Services.Video;
+using LifeLike.Services.Core.Save;
+using LifeLike.Services.Core.Story;
+using LifeLike.Services.Core.Video;
+using LifeLike.Services.Operator.Choice;
 using LifeLike.ViewModels;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -41,7 +41,7 @@ namespace LifeLike.Views
         [SerializeField] private Slider? _progressSlider;
 
         [Header("Settings")]
-        [SerializeField] private string _mainMenuSceneName = "MainMenu";
+        [SerializeField] private SceneReference _mainMenuScene = new();
 
         private StorySceneViewModel? _viewModel;
         private readonly List<GameObject> _choiceButtons = new();
@@ -304,7 +304,7 @@ namespace LifeLike.Views
         {
             Debug.Log($"[StorySceneView] エンディング: {endingType}");
             // TODO: エンディング画面を表示
-            SceneManager.LoadScene(_mainMenuSceneName);
+            _mainMenuScene.LoadScene();
         }
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace LifeLike.Views
         /// </summary>
         private void OnReturnToMenuRequested()
         {
-            SceneManager.LoadScene(_mainMenuSceneName);
+            _mainMenuScene.LoadScene();
         }
 
         /// <summary>

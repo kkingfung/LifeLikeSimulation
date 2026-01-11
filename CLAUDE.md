@@ -19,17 +19,25 @@
 
 ## アーキテクチャ (Architecture)
 
-### MVVM + ServiceLocator パターン
+### MVVM + Controller + ServiceLocator パターン
 
 ```
 ┌─────────────────────────────────────────────────────────┐
+│                   Controllers (Scene)                    │
+│  MainMenuSceneController, OperatorSceneController, etc.  │
+│  - サービス取得、シーン遷移、ライフサイクル管理          │
+└─────────────────────────┬───────────────────────────────┘
+                          │ サービス提供
+┌─────────────────────────▼───────────────────────────────┐
 │                      Views (UI)                          │
-│  MainMenuView, StorySceneView                            │
+│  MainMenuView, OperatorView, ChapterSelectView, etc.     │
+│  - UI表示、ユーザー入力、エフェクト管理                  │
 └─────────────────────────┬───────────────────────────────┘
                           │ データバインディング
 ┌─────────────────────────▼───────────────────────────────┐
 │                    ViewModels                            │
-│  MainMenuViewModel, StorySceneViewModel                  │
+│  MainMenuViewModel, OperatorViewModel, etc.              │
+│  - UIロジック、状態管理、コマンド                        │
 └─────────────────────────┬───────────────────────────────┘
                           │ サービス呼び出し
 ┌─────────────────────────▼───────────────────────────────┐
@@ -44,6 +52,55 @@
 └─────────────────────────────────────────────────────────┘
 ```
 
+### SceneController パターン
+
+各シーンにはControllerを配置し、サービス取得とシーン遷移を一元管理する。
+
+```csharp
+// 基底クラス
+public abstract class SceneControllerBase : MonoBehaviour
+{
+    protected T? GetService<T>() where T : class;
+    protected bool TryGetService<T>(out T? service) where T : class;
+    protected void NavigateTo(SceneReference sceneReference);
+    protected void QuitApplication();
+}
+
+// 各シーンのController
+public class MainMenuSceneController : SceneControllerBase { ... }
+public class ChapterSelectSceneController : SceneControllerBase { ... }
+public class OperatorSceneController : SceneControllerBase { ... }
+public class ResultSceneController : SceneControllerBase { ... }
+public class SettingsSceneController : SceneControllerBase { ... }
+```
+
+### View と Controller の連携
+
+```csharp
+public class MainMenuView : MonoBehaviour
+{
+    [SerializeField] private MainMenuSceneController? _controller;
+
+    private void Awake()
+    {
+        // コントローラーを検索（SerializeFieldで設定されていない場合）
+        if (_controller == null)
+        {
+            _controller = FindFirstObjectByType<MainMenuSceneController>();
+        }
+
+        // コントローラーからサービスを取得してViewModelを作成
+        _viewModel = new MainMenuViewModel(_controller.OperatorSaveService);
+    }
+
+    private void OnStartButtonClicked()
+    {
+        // シーン遷移はControllerに委譲
+        _controller?.NavigateToChapterSelect();
+    }
+}
+```
+
 ---
 
 ## ディレクトリ構造 (Directory Structure)
@@ -53,16 +110,29 @@ Assets/
 ├── Scenes/
 │   ├── Bootstrap.unity          # 初期化シーン（GameBootstrap配置）
 │   ├── MainMenu.unity           # メインメニュー
-│   └── StoryScene.unity         # ストーリー再生シーン
+│   ├── ChapterSelect.unity      # チャプター選択画面
+│   ├── Operator.unity           # オペレーターゲーム画面
+│   ├── Result.unity             # 結果画面
+│   ├── Settings.unity           # 設定画面
+│   └── StoryScene.unity         # ストーリー再生シーン（レガシー）
 ├── Scripts/
 │   ├── Core/
 │   │   ├── MVVM/
 │   │   │   └── ViewModelBase.cs
 │   │   ├── Commands/
 │   │   │   └── RelayCommand.cs
+│   │   ├── Scene/
+│   │   │   └── SceneReference.cs
 │   │   ├── Services/
 │   │   │   └── ServiceLocator.cs
 │   │   └── GameBootstrap.cs
+│   ├── Controllers/
+│   │   ├── SceneControllerBase.cs
+│   │   ├── MainMenuSceneController.cs
+│   │   ├── ChapterSelectSceneController.cs
+│   │   ├── OperatorSceneController.cs
+│   │   ├── ResultSceneController.cs
+│   │   └── SettingsSceneController.cs
 │   ├── Services/
 │   │   ├── Story/
 │   │   │   ├── IStoryService.cs
@@ -93,10 +163,18 @@ Assets/
 │   │       └── StoryEffect.cs
 │   ├── ViewModels/
 │   │   ├── MainMenuViewModel.cs
-│   │   └── StorySceneViewModel.cs
+│   │   ├── ChapterSelectViewModel.cs
+│   │   ├── OperatorViewModel.cs
+│   │   ├── ResultViewModel.cs
+│   │   ├── SettingsViewModel.cs
+│   │   └── StorySceneViewModel.cs  # レガシー
 │   └── Views/
 │       ├── MainMenuView.cs
-│       └── StorySceneView.cs
+│       ├── ChapterSelectView.cs
+│       ├── OperatorView.cs
+│       ├── ResultView.cs
+│       ├── SettingsView.cs
+│       └── StorySceneView.cs       # レガシー
 ├── UI/
 │   └── Prefabs/
 │       └── ChoiceButton.prefab
@@ -378,16 +456,43 @@ await _videoService.PreloadAsync(videoReference);
 
 ## シーン構成
 
+### 現在のシーンフロー（Operator Mode）
+
+```
+Bootstrap → MainMenu → ChapterSelect → Operator → Result
+```
+
 ### Bootstrap シーン
 - `GameBootstrap` を配置
-- サービスの初期化
+- サービスの初期化（ServiceLocator経由）
 - MainMenuシーンへ自動遷移
 
 ### MainMenu シーン
 - `MainMenuView` を配置
-- 新規ゲーム/コンティニュー/設定/終了
+- 新規ゲーム → ChapterSelectへ
+- コンティニュー → 保存データから再開
+- 設定/終了
 
-### StoryScene シーン
+### ChapterSelect シーン
+- `ChapterSelectView` を配置
+- 10夜のシナリオ選択（Night01〜Night10）
+- 進行状況の表示（Slider）
+- 各夜のタイトルと説明
+
+### Operator シーン
+- `OperatorView` を配置
+- 通話UI（着信リスト、通話中表示）
+- 応答選択肢（ResponseButtonPrefab）
+- 証拠パネル（EvidenceItemPrefab）
+- 時計表示
+- 発信者情報表示
+
+### Result シーン
+- シナリオ終了後の結果表示
+- エンディング種別の表示
+- 次の夜への遷移
+
+### StoryScene シーン（レガシー/Story Mode用）
 - `StorySceneView` を配置
 - VideoPlayerコンポーネント
 - 選択肢UI（動的生成）
@@ -834,10 +939,16 @@ public enum EndingType
 
 ---
 
-## ディレクトリ構造（更新版）
+## ディレクトリ構造（現在）
 
 ```
-Assets/
+Life/Assets/
+├── Scenes/
+│   ├── Bootstrap.unity         # 初期化シーン
+│   ├── MainMenu.unity          # メインメニュー
+│   ├── ChapterSelect.unity     # 夜選択画面
+│   ├── Operator.unity          # オペレーターゲーム画面
+│   └── Result.unity            # 結果画面
 ├── Scripts/
 │   ├── Core/
 │   │   ├── MVVM/
@@ -845,43 +956,66 @@ Assets/
 │   │   ├── Services/
 │   │   └── GameBootstrap.cs
 │   ├── Services/
-│   │   ├── Story/          # 既存
-│   │   ├── Video/          # 既存
-│   │   ├── Choice/         # 既存
-│   │   ├── Relationship/   # 既存
-│   │   ├── Save/           # 既存
-│   │   ├── Transition/     # 既存
-│   │   ├── AssetBundle/    # 既存
-│   │   ├── Evidence/       # NEW: 証拠システム
-│   │   ├── TrustGraph/     # NEW: 信頼グラフ
-│   │   ├── CallFlow/       # NEW: 通話フロー
-│   │   └── WorldState/     # NEW: 世界状態
+│   │   ├── Story/              # ストーリー管理
+│   │   ├── Video/              # 動画再生
+│   │   ├── Choice/             # 選択肢
+│   │   ├── Relationship/       # 関係性
+│   │   ├── Save/               # セーブ（Story Mode）
+│   │   ├── Transition/         # 画面遷移
+│   │   ├── AssetBundle/        # アセットバンドル
+│   │   ├── Evidence/           # 証拠システム
+│   │   ├── TrustGraph/         # 信頼グラフ
+│   │   ├── CallFlow/           # 通話フロー
+│   │   ├── WorldState/         # 世界状態
+│   │   ├── Flag/               # フラグ管理
+│   │   ├── EndState/           # エンドステート
+│   │   ├── Clock/              # ゲーム内時計
+│   │   └── Localization/       # ローカライズ
 │   ├── Data/
 │   │   ├── StorySceneData.cs
 │   │   ├── ChoiceData.cs
 │   │   ├── CharacterData.cs
-│   │   ├── CallerData.cs       # NEW
-│   │   ├── CallData.cs         # NEW
-│   │   ├── CallMediaReference.cs # NEW
-│   │   ├── EvidenceData.cs     # NEW
-│   │   ├── TrustData.cs        # NEW
-│   │   └── NightScenarioData.cs # NEW
+│   │   ├── CallerData.cs
+│   │   ├── CallData.cs
+│   │   ├── CallMediaReference.cs
+│   │   ├── EvidenceData.cs
+│   │   ├── TrustData.cs
+│   │   └── NightScenarioData.cs
 │   ├── ViewModels/
 │   │   ├── MainMenuViewModel.cs
-│   │   ├── StorySceneViewModel.cs
-│   │   └── OperatorViewModel.cs # NEW
+│   │   ├── ChapterSelectViewModel.cs
+│   │   ├── OperatorViewModel.cs
+│   │   ├── ResultViewModel.cs
+│   │   └── StorySceneViewModel.cs  # レガシー
 │   └── Views/
 │       ├── MainMenuView.cs
-│       ├── StorySceneView.cs
-│       └── OperatorView.cs     # TODO
-├── StoryData/
-│   └── Operator/               # NEW: オペレーターモード用
-│       ├── Scenarios/
-│       ├── Callers/
-│       ├── Calls/
-│       └── Evidence/
+│       ├── ChapterSelectView.cs
+│       ├── OperatorView.cs
+│       ├── ResultView.cs
+│       └── StorySceneView.cs       # レガシー
+├── Data/
+│   ├── Night01/                # 第1夜データ
+│   │   ├── Night01_Scenario.json
+│   │   ├── Night01_Callers.json
+│   │   ├── Night01_FlagDefinitions.json
+│   │   ├── Night01_EndStateDefinition.json
+│   │   └── Calls/
+│   ├── Night02/ ... Night10/   # 各夜のデータ
+│   └── (詳細は SCENARIOS.md 参照)
+├── UI/
+│   └── Prefabs/
+│       ├── ResponseButtonPrefab.prefab
+│       ├── IncomingCallButtonPrefab.prefab
+│       └── EvidenceItemPrefab.prefab
 └── ...
 ```
+
+---
+
+## 関連ドキュメント
+
+- **SCENARIOS.md**: 全10夜のシナリオ詳細（あらすじ、登場人物、分岐条件）
+- **CHARACTERS.md**: 登場人物一覧と関係図
 
 ---
 
@@ -889,4 +1023,4 @@ Assets/
 
 - Unity: 6000.x
 - 作成日: 2026-01-06
-- 更新日: 2026-01-07 (Operator Mode追加)
+- 更新日: 2026-01-11 (シーン構成更新、ドキュメント整理)

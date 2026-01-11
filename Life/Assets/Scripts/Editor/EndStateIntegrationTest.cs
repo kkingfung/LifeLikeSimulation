@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using LifeLike.Data.EndState;
 using LifeLike.Data.Flag;
-using LifeLike.Services.EndState;
-using LifeLike.Services.Flag;
+using LifeLike.Services.Operator.EndState;
+using LifeLike.Services.Operator.Flag;
 using UnityEditor;
 using UnityEngine;
 

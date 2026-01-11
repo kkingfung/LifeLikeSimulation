@@ -1,6 +1,6 @@
 #nullable enable
 using System;
-using LifeLike.Services.AssetBundle;
+using LifeLike.Services.Core.AssetBundle;
 using UnityEngine;
 using UnityEngine.Video;
 

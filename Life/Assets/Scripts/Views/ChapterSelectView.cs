@@ -1,12 +1,12 @@
 #nullable enable
 using System.Collections.Generic;
 using System.ComponentModel;
-using LifeLike.Core.Services;
+using LifeLike.Controllers;
 using LifeLike.Data;
-using LifeLike.Services.Save;
+using LifeLike.UI;
+using LifeLike.UI.Effects;
 using LifeLike.ViewModels;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace LifeLike.Views
@@ -14,9 +14,13 @@ namespace LifeLike.Views
     /// <summary>
     /// チャプター選択画面のView
     /// フローチャート形式で夜の進行状況を表示
+    /// CRT効果、ボタンホバー効果を含む
     /// </summary>
     public class ChapterSelectView : MonoBehaviour
     {
+        [Header("Controller")]
+        [SerializeField] private ChapterSelectSceneController? _controller;
+
         [Header("Chapter Node UI")]
         [SerializeField] private Transform? _chapterNodesContainer;
         [SerializeField] private GameObject? _chapterNodePrefab;
@@ -41,10 +45,6 @@ namespace LifeLike.Views
         [SerializeField] private Button? _backButton;
         [SerializeField] private Text? _startButtonText;
 
-        [Header("Scene Settings")]
-        [SerializeField] private string _operatorSceneName = "Operator";
-        [SerializeField] private string _mainMenuSceneName = "MainMenu";
-
         [Header("Visual Settings")]
         [SerializeField] private Color _lockedColor = Color.gray;
         [SerializeField] private Color _availableColor = Color.white;
@@ -52,27 +52,52 @@ namespace LifeLike.Views
         [SerializeField] private Color _completedColor = Color.green;
         [SerializeField] private Color _selectedColor = Color.cyan;
 
+        [Header("UI Effects")]
+        [SerializeField] private UITheme? _theme;
+        [SerializeField] private bool _enableCRTEffect = true;
+        [SerializeField] private bool _enableButtonEffects = true;
+        [SerializeField] private Canvas? _mainCanvas;
+
         private ChapterSelectViewModel? _viewModel;
         private readonly List<GameObject> _chapterNodes = new();
         private readonly List<GameObject> _routeLines = new();
         private readonly Dictionary<string, Button> _chapterButtons = new();
+        private GameObject? _crtOverlay;
+        private SlideEffect? _selectedInfoSlide;
+        private FadeEffect? _screenFade;
 
         private void Awake()
         {
-            var operatorSaveService = ServiceLocator.Instance.Get<IOperatorSaveService>();
+            // コントローラーを検索
+            if (_controller == null)
+            {
+                _controller = FindFirstObjectByType<ChapterSelectSceneController>();
+            }
 
-            if (operatorSaveService == null)
+            if (_controller == null)
+            {
+                Debug.LogError("[ChapterSelectView] ChapterSelectSceneControllerが見つかりません。");
+                return;
+            }
+
+            if (_controller.OperatorSaveService == null)
             {
                 Debug.LogError("[ChapterSelectView] IOperatorSaveServiceが見つかりません。");
                 return;
             }
 
-            _viewModel = new ChapterSelectViewModel(operatorSaveService);
+            _viewModel = new ChapterSelectViewModel(_controller.OperatorSaveService);
         }
 
         private void Start()
         {
             if (_viewModel == null) return;
+
+            // テーマを設定
+            SetupTheme();
+
+            // UI効果をセットアップ
+            SetupUIEffects();
 
             SetupUI();
 
@@ -84,8 +109,165 @@ namespace LifeLike.Views
             UpdateUI();
         }
 
+        /// <summary>
+        /// テーマを設定
+        /// </summary>
+        private void SetupTheme()
+        {
+            if (_theme != null)
+            {
+                UIThemeManager.Instance.Theme = _theme;
+            }
+        }
+
+        /// <summary>
+        /// UI効果をセットアップ
+        /// </summary>
+        private void SetupUIEffects()
+        {
+            if (_enableCRTEffect)
+            {
+                SetupCRTEffect();
+            }
+
+            if (_enableButtonEffects)
+            {
+                SetupButtonEffects();
+            }
+
+            // 選択情報パネルのスライド効果をセットアップ
+            SetupSelectedInfoSlide();
+
+            // 画面フェード効果をセットアップ
+            SetupScreenFade();
+        }
+
+        /// <summary>
+        /// 選択情報パネルのスライド効果をセットアップ
+        /// </summary>
+        private void SetupSelectedInfoSlide()
+        {
+            if (_selectedInfoPanel == null) return;
+
+            // CanvasGroupを追加
+            var canvasGroup = _selectedInfoPanel.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = _selectedInfoPanel.AddComponent<CanvasGroup>();
+            }
+
+            _selectedInfoSlide = _selectedInfoPanel.GetComponent<SlideEffect>();
+            if (_selectedInfoSlide == null)
+            {
+                _selectedInfoSlide = _selectedInfoPanel.AddComponent<SlideEffect>();
+                _selectedInfoSlide.SetDirection(SlideEffect.SlideDirection.Right);
+            }
+        }
+
+        /// <summary>
+        /// 画面フェード効果をセットアップ
+        /// </summary>
+        private void SetupScreenFade()
+        {
+            var canvas = _mainCanvas;
+            if (canvas == null)
+            {
+                canvas = FindFirstObjectByType<Canvas>();
+            }
+
+            if (canvas == null) return;
+
+            var canvasGroup = canvas.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = canvas.gameObject.AddComponent<CanvasGroup>();
+            }
+
+            _screenFade = canvas.GetComponent<FadeEffect>();
+            if (_screenFade == null)
+            {
+                _screenFade = canvas.gameObject.AddComponent<FadeEffect>();
+            }
+
+            _screenFade.FadeIn(0.5f);
+        }
+
+        /// <summary>
+        /// CRT効果をセットアップ
+        /// </summary>
+        private void SetupCRTEffect()
+        {
+            var canvas = _mainCanvas;
+            if (canvas == null)
+            {
+                canvas = FindFirstObjectByType<Canvas>();
+            }
+
+            if (canvas == null)
+            {
+                Debug.LogWarning("[ChapterSelectView] Canvasが見つかりません。CRT効果をスキップします。");
+                return;
+            }
+
+            _crtOverlay = new GameObject("CRTOverlay");
+            _crtOverlay.transform.SetParent(canvas.transform, false);
+
+            var rectTransform = _crtOverlay.AddComponent<RectTransform>();
+            rectTransform.anchorMin = Vector2.zero;
+            rectTransform.anchorMax = Vector2.one;
+            rectTransform.offsetMin = Vector2.zero;
+            rectTransform.offsetMax = Vector2.zero;
+
+            var rawImage = _crtOverlay.AddComponent<RawImage>();
+            rawImage.raycastTarget = false;
+
+            var crtEffect = _crtOverlay.AddComponent<CRTEffect>();
+            crtEffect.ApplyTheme(UIThemeManager.Instance.Theme);
+
+            _crtOverlay.transform.SetAsLastSibling();
+        }
+
+        /// <summary>
+        /// ボタン効果をセットアップ
+        /// </summary>
+        private void SetupButtonEffects()
+        {
+            var theme = UIThemeManager.Instance.Theme;
+
+            AddButtonEffects(_startButton, theme, ButtonAudioFeedback.ClickSoundType.Confirm);
+            AddButtonEffects(_backButton, theme);
+        }
+
+        /// <summary>
+        /// ボタンにエフェクトを追加
+        /// </summary>
+        private void AddButtonEffects(Button? button, UITheme theme, ButtonAudioFeedback.ClickSoundType soundType = ButtonAudioFeedback.ClickSoundType.Default)
+        {
+            if (button == null) return;
+
+            var hoverEffect = button.gameObject.GetComponent<ButtonHoverEffect>();
+            if (hoverEffect == null)
+            {
+                hoverEffect = button.gameObject.AddComponent<ButtonHoverEffect>();
+                hoverEffect.ApplyTheme(theme);
+            }
+
+            var audioFeedback = button.gameObject.GetComponent<ButtonAudioFeedback>();
+            if (audioFeedback == null)
+            {
+                audioFeedback = button.gameObject.AddComponent<ButtonAudioFeedback>();
+                audioFeedback.SetClickSoundType(soundType);
+            }
+        }
+
         private void OnDestroy()
         {
+            // CRTオーバーレイを破棄
+            if (_crtOverlay != null)
+            {
+                Destroy(_crtOverlay);
+            }
+
             if (_viewModel != null)
             {
                 _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
@@ -165,6 +347,22 @@ namespace LifeLike.Views
                 string chapterId = chapter.chapterId;
                 button.onClick.AddListener(() => OnChapterNodeClicked(chapterId));
                 _chapterButtons[chapterId] = button;
+
+                // ボタンにホバー効果とオーディオフィードバックを追加
+                if (_enableButtonEffects)
+                {
+                    AddButtonEffects(button, UIThemeManager.Instance.Theme);
+
+                    // チャプターノードにポップ効果を追加
+                    var popEffect = button.gameObject.GetComponent<ScalePopEffect>();
+                    if (popEffect == null)
+                    {
+                        popEffect = button.gameObject.AddComponent<ScalePopEffect>();
+                        popEffect.SetIconPopPreset();
+                    }
+                    // ノード生成時にポップイン
+                    popEffect.PopIn(0.2f + index * 0.05f);
+                }
             }
 
             // テキストを設定
@@ -252,7 +450,20 @@ namespace LifeLike.Views
             var selected = _viewModel.SelectedChapter;
             bool hasSelection = selected != null;
 
-            if (_selectedInfoPanel != null)
+            // スライド効果で表示/非表示
+            if (_selectedInfoSlide != null)
+            {
+                if (hasSelection && !_selectedInfoSlide.IsVisible)
+                {
+                    _selectedInfoPanel?.SetActive(true);
+                    _selectedInfoSlide.SlideIn();
+                }
+                else if (!hasSelection && _selectedInfoSlide.IsVisible)
+                {
+                    _selectedInfoSlide.SlideOut();
+                }
+            }
+            else if (_selectedInfoPanel != null)
             {
                 _selectedInfoPanel.SetActive(hasSelection);
             }
@@ -417,14 +628,12 @@ namespace LifeLike.Views
 
         private void OnChapterStartRequested(int nightIndex)
         {
-            PlayerPrefs.SetInt("LifeLike_StartNightIndex", nightIndex);
-            PlayerPrefs.Save();
-            SceneManager.LoadScene(_operatorSceneName);
+            _controller?.StartChapter(nightIndex);
         }
 
         private void OnBackToMenuRequested()
         {
-            SceneManager.LoadScene(_mainMenuSceneName);
+            _controller?.NavigateToMainMenu();
         }
 
         private void ClearChapterNodes()

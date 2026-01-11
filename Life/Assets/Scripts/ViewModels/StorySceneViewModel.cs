@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using LifeLike.Core.Commands;
 using LifeLike.Core.MVVM;
 using LifeLike.Data;
-using LifeLike.Services.Choice;
-using LifeLike.Services.Save;
-using LifeLike.Services.Story;
-using LifeLike.Services.Video;
+using LifeLike.Services.Core.Save;
+using LifeLike.Services.Core.Story;
+using LifeLike.Services.Core.Video;
+using LifeLike.Services.Operator.Choice;
 using UnityEngine;
 
 namespace LifeLike.ViewModels

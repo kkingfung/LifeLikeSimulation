@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using LifeLike.Core.Commands;
 using LifeLike.Core.MVVM;
 using LifeLike.Data;
-using LifeLike.Services.CallFlow;
-using LifeLike.Services.Evidence;
-using LifeLike.Services.Save;
-using LifeLike.Services.TrustGraph;
-using LifeLike.Services.WorldState;
+using LifeLike.Services.Core.Save;
+using LifeLike.Services.Operator.CallFlow;
+using LifeLike.Services.Operator.Evidence;
+using LifeLike.Services.Operator.TrustGraph;
+using LifeLike.Services.Operator.WorldState;
 using UnityEngine;
 
 namespace LifeLike.ViewModels

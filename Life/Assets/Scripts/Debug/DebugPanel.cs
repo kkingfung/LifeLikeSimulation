@@ -5,10 +5,10 @@ using System.Linq;
 using LifeLike.Core.Services;
 using LifeLike.Data.EndState;
 using LifeLike.Data.Flag;
-using LifeLike.Services.Clock;
-using LifeLike.Services.EndState;
-using LifeLike.Services.Flag;
-using LifeLike.Services.Save;
+using LifeLike.Services.Core.Save;
+using LifeLike.Services.Operator.Clock;
+using LifeLike.Services.Operator.EndState;
+using LifeLike.Services.Operator.Flag;
 using UnityEngine;
 
 namespace LifeLike.UI.Debug

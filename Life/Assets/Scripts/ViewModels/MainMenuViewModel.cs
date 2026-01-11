@@ -3,8 +3,8 @@ using System;
 using LifeLike.Core.Commands;
 using LifeLike.Core.MVVM;
 using LifeLike.Data;
-using LifeLike.Services.Save;
-using LifeLike.Services.Story;
+using LifeLike.Services.Core.Save;
+using LifeLike.Services.Core.Story;
 using UnityEngine;
 
 namespace LifeLike.ViewModels

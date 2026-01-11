@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LifeLike.Data;
-using LifeLike.Services.Story;
+using LifeLike.Services.Core.Story;
 using UnityEngine;
 
 namespace LifeLike.Services.Relationship
