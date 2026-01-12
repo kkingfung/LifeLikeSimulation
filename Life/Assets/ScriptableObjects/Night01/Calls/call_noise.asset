@@ -15,9 +15,9 @@ MonoBehaviour:
   callId: call_noise
   caller: {fileID: 11400000, guid: d423bcfbfb4291e45935f9e91959d174, type: 2}
   description: "\u4E8B\u6545\u306E\u6700\u521D\u306E\u624B\u304C\u304B\u308A\u3002\u6642\u523B\u3068\u5834\u6240\u306E\u78BA\u7ACB\u3002\u512A\u3057\u304F\u5BFE\u5FDC\u3059\u308B\u3068Night05\u3067\u60C5\u5831\u63D0\u4F9B\u3002"
-  incomingTimeMinutes: 0
+  incomingTimeMinutes: 137
   ringDuration: 30
-  priority: 5
+  priority: 2
   startSegmentId: noise_intro
   segments:
   - segmentId: noise_intro

@@ -374,6 +374,18 @@ MonoBehaviour:
     weight: 0
     persistsAcrossNights: 1
     cancelsFlags: []
+  - flagId: haruka_called_misaki_name
+    category: 6
+    description: "\u88AB\u5BB3\u8005\u304C\u300E\u307F\u3055\u304D\u300F\u3068\u3044\u3046\u540D\u524D\u3092\u547C\u3093\u3067\u3044\u305F"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: victim_has_dependent
+    category: 6
+    description: "\u88AB\u5BB3\u8005\u306B\u5B88\u308B\u3079\u304D\u8AB0\u304B\u304C\u3044\u308B\u3053\u3068\u3092\u793A\u5506"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
   - flagId: yamada_confessed
     category: 7
     description: "\u30C9\u30E9\u30A4\u30D0\u30FC\u304C\u4EBA\u3092\u8F62\u3044\u305F\u3053\u3068\u3092\u8A8D\u3081\u305F"

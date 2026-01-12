@@ -30,6 +30,19 @@
       "description": "吉田が美咲の様子を報告。美咲は元気だが、ママとまりおばちゃんのことを心配している。"
     },
     {
+      "callId": "call_sato_callback",
+      "callerId": "sato_hideaki",
+      "title": "あの夜のことで...",
+      "incomingTimeMinutes": 1340,
+      "ringDuration": 40,
+      "priority": 4,
+      "isCritical": false,
+      "description": "Night03で問い合わせた佐藤からの電話。ニュースで林健二の死を知り、あの夜のことが気になって連絡。組織の人間ではなく、良心の呵責に苦しむただの通行人だった。",
+      "conditions": {
+        "requiresFlag": "sato_inquiry_received"
+      }
+    },
+    {
       "callId": "call_whistleblower",
       "callerId": "whistleblower",
       "title": "内部告発者からの電話",

@@ -95,6 +95,28 @@
       "trueMotivation": "遺体発見のニュースを聞いて情報提供",
       "relations": [],
       "organizationRelation": "none"
+    },
+    {
+      "callerId": "daycare_worker",
+      "displayName": "保育士",
+      "realName": "森田（もりた）",
+      "description": "ひまわり保育園の保育士。林美咲を担当していた。美咲が3日間無断欠席しており、母親（林遥）とも連絡が取れないことを心配して連絡。",
+      "voiceDescription": "30代女性の穏やかだが心配そうな声。子供のことを本当に気にかけている様子。",
+      "voicePitch": 1.1,
+      "personality": {
+        "honesty": 95,
+        "stability": 70,
+        "cooperation": 95,
+        "aggression": 5
+      },
+      "hiddenInfo": "美咲と遥のことを心から心配している。美咲が時々『ママが夜のお仕事で疲れてる』と言っていたのを覚えている。遥がシングルマザーで大変だと知っている。",
+      "trueMotivation": "美咲の安否を確認したい。虐待やネグレクトではないかと心配。",
+      "relations": [
+        { "targetCallerId": "hayashi_haruka", "relationType": "Professional", "description": "園児の保護者（林遥）", "isKnown": true },
+        { "targetCallerId": "hayashi_misaki", "relationType": "Professional", "description": "担当園児", "isKnown": true }
+      ],
+      "organizationRelation": "none",
+      "note": "林遥と美咲を人間として描く重要なキャラクター。美咲の日常生活を語ることで、被害者を「誰か大切な人」として描写する。"
     }
   ]
 }

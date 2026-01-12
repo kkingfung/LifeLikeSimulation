@@ -148,7 +148,7 @@
     {
       "endingId": "ending_full_alliance",
       "title": "完全な同盟",
-      "description": "山田刑事との同盟、告発者の保護、そしてオペレーター自身の決意。\nすべてが揃った。\n\nNight10で真実が明らかになる。",
+      "description": "高橋刑事との同盟、告発者の保護、そしてオペレーター自身の決意。\nすべてが揃った。\n\nNight10で真実が明らかになる。",
       "endingType": "FullAlliance"
     },
     {
@@ -160,7 +160,7 @@
     {
       "endingId": "ending_whistleblower_saved",
       "title": "告発者を救った",
-      "description": "告発者は山田刑事のもとへ向かった。\n健二の真実が伝えられる希望がある。",
+      "description": "告発者は高橋刑事のもとへ向かった。\n健二の真実が伝えられる希望がある。",
       "endingType": "WhistleblowerSaved"
     },
     {
@@ -224,7 +224,7 @@
       "unlocks": ["another_victim_route"]
     },
     "police_alliance_formed": {
-      "description": "Night10で山田刑事と直接連絡が取れる。",
+      "description": "Night10で高橋刑事と直接連絡が取れる。",
       "unlocks": ["direct_police_contact"]
     }
   }

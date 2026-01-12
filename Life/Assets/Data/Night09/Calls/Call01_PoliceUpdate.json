@@ -7,7 +7,7 @@
     {
       "segmentId": "police_intro",
       "callerLines": [
-        "○○署の山田です。",
+        "○○署の高橋です。",
         "渡辺真理さんの件で進展がありまして。",
         "ご報告に上がりました。"
       ],
@@ -226,7 +226,7 @@
         "requiresFlag": "police_alliance_formed"
       },
       "triggerTiming": "after_call",
-      "content": "山田刑事は味方になってくれた...一人じゃない..."
+      "content": "高橋刑事は味方になってくれた...一人じゃない..."
     },
     {
       "triggerId": "pressure_thought",

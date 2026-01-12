@@ -63,13 +63,13 @@
       {
         "choiceId": "send_police_now",
         "text": "今すぐ警察を吉田さんの家に送る",
-        "description": "山田刑事に連絡し、吉田の家にパトカーを向かわせる",
+        "description": "高橋刑事に連絡し、吉田の家にパトカーを向かわせる",
         "setFlags": ["police_sent_to_yoshida", "acted_to_save"],
         "clearFlags": [],
         "followUpMonologue": [
           {
             "lineId": "send_1",
-            "content": "山田刑事に連絡しなければ...",
+            "content": "高橋刑事に連絡しなければ...",
             "delaySeconds": 2
           },
           {

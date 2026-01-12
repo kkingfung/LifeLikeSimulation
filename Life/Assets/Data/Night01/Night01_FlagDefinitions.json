@@ -423,6 +423,22 @@
       "persistsAcrossNights": true
     },
     {
+      "flagId": "haruka_called_misaki_name",
+      "category": "Foreshadowing",
+      "description": "被害者が『みさき』という名前を呼んでいた",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "Night05で美咲が登場した時に接続される重要な伏線"
+    },
+    {
+      "flagId": "victim_has_dependent",
+      "category": "Foreshadowing",
+      "description": "被害者に守るべき誰かがいることを示唆",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "『みさきをお願い』という言葉から推測"
+    },
+    {
       "flagId": "yamada_confessed",
       "category": "Event",
       "description": "ドライバーが人を轢いたことを認めた",

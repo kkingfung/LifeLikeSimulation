@@ -110,16 +110,16 @@
       "persistsAcrossNights": false
     },
     {
-      "flagId": "heard_about_sister",
+      "flagId": "heard_about_friend",
       "category": "Evidence",
-      "description": "真理に姉がいることを聞いた",
+      "description": "真理に親友がいることを聞いた",
       "weight": 1,
       "persistsAcrossNights": true
     },
     {
-      "flagId": "haruka_mari_sisters_confirmed",
+      "flagId": "haruka_mari_friends_confirmed",
       "category": "Evidence",
-      "description": "遥と真理が姉妹であることを確認した",
+      "description": "遥と真理が親友であることを確認した",
       "weight": 2,
       "persistsAcrossNights": true
     },
@@ -329,6 +329,175 @@
       "description": "警察が中村の死を殺人と確認した",
       "weight": 2,
       "persistsAcrossNights": true
+    },
+    {
+      "flagId": "nurse_call_received",
+      "category": "Event",
+      "description": "看護師からの電話を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "nurse_patient_connection",
+      "category": "Evidence",
+      "description": "看護師が言う患者とNight01の被害者が同一人物だと気づいた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "nurse_confirmed_misaki",
+      "category": "Foreshadowing",
+      "description": "看護師の証言で「みさき」がNight01と繋がった",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "haruka_called_misaki_nameが必要"
+    },
+    {
+      "flagId": "nurse_mentioned_misaki",
+      "category": "Evidence",
+      "description": "看護師が患者が「美咲」と呼んでいたことを証言",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_carried_misaki_photo",
+      "category": "Character",
+      "description": "林遥がポケットに美咲の写真を持っていた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "遥の母としての愛情"
+    },
+    {
+      "flagId": "haruka_had_child_confirmed",
+      "category": "Evidence",
+      "description": "林遥に子供がいたことが確認された",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_fought_to_live",
+      "category": "Character",
+      "description": "林遥が娘のために必死に生きようとしていた",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "遥の母としての強さ"
+    },
+    {
+      "flagId": "haruka_last_words_hospital",
+      "category": "Character",
+      "description": "林遥が病院でも最後まで「美咲をお願い」と言っていた",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_final_wish_known",
+      "category": "Character",
+      "description": "Night01とは病院でも同じ「みさきをお願い」と言っていたことが判明",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "haruka_called_misaki_nameが必要。伏線回収"
+    },
+    {
+      "flagId": "told_nurse_misaki_safe",
+      "category": "Disclosure",
+      "description": "看護師に美咲が安全だと伝えた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "hinted_misaki_safe",
+      "category": "Disclosure",
+      "description": "看護師に美咲が守られていることを示唆した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "promised_to_tell_misaki",
+      "category": "Alignment",
+      "description": "美咲に母の最期の想いを伝えると約束した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "物語の重要な転換点（遥死亡ルート）"
+    },
+    {
+      "flagId": "confirmed_haruka_alive",
+      "category": "Evidence",
+      "description": "林遥が生きていることを確認した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "遥生存ルート"
+    },
+    {
+      "flagId": "haruka_afraid_in_hospital",
+      "category": "Character",
+      "description": "林遥が病院で怯えている",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_protecting_misaki",
+      "category": "Character",
+      "description": "林遥が病院でも美咲を守ろうとしている",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "nurse_will_tell_haruka",
+      "category": "Event",
+      "description": "看護師が林遥に美咲の安全を伝える",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "warned_nurse_danger",
+      "category": "Event",
+      "description": "看護師に危険を警告した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "organization_tried_hospital",
+      "category": "Threat",
+      "description": "組織が病院に侵入しようとした",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "遥生存ルートで組織が彼女を狙っている証拠"
+    },
+    {
+      "flagId": "nurse_protecting_haruka",
+      "category": "Event",
+      "description": "看護師と病院が林遥を守っている",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "told_nurse_about_police",
+      "category": "Dispatch",
+      "description": "看護師に高橋刑事のことを教えた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "nurse_will_contact_police",
+      "category": "Event",
+      "description": "看護師が警察に連絡する",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_protected_in_hospital",
+      "category": "Event",
+      "description": "林遥が病院で保護されている",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_knows_misaki_safe",
+      "category": "Event",
+      "description": "林遥が美咲の安全を知った",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "遥生存ルートでの重要な転換点"
     }
   ],
   "mutualExclusionRules": [

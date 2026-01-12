@@ -134,15 +134,119 @@
       "segmentId": "call_cutoff",
       "callerLines": [
         "（男の声「こっちだ」）",
+        "待って...一つだけ...！"
+      ],
+      "responses": [
+        {
+          "responseId": "cutoff_listen",
+          "text": "渡辺さん！",
+          "nextSegmentId": "mari_last_words",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_last_words",
+      "callerLines": [
+        "美咲のこと...お願い...",
+        "遥が...遥が命がけで守った子なの...",
+        "遥は...遥は最後まで美咲のことだけ考えてた..."
+      ],
+      "note": "林遥の最期について真理が語る重要なシーン。遥が自分の命より美咲を優先したことが明らかに。",
+      "responses": [
+        {
+          "responseId": "last_words_haruka_ask",
+          "text": "林遥さんのこと...知ってるんですか？",
+          "nextSegmentId": "mari_haruka_truth",
+          "setFlags": ["mari_knows_haruka"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "last_words_promise",
+          "text": "美咲ちゃんは...必ず守ります。",
+          "nextSegmentId": "mari_final_plea",
+          "setFlags": ["promised_to_protect_misaki"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_haruka_truth",
+      "callerLines": [
+        "遥は私の親友...美咲のお母さん...",
+        "あの夜...遥は逃げられたはずなのに...",
+        "美咲を託すために...私のところに来て..."
+      ],
+      "note": "Night01の夜、遥が美咲を真理に託しに来たことが判明。遥は自分だけ逃げることもできたが、美咲を安全な場所に預けることを優先した。",
+      "responses": [
+        {
+          "responseId": "haruka_truth_continue",
+          "text": "それで...？",
+          "nextSegmentId": "mari_haruka_sacrifice",
+          "setFlags": ["haruka_came_to_mari"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_haruka_sacrifice",
+      "callerLines": [
+        "『美咲をお願い』って...それだけ言って...",
+        "『私は大丈夫だから』って笑って...",
+        "それが...最後だった..."
+      ],
+      "note": "遥の最後の言葉。Night01で被害者が「みさきをお願い」と言っていたことと繋がる。",
+      "responses": [
+        {
+          "responseId": "sacrifice_realize",
+          "text": "（『みさきをお願い』...あの時の言葉...）",
+          "nextSegmentId": "mari_final_plea",
+          "setFlags": ["haruka_last_words_connected", "haruka_sacrifice_known"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "haruka_called_misaki_name"
+          }
+        },
+        {
+          "responseId": "sacrifice_comfort",
+          "text": "林遥さんは...最後まで美咲ちゃんのことを...",
+          "nextSegmentId": "mari_final_plea",
+          "setFlags": ["haruka_sacrifice_known"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_final_plea",
+      "callerLines": [
+        "遥の想い...無駄にしないで...",
+        "美咲を...（ドアが破られる音）",
+        "（男の声「黙れ」）"
+      ],
+      "responses": [
+        {
+          "responseId": "final_plea_call",
+          "text": "渡辺さん！！",
+          "nextSegmentId": "call_end_violence",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "call_end_violence",
+      "callerLines": [
         "（真理の悲鳴）",
+        "（何かが倒れる音）",
         "（通話が切れる）"
       ],
       "responses": [
         {
-          "responseId": "cutoff_dispatch",
+          "responseId": "end_violence_dispatch",
           "text": "...（警察に連絡しなければ）",
           "nextSegmentId": "after_cutoff",
-          "setFlags": ["mari_call_cut", "mari_abducted"],
+          "setFlags": ["mari_call_cut", "mari_abducted", "mari_last_words_heard"],
           "clearFlags": []
         }
       ]
@@ -182,17 +286,40 @@
         "requiresFlag": "mari_call_cut"
       },
       "triggerTiming": "after_call",
-      "content": "真理さん...電話が切れた...間に合わなかった..."
+      "content": "渡辺さん...電話が切れた...間に合わなかった..."
     },
     {
-      "triggerId": "misaki_worry_thought",
+      "triggerId": "haruka_sacrifice_thought",
       "triggerCondition": {
-        "requiresFlag": "mari_abducted",
-        "requiresAnyFlag": ["misaki_called", "yoshida_mentioned_misaki"]
+        "requiresFlag": "haruka_sacrifice_known"
       },
       "triggerTiming": "after_call",
-      "content": "美咲ちゃんは...真理さんと一緒だったのか...?"
+      "content": "林遥さん...あの夜、自分よりも美咲ちゃんのことを...最後まで娘のことだけを考えていたんだ..."
+    },
+    {
+      "triggerId": "haruka_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_last_words_connected"
+      },
+      "triggerTiming": "after_call",
+      "content": "『みさきをお願い』...あの時、意識が朦朧とする中で呼んでいた言葉...彼女は最後まで娘のことを...私はあの時、彼女の言葉の意味を理解できていなかった..."
+    },
+    {
+      "triggerId": "promise_thought",
+      "triggerCondition": {
+        "requiresFlag": "promised_to_protect_misaki"
+      },
+      "triggerTiming": "after_call",
+      "content": "渡辺さんに約束した...美咲ちゃんを守ると。林遥さんの想いを...無駄にはできない..."
+    },
+    {
+      "triggerId": "misaki_safe_thought",
+      "triggerCondition": {
+        "requiresFlag": "yoshida_will_warn_mari"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃんは吉田さんのところにいるはず...渡辺さんが先に預けていたなら...あの子は無事だ..."
     }
   ],
-  "note": "yoshida_will_warn_mariフラグがある場合のみ発生。真理は吉田からの警告を受けて美咲を吉田に預けていたが、自分は逃げ遅れた。「車が来た、助けて」→電話が切れる。プレイヤーは警察に住所を伝えるか選択できるが、間に合わない。"
+  "note": "yoshida_will_warn_mariフラグがある場合のみ発生。真理は吉田からの警告を受けて美咲を吉田に預けていたが、自分は逃げ遅れた。渡辺真理が林遥との友情と、遥の最後の言葉について語る重要なシーン。Night01の「みさきをお願い」が、真理に託された言葉だったことが判明する。"
 }

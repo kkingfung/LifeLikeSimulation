@@ -463,7 +463,7 @@ MonoBehaviour:
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\uFF08\u7537\u306E\u58F0\u300C\u3053\u3063\u3061\u3060\u300D\uFF09\n\uFF08\u771F\u7406\u306E\u60B2\u9CF4\uFF09\n\uFF08\u901A\u8A71\u304C\u5207\u308C\u308B\uFF09"
+          text: "\uFF08\u7537\u306E\u58F0\u300C\u3053\u3063\u3061\u3060\u300D\uFF09\n\u5F85\u3063\u3066...\u4E00\u3064\u3060\u3051...\uFF01"
       textSpeed: 30
       subtitleTrackId: 
       inlineSubtitles:
@@ -483,7 +483,360 @@ MonoBehaviour:
       duration: 0
       emotionalState: 0
     responses:
-    - responseId: cutoff_dispatch
+    - responseId: cutoff_listen
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6E21\u8FBA\u3055\u3093\uFF01"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: mari_last_words
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: mari_last_words
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u7F8E\u54B2\u306E\u3053\u3068...\u304A\u9858\u3044...\n\u9065\u304C...\u9065\u304C\u547D\u304C\u3051\u3067\u5B88\u3063\u305F\u5B50\u306A\u306E...\n\u9065\u306F...\u9065\u306F\u6700\u5F8C\u307E\u3067\u7F8E\u54B2\u306E\u3053\u3068\u3060\u3051\u8003\u3048\u3066\u305F..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: last_words_haruka_ask
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6797\u9065\u3055\u3093\u306E\u3053\u3068...\u77E5\u3063\u3066\u308B\u3093\u3067\u3059\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - mari_knows_haruka
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: mari_haruka_truth
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: last_words_promise
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u7F8E\u54B2\u3061\u3083\u3093\u306F...\u5FC5\u305A\u5B88\u308A\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - promised_to_protect_misaki
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: mari_final_plea
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: mari_haruka_truth
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u9065\u306F\u79C1\u306E\u89AA\u53CB...\u7F8E\u54B2\u306E\u304A\u6BCD\u3055\u3093...\n\u3042\u306E\u591C...\u9065\u306F\u9003\u3052\u3089\u308C\u305F\u306F\u305A\u306A\u306E\u306B...\n\u7F8E\u54B2\u3092\u8A17\u3059\u305F\u3081\u306B...\u79C1\u306E\u3068\u3053\u308D\u306B\u6765\u3066..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: haruka_truth_continue
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u308C\u3067...\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - haruka_came_to_mari
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: mari_haruka_sacrifice
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: mari_haruka_sacrifice
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u300E\u7F8E\u54B2\u3092\u304A\u9858\u3044\u300F\u3063\u3066...\u305D\u308C\u3060\u3051\u8A00\u3063\u3066...\n\u300E\u79C1\u306F\u5927\u4E08\u592B\u3060\u304B\u3089\u300F\u3063\u3066\u7B11\u3063\u3066...\n\u305D\u308C\u304C...\u6700\u5F8C\u3060\u3063\u305F..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: sacrifice_realize
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\uFF08\u300E\u307F\u3055\u304D\u3092\u304A\u9858\u3044\u300F...\u3042\u306E\u6642\u306E\u8A00\u8449...\uFF09"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - haruka_last_words_connected
+      - haruka_sacrifice_known
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: mari_final_plea
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: sacrifice_comfort
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6797\u9065\u3055\u3093\u306F...\u6700\u5F8C\u307E\u3067\u7F8E\u54B2\u3061\u3083\u3093\u306E\u3053\u3068\u3092..."
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - haruka_sacrifice_known
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: mari_final_plea
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: mari_final_plea
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u9065\u306E\u60F3\u3044...\u7121\u99C4\u306B\u3057\u306A\u3044\u3067...\n\u7F8E\u54B2\u3092...\uFF08\u30C9\u30A2\u304C\u7834\u3089\u308C\u308B\u97F3\uFF09\n\uFF08\u7537\u306E\u58F0\u300C\u9ED9\u308C\u300D\uFF09"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: final_plea_call
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6E21\u8FBA\u3055\u3093\uFF01\uFF01"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: call_end_violence
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: call_end_violence
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\uFF08\u771F\u7406\u306E\u60B2\u9CF4\uFF09\n\uFF08\u4F55\u304B\u304C\u5012\u308C\u308B\u97F3\uFF09\n\uFF08\u901A\u8A71\u304C\u5207\u308C\u308B\uFF09"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: end_violence_dispatch
       displayText:
         key: 
         defaultLanguage: 0
@@ -505,6 +858,7 @@ MonoBehaviour:
       setFlags:
       - mari_call_cut
       - mari_abducted
+      - mari_last_words_heard
       clearFlags: []
       isDispatchAction: 0
       nextSegmentId: after_cutoff

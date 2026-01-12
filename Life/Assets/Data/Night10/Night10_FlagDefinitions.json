@@ -8,7 +8,7 @@
       "description": "警察との同盟関係が築かれた（Night09から継承）",
       "weight": 3,
       "persistsAcrossNights": true,
-      "note": "Night09で山田刑事と連絡を取り合うことに"
+      "note": "Night09で高橋刑事と連絡を取り合うことに"
     },
     {
       "flagId": "operator_will_tell_police",

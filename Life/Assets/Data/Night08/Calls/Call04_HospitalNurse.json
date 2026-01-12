@@ -1,0 +1,360 @@
+{
+  "callId": "call_hospital_nurse",
+  "callerId": "hospital_nurse",
+  "title": "あの夜の患者さんのことで",
+  "description": "○○総合病院の看護師から。Night01で搬送された林遥を担当していた。遥の最期の様子を語り、彼女が最後まで「美咲」と呼び続けていたことを証言する。林遥を「被害者」ではなく「母」として描く重要な通話。",
+  "segments": [
+    {
+      "segmentId": "nurse_intro",
+      "callerLines": [
+        "夜分遅くにすみません。○○総合病院の山口と申します。",
+        "先日のニュースを見て、もしかしたらと思って...",
+        "数日前に搬送された女性患者のことで、お聞きしたいことが..."
+      ],
+      "responses": [
+        {
+          "responseId": "nurse_intro_listen",
+          "text": "どのような件でしょうか？",
+          "nextSegmentId": "nurse_patient",
+          "setFlags": ["nurse_call_received"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "nurse_intro_hospital",
+          "text": "○○総合病院...患者さんのことですか？",
+          "nextSegmentId": "nurse_patient",
+          "setFlags": ["nurse_call_received"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_patient",
+      "callerLines": [
+        "はい...数日前の深夜に、ひき逃げの被害者として搬送された女性がいたんです。",
+        "20代くらいの...暗い服を着た方で...",
+        "その方の身元が判明したのかと思って..."
+      ],
+      "responses": [
+        {
+          "responseId": "patient_recognize",
+          "text": "その患者さん...（あの夜の女性...）",
+          "nextSegmentId": "nurse_condition",
+          "setFlags": ["nurse_patient_connection"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresAnyFlag": ["dark_hoodie_noted", "hayashi_will_survive", "hayashi_critical"]
+          }
+        },
+        {
+          "responseId": "patient_ask",
+          "text": "その方について、何かわかったことが？",
+          "nextSegmentId": "nurse_condition",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_condition",
+      "callerLines": [
+        "搬送された時は意識が朦朧としていて...",
+        "でも、ずっと同じ言葉を繰り返していたんです。",
+        "『美咲』って...何度も何度も..."
+      ],
+      "responses": [
+        {
+          "responseId": "condition_misaki",
+          "text": "美咲...（あの時と同じ名前...）",
+          "nextSegmentId": "nurse_misaki_detail",
+          "setFlags": ["nurse_confirmed_misaki"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "haruka_called_misaki_name"
+          }
+        },
+        {
+          "responseId": "condition_ask",
+          "text": "美咲...誰かの名前ですか？",
+          "nextSegmentId": "nurse_misaki_detail",
+          "setFlags": ["nurse_mentioned_misaki"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_misaki_detail",
+      "callerLines": [
+        "きっとお子さんの名前だと思います。",
+        "持ち物の中に、小さな女の子の写真があって...",
+        "お守りみたいに、ポケットに入れていたみたいで..."
+      ],
+      "responses": [
+        {
+          "responseId": "misaki_photo",
+          "text": "写真を...ずっと持っていたんですね。",
+          "nextSegmentId": "nurse_fight",
+          "setFlags": ["haruka_carried_misaki_photo"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "misaki_child",
+          "text": "その女性に子供がいたということですか？",
+          "nextSegmentId": "nurse_fight",
+          "setFlags": ["haruka_had_child_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_fight",
+      "callerLines": [
+        "あの方...必死に生きようとしていたんです。",
+        "怪我がひどくて、普通なら...でも、諦めなくて。",
+        "『帰らなきゃ...美咲が待ってる...』って..."
+      ],
+      "responses": [
+        {
+          "responseId": "fight_continue",
+          "text": "生きようとしていた...",
+          "nextSegmentId": "nurse_last_moment",
+          "setFlags": ["haruka_fought_to_live"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "fight_ask",
+          "text": "その後...どうなったんですか？",
+          "nextSegmentId": "nurse_outcome",
+          "setFlags": ["haruka_fought_to_live"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_outcome",
+      "callerLines": [
+        "一時は持ち直しかけたんです。意識が戻って...",
+        "でも、内臓の損傷がひどくて...",
+        "最後は...静かに..."
+      ],
+      "responses": [
+        {
+          "responseId": "outcome_last",
+          "text": "最後に...何か言っていましたか？",
+          "nextSegmentId": "nurse_last_words",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_last_moment",
+      "callerLines": [
+        "一時は持ち直したんです。意識も戻って...",
+        "でも、怪我が重くて...",
+        "最後の数時間は、ずっと娘さんのことを..."
+      ],
+      "responses": [
+        {
+          "responseId": "last_moment_ask",
+          "text": "何と言っていましたか？",
+          "nextSegmentId": "nurse_last_words",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_last_words",
+      "callerLines": [
+        "『美咲をお願い...誰か...美咲を守って...』って...",
+        "最後まで、自分のことじゃなくて、娘さんのことだけ...",
+        "私、ずっと忘れられなくて..."
+      ],
+      "note": "Night01で被害者が「みさきをお願い」と言っていた言葉が、病院でも繰り返されていたことが判明。遥は最期まで美咲のことだけを考えていた。",
+      "responses": [
+        {
+          "responseId": "last_words_realize",
+          "text": "（『みさきをお願い』...あの時も、最期も、同じ言葉を...）",
+          "nextSegmentId": "nurse_why_call",
+          "setFlags": ["haruka_last_words_hospital", "haruka_final_wish_known"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "haruka_called_misaki_name"
+          }
+        },
+        {
+          "responseId": "last_words_understand",
+          "text": "最後まで、娘さんのことを...",
+          "nextSegmentId": "nurse_why_call",
+          "setFlags": ["haruka_last_words_hospital"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_why_call",
+      "callerLines": [
+        "それで...今日ニュースを見たら、「林」という名前が出てきて...",
+        "もしかしたら、あの患者さんと関係があるのかと思って...",
+        "娘さんは...無事なんでしょうか...?"
+      ],
+      "responses": [
+        {
+          "responseId": "why_call_safe",
+          "text": "美咲ちゃんは...今は安全な場所にいます。",
+          "nextSegmentId": "nurse_relief",
+          "setFlags": ["told_nurse_misaki_safe"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "misaki_safe_at_yoshida"
+          }
+        },
+        {
+          "responseId": "why_call_protect",
+          "text": "詳しくは申し上げられませんが...守られています。",
+          "nextSegmentId": "nurse_relief",
+          "setFlags": ["hinted_misaki_safe"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "why_call_uncertain",
+          "text": "...わかりません。",
+          "nextSegmentId": "nurse_worry",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_relief",
+      "callerLines": [
+        "...そうですか。よかった...",
+        "あの患者さん、最後まで娘さんのことだけを心配していて...",
+        "その子が無事なら、きっと...安心できると思います。"
+      ],
+      "responses": [
+        {
+          "responseId": "relief_thank",
+          "text": "貴重な情報をありがとうございます。",
+          "nextSegmentId": "nurse_request",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_worry",
+      "callerLines": [
+        "そうですか...",
+        "あの患者さん、最後まで娘さんのことを心配していて...",
+        "どうか...その子が無事でありますように..."
+      ],
+      "responses": [
+        {
+          "responseId": "worry_agree",
+          "text": "そう願っています。",
+          "nextSegmentId": "nurse_request",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_request",
+      "callerLines": [
+        "あの...一つお願いがあるんですが...",
+        "もし娘さんと会う機会があったら...",
+        "お母さんが最後まで娘さんのことを想っていたって、伝えてもらえませんか...?"
+      ],
+      "responses": [
+        {
+          "responseId": "request_promise",
+          "text": "...必ず伝えます。",
+          "nextSegmentId": "nurse_end_grateful",
+          "setFlags": ["promised_to_tell_misaki"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "request_try",
+          "text": "機会があれば、伝えます。",
+          "nextSegmentId": "nurse_end_hope",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_end_grateful",
+      "callerLines": [
+        "ありがとうございます...",
+        "あの患者さんの願いが...少しでも届くといいな...",
+        "夜分遅くにすみませんでした。失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_grateful_reply",
+          "text": "こちらこそ、ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "nurse_end_hope",
+      "callerLines": [
+        "はい...ありがとうございます。",
+        "あの患者さんのこと、忘れないでいてください...",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_hope_reply",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "nurse_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "haruka_hospital_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_fought_to_live"
+      },
+      "triggerTiming": "after_call",
+      "content": "林遥さんは必死に生きようとしていた...娘のために...帰らなきゃ、って..."
+    },
+    {
+      "triggerId": "haruka_final_wish_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_final_wish_known"
+      },
+      "triggerTiming": "after_call",
+      "content": "『みさきをお願い』...あの夜、私に届いた声...病院でも同じことを言っていた...彼女は最期まで、娘のことだけを想っていたんだ..."
+    },
+    {
+      "triggerId": "promise_to_misaki_thought",
+      "triggerCondition": {
+        "requiresFlag": "promised_to_tell_misaki"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃんに伝えなければ...お母さんが最後まで美咲ちゃんのことを想っていたって...それが、林遥さんの願いなんだ..."
+    },
+    {
+      "triggerId": "haruka_photo_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_carried_misaki_photo"
+      },
+      "triggerTiming": "after_call",
+      "content": "あの夜...林遥さんはポケットに美咲ちゃんの写真を入れていた...お守りみたいに...どんな時も、娘のそばにいたかったんだ..."
+    }
+  ],
+  "note": "林遥の最期を描く重要な通話。看護師という第三者の視点から、遥が最後まで美咲のことを想っていたことが語られる。Night01で「みさきをお願い」と言っていた言葉が、病院でも繰り返されていたことで、遥の母としての強さと愛情が浮かび上がる。プレイヤーは「被害者」ではなく「お母さん」としての遥を知ることになる。"
+}

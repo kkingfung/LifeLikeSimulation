@@ -1425,7 +1425,7 @@ namespace LifeLike.Editor
 
             // 吉田からの情報（Evidenceスコア計算対象）
             flagService.SetFlag("yoshida_info_call", 55);
-            flagService.SetFlag("haruka_mari_sisters_confirmed", 60);      // weight: 2
+            flagService.SetFlag("haruka_mari_friends_confirmed", 60);      // weight: 2
             flagService.SetFlag("kenji_knew_something", 65);               // weight: 2
             // 小計: 15
 
@@ -1473,7 +1473,7 @@ namespace LifeLike.Editor
 
             // 吉田からの情報（Evidenceスコア計算対象）
             flagService.SetFlag("yoshida_info_call", 40);
-            flagService.SetFlag("haruka_mari_sisters_confirmed", 45);      // weight: 2
+            flagService.SetFlag("haruka_mari_friends_confirmed", 45);      // weight: 2
             flagService.SetFlag("kenji_knew_something", 50);               // weight: 2
             flagService.SetFlag("seiwaq_mentioned_by_mari", 55);           // weight: 2
             // 小計: 9
@@ -1515,8 +1515,8 @@ namespace LifeLike.Editor
 
             // 吉田からの情報（部分的）
             flagService.SetFlag("yoshida_info_call", 40);
-            flagService.SetFlag("heard_about_sister", 45);                 // weight: 1
-            flagService.SetFlag("haruka_mari_sisters_confirmed", 50);      // weight: 2
+            flagService.SetFlag("heard_about_friend", 45);                 // weight: 1
+            flagService.SetFlag("haruka_mari_friends_confirmed", 50);      // weight: 2
             // 合計: 4
 
             // 組織からの警告はなし（dispatched_to_mari_houseなし）

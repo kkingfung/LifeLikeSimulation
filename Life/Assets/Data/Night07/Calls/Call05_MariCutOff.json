@@ -128,15 +128,32 @@
       "segmentId": "call_cut",
       "callerLines": [
         "（男の声「こっちだ」）",
-        "（真理の悲鳴）",
-        "（通話が切れる）"
+        "待って...遥の...遥の想いが..."
       ],
       "responses": [
         {
-          "responseId": "cut_end",
+          "responseId": "cut_listen",
+          "text": "渡辺さん！",
+          "nextSegmentId": "mari_cut_last_words",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "mari_cut_last_words",
+      "callerLines": [
+        "遥が...命がけで守った子なのに...",
+        "私が...私が守らなきゃいけなかったのに...",
+        "（真理の悲鳴）"
+      ],
+      "note": "吉田警告なしルートでの真理の最後の言葉。遥のことを語るが、美咲と一緒に連れ去られる。",
+      "responses": [
+        {
+          "responseId": "cut_last_words_end",
           "text": "...",
           "nextSegmentId": "after_cut",
-          "setFlags": ["mari_taken"],
+          "setFlags": ["mari_taken", "mari_mentioned_haruka_sacrifice"],
           "clearFlags": []
         }
       ]
@@ -145,16 +162,16 @@
       "segmentId": "call_cut_with_misaki",
       "callerLines": [
         "（男の声「二人とも連れていけ」）",
-        "（美咲の泣き声）",
-        "（通話が切れる）"
+        "遥...ごめん...美咲を守れなかった...",
+        "（美咲の泣き声「まりおばちゃん！」）"
       ],
-      "note": "吉田警告なしルートでは美咲も連れ去られる",
+      "note": "吉田警告なしルートでは美咲も連れ去られる。真理は遥に謝罪する。",
       "responses": [
         {
           "responseId": "cut_misaki_end",
           "text": "...",
           "nextSegmentId": "after_cut_misaki",
-          "setFlags": ["mari_taken", "misaki_taken"],
+          "setFlags": ["mari_taken", "misaki_taken", "mari_apologized_to_haruka"],
           "clearFlags": []
         }
       ]
@@ -229,14 +246,39 @@
       "content": "美咲ちゃんも...二人とも連れていかれた...助けられなかった..."
     },
     {
+      "triggerId": "haruka_sacrifice_cutoff_thought",
+      "triggerCondition": {
+        "requiresFlag": "mari_mentioned_haruka_sacrifice"
+      },
+      "triggerTiming": "after_call",
+      "content": "『遥が命がけで守った子』...林遥さんは自分の命を犠牲にして美咲ちゃんを守ろうとしたんだ...それなのに..."
+    },
+    {
+      "triggerId": "mari_apology_thought",
+      "triggerCondition": {
+        "requiresFlag": "mari_apologized_to_haruka"
+      },
+      "triggerTiming": "after_call",
+      "content": "『遥、ごめん』...渡辺さんは最後まで林遥さんとの約束を守ろうとしていた...でも私が...吉田さんに警告を伝えていれば..."
+    },
+    {
       "triggerId": "should_have_warned_thought",
       "triggerCondition": {
         "requiresFlag": "mari_taken",
         "requiresAnyFlag": ["yoshida_reported_again", "multiple_cars_noted"]
       },
       "triggerTiming": "after_call",
-      "content": "吉田さんに渡辺さんに知らせてもらっていれば...もしかしたら..."
+      "content": "吉田さんに渡辺さんに知らせてもらっていれば...美咲ちゃんだけでも助けられたかもしれないのに..."
+    },
+    {
+      "triggerId": "haruka_failed_thought",
+      "triggerCondition": {
+        "requiresFlag": "misaki_taken",
+        "requiresAnyFlag": ["haruka_called_misaki_name", "haruka_humanized"]
+      },
+      "triggerTiming": "after_call",
+      "content": "林遥さんが命がけで守った美咲ちゃん...私は...私はあの時、何もできなかった..."
     }
   ],
-  "note": "yoshida_will_warn_mariフラグがない場合のNight07の最後の電話。吉田からの警告がなかったため、真理は美咲を吉田に預けておらず、二人とも連れ去られる。電話が途中で切れて終わる。最悪のルート。"
+  "note": "yoshida_will_warn_mariフラグがない場合のNight07の最後の電話。吉田からの警告がなかったため、真理は美咲を吉田に預けておらず、二人とも連れ去られる。真理は林遥との約束を守れなかったことを後悔しながら連れ去られる。最悪のルート。"
 }

@@ -104,15 +104,15 @@ MonoBehaviour:
     weight: 0
     persistsAcrossNights: 0
     cancelsFlags: []
-  - flagId: heard_about_sister
+  - flagId: heard_about_friend
     category: 4
-    description: "\u771F\u7406\u306B\u59C9\u304C\u3044\u308B\u3053\u3068\u3092\u805E\u3044\u305F"
+    description: "\u771F\u7406\u306B\u89AA\u53CB\u304C\u3044\u308B\u3053\u3068\u3092\u805E\u3044\u305F"
     weight: 1
     persistsAcrossNights: 1
     cancelsFlags: []
-  - flagId: haruka_mari_sisters_confirmed
+  - flagId: haruka_mari_friends_confirmed
     category: 4
-    description: "\u9065\u3068\u771F\u7406\u304C\u59C9\u59B9\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\u3057\u305F"
+    description: "\u9065\u3068\u771F\u7406\u304C\u89AA\u53CB\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\u3057\u305F"
     weight: 2
     persistsAcrossNights: 1
     cancelsFlags: []
@@ -288,6 +288,144 @@ MonoBehaviour:
     category: 4
     description: "\u8B66\u5BDF\u304C\u4E2D\u6751\u306E\u6B7B\u3092\u6BBA\u4EBA\u3068\u78BA\u8A8D\u3057\u305F"
     weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nurse_call_received
+    category: 7
+    description: "\u770B\u8B77\u5E2B\u304B\u3089\u306E\u96FB\u8A71\u3092\u53D7\u3051\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: nurse_patient_connection
+    category: 4
+    description: "\u770B\u8B77\u5E2B\u304C\u8A00\u3046\u60A3\u8005\u3068Night01\u306E\u88AB\u5BB3\u8005\u304C\u540C\u4E00\u4EBA\u7269\u3060\u3068\u6C17\u3065\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nurse_confirmed_misaki
+    category: 6
+    description: "\u770B\u8B77\u5E2B\u306E\u8A3C\u8A00\u3067\u300C\u307F\u3055\u304D\u300D\u304CNight01\u3068\u7E4B\u304C\u3063\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nurse_mentioned_misaki
+    category: 4
+    description: "\u770B\u8B77\u5E2B\u304C\u60A3\u8005\u304C\u300C\u7F8E\u54B2\u300D\u3068\u547C\u3093\u3067\u3044\u305F\u3053\u3068\u3092\u8A3C\u8A00"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_carried_misaki_photo
+    category: 7
+    description: "\u6797\u9065\u304C\u30DD\u30B1\u30C3\u30C8\u306B\u7F8E\u54B2\u306E\u5199\u771F\u3092\u6301\u3063\u3066\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_had_child_confirmed
+    category: 4
+    description: "\u6797\u9065\u306B\u5B50\u4F9B\u304C\u3044\u305F\u3053\u3068\u304C\u78BA\u8A8D\u3055\u308C\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_fought_to_live
+    category: 7
+    description: "\u6797\u9065\u304C\u5A18\u306E\u305F\u3081\u306B\u5FC5\u6B7B\u306B\u751F\u304D\u3088\u3046\u3068\u3057\u3066\u3044\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_last_words_hospital
+    category: 7
+    description: "\u6797\u9065\u304C\u75C5\u9662\u3067\u3082\u6700\u5F8C\u307E\u3067\u300C\u7F8E\u54B2\u3092\u304A\u9858\u3044\u300D\u3068\u8A00\u3063\u3066\u3044\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_final_wish_known
+    category: 7
+    description: "Night01\u3068\u306F\u75C5\u9662\u3067\u3082\u540C\u3058\u300C\u307F\u3055\u304D\u3092\u304A\u9858\u3044\u300D\u3068\u8A00\u3063\u3066\u3044\u305F\u3053\u3068\u304C\u5224\u660E"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: told_nurse_misaki_safe
+    category: 1
+    description: "\u770B\u8B77\u5E2B\u306B\u7F8E\u54B2\u304C\u5B89\u5168\u3060\u3068\u4F1D\u3048\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: hinted_misaki_safe
+    category: 1
+    description: "\u770B\u8B77\u5E2B\u306B\u7F8E\u54B2\u304C\u5B88\u3089\u308C\u3066\u3044\u308B\u3053\u3068\u3092\u793A\u5506\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: promised_to_tell_misaki
+    category: 3
+    description: "\u7F8E\u54B2\u306B\u6BCD\u306E\u6700\u671F\u306E\u60F3\u3044\u3092\u4F1D\u3048\u308B\u3068\u7D04\u675F\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: confirmed_haruka_alive
+    category: 4
+    description: "\u6797\u9065\u304C\u751F\u304D\u3066\u3044\u308B\u3053\u3068\u3092\u78BA\u8A8D\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_afraid_in_hospital
+    category: 7
+    description: "\u6797\u9065\u304C\u75C5\u9662\u3067\u602F\u3048\u3066\u3044\u308B"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_protecting_misaki
+    category: 7
+    description: "\u6797\u9065\u304C\u75C5\u9662\u3067\u3082\u7F8E\u54B2\u3092\u5B88\u308D\u3046\u3068\u3057\u3066\u3044\u308B"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nurse_will_tell_haruka
+    category: 7
+    description: "\u770B\u8B77\u5E2B\u304C\u6797\u9065\u306B\u7F8E\u54B2\u306E\u5B89\u5168\u3092\u4F1D\u3048\u308B"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: warned_nurse_danger
+    category: 7
+    description: "\u770B\u8B77\u5E2B\u306B\u5371\u967A\u3092\u8B66\u544A\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: organization_tried_hospital
+    category: 9
+    description: "\u7D44\u7E54\u304C\u75C5\u9662\u306B\u4FB5\u5165\u3057\u3088\u3046\u3068\u3057\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nurse_protecting_haruka
+    category: 7
+    description: "\u770B\u8B77\u5E2B\u3068\u75C5\u9662\u304C\u6797\u9065\u3092\u5B88\u3063\u3066\u3044\u308B"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: told_nurse_about_police
+    category: 8
+    description: "\u770B\u8B77\u5E2B\u306B\u9AD8\u6A4B\u5211\u4E8B\u306E\u3053\u3068\u3092\u6559\u3048\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: nurse_will_contact_police
+    category: 7
+    description: "\u770B\u8B77\u5E2B\u304C\u8B66\u5BDF\u306B\u9023\u7D61\u3059\u308B"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_protected_in_hospital
+    category: 7
+    description: "\u6797\u9065\u304C\u75C5\u9662\u3067\u4FDD\u8B77\u3055\u308C\u3066\u3044\u308B"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_knows_misaki_safe
+    category: 7
+    description: "\u6797\u9065\u304C\u7F8E\u54B2\u306E\u5B89\u5168\u3092\u77E5\u3063\u305F"
+    weight: 3
     persistsAcrossNights: 1
     cancelsFlags: []
   mutualExclusionRules:

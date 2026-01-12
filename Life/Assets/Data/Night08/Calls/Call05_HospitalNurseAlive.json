@@ -1,0 +1,399 @@
+{
+  "callId": "call_hospital_nurse_alive",
+  "callerId": "hospital_nurse",
+  "title": "入院中の患者さんのことで",
+  "description": "○○総合病院の看護師から。Night01で搬送された林遥を担当している。遥は意識が戻り回復中だが、何かに怯えている。「美咲」という名前を繰り返し、娘に会いたがっている。遥が生存しているルート用。",
+  "segments": [
+    {
+      "segmentId": "nurse_intro_alive",
+      "callerLines": [
+        "夜分遅くにすみません。○○総合病院の山口と申します。",
+        "先日のニュースを見て、もしかしたらと思って...",
+        "数日前に搬送された女性患者のことで..."
+      ],
+      "responses": [
+        {
+          "responseId": "nurse_intro_listen_alive",
+          "text": "どのような件でしょうか？",
+          "nextSegmentId": "nurse_patient_alive",
+          "setFlags": ["nurse_call_received"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "nurse_intro_hospital_alive",
+          "text": "○○総合病院...患者さんのことですか？",
+          "nextSegmentId": "nurse_patient_alive",
+          "setFlags": ["nurse_call_received"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_patient_alive",
+      "callerLines": [
+        "はい...数日前の深夜に、ひき逃げの被害者として搬送された女性がいるんです。",
+        "20代くらいの...暗い服を着た方で...",
+        "一時は危険な状態でしたが、今は意識が戻って..."
+      ],
+      "responses": [
+        {
+          "responseId": "patient_recognize_alive",
+          "text": "その患者さん...（あの夜の女性...生きていた...）",
+          "nextSegmentId": "nurse_condition_alive",
+          "setFlags": ["nurse_patient_connection", "confirmed_haruka_alive"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresAnyFlag": ["dark_hoodie_noted", "hayashi_will_survive", "hayashi_critical"]
+          }
+        },
+        {
+          "responseId": "patient_ask_alive",
+          "text": "意識が戻ったんですか？",
+          "nextSegmentId": "nurse_condition_alive",
+          "setFlags": ["confirmed_haruka_alive"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_condition_alive",
+      "callerLines": [
+        "はい、一命は取り留めました。でも...",
+        "意識が戻ってから、ずっと同じことを繰り返していて...",
+        "『美咲は？美咲はどこ？』って..."
+      ],
+      "responses": [
+        {
+          "responseId": "condition_misaki_alive",
+          "text": "美咲...（あの時と同じ名前...）",
+          "nextSegmentId": "nurse_misaki_detail_alive",
+          "setFlags": ["nurse_confirmed_misaki"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "haruka_called_misaki_name"
+          }
+        },
+        {
+          "responseId": "condition_ask_alive",
+          "text": "美咲...誰かの名前ですか？",
+          "nextSegmentId": "nurse_misaki_detail_alive",
+          "setFlags": ["nurse_mentioned_misaki"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_misaki_detail_alive",
+      "callerLines": [
+        "お子さんの名前だと思います。",
+        "持ち物の中に、小さな女の子の写真があって...",
+        "ずっと握りしめていたんです。手放さなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "misaki_photo_alive",
+          "text": "写真を...ずっと持っていたんですね。",
+          "nextSegmentId": "nurse_worry_alive",
+          "setFlags": ["haruka_carried_misaki_photo"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "misaki_child_alive",
+          "text": "その女性に子供がいるということですか？",
+          "nextSegmentId": "nurse_worry_alive",
+          "setFlags": ["haruka_had_child_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_worry_alive",
+      "callerLines": [
+        "患者さん...すごく怯えているんです。",
+        "『美咲を連れて行かないで』って...夜中に叫ぶことも...",
+        "誰かから逃げていたみたいで..."
+      ],
+      "responses": [
+        {
+          "responseId": "worry_afraid",
+          "text": "怯えている...誰かから逃げていた？",
+          "nextSegmentId": "nurse_protect_alive",
+          "setFlags": ["haruka_afraid_in_hospital"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "worry_ask",
+          "text": "何か言っていましたか？",
+          "nextSegmentId": "nurse_protect_alive",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_protect_alive",
+      "callerLines": [
+        "『美咲を守らなきゃ...美咲だけは...』って...",
+        "自分の怪我より、ずっと娘さんのことを心配していて...",
+        "母親として...必死なんだと思います..."
+      ],
+      "responses": [
+        {
+          "responseId": "protect_understand",
+          "text": "娘を守ろうとしている...",
+          "nextSegmentId": "nurse_why_call_alive",
+          "setFlags": ["haruka_protecting_misaki"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "protect_continue",
+          "text": "それで、私に何を？",
+          "nextSegmentId": "nurse_why_call_alive",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_why_call_alive",
+      "callerLines": [
+        "それで...今日ニュースを見たら、「林」という名前が出てきて...",
+        "もしかしたら、この患者さんと関係があるのかと...",
+        "娘さんは...無事なんでしょうか...?"
+      ],
+      "responses": [
+        {
+          "responseId": "why_call_safe_alive",
+          "text": "美咲ちゃんは...今は安全な場所にいます。",
+          "nextSegmentId": "nurse_relief_alive",
+          "setFlags": ["told_nurse_misaki_safe"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "misaki_safe_at_yoshida"
+          }
+        },
+        {
+          "responseId": "why_call_protect_alive",
+          "text": "詳しくは申し上げられませんが...守られています。",
+          "nextSegmentId": "nurse_relief_alive",
+          "setFlags": ["hinted_misaki_safe"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "why_call_uncertain_alive",
+          "text": "...わかりません。",
+          "nextSegmentId": "nurse_worry_more",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_relief_alive",
+      "callerLines": [
+        "...そうですか。よかった...",
+        "患者さんに伝えてもいいでしょうか？",
+        "きっと...安心すると思うんです..."
+      ],
+      "responses": [
+        {
+          "responseId": "relief_tell_alive",
+          "text": "はい...伝えてあげてください。",
+          "nextSegmentId": "nurse_promise_alive",
+          "setFlags": ["nurse_will_tell_haruka"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "relief_careful_alive",
+          "text": "慎重に...危険な人たちに狙われているかもしれません。",
+          "nextSegmentId": "nurse_warning_alive",
+          "setFlags": ["warned_nurse_danger"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_worry_more",
+      "callerLines": [
+        "そうですか...",
+        "患者さん、ずっと娘さんのことを心配していて...",
+        "どうか...その子が無事でありますように..."
+      ],
+      "responses": [
+        {
+          "responseId": "worry_agree_alive",
+          "text": "そう願っています。",
+          "nextSegmentId": "nurse_end_hope_alive",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_warning_alive",
+      "callerLines": [
+        "危険...ですか？",
+        "実は、怪しい人が面会に来ようとしたことがあって...",
+        "警備員に止められましたが..."
+      ],
+      "responses": [
+        {
+          "responseId": "warning_suspicious",
+          "text": "怪しい人...（組織の人間か...）",
+          "nextSegmentId": "nurse_security_alive",
+          "setFlags": ["organization_tried_hospital"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "warning_ask_alive",
+          "text": "どんな人でしたか？",
+          "nextSegmentId": "nurse_security_alive",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_security_alive",
+      "callerLines": [
+        "黒いスーツの男性が二人...親族だと言っていましたが...",
+        "患者さんが怯えていたので、面会を断りました。",
+        "それから、病室の前に警備を強化してもらっています。"
+      ],
+      "responses": [
+        {
+          "responseId": "security_good",
+          "text": "それで正解です。彼らを近づけないでください。",
+          "nextSegmentId": "nurse_promise_protect",
+          "setFlags": ["nurse_protecting_haruka"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "security_police",
+          "text": "警察に相談することをお勧めします。高橋刑事という方が...",
+          "nextSegmentId": "nurse_police_alive",
+          "setFlags": ["told_nurse_about_police"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "police_alliance_formed"
+          }
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_police_alive",
+      "callerLines": [
+        "高橋刑事...ですか。",
+        "わかりました。病院のセキュリティと相談して、警察にも連絡します。",
+        "患者さんを守ります。"
+      ],
+      "responses": [
+        {
+          "responseId": "police_thank_alive",
+          "text": "お願いします。彼女は...大事な証人でもあるんです。",
+          "nextSegmentId": "nurse_promise_protect",
+          "setFlags": ["nurse_will_contact_police"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "nurse_promise_protect",
+      "callerLines": [
+        "わかりました。患者さんを守ります。",
+        "娘さんが安全だと伝えれば...きっと安心して回復に専念できる...",
+        "ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "promise_thank_alive",
+          "text": "こちらこそ、ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["haruka_protected_in_hospital"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "nurse_promise_alive",
+      "callerLines": [
+        "ありがとうございます。",
+        "患者さんに伝えます。娘さんは安全だって...",
+        "きっと...泣いて喜ぶと思います。"
+      ],
+      "responses": [
+        {
+          "responseId": "promise_reply_alive",
+          "text": "彼女によろしくお伝えください。",
+          "nextSegmentId": null,
+          "setFlags": ["haruka_knows_misaki_safe"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "nurse_end_hope_alive",
+      "callerLines": [
+        "はい...ありがとうございます。",
+        "患者さんが回復したら...娘さんに会えるといいな...",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_hope_reply_alive",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "nurse_intro_alive",
+  "operatorThoughts": [
+    {
+      "triggerId": "haruka_alive_thought",
+      "triggerCondition": {
+        "requiresFlag": "confirmed_haruka_alive"
+      },
+      "triggerTiming": "after_call",
+      "content": "林遥さんは生きていた...あの夜、派遣が間に合ったんだ...でも、まだ危険にさらされている..."
+    },
+    {
+      "triggerId": "haruka_afraid_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_afraid_in_hospital"
+      },
+      "triggerTiming": "after_call",
+      "content": "林遥さんは病院でも怯えている...組織はまだ彼女を狙っている...美咲ちゃんのことが心配で仕方ないんだ..."
+    },
+    {
+      "triggerId": "haruka_protected_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_protected_in_hospital"
+      },
+      "triggerTiming": "after_call",
+      "content": "看護師さんが林遥さんを守ってくれる...組織も病院には手を出せないはず...美咲ちゃんが安全だと知れば、遥さんも安心できる..."
+    },
+    {
+      "triggerId": "haruka_knows_misaki_safe_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_knows_misaki_safe"
+      },
+      "triggerTiming": "after_call",
+      "content": "林遥さんに伝わる...美咲ちゃんが安全だと...あの夜、『みさきをお願い』と言っていた彼女の願いが...少しだけ叶った..."
+    },
+    {
+      "triggerId": "organization_hospital_thought",
+      "triggerCondition": {
+        "requiresFlag": "organization_tried_hospital"
+      },
+      "triggerTiming": "after_call",
+      "content": "組織は病院にまで来た...林遥さんを黙らせようとしている...でも、看護師さんが守ってくれた..."
+    }
+  ],
+  "note": "林遥が生存しているルート用。遥は病院で回復中だが、組織に狙われている。美咲のことを心配し続けている。このルートでは遥はまだ生きており、後で証言者として重要になる可能性がある。プレイヤーの早い派遣が命を救ったことを実感させる。"
+}

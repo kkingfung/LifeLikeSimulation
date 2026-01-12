@@ -439,7 +439,7 @@ MonoBehaviour:
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\uFF08\u7537\u306E\u58F0\u300C\u3053\u3063\u3061\u3060\u300D\uFF09\n\uFF08\u771F\u7406\u306E\u60B2\u9CF4\uFF09\n\uFF08\u901A\u8A71\u304C\u5207\u308C\u308B\uFF09"
+          text: "\uFF08\u7537\u306E\u58F0\u300C\u3053\u3063\u3061\u3060\u300D\uFF09\n\u5F85\u3063\u3066...\u9065\u306E...\u9065\u306E\u60F3\u3044\u304C..."
       textSpeed: 30
       subtitleTrackId: 
       inlineSubtitles:
@@ -459,7 +459,66 @@ MonoBehaviour:
       duration: 0
       emotionalState: 0
     responses:
-    - responseId: cut_end
+    - responseId: cut_listen
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6E21\u8FBA\u3055\u3093\uFF01"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: mari_cut_last_words
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: mari_cut_last_words
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u9065\u304C...\u547D\u304C\u3051\u3067\u5B88\u3063\u305F\u5B50\u306A\u306E\u306B...\n\u79C1\u304C...\u79C1\u304C\u5B88\u3089\u306A\u304D\u3083\u3044\u3051\u306A\u304B\u3063\u305F\u306E\u306B...\n\uFF08\u771F\u7406\u306E\u60B2\u9CF4\uFF09"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: cut_last_words_end
       displayText:
         key: 
         defaultLanguage: 0
@@ -480,6 +539,7 @@ MonoBehaviour:
       trustImpact: 0
       setFlags:
       - mari_taken
+      - mari_mentioned_haruka_sacrifice
       clearFlags: []
       isDispatchAction: 0
       nextSegmentId: after_cut
@@ -499,7 +559,7 @@ MonoBehaviour:
         defaultLanguage: 0
         entries:
         - language: 0
-          text: "\uFF08\u7537\u306E\u58F0\u300C\u4E8C\u4EBA\u3068\u3082\u9023\u308C\u3066\u3044\u3051\u300D\uFF09\n\uFF08\u7F8E\u54B2\u306E\u6CE3\u304D\u58F0\uFF09\n\uFF08\u901A\u8A71\u304C\u5207\u308C\u308B\uFF09"
+          text: "\uFF08\u7537\u306E\u58F0\u300C\u4E8C\u4EBA\u3068\u3082\u9023\u308C\u3066\u3044\u3051\u300D\uFF09\n\u9065...\u3054\u3081\u3093...\u7F8E\u54B2\u3092\u5B88\u308C\u306A\u304B\u3063\u305F...\n\uFF08\u7F8E\u54B2\u306E\u6CE3\u304D\u58F0\u300C\u307E\u308A\u304A\u3070\u3061\u3083\u3093\uFF01\u300D\uFF09"
       textSpeed: 30
       subtitleTrackId: 
       inlineSubtitles:
@@ -541,6 +601,7 @@ MonoBehaviour:
       setFlags:
       - mari_taken
       - misaki_taken
+      - mari_apologized_to_haruka
       clearFlags: []
       isDispatchAction: 0
       nextSegmentId: after_cut_misaki

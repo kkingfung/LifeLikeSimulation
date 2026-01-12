@@ -162,6 +162,132 @@
         {
           "responseId": "callback_thanks_end",
           "text": "いえ、ありがとうございました。ゆっくりお休みください。",
+          "nextSegmentId": "callback_neighbor_worry",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "callback_thanks_quick",
+          "text": "こちらこそ。おやすみなさい。",
+          "nextSegmentId": "callback_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_neighbor_worry",
+      "callerLines": [
+        "あ、あの...ついでにというか...",
+        "近所の若いお母さんのこと、ちょっと心配で...",
+        "最近見かけないんですよ。"
+      ],
+      "responses": [
+        {
+          "responseId": "neighbor_ask",
+          "text": "若いお母さん？",
+          "nextSegmentId": "callback_young_mother",
+          "setFlags": ["yoshida_worried_about_neighbor"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "neighbor_skip",
+          "text": "そうですか...何か心配なことがあれば、また連絡してください。",
+          "nextSegmentId": "callback_end",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_young_mother",
+      "callerLines": [
+        "ええ、隣の棟に住んでる方なんですけど...",
+        "可愛い女の子がいて、よくうちに遊びに来るんです。",
+        "お母さんがお仕事の時、おやつをあげたりして..."
+      ],
+      "responses": [
+        {
+          "responseId": "mother_child_ask",
+          "text": "その女の子、名前は？",
+          "nextSegmentId": "callback_misaki_mention",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "mother_worry_ask",
+          "text": "見かけないというのは、いつからですか？",
+          "nextSegmentId": "callback_mother_missing",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_misaki_mention",
+      "callerLines": [
+        "みさきちゃん...って言ったかしら。",
+        "5歳くらいの、元気な子で...",
+        "もう3日くらい見てないの。お母さんも見かけなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "misaki_note",
+          "text": "みさきちゃん...（さっきの事故の女性が呼んでいた名前...）",
+          "nextSegmentId": "callback_worry_end",
+          "setFlags": ["yoshida_mentioned_misaki", "misaki_name_connection"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "haruka_called_misaki_name"
+          }
+        },
+        {
+          "responseId": "misaki_note_no_connection",
+          "text": "みさきちゃん...3日も見ていないんですか。",
+          "nextSegmentId": "callback_worry_end",
+          "setFlags": ["yoshida_mentioned_misaki"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_mother_missing",
+      "callerLines": [
+        "3日前くらいからかしら...",
+        "いつもなら女の子が「おばあちゃん」って手を振ってくれるんだけど...",
+        "みさきちゃんっていう子なんですけどね。姿を見ないの。"
+      ],
+      "responses": [
+        {
+          "responseId": "missing_note",
+          "text": "みさきちゃん...（あの名前だ...）",
+          "nextSegmentId": "callback_worry_end",
+          "setFlags": ["yoshida_mentioned_misaki", "misaki_name_connection"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "haruka_called_misaki_name"
+          }
+        },
+        {
+          "responseId": "missing_note_no_connection",
+          "text": "心配ですね...何かあれば連絡してください。",
+          "nextSegmentId": "callback_worry_end",
+          "setFlags": ["yoshida_mentioned_misaki"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "callback_worry_end",
+      "callerLines": [
+        "ええ...きっと旅行か何かだと思うんですけど...",
+        "何かあったわけじゃないですよね...?",
+        "...すみません、年寄りの心配性で。"
+      ],
+      "responses": [
+        {
+          "responseId": "worry_comfort",
+          "text": "いえ、何かあればまたご連絡ください。",
           "nextSegmentId": "callback_end",
           "setFlags": [],
           "clearFlags": []
@@ -188,5 +314,31 @@
     }
   ],
   "startSegmentId": "callback_intro",
-  "note": "最初の通話で車について質問した場合（asked_about_vehicle フラグ）にのみ発生。アラートセキュリティの名前と、倉庫に荷物を運び込んでいたという証拠を得られる。"
+  "operatorThoughts": [
+    {
+      "triggerId": "misaki_connection_thought",
+      "triggerCondition": {
+        "requiresFlag": "misaki_name_connection"
+      },
+      "triggerTiming": "after_call",
+      "content": "みさきちゃん...あの歩道橋で倒れていた女性が呼んでいた名前だ...偶然じゃない気がする..."
+    },
+    {
+      "triggerId": "yoshida_neighbor_thought",
+      "triggerCondition": {
+        "requiresFlag": "yoshida_worried_about_neighbor"
+      },
+      "triggerTiming": "after_call",
+      "content": "吉田さんが心配している若いお母さん...3日前から姿を見ていない...あの事故と関係が...?"
+    },
+    {
+      "triggerId": "misaki_alone_thought",
+      "triggerCondition": {
+        "requiresFlag": "yoshida_mentioned_misaki"
+      },
+      "triggerTiming": "after_call",
+      "content": "5歳の女の子...お母さんがいなくなったら、その子はどうなるんだろう..."
+    }
+  ],
+  "note": "最初の通話で車について質問した場合（asked_about_vehicle フラグ）にのみ発生。アラートセキュリティの名前と、倉庫に荷物を運び込んでいたという証拠を得られる。また、吉田が隣人の若いお母さんと「みさきちゃん」について言及する。Night01で haruka_called_misaki_name フラグが立っている場合、プレイヤーは名前の一致に気づく（misaki_name_connection）。"
 }

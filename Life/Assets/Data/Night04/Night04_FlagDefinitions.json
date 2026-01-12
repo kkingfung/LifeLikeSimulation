@@ -241,6 +241,115 @@
       "weight": 0,
       "persistsAcrossNights": false,
       "note": "Night03からの引き継ぎ"
+    },
+    {
+      "flagId": "daycare_call_received",
+      "category": "Event",
+      "description": "保育士からの電話を受けた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "daycare_misaki_mentioned",
+      "category": "Foreshadowing",
+      "description": "保育士から美咲の名前を聞いた",
+      "weight": 0,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "misaki_identity_confirmed",
+      "category": "Foreshadowing",
+      "description": "Night01の『みさき』が保育園児の林美咲だと確認",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "haruka_called_misaki_nameまたはyoshida_mentioned_misakiが必要"
+    },
+    {
+      "flagId": "haruka_name_confirmed",
+      "category": "Foreshadowing",
+      "description": "被害者の名前が「林遥」だと確認",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_identity_connection",
+      "category": "Foreshadowing",
+      "description": "Night01の被害者と保育士が言う「林遥」が同一人物だと気づいた",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "dark_hoodie_notedが必要"
+    },
+    {
+      "flagId": "misaki_personality_known",
+      "category": "Character",
+      "description": "美咲の性格や好きなことを知った",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_humanized",
+      "category": "Character",
+      "description": "林遥を「被害者」ではなく「人間」として認識した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "物語の重要な転換点"
+    },
+    {
+      "flagId": "daycare_worried",
+      "category": "Event",
+      "description": "保育士が遥について心配していることを感じた",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "timeline_matches",
+      "category": "Evidence",
+      "description": "3日前の時系列がNight01と一致することに気づいた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "night01_connection_confirmed",
+      "category": "Evidence",
+      "description": "Night01の事件と保育士の相談が繋がっていることを確認",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "misaki_address_known",
+      "category": "Evidence",
+      "description": "美咲の住所（○○団地3号棟）を知った",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "deflected_daycare_question",
+      "category": "Alignment",
+      "description": "保育士の質問をはぐらかした",
+      "weight": 0,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "hinted_to_daycare",
+      "category": "Disclosure",
+      "description": "保育士に何かあったことを示唆した",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "encouraged_police_report",
+      "category": "Escalation",
+      "description": "保育士に警察への相談を勧めた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "reassured_daycare",
+      "category": "Reassurance",
+      "description": "保育士に「美咲は大丈夫」と伝えた",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "空虚な慰めになる可能性"
     }
   ],
   "mutualExclusionRules": [

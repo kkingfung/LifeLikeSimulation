@@ -27,7 +27,7 @@
       "ringDuration": 50,
       "priority": 6,
       "isCritical": false,
-      "description": "吉田が真理が以前話していたことを思い出して電話。「姉が危険なことに巻き込まれている」と言っていた。"
+      "description": "吉田が真理が以前話していたことを思い出して電話。「親友の遥が危険なことに巻き込まれている」と言っていた。"
     },
     {
       "callId": "call_organization_warning",
@@ -41,6 +41,34 @@
       "conditions": {
         "requiresFlag": "dispatched_to_mari_house"
       }
+    },
+    {
+      "callId": "call_hospital_nurse",
+      "callerId": "hospital_nurse",
+      "title": "あの夜の患者さんのことで",
+      "incomingTimeMinutes": 1365,
+      "ringDuration": 45,
+      "priority": 5,
+      "isCritical": false,
+      "description": "○○総合病院の看護師から。Night01で搬送された林遥を担当していた。遥の最期の様子を語り、彼女が最後まで「美咲」と呼び続けていたことを証言する。林遥を「被害者」ではなく「母」として描く重要な通話。",
+      "conditions": {
+        "requiresFlag": "haruka_dead"
+      },
+      "note": "遥が死亡した場合のみ。遥が生存している場合はcall_hospital_nurse_aliveが発生。"
+    },
+    {
+      "callId": "call_hospital_nurse_alive",
+      "callerId": "hospital_nurse",
+      "title": "入院中の患者さんのことで",
+      "incomingTimeMinutes": 1365,
+      "ringDuration": 45,
+      "priority": 5,
+      "isCritical": false,
+      "description": "○○総合病院の看護師から。Night01で搬送された林遥を担当している。遥は意識が戻ったが、何かに怯えている様子。「美咲」という名前を繰り返している。",
+      "conditions": {
+        "requiresFlag": "haruka_alive"
+      },
+      "note": "遥が生存している場合。遥はまだ入院中で、美咲のことを心配している。"
     }
   ],
   "specialEvents": [
@@ -92,7 +120,7 @@
     {
       "evidenceId": "evidence_haruka_danger",
       "title": "遥の危険",
-      "content": "真理は「姉（遥）が危険なことに巻き込まれている」と言っていた",
+      "content": "真理は「親友の遥が危険なことに巻き込まれている」と言っていた",
       "category": "Testimony"
     },
     {
@@ -106,6 +134,30 @@
       "title": "監視されている",
       "content": "組織がオペレーターの動きを監視していることを示唆する電話",
       "category": "Threat"
+    },
+    {
+      "evidenceId": "evidence_haruka_hospital",
+      "title": "林遥の入院",
+      "content": "林遥はNight01の事故後、○○総合病院に搬送され、最期を迎えた",
+      "category": "Event"
+    },
+    {
+      "evidenceId": "evidence_haruka_last_words_hospital",
+      "title": "林遥の最期の言葉",
+      "content": "林遥は病院でも最後まで「美咲をお願い」と繰り返していた",
+      "category": "Testimony"
+    },
+    {
+      "evidenceId": "evidence_haruka_fought",
+      "title": "林遥の闘い",
+      "content": "林遥は娘のために必死に生きようとしていた",
+      "category": "Character"
+    },
+    {
+      "evidenceId": "evidence_misaki_photo",
+      "title": "美咲の写真",
+      "content": "林遥はポケットに美咲の写真をお守りのように持っていた",
+      "category": "Physical"
     }
   ],
   "night07EndStateEffects": {

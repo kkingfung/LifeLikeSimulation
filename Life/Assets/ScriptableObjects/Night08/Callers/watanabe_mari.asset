@@ -30,12 +30,12 @@ MonoBehaviour:
     aggression: 30
   relations:
   - targetCallerId: hayashi_haruka
-    relationType: 3
-    description: "\u59C9\uFF08\u7FA9\u59C9\uFF09"
+    relationType: 0
+    description: "\u89AA\u53CB"
     isKnown: 0
   - targetCallerId: hayashi_misaki
-    relationType: 3
-    description: "\u59EA"
+    relationType: 0
+    description: "\u89AA\u53CB\u306E\u5A18\uFF08\u9810\u304B\u3063\u3066\u3044\u308B\uFF09"
     isKnown: 1
   - targetCallerId: yoshida_kazuko
     relationType: 12

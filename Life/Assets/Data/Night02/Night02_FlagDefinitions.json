@@ -40,6 +40,30 @@
       "note": "プレイヤーがNight01と接続できるかの伏線"
     },
     {
+      "flagId": "yoshida_worried_about_neighbor",
+      "category": "Foreshadowing",
+      "description": "吉田が近所の若いお母さんを心配している",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "林遥と美咲への伏線"
+    },
+    {
+      "flagId": "yoshida_mentioned_misaki",
+      "category": "Foreshadowing",
+      "description": "吉田が「みさきちゃん」の名前を言及した",
+      "weight": 0,
+      "persistsAcrossNights": true,
+      "note": "Night05で美咲が登場した時に接続される伏線"
+    },
+    {
+      "flagId": "misaki_name_connection",
+      "category": "Foreshadowing",
+      "description": "Night01で被害者が呼んだ名前と一致することに気づいた",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "haruka_called_misaki_name フラグが必要。プレイヤーが物語の接続に気づいた重要な瞬間"
+    },
+    {
       "flagId": "hospital_visit_noted",
       "category": "Evidence",
       "description": "高齢者が病院帰りだと認識した",

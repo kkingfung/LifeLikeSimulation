@@ -49,6 +49,16 @@
       "triggerCondition": {
         "requiresFlag": "body_reported"
       }
+    },
+    {
+      "callId": "call_daycare_worker",
+      "callerId": "daycare_worker",
+      "title": "園児の無断欠席について",
+      "incomingTimeMinutes": 210,
+      "ringDuration": 40,
+      "priority": 4,
+      "isCritical": false,
+      "description": "ひまわり保育園の保育士から。林美咲が3日間無断欠席しており、母親（林遥）とも連絡が取れない。Night01の被害者を「誰か大切な人」として描く重要な通話。"
     }
   ],
   "initialWorldStates": [
@@ -117,6 +127,24 @@
       "title": "無言電話の主",
       "content": "Night03の無言電話の発信者が、今回の被害者である可能性",
       "category": "Connection"
+    },
+    {
+      "evidenceId": "evidence_misaki_missing",
+      "title": "美咲の不在",
+      "content": "林美咲（5歳）が3日間保育園を無断欠席。母親とも連絡が取れない",
+      "category": "Connection"
+    },
+    {
+      "evidenceId": "evidence_haruka_identity",
+      "title": "林遥の身元",
+      "content": "Night01で発見された女性は、5歳の娘を持つシングルマザー・林遥の可能性",
+      "category": "Connection"
+    },
+    {
+      "evidenceId": "evidence_haruka_humanized",
+      "title": "母としての林遥",
+      "content": "林遥は毎日娘を保育園に送り迎えし、夜勤の仕事をしながら育てていた",
+      "category": "Character"
     }
   ],
   "night03EndStateEffects": {

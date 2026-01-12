@@ -1,0 +1,1102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd4027b4e354644d948da849de0ca3f, type: 3}
+  m_Name: call_hospital_nurse
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.CallData
+  callId: call_hospital_nurse
+  caller: {fileID: 11400000, guid: dd2415f5a4d869148a879c5ef3ddaf8e, type: 2}
+  description: "\u25CB\u25CB\u7DCF\u5408\u75C5\u9662\u306E\u770B\u8B77\u5E2B\u304B\u3089\u3002Night01\u3067\u642C\u9001\u3055\u308C\u305F\u6797\u9065\u3092\u62C5\u5F53\u3057\u3066\u3044\u305F\u3002\u9065\u306E\u6700\u671F\u306E\u69D8\u5B50\u3092\u8A9E\u308A\u3001\u5F7C\u5973\u304C\u6700\u5F8C\u307E\u3067\u300C\u7F8E\u54B2\u300D\u3068\u547C\u3073\u7D9A\u3051\u3066\u3044\u305F\u3053\u3068\u3092\u8A3C\u8A00\u3059\u308B\u3002\u6797\u9065\u3092\u300C\u88AB\u5BB3\u8005\u300D\u3067\u306F\u306A\u304F\u300C\u6BCD\u300D\u3068\u3057\u3066\u63CF\u304F\u91CD\u8981\u306A\u901A\u8A71\u3002"
+  incomingTimeMinutes: 0
+  ringDuration: 30
+  priority: 5
+  startSegmentId: nurse_intro
+  segments:
+  - segmentId: nurse_intro
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u591C\u5206\u9045\u304F\u306B\u3059\u307F\u307E\u305B\u3093\u3002\u25CB\u25CB\u7DCF\u5408\u75C5\u9662\u306E\u5C71\u53E3\u3068\u7533\u3057\u307E\u3059\u3002\n\u5148\u65E5\u306E\u30CB\u30E5\u30FC\u30B9\u3092\u898B\u3066\u3001\u3082\u3057\u304B\u3057\u305F\u3089\u3068\u601D\u3063\u3066...\n\u6570\u65E5\u524D\u306B\u642C\u9001\u3055\u308C\u305F\u5973\u6027\u60A3\u8005\u306E\u3053\u3068\u3067\u3001\u304A\u805E\u304D\u3057\u305F\u3044\u3053\u3068\u304C..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: nurse_intro_listen
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u3069\u306E\u3088\u3046\u306A\u4EF6\u3067\u3057\u3087\u3046\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - nurse_call_received
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_patient
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: nurse_intro_hospital
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u25CB\u25CB\u7DCF\u5408\u75C5\u9662...\u60A3\u8005\u3055\u3093\u306E\u3053\u3068\u3067\u3059\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - nurse_call_received
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_patient
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_patient
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u306F\u3044...\u6570\u65E5\u524D\u306E\u6DF1\u591C\u306B\u3001\u3072\u304D\u9003\u3052\u306E\u88AB\u5BB3\u8005\u3068\u3057\u3066\u642C\u9001\u3055\u308C\u305F\u5973\u6027\u304C\u3044\u305F\u3093\u3067\u3059\u3002\n20\u4EE3\u304F\u3089\u3044\u306E...\u6697\u3044\u670D\u3092\u7740\u305F\u65B9\u3067...\n\u305D\u306E\u65B9\u306E\u8EAB\u5143\u304C\u5224\u660E\u3057\u305F\u306E\u304B\u3068\u601D\u3063\u3066..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: patient_recognize
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u306E\u60A3\u8005\u3055\u3093...\uFF08\u3042\u306E\u591C\u306E\u5973\u6027...\uFF09"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - nurse_patient_connection
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_condition
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: patient_ask
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u306E\u65B9\u306B\u3064\u3044\u3066\u3001\u4F55\u304B\u308F\u304B\u3063\u305F\u3053\u3068\u304C\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_condition
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_condition
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u642C\u9001\u3055\u308C\u305F\u6642\u306F\u610F\u8B58\u304C\u6726\u6727\u3068\u3057\u3066\u3044\u3066...\n\u3067\u3082\u3001\u305A\u3063\u3068\u540C\u3058\u8A00\u8449\u3092\u7E70\u308A\u8FD4\u3057\u3066\u3044\u305F\u3093\u3067\u3059\u3002\n\u300E\u7F8E\u54B2\u300F\u3063\u3066...\u4F55\u5EA6\u3082\u4F55\u5EA6\u3082..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: condition_misaki
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u7F8E\u54B2...\uFF08\u3042\u306E\u6642\u3068\u540C\u3058\u540D\u524D...\uFF09"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - nurse_confirmed_misaki
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_misaki_detail
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: condition_ask
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u7F8E\u54B2...\u8AB0\u304B\u306E\u540D\u524D\u3067\u3059\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - nurse_mentioned_misaki
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_misaki_detail
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_misaki_detail
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u304D\u3063\u3068\u304A\u5B50\u3055\u3093\u306E\u540D\u524D\u3060\u3068\u601D\u3044\u307E\u3059\u3002\n\u6301\u3061\u7269\u306E\u4E2D\u306B\u3001\u5C0F\u3055\u306A\u5973\u306E\u5B50\u306E\u5199\u771F\u304C\u3042\u3063\u3066...\n\u304A\u5B88\u308A\u307F\u305F\u3044\u306B\u3001\u30DD\u30B1\u30C3\u30C8\u306B\u5165\u308C\u3066\u3044\u305F\u307F\u305F\u3044\u3067..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: misaki_photo
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u5199\u771F\u3092...\u305A\u3063\u3068\u6301\u3063\u3066\u3044\u305F\u3093\u3067\u3059\u306D\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - haruka_carried_misaki_photo
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_fight
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: misaki_child
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u306E\u5973\u6027\u306B\u5B50\u4F9B\u304C\u3044\u305F\u3068\u3044\u3046\u3053\u3068\u3067\u3059\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - haruka_had_child_confirmed
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_fight
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_fight
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u3042\u306E\u65B9...\u5FC5\u6B7B\u306B\u751F\u304D\u3088\u3046\u3068\u3057\u3066\u3044\u305F\u3093\u3067\u3059\u3002\n\u602A\u6211\u304C\u3072\u3069\u304F\u3066\u3001\u666E\u901A\u306A\u3089...\u3067\u3082\u3001\u8AE6\u3081\u306A\u304F\u3066\u3002\n\u300E\u5E30\u3089\u306A\u304D\u3083...\u7F8E\u54B2\u304C\u5F85\u3063\u3066\u308B...\u300F\u3063\u3066..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: fight_continue
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u751F\u304D\u3088\u3046\u3068\u3057\u3066\u3044\u305F..."
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - haruka_fought_to_live
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_last_moment
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: fight_ask
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u306E\u5F8C...\u3069\u3046\u306A\u3063\u305F\u3093\u3067\u3059\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - haruka_fought_to_live
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_outcome
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_outcome
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u4E00\u6642\u306F\u6301\u3061\u76F4\u3057\u304B\u3051\u305F\u3093\u3067\u3059\u3002\u610F\u8B58\u304C\u623B\u3063\u3066...\n\u3067\u3082\u3001\u5185\u81D3\u306E\u640D\u50B7\u304C\u3072\u3069\u304F\u3066...\n\u6700\u5F8C\u306F...\u9759\u304B\u306B..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: outcome_last
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6700\u5F8C\u306B...\u4F55\u304B\u8A00\u3063\u3066\u3044\u307E\u3057\u305F\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_last_words
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_last_moment
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u4E00\u6642\u306F\u6301\u3061\u76F4\u3057\u305F\u3093\u3067\u3059\u3002\u610F\u8B58\u3082\u623B\u3063\u3066...\n\u3067\u3082\u3001\u602A\u6211\u304C\u91CD\u304F\u3066...\n\u6700\u5F8C\u306E\u6570\u6642\u9593\u306F\u3001\u305A\u3063\u3068\u5A18\u3055\u3093\u306E\u3053\u3068\u3092..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: last_moment_ask
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u4F55\u3068\u8A00\u3063\u3066\u3044\u307E\u3057\u305F\u304B\uFF1F"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_last_words
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_last_words
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u300E\u7F8E\u54B2\u3092\u304A\u9858\u3044...\u8AB0\u304B...\u7F8E\u54B2\u3092\u5B88\u3063\u3066...\u300F\u3063\u3066...\n\u6700\u5F8C\u307E\u3067\u3001\u81EA\u5206\u306E\u3053\u3068\u3058\u3083\u306A\u304F\u3066\u3001\u5A18\u3055\u3093\u306E\u3053\u3068\u3060\u3051...\n\u79C1\u3001\u305A\u3063\u3068\u5FD8\u308C\u3089\u308C\u306A\u304F\u3066..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: last_words_realize
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\uFF08\u300E\u307F\u3055\u304D\u3092\u304A\u9858\u3044\u300F...\u3042\u306E\u6642\u3082\u3001\u6700\u671F\u3082\u3001\u540C\u3058\u8A00\u8449\u3092...\uFF09"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - haruka_last_words_hospital
+      - haruka_final_wish_known
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_why_call
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: last_words_understand
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6700\u5F8C\u307E\u3067\u3001\u5A18\u3055\u3093\u306E\u3053\u3068\u3092..."
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - haruka_last_words_hospital
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_why_call
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_why_call
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u308C\u3067...\u4ECA\u65E5\u30CB\u30E5\u30FC\u30B9\u3092\u898B\u305F\u3089\u3001\u300C\u6797\u300D\u3068\u3044\u3046\u540D\u524D\u304C\u51FA\u3066\u304D\u3066...\n\u3082\u3057\u304B\u3057\u305F\u3089\u3001\u3042\u306E\u60A3\u8005\u3055\u3093\u3068\u95A2\u4FC2\u304C\u3042\u308B\u306E\u304B\u3068\u601D\u3063\u3066...\n\u5A18\u3055\u3093\u306F...\u7121\u4E8B\u306A\u3093\u3067\u3057\u3087\u3046\u304B...?"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: why_call_safe
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u7F8E\u54B2\u3061\u3083\u3093\u306F...\u4ECA\u306F\u5B89\u5168\u306A\u5834\u6240\u306B\u3044\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - told_nurse_misaki_safe
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_relief
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: why_call_protect
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u8A73\u3057\u304F\u306F\u7533\u3057\u4E0A\u3052\u3089\u308C\u307E\u305B\u3093\u304C...\u5B88\u3089\u308C\u3066\u3044\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - hinted_misaki_safe
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_relief
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: why_call_uncertain
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u308F\u304B\u308A\u307E\u305B\u3093\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_worry
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_relief
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u305D\u3046\u3067\u3059\u304B\u3002\u3088\u304B\u3063\u305F...\n\u3042\u306E\u60A3\u8005\u3055\u3093\u3001\u6700\u5F8C\u307E\u3067\u5A18\u3055\u3093\u306E\u3053\u3068\u3060\u3051\u3092\u5FC3\u914D\u3057\u3066\u3044\u3066...\n\u305D\u306E\u5B50\u304C\u7121\u4E8B\u306A\u3089\u3001\u304D\u3063\u3068...\u5B89\u5FC3\u3067\u304D\u308B\u3068\u601D\u3044\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: relief_thank
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u8CB4\u91CD\u306A\u60C5\u5831\u3092\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_request
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_worry
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u3046\u3067\u3059\u304B...\n\u3042\u306E\u60A3\u8005\u3055\u3093\u3001\u6700\u5F8C\u307E\u3067\u5A18\u3055\u3093\u306E\u3053\u3068\u3092\u5FC3\u914D\u3057\u3066\u3044\u3066...\n\u3069\u3046\u304B...\u305D\u306E\u5B50\u304C\u7121\u4E8B\u3067\u3042\u308A\u307E\u3059\u3088\u3046\u306B..."
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: worry_agree
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u3046\u9858\u3063\u3066\u3044\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_request
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_request
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u3042\u306E...\u4E00\u3064\u304A\u9858\u3044\u304C\u3042\u308B\u3093\u3067\u3059\u304C...\n\u3082\u3057\u5A18\u3055\u3093\u3068\u4F1A\u3046\u6A5F\u4F1A\u304C\u3042\u3063\u305F\u3089...\n\u304A\u6BCD\u3055\u3093\u304C\u6700\u5F8C\u307E\u3067\u5A18\u3055\u3093\u306E\u3053\u3068\u3092\u60F3\u3063\u3066\u3044\u305F\u3063\u3066\u3001\u4F1D\u3048\u3066\u3082\u3089\u3048\u307E\u305B\u3093\u304B...?"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: request_promise
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u5FC5\u305A\u4F1D\u3048\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - promised_to_tell_misaki
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_end_grateful
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: request_try
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u6A5F\u4F1A\u304C\u3042\u308C\u3070\u3001\u4F1D\u3048\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: nurse_end_hope
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: nurse_end_grateful
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059...\n\u3042\u306E\u60A3\u8005\u3055\u3093\u306E\u9858\u3044\u304C...\u5C11\u3057\u3067\u3082\u5C4A\u304F\u3068\u3044\u3044\u306A...\n\u591C\u5206\u9045\u304F\u306B\u3059\u307F\u307E\u305B\u3093\u3067\u3057\u305F\u3002\u5931\u793C\u3057\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: end_grateful_reply
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u3053\u3061\u3089\u3053\u305D\u3001\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 1
+  - segmentId: nurse_end_hope
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u306F\u3044...\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002\n\u3042\u306E\u60A3\u8005\u3055\u3093\u306E\u3053\u3068\u3001\u5FD8\u308C\u306A\u3044\u3067\u3044\u3066\u304F\u3060\u3055\u3044...\n\u5931\u793C\u3057\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: end_hope_reply
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u5931\u793C\u3057\u307E\u3059\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 1
+  triggerConditions: []
+  onEndEffects: []
+  onMissedEffects: []
+  isCritical: 0
+  canRepeat: 0

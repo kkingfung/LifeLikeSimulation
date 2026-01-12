@@ -212,6 +212,96 @@ MonoBehaviour:
     weight: 0
     persistsAcrossNights: 0
     cancelsFlags: []
+  - flagId: daycare_call_received
+    category: 7
+    description: "\u4FDD\u80B2\u58EB\u304B\u3089\u306E\u96FB\u8A71\u3092\u53D7\u3051\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: daycare_misaki_mentioned
+    category: 6
+    description: "\u4FDD\u80B2\u58EB\u304B\u3089\u7F8E\u54B2\u306E\u540D\u524D\u3092\u805E\u3044\u305F"
+    weight: 0
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: misaki_identity_confirmed
+    category: 6
+    description: "Night01\u306E\u300E\u307F\u3055\u304D\u300F\u304C\u4FDD\u80B2\u5712\u5150\u306E\u6797\u7F8E\u54B2\u3060\u3068\u78BA\u8A8D"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_name_confirmed
+    category: 6
+    description: "\u88AB\u5BB3\u8005\u306E\u540D\u524D\u304C\u300C\u6797\u9065\u300D\u3060\u3068\u78BA\u8A8D"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_identity_connection
+    category: 6
+    description: "Night01\u306E\u88AB\u5BB3\u8005\u3068\u4FDD\u80B2\u58EB\u304C\u8A00\u3046\u300C\u6797\u9065\u300D\u304C\u540C\u4E00\u4EBA\u7269\u3060\u3068\u6C17\u3065\u3044\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: misaki_personality_known
+    category: 7
+    description: "\u7F8E\u54B2\u306E\u6027\u683C\u3084\u597D\u304D\u306A\u3053\u3068\u3092\u77E5\u3063\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: haruka_humanized
+    category: 7
+    description: "\u6797\u9065\u3092\u300C\u88AB\u5BB3\u8005\u300D\u3067\u306F\u306A\u304F\u300C\u4EBA\u9593\u300D\u3068\u3057\u3066\u8A8D\u8B58\u3057\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: daycare_worried
+    category: 7
+    description: "\u4FDD\u80B2\u58EB\u304C\u9065\u306B\u3064\u3044\u3066\u5FC3\u914D\u3057\u3066\u3044\u308B\u3053\u3068\u3092\u611F\u3058\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: timeline_matches
+    category: 4
+    description: "3\u65E5\u524D\u306E\u6642\u7CFB\u5217\u304CNight01\u3068\u4E00\u81F4\u3059\u308B\u3053\u3068\u306B\u6C17\u3065\u3044\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: night01_connection_confirmed
+    category: 4
+    description: "Night01\u306E\u4E8B\u4EF6\u3068\u4FDD\u80B2\u58EB\u306E\u76F8\u8AC7\u304C\u7E4B\u304C\u3063\u3066\u3044\u308B\u3053\u3068\u3092\u78BA\u8A8D"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: misaki_address_known
+    category: 4
+    description: "\u7F8E\u54B2\u306E\u4F4F\u6240\uFF08\u25CB\u25CB\u56E3\u57303\u53F7\u68DF\uFF09\u3092\u77E5\u3063\u305F"
+    weight: 1
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: deflected_daycare_question
+    category: 3
+    description: "\u4FDD\u80B2\u58EB\u306E\u8CEA\u554F\u3092\u306F\u3050\u3089\u304B\u3057\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: hinted_to_daycare
+    category: 1
+    description: "\u4FDD\u80B2\u58EB\u306B\u4F55\u304B\u3042\u3063\u305F\u3053\u3068\u3092\u793A\u5506\u3057\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: encouraged_police_report
+    category: 2
+    description: "\u4FDD\u80B2\u58EB\u306B\u8B66\u5BDF\u3078\u306E\u76F8\u8AC7\u3092\u52E7\u3081\u305F"
+    weight: 1
+    persistsAcrossNights: 0
+    cancelsFlags: []
+  - flagId: reassured_daycare
+    category: 0
+    description: "\u4FDD\u80B2\u58EB\u306B\u300C\u7F8E\u54B2\u306F\u5927\u4E08\u592B\u300D\u3068\u4F1D\u3048\u305F"
+    weight: 0
+    persistsAcrossNights: 0
+    cancelsFlags: []
   mutualExclusionRules:
   - whenFlagSet: good_approach
     cancelFlags:

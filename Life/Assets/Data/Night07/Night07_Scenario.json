@@ -7,6 +7,36 @@
   "realSecondsPerGameMinute": 2.0,
   "difficulty": 4,
   "estimatedPlayTimeMinutes": 25,
+  "preGameTimeline": [
+    {
+      "time": "Night06終了後・深夜",
+      "event": "組織が中村浩二の自宅に侵入"
+    },
+    {
+      "time": "同日・深夜",
+      "event": "中村浩二が殺害される（首吊りに偽装）"
+    },
+    {
+      "time": "翌日・早朝",
+      "event": "組織が中村の部屋を捜索、証拠を回収"
+    },
+    {
+      "time": "同日・午前",
+      "event": "真理が吉田に警告を受ける（yoshida_will_warn_mariフラグありの場合）"
+    },
+    {
+      "time": "同日・午後",
+      "event": "真理が美咲を吉田に預ける（yoshida_will_warn_mariフラグありの場合）"
+    },
+    {
+      "time": "同日・夕方",
+      "event": "組織が真理の居場所を特定、接近を開始"
+    },
+    {
+      "time": "18:00",
+      "event": "Night07開始"
+    }
+  ],
   "theTruth": "中村浩二は誠和製薬について騒ぎすぎたため、組織に口封じされた。首吊りに見せかけた殺害。遺書がないのは不自然。真理は危険を感じて美咲を吉田に預けていた。組織は真理を連れ去るが、美咲は吉田の家で無事。吉田は美咲を守るために美咲のことを誰にも言わない。",
   "callSchedule": [
     {

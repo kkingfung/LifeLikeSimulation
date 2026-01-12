@@ -1051,14 +1051,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1, g: 0.1, b: 0.15, a: 1}
+  m_Color: {r: 0.3, g: 0.3, b: 0.3, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d05fd9909215b684b8ade061f7a35845, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8443,6 +8443,9 @@ MonoBehaviour:
   _currentScene:
     _sceneAsset: {fileID: 102900000, guid: 7714c52d07b1e00459b25c4aa44b0bf5, type: 3}
     _sceneName: Settings
+  _bootstrapScene:
+    _sceneAsset: {fileID: 0}
+    _sceneName: 
   _mainMenuScene:
     _sceneAsset: {fileID: 102900000, guid: 3d12e45683dd93e4d9d03d83362d53fe, type: 3}
     _sceneName: MainMenu

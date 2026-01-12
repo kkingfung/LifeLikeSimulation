@@ -2,7 +2,7 @@
   "callId": "call_yoshida_info",
   "callerId": "yoshida_kazuko",
   "title": "吉田からの電話",
-  "description": "吉田が真理が以前話していたことを思い出して電話。「姉（遥）が危険なことに巻き込まれている」と言っていたことを伝える。",
+  "description": "吉田が真理が以前話していたことを思い出して電話。「親友の遥が危険なことに巻き込まれている」と言っていたことを伝える。",
   "segments": [
     {
       "segmentId": "yoshida_intro",
@@ -32,46 +32,46 @@
       "segmentId": "yoshida_remember",
       "callerLines": [
         "前に渡辺さんが言ってたんです...",
-        "「お姉さんが危険なことに巻き込まれている」って...",
+        "「親友の遥さんが危険なことに巻き込まれている」って...",
         "その時は何のことか分からなかったんですけど..."
       ],
       "responses": [
         {
-          "responseId": "remember_ask_sister",
-          "text": "お姉さんというと？",
-          "nextSegmentId": "yoshida_sister",
-          "setFlags": ["heard_about_sister"],
+          "responseId": "remember_ask_friend",
+          "text": "親友の遥さんというと？",
+          "nextSegmentId": "yoshida_friend",
+          "setFlags": ["heard_about_friend"],
           "clearFlags": []
         },
         {
           "responseId": "remember_ask_danger",
           "text": "危険というのは？",
           "nextSegmentId": "yoshida_danger",
-          "setFlags": ["heard_about_sister"],
+          "setFlags": ["heard_about_friend"],
           "clearFlags": []
         }
       ]
     },
     {
-      "segmentId": "yoshida_sister",
+      "segmentId": "yoshida_friend",
       "callerLines": [
         "林さん...遥さんって言ってました。",
         "美咲ちゃんのお母さんですよね...",
-        "渡辺さんの本当のお姉さんみたいで..."
+        "渡辺さんの親友みたいで..."
       ],
       "responses": [
         {
-          "responseId": "sister_ask_danger",
+          "responseId": "friend_ask_danger",
           "text": "遥さんが何に巻き込まれていたんですか？",
           "nextSegmentId": "yoshida_danger",
-          "setFlags": ["haruka_mari_sisters_confirmed"],
+          "setFlags": ["haruka_mari_friends_confirmed"],
           "clearFlags": []
         },
         {
-          "responseId": "sister_ask_misaki",
+          "responseId": "friend_ask_misaki",
           "text": "美咲ちゃんは...？",
           "nextSegmentId": "yoshida_misaki_safe",
-          "setFlags": ["haruka_mari_sisters_confirmed"],
+          "setFlags": ["haruka_mari_friends_confirmed"],
           "clearFlags": []
         }
       ]
@@ -270,12 +270,12 @@
   "startSegmentId": "yoshida_intro",
   "operatorThoughts": [
     {
-      "triggerId": "sisters_thought",
+      "triggerId": "friends_thought",
       "triggerCondition": {
-        "requiresFlag": "haruka_mari_sisters_confirmed"
+        "requiresFlag": "haruka_mari_friends_confirmed"
       },
       "triggerTiming": "after_call",
-      "content": "渡辺真理と林遥は姉妹...美咲ちゃんのおばさん...だから守ろうとしていたのか..."
+      "content": "渡辺真理と林遥は親友...だから美咲ちゃんを守ろうとしていたのか..."
     },
     {
       "triggerId": "kenji_secret_thought",
@@ -294,5 +294,5 @@
       "content": "美咲ちゃんは吉田さんのところにいる...良かった...でも、いつまで安全でいられるか..."
     }
   ],
-  "note": "Night08の2番目の通話。吉田が真理から聞いていた情報を思い出して伝える。遥と真理が姉妹であること、林健二が何かを知っていたこと、誠和製薬の名前などが明らかになる。美咲が吉田の家で安全であることも確認できる。"
+  "note": "Night08の2番目の通話。吉田が真理から聞いていた情報を思い出して伝える。遥と真理が親友であること、林健二が何かを知っていたこと、誠和製薬の名前などが明らかになる。美咲が吉田の家で安全であることも確認できる。"
 }

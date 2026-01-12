@@ -66,13 +66,13 @@
     {
       "choiceId": "choice_tell_police",
       "text": "警察に全てを話す",
-      "description": "山田刑事に、今夜知ったことを全て伝える。",
+      "description": "高橋刑事に、今夜知ったことを全て伝える。",
       "setFlags": ["operator_will_tell_police"],
       "clearFlags": [],
       "followUpMonologue": [
         {
           "lineId": "tell_1",
-          "content": "...山田刑事に連絡しよう。",
+          "content": "...高橋刑事に連絡しよう。",
           "delaySeconds": 2
         },
         {

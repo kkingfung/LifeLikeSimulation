@@ -31,6 +31,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 59799a98ed8d8b14aabcba3b073b9e02, type: 2}
   - {fileID: 11400000, guid: 5180823e659b4914c874c0eec16ee991, type: 2}
   - {fileID: 11400000, guid: 3610e040f9276b642bc781d4a5ae5647, type: 2}
+  - {fileID: 11400000, guid: f649409ab02cd8f4b9d39a61337c7012, type: 2}
+  - {fileID: 11400000, guid: 062bcac7cb07f6b44bbe8a963c2c2b2b, type: 2}
+  - {fileID: 11400000, guid: d039b86b4a8f16a44a5667a6122dbda6, type: 2}
+  - {fileID: 11400000, guid: e6db4551c3bfcf44a8409cc2259fede2, type: 2}
   initialWorldStates:
   - stateId: mari_missing
     description: "\u771F\u7406\u306F\u7D44\u7E54\u306B\u9023\u308C\u53BB\u3089\u308C\u3001\u884C\u65B9\u4E0D\u660E"

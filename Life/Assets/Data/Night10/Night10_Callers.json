@@ -17,8 +17,8 @@
     },
     {
       "callerId": "police_detective",
-      "displayName": "山田刑事",
-      "realName": "山田浩介",
+      "displayName": "高橋刑事",
+      "realName": "高橋浩介",
       "description": "事件を担当している刑事。オペレーターと信頼関係を築いている場合、協力的。",
       "personality": {
         "honesty": 9,

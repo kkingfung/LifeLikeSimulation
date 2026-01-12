@@ -193,7 +193,7 @@
       "segmentId": "whistleblower_mari",
       "callerLines": [
         "直接は知らない...でも、健二の部下の家族だと聞いた。",
-        "健二は部下のことを心配してた...その姉か妹か...",
+        "健二は遥さんのことを心配してた...彼女の親友が...",
         "何か知ってるから狙われてるんだと思う..."
       ],
       "responses": [
@@ -284,7 +284,7 @@
     {
       "segmentId": "whistleblower_mari_maybe",
       "callerLines": [
-        "渡辺さん...遥さんの姉だって聞いた。",
+        "渡辺さん...遥さんの親友だって聞いた。",
         "遥さんが何か託したのかもしれない...",
         "だから狙われてるんじゃないかって..."
       ],
@@ -346,7 +346,7 @@
       "responses": [
         {
           "responseId": "police_option_name",
-          "text": "山田刑事という人です。○○署に。",
+          "text": "高橋刑事という人です。○○署に。",
           "nextSegmentId": "whistleblower_hope",
           "setFlags": ["told_whistleblower_police"],
           "clearFlags": []
@@ -390,7 +390,7 @@
     {
       "segmentId": "whistleblower_hope",
       "callerLines": [
-        "山田刑事...分かった。",
+        "高橋刑事...分かった。",
         "ありがとう...あなたに話せて良かった...",
         "健二の分も...真実を伝えて..."
       ],

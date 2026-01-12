@@ -46,9 +46,9 @@
     },
     {
       "callerId": "police_detective",
-      "displayName": "刑事",
-      "realName": "不明",
-      "description": "中村浩二の死を調査している刑事。自殺として処理しようとしているが、いくつか不審点がある。",
+      "displayName": "高橋刑事",
+      "realName": "高橋",
+      "description": "○○署の刑事。中村浩二の死を調査している。自殺として処理しようとしているが、いくつか不審点がある。",
       "voiceDescription": "40代男性の事務的な声。疲れている。",
       "voicePitch": 0.9,
       "personality": {

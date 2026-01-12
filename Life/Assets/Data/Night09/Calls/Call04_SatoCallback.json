@@ -1,0 +1,437 @@
+{
+  "callId": "call_sato_callback",
+  "callerId": "sato_hideaki",
+  "title": "あの夜のことで...",
+  "description": "Night03で問い合わせた佐藤からの電話。ニュースで林健二の死を知り、あの夜の出来事が頭から離れない。組織の人間ではなく、ただの通行人だった。良心の呵責からオペレーターに謝罪し、警告する。",
+  "segments": [
+    {
+      "segmentId": "sato_intro",
+      "callerLines": [
+        "あの...夜分遅くにすみません。",
+        "以前、119番にお電話した者なんですが...",
+        "女性と子供のことで...覚えていらっしゃいますか？"
+      ],
+      "responses": [
+        {
+          "responseId": "sato_intro_remember",
+          "text": "（あの時の男...）覚えています。",
+          "nextSegmentId": "sato_apology",
+          "setFlags": ["sato_callback_received", "sato_recognized"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "sato_inquiry_received"
+          }
+        },
+        {
+          "responseId": "sato_intro_uncertain",
+          "text": "女性と子供...ですか？",
+          "nextSegmentId": "sato_remind",
+          "setFlags": ["sato_callback_received"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_remind",
+      "callerLines": [
+        "数日前の深夜に...歩道橋の近くで。",
+        "暗い服の女性と、小さな女の子を見て...",
+        "不審に思って通報したんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "remind_recognize",
+          "text": "（あの通報...）思い出しました。",
+          "nextSegmentId": "sato_apology",
+          "setFlags": ["sato_recognized"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_apology",
+      "callerLines": [
+        "あの時は...すみませんでした。",
+        "あの女性が...あの後、亡くなったと知って...",
+        "自分が通報したせいで、何か悪いことに...と思って..."
+      ],
+      "responses": [
+        {
+          "responseId": "apology_reassure",
+          "text": "あなたのせいではありません。",
+          "nextSegmentId": "sato_relief",
+          "setFlags": ["reassured_sato"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "apology_ask",
+          "text": "何があったんですか？",
+          "nextSegmentId": "sato_news",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_relief",
+      "callerLines": [
+        "そう言っていただけると...少し楽になります。",
+        "でも、ニュースを見て...もっと怖くなって..."
+      ],
+      "responses": [
+        {
+          "responseId": "relief_ask",
+          "text": "ニュース...？",
+          "nextSegmentId": "sato_news",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_news",
+      "callerLines": [
+        "林健二さんという方が...亡くなったって。",
+        "あの女性と同じ「林」という苗字で...",
+        "偶然じゃない気がして..."
+      ],
+      "responses": [
+        {
+          "responseId": "news_kenji",
+          "text": "（林健二...あの事件...）",
+          "nextSegmentId": "sato_connection",
+          "setFlags": ["sato_noticed_connection"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresAnyFlag": ["body_discovered", "kenji_identified", "body_found_noted"]
+          }
+        },
+        {
+          "responseId": "news_ask",
+          "text": "林...同じ苗字ですね。",
+          "nextSegmentId": "sato_connection",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_connection",
+      "callerLines": [
+        "それで...あの夜のことを思い出したんです。",
+        "あの女性、子供を抱きしめて泣いていた...",
+        "「大丈夫だよ」って...何度も言っていて..."
+      ],
+      "responses": [
+        {
+          "responseId": "connection_crying",
+          "text": "泣いていた...？",
+          "nextSegmentId": "sato_witness",
+          "setFlags": ["sato_saw_haruka_crying"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "connection_child",
+          "text": "子供を抱きしめて...？",
+          "nextSegmentId": "sato_witness",
+          "setFlags": ["sato_saw_haruka_crying"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_witness",
+      "callerLines": [
+        "最初は...怪しいと思ったんです。深夜に子供連れで。",
+        "でも今思えば...あの女性、何かから逃げていたんじゃないかって...",
+        "あの子を守ろうとしていたんじゃないかって..."
+      ],
+      "responses": [
+        {
+          "responseId": "witness_understand",
+          "text": "...そうかもしれません。",
+          "nextSegmentId": "sato_regret",
+          "setFlags": ["sato_understood_haruka"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "witness_silence",
+          "text": "......",
+          "nextSegmentId": "sato_regret",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_regret",
+      "callerLines": [
+        "私が通報したせいで...あの女性が事故に...？",
+        "いや、違う...あの車は...",
+        "私が見た時、後ろから猛スピードで..."
+      ],
+      "responses": [
+        {
+          "responseId": "regret_car",
+          "text": "車を見たんですか？",
+          "nextSegmentId": "sato_car_detail",
+          "setFlags": ["sato_saw_car"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "regret_reassure",
+          "text": "あなたが通報したからではありません。",
+          "nextSegmentId": "sato_car_detail",
+          "setFlags": ["reassured_sato_again"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_car_detail",
+      "callerLines": [
+        "黒い車が...女性の後を追うように...",
+        "あの時は気にしなかったけど...",
+        "今思えば、あれは...追われていたんじゃ..."
+      ],
+      "responses": [
+        {
+          "responseId": "car_detail_black",
+          "text": "黒い車...（あの車...）",
+          "nextSegmentId": "sato_warning",
+          "setFlags": ["sato_confirmed_pursuit"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresAnyFlag": ["black_car_noted", "shinagawa_32_abduction", "suspicious_vehicle_recorded"]
+          }
+        },
+        {
+          "responseId": "car_detail_ask",
+          "text": "車の詳細は覚えていますか？",
+          "nextSegmentId": "sato_warning",
+          "setFlags": ["sato_confirmed_pursuit"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_warning",
+      "callerLines": [
+        "それで...あなたに伝えたかったんです。",
+        "あの事件に関わっているなら...気をつけてください。",
+        "私みたいな一般人でも...怖いと感じるくらいだから..."
+      ],
+      "responses": [
+        {
+          "responseId": "warning_thank",
+          "text": "...ありがとうございます。",
+          "nextSegmentId": "sato_conscience",
+          "setFlags": ["sato_warned_operator"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "warning_ask",
+          "text": "なぜ私に？",
+          "nextSegmentId": "sato_why",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_why",
+      "callerLines": [
+        "あの時...あなたが真剣に聞いてくれたから。",
+        "他の人なら適当に流すところを...",
+        "だから...何かあったら、と思って..."
+      ],
+      "responses": [
+        {
+          "responseId": "why_thank",
+          "text": "...心配してくださってありがとうございます。",
+          "nextSegmentId": "sato_conscience",
+          "setFlags": ["sato_warned_operator"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_conscience",
+      "callerLines": [
+        "あの女性...必死に子供を守ろうとしていた。",
+        "私は...それを怪しいと思って通報した。",
+        "でも、あの女性は...お母さんだったんですね。"
+      ],
+      "responses": [
+        {
+          "responseId": "conscience_mother_alive",
+          "text": "はい。今も病院で回復中です...娘を守ろうとしていたお母さんでした。",
+          "nextSegmentId": "sato_misaki_ask",
+          "setFlags": ["confirmed_haruka_mother_to_sato"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "haruka_alive"
+          }
+        },
+        {
+          "responseId": "conscience_mother_dead",
+          "text": "...はい。娘を守ろうとしていた、お母さんでした。",
+          "nextSegmentId": "sato_misaki_ask",
+          "setFlags": ["confirmed_haruka_mother_to_sato"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresAnyFlag": ["haruka_humanized", "haruka_fought_to_live", "haruka_sacrifice_known", "haruka_dead"]
+          }
+        },
+        {
+          "responseId": "conscience_silence",
+          "text": "...そうだと思います。",
+          "nextSegmentId": "sato_end_quiet",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_misaki_ask",
+      "callerLines": [
+        "あの子供は...今、どうしているんですか？",
+        "無事なら...それだけでも..."
+      ],
+      "responses": [
+        {
+          "responseId": "misaki_safe",
+          "text": "...守られています。安全です。",
+          "nextSegmentId": "sato_end_relieved",
+          "setFlags": ["told_sato_misaki_safe"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "misaki_safe_at_yoshida"
+          }
+        },
+        {
+          "responseId": "misaki_uncertain",
+          "text": "...わかりません。でも、守ろうとしている人がいます。",
+          "nextSegmentId": "sato_end_hope",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "misaki_cant_say",
+          "text": "申し訳ありませんが、お答えできません。",
+          "nextSegmentId": "sato_end_understand",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "sato_end_relieved",
+      "callerLines": [
+        "...よかった。本当に、よかった...",
+        "あの女性の願いが...叶ったんですね。",
+        "私も少し...救われた気がします。ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_relieved_reply",
+          "text": "こちらこそ、ご連絡ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["sato_conscience_eased"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "sato_end_hope",
+      "callerLines": [
+        "そうですか...守ろうとしている人が...",
+        "あの女性も...きっとそれを願っていたと思います。",
+        "私も...何かできることがあれば..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_hope_reply",
+          "text": "お気持ちだけで十分です。ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "sato_end_understand",
+      "callerLines": [
+        "...そうですよね。すみません。",
+        "でも、どうか...あの子を守ってあげてください。",
+        "あの女性の願いだと思うので..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_understand_reply",
+          "text": "...はい。できる限りのことはします。",
+          "nextSegmentId": null,
+          "setFlags": ["sato_requested_protection"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "sato_end_quiet",
+      "callerLines": [
+        "...そうですか。",
+        "私は...ただの通行人ですけど...",
+        "何かあったら、警察に言います。証言なら...できますから。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_quiet_reply",
+          "text": "ありがとうございます。お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": ["sato_will_testify"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "sato_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "sato_not_enemy_thought",
+      "triggerCondition": {
+        "requiresFlag": "sato_understood_haruka"
+      },
+      "triggerTiming": "after_call",
+      "content": "佐藤さんは...組織の人間じゃなかった。ただの通行人で...良心があって、後悔していた..."
+    },
+    {
+      "triggerId": "sato_witness_thought",
+      "triggerCondition": {
+        "requiresFlag": "sato_confirmed_pursuit"
+      },
+      "triggerTiming": "after_call",
+      "content": "佐藤さんが見た黒い車...林遥さんは最初から追われていたんだ...あの夜、彼女は美咲ちゃんを連れて逃げていた..."
+    },
+    {
+      "triggerId": "sato_mother_thought",
+      "triggerCondition": {
+        "requiresFlag": "confirmed_haruka_mother_to_sato"
+      },
+      "triggerTiming": "after_call",
+      "content": "佐藤さんにも伝わった...林遥さんが最後まで娘を守ろうとしていたこと...怪しい人じゃなくて、お母さんだったこと..."
+    },
+    {
+      "triggerId": "sato_conscience_thought",
+      "triggerCondition": {
+        "requiresFlag": "sato_conscience_eased"
+      },
+      "triggerTiming": "after_call",
+      "content": "佐藤さんの良心が救われた...美咲ちゃんが安全だと知って...林遥さんの願いが叶ったと知って..."
+    }
+  ],
+  "note": "Night03の伏線回収。佐藤は組織の人間ではなく、ただの通行人だった。彼は林遥を怪しんで通報したことを後悔し、良心の呵責に苦しんでいた。この通話で、佐藤は林遥が「怪しい人」ではなく「子供を守ろうとした母親」だったことを知る。プレイヤーに「最初から敵ではなかった」という意外性と、「通行人にも良心がある」という人間性を提示する。"
+}

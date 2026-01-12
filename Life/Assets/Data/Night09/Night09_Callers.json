@@ -4,8 +4,8 @@
   "callers": [
     {
       "callerId": "police_detective",
-      "displayName": "山田刑事",
-      "realName": "山田（○○署）",
+      "displayName": "高橋刑事",
+      "realName": "高橋（○○署）",
       "description": "Night08から継続。真理の行方不明と中村の件を捜査している。誠和製薬との繋がりに気づいている。",
       "voiceDescription": "30代男性。真剣だが疲労が見える声。",
       "voicePitch": 0.95,
@@ -83,6 +83,32 @@
       ],
       "organizationRelation": "victim",
       "note": "健二と遥は同じ苗字だが家族ではなく偶然。告発者は遥が秘密を発見した本人であり、健二は遥の机の書類から少しだけ知って巻き込まれたと理解している。"
+    },
+    {
+      "callerId": "sato_hideaki",
+      "displayName": "佐藤",
+      "realName": "佐藤秀明",
+      "description": "Night03で女性と子供について問い合わせた男性。組織とは無関係だった。ニュースで林健二の死を知り、あの夜のことが頭から離れない。良心の呵責に苦しんでいる。",
+      "voiceDescription": "40代男性。後悔と不安が混じった声。以前より柔らかく、誠実さが感じられる。",
+      "voicePitch": 0.95,
+      "personality": {
+        "honesty": 75,
+        "stability": 55,
+        "cooperation": 70,
+        "aggression": 10
+      },
+      "hiddenInfo": "Night03では自分の不安から問い合わせたが、その後ニュースで林の名前を見て衝撃を受けた。自分が何か悪いことに関わったのではないかと恐れている。オペレーターに謝りたい、そして警告したい。",
+      "trueMotivation": "罪悪感から逃れたい。あの夜の出来事の真相を知りたい。オペレーターの安全を心配している。",
+      "relations": [
+        {
+          "targetCallerId": "hayashi_haruka",
+          "relationType": "Witness",
+          "description": "あの夜の現場を目撃した",
+          "isKnown": true
+        }
+      ],
+      "organizationRelation": "none",
+      "note": "Night03の伏線回収。彼は組織の人間ではなく、ただの通行人だった。しかし良心があり、後悔している。"
     },
     {
       "callerId": "kudo_shinji",

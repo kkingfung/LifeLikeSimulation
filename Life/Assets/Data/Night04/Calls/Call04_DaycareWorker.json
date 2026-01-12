@@ -1,0 +1,469 @@
+{
+  "callId": "call_daycare_worker",
+  "callerId": "daycare_worker",
+  "title": "園児の無断欠席について",
+  "description": "保育士からの電話。担当園児の林美咲が3日間無断欠席しており、母親とも連絡が取れない。美咲の日常を語ることで、Night01の被害者が「誰か大切な人」だったことが浮かび上がる。",
+  "segments": [
+    {
+      "segmentId": "daycare_intro",
+      "callerLines": [
+        "すみません、ひまわり保育園の森田と申します。",
+        "園児のことでご相談したくて...",
+        "連絡が取れなくて、心配で..."
+      ],
+      "responses": [
+        {
+          "responseId": "daycare_intro_listen",
+          "text": "どうされましたか？",
+          "nextSegmentId": "daycare_situation",
+          "setFlags": ["daycare_call_received"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "daycare_intro_emergency",
+          "text": "緊急事態ですか？",
+          "nextSegmentId": "daycare_not_emergency",
+          "setFlags": ["daycare_call_received"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_not_emergency",
+      "callerLines": [
+        "いえ、緊急というほどではないのですが...",
+        "でも、普通じゃないんです。",
+        "3日間、連絡なしで園児が来ていなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "daycare_not_emergency_ask",
+          "text": "詳しく教えてください。",
+          "nextSegmentId": "daycare_situation",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_situation",
+      "callerLines": [
+        "林美咲ちゃんという園児なんですが...",
+        "3日前から無断欠席していて、お母さんにも連絡が取れないんです。",
+        "いつもは、ちゃんと連絡をくれる方なんですよ。"
+      ],
+      "responses": [
+        {
+          "responseId": "situation_misaki_name",
+          "text": "林美咲ちゃん...（その名前...）",
+          "nextSegmentId": "daycare_mother_info",
+          "setFlags": ["daycare_misaki_mentioned", "misaki_identity_confirmed"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresAnyFlag": ["haruka_called_misaki_name", "yoshida_mentioned_misaki"]
+          }
+        },
+        {
+          "responseId": "situation_ask_mother",
+          "text": "お母さんの名前は？",
+          "nextSegmentId": "daycare_mother_name",
+          "setFlags": ["daycare_misaki_mentioned"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "situation_ask_age",
+          "text": "何歳のお子さんですか？",
+          "nextSegmentId": "daycare_child_detail",
+          "setFlags": ["daycare_misaki_mentioned"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_mother_name",
+      "callerLines": [
+        "林遥さんとおっしゃいます。",
+        "シングルマザーで、夜勤のお仕事をされていると聞いています。",
+        "いつも大変そうだけど、美咲ちゃんのことは本当に大切にされていて..."
+      ],
+      "responses": [
+        {
+          "responseId": "mother_name_recognize",
+          "text": "林遥さん...（あの夜の...）",
+          "nextSegmentId": "daycare_haruka_detail",
+          "setFlags": ["haruka_name_confirmed", "haruka_identity_connection"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "dark_hoodie_noted"
+          }
+        },
+        {
+          "responseId": "mother_name_note",
+          "text": "林遥さん。お仕事は何を？",
+          "nextSegmentId": "daycare_haruka_work",
+          "setFlags": ["haruka_name_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_child_detail",
+      "callerLines": [
+        "5歳です。来年、小学校に上がる予定で...",
+        "明るくて元気な子なんですよ。",
+        "お絵かきが大好きで、いつもママの絵を描いてくれて..."
+      ],
+      "responses": [
+        {
+          "responseId": "child_detail_mama",
+          "text": "お母さんのことが好きなんですね。",
+          "nextSegmentId": "daycare_mama_love",
+          "setFlags": ["misaki_personality_known"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "child_detail_mother_name",
+          "text": "お母さんのお名前は？",
+          "nextSegmentId": "daycare_mother_name",
+          "setFlags": ["misaki_personality_known"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_mama_love",
+      "callerLines": [
+        "はい...「ママ、いつもお仕事がんばってるの」って、よく言ってました。",
+        "「夜のお仕事は大変だけど、美咲のためだから」って...",
+        "お母さんの名前は林遥さんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "mama_love_haruka_recognize",
+          "text": "林遥さん...（歩道橋で見つかった女性の名前...）",
+          "nextSegmentId": "daycare_haruka_detail",
+          "setFlags": ["haruka_name_confirmed", "haruka_identity_connection"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "dark_hoodie_noted"
+          }
+        },
+        {
+          "responseId": "mama_love_continue",
+          "text": "そうですか...連絡が取れないんですね。",
+          "nextSegmentId": "daycare_mother_info",
+          "setFlags": ["haruka_name_confirmed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_haruka_work",
+      "callerLines": [
+        "詳しくは聞いていないんですが、夜勤のお仕事だと。",
+        "いつも送り迎えの時、少し疲れた顔をされてましたけど...",
+        "美咲ちゃんと一緒の時はいつも笑顔で。本当に良いお母さんでした。"
+      ],
+      "responses": [
+        {
+          "responseId": "haruka_work_past",
+          "text": "「でした」...？",
+          "nextSegmentId": "daycare_slip",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "haruka_work_continue",
+          "text": "最後に連絡があったのはいつですか？",
+          "nextSegmentId": "daycare_last_contact",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_slip",
+      "callerLines": [
+        "あ...すみません、つい...",
+        "何か悪いことが起きたような気がして...",
+        "3日も連絡がないなんて、遥さんらしくないんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "slip_reassure",
+          "text": "心配されているんですね。最後の連絡はいつでしたか？",
+          "nextSegmentId": "daycare_last_contact",
+          "setFlags": ["daycare_worried"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_mother_info",
+      "callerLines": [
+        "遥さんは本当にしっかりした方で...",
+        "連絡なしに休むなんて、今まで一度もなかったんです。",
+        "何かあったんじゃないかって..."
+      ],
+      "responses": [
+        {
+          "responseId": "mother_info_last",
+          "text": "最後に連絡があったのはいつですか？",
+          "nextSegmentId": "daycare_last_contact",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "mother_info_address",
+          "text": "ご自宅の住所はわかりますか？",
+          "nextSegmentId": "daycare_address",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_haruka_detail",
+      "callerLines": [
+        "遥さん...いつも一生懸命で...",
+        "朝、美咲ちゃんを送ってきた後、夜勤明けで眠そうな顔で...",
+        "それでも美咲ちゃんには笑顔で「いってらっしゃい」って..."
+      ],
+      "responses": [
+        {
+          "responseId": "haruka_detail_feel",
+          "text": "...（この人のことを、私は「被害者」としてしか知らなかった...）",
+          "nextSegmentId": "daycare_last_contact",
+          "setFlags": ["haruka_humanized"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "haruka_detail_continue",
+          "text": "最後に連絡があったのはいつですか？",
+          "nextSegmentId": "daycare_last_contact",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_last_contact",
+      "callerLines": [
+        "3日前の夕方です。「明日は少し遅れるかも」って電話があって...",
+        "でも次の日、美咲ちゃんは来なくて。",
+        "それきり、電話も繋がらないんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "last_contact_3days",
+          "text": "3日前...（あの夜だ...）",
+          "nextSegmentId": "daycare_connection",
+          "setFlags": ["timeline_matches", "night01_connection_confirmed"],
+          "clearFlags": [],
+          "conditions": {
+            "requiresFlag": "dark_hoodie_noted"
+          }
+        },
+        {
+          "responseId": "last_contact_address",
+          "text": "ご自宅の住所はわかりますか？",
+          "nextSegmentId": "daycare_address",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "last_contact_police",
+          "text": "警察に相談されましたか？",
+          "nextSegmentId": "daycare_police_suggestion",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_connection",
+      "callerLines": [
+        "何か...ご存知なんですか？",
+        "遥さんに何かあったんですか？",
+        "お願いです、教えてください..."
+      ],
+      "responses": [
+        {
+          "responseId": "connection_deflect",
+          "text": "...まずは警察にご相談ください。行方不明届を出すことをお勧めします。",
+          "nextSegmentId": "daycare_police_guide",
+          "setFlags": ["deflected_daycare_question"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "connection_hint",
+          "text": "...私からは何も申し上げられませんが、警察に連絡してください。",
+          "nextSegmentId": "daycare_police_guide",
+          "setFlags": ["hinted_to_daycare"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_address",
+      "callerLines": [
+        "はい、○○団地の3号棟だったと思います。",
+        "何度か連絡帳を届けに行ったことがあって...",
+        "美咲ちゃん、私を見ると「森田先生！」って駆け寄ってきてくれて..."
+      ],
+      "responses": [
+        {
+          "responseId": "address_child_memory",
+          "text": "...美咲ちゃんのこと、心配されているんですね。",
+          "nextSegmentId": "daycare_worry_deep",
+          "setFlags": ["misaki_address_known"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "address_police",
+          "text": "警察に相談することをお勧めします。",
+          "nextSegmentId": "daycare_police_suggestion",
+          "setFlags": ["misaki_address_known"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_worry_deep",
+      "callerLines": [
+        "はい...美咲ちゃんは、私のクラスで一番元気な子で...",
+        "「大きくなったらママみたいにお仕事する」って言ってて...",
+        "遥さんがいなくなったら、あの子は..."
+      ],
+      "responses": [
+        {
+          "responseId": "worry_deep_comfort",
+          "text": "まずは警察に連絡してください。行方不明届を出すことができます。",
+          "nextSegmentId": "daycare_police_guide",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_police_suggestion",
+      "callerLines": [
+        "警察...そうですよね...",
+        "でも、大げさかなって思って...",
+        "ただの連絡忘れかもしれないし..."
+      ],
+      "responses": [
+        {
+          "responseId": "police_encourage",
+          "text": "3日間連絡が取れないのは、十分な理由になります。相談してみてください。",
+          "nextSegmentId": "daycare_police_guide",
+          "setFlags": ["encouraged_police_report"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "police_reassure",
+          "text": "大げさではありませんよ。心配なら連絡してください。",
+          "nextSegmentId": "daycare_police_guide",
+          "setFlags": ["encouraged_police_report"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_police_guide",
+      "callerLines": [
+        "わかりました...警察に連絡してみます。",
+        "美咲ちゃんが無事でいてくれれば...",
+        "遥さんも..."
+      ],
+      "responses": [
+        {
+          "responseId": "police_guide_end",
+          "text": "何かわかったら、また連絡してください。",
+          "nextSegmentId": "daycare_end",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "police_guide_misaki",
+          "text": "美咲ちゃんは...きっと大丈夫ですよ。",
+          "nextSegmentId": "daycare_end_hope",
+          "setFlags": ["reassured_daycare"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "daycare_end_hope",
+      "callerLines": [
+        "...ありがとうございます。",
+        "美咲ちゃんに、また会えますように...",
+        "遥さんも、無事でいてくれますように..."
+      ],
+      "responses": [
+        {
+          "responseId": "end_hope_reply",
+          "text": "そう願っています。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "daycare_end",
+      "callerLines": [
+        "はい...ありがとうございました。",
+        "美咲ちゃんが早く帰ってこれますように...",
+        "失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "end_reply",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "daycare_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "haruka_identity_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_identity_connection"
+      },
+      "triggerTiming": "after_call",
+      "content": "林遥...あの夜、歩道橋の下で見つかった女性...彼女には美咲という娘がいた...私は彼女の名前すら知らなかった..."
+    },
+    {
+      "triggerId": "misaki_daycare_thought",
+      "triggerCondition": {
+        "requiresFlag": "misaki_identity_confirmed"
+      },
+      "triggerTiming": "after_call",
+      "content": "美咲ちゃん...あの女性が朦朧としながら呼んでいた名前...保育園で待っている5歳の女の子だったんだ..."
+    },
+    {
+      "triggerId": "haruka_humanized_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_humanized"
+      },
+      "triggerTiming": "after_call",
+      "content": "彼女は「被害者」じゃない。美咲ちゃんのママだった。夜勤明けでも笑顔で送り出していたお母さんだった...私は、彼女のことを何も知らなかった..."
+    },
+    {
+      "triggerId": "timeline_thought",
+      "triggerCondition": {
+        "requiresFlag": "night01_connection_confirmed"
+      },
+      "triggerTiming": "after_call",
+      "content": "3日前の夕方...あの夜だ。彼女は美咲ちゃんのために、何かから逃げていたんだ..."
+    }
+  ],
+  "note": "林遥と美咲を人間として描く重要な通話。保育士という第三者の視点から、被害者が「誰か大切な人」だったことを浮かび上がらせる。Night01でharuka_called_misaki_nameフラグが立っていれば、プレイヤーは名前の一致に気づく。この通話で、プレイヤーは「被害者」ではなく「お母さん」としての林遥を知ることになる。"
+}

@@ -58,7 +58,7 @@
       "description": "警察との同盟関係が築かれた",
       "weight": 3,
       "persistsAcrossNights": true,
-      "note": "山田刑事と連絡を取り合うことに"
+      "note": "高橋刑事と連絡を取り合うことに"
     },
     {
       "flagId": "will_share_info",
@@ -184,7 +184,7 @@
     {
       "flagId": "told_whistleblower_police",
       "category": "Dispatch",
-      "description": "告発者に山田刑事のことを教えた",
+      "description": "告発者に高橋刑事のことを教えた",
       "weight": 3,
       "persistsAcrossNights": true
     },
@@ -252,6 +252,108 @@
       "weight": -2,
       "persistsAcrossNights": true,
       "note": "Night10で受動的なエンディングへ"
+    },
+    {
+      "flagId": "sato_callback_received",
+      "category": "Event",
+      "description": "Night03の佐藤から折り返しの電話があった",
+      "weight": 0,
+      "persistsAcrossNights": false,
+      "note": "Night03の伏線回収"
+    },
+    {
+      "flagId": "sato_recognized",
+      "category": "Event",
+      "description": "オペレーターが佐藤を覚えていた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "reassured_sato",
+      "category": "Alignment",
+      "description": "佐藤を安心させた",
+      "weight": 1,
+      "persistsAcrossNights": false
+    },
+    {
+      "flagId": "sato_noticed_connection",
+      "category": "Evidence",
+      "description": "佐藤が林の名前の繋がりに気づいた",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "sato_saw_haruka_crying",
+      "category": "Evidence",
+      "description": "佐藤が林遥が泣きながら子供を抱きしめていたのを見た",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "遥が逃げていたことの証拠"
+    },
+    {
+      "flagId": "sato_understood_haruka",
+      "category": "Character",
+      "description": "佐藤が林遥が子供を守ろうとしていたことを理解した",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "sato_saw_car",
+      "category": "Evidence",
+      "description": "佐藤があの夜車を見たことが判明",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "sato_confirmed_pursuit",
+      "category": "Evidence",
+      "description": "佐藤の証言で林遥が追われていたことを確認",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "Night01の事故が偶然ではなかったことの証拠"
+    },
+    {
+      "flagId": "sato_warned_operator",
+      "category": "Event",
+      "description": "佐藤がオペレーターに注意するよう警告した",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "confirmed_haruka_mother_to_sato",
+      "category": "Disclosure",
+      "description": "佐藤に林遥が母親だったことを伝えた",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "told_sato_misaki_safe",
+      "category": "Disclosure",
+      "description": "佐藤に美咲が安全だと伝えた",
+      "weight": 1,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "sato_conscience_eased",
+      "category": "Character",
+      "description": "佐藤の良心が救われた",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "通行人の善意と後悔"
+    },
+    {
+      "flagId": "sato_will_testify",
+      "category": "Event",
+      "description": "佐藤が必要なら証言すると言った",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "sato_requested_protection",
+      "category": "Alignment",
+      "description": "佐藤がオペレーターに美咲を守るよう頼んだ",
+      "weight": 1,
+      "persistsAcrossNights": true
     }
   ],
   "mutualExclusionRules": [

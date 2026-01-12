@@ -135,18 +135,67 @@
         {
           "responseId": "discovery_description_note",
           "text": "暗いパーカー、自転車。わかりました。現場で待機していてください。",
-          "nextSegmentId": "discovery_wait",
+          "nextSegmentId": "discovery_victim_speaking",
           "setFlags": ["dark_hoodie_noted", "bicycle_noted"],
           "clearFlags": []
         },
         {
           "responseId": "discovery_description_ask",
           "text": "他に何か気づいたことはありますか？",
-          "nextSegmentId": "discovery_witness",
+          "nextSegmentId": "discovery_victim_speaking",
           "setFlags": ["dark_hoodie_noted", "bicycle_noted"],
           "clearFlags": []
         }
       ]
+    },
+    {
+      "segmentId": "discovery_victim_speaking",
+      "callerLines": [
+        "あ、今...この女性、何か言ってます。",
+        "意識が戻ったのかな...いや、朦朧としてる感じですけど...",
+        "同じ言葉を繰り返してて..."
+      ],
+      "responses": [
+        {
+          "responseId": "victim_speaking_ask",
+          "text": "何と言っていますか？",
+          "nextSegmentId": "discovery_misaki_name",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "victim_speaking_ambulance",
+          "text": "救急隊がもうすぐ着きます。そのまま見守っていてください。",
+          "nextSegmentId": "discovery_misaki_name",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "discovery_misaki_name",
+      "callerLines": [
+        "『みさき』...『みさき』って。",
+        "誰かの名前でしょうか...子供の名前みたいな...",
+        "『みさきを...お願い...』って言ってるみたいです。"
+      ],
+      "responses": [
+        {
+          "responseId": "misaki_name_note",
+          "text": "みさき...記録しました。その方に関係のある人かもしれません。",
+          "nextSegmentId": "discovery_witness",
+          "setFlags": ["haruka_called_misaki_name", "victim_has_dependent"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "misaki_name_comfort",
+          "text": "大丈夫です、救急隊が来ますから。",
+          "nextSegmentId": "discovery_witness",
+          "setFlags": ["haruka_called_misaki_name"],
+          "clearFlags": []
+        }
+      ],
+      "note": "林遥が意識朦朧の中で美咲の名前を呼ぶ。Night05で美咲が登場した時、プレイヤーは「あの時の名前だ」と気づく。"
     },
     {
       "segmentId": "discovery_witness",
@@ -226,5 +275,24 @@
       "isEnding": true
     }
   ],
-  "startSegmentId": "discovery_intro"
+  "startSegmentId": "discovery_intro",
+  "operatorThoughts": [
+    {
+      "triggerId": "misaki_name_thought",
+      "triggerCondition": {
+        "requiresFlag": "haruka_called_misaki_name"
+      },
+      "triggerTiming": "after_call",
+      "content": "『みさき』...この人には誰か大切な人がいるんだ...無事に助かってほしい..."
+    },
+    {
+      "triggerId": "dependent_worry_thought",
+      "triggerCondition": {
+        "requiresFlag": "victim_has_dependent"
+      },
+      "triggerTiming": "after_call",
+      "content": "『みさきをお願い』...子供の名前だろうか...この人が意識を失ったら、その子は..."
+    }
+  ],
+  "note": "被害者発見の通話。林遥が意識朦朧の中で『みさき』と呼ぶシーンを追加。Night05で美咲が登場した時、プレイヤーは接続に気づく。"
 }

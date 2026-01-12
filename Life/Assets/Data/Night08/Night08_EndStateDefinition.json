@@ -54,8 +54,8 @@
       "told_police_plate",
       "mentioned_kenji_to_police",
       "police_knows_connection",
-      "heard_about_sister",
-      "haruka_mari_sisters_confirmed",
+      "heard_about_friend",
+      "haruka_mari_friends_confirmed",
       "heard_about_kenji_secret",
       "heard_about_protect",
       "kenji_knew_something",
@@ -109,7 +109,7 @@
     {
       "endingId": "ending_informed_caution",
       "title": "慎重な知識",
-      "description": "多くのことを知った。遥と真理が姉妹だったこと。健二が何かを知っていたこと。\n\nでも、組織の警告を受け入れた。「賢い選択」だと言われた。\n\n知っている。でも、動けない。それが今の私にできる精一杯。",
+      "description": "多くのことを知った。遥と真理が親友だったこと。健二が何かを知っていたこと。\n\nでも、組織の警告を受け入れた。「賢い選択」だと言われた。\n\n知っている。でも、動けない。それが今の私にできる精一杯。",
       "endingType": "InformedCaution"
     },
     {
@@ -149,8 +149,8 @@
   },
   "foreshadowingPayoff": [
     {
-      "id": "sisters_reveal",
-      "description": "遥と真理が姉妹であることの判明",
+      "id": "friendship_reveal",
+      "description": "遥と真理が親友であることの判明",
       "plantedNight": "Night01-05",
       "payoff": "吉田の電話で明らかになる"
     },

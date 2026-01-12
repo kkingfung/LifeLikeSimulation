@@ -285,6 +285,67 @@
       "weight": 3,
       "persistsAcrossNights": true,
       "note": "警備会社の制服と同じ素材。Night08で判明。"
+    },
+    {
+      "flagId": "mari_knows_haruka",
+      "category": "Character",
+      "description": "真理が林遥を知っていると判明",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "promised_to_protect_misaki",
+      "category": "Alignment",
+      "description": "オペレーターが美咲を守ると約束した",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "物語の重要な転換点"
+    },
+    {
+      "flagId": "haruka_came_to_mari",
+      "category": "Character",
+      "description": "あの夜、遥が美咲を真理に託しに来たことが判明",
+      "weight": 3,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "haruka_last_words_connected",
+      "category": "Foreshadowing",
+      "description": "Night01の「みさきをお願い」が真理に託した言葉だと判明",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "haruka_called_misaki_nameが必要。Night01の伏線回収"
+    },
+    {
+      "flagId": "haruka_sacrifice_known",
+      "category": "Character",
+      "description": "林遥が美咲のために犠牲になったことが判明",
+      "weight": 3,
+      "persistsAcrossNights": true,
+      "note": "林遥の物語の核心"
+    },
+    {
+      "flagId": "mari_last_words_heard",
+      "category": "Event",
+      "description": "真理の最後の言葉を聞いた",
+      "weight": 2,
+      "persistsAcrossNights": true
+    },
+    {
+      "flagId": "mari_mentioned_haruka_sacrifice",
+      "category": "Character",
+      "description": "真理が遥の犠牲について言及した（切断ルート）",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "yoshida_will_warn_mariなしルート"
+    },
+    {
+      "flagId": "mari_apologized_to_haruka",
+      "category": "Character",
+      "description": "真理が遥に謝罪した（美咲を守れなかった）",
+      "weight": 2,
+      "persistsAcrossNights": true,
+      "note": "yoshida_will_warn_mariなしルートで美咲も連れ去られる場合"
     }
   ],
   "mutualExclusionRules": [

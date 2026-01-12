@@ -155,3 +155,83 @@ MonoBehaviour:
     fadeInDuration: 0.5
     fadeOutDuration: 0.5
     priority: 0
+  - thoughtId: haruka_identity_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u6797\u9065...\u3042\u306E\u591C\u3001\u6B69\u9053\u6A4B\u306E\u4E0B\u3067\u898B\u3064\u304B\u3063\u305F\u5973\u6027...\u5F7C\u5973\u306B\u306F\u7F8E\u54B2\u3068\u3044\u3046\u5A18\u304C\u3044\u305F...\u79C1\u306F\u5F7C\u5973\u306E\u540D\u524D\u3059\u3089\u77E5\u3089\u306A\u304B\u3063\u305F..."
+    note: 'From call: call_daycare_worker'
+    timing: 0
+    relatedCallId: call_daycare_worker
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: haruka_identity_connection
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: misaki_daycare_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u7F8E\u54B2\u3061\u3083\u3093...\u3042\u306E\u5973\u6027\u304C\u6726\u6727\u3068\u3057\u306A\u304C\u3089\u547C\u3093\u3067\u3044\u305F\u540D\u524D...\u4FDD\u80B2\u5712\u3067\u5F85\u3063\u3066\u3044\u308B5\u6B73\u306E\u5973\u306E\u5B50\u3060\u3063\u305F\u3093\u3060..."
+    note: 'From call: call_daycare_worker'
+    timing: 0
+    relatedCallId: call_daycare_worker
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: misaki_identity_confirmed
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: haruka_humanized_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u5F7C\u5973\u306F\u300C\u88AB\u5BB3\u8005\u300D\u3058\u3083\u306A\u3044\u3002\u7F8E\u54B2\u3061\u3083\u3093\u306E\u30DE\u30DE\u3060\u3063\u305F\u3002\u591C\u52E4\u660E\u3051\u3067\u3082\u7B11\u9854\u3067\u9001\u308A\u51FA\u3057\u3066\u3044\u305F\u304A\u6BCD\u3055\u3093\u3060\u3063\u305F...\u79C1\u306F\u3001\u5F7C\u5973\u306E\u3053\u3068\u3092\u4F55\u3082\u77E5\u3089\u306A\u304B\u3063\u305F..."
+    note: 'From call: call_daycare_worker'
+    timing: 0
+    relatedCallId: call_daycare_worker
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: haruka_humanized
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: timeline_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "3\u65E5\u524D\u306E\u5915\u65B9...\u3042\u306E\u591C\u3060\u3002\u5F7C\u5973\u306F\u7F8E\u54B2\u3061\u3083\u3093\u306E\u305F\u3081\u306B\u3001\u4F55\u304B\u304B\u3089\u9003\u3052\u3066\u3044\u305F\u3093\u3060..."
+    note: 'From call: call_daycare_worker'
+    timing: 0
+    relatedCallId: call_daycare_worker
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: night01_connection_confirmed
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0

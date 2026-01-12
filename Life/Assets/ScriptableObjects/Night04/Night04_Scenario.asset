@@ -33,6 +33,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b17ac613fe0a3b34881a2b5968408f3b, type: 2}
   - {fileID: 11400000, guid: 48d1494831fb5094a8ed21c861fbbbc0, type: 2}
   - {fileID: 11400000, guid: 2627bd77ccf8f1247bcdd3ce31dd0aab, type: 2}
+  - {fileID: 11400000, guid: 48ef7f43ff7144c43ae072248caca3cd, type: 2}
+  - {fileID: 11400000, guid: b395de8a4fdabae40afdcd1dc013fb7f, type: 2}
+  - {fileID: 11400000, guid: d6689bd7918324345b1958bafcc84a49, type: 2}
   initialWorldStates:
   - stateId: hayashi_kenji_killed
     description: "\u6797\u5065\u4E8C\uFF08\u507D\u5144\uFF09\u304C\u7D44\u7E54\u306B\u6BBA\u3055\u308C\u305F\u3002\u6797\u9065\u3092\u898B\u3064\u3051\u3089\u308C\u306A\u304B\u3063\u305F\u305F\u3081\u300C\u51E6\u5206\u300D\u3055\u308C\u305F\u3002"

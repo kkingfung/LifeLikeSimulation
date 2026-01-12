@@ -14,4 +14,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.OperatorThoughtsDefinition
   nightId: night_01
   description: "Night01\u306E\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u601D\u8003"
-  thoughts: []
+  thoughts:
+  - thoughtId: misaki_name_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u300E\u307F\u3055\u304D\u300F...\u3053\u306E\u4EBA\u306B\u306F\u8AB0\u304B\u5927\u5207\u306A\u4EBA\u304C\u3044\u308B\u3093\u3060...\u7121\u4E8B\u306B\u52A9\u304B\u3063\u3066\u307B\u3057\u3044..."
+    note: 'From call: call_discovery'
+    timing: 0
+    relatedCallId: call_discovery
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: haruka_called_misaki_name
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: dependent_worry_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u300E\u307F\u3055\u304D\u3092\u304A\u9858\u3044\u300F...\u5B50\u4F9B\u306E\u540D\u524D\u3060\u308D\u3046\u304B...\u3053\u306E\u4EBA\u304C\u610F\u8B58\u3092\u5931\u3063\u305F\u3089\u3001\u305D\u306E\u5B50\u306F..."
+    note: 'From call: call_discovery'
+    timing: 0
+    relatedCallId: call_discovery
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: victim_has_dependent
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0

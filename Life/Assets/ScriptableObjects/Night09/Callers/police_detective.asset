@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: police_detective
   m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.CallerData
   callerId: police_detective
-  displayName: "\u5C71\u7530\u5211\u4E8B"
+  displayName: "\u9AD8\u6A4B\u5211\u4E8B"
   phoneNumber: "\u975E\u901A\u77E5"
-  realName: "\u5C71\u7530\uFF08\u25CB\u25CB\u7F72\uFF09"
+  realName: "\u9AD8\u6A4B\uFF08\u25CB\u25CB\u7F72\uFF09"
   description: "Night08\u304B\u3089\u7D99\u7D9A\u3002\u771F\u7406\u306E\u884C\u65B9\u4E0D\u660E\u3068\u4E2D\u6751\u306E\u4EF6\u3092\u635C\u67FB\u3057\u3066\u3044\u308B\u3002\u8AA0\u548C\u88FD\u85AC\u3068\u306E\u7E4B\u304C\u308A\u306B\u6C17\u3065\u3044\u3066\u3044\u308B\u3002"
   silhouetteImage: {fileID: 0}
   revealedImage: {fileID: 0}
