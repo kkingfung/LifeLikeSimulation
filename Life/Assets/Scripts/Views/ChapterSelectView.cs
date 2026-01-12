@@ -5,6 +5,7 @@ using LifeLike.Controllers;
 using LifeLike.Core.Services;
 using LifeLike.Data;
 using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Audio;
 using LifeLike.Services.Core.Localization;
 using LifeLike.UI;
 using LifeLike.UI.Effects;
@@ -64,6 +65,7 @@ namespace LifeLike.Views
 
         private ChapterSelectViewModel? _viewModel;
         private ILocalizationService? _localizationService;
+        private IAudioService? _audioService;
         private readonly List<GameObject> _chapterNodes = new();
         private readonly Dictionary<string, Button> _chapterButtons = new();
         private GameObject? _crtOverlay;
@@ -90,6 +92,9 @@ namespace LifeLike.Views
             {
                 _localizationService.OnLanguageChanged += OnLanguageChanged;
             }
+
+            // オーディオサービスを取得
+            _audioService = ServiceLocator.Instance.Get<IAudioService>();
         }
 
         /// <summary>
@@ -136,6 +141,9 @@ namespace LifeLike.Views
 
             // ローカライズテキストを適用
             ApplyLocalizedTexts();
+
+            // BGMを停止
+            _audioService?.StopBgm();
         }
 
         /// <summary>

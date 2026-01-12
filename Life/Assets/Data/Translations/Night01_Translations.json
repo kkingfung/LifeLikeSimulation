@@ -1,0 +1,242 @@
+{
+  "scenarioId": "night01",
+  "title": {
+    "ja": "第一夜：深夜の通報",
+    "en": "Night 1: Midnight Calls",
+    "zh_CN": "第一夜：深夜的报警",
+    "zh_TW": "第一夜：深夜的報警",
+    "ko": "첫째 밤: 한밤중의 신고"
+  },
+  "description": {
+    "ja": "静かな夜勤、最初の事件",
+    "en": "A quiet night shift, the first incident",
+    "zh_CN": "寂静的夜班，第一起事件",
+    "zh_TW": "寂靜的夜班，第一起事件",
+    "ko": "조용한 야간 근무, 첫 번째 사건"
+  },
+  "callers": [
+    {"callerId": "suzuki_takashi", "displayName": {"ja": "鈴木隆志", "en": "Takashi Suzuki", "zh_CN": "铃木隆志", "zh_TW": "鈴木隆志", "ko": "스즈키 타카시"}},
+    {"callerId": "nakamura_kenta", "displayName": {"ja": "中村健太", "en": "Kenta Nakamura", "zh_CN": "中村健太", "zh_TW": "中村健太", "ko": "나카무라 켄타"}},
+    {"callerId": "sato_koji", "displayName": {"ja": "佐藤浩二", "en": "Koji Sato", "zh_CN": "佐藤浩二", "zh_TW": "佐藤浩二", "ko": "사토 코지"}},
+    {"callerId": "tanaka_mamoru", "displayName": {"ja": "田中守", "en": "Mamoru Tanaka", "zh_CN": "田中守", "zh_TW": "田中守", "ko": "다나카 마모루"}},
+    {"callerId": "yamada_misaki", "displayName": {"ja": "山田美咲", "en": "Misaki Yamada", "zh_CN": "山田美咲", "zh_TW": "山田美咲", "ko": "야마다 미사키"}},
+    {"callerId": "hayashi_kenji", "displayName": {"ja": "林健二", "en": "Kenji Hayashi", "zh_CN": "林健二", "zh_TW": "林健二", "ko": "하야시 켄지"}},
+    {"callerId": "kudo_shinji", "displayName": {"ja": "工藤真治", "en": "Shinji Kudo", "zh_CN": "工藤真治", "zh_TW": "工藤真治", "ko": "쿠도 신지"}}
+  ],
+  "calls": [
+    {
+      "callId": "call_noise",
+      "title": {"ja": "大きな音がしたんです", "en": "I Heard a Loud Noise", "zh_CN": "我听到很大的声音", "zh_TW": "我聽到很大的聲音", "ko": "큰 소리가 났어요"},
+      "segments": [
+        {"segmentId": "noise_intro", "callerLines": [
+          {"ja": "...もしもし、あの、すみません。", "en": "...Hello, um, excuse me.", "zh_CN": "...喂，那个，打扰了。", "zh_TW": "...喂，那個，打擾了。", "ko": "...여보세요, 저기, 죄송합니다."},
+          {"ja": "夜分遅くに申し訳ないんですが...", "en": "I'm sorry to call so late at night...", "zh_CN": "这么晚打电话很抱歉...", "zh_TW": "這麼晚打電話很抱歉...", "ko": "이렇게 늦은 시간에 죄송합니다만..."},
+          {"ja": "さっき、大きな音がしたんです。", "en": "I just heard a loud noise.", "zh_CN": "刚才，有很大的声响。", "zh_TW": "剛才，有很大的聲響。", "ko": "방금, 큰 소리가 났어요."}
+        ], "responses": [
+          {"responseId": "noise_intro_listen", "displayText": {"ja": "緊急通報センターです。大きな音とは、どのような音でしたか？", "en": "Emergency call center. What kind of noise was it?", "zh_CN": "紧急呼叫中心。是什么样的声音？", "zh_TW": "緊急呼叫中心。是什麼樣的聲音？", "ko": "긴급 신고 센터입니다. 어떤 종류의 소리였습니까?"}},
+          {"responseId": "noise_intro_location", "displayText": {"ja": "緊急通報センターです。どちらでお聞きになりましたか？", "en": "Emergency call center. Where did you hear it?", "zh_CN": "紧急呼叫中心。您在哪里听到的？", "zh_TW": "緊急呼叫中心。您在哪裡聽到的？", "ko": "긴급 신고 센터입니다. 어디서 들으셨습니까?"}},
+          {"responseId": "noise_intro_dismiss", "displayText": {"ja": "緊急通報センターです。何時頃のことですか？", "en": "Emergency call center. What time was this?", "zh_CN": "紧急呼叫中心。大约几点的事？", "zh_TW": "緊急呼叫中心。大約幾點的事？", "ko": "긴급 신고 센터입니다. 몇 시쯤 일입니까?"}}
+        ]},
+        {"segmentId": "noise_detail", "callerLines": [
+          {"ja": "車の...ぶつかるような音だったと思います。", "en": "I think it was... like a car crash.", "zh_CN": "我觉得是...像汽车撞击的声音。", "zh_TW": "我覺得是...像汽車撞擊的聲音。", "ko": "차가... 부딪히는 것 같은 소리였던 것 같아요."},
+          {"ja": "ドンって。すごく大きな音で。", "en": "A big thump. A really loud noise.", "zh_CN": "砰的一声。非常大的声音。", "zh_TW": "砰的一聲。非常大的聲音。", "ko": "쿵 하고. 아주 큰 소리였어요."},
+          {"ja": "でも、窓から見ても何も見えなくて...", "en": "But I couldn't see anything from the window...", "zh_CN": "但是，从窗户看什么也看不到...", "zh_TW": "但是，從窗戶看什麼也看不到...", "ko": "하지만, 창문으로 봐도 아무것도 안 보이고..."}
+        ], "responses": [
+          {"responseId": "noise_detail_location", "displayText": {"ja": "車の衝突音ですね。どの辺りから聞こえましたか？", "en": "A car collision sound. Where did it come from?", "zh_CN": "是汽车碰撞的声音。是从哪个方向传来的？", "zh_TW": "是汽車碰撞的聲音。是從哪個方向傳來的？", "ko": "차 충돌 소리군요. 어디서 들렸습니까?"}},
+          {"responseId": "noise_detail_time", "displayText": {"ja": "何時頃のことですか？", "en": "What time was this?", "zh_CN": "大约几点的事？", "zh_TW": "大約幾點的事？", "ko": "몇 시쯤 일입니까?"}}
+        ]},
+        {"segmentId": "noise_location", "callerLines": [
+          {"ja": "歩道橋の方からです。", "en": "From the direction of the footbridge.", "zh_CN": "从人行天桥那边传来的。", "zh_TW": "從人行天橋那邊傳來的。", "ko": "육교 쪽에서요."},
+          {"ja": "国道沿いの...うちからだと北の方になります。", "en": "Along the highway... north from my house.", "zh_CN": "国道沿线...从我家来看是北边。", "zh_TW": "國道沿線...從我家來看是北邊。", "ko": "국도변의... 저희 집에서는 북쪽이 됩니다."},
+          {"ja": "300メートルくらい先ですかね。", "en": "About 300 meters away, I think.", "zh_CN": "大概300米远吧。", "zh_TW": "大概300公尺遠吧。", "ko": "300미터 정도 앞쪽일까요."}
+        ], "responses": [
+          {"responseId": "noise_location_time", "displayText": {"ja": "歩道橋の方ですね。何時頃のことでしたか？", "en": "Near the footbridge. What time was this?", "zh_CN": "是人行天桥那边。大约是几点的事？", "zh_TW": "是人行天橋那邊。大約是幾點的事？", "ko": "육교 쪽이군요. 몇 시쯤 일이었습니까?"}},
+          {"responseId": "noise_location_confirm", "displayText": {"ja": "歩道橋...国道沿いですね。他に何か気づいたことはありますか？", "en": "The footbridge... along the highway. Did you notice anything else?", "zh_CN": "人行天桥...在国道沿线。还有注意到其他什么吗？", "zh_TW": "人行天橋...在國道沿線。還有注意到其他什麼嗎？", "ko": "육교... 국도변이군요. 다른 눈에 띄는 것이 있었습니까?"}}
+        ]},
+        {"segmentId": "noise_time", "callerLines": [
+          {"ja": "2時15分...いや、17分くらいだったと思います。", "en": "2:15... no, I think it was around 2:17.", "zh_CN": "2点15分...不，大概是17分左右。", "zh_TW": "2點15分...不，大概是17分左右。", "ko": "2시 15분... 아니, 17분쯤이었던 것 같아요."},
+          {"ja": "時計を見たので。", "en": "I checked the clock.", "zh_CN": "我看了时钟。", "zh_TW": "我看了時鐘。", "ko": "시계를 봤거든요."},
+          {"ja": "不眠症でして、この時間に起きてることが多いんです。", "en": "I have insomnia, so I'm often awake at this hour.", "zh_CN": "我有失眠症，这个时间经常醒着。", "zh_TW": "我有失眠症，這個時間經常醒著。", "ko": "불면증이 있어서, 이 시간에 깨어 있을 때가 많아요."}
+        ], "responses": [
+          {"responseId": "noise_time_location", "displayText": {"ja": "2時17分頃ですね。どの辺りから聞こえましたか？", "en": "Around 2:17. Where did the sound come from?", "zh_CN": "大约2点17分。是从哪个方向传来的？", "zh_TW": "大約2點17分。是從哪個方向傳來的？", "ko": "2시 17분쯤이군요. 어디서 들렸습니까?"}},
+          {"responseId": "noise_time_thanks", "displayText": {"ja": "情報ありがとうございます。確認してみます。", "en": "Thank you for the information. We'll look into it.", "zh_CN": "谢谢您的信息。我们会确认一下。", "zh_TW": "謝謝您的資訊。我們會確認一下。", "ko": "정보 감사합니다. 확인해 보겠습니다."}},
+          {"responseId": "noise_time_dismiss", "displayText": {"ja": "そうですか。何かあればまたお電話ください。", "en": "I see. Please call again if anything comes up.", "zh_CN": "是吗。如有需要请再打电话。", "zh_TW": "是嗎。如有需要請再打電話。", "ko": "그렇습니까. 무슨 일이 있으면 다시 전화해 주세요."}}
+        ]},
+        {"segmentId": "noise_end_helpful", "callerLines": [
+          {"ja": "ありがとうございます。", "en": "Thank you.", "zh_CN": "谢谢。", "zh_TW": "謝謝。", "ko": "감사합니다."},
+          {"ja": "何もなければいいんですけど...", "en": "I hope it's nothing serious...", "zh_CN": "希望没什么事...", "zh_TW": "希望沒什麼事...", "ko": "아무 일도 아니면 좋겠는데..."},
+          {"ja": "お仕事頑張ってください。おやすみなさい。", "en": "Good luck with your work. Good night.", "zh_CN": "工作加油。晚安。", "zh_TW": "工作加油。晚安。", "ko": "일 힘내세요. 안녕히 주무세요."}
+        ], "responses": [
+          {"responseId": "noise_end_helpful_reply", "displayText": {"ja": "おやすみなさい。ご連絡ありがとうございました。", "en": "Good night. Thank you for calling.", "zh_CN": "晚安。感谢您的来电。", "zh_TW": "晚安。感謝您的來電。", "ko": "안녕히 주무세요. 연락 감사드립니다."}}
+        ]},
+        {"segmentId": "noise_end_dismissed", "callerLines": [
+          {"ja": "あ、はい...", "en": "Oh, okay...", "zh_CN": "啊，好的...", "zh_TW": "啊，好的...", "ko": "아, 네..."},
+          {"ja": "すみませんでした。失礼します。", "en": "I'm sorry to bother you. Goodbye.", "zh_CN": "抱歉打扰了。再见。", "zh_TW": "抱歉打擾了。再見。", "ko": "죄송했습니다. 실례합니다."}
+        ], "responses": [
+          {"responseId": "noise_end_dismissed_reply", "displayText": {"ja": "失礼します。", "en": "Goodbye.", "zh_CN": "再见。", "zh_TW": "再見。", "ko": "실례합니다."}}
+        ]}
+      ]
+    },
+    {
+      "callId": "call_shift",
+      "title": {"ja": "シフトに来ない", "en": "No-Show at Work", "zh_CN": "没来上班", "zh_TW": "沒來上班", "ko": "출근을 안 했어요"},
+      "segments": [
+        {"segmentId": "shift_intro", "callerLines": [
+          {"ja": "もしもし、緊急通報センターですか？", "en": "Hello, is this the emergency call center?", "zh_CN": "喂，是紧急呼叫中心吗？", "zh_TW": "喂，是緊急呼叫中心嗎？", "ko": "여보세요, 긴급 신고 센터입니까?"},
+          {"ja": "あの、物流センターの中村といいます。シフト主任をしてるんですが。", "en": "I'm Nakamura from the logistics center. I'm the shift supervisor.", "zh_CN": "我是物流中心的中村，轮班主管。", "zh_TW": "我是物流中心的中村，輪班主管。", "ko": "저기, 물류센터의 나카무라입니다. 시프트 주임을 맡고 있는데요."},
+          {"ja": "うちの従業員が今夜のシフトに来てなくて...", "en": "One of our employees didn't show up for tonight's shift...", "zh_CN": "我们的员工今晚没来上班...", "zh_TW": "我們的員工今晚沒來上班...", "ko": "저희 직원이 오늘 밤 시프트에 안 왔어요..."}
+        ], "responses": [
+          {"responseId": "shift_intro_listen", "displayText": {"ja": "はい、お話をお聞きします。従業員の方が出勤されていないのですね。", "en": "Yes, I'm listening. So an employee hasn't come to work?", "zh_CN": "好的，请说。员工没来上班是吗？", "zh_TW": "好的，請說。員工沒來上班是嗎？", "ko": "네, 말씀해 주세요. 직원분이 출근을 안 하셨군요."}},
+          {"responseId": "shift_intro_clarify", "displayText": {"ja": "緊急通報センターです。無断欠勤のご報告でしょうか？", "en": "Emergency call center. Are you reporting an unexcused absence?", "zh_CN": "紧急呼叫中心。您是要报告无故缺勤吗？", "zh_TW": "緊急呼叫中心。您是要報告無故缺勤嗎？", "ko": "긴급 신고 센터입니다. 무단결근 신고이십니까?"}}
+        ]},
+        {"segmentId": "shift_detail", "callerLines": [
+          {"ja": "林遥っていう子なんですが、27歳の女性です。", "en": "Her name is Haruka Hayashi, a 27-year-old woman.", "zh_CN": "叫林遥，27岁女性。", "zh_TW": "叫林遙，27歲女性。", "ko": "하야시 하루카라는 아이인데요, 27세 여성입니다."},
+          {"ja": "普段は真面目で、連絡なしに休むような子じゃないんです。", "en": "She's usually responsible and wouldn't miss work without notice.", "zh_CN": "她平时很认真，不会不打招呼就不来。", "zh_TW": "她平時很認真，不會不打招呼就不來。", "ko": "평소에 성실하고, 연락 없이 결근할 아이가 아니에요."},
+          {"ja": "電話も繋がらなくて...何かあったんじゃないかと。", "en": "Her phone isn't connecting... I'm worried something happened.", "zh_CN": "电话也打不通...担心是不是出了什么事。", "zh_TW": "電話也打不通...擔心是不是出了什麼事。", "ko": "전화도 안 되고... 무슨 일이 있는 게 아닌가 싶어서요."}
+        ], "responses": [
+          {"responseId": "shift_detail_note", "displayText": {"ja": "林遥さん、27歳女性ですね。最後に連絡があったのはいつですか？", "en": "Haruka Hayashi, 27-year-old female. When did you last hear from her?", "zh_CN": "林遥，27岁女性。最后一次联系是什么时候？", "zh_TW": "林遙，27歲女性。最後一次聯繫是什麼時候？", "ko": "하야시 하루카 씨, 27세 여성이시군요. 마지막으로 연락이 온 건 언제입니까?"}},
+          {"responseId": "shift_detail_redirect", "displayText": {"ja": "まだ数時間ですので、警察への届け出をお勧めします。", "en": "It's only been a few hours. I recommend filing a report with the police.", "zh_CN": "才过了几个小时，建议您向警察报案。", "zh_TW": "才過了幾個小時，建議您向警察報案。", "ko": "아직 몇 시간밖에 안 됐으니, 경찰에 신고하시는 것을 권합니다."}}
+        ]}
+      ]
+    },
+    {
+      "callId": "call_coworker",
+      "title": {"ja": "林さんのことで", "en": "About Ms. Hayashi", "zh_CN": "关于林小姐的事", "zh_TW": "關於林小姐的事", "ko": "하야시 씨 건으로"},
+      "segments": [
+        {"segmentId": "coworker_intro", "callerLines": [
+          {"ja": "もしもし、緊急通報センターですか。", "en": "Hello, is this the emergency call center?", "zh_CN": "喂，是紧急呼叫中心吗。", "zh_TW": "喂，是緊急呼叫中心嗎。", "ko": "여보세요, 긴급 신고 센터입니까."},
+          {"ja": "すみません、佐藤といいます。", "en": "Sorry, my name is Sato.", "zh_CN": "抱歉，我叫佐藤。", "zh_TW": "抱歉，我叫佐藤。", "ko": "죄송합니다, 사토라고 합니다."},
+          {"ja": "友人の林遥のことで...連絡が取れなくて心配してるんです。", "en": "It's about my friend Haruka Hayashi... I can't reach her and I'm worried.", "zh_CN": "是关于我朋友林遥的事...联系不上她，很担心。", "zh_TW": "是關於我朋友林遙的事...聯繫不上她，很擔心。", "ko": "친구 하야시 하루카 건인데요... 연락이 안 돼서 걱정이에요."}
+        ], "responses": [
+          {"responseId": "coworker_intro_listen", "displayText": {"ja": "林遥さんのご友人ですね。どういった状況でしょうか？", "en": "You're Ms. Hayashi's friend. What's the situation?", "zh_CN": "您是林遥的朋友。是什么情况？", "zh_TW": "您是林遙的朋友。是什麼情況？", "ko": "하야시 하루카 씨의 친구분이시군요. 어떤 상황인가요?"}},
+          {"responseId": "coworker_intro_clarify", "displayText": {"ja": "緊急通報センターです。何かあったのですか？", "en": "Emergency call center. Did something happen?", "zh_CN": "紧急呼叫中心。发生什么事了吗？", "zh_TW": "緊急呼叫中心。發生什麼事了嗎？", "ko": "긴급 신고 센터입니다. 무슨 일이 있었습니까?"}}
+        ]}
+      ]
+    },
+    {
+      "callId": "call_discovery",
+      "title": {"ja": "歩道橋の下で", "en": "Under the Footbridge", "zh_CN": "人行天桥下", "zh_TW": "人行天橋下", "ko": "육교 아래에서"},
+      "segments": [
+        {"segmentId": "discovery_intro", "callerLines": [
+          {"ja": "緊急通報センターですか。", "en": "Is this the emergency call center?", "zh_CN": "是紧急呼叫中心吗。", "zh_TW": "是緊急呼叫中心嗎。", "ko": "긴급 신고 센터입니까."},
+          {"ja": "田中です。近くの工場で夜間警備をしている者ですが。", "en": "I'm Tanaka. I work night security at a nearby factory.", "zh_CN": "我是田中，在附近工厂做夜间保安。", "zh_TW": "我是田中，在附近工廠做夜間保安。", "ko": "다나카입니다. 근처 공장에서 야간 경비를 하고 있는데요."},
+          {"ja": "国道沿いの歩道橋の下で...人が倒れているようなんです。", "en": "Under the footbridge along the highway... someone seems to be lying there.", "zh_CN": "国道边的人行天桥下...好像有人倒着。", "zh_TW": "國道邊的人行天橋下...好像有人倒著。", "ko": "국도변 육교 아래에서... 사람이 쓰러져 있는 것 같아요."}
+        ], "responses": [
+          {"responseId": "discovery_intro_dispatch", "displayText": {"ja": "すぐに救急を手配します。場所を教えてください。", "en": "I'll dispatch an ambulance immediately. Please give me the location.", "zh_CN": "我马上派救护车。请告诉我地点。", "zh_TW": "我馬上派救護車。請告訴我地點。", "ko": "바로 구급차를 보내겠습니다. 위치를 알려주세요."}},
+          {"responseId": "discovery_intro_confirm", "displayText": {"ja": "人が倒れている？詳しく教えてください。", "en": "Someone collapsed? Please tell me more.", "zh_CN": "有人倒下？请详细说明。", "zh_TW": "有人倒下？請詳細說明。", "ko": "사람이 쓰러져 있다고요? 자세히 말씀해 주세요."}}
+        ]},
+        {"segmentId": "discovery_victim_speaking", "callerLines": [
+          {"ja": "あ、今...この女性、何か言ってます。", "en": "Oh, she's... she's saying something.", "zh_CN": "啊，现在...这位女士在说什么。", "zh_TW": "啊，現在...這位女士在說什麼。", "ko": "아, 지금... 이 여자분이 뭔가 말하고 있어요."},
+          {"ja": "意識が戻ったのかな...いや、朦朧としてる感じですけど...", "en": "Did she regain consciousness... no, she seems dazed...", "zh_CN": "恢复意识了吗...不，看起来很恍惚...", "zh_TW": "恢復意識了嗎...不，看起來很恍惚...", "ko": "의식이 돌아온 건가... 아니, 몽롱한 것 같은데..."},
+          {"ja": "同じ言葉を繰り返してて...", "en": "She keeps repeating the same words...", "zh_CN": "一直重复同样的话...", "zh_TW": "一直重複同樣的話...", "ko": "같은 말을 반복하고 있어요..."}
+        ], "responses": [
+          {"responseId": "victim_speaking_ask", "displayText": {"ja": "何と言っていますか？", "en": "What is she saying?", "zh_CN": "她在说什么？", "zh_TW": "她在說什麼？", "ko": "뭐라고 하고 있습니까?"}}
+        ]},
+        {"segmentId": "discovery_misaki_name", "callerLines": [
+          {"ja": "『みさき』...『みさき』って。", "en": "'Misaki'... she's saying 'Misaki.'", "zh_CN": "'美咲'...她在说'美咲'。", "zh_TW": "'美咲'...她在說'美咲'。", "ko": "'미사키'... '미사키'라고요."},
+          {"ja": "誰かの名前でしょうか...子供の名前みたいな...", "en": "Maybe someone's name... sounds like a child's name...", "zh_CN": "可能是某人的名字...听起来像小孩的名字...", "zh_TW": "可能是某人的名字...聽起來像小孩的名字...", "ko": "누군가의 이름인가요... 아이 이름 같은데..."},
+          {"ja": "『みさきを...お願い...』って言ってるみたいです。", "en": "She seems to be saying 'Misaki... please...'", "zh_CN": "好像在说'美咲...拜托...'", "zh_TW": "好像在說'美咲...拜託...'", "ko": "'미사키를... 부탁해...'라고 말하는 것 같아요."}
+        ], "responses": [
+          {"responseId": "misaki_name_note", "displayText": {"ja": "みさき...記録しました。その方に関係のある人かもしれません。", "en": "Misaki... noted. It might be someone related to her.", "zh_CN": "美咲...记下了。可能是和她有关的人。", "zh_TW": "美咲...記下了。可能是和她有關的人。", "ko": "미사키... 기록했습니다. 그분과 관련된 사람일 수 있어요."}}
+        ]}
+      ]
+    },
+    {
+      "callId": "call_hit",
+      "title": {"ja": "何か轢いたかもしれない", "en": "I Might Have Hit Something", "zh_CN": "我可能撞到了什么", "zh_TW": "我可能撞到了什麼", "ko": "뭔가 친 것 같아요"},
+      "segments": [
+        {"segmentId": "hit_intro", "callerLines": [
+          {"ja": "...もしもし。", "en": "...Hello.", "zh_CN": "...喂。", "zh_TW": "...喂。", "ko": "...여보세요."},
+          {"ja": "あの...すみません、こういう時どこに電話すればいいか...", "en": "Um... sorry, I didn't know who to call...", "zh_CN": "那个...抱歉，不知道该打给谁...", "zh_TW": "那個...抱歉，不知道該打給誰...", "ko": "저기... 죄송한데, 이럴 때 어디에 전화해야 하는지..."},
+          {"ja": "さっき車を運転してて...何か轢いたかもしれないんです。", "en": "I was driving just now... I might have hit something.", "zh_CN": "刚才开车的时候...可能撞到了什么。", "zh_TW": "剛才開車的時候...可能撞到了什麼。", "ko": "방금 운전하다가... 뭔가 친 것 같아요."}
+        ], "responses": [
+          {"responseId": "hit_intro_serious", "displayText": {"ja": "落ち着いてください。何か轢いたかもしれない...詳しく教えてください。", "en": "Please calm down. You might have hit something... tell me more.", "zh_CN": "请冷静。可能撞到了什么...请详细说明。", "zh_TW": "請冷靜。可能撞到了什麼...請詳細說明。", "ko": "진정하세요. 뭔가 쳤을 수도 있다... 자세히 말씀해 주세요."}},
+          {"responseId": "hit_intro_location", "displayText": {"ja": "まず場所を教えてください。今どこにいますか？", "en": "First, tell me where. Where are you now?", "zh_CN": "先告诉我地点。您现在在哪？", "zh_TW": "先告訴我地點。您現在在哪？", "ko": "먼저 장소를 알려주세요. 지금 어디에 계십니까?"}}
+        ]},
+        {"segmentId": "hit_shock", "callerLines": [
+          {"ja": "...え？", "en": "...What?", "zh_CN": "...什么？", "zh_TW": "...什麼？", "ko": "...네?"},
+          {"ja": "人が...？それって...", "en": "A person...? That means...", "zh_CN": "人...？那是说...", "zh_TW": "人...？那是說...", "ko": "사람이...? 그러면..."},
+          {"ja": "私が...私がやったの...？", "en": "Did I... did I do this...?", "zh_CN": "是我...是我干的吗...？", "zh_TW": "是我...是我幹的嗎...？", "ko": "내가... 내가 한 거야...?"}
+        ], "responses": [
+          {"responseId": "hit_shock_confirm", "displayText": {"ja": "まだ確定ではありません。でも、あなたが見たものと関係がある可能性があります。", "en": "Nothing is confirmed yet. But it might be related to what you saw.", "zh_CN": "还没有确定。但可能与您看到的有关。", "zh_TW": "還沒有確定。但可能與您看到的有關。", "ko": "아직 확정된 건 아닙니다. 하지만, 당신이 본 것과 관련이 있을 수 있어요."}},
+          {"responseId": "hit_shock_police", "displayText": {"ja": "警察に連絡することをお勧めします。正直に話した方がいいです。", "en": "I recommend contacting the police. It's better to be honest.", "zh_CN": "建议您联系警察。诚实说明比较好。", "zh_TW": "建議您聯繫警察。誠實說明比較好。", "ko": "경찰에 연락하시는 것을 권합니다. 솔직히 말씀하시는 게 좋아요."}}
+        ]}
+      ]
+    },
+    {
+      "callId": "call_missing",
+      "title": {"ja": "妹を探しています", "en": "Looking for My Sister", "zh_CN": "我在找我妹妹", "zh_TW": "我在找我妹妹", "ko": "여동생을 찾고 있어요"},
+      "segments": [
+        {"segmentId": "missing_intro", "callerLines": [
+          {"ja": "もしもし、緊急通報センターですか。", "en": "Hello, is this the emergency call center?", "zh_CN": "喂，是紧急呼叫中心吗。", "zh_TW": "喂，是緊急呼叫中心嗎。", "ko": "여보세요, 긴급 신고 센터입니까."},
+          {"ja": "林健二と申します。妹の林遥を探しているんですが...", "en": "My name is Kenji Hayashi. I'm looking for my sister Haruka...", "zh_CN": "我叫林健二。我在找我妹妹林遥...", "zh_TW": "我叫林健二。我在找我妹妹林遙...", "ko": "하야시 켄지라고 합니다. 여동생 하루카를 찾고 있는데요..."},
+          {"ja": "今夜連絡が取れなくて、心配で電話しました。", "en": "I couldn't reach her tonight and I'm worried.", "zh_CN": "今晚联系不上她，担心所以打电话来。", "zh_TW": "今晚聯繫不上她，擔心所以打電話來。", "ko": "오늘 밤 연락이 안 돼서, 걱정이 돼서 전화했어요."}
+        ], "responses": [
+          {"responseId": "missing_intro_listen", "displayText": {"ja": "林遥さんのお兄様ですね。詳しく教えてください。", "en": "You're Ms. Hayashi's brother. Please tell me more.", "zh_CN": "您是林遥的哥哥。请详细说明。", "zh_TW": "您是林遙的哥哥。請詳細說明。", "ko": "하야시 하루카 씨의 오빠시군요. 자세히 말씀해 주세요."}},
+          {"responseId": "missing_intro_recognize", "displayText": {"ja": "林遥さん...先ほども別の方からお問い合わせがありました。", "en": "Ms. Hayashi... we received another inquiry about her earlier.", "zh_CN": "林遥...刚才也有其他人询问过。", "zh_TW": "林遙...剛才也有其他人詢問過。", "ko": "하야시 하루카 씨... 아까도 다른 분께서 문의하셨습니다."}}
+        ]}
+      ]
+    },
+    {
+      "callId": "call_revision",
+      "title": {"ja": "考えてたんだけど", "en": "I've Been Thinking", "zh_CN": "我一直在想", "zh_TW": "我一直在想", "ko": "생각해 봤는데요"},
+      "segments": [
+        {"segmentId": "revision_intro", "callerLines": [
+          {"ja": "...もしもし、さっき電話した者です。", "en": "...Hello, I called earlier.", "zh_CN": "...喂，我是刚才打过电话的人。", "zh_TW": "...喂，我是剛才打過電話的人。", "ko": "...여보세요, 아까 전화했던 사람이에요."},
+          {"ja": "あの...考えてたんですけど...", "en": "Um... I've been thinking...", "zh_CN": "那个...我一直在想...", "zh_TW": "那個...我一直在想...", "ko": "저기... 생각해 봤는데요..."},
+          {"ja": "やっぱり動物だったと思うんです。", "en": "I think it was probably an animal after all.", "zh_CN": "我觉得还是动物吧。", "zh_TW": "我覺得還是動物吧。", "ko": "역시 동물이었던 것 같아요."}
+        ], "responses": [
+          {"responseId": "revision_intro_listen", "displayText": {"ja": "さっきの方ですね。どうされましたか？", "en": "You called earlier. What happened?", "zh_CN": "是刚才那位。怎么了？", "zh_TW": "是剛才那位。怎麼了？", "ko": "아까 전화하셨던 분이시군요. 무슨 일이세요?"}},
+          {"responseId": "revision_intro_probe", "displayText": {"ja": "動物...？さっきとお話が変わっていますが。", "en": "An animal...? That's different from what you said before.", "zh_CN": "动物...？和刚才说的不一样。", "zh_TW": "動物...？和剛才說的不一樣。", "ko": "동물...? 아까 말씀과 다른데요."}}
+        ]}
+      ]
+    },
+    {
+      "callId": "call_callback_family",
+      "title": {"ja": "頼むから教えてくれ", "en": "Please Tell Me", "zh_CN": "求求你告诉我", "zh_TW": "求求你告訴我", "ko": "제발 알려주세요"},
+      "segments": [
+        {"segmentId": "callback_family_intro", "callerLines": [
+          {"ja": "また私です。さっき電話した林です。", "en": "It's me again. Hayashi, I called earlier.", "zh_CN": "又是我。刚才打过电话的林。", "zh_TW": "又是我。剛才打過電話的林。", "ko": "저예요. 아까 전화했던 하야시입니다."},
+          {"ja": "頼むから教えてください。妹はどこにいるんですか。", "en": "Please tell me. Where is my sister?", "zh_CN": "求求你告诉我。我妹妹在哪里。", "zh_TW": "求求你告訴我。我妹妹在哪裡。", "ko": "제발 알려주세요. 여동생이 어디 있는 거예요."},
+          {"ja": "お願いします...時間がないんです。", "en": "Please... I don't have much time.", "zh_CN": "拜托了...时间不多了。", "zh_TW": "拜託了...時間不多了。", "ko": "부탁드립니다... 시간이 없어요."}
+        ], "responses": [
+          {"responseId": "callback_family_intro_calm", "displayText": {"ja": "林さん、落ち着いてください。時間がないとはどういうことですか？", "en": "Mr. Hayashi, please calm down. What do you mean you don't have time?", "zh_CN": "林先生，请冷静。时间不多是什么意思？", "zh_TW": "林先生，請冷靜。時間不多是什麼意思？", "ko": "하야시 씨, 진정하세요. 시간이 없다니 무슨 말씀이세요?"}},
+          {"responseId": "callback_family_intro_refuse", "displayText": {"ja": "これ以上お伝えできる情報はありません。", "en": "I have no further information to share.", "zh_CN": "没有更多信息可以告诉您。", "zh_TW": "沒有更多資訊可以告訴您。", "ko": "더 이상 알려드릴 수 있는 정보가 없습니다."}}
+        ]}
+      ]
+    },
+    {
+      "callId": "call_supervisor",
+      "title": {"ja": "記録のためだけど", "en": "Just for the Record", "zh_CN": "只是为了记录", "zh_TW": "只是為了記錄", "ko": "기록을 위해서인데"},
+      "segments": [
+        {"segmentId": "supervisor_intro", "callerLines": [
+          {"ja": "夜勤お疲れ様。工藤です。", "en": "Good work on the night shift. This is Kudo.", "zh_CN": "夜班辛苦了。我是工藤。", "zh_TW": "夜班辛苦了。我是工藤。", "ko": "야간 근무 수고하세요. 쿠도입니다."},
+          {"ja": "今夜の記録を確認してるんだけど、ちょっといいかな。", "en": "I'm reviewing tonight's records. Got a minute?", "zh_CN": "我在查看今晚的记录，能聊聊吗。", "zh_TW": "我在查看今晚的記錄，能聊聊嗎。", "ko": "오늘 밤 기록을 확인하고 있는데, 잠깐 괜찮을까요."},
+          {"ja": "歩道橋付近の件、何件か通報が入ってるみたいだね。", "en": "Seems like there were several reports about the footbridge area.", "zh_CN": "人行天桥附近的事，好像有几个报案。", "zh_TW": "人行天橋附近的事，好像有幾個報案。", "ko": "육교 부근 건으로 몇 건의 신고가 들어온 것 같네요."}
+        ], "responses": [
+          {"responseId": "supervisor_intro_yes", "displayText": {"ja": "はい、工藤主任。何かありましたか？", "en": "Yes, Supervisor Kudo. Is something wrong?", "zh_CN": "是的，工藤主管。有什么事吗？", "zh_TW": "是的，工藤主管。有什麼事嗎？", "ko": "네, 쿠도 주임님. 무슨 일이 있으셨습니까?"}},
+          {"responseId": "supervisor_intro_guarded", "displayText": {"ja": "記録は通常通り作成しています。", "en": "The records are being prepared as usual.", "zh_CN": "记录正在按照常规制作。", "zh_TW": "記錄正在按照常規製作。", "ko": "기록은 평소대로 작성하고 있습니다."}}
+        ]},
+        {"segmentId": "supervisor_correction", "callerLines": [
+          {"ja": "そうか...", "en": "I see...", "zh_CN": "是吗...", "zh_TW": "是嗎...", "ko": "그래..."},
+          {"ja": "今後は「歩行者」じゃなくて「通報対象者」とか「該当者」って書いた方がいいよ。", "en": "From now on, write 'reported subject' instead of 'pedestrian.'", "zh_CN": "以后别写'行人'，写'报案对象'或'相关人员'比较好。", "zh_TW": "以後別寫'行人'，寫'報案對象'或'相關人員'比較好。", "ko": "앞으로는 '보행자'가 아니라 '신고 대상자'나 '해당자'라고 쓰는 게 좋을 거야."},
+          {"ja": "「歩行者」だと、車との関係が暗示されるからね。記録としては中立的な表現の方がいい。", "en": "'Pedestrian' implies a connection to a vehicle. Neutral wording is better for records.", "zh_CN": "'行人'暗示与车辆有关。记录上用中性表达比较好。", "zh_TW": "'行人'暗示與車輛有關。記錄上用中性表達比較好。", "ko": "'보행자'라고 하면 차량과의 관계가 암시되니까. 기록으로는 중립적인 표현이 좋아."}
+        ], "responses": [
+          {"responseId": "supervisor_correction_accept", "displayText": {"ja": "わかりました。修正します。", "en": "Understood. I'll make the changes.", "zh_CN": "明白了。我会修改。", "zh_TW": "明白了。我會修改。", "ko": "알겠습니다. 수정하겠습니다."}},
+          {"responseId": "supervisor_correction_refuse", "displayText": {"ja": "でも、事実は事実です。見たままを記録するべきでは？", "en": "But facts are facts. Shouldn't I record what I observed?", "zh_CN": "但是，事实就是事实。不应该如实记录吗？", "zh_TW": "但是，事實就是事實。不應該如實記錄嗎？", "ko": "하지만, 사실은 사실입니다. 본 대로 기록해야 하지 않을까요?"}}
+        ]},
+        {"segmentId": "supervisor_warning", "callerLines": [
+          {"ja": "...そうか。", "en": "...I see.", "zh_CN": "...是吗。", "zh_TW": "...是嗎。", "ko": "...그래."},
+          {"ja": "君の考えは尊重するよ。でも、覚えておいた方がいい。", "en": "I respect your opinion. But remember this.", "zh_CN": "我尊重你的想法。但是，要记住。", "zh_TW": "我尊重你的想法。但是，要記住。", "ko": "네 생각은 존중해. 하지만, 기억해 두는 게 좋아."},
+          {"ja": "この仕事で一番大事なのは、自分の身を守ること。記録は時に、自分を傷つける武器になる。", "en": "The most important thing in this job is protecting yourself. Records can become weapons that hurt you.", "zh_CN": "这份工作最重要的是保护自己。记录有时会成为伤害自己的武器。", "zh_TW": "這份工作最重要的是保護自己。記錄有時會成為傷害自己的武器。", "ko": "이 일에서 가장 중요한 건 자신을 지키는 거야. 기록은 때로 자신을 다치게 하는 무기가 되기도 해."},
+          {"ja": "...今夜はゆっくり休んで。また明日。", "en": "...Get some rest tonight. See you tomorrow.", "zh_CN": "...今晚好好休息。明天见。", "zh_TW": "...今晚好好休息。明天見。", "ko": "...오늘 밤은 푹 쉬어. 내일 봐."}
+        ], "responses": [
+          {"responseId": "supervisor_warning_end", "displayText": {"ja": "...おやすみなさい。", "en": "...Good night.", "zh_CN": "...晚安。", "zh_TW": "...晚安。", "ko": "...안녕히 주무세요."}}
+        ]}
+      ]
+    }
+  ],
+  "evidence": [],
+  "thoughts": [],
+  "endings": []
+}

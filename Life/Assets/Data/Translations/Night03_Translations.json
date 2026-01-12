@@ -1,0 +1,1113 @@
+{
+  "scenarioId": "night_03",
+  "title": {
+    "ja": "探す声",
+    "en": "The Searching Voice",
+    "zh_CN": "寻找的声音",
+    "zh_TW": "尋找的聲音",
+    "ko": "찾는 목소리"
+  },
+  "description": {
+    "ja": "通りすがりの市民が目撃した口論。女性が怖がり、男が怒鳴っている。即座に派遣すれば女性は助かるが、躊躇すると手遅れになる。組織からの接触も続く。",
+    "en": "An argument witnessed by a passerby. A woman frightened, a man yelling. Dispatch immediately and the woman will be saved—hesitate and it will be too late. Contact from the organization continues.",
+    "zh_CN": "路人目击的争吵。女人害怕，男人在怒吼。立即派遣就能救下女人——犹豫就来不及了。组织的接触还在继续。",
+    "zh_TW": "路人目擊的爭吵。女人害怕，男人在怒吼。立即派遣就能救下女人——猶豫就來不及了。組織的接觸還在繼續。",
+    "ko": "행인이 목격한 말다툼. 여자가 겁에 질려 있고, 남자가 소리를 지르고 있다. 즉시 출동하면 여자를 구할 수 있지만, 망설이면 늦는다. 조직과의 접촉도 계속된다."
+  },
+  "callers": [
+    {
+      "callerId": "passerby",
+      "displayName": {
+        "ja": "通りすがり",
+        "en": "Passerby",
+        "zh_CN": "路人",
+        "zh_TW": "路人",
+        "ko": "행인"
+      }
+    },
+    {
+      "callerId": "police",
+      "displayName": {
+        "ja": "警察",
+        "en": "Police",
+        "zh_CN": "警察",
+        "zh_TW": "警察",
+        "ko": "경찰"
+      }
+    },
+    {
+      "callerId": "watanabe_mari",
+      "displayName": {
+        "ja": "渡辺真理",
+        "en": "Mari Watanabe",
+        "zh_CN": "渡边真理",
+        "zh_TW": "渡邊真理",
+        "ko": "와타나베 마리"
+      }
+    },
+    {
+      "callerId": "sato_koji",
+      "displayName": {
+        "ja": "佐藤浩二",
+        "en": "Koji Sato",
+        "zh_CN": "佐藤浩二",
+        "zh_TW": "佐藤浩二",
+        "ko": "사토 코지"
+      }
+    },
+    {
+      "callerId": "hayashi_kenji",
+      "displayName": {
+        "ja": "林健二",
+        "en": "Kenji Hayashi",
+        "zh_CN": "林健二",
+        "zh_TW": "林健二",
+        "ko": "하야시 켄지"
+      }
+    },
+    {
+      "callerId": "kudo_shinji",
+      "displayName": {
+        "ja": "工藤真司",
+        "en": "Shinji Kudo",
+        "zh_CN": "工藤真司",
+        "zh_TW": "工藤真司",
+        "ko": "쿠도 신지"
+      }
+    },
+    {
+      "callerId": "unknown_voice",
+      "displayName": {
+        "ja": "???",
+        "en": "???",
+        "zh_CN": "???",
+        "zh_TW": "???",
+        "ko": "???"
+      }
+    }
+  ],
+  "calls": [
+    {
+      "callId": "call_argument_witness",
+      "title": {
+        "ja": "口論の通報",
+        "en": "Argument Report",
+        "zh_CN": "争吵报警",
+        "zh_TW": "爭吵報警",
+        "ko": "말다툼 신고"
+      },
+      "segments": [
+        {
+          "segmentId": "argument_intro",
+          "callerLines": [
+            {
+              "ja": "あの、すみません。",
+              "en": "Um, excuse me.",
+              "zh_CN": "那个，不好意思。",
+              "zh_TW": "那個，不好意思。",
+              "ko": "저기, 실례합니다."
+            },
+            {
+              "ja": "今、道を歩いてたら、男女が口論してるのを見まして...",
+              "en": "I was just walking down the street and saw a man and woman arguing...",
+              "zh_CN": "刚才我走在路上，看到一男一女在吵架...",
+              "zh_TW": "剛才我走在路上，看到一男一女在吵架...",
+              "ko": "지금 길을 걷다가 남녀가 말다툼하는 걸 봤는데요..."
+            },
+            {
+              "ja": "ちょっと様子がおかしいんです。",
+              "en": "Something seems wrong.",
+              "zh_CN": "感觉情况有点不对。",
+              "zh_TW": "感覺情況有點不對。",
+              "ko": "좀 이상해 보여서요."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "argument_intro_urgent",
+              "text": {
+                "ja": "場所を教えてください。すぐに警察を派遣します。",
+                "en": "Tell me the location. I'll dispatch police immediately.",
+                "zh_CN": "请告诉我地点。我马上派警察。",
+                "zh_TW": "請告訴我地點。我馬上派警察。",
+                "ko": "위치를 알려주세요. 즉시 경찰을 보내겠습니다."
+              }
+            },
+            {
+              "responseId": "argument_intro_details",
+              "text": {
+                "ja": "どのような状況ですか？詳しく教えてください。",
+                "en": "What's the situation? Please give me more details.",
+                "zh_CN": "是什么情况？请详细说明。",
+                "zh_TW": "是什麼情況？請詳細說明。",
+                "ko": "어떤 상황인가요? 자세히 알려주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "argument_describe",
+          "callerLines": [
+            {
+              "ja": "男の人が怒鳴ってて、女の人がすごく怖がってるんです。",
+              "en": "The man is yelling and the woman looks really scared.",
+              "zh_CN": "那个男的在大喊大叫，女的看起来很害怕。",
+              "zh_TW": "那個男的在大喊大叫，女的看起來很害怕。",
+              "ko": "남자가 소리를 지르고 있고, 여자가 정말 무서워하고 있어요."
+            },
+            {
+              "ja": "女の人は逃げようとしてるんですけど、男が腕を掴んでて...",
+              "en": "The woman is trying to run but the man is grabbing her arm...",
+              "zh_CN": "女的想逃但男的抓着她的手臂...",
+              "zh_TW": "女的想逃但男的抓著她的手臂...",
+              "ko": "여자는 도망치려고 하는데 남자가 팔을 잡고 있어요..."
+            },
+            {
+              "ja": "暴力にならないか心配で...",
+              "en": "I'm worried it might turn violent...",
+              "zh_CN": "担心会不会变成暴力...",
+              "zh_TW": "擔心會不會變成暴力...",
+              "ko": "폭력으로 번지지 않을까 걱정돼요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "argument_describe_dispatch",
+              "text": {
+                "ja": "場所を教えてください。警察を向かわせます。",
+                "en": "Tell me the location. I'll send the police.",
+                "zh_CN": "请告诉我地点。我派警察过去。",
+                "zh_TW": "請告訴我地點。我派警察過去。",
+                "ko": "위치를 알려주세요. 경찰을 보내겠습니다."
+              }
+            },
+            {
+              "responseId": "argument_describe_calm",
+              "text": {
+                "ja": "カップルの口論のようですね。もう少し様子を見てもらえますか？",
+                "en": "Sounds like a couple's argument. Could you keep watching a bit longer?",
+                "zh_CN": "听起来像是情侣吵架。能再观察一下吗？",
+                "zh_TW": "聽起來像是情侶吵架。能再觀察一下嗎？",
+                "ko": "커플 싸움 같네요. 좀 더 지켜봐 주시겠어요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "argument_dispatch_immediate",
+          "callerLines": [
+            {
+              "ja": "○○通り、コンビニの角のところです。",
+              "en": "It's at the corner of ○○ Street, by the convenience store.",
+              "zh_CN": "在○○街，便利店拐角那里。",
+              "zh_TW": "在○○街，便利店轉角那裡。",
+              "ko": "○○거리, 편의점 모퉁이예요."
+            },
+            {
+              "ja": "女の人が「やめて」って泣いてます。",
+              "en": "The woman is crying 'Stop it!'",
+              "zh_CN": "女的在哭着喊'住手'。",
+              "zh_TW": "女的在哭著喊'住手'。",
+              "ko": "여자가 '그만해'라고 울고 있어요."
+            },
+            {
+              "ja": "急いでください...",
+              "en": "Please hurry...",
+              "zh_CN": "请快点...",
+              "zh_TW": "請快點...",
+              "ko": "서둘러 주세요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "argument_dispatch_immediate_confirm",
+              "text": {
+                "ja": "警察が向かいます。危険ですので、近づかないでください。",
+                "en": "Police are on their way. It's dangerous, so please stay back.",
+                "zh_CN": "警察马上到。很危险，请不要靠近。",
+                "zh_TW": "警察馬上到。很危險，請不要靠近。",
+                "ko": "경찰이 출동합니다. 위험하니 가까이 가지 마세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "argument_end_saved",
+          "callerLines": [
+            {
+              "ja": "はい、分かりました。離れて見てます。",
+              "en": "Okay, understood. I'll watch from a distance.",
+              "zh_CN": "好的，我知道了。我在远处看着。",
+              "zh_TW": "好的，我知道了。我在遠處看著。",
+              "ko": "네, 알겠습니다. 멀리서 지켜볼게요."
+            },
+            {
+              "ja": "あ、男の人が周りをキョロキョロして...",
+              "en": "Oh, the man is looking around nervously...",
+              "zh_CN": "啊，那个男的在四处张望...",
+              "zh_TW": "啊，那個男的在四處張望...",
+              "ko": "아, 남자가 주위를 두리번거리고 있어요..."
+            },
+            {
+              "ja": "逃げた！女の人を置いて走っていきました！",
+              "en": "He ran! He left the woman and took off!",
+              "zh_CN": "他跑了！丢下那个女的跑了！",
+              "zh_TW": "他跑了！丟下那個女的跑了！",
+              "ko": "도망갔어요! 여자를 두고 달아났어요!"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "argument_end_saved_reply",
+              "text": {
+                "ja": "女性は大丈夫ですか？警察がすぐ到着します。",
+                "en": "Is the woman okay? Police will arrive shortly.",
+                "zh_CN": "那个女的没事吗？警察马上就到。",
+                "zh_TW": "那個女的沒事嗎？警察馬上就到。",
+                "ko": "여자분은 괜찮나요? 경찰이 곧 도착합니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "argument_car_escape",
+          "callerLines": [
+            {
+              "ja": "ナンバーは...暗くて...白いバンです！",
+              "en": "The plates... it's too dark... it's a white van!",
+              "zh_CN": "车牌...太暗了...是白色面包车！",
+              "zh_TW": "車牌...太暗了...是白色廂型車！",
+              "ko": "번호판은... 어두워서... 흰색 밴이에요!"
+            },
+            {
+              "ja": "あ、走っていきました...",
+              "en": "Oh, it drove away...",
+              "zh_CN": "啊，开走了...",
+              "zh_TW": "啊，開走了...",
+              "ko": "아, 가버렸어요..."
+            },
+            {
+              "ja": "間に合わなかった...",
+              "en": "We didn't make it in time...",
+              "zh_CN": "来不及了...",
+              "zh_TW": "來不及了...",
+              "ko": "늦었어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "argument_car_escape_end",
+              "text": {
+                "ja": "白いバン...警察に伝えます。ご通報ありがとうございました。",
+                "en": "A white van... I'll inform the police. Thank you for reporting.",
+                "zh_CN": "白色面包车...我会通知警察。感谢您的报警。",
+                "zh_TW": "白色廂型車...我會通知警察。感謝您的報警。",
+                "ko": "흰색 밴... 경찰에 알리겠습니다. 신고해 주셔서 감사합니다."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_sato_inquiry",
+      "title": {
+        "ja": "林遥について",
+        "en": "About Haruka Hayashi",
+        "zh_CN": "关于林遥",
+        "zh_TW": "關於林遙",
+        "ko": "하야시 하루카에 대해서"
+      },
+      "segments": [
+        {
+          "segmentId": "sato_intro",
+          "callerLines": [
+            {
+              "ja": "夜分遅くにすみません。",
+              "en": "I'm sorry for calling so late.",
+              "zh_CN": "这么晚打扰了。",
+              "zh_TW": "這麼晚打擾了。",
+              "ko": "밤늦게 죄송합니다."
+            },
+            {
+              "ja": "以前、一度お電話させていただいた者です。",
+              "en": "I'm the one who called you before.",
+              "zh_CN": "我之前给您打过电话。",
+              "zh_TW": "我之前給您打過電話。",
+              "ko": "전에 한번 전화드렸던 사람입니다."
+            },
+            {
+              "ja": "林遥のこと、覚えていますか？",
+              "en": "Do you remember about Haruka Hayashi?",
+              "zh_CN": "您还记得林遥吗？",
+              "zh_TW": "您還記得林遙嗎？",
+              "ko": "하야시 하루카 기억하시나요?"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "sato_intro_remember",
+              "text": {
+                "ja": "林遥さん...はい、覚えています。",
+                "en": "Haruka Hayashi... yes, I remember.",
+                "zh_CN": "林遥...是的，我记得。",
+                "zh_TW": "林遙...是的，我記得。",
+                "ko": "하야시 하루카 씨... 네, 기억합니다."
+              }
+            },
+            {
+              "responseId": "sato_intro_who",
+              "text": {
+                "ja": "申し訳ありませんが、どちら様ですか？",
+                "en": "I'm sorry, but who is this?",
+                "zh_CN": "不好意思，请问您是？",
+                "zh_TW": "不好意思，請問您是？",
+                "ko": "죄송한데, 누구시죠?"
+              }
+            },
+            {
+              "responseId": "sato_intro_no_comment",
+              "text": {
+                "ja": "通報内容についてはお答えできません。",
+                "en": "I cannot comment on report contents.",
+                "zh_CN": "我无法透露报警内容。",
+                "zh_TW": "我無法透露報警內容。",
+                "ko": "신고 내용에 대해서는 답변할 수 없습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "sato_ask_location",
+          "callerLines": [
+            {
+              "ja": "それで...林遥はどこにいるか、ご存知ですか？",
+              "en": "So... do you know where Haruka Hayashi is?",
+              "zh_CN": "那么...您知道林遥在哪里吗？",
+              "zh_TW": "那麼...您知道林遙在哪裡嗎？",
+              "ko": "그래서... 하야시 하루카가 어디 있는지 아시나요?"
+            },
+            {
+              "ja": "連絡が取れなくて、心配しているんです。",
+              "en": "I can't reach her and I'm worried.",
+              "zh_CN": "联系不上她，我很担心。",
+              "zh_TW": "聯繫不上她，我很擔心。",
+              "ko": "연락이 안 돼서 걱정됩니다."
+            },
+            {
+              "ja": "何か聞いていませんか？",
+              "en": "Have you heard anything?",
+              "zh_CN": "您听说了什么吗？",
+              "zh_TW": "您聽說了什麼嗎？",
+              "ko": "뭔가 들은 거 없으세요?"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "sato_location_truth_dead",
+              "text": {
+                "ja": "林遥さんは...亡くなられました。",
+                "en": "Haruka Hayashi... has passed away.",
+                "zh_CN": "林遥...去世了。",
+                "zh_TW": "林遙...去世了。",
+                "ko": "하야시 하루카 씨는... 돌아가셨습니다."
+              }
+            },
+            {
+              "responseId": "sato_location_truth_alive",
+              "text": {
+                "ja": "林遥さんは病院に搬送されました。",
+                "en": "Haruka Hayashi was taken to the hospital.",
+                "zh_CN": "林遥被送到医院了。",
+                "zh_TW": "林遙被送到醫院了。",
+                "ko": "하야시 하루카 씨는 병원으로 이송됐습니다."
+              }
+            },
+            {
+              "responseId": "sato_location_refuse",
+              "text": {
+                "ja": "申し訳ありませんが、そのような情報はお伝えできません。",
+                "en": "I'm sorry, but I cannot provide that information.",
+                "zh_CN": "抱歉，我无法提供这类信息。",
+                "zh_TW": "抱歉，我無法提供這類信息。",
+                "ko": "죄송하지만, 그런 정보는 알려드릴 수 없습니다."
+              }
+            },
+            {
+              "responseId": "sato_location_lie",
+              "text": {
+                "ja": "存じません。",
+                "en": "I don't know.",
+                "zh_CN": "我不知道。",
+                "zh_TW": "我不知道。",
+                "ko": "모릅니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "sato_learn_death",
+          "callerLines": [
+            {
+              "ja": "...亡くなった？",
+              "en": "...Passed away?",
+              "zh_CN": "...去世了？",
+              "zh_TW": "...去世了？",
+              "ko": "...돌아가셨다고요?"
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            },
+            {
+              "ja": "そうですか...それは残念です。",
+              "en": "I see... that's unfortunate.",
+              "zh_CN": "这样啊...真遗憾。",
+              "zh_TW": "這樣啊...真遺憾。",
+              "ko": "그렇군요... 안타깝네요."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "sato_death_end",
+              "text": {
+                "ja": "詳細は警察にお問い合わせください。",
+                "en": "Please contact the police for details.",
+                "zh_CN": "详情请联系警察。",
+                "zh_TW": "詳情請聯繫警察。",
+                "ko": "자세한 내용은 경찰에 문의해 주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "sato_threat",
+          "callerLines": [
+            {
+              "ja": "...そうですか。",
+              "en": "...I see.",
+              "zh_CN": "...是吗。",
+              "zh_TW": "...是嗎。",
+              "ko": "...그렇군요."
+            },
+            {
+              "ja": "覚えておきますよ。",
+              "en": "I'll remember that.",
+              "zh_CN": "我会记住的。",
+              "zh_TW": "我會記住的。",
+              "ko": "기억해 두겠습니다."
+            },
+            {
+              "ja": "良い夜を。",
+              "en": "Have a good night.",
+              "zh_CN": "晚安。",
+              "zh_TW": "晚安。",
+              "ko": "좋은 밤 되세요."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "sato_threat_end",
+              "text": {
+                "ja": "...",
+                "en": "...",
+                "zh_CN": "...",
+                "zh_TW": "...",
+                "ko": "..."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_supervisor_intervention",
+      "title": {
+        "ja": "様子を見に来た",
+        "en": "Checking In",
+        "zh_CN": "来看看情况",
+        "zh_TW": "來看看情況",
+        "ko": "안부 확인"
+      },
+      "segments": [
+        {
+          "segmentId": "supervisor_approach_dispatched",
+          "callerLines": [
+            {
+              "ja": "お疲れ様。ちょっといいか？",
+              "en": "Good work. Got a moment?",
+              "zh_CN": "辛苦了。有空吗？",
+              "zh_TW": "辛苦了。有空嗎？",
+              "ko": "수고했어. 잠깐 괜찮아?"
+            },
+            {
+              "ja": "さっきの通報記録を見たんだが...",
+              "en": "I saw the report from earlier...",
+              "zh_CN": "我看了刚才的报警记录...",
+              "zh_TW": "我看了剛才的報警記錄...",
+              "ko": "아까 신고 기록을 봤는데..."
+            },
+            {
+              "ja": "口論の件、警察を派遣したんだな。",
+              "en": "You dispatched police for that argument.",
+              "zh_CN": "争吵那件事，你派了警察啊。",
+              "zh_TW": "爭吵那件事，你派了警察啊。",
+              "ko": "말다툼 건으로 경찰을 보냈더구나."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "supervisor_approach_dispatched_yes",
+              "text": {
+                "ja": "はい。女性が怖がっていたので...",
+                "en": "Yes. The woman seemed scared, so...",
+                "zh_CN": "是的。那个女的看起来很害怕...",
+                "zh_TW": "是的。那個女的看起來很害怕...",
+                "ko": "네. 여자가 무서워하고 있어서..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "supervisor_support",
+          "callerLines": [
+            {
+              "ja": "ああ、分かってる。",
+              "en": "Yeah, I understand.",
+              "zh_CN": "啊，我明白。",
+              "zh_TW": "啊，我明白。",
+              "ko": "응, 알아."
+            },
+            {
+              "ja": "君の判断は間違ってない。",
+              "en": "Your judgment wasn't wrong.",
+              "zh_CN": "你的判断没有错。",
+              "zh_TW": "你的判斷沒有錯。",
+              "ko": "네 판단은 틀리지 않았어."
+            },
+            {
+              "ja": "何かあったら、私が上に説明するから心配するな。",
+              "en": "If anything comes up, I'll explain to the higher-ups. Don't worry.",
+              "zh_CN": "有什么事我会向上面解释的，别担心。",
+              "zh_TW": "有什麼事我會向上面解釋的，別擔心。",
+              "ko": "무슨 일 있으면 내가 위에 설명할 테니 걱정 마."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "supervisor_support_thanks",
+              "text": {
+                "ja": "ありがとうございます。",
+                "en": "Thank you.",
+                "zh_CN": "谢谢。",
+                "zh_TW": "謝謝。",
+                "ko": "감사합니다."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_unknown_voice",
+      "title": {
+        "ja": "無言",
+        "en": "Silence",
+        "zh_CN": "沉默",
+        "zh_TW": "沉默",
+        "ko": "무언"
+      },
+      "segments": [
+        {
+          "segmentId": "unknown_silence",
+          "callerLines": [
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            },
+            {
+              "ja": "（くぐもった音）",
+              "en": "(Muffled sound)",
+              "zh_CN": "(闷闷的声音)",
+              "zh_TW": "(悶悶的聲音)",
+              "ko": "(웅얼거리는 소리)"
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "unknown_silence_hello",
+              "text": {
+                "ja": "もしもし？緊急通報センターです。",
+                "en": "Hello? This is the emergency center.",
+                "zh_CN": "喂？这里是紧急报警中心。",
+                "zh_TW": "喂？這裡是緊急報警中心。",
+                "ko": "여보세요? 긴급 신고 센터입니다."
+              }
+            },
+            {
+              "responseId": "unknown_silence_wait",
+              "text": {
+                "ja": "（沈黙を待つ）",
+                "en": "(Wait in silence)",
+                "zh_CN": "(等待)",
+                "zh_TW": "(等待)",
+                "ko": "(침묵 속에서 기다린다)"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "unknown_silence_2",
+          "callerLines": [
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            },
+            {
+              "ja": "（必死に何か言おうとする音、しかし口が塞がれている）",
+              "en": "(Desperate sounds trying to speak, but mouth is gagged)",
+              "zh_CN": "(拼命想说话的声音，但嘴被堵住了)",
+              "zh_TW": "(拼命想說話的聲音，但嘴被堵住了)",
+              "ko": "(필사적으로 뭔가 말하려는 소리, 하지만 입이 막혀 있다)"
+            },
+            {
+              "ja": "んん...んんん...",
+              "en": "Mmm... mmmm...",
+              "zh_CN": "嗯嗯...嗯嗯嗯...",
+              "zh_TW": "嗯嗯...嗯嗯嗯...",
+              "ko": "음음... 음음음..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "unknown_silence_2_ask",
+              "text": {
+                "ja": "話せないのですか？大丈夫ですか？",
+                "en": "Can't you speak? Are you okay?",
+                "zh_CN": "您说不了话吗？您没事吧？",
+                "zh_TW": "您說不了話嗎？您沒事吧？",
+                "ko": "말을 못 하시는 건가요? 괜찮으세요?"
+              }
+            },
+            {
+              "responseId": "unknown_silence_2_help",
+              "text": {
+                "ja": "助けが必要ですか？何か音を立てて教えてください。",
+                "en": "Do you need help? Make a sound to let me know.",
+                "zh_CN": "您需要帮助吗？请发出声音告诉我。",
+                "zh_TW": "您需要幫助嗎？請發出聲音告訴我。",
+                "ko": "도움이 필요하신가요? 소리를 내서 알려주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "unknown_interrupted",
+          "callerLines": [
+            {
+              "ja": "（遠くで声が聞こえる）「...何してる」",
+              "en": "(A voice in the distance) '...What are you doing?'",
+              "zh_CN": "(远处传来声音)"...你在干什么"",
+              "zh_TW": "(遠處傳來聲音)"...你在幹什麼"",
+              "ko": "(멀리서 목소리가 들린다) '...뭐 하는 거야'"
+            },
+            {
+              "ja": "（電話が奪われる音）",
+              "en": "(Sound of phone being snatched)",
+              "zh_CN": "(电话被抢走的声音)",
+              "zh_TW": "(電話被搶走的聲音)",
+              "ko": "(전화가 빼앗기는 소리)"
+            },
+            {
+              "ja": "（電話が切れる）",
+              "en": "(Call disconnected)",
+              "zh_CN": "(电话挂断)",
+              "zh_TW": "(電話掛斷)",
+              "ko": "(전화가 끊긴다)"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "unknown_interrupted_reply",
+              "text": {
+                "ja": "...もしもし？",
+                "en": "...Hello?",
+                "zh_CN": "...喂？",
+                "zh_TW": "...喂？",
+                "ko": "...여보세요?"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_police_report",
+      "title": {
+        "ja": "状況報告",
+        "en": "Status Report",
+        "zh_CN": "情况报告",
+        "zh_TW": "情況報告",
+        "ko": "상황 보고"
+      },
+      "segments": [
+        {
+          "segmentId": "police_intro",
+          "callerLines": [
+            {
+              "ja": "○○警察署です。",
+              "en": "This is ○○ Police Station.",
+              "zh_CN": "这里是○○警察署。",
+              "zh_TW": "這裡是○○警察署。",
+              "ko": "○○경찰서입니다."
+            },
+            {
+              "ja": "先ほどの口論の件、報告します。",
+              "en": "Reporting on the argument from earlier.",
+              "zh_CN": "就刚才的争吵事件报告。",
+              "zh_TW": "就剛才的爭吵事件報告。",
+              "ko": "아까 말다툼 건 보고드립니다."
+            },
+            {
+              "ja": "現場に到着しました。",
+              "en": "We've arrived at the scene.",
+              "zh_CN": "已经到达现场。",
+              "zh_TW": "已經到達現場。",
+              "ko": "현장에 도착했습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "police_intro_listen",
+              "text": {
+                "ja": "お願いします。",
+                "en": "Please go ahead.",
+                "zh_CN": "请说。",
+                "zh_TW": "請說。",
+                "ko": "말씀해 주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_report",
+          "callerLines": [
+            {
+              "ja": "女性を保護しました。怪我はありません。",
+              "en": "We've secured the woman. No injuries.",
+              "zh_CN": "已保护了那名女性。没有受伤。",
+              "zh_TW": "已保護了那名女性。沒有受傷。",
+              "ko": "여성을 보호했습니다. 부상은 없습니다."
+            },
+            {
+              "ja": "男は逃走。追跡中ですが、まだ確保できていません。",
+              "en": "The man fled. We're pursuing but haven't caught him yet.",
+              "zh_CN": "男的逃跑了。正在追踪，但还没抓到。",
+              "zh_TW": "男的逃跑了。正在追蹤，但還沒抓到。",
+              "ko": "남자는 도주했습니다. 추적 중이지만 아직 체포하지 못했습니다."
+            },
+            {
+              "ja": "女性は安全な場所に移動させました。",
+              "en": "The woman has been moved to a safe location.",
+              "zh_CN": "女性已转移到安全地点。",
+              "zh_TW": "女性已轉移到安全地點。",
+              "ko": "여성은 안전한 장소로 이동시켰습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "police_report_thanks",
+              "text": {
+                "ja": "了解しました。ご対応ありがとうございます。",
+                "en": "Understood. Thank you for your response.",
+                "zh_CN": "收到。感谢您的处理。",
+                "zh_TW": "收到。感謝您的處理。",
+                "ko": "알겠습니다. 대응해 주셔서 감사합니다."
+              }
+            },
+            {
+              "responseId": "police_report_woman",
+              "text": {
+                "ja": "女性の状態はどうですか？",
+                "en": "How is the woman doing?",
+                "zh_CN": "那个女性状态怎么样？",
+                "zh_TW": "那個女性狀態怎麼樣？",
+                "ko": "여성분 상태는 어떤가요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_woman_status",
+          "callerLines": [
+            {
+              "ja": "動揺していますが、身体的な怪我はなし。",
+              "en": "She's shaken but has no physical injuries.",
+              "zh_CN": "情绪激动，但身体没有受伤。",
+              "zh_TW": "情緒激動，但身體沒有受傷。",
+              "ko": "동요하고 있지만 신체적 부상은 없습니다."
+            },
+            {
+              "ja": "名前は渡辺真理。29歳。",
+              "en": "Her name is Mari Watanabe. 29 years old.",
+              "zh_CN": "名字是渡边真理，29岁。",
+              "zh_TW": "名字是渡邊真理，29歲。",
+              "ko": "이름은 와타나베 마리. 29세입니다."
+            },
+            {
+              "ja": "詳細は後日、正式な報告書で。",
+              "en": "Details will be in the formal report later.",
+              "zh_CN": "详情会在正式报告中说明。",
+              "zh_TW": "詳情會在正式報告中說明。",
+              "ko": "자세한 내용은 나중에 정식 보고서로 전달하겠습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "police_woman_status_thanks",
+              "text": {
+                "ja": "了解しました。ありがとうございます。",
+                "en": "Understood. Thank you.",
+                "zh_CN": "收到。谢谢。",
+                "zh_TW": "收到。謝謝。",
+                "ko": "알겠습니다. 감사합니다."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_witness_callback",
+      "title": {
+        "ja": "さっきの通報の件で...",
+        "en": "About the Earlier Report...",
+        "zh_CN": "关于刚才的报警...",
+        "zh_TW": "關於剛才的報警...",
+        "ko": "아까 신고 건인데요..."
+      },
+      "segments": [
+        {
+          "segmentId": "callback_intro",
+          "callerLines": [
+            {
+              "ja": "あ、すみません、さっき口論を見たって電話した者なんですけど...",
+              "en": "Oh, excuse me, I'm the one who called about the argument earlier...",
+              "zh_CN": "啊，不好意思，我是刚才打电话说看到争吵的那个人...",
+              "zh_TW": "啊，不好意思，我是剛才打電話說看到爭吵的那個人...",
+              "ko": "아, 실례합니다, 아까 말다툼 봤다고 전화한 사람인데요..."
+            },
+            {
+              "ja": "あの後、気になってもう少し近くで見てしまって。",
+              "en": "After that, I couldn't help watching a bit closer.",
+              "zh_CN": "之后我忍不住又靠近看了一会儿。",
+              "zh_TW": "之後我忍不住又靠近看了一會兒。",
+              "ko": "그 후에 신경 쓰여서 좀 더 가까이서 봤어요."
+            },
+            {
+              "ja": "追加で伝えた方がいいかと思って。",
+              "en": "I thought I should share some more information.",
+              "zh_CN": "想着应该再补充一些信息。",
+              "zh_TW": "想著應該再補充一些信息。",
+              "ko": "추가로 알려드려야 할 것 같아서요."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "callback_intro_listen",
+              "text": {
+                "ja": "ありがとうございます。何が見えましたか？",
+                "en": "Thank you. What did you see?",
+                "zh_CN": "谢谢。您看到了什么？",
+                "zh_TW": "謝謝。您看到了什麼？",
+                "ko": "감사합니다. 뭘 보셨나요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "callback_details",
+          "callerLines": [
+            {
+              "ja": "男の人が何か名前を叫んでたんです。",
+              "en": "The man was shouting some name.",
+              "zh_CN": "那个男的在喊一个名字。",
+              "zh_TW": "那個男的在喊一個名字。",
+              "ko": "남자가 무슨 이름을 외치고 있었어요."
+            },
+            {
+              "ja": "「ハルカはどこだ」って...何度も。",
+              "en": "'Where is Haruka?' ...Over and over.",
+              "zh_CN": ""遥在哪里"...重复了好几遍。",
+              "zh_TW": ""遙在哪裡"...重複了好幾遍。",
+              "ko": "'하루카는 어디 있어'라고... 몇 번이나."
+            },
+            {
+              "ja": "女性は「知らない」って泣いてました。",
+              "en": "The woman was crying 'I don't know.'",
+              "zh_CN": "那个女的哭着说"我不知道"。",
+              "zh_TW": "那個女的哭著說"我不知道"。",
+              "ko": "여자는 '몰라요'라고 울고 있었어요."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "callback_details_haruka",
+              "text": {
+                "ja": "ハルカ...。他に何か聞こえましたか？",
+                "en": "Haruka... Did you hear anything else?",
+                "zh_CN": "遥...还听到其他什么吗？",
+                "zh_TW": "遙...還聽到其他什麼嗎？",
+                "ko": "하루카... 다른 건 뭔가 들으셨나요?"
+              }
+            },
+            {
+              "responseId": "callback_details_note",
+              "text": {
+                "ja": "記録しました。ありがとうございます。",
+                "en": "Noted. Thank you.",
+                "zh_CN": "记录了。谢谢。",
+                "zh_TW": "記錄了。謝謝。",
+                "ko": "기록했습니다. 감사합니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "callback_end",
+          "callerLines": [
+            {
+              "ja": "はい...お役に立てたなら良かったです。",
+              "en": "Yes... I'm glad if I could help.",
+              "zh_CN": "好的...如果能帮上忙就好了。",
+              "zh_TW": "好的...如果能幫上忙就好了。",
+              "ko": "네... 도움이 됐다면 다행이에요."
+            },
+            {
+              "ja": "失礼します。",
+              "en": "Goodbye.",
+              "zh_CN": "再见。",
+              "zh_TW": "再見。",
+              "ko": "실례합니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "callback_end_reply",
+              "text": {
+                "ja": "ありがとうございました。お気をつけて。",
+                "en": "Thank you. Take care.",
+                "zh_CN": "谢谢。请注意安全。",
+                "zh_TW": "謝謝。請注意安全。",
+                "ko": "감사합니다. 조심하세요."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "evidence_argument",
+      "title": {
+        "ja": "口論の目撃",
+        "en": "Witnessed Argument",
+        "zh_CN": "目击争吵",
+        "zh_TW": "目擊爭吵",
+        "ko": "말다툼 목격"
+      },
+      "content": {
+        "ja": "女性が怖がり、男が怒鳴っている口論。男は「ハルカはどこだ」と叫んでいた。",
+        "en": "An argument where the woman was scared and the man was yelling. The man was shouting 'Where is Haruka?'",
+        "zh_CN": "女人害怕，男人在怒吼的争吵。男人在喊"遥在哪里"。",
+        "zh_TW": "女人害怕，男人在怒吼的爭吵。男人在喊"遙在哪裡"。",
+        "ko": "여자가 겁에 질리고 남자가 소리를 지르는 말다툼. 남자는 '하루카는 어디 있어'라고 외치고 있었다."
+      }
+    },
+    {
+      "evidenceId": "evidence_white_van",
+      "title": {
+        "ja": "白いバン",
+        "en": "White Van",
+        "zh_CN": "白色面包车",
+        "zh_TW": "白色廂型車",
+        "ko": "흰색 밴"
+      },
+      "content": {
+        "ja": "女性を連れ去った白いバン。Night02の火災現場と同じ車両か？",
+        "en": "A white van that took the woman. The same vehicle from the Night02 fire scene?",
+        "zh_CN": "带走女人的白色面包车。和第二夜火灾现场的是同一辆车？",
+        "zh_TW": "帶走女人的白色廂型車。和第二夜火災現場的是同一輛車？",
+        "ko": "여자를 데려간 흰색 밴. 제2야 화재 현장과 같은 차량인가?"
+      }
+    },
+    {
+      "evidenceId": "evidence_sato_inquiry",
+      "title": {
+        "ja": "佐藤の問い合わせ",
+        "en": "Sato's Inquiry",
+        "zh_CN": "佐藤的询问",
+        "zh_TW": "佐藤的詢問",
+        "ko": "사토의 문의"
+      },
+      "content": {
+        "ja": "佐藤浩二が林遥について探りを入れてきた",
+        "en": "Koji Sato was asking about Haruka Hayashi",
+        "zh_CN": "佐藤浩二打探林遥的消息",
+        "zh_TW": "佐藤浩二打探林遙的消息",
+        "ko": "사토 코지가 하야시 하루카에 대해 캐물었다"
+      }
+    },
+    {
+      "evidenceId": "evidence_silent_call",
+      "title": {
+        "ja": "無言電話",
+        "en": "Silent Call",
+        "zh_CN": "无声电话",
+        "zh_TW": "無聲電話",
+        "ko": "무언 전화"
+      },
+      "content": {
+        "ja": "口を塞がれて話せない人物からの電話。必死に助けを求めていた。",
+        "en": "A call from someone gagged and unable to speak. Desperately seeking help.",
+        "zh_CN": "被堵住嘴无法说话的人打来的电话。在拼命求救。",
+        "zh_TW": "被堵住嘴無法說話的人打來的電話。在拼命求救。",
+        "ko": "입이 막혀 말할 수 없는 사람의 전화. 필사적으로 도움을 요청하고 있었다."
+      }
+    },
+    {
+      "evidenceId": "evidence_mari_saved",
+      "title": {
+        "ja": "女性の保護",
+        "en": "Woman Protected",
+        "zh_CN": "女性获救",
+        "zh_TW": "女性獲救",
+        "ko": "여성 보호"
+      },
+      "content": {
+        "ja": "警察が女性（渡辺真理）を保護し、男は逃走した",
+        "en": "Police protected the woman (Mari Watanabe), the man fled",
+        "zh_CN": "警察保护了女性（渡边真理），男人逃跑了",
+        "zh_TW": "警察保護了女性（渡邊真理），男人逃跑了",
+        "ko": "경찰이 여성(와타나베 마리)을 보호했고, 남자는 도주했다"
+      }
+    }
+  ]
+}

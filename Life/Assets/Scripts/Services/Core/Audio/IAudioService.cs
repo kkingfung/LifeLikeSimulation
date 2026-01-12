@@ -34,6 +34,11 @@ namespace LifeLike.Services.Core.Audio
         bool IsMuted { get; set; }
 
         /// <summary>
+        /// 現在再生中のBGMクリップ名（再生中でなければnull）
+        /// </summary>
+        string? CurrentBgmName { get; }
+
+        /// <summary>
         /// ボリューム変更時のイベント
         /// </summary>
         event Action<string, float>? OnVolumeChanged;
@@ -49,9 +54,9 @@ namespace LifeLike.Services.Core.Audio
         void SaveSettings();
 
         /// <summary>
-        /// BGMを再生する
+        /// BGMを再生する（同じBGMが再生中なら何もしない）
         /// </summary>
-        /// <param name="clipName">クリップ名</param>
+        /// <param name="clipName">Resourcesフォルダ内のクリップ名</param>
         /// <param name="fadeInDuration">フェードイン時間（秒）</param>
         void PlayBgm(string clipName, float fadeInDuration = 0.5f);
 

@@ -5,6 +5,7 @@ using LifeLike.Controllers;
 using LifeLike.Core.Services;
 using LifeLike.Data;
 using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Audio;
 using LifeLike.Services.Core.Localization;
 using LifeLike.UI;
 using LifeLike.UI.Effects;
@@ -85,6 +86,8 @@ namespace LifeLike.Views
 
         private OperatorViewModel? _viewModel;
         private ILocalizationService? _localizationService;
+        private IDialogueLocalizationService? _dialogueLocalizationService;
+        private IAudioService? _audioService;
         private readonly List<Button> _responseButtons = new();
         private readonly List<Button> _incomingCallButtons = new();
         private readonly List<GameObject> _evidenceItems = new();
@@ -114,6 +117,9 @@ namespace LifeLike.Views
             {
                 _localizationService.OnLanguageChanged += OnLanguageChanged;
             }
+
+            // オーディオサービスを取得
+            _audioService = ServiceLocator.Instance.Get<IAudioService>();
         }
 
         private void InitializeServices()
@@ -136,6 +142,9 @@ namespace LifeLike.Views
                 Debug.LogError("[OperatorView] 必要なサービスがコントローラーにありません。Bootstrapシーンを先に読み込んでください。");
                 return;
             }
+
+            // ダイアログローカライズサービスを取得
+            _dialogueLocalizationService = _controller.DialogueLocalizationService;
 
             // ViewModelを作成
             _viewModel = new OperatorViewModel(
@@ -181,6 +190,9 @@ namespace LifeLike.Views
             // OperatorViewはUIの表示のみを担当
             // ただし、Start()の実行順序により、既に着信がある可能性があるので再度更新
             _viewModel.RefreshFromServices();
+
+            // BGMを停止（ゲーム画面では無音）
+            _audioService?.StopBgm();
         }
 
         /// <summary>
@@ -556,7 +568,32 @@ namespace LifeLike.Views
             if (hasDialogue && _callerDialogueText != null && _viewModel.CurrentSegment?.media != null)
             {
                 var currentLanguage = _localizationService?.CurrentLanguage ?? Language.Japanese;
-                _callerDialogueText.text = _viewModel.CurrentSegment.media.dialogueText.GetText(currentLanguage);
+
+                // ダイアログローカライズサービスから翻訳を取得
+                if (_dialogueLocalizationService != null &&
+                    _dialogueLocalizationService.IsLoaded &&
+                    _viewModel.CurrentCall != null)
+                {
+                    var callId = _viewModel.CurrentCall.callId;
+                    var segmentId = _viewModel.CurrentSegment.segmentId;
+                    var callerLines = _dialogueLocalizationService.GetCallerLines(callId, segmentId);
+
+                    if (callerLines.Count > 0)
+                    {
+                        // 複数行を改行で結合
+                        _callerDialogueText.text = string.Join("\n", callerLines);
+                    }
+                    else
+                    {
+                        // 翻訳がない場合はフォールバック
+                        _callerDialogueText.text = _viewModel.CurrentSegment.media.dialogueText.GetText(currentLanguage);
+                    }
+                }
+                else
+                {
+                    // ローカライズサービスが利用できない場合はフォールバック
+                    _callerDialogueText.text = _viewModel.CurrentSegment.media.dialogueText.GetText(currentLanguage);
+                }
             }
         }
 
@@ -579,6 +616,11 @@ namespace LifeLike.Views
             if (showResponses && _responseButtonContainer != null && _responseButtonPrefab != null)
             {
                 var theme = UIThemeManager.Instance.Theme;
+                var currentLanguage = _localizationService?.CurrentLanguage ?? Language.Japanese;
+
+                // 現在の通話とセグメント情報を取得
+                string? currentCallId = _viewModel.CurrentCall?.callId;
+                string? currentSegmentId = _viewModel.CurrentSegment?.segmentId;
 
                 Debug.Log($"[OperatorView] Creating {_viewModel.AvailableResponses.Count} response buttons");
                 foreach (var response in _viewModel.AvailableResponses)
@@ -590,8 +632,24 @@ namespace LifeLike.Views
                     var buttonText = button.GetComponentInChildren<Text>();
                     if (buttonText != null)
                     {
-                        var currentLanguage = _localizationService?.CurrentLanguage ?? Language.Japanese;
-                        buttonText.text = response.displayText.GetText(currentLanguage);
+                        // ダイアログローカライズサービスから翻訳を取得
+                        string responseText = string.Empty;
+                        if (_dialogueLocalizationService != null &&
+                            _dialogueLocalizationService.IsLoaded &&
+                            !string.IsNullOrEmpty(currentCallId) &&
+                            !string.IsNullOrEmpty(currentSegmentId))
+                        {
+                            responseText = _dialogueLocalizationService.GetResponseText(
+                                currentCallId, currentSegmentId, response.responseId);
+                        }
+
+                        // 翻訳がない場合はフォールバック
+                        if (string.IsNullOrEmpty(responseText))
+                        {
+                            responseText = response.displayText.GetText(currentLanguage);
+                        }
+
+                        buttonText.text = responseText;
                     }
 
                     // クロージャーで正しいresponseIdをキャプチャ

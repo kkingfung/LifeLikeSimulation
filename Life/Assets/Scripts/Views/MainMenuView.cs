@@ -3,6 +3,7 @@ using System.ComponentModel;
 using LifeLike.Controllers;
 using LifeLike.Core.Services;
 using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Audio;
 using LifeLike.Services.Core.Localization;
 using LifeLike.UI;
 using LifeLike.UI.Effects;
@@ -48,8 +49,11 @@ namespace LifeLike.Views
         [SerializeField] private bool _enableButtonEffects = true;
         [SerializeField] private Canvas? _mainCanvas;
 
+        private const string MenuBgmName = "bgm_MidnightSettingsLoop";
+
         private MainMenuViewModel? _viewModel;
         private ILocalizationService? _localizationService;
+        private IAudioService? _audioService;
         private GameObject? _crtOverlay;
         private TypewriterEffect? _titleTypewriter;
         private FadeEffect? _screenFade;
@@ -75,6 +79,9 @@ namespace LifeLike.Views
             {
                 _localizationService.OnLanguageChanged += OnLanguageChanged;
             }
+
+            // オーディオサービスを取得
+            _audioService = ServiceLocator.Instance.Get<IAudioService>();
         }
 
         /// <summary>
@@ -163,6 +170,9 @@ namespace LifeLike.Views
             {
                 _versionText.text = $"v{Application.version}";
             }
+
+            // BGMを再生（同じBGMが再生中なら継続）
+            _audioService?.PlayBgm(MenuBgmName);
         }
 
         /// <summary>

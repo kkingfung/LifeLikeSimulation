@@ -5,6 +5,7 @@ using LifeLike.Data;
 using LifeLike.Data.EndState;
 using LifeLike.Data.Flag;
 using LifeLike.UI.Debug;
+using LifeLike.Services.Core.Localization;
 using LifeLike.Services.Core.Save;
 using LifeLike.Services.Operator.CallFlow;
 using LifeLike.Services.Operator.EndState;
@@ -57,6 +58,7 @@ namespace LifeLike.Controllers
         private IEvidenceService? _evidenceService;
         private ITrustGraphService? _trustGraphService;
         private ISubsceneService? _subsceneService;
+        private IDialogueLocalizationService? _dialogueLocalizationService;
 
         /// <summary>
         /// CallFlowサービス
@@ -97,6 +99,11 @@ namespace LifeLike.Controllers
         /// Subsceneサービス
         /// </summary>
         public ISubsceneService? SubsceneService => _subsceneService;
+
+        /// <summary>
+        /// ダイアログローカライズサービス
+        /// </summary>
+        public IDialogueLocalizationService? DialogueLocalizationService => _dialogueLocalizationService;
 
         /// <summary>
         /// 設定シーンへの参照
@@ -140,6 +147,7 @@ namespace LifeLike.Controllers
             _evidenceService = GetService<IEvidenceService>();
             _trustGraphService = GetService<ITrustGraphService>();
             _subsceneService = GetService<ISubsceneService>();
+            _dialogueLocalizationService = GetService<IDialogueLocalizationService>();
 
             // デバッグパネルのイベントを購読
             if (_debugPanel != null)
@@ -193,6 +201,12 @@ namespace LifeLike.Controllers
             _currentNightData = _nightDataSets[nightIndex];
 
             Debug.Log($"[OperatorSceneController] 夜を開始: {_currentNightData.nightId}");
+
+            // ダイアログ翻訳データを読み込み
+            if (_dialogueLocalizationService != null)
+            {
+                _dialogueLocalizationService.LoadNightTranslation(_currentNightData.nightId);
+            }
 
             // フラグサービスを初期化
             if (_flagService != null && _currentNightData.flagsDefinition != null)

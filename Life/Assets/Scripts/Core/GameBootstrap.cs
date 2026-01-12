@@ -95,6 +95,10 @@ namespace LifeLike.Core
             var localizationService = new LocalizationService();
             ServiceLocator.Instance.Register<ILocalizationService>(localizationService);
 
+            // DialogueLocalizationServiceを作成・登録（ストーリーコンテンツのローカライズ用）
+            var dialogueLocalizationService = new DialogueLocalizationService(localizationService);
+            ServiceLocator.Instance.Register<IDialogueLocalizationService>(dialogueLocalizationService);
+
             // SubsceneServiceを作成・登録（サブシーン管理用）
             var subsceneService = new SubsceneService();
             ServiceLocator.Instance.Register<ISubsceneService>(subsceneService);

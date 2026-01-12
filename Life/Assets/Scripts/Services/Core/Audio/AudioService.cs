@@ -1,6 +1,5 @@
 #nullable enable
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -36,6 +35,7 @@ namespace LifeLike.Services.Core.Audio
         private float _sfxVolume = 1f;
         private float _voiceVolume = 1f;
         private bool _isMuted = false;
+        private string? _currentBgmName = null;
 
         /// <inheritdoc/>
         public float MasterVolume
@@ -95,6 +95,9 @@ namespace LifeLike.Services.Core.Audio
                 ApplyMute();
             }
         }
+
+        /// <inheritdoc/>
+        public string? CurrentBgmName => _currentBgmName;
 
         /// <inheritdoc/>
         public event Action<string, float>? OnVolumeChanged;
@@ -163,11 +166,29 @@ namespace LifeLike.Services.Core.Audio
                 return;
             }
 
-            if (_audioClips.TryGetValue(clipName, out var clip))
+            // 同じBGMが既に再生中なら何もしない
+            if (_currentBgmName == clipName && _bgmSource.isPlaying)
+            {
+                Debug.Log($"[AudioService] BGM継続再生中: {clipName}");
+                return;
+            }
+
+            // キャッシュから取得、なければResourcesからロード
+            if (!_audioClips.TryGetValue(clipName, out var clip))
+            {
+                clip = Resources.Load<AudioClip>(clipName);
+                if (clip != null)
+                {
+                    _audioClips[clipName] = clip;
+                }
+            }
+
+            if (clip != null)
             {
                 _bgmSource.clip = clip;
                 _bgmSource.loop = true;
                 _bgmSource.Play();
+                _currentBgmName = clipName;
                 Debug.Log($"[AudioService] BGM再生: {clipName}");
             }
             else
@@ -182,6 +203,7 @@ namespace LifeLike.Services.Core.Audio
             if (_bgmSource == null) return;
 
             _bgmSource.Stop();
+            _currentBgmName = null;
             Debug.Log("[AudioService] BGM停止");
         }
 
@@ -236,15 +258,33 @@ namespace LifeLike.Services.Core.Audio
         }
 
         /// <summary>
-        /// AudioMixerにボリュームを適用する
+        /// ボリュームを適用する（AudioSourceのvolumeを直接操作）
         /// </summary>
         private void ApplyVolume(string paramName, float volume)
         {
-            if (_audioMixer == null) return;
+            // AudioSourceのvolumeを直接設定（AudioMixerのExposeが不要）
+            ApplyVolumeToSources();
+        }
 
-            // 0-1のボリュームを-80dB〜0dBに変換
-            float db = volume > 0 ? Mathf.Log10(volume) * 20f : -80f;
-            _audioMixer.SetFloat(paramName, db);
+        /// <summary>
+        /// すべてのAudioSourceにボリュームを適用する
+        /// </summary>
+        private void ApplyVolumeToSources()
+        {
+            float masterMultiplier = _isMuted ? 0f : _masterVolume;
+
+            if (_bgmSource != null)
+            {
+                _bgmSource.volume = _bgmVolume * masterMultiplier;
+            }
+            if (_sfxSource != null)
+            {
+                _sfxSource.volume = _sfxVolume * masterMultiplier;
+            }
+            if (_voiceSource != null)
+            {
+                _voiceSource.volume = _voiceVolume * masterMultiplier;
+            }
         }
 
         /// <summary>
@@ -252,10 +292,7 @@ namespace LifeLike.Services.Core.Audio
         /// </summary>
         private void ApplyAllVolumes()
         {
-            ApplyVolume(MasterMixerParam, _isMuted ? 0f : _masterVolume);
-            ApplyVolume(BgmMixerParam, _bgmVolume);
-            ApplyVolume(SfxMixerParam, _sfxVolume);
-            ApplyVolume(VoiceMixerParam, _voiceVolume);
+            ApplyVolumeToSources();
         }
 
         /// <summary>
@@ -263,7 +300,7 @@ namespace LifeLike.Services.Core.Audio
         /// </summary>
         private void ApplyMute()
         {
-            ApplyVolume(MasterMixerParam, _isMuted ? 0f : _masterVolume);
+            ApplyVolumeToSources();
         }
     }
 }
