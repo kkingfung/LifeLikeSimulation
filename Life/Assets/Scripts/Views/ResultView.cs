@@ -70,8 +70,12 @@ namespace LifeLike.Views
             if (_controller == null)
             {
                 Debug.LogError("[ResultView] ResultSceneControllerが見つかりません。");
-                return;
             }
+        }
+
+        private void InitializeServices()
+        {
+            if (_controller == null) return;
 
             if (_controller.OperatorSaveService == null)
             {
@@ -84,6 +88,9 @@ namespace LifeLike.Views
 
         private void Start()
         {
+            // サービスを初期化（ResultSceneController.Awake()が完了した後）
+            InitializeServices();
+
             if (_viewModel == null) return;
 
             // テーマを設定

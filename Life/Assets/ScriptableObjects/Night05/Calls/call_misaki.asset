@@ -133,6 +133,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: explain_gentle
     media:
       mediaType: 0
@@ -219,6 +220,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: explain_direct
     media:
       mediaType: 0
@@ -303,6 +305,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: explain_cold
     media:
       mediaType: 0
@@ -388,6 +391,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: at_home
     media:
       mediaType: 0
@@ -474,6 +478,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: alone_at_home
     media:
       mediaType: 0
@@ -560,6 +565,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: mari_name
     media:
       mediaType: 0
@@ -670,6 +676,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: mari_at_work
     media:
       mediaType: 0
@@ -754,6 +761,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: mari_coming_back
     media:
       mediaType: 0
@@ -839,6 +847,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: mama_name_unknown
     media:
       mediaType: 0
@@ -923,6 +932,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: mama_job_unknown
     media:
       mediaType: 0
@@ -981,6 +991,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: address_unknown
     media:
       mediaType: 0
@@ -1039,6 +1050,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: yoshida_mention
     media:
       mediaType: 0
@@ -1125,6 +1137,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: yoshida_name_attempt
     media:
       mediaType: 0
@@ -1212,6 +1225,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: yoshida_description
     media:
       mediaType: 0
@@ -1298,6 +1312,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: yoshida_fire_detail
     media:
       mediaType: 0
@@ -1358,6 +1373,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: yoshida_visit_question
     media:
       mediaType: 0
@@ -1417,6 +1433,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: wait_for_mari
     media:
       mediaType: 0
@@ -1503,6 +1520,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: waiting_decision
     media:
       mediaType: 0
@@ -1590,6 +1608,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: police_dispatch_response
     media:
       mediaType: 0
@@ -1649,6 +1668,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: wait_for_mari_return
     media:
       mediaType: 0
@@ -1733,6 +1753,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: small_talk
     media:
       mediaType: 0
@@ -1791,6 +1812,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: mari_returns
     media:
       mediaType: 0
@@ -1850,6 +1872,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: mari_notices
     media:
       mediaType: 0
@@ -1908,6 +1931,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: mari_takes_phone
     media:
       mediaType: 0
@@ -1966,6 +1990,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: call_end_normal
     media:
       mediaType: 0
@@ -2024,6 +2049,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: call_end_early
     media:
       mediaType: 0
@@ -2082,6 +2108,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []

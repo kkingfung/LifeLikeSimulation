@@ -170,7 +170,17 @@ namespace LifeLike.ViewModels
             if (_operatorSaveService.HasSaveData)
             {
                 int nightIndex = _operatorSaveService.GetCurrentNightIndex();
-                CurrentNightInfo = $"Night {nightIndex + 1:D2} / 10";
+                var completedNights = _operatorSaveService.GetCompletedNights();
+
+                // 全10夜クリア済みの場合
+                if (completedNights.Count >= 10)
+                {
+                    CurrentNightInfo = "全クリア (Night 10 / 10)";
+                }
+                else
+                {
+                    CurrentNightInfo = $"Night {nightIndex + 1:D2} / 10";
+                }
 
                 if (_operatorSaveService.LastSaveTime.HasValue)
                 {

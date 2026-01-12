@@ -79,6 +79,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: resident_car
     media:
       mediaType: 0
@@ -139,6 +140,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: resident_people
     media:
       mediaType: 0
@@ -199,6 +201,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: resident_realize
     media:
       mediaType: 0
@@ -315,6 +318,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: resident_will_call_police
     media:
       mediaType: 0
@@ -374,6 +378,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: resident_end_passive
     media:
       mediaType: 0
@@ -432,6 +437,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: resident_confused
     media:
       mediaType: 0
@@ -491,6 +497,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []

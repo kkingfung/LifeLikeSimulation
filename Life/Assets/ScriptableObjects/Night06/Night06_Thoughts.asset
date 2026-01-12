@@ -1,0 +1,337 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76f60ac7398a234ca63d57c2e92c7eb, type: 3}
+  m_Name: Night06_Thoughts
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.OperatorThoughtsDefinition
+  nightId: night_06
+  description: "Night06\u306E\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u601D\u8003"
+  thoughts:
+  - thoughtId: same_man_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u8AA0\u548C\u88FD\u85AC...\u606F\u5B50\u304C\u85AC\u3067\u6B7B\u3093\u3060...\u6628\u65E5\u306E\u6297\u8B70\u306E\u4EBA\u3068\u540C\u3058\u304B..."
+    note: 'From call: call_demo_argument'
+    timing: 0
+    relatedCallId: call_demo_argument
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: heard_nakamura_claim
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: nakamura_desperate_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u3042\u306E\u4EBA\u3001\u8FFD\u3044\u8A70\u3081\u3089\u308C\u3066\u3044\u308B...\u8AB0\u3082\u8A71\u3092\u805E\u3044\u3066\u304F\u308C\u306A\u3044\u304B\u3089..."
+    note: 'From call: call_demo_argument'
+    timing: 0
+    relatedCallId: call_demo_argument
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: nakamura_desperate
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: nakamura_taken_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u307E\u305F\u8B66\u5BDF\u306B\u9023\u308C\u3066\u3044\u304B\u308C\u305F...\u3067\u3082\u3001\u5F7C\u306E\u8A00\u3063\u3066\u3044\u308B\u3053\u3068\u304C\u672C\u5F53\u3060\u3068\u3057\u305F\u3089..."
+    note: 'From call: call_demo_argument'
+    timing: 0
+    relatedCallId: call_demo_argument
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: nakamura_taken_by_police
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: misaki_connection_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u6797\u7F8E\u54B2...\u6628\u65E5\u96FB\u8A71\u3057\u3066\u304D\u305F\u5B50\u3068\u540C\u3058\u540D\u524D...\u304A\u6BCD\u3055\u3093\u3068\u9023\u7D61\u304C\u53D6\u308C\u306A\u3044..."
+    note: 'From call: call_kindergarten'
+    timing: 0
+    relatedCallId: call_kindergarten
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: kindergarten_contacted
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: haruka_accident_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "5\u65E5\u524D\u304B\u3089\u9023\u7D61\u304C\u53D6\u308C\u306A\u3044...\u3042\u306E\u6B69\u9053\u6A4B\u306E\u4E8B\u6545\u306E\u65E5..."
+    note: 'From call: call_kindergarten'
+    timing: 0
+    relatedCallId: call_kindergarten
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: haruka_last_seen_noted
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: mari_unreachable_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u6E21\u8FBA\u771F\u7406\u3055\u3093\u306B\u3082\u9023\u7D61\u304C\u3064\u304B\u306A\u3044...\u7F8E\u54B2\u3061\u3083\u3093\u306E\u300C\u307E\u308A\u304A\u3070\u3061\u3083\u3093\u300D...\u4E8C\u4EBA\u3068\u3082\u5927\u4E08\u592B\u306A\u306E\u304B..."
+    note: 'From call: call_kindergarten'
+    timing: 0
+    relatedCallId: call_kindergarten
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: kindergarten_contacted
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: same_car_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u54C1\u5DDD\u30CA\u30F3\u30D0\u30FC\u300132...\u6628\u65E5\u3068\u540C\u3058\u8ECA\u3002\u3057\u304B\u3082\u5897\u3048\u3066\u3044\u308B...\u4F55\u304C\u8D77\u304D\u3088\u3046\u3068\u3057\u3066\u3044\u308B..."
+    note: 'From call: call_yoshida_report'
+    timing: 0
+    relatedCallId: call_yoshida_report
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: shinagawa_32_confirmed
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: misaki_danger_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u7F8E\u54B2\u3061\u3083\u3093\u304C\u6E21\u8FBA\u3055\u3093\u306E\u5BB6\u306B\u3044\u308B...\u3042\u306E\u8ECA\u306F\u7F8E\u54B2\u3061\u3083\u3093\u3092\u63A2\u3057\u3066\u3044\u308B\u306E\u304B..."
+    note: 'From call: call_yoshida_report'
+    timing: 0
+    relatedCallId: call_yoshida_report
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: yoshida_mentioned_misaki
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: organization_closing_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u8ECA\u304C\u5897\u3048\u3066\u3044\u308B...\u7D44\u7E54\u304C\u672C\u683C\u7684\u306B\u52D5\u304D\u51FA\u3057\u305F...\u7F8E\u54B2\u3061\u3083\u3093\u305F\u3061\u304C\u5371\u306A\u3044..."
+    note: 'From call: call_yoshida_report'
+    timing: 0
+    relatedCallId: call_yoshida_report
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: multiple_cars_noted
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: hayashi_connection_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u6797\u5065\u4E8C...\u7F8E\u54B2\u3061\u3083\u3093\u306E\u82D7\u5B57\u3082\u6797...\u5076\u7136\u304B...\uFF1F"
+    note: 'From event: '
+    timing: 0
+    relatedCallId: 
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: noticed_hayashi_name
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: kenji_dead_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u6797\u5065\u4E8C...\u3042\u306E\u300C\u5144\u300D\u3092\u540D\u4E57\u3063\u3066\u3044\u305F\u7537...\u3084\u306F\u308A\u6B7B\u3093\u3067\u3044\u305F\u306E\u304B..."
+    note: 'From event: '
+    timing: 0
+    relatedCallId: 
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: heard_kenji_name
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: son_death_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u3042\u306E\u30C7\u30E2\u306E\u7537\u6027...\u606F\u5B50\u3092\u4EA1\u304F\u3057\u3066\u3044\u305F..."
+    note: 'From event: '
+    timing: 0
+    relatedCallId: 
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: kudo_mentioned_son
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: seiwa_connection_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u606F\u5B50\u306F\u8AA0\u548C\u88FD\u85AC\u306E\u85AC\u3067\u6B7B\u3093\u3060\u3002\u305D\u3057\u3066\u7236\u89AA\u306F\u540C\u3058\u4F1A\u793E\u306B\u6297\u8B70\u3057\u3066\u3044\u308B..."
+    note: 'From event: '
+    timing: 0
+    relatedCallId: 
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: noticed_seiwa_connection
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: kenji_identified_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u6797\u5065\u4E8C...\u3042\u306E\u5C71\u3067\u898B\u3064\u304B\u3063\u305F\u907A\u4F53\u306E\u4EBA...\u8AA0\u548C\u88FD\u85AC\u306E\u7814\u7A76\u54E1\u3060\u3063\u305F..."
+    note: 'From event: '
+    timing: 0
+    relatedCallId: 
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: kenji_identified
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: all_connected_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u4E2D\u6751\u306E\u606F\u5B50\u3001\u6797\u5065\u4E8C...\u5168\u90E8\u8AA0\u548C\u88FD\u85AC\u306B\u7E4B\u304C\u3063\u3066\u3044\u308B\u3002\u5076\u7136\u3058\u3083\u306A\u3044..."
+    note: 'From event: '
+    timing: 0
+    relatedCallId: 
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: all_seiwa_connected
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: kudo_warning_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u5DE5\u85E4\u4E3B\u4EFB\u306F\u4F55\u304B\u3092\u77E5\u3063\u3066\u3044\u308B\u306E\u304B...\uFF1F\u305D\u308C\u3068\u3082\u3001\u305F\u3060\u306E\u5FE0\u544A\u304B..."
+    note: 'From event: '
+    timing: 0
+    relatedCallId: 
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: kudo_warned_operator
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0

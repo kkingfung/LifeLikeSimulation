@@ -7,7 +7,6 @@ using LifeLike.Data.Flag;
 using LifeLike.UI.Debug;
 using LifeLike.Services.Core.Save;
 using LifeLike.Services.Operator.CallFlow;
-using LifeLike.Services.Operator.Clock;
 using LifeLike.Services.Operator.EndState;
 using LifeLike.Services.Operator.Evidence;
 using LifeLike.Services.Operator.Flag;
@@ -50,7 +49,6 @@ namespace LifeLike.Controllers
 
         // サービス参照
         private IFlagService? _flagService;
-        private IClockService? _clockService;
         private IEndStateService? _endStateService;
         private IOperatorSaveService? _operatorSaveService;
         private ISaveService? _saveService;
@@ -84,6 +82,11 @@ namespace LifeLike.Controllers
         /// Operator Saveサービス（夜進行用）
         /// </summary>
         public IOperatorSaveService? OperatorSaveService => _operatorSaveService;
+
+        /// <summary>
+        /// Flagサービス
+        /// </summary>
+        public IFlagService? FlagService => _flagService;
 
         /// <summary>
         /// Saveサービス（汎用）
@@ -129,7 +132,6 @@ namespace LifeLike.Controllers
         {
             // サービスを取得
             _flagService = GetService<IFlagService>();
-            _clockService = GetService<IClockService>();
             _endStateService = GetService<IEndStateService>();
             _operatorSaveService = GetService<IOperatorSaveService>();
             _saveService = GetService<ISaveService>();
@@ -214,16 +216,6 @@ namespace LifeLike.Controllers
                 _endStateService.Initialize(_currentNightData.endStateDefinition);
             }
 
-            // 時計サービスを初期化
-            if (_clockService != null && _currentNightData.scenarioData != null)
-            {
-                _clockService.Initialize(
-                    _currentNightData.scenarioData.startTimeMinutes,
-                    _currentNightData.scenarioData.endTimeMinutes,
-                    _currentNightData.scenarioData.realSecondsPerGameMinute
-                );
-            }
-
             // WorldStateServiceを初期化
             if (_worldStateService != null && _currentNightData.scenarioData != null)
             {
@@ -236,6 +228,9 @@ namespace LifeLike.Controllers
             if (_callFlowService != null && _currentNightData.scenarioData != null)
             {
                 _callFlowService.LoadScenario(_currentNightData.scenarioData);
+
+                // シミュレーションモード: 最初の通話をトリガー
+                _callFlowService.TriggerNextCall();
             }
 
             _isNightActive = true;
@@ -289,10 +284,10 @@ namespace LifeLike.Controllers
         /// </summary>
         public void SaveMidNight()
         {
-            if (_operatorSaveService == null || _flagService == null || _clockService == null) return;
+            if (_operatorSaveService == null || _flagService == null) return;
 
             var currentFlags = _flagService.GetAllFlags();
-            _operatorSaveService.SaveMidNight(CurrentNightId, _clockService.CurrentTimeMinutes, currentFlags);
+            _operatorSaveService.SaveMidNight(CurrentNightId, 0, currentFlags);
         }
 
         /// <summary>

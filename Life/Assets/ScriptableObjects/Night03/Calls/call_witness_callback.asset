@@ -79,6 +79,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_details
     media:
       mediaType: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_more
     media:
       mediaType: 0
@@ -225,6 +227,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_end
     media:
       mediaType: 0
@@ -283,6 +286,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []

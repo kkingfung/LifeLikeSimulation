@@ -373,12 +373,14 @@ namespace LifeLike.ViewModels
 
         /// <summary>
         /// 開始可能かを更新
+        /// クリア済みの夜も再プレイ可能（フラグ収集のため）
         /// </summary>
         private void UpdateCanStartChapter()
         {
             CanStartChapter = _selectedChapter != null &&
                 (_selectedChapter.state == ChapterState.Available ||
-                 _selectedChapter.state == ChapterState.InProgress);
+                 _selectedChapter.state == ChapterState.InProgress ||
+                 _selectedChapter.state == ChapterState.Completed);
             StartChapterCommand.RaiseCanExecuteChanged();
         }
 

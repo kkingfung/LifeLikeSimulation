@@ -104,6 +104,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: kudo_brief
     media:
       mediaType: 0
@@ -162,6 +163,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: business_matter
     media:
       mediaType: 0
@@ -246,6 +248,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: kudo_concern
     media:
       mediaType: 0
@@ -305,6 +308,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: body_topic
     media:
       mediaType: 0
@@ -416,6 +420,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: body_topic_brief
     media:
       mediaType: 0
@@ -500,6 +505,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: kudo_body_response
     media:
       mediaType: 0
@@ -584,6 +590,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: kudo_body_no
     media:
       mediaType: 0
@@ -642,6 +649,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: kudo_uneasy
     media:
       mediaType: 0
@@ -701,6 +709,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: news_transition
     media:
       mediaType: 0
@@ -785,6 +794,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: murakami_explain
     media:
       mediaType: 0
@@ -871,6 +881,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: murakami_detail
     media:
       mediaType: 0
@@ -930,6 +941,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: murakami_praise
     media:
       mediaType: 0
@@ -1016,6 +1028,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: kudo_notice_tone
     media:
       mediaType: 0
@@ -1101,6 +1114,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: seiwa_info
     media:
       mediaType: 0
@@ -1187,6 +1201,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: kudo_curious
     media:
       mediaType: 0
@@ -1245,6 +1260,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: kudo_end
     media:
       mediaType: 0
@@ -1303,6 +1319,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []

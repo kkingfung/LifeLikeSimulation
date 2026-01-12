@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using LifeLike.Controllers;
+using LifeLike.Core.Services;
 using LifeLike.Data;
-using LifeLike.Services.Core.Subscene;
+using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Localization;
 using LifeLike.UI;
 using LifeLike.UI.Effects;
 using LifeLike.ViewModels;
@@ -16,7 +18,7 @@ namespace LifeLike.Views
     /// <summary>
     /// オペレーター画面のView
     /// 緊急通報センターのコンソールインターフェースを表示
-    /// CRT効果、デジタル時計、ボタンホバー効果、タイマーバーを含む
+    /// CRT効果、ボタンホバー効果、タイマーバーを含む
     /// </summary>
     public class OperatorView : MonoBehaviour
     {
@@ -25,9 +27,6 @@ namespace LifeLike.Views
 
         [Header("シナリオ設定")]
         [SerializeField] private NightScenarioData? _scenarioData;
-
-        [Header("時計UI")]
-        [SerializeField] private Text? _clockText;
 
         [Header("発信者情報UI")]
         [SerializeField] private GameObject? _callerInfoPanel;
@@ -48,7 +47,6 @@ namespace LifeLike.Views
         [SerializeField] private GameObject? _responsePanel;
         [SerializeField] private Transform? _responseButtonContainer;
         [SerializeField] private Button? _responseButtonPrefab;
-        [SerializeField] private Button? _silenceButton;
 
         [Header("着信リストUI")]
         [SerializeField] private GameObject? _incomingCallsPanel;
@@ -61,8 +59,6 @@ namespace LifeLike.Views
         [SerializeField] private GameObject? _evidenceItemPrefab;
 
         [Header("コントロールUI")]
-        [SerializeField] private Button? _holdButton;
-        [SerializeField] private Button? _endCallButton;
         [SerializeField] private Button? _pauseButton;
         [SerializeField] private Text? _pauseButtonText;
 
@@ -70,27 +66,29 @@ namespace LifeLike.Views
         [SerializeField] private GameObject? _missedCallBadge;
         [SerializeField] private Text? _missedCallCountText;
 
+        [Header("メニューUI")]
+        [SerializeField] private Button? _chapterSelectButton;
+        [SerializeField] private Text? _chapterSelectButtonText;
+
         [Header("エンディングUI")]
         [SerializeField] private GameObject? _endingPanel;
         [SerializeField] private Text? _endingTitleText;
         [SerializeField] private Text? _endingDescriptionText;
         [SerializeField] private Button? _returnToMenuButton;
+        [SerializeField] private Text? _returnToMenuButtonText;
 
         [Header("UI Effects")]
         [SerializeField] private UITheme? _theme;
         [SerializeField] private bool _enableCRTEffect = true;
         [SerializeField] private bool _enableButtonEffects = true;
-        [SerializeField] private bool _enableDigitalClock = true;
         [SerializeField] private Canvas? _mainCanvas;
 
         private OperatorViewModel? _viewModel;
-        private ISubsceneService? _subsceneService;
-        private bool _wasPausedBeforeSettings;
+        private ILocalizationService? _localizationService;
         private readonly List<Button> _responseButtons = new();
         private readonly List<Button> _incomingCallButtons = new();
         private readonly List<GameObject> _evidenceItems = new();
         private GameObject? _crtOverlay;
-        private DigitalClockDisplay? _digitalClock;
         private TimerBar? _responseTimer;
         private ShakeEffect? _missedCallShake;
         private FlashEffect? _evidencePanelFlash;
@@ -108,21 +106,34 @@ namespace LifeLike.Views
             if (_controller == null)
             {
                 Debug.LogError("[OperatorView] OperatorSceneControllerが見つかりません。");
-                return;
             }
 
+            // ローカライズサービスを取得
+            _localizationService = ServiceLocator.Instance.Get<ILocalizationService>();
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged += OnLanguageChanged;
+            }
+        }
+
+        private void InitializeServices()
+        {
+            if (_controller == null) return;
+
             // コントローラーからサービスを取得
+            // 注意: OperatorSceneController.Awake()が完了した後に呼び出す必要がある
             var callFlowService = _controller.CallFlowService;
             var worldStateService = _controller.WorldStateService;
             var evidenceService = _controller.EvidenceService;
             var trustGraphService = _controller.TrustGraphService;
-            var saveService = _controller.SaveService;
-            _subsceneService = _controller.SubsceneService;
+            var operatorSaveService = _controller.OperatorSaveService;
+            var flagService = _controller.FlagService;
 
             if (callFlowService == null || worldStateService == null ||
-                evidenceService == null || trustGraphService == null || saveService == null)
+                evidenceService == null || trustGraphService == null ||
+                operatorSaveService == null || flagService == null)
             {
-                Debug.LogError("[OperatorView] 必要なサービスがコントローラーにありません。");
+                Debug.LogError("[OperatorView] 必要なサービスがコントローラーにありません。Bootstrapシーンを先に読み込んでください。");
                 return;
             }
 
@@ -132,17 +143,15 @@ namespace LifeLike.Views
                 worldStateService,
                 evidenceService,
                 trustGraphService,
-                saveService);
-
-            // サブシーンが閉じられた時のイベントを購読
-            if (_subsceneService != null)
-            {
-                _subsceneService.OnSubsceneClosed += OnSubsceneClosed;
-            }
+                operatorSaveService,
+                flagService);
         }
 
         private void Start()
         {
+            // サービスを初期化（OperatorSceneController.Awake()が完了した後）
+            InitializeServices();
+
             if (_viewModel == null)
             {
                 return;
@@ -165,15 +174,13 @@ namespace LifeLike.Views
             // 初期状態を反映
             UpdateAllUI();
 
-            // シナリオを開始
-            if (_scenarioData != null)
-            {
-                _viewModel.StartScenario(_scenarioData);
-            }
-            else
-            {
-                Debug.LogWarning("[OperatorView] シナリオデータが設定されていません。");
-            }
+            // ローカライズテキストを適用
+            ApplyLocalizedTexts();
+
+            // シナリオ開始と最初の通話トリガーはコントローラーが行う
+            // OperatorViewはUIの表示のみを担当
+            // ただし、Start()の実行順序により、既に着信がある可能性があるので再度更新
+            _viewModel.RefreshFromServices();
         }
 
         /// <summary>
@@ -195,11 +202,6 @@ namespace LifeLike.Views
             if (_enableCRTEffect)
             {
                 SetupCRTEffect();
-            }
-
-            if (_enableDigitalClock)
-            {
-                SetupDigitalClock();
             }
 
             if (_enableButtonEffects)
@@ -249,31 +251,15 @@ namespace LifeLike.Views
         }
 
         /// <summary>
-        /// デジタル時計をセットアップ
-        /// </summary>
-        private void SetupDigitalClock()
-        {
-            if (_clockText == null) return;
-
-            _digitalClock = _clockText.GetComponent<DigitalClockDisplay>();
-            if (_digitalClock == null)
-            {
-                _digitalClock = _clockText.gameObject.AddComponent<DigitalClockDisplay>();
-            }
-        }
-
-        /// <summary>
         /// ボタン効果をセットアップ
         /// </summary>
         private void SetupButtonEffects()
         {
             var theme = UIThemeManager.Instance.Theme;
 
-            AddButtonEffects(_holdButton, theme);
-            AddButtonEffects(_endCallButton, theme, ButtonAudioFeedback.ClickSoundType.Cancel);
             AddButtonEffects(_pauseButton, theme);
-            AddButtonEffects(_silenceButton, theme);
             AddButtonEffects(_returnToMenuButton, theme, ButtonAudioFeedback.ClickSoundType.Confirm);
+            AddButtonEffects(_chapterSelectButton, theme);
         }
 
         /// <summary>
@@ -384,15 +370,8 @@ namespace LifeLike.Views
         /// </summary>
         private void HandleEscapeKey()
         {
-            // サブシーンが開いている場合は閉じる
-            if (_subsceneService != null && _subsceneService.IsSubsceneOpen)
-            {
-                _subsceneService.CloseSubsceneAsync();
-                return;
-            }
-
-            // 設定画面を開く
-            OnSettingsClicked();
+            // ポーズをトグル
+            _viewModel?.TogglePauseCommand.Execute(null);
         }
 
         private void OnDestroy()
@@ -403,17 +382,18 @@ namespace LifeLike.Views
                 Destroy(_crtOverlay);
             }
 
+            // ローカライズサービスのイベント購読を解除
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged -= OnLanguageChanged;
+            }
+
             if (_viewModel != null)
             {
                 _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
                 _viewModel.OnScenarioEnded -= OnScenarioEnded;
                 _viewModel.OnReturnToMenuRequested -= OnReturnToMenuRequested;
                 _viewModel.Dispose();
-            }
-
-            if (_subsceneService != null)
-            {
-                _subsceneService.OnSubsceneClosed -= OnSubsceneClosed;
             }
 
             ClearResponseButtons();
@@ -427,29 +407,19 @@ namespace LifeLike.Views
         private void SetupUI()
         {
             // コントロールボタン
-            if (_holdButton != null)
-            {
-                _holdButton.onClick.AddListener(OnHoldClicked);
-            }
-
-            if (_endCallButton != null)
-            {
-                _endCallButton.onClick.AddListener(OnEndCallClicked);
-            }
-
             if (_pauseButton != null)
             {
                 _pauseButton.onClick.AddListener(OnPauseClicked);
             }
 
-            if (_silenceButton != null)
-            {
-                _silenceButton.onClick.AddListener(OnSilenceClicked);
-            }
-
             if (_returnToMenuButton != null)
             {
                 _returnToMenuButton.onClick.AddListener(OnReturnToMenuClicked);
+            }
+
+            if (_chapterSelectButton != null)
+            {
+                _chapterSelectButton.onClick.AddListener(OnChapterSelectClicked);
             }
 
             // 初期状態でエンディングパネルを非表示
@@ -464,7 +434,6 @@ namespace LifeLike.Views
         /// </summary>
         private void UpdateAllUI()
         {
-            UpdateClockUI();
             UpdateCallerInfoUI();
             UpdateCallStatusUI();
             UpdateDialogueUI();
@@ -472,7 +441,6 @@ namespace LifeLike.Views
             UpdateIncomingCallsUI();
             UpdateEvidenceUI();
             UpdateMissedCallsUI();
-            UpdateControlButtonsUI();
         }
 
         /// <summary>
@@ -482,15 +450,11 @@ namespace LifeLike.Views
         {
             switch (e.PropertyName)
             {
-                case nameof(OperatorViewModel.CurrentTime):
-                    UpdateClockUI();
-                    break;
-
                 case nameof(OperatorViewModel.CurrentCaller):
                 case nameof(OperatorViewModel.IsCallActive):
+                case nameof(OperatorViewModel.CurrentCallerDisplayName):
                     UpdateCallerInfoUI();
                     UpdateCallStatusUI();
-                    UpdateControlButtonsUI();
                     break;
 
                 case nameof(OperatorViewModel.CurrentSegment):
@@ -500,6 +464,7 @@ namespace LifeLike.Views
                 case nameof(OperatorViewModel.AvailableResponses):
                 case nameof(OperatorViewModel.IsShowingResponses):
                     UpdateResponsesUI();
+                    UpdateResponseTimerUI();
                     break;
 
                 case nameof(OperatorViewModel.ResponseTimeRemaining):
@@ -526,21 +491,6 @@ namespace LifeLike.Views
 
         #region UI更新メソッド
 
-        private void UpdateClockUI()
-        {
-            if (_viewModel == null) return;
-
-            // デジタル時計が有効な場合はそれを使用
-            if (_digitalClock != null)
-            {
-                _digitalClock.SetTimeString(_viewModel.CurrentTime);
-            }
-            else if (_clockText != null)
-            {
-                _clockText.text = _viewModel.CurrentTime;
-            }
-        }
-
         private void UpdateCallerInfoUI()
         {
             if (_viewModel == null) return;
@@ -556,7 +506,7 @@ namespace LifeLike.Views
             {
                 if (_callerNameText != null)
                 {
-                    _callerNameText.text = _viewModel.CurrentCaller.displayName;
+                    _callerNameText.text = _viewModel.CurrentCallerDisplayName;
                 }
 
                 if (_callerPhoneText != null)
@@ -579,15 +529,15 @@ namespace LifeLike.Views
             {
                 if (_viewModel.IsCallActive)
                 {
-                    _callStatusText.text = "通話中";
+                    _callStatusText.text = GetLocalizedText(UILocalizationKeys.Operator.CallStatus_Active);
                 }
                 else if (_viewModel.IncomingCalls.Count > 0)
                 {
-                    _callStatusText.text = "着信あり";
+                    _callStatusText.text = GetLocalizedText(UILocalizationKeys.Operator.CallStatus_Incoming);
                 }
                 else
                 {
-                    _callStatusText.text = "待機中";
+                    _callStatusText.text = GetLocalizedText(UILocalizationKeys.Operator.CallStatus_Waiting);
                 }
             }
         }
@@ -615,6 +565,8 @@ namespace LifeLike.Views
 
             bool showResponses = _viewModel.IsShowingResponses && _viewModel.AvailableResponses.Count > 0;
 
+            Debug.Log($"[OperatorView] UpdateResponsesUI - IsShowingResponses: {_viewModel.IsShowingResponses}, AvailableResponses: {_viewModel.AvailableResponses.Count}");
+
             if (_responsePanel != null)
             {
                 _responsePanel.SetActive(showResponses);
@@ -627,8 +579,10 @@ namespace LifeLike.Views
             {
                 var theme = UIThemeManager.Instance.Theme;
 
+                Debug.Log($"[OperatorView] Creating {_viewModel.AvailableResponses.Count} response buttons");
                 foreach (var response in _viewModel.AvailableResponses)
                 {
+                    Debug.Log($"[OperatorView] Response: {response.responseId} - {response.displayText}");
                     var button = Instantiate(_responseButtonPrefab, _responseButtonContainer);
                     button.gameObject.SetActive(true);
 
@@ -667,12 +621,6 @@ namespace LifeLike.Views
 
                     _responseButtons.Add(button);
                 }
-            }
-
-            // 沈黙ボタンの状態
-            if (_silenceButton != null)
-            {
-                _silenceButton.gameObject.SetActive(showResponses);
             }
         }
 
@@ -718,7 +666,8 @@ namespace LifeLike.Views
                     var buttonText = button.GetComponentInChildren<Text>();
                     if (buttonText != null)
                     {
-                        buttonText.text = call.caller?.displayName ?? "不明な発信者";
+                        // 名前が判明していない発信者は「不明」と表示
+                        buttonText.text = _viewModel.GetCallerDisplayName(call.caller);
                     }
 
                     string callId = call.callId;
@@ -813,28 +762,14 @@ namespace LifeLike.Views
             _previousMissedCallCount = _viewModel.MissedCallCount;
         }
 
-        private void UpdateControlButtonsUI()
-        {
-            if (_viewModel == null) return;
-
-            if (_holdButton != null)
-            {
-                _holdButton.interactable = _viewModel.IsCallActive;
-            }
-
-            if (_endCallButton != null)
-            {
-                _endCallButton.interactable = _viewModel.IsCallActive;
-            }
-        }
-
         private void UpdatePauseButtonUI()
         {
             if (_viewModel == null) return;
 
             if (_pauseButtonText != null)
             {
-                _pauseButtonText.text = _viewModel.IsPaused ? "再開" : "一時停止";
+                string key = _viewModel.IsPaused ? UILocalizationKeys.Operator.Resume : UILocalizationKeys.Operator.Pause;
+                _pauseButtonText.text = GetLocalizedText(key);
             }
         }
 
@@ -890,21 +825,6 @@ namespace LifeLike.Views
         private void OnAnswerCallClicked(string callId)
         {
             _viewModel?.AnswerCallCommand.Execute(callId);
-        }
-
-        private void OnSilenceClicked()
-        {
-            _viewModel?.SelectSilenceCommand.Execute(null);
-        }
-
-        private void OnHoldClicked()
-        {
-            _viewModel?.HoldCallCommand.Execute(null);
-        }
-
-        private void OnEndCallClicked()
-        {
-            _viewModel?.EndCallCommand.Execute(null);
         }
 
         private void OnPauseClicked()
@@ -965,43 +885,57 @@ namespace LifeLike.Views
         }
 
         /// <summary>
-        /// 設定ボタンクリック時
+        /// チャプター選択に戻るボタンクリック時
         /// </summary>
-        private async void OnSettingsClicked()
+        private void OnChapterSelectClicked()
         {
-            if (_subsceneService == null || _controller == null)
-            {
-                Debug.LogWarning("[OperatorView] SubsceneServiceまたはControllerが利用できません。");
-                return;
-            }
+            _controller?.ReturnToChapterSelect();
+        }
 
-            // 現在のポーズ状態を保存
-            _wasPausedBeforeSettings = _viewModel?.IsPaused ?? false;
+        #endregion
 
-            // ポーズしていない場合はポーズする
-            if (!_wasPausedBeforeSettings)
-            {
-                _viewModel?.TogglePauseCommand.Execute(null);
-            }
+        #region ローカライズ
 
-            // 設定画面をサブシーンとして開く
-            await _subsceneService.OpenSubsceneAsync(_controller.SettingsScene);
+        /// <summary>
+        /// ローカライズテキストを適用
+        /// </summary>
+        private void ApplyLocalizedTexts()
+        {
+            // ボタンラベル
+            SetLocalizedText(_chapterSelectButtonText, UILocalizationKeys.Operator.ChapterSelect);
+            SetLocalizedText(_returnToMenuButtonText, UILocalizationKeys.Operator.ReturnToMenu);
+
+            // ポーズボタンは状態によって変わるので個別更新
+            UpdatePauseButtonUI();
+
+            // 通話ステータスも状態によって変わるので個別更新
+            UpdateCallStatusUI();
         }
 
         /// <summary>
-        /// サブシーンが閉じられた時
+        /// 言語変更時のコールバック
         /// </summary>
-        private void OnSubsceneClosed(string sceneName)
+        private void OnLanguageChanged(Language language)
         {
-            if (_controller == null || sceneName != _controller.SettingsScene.SceneName) return;
+            ApplyLocalizedTexts();
+            Debug.Log($"[OperatorView] 言語が変更されました: {language}");
+        }
 
-            // 設定画面を開く前にポーズしていなかった場合は再開
-            if (!_wasPausedBeforeSettings && _viewModel != null && _viewModel.IsPaused)
-            {
-                _viewModel.TogglePauseCommand.Execute(null);
-            }
+        /// <summary>
+        /// ローカライズテキストを設定するヘルパー
+        /// </summary>
+        private void SetLocalizedText(Text? textComponent, string key)
+        {
+            if (textComponent == null) return;
+            textComponent.text = GetLocalizedText(key);
+        }
 
-            Debug.Log("[OperatorView] 設定画面から復帰");
+        /// <summary>
+        /// ローカライズテキストを取得するヘルパー
+        /// </summary>
+        private string GetLocalizedText(string key)
+        {
+            return _localizationService?.GetText(key) ?? key;
         }
 
         #endregion

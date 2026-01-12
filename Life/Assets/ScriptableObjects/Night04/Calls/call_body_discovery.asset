@@ -133,6 +133,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: calming_empathy
     media:
       mediaType: 0
@@ -193,6 +194,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: calming_directive
     media:
       mediaType: 0
@@ -253,6 +255,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: calming_question
     media:
       mediaType: 0
@@ -312,6 +315,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: calming_retry
     media:
       mediaType: 0
@@ -371,6 +375,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: detailed_report
     media:
       mediaType: 0
@@ -455,6 +460,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: body_details
     media:
       mediaType: 0
@@ -514,6 +520,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: scene_details
     media:
       mediaType: 0
@@ -573,6 +580,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: witness_info
     media:
       mediaType: 0
@@ -632,6 +640,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: car_details
     media:
       mediaType: 0
@@ -693,6 +702,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: location_details
     media:
       mediaType: 0
@@ -752,6 +762,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: minimal_report
     media:
       mediaType: 0
@@ -810,6 +821,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: minimal_location
     media:
       mediaType: 0
@@ -869,6 +881,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: call_end
     media:
       mediaType: 0
@@ -928,6 +941,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []

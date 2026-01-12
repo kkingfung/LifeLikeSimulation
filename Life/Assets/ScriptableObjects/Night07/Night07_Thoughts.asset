@@ -1,0 +1,317 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76f60ac7398a234ca63d57c2e92c7eb, type: 3}
+  m_Name: Night07_Thoughts
+  m_EditorClassIdentifier: Assembly-CSharp::LifeLike.Data.OperatorThoughtsDefinition
+  nightId: night_07
+  description: "Night07\u306E\u30AA\u30DA\u30EC\u30FC\u30BF\u30FC\u601D\u8003"
+  thoughts:
+  - thoughtId: nakamura_connection_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u4E2D\u6751\u6D69\u4E8C...\u8AA0\u548C\u88FD\u85AC\u306B\u6297\u8B70\u3057\u3066\u3044\u305F\u4EBA...\u81EA\u6BBA..."
+    note: 'From call: call_landlord_report'
+    timing: 0
+    relatedCallId: call_landlord_report
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: nakamura_hanging_confirmed
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: no_note_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u907A\u66F8\u304C\u306A\u3044...\u90E8\u5C4B\u304C\u8352\u3089\u3055\u308C\u3066\u3044\u308B...\u672C\u5F53\u306B\u81EA\u6BBA\u306A\u306E\u304B..."
+    note: 'From call: call_landlord_report'
+    timing: 0
+    relatedCallId: call_landlord_report
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: no_note_suspicious
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: pattern_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u4E2D\u6751\u3055\u3093\u3082...\u8AA0\u548C\u88FD\u85AC\u306B\u95A2\u308F\u3063\u305F\u4EBA\u304C\u6B21\u3005\u3068..."
+    note: 'From call: call_landlord_report'
+    timing: 0
+    relatedCallId: call_landlord_report
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: nakamura_hanging_confirmed
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: cloth_warehouse_connection
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u5236\u670D\u307F\u305F\u3044\u306A\u7D20\u6750...\u307E\u3055\u304B\u3001\u3042\u306E\u5009\u5EAB\u706B\u707D\u3067\u898B\u305F\u30A2\u30E9\u30FC\u30C8\u30BB\u30AD\u30E5\u30EA\u30C6\u30A3\u306E...\uFF1F"
+    note: 'From call: call_landlord_report'
+    timing: 5
+    relatedCallId: call_landlord_report
+    triggerSegmentId: cloth_description
+    triggerTimeMinutes: 0
+    triggerFlagId: cloth_detail_noted
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: uniform_security_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u8B66\u5099\u4F1A\u793E\u306E\u5236\u670D...\u5009\u5EAB\u706B\u707D\u306E\u73FE\u5834\u306B\u3044\u305F\u767D\u3044\u30D0\u30F3...\u30A2\u30E9\u30FC\u30C8\u30BB\u30AD\u30E5\u30EA\u30C6\u30A3...\u5168\u90E8\u7E4B\u304C\u3063\u3066\u308B..."
+    note: 'From call: call_landlord_report'
+    timing: 0
+    relatedCallId: call_landlord_report
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: cloth_detail_noted
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: mari_danger_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u771F\u7406\u3055\u3093...\u96FB\u8A71\u304C\u5207\u308C\u305F...\u9593\u306B\u5408\u308F\u306A\u304B\u3063\u305F..."
+    note: 'From call: call_mari_emergency'
+    timing: 0
+    relatedCallId: call_mari_emergency
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: mari_call_cut
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: misaki_worry_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u7F8E\u54B2\u3061\u3083\u3093\u306F...\u771F\u7406\u3055\u3093\u3068\u4E00\u7DD2\u3060\u3063\u305F\u306E\u304B...?"
+    note: 'From call: call_mari_emergency'
+    timing: 0
+    relatedCallId: call_mari_emergency
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: mari_abducted
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: suicide_doubt_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u81EA\u6BBA\u3068\u3057\u3066\u51E6\u7406...\u3067\u3082\u907A\u66F8\u304C\u306A\u3044...\u672C\u5F53\u306B\u81EA\u6BBA\u306A\u306E\u304B..."
+    note: 'From call: call_police_inquiry'
+    timing: 0
+    relatedCallId: call_police_inquiry
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: police_treating_as_suicide
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: pattern_confirmed_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u8AA0\u548C\u88FD\u85AC\u306B\u95A2\u308F\u3063\u305F\u4EBA\u304C\u6B21\u3005\u3068...\u5076\u7136\u3058\u3083\u306A\u3044..."
+    note: 'From call: call_police_inquiry'
+    timing: 0
+    relatedCallId: call_police_inquiry
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: told_police_son_claim
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: mari_abducted_confirmed_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u6E21\u8FBA\u3055\u3093\u304C\u9023\u308C\u53BB\u3089\u308C\u305F...\u3042\u306E\u8ECA\u3067..."
+    note: 'From call: call_yoshida_witness'
+    timing: 0
+    relatedCallId: call_yoshida_witness
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: mari_taken_witnessed
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: same_car_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u54C1\u5DDD\u30CA\u30F3\u30D0\u30FC32...\u3084\u306F\u308A\u3042\u306E\u8ECA...\u3059\u3079\u3066\u7E4B\u304C\u3063\u3066\u3044\u308B..."
+    note: 'From call: call_yoshida_witness'
+    timing: 0
+    relatedCallId: call_yoshida_witness
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: shinagawa_32_abduction
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: misaki_safe_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u7F8E\u54B2\u3061\u3083\u3093\u306F...\u5409\u7530\u3055\u3093\u306F\u4F55\u3082\u8A00\u308F\u306A\u304B\u3063\u305F...\u3082\u3057\u304B\u3057\u3066..."
+    note: 'From call: call_yoshida_witness'
+    timing: 0
+    relatedCallId: call_yoshida_witness
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: yoshida_call_ended
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: mari_taken_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u6E21\u8FBA\u3055\u3093...\u96FB\u8A71\u304C\u5207\u308C\u305F...\u9593\u306B\u5408\u308F\u306A\u304B\u3063\u305F..."
+    note: 'From call: call_mari_cutoff'
+    timing: 0
+    relatedCallId: call_mari_cutoff
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: mari_taken
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: misaki_taken_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u7F8E\u54B2\u3061\u3083\u3093\u3082...\u4E8C\u4EBA\u3068\u3082\u9023\u308C\u3066\u3044\u304B\u308C\u305F...\u52A9\u3051\u3089\u308C\u306A\u304B\u3063\u305F..."
+    note: 'From call: call_mari_cutoff'
+    timing: 0
+    relatedCallId: call_mari_cutoff
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: misaki_taken
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: should_have_warned_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u5409\u7530\u3055\u3093\u306B\u6E21\u8FBA\u3055\u3093\u306B\u77E5\u3089\u305B\u3066\u3082\u3089\u3063\u3066\u3044\u308C\u3070...\u3082\u3057\u304B\u3057\u305F\u3089..."
+    note: 'From call: call_mari_cutoff'
+    timing: 0
+    relatedCallId: call_mari_cutoff
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: mari_taken
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0

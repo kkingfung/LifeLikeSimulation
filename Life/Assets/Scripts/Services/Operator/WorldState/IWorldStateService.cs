@@ -88,6 +88,11 @@ namespace LifeLike.Services.Operator.WorldState
         void EndScenario(ScenarioEnding ending);
 
         /// <summary>
+        /// シナリオを終了させる（EndStateServiceを使用してエンディングを自動決定）
+        /// </summary>
+        void FinalizeScenario();
+
+        /// <summary>
         /// 一時停止
         /// </summary>
         void Pause();

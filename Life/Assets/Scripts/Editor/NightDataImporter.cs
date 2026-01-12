@@ -827,6 +827,7 @@ namespace LifeLike.Editor
                         var segment = new CallSegment
                         {
                             segmentId = segJson.segmentId,
+                            isEnding = segJson.isEnding,
                             responses = new List<ResponseData>()
                         };
 

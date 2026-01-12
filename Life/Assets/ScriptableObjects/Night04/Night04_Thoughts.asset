@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a76f60ac7398a234ca63d57c2e92c7eb, type: 3}
   m_Name: Night04_Thoughts
   m_EditorClassIdentifier: Assembly-CSharp:LifeLike.Data:OperatorThoughtsDefinition
   nightId: night_04
@@ -26,6 +26,7 @@ MonoBehaviour:
     note: "\u8A73\u7D30\u60C5\u5831\u3092\u5F97\u305F\u5834\u5408\u306E\u307F\u8868\u793A\u3002Night02\u3068\u306E\u7E4B\u304C\u308A\u3092\u793A\u5506\u3002"
     timing: 0
     relatedCallId: call_body_discovery
+    triggerSegmentId: 
     triggerTimeMinutes: 0
     triggerFlagId: witness_detailed_info
     conditions: []
@@ -45,6 +46,7 @@ MonoBehaviour:
     note: "\u8B66\u5BDF\u304B\u3089\u7121\u8A00\u96FB\u8A71\u306B\u3064\u3044\u3066\u805E\u304B\u308C\u305F\u5F8C\u3002Night03\u3068\u306E\u7E4B\u304C\u308A\u3002"
     timing: 0
     relatedCallId: call_police_inquiry
+    triggerSegmentId: 
     triggerTimeMinutes: 0
     triggerFlagId: police_asked_silent_call
     conditions: []
@@ -64,6 +66,7 @@ MonoBehaviour:
     note: "\u4E21\u65B9\u306E\u30D5\u30E9\u30B0\u3092\u5F97\u305F\u5834\u5408\u306E\u307F\u3002\u30D7\u30EC\u30A4\u30E4\u30FC\u304C\u63A5\u7D9A\u306B\u6210\u529F\u3057\u305F\u6642\u3002"
     timing: 1
     relatedCallId: 
+    triggerSegmentId: 
     triggerTimeMinutes: 0
     triggerFlagId: connected_nights
     conditions: []
@@ -83,6 +86,7 @@ MonoBehaviour:
     note: "\u8001\u4EBA\u3092\u843D\u3061\u7740\u304B\u305B\u308B\u306E\u306B\u6210\u529F\u3057\u305F\u5834\u5408\u3002"
     timing: 0
     relatedCallId: call_body_discovery
+    triggerSegmentId: 
     triggerTimeMinutes: 0
     triggerFlagId: caller_calmed
     conditions: []
@@ -91,3 +95,63 @@ MonoBehaviour:
     fadeInDuration: 0.5
     fadeOutDuration: 0.5
     priority: 3
+  - thoughtId: van_connection_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u767D\u3044\u30D0\u30F3...\u3069\u3053\u304B\u3067..."
+    note: 'From call: call_body_discovery'
+    timing: 0
+    relatedCallId: call_body_discovery
+    triggerSegmentId: 
+    triggerTimeMinutes: 0
+    triggerFlagId: witness_detailed_info
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: clothing_mismatch_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u30B9\u30FC\u30C4...\uFF1F\u6797\u3055\u3093\u306E\u5144\u306F\u300C\u53CD\u5C04\u30B8\u30E3\u30B1\u30C3\u30C8\u3001\u30AA\u30EC\u30F3\u30B8\u306E\u30E9\u30A4\u30F3\u300D\u3068\u8A00\u3063\u3066\u3044\u305F\u3002\u306A\u305C\u670D\u88C5\u304C\u9055\u3046..."
+    note: 'From call: call_body_discovery'
+    timing: 5
+    relatedCallId: call_body_discovery
+    triggerSegmentId: body_details
+    triggerTimeMinutes: 0
+    triggerFlagId: clothing_contradiction_noted
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0
+  - thoughtId: suit_fake_brother_thought
+    category: 2
+    content:
+      key: 
+      defaultLanguage: 0
+      entries:
+      - language: 0
+        text: "\u30B9\u30FC\u30C4\u3092\u7740\u305F\u7537\u6027...\u3042\u306E\u300C\u5144\u300D\u304C\u8A00\u3063\u3066\u3044\u305F\u670D\u88C5\u3068\u306F\u5168\u7136\u9055\u3046\u3002"
+    note: 'From call: call_body_discovery'
+    timing: 5
+    relatedCallId: call_body_discovery
+    triggerSegmentId: body_details
+    triggerTimeMinutes: 0
+    triggerFlagId: fake_brother_claimed_reflective
+    conditions: []
+    suppressFlags: []
+    displayDuration: 0
+    fadeInDuration: 0.5
+    fadeOutDuration: 0.5
+    priority: 0

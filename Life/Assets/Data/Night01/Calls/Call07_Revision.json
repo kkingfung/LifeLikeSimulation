@@ -1,0 +1,317 @@
+{
+  "callId": "call_revision",
+  "callerId": "yamada_misaki",
+  "title": "考えてたんだけど",
+  "description": "ドライバーの2回目の通話。話を修正しようとする。「動物だったと思う」と否認を試みる。",
+  "segments": [
+    {
+      "segmentId": "revision_intro",
+      "callerLines": [
+        "...もしもし、さっき電話した者です。",
+        "あの...考えてたんですけど...",
+        "やっぱり動物だったと思うんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "revision_intro_listen",
+          "text": "さっきの方ですね。どうされましたか？",
+          "nextSegmentId": "revision_explain",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "revision_intro_recall",
+          "text": "何か轢いたかもしれないとおっしゃっていた方ですね。",
+          "nextSegmentId": "revision_nervous",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "revision_intro_probe",
+          "text": "動物...？さっきとお話が変わっていますが。",
+          "nextSegmentId": "revision_caught",
+          "setFlags": ["story_inconsistency_detected"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "revision_explain",
+      "callerLines": [
+        "ええ、落ち着いて考えたら、あの大きさは猫とか犬じゃないかって。",
+        "暗くてよく見えなかったし、きっと動物だったんです。",
+        "さっきは動揺してて、変なこと言ってすみませんでした。"
+      ],
+      "responses": [
+        {
+          "responseId": "revision_explain_accept",
+          "text": "そうですか。ご連絡ありがとうございます。",
+          "nextSegmentId": "revision_end_accepted",
+          "setFlags": ["yamada_story_accepted", "yamada_protected"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "revision_explain_question",
+          "text": "さっきは「人だったらどうしよう」とおっしゃっていましたが。",
+          "nextSegmentId": "revision_challenged",
+          "setFlags": ["story_inconsistency_detected"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "revision_explain_inform",
+          "text": "実は、歩道橋付近で女性が倒れているという通報がありました。",
+          "nextSegmentId": "revision_shock",
+          "setFlags": ["disclosed_to_driver"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "revision_nervous",
+      "callerLines": [
+        "あ、はい。でも、よく考えたら動物だったと思うんです。",
+        "場所も...もっと先だったかもしれないし。",
+        "歩道橋じゃなくて、その手前だったかも。"
+      ],
+      "responses": [
+        {
+          "responseId": "revision_nervous_note",
+          "text": "場所も変わりましたか。さっきは歩道橋付近とおっしゃっていましたが。",
+          "nextSegmentId": "revision_caught",
+          "setFlags": ["story_inconsistency_detected"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "revision_nervous_accept",
+          "text": "そうですか。わかりました。",
+          "nextSegmentId": "revision_end_accepted",
+          "setFlags": ["yamada_story_accepted", "yamada_protected"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "revision_caught",
+      "callerLines": [
+        "...え？",
+        "そんな...私、そんなこと言いました...？",
+        "いや、あの、混乱してて..."
+      ],
+      "responses": [
+        {
+          "responseId": "revision_caught_press",
+          "text": "最初の電話と今の話が矛盾しています。何があったんですか？",
+          "nextSegmentId": "revision_breakdown",
+          "setFlags": ["yamada_caught_in_lie"],
+          "clearFlags": ["yamada_protected"]
+        },
+        {
+          "responseId": "revision_caught_inform",
+          "text": "歩道橋付近で女性が倒れているという通報がありました。",
+          "nextSegmentId": "revision_shock",
+          "setFlags": ["disclosed_to_driver"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "revision_caught_let_go",
+          "text": "...わかりました。お気をつけて。",
+          "nextSegmentId": "revision_end_let_go",
+          "setFlags": ["yamada_protected", "let_yamada_go"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "revision_challenged",
+      "callerLines": [
+        "...それは...",
+        "動揺してたから、そう思っただけで...",
+        "でも、冷静に考えたら動物だったと思うんです。本当に。"
+      ],
+      "responses": [
+        {
+          "responseId": "revision_challenged_press",
+          "text": "本当に動物だと確信していますか？",
+          "nextSegmentId": "revision_doubt",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "revision_challenged_inform",
+          "text": "歩道橋付近で女性が倒れているという通報が入っています。",
+          "nextSegmentId": "revision_shock",
+          "setFlags": ["disclosed_to_driver"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "revision_doubt",
+      "callerLines": [
+        "...確信...？",
+        "...わからないです。本当のことを言うと。",
+        "でも、もし人だったら...私、どうなるの..."
+      ],
+      "responses": [
+        {
+          "responseId": "revision_doubt_honest",
+          "text": "正直に話した方がいいと思います。",
+          "nextSegmentId": "revision_confession",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "revision_doubt_inform",
+          "text": "歩道橋付近で女性が倒れているという通報がありました。",
+          "nextSegmentId": "revision_shock",
+          "setFlags": ["disclosed_to_driver"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "revision_shock",
+      "callerLines": [
+        "...女性が倒れてる...？",
+        "それって...私が...？",
+        "嘘でしょ...嘘だって言ってください..."
+      ],
+      "responses": [
+        {
+          "responseId": "revision_shock_confirm",
+          "text": "まだ確定ではありませんが、時間と場所が一致しています。",
+          "nextSegmentId": "revision_breakdown",
+          "setFlags": ["yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        },
+        {
+          "responseId": "revision_shock_police",
+          "text": "警察に連絡することをお勧めします。",
+          "nextSegmentId": "revision_end_police",
+          "setFlags": ["suggested_police", "yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        }
+      ]
+    },
+    {
+      "segmentId": "revision_breakdown",
+      "callerLines": [
+        "私...人を...本当に...",
+        "どうしよう...逃げたのに...嘘ついたのに...",
+        "もう終わりだ..."
+      ],
+      "responses": [
+        {
+          "responseId": "revision_breakdown_police",
+          "text": "今からでも警察に連絡してください。正直に話すことが大切です。",
+          "nextSegmentId": "revision_end_police",
+          "setFlags": ["yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        },
+        {
+          "responseId": "revision_breakdown_support",
+          "text": "今からでも遅くありません。現場に戻ることはできますか？",
+          "nextSegmentId": "revision_end_return",
+          "setFlags": ["yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        }
+      ]
+    },
+    {
+      "segmentId": "revision_confession",
+      "callerLines": [
+        "...正直に...",
+        "本当は...何を轢いたかわからないんです。",
+        "怖くて確認できなくて...逃げて...そして嘘をつこうとした..."
+      ],
+      "responses": [
+        {
+          "responseId": "revision_confession_inform",
+          "text": "歩道橋付近で女性が倒れているという通報がありました。",
+          "nextSegmentId": "revision_shock",
+          "setFlags": ["disclosed_to_driver"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "revision_confession_police",
+          "text": "警察に連絡することをお勧めします。",
+          "nextSegmentId": "revision_end_police",
+          "setFlags": ["yamada_confessed"],
+          "clearFlags": ["yamada_protected"]
+        }
+      ]
+    },
+    {
+      "segmentId": "revision_end_accepted",
+      "callerLines": [
+        "ありがとうございます。",
+        "...きっと動物でした。そうに決まってます。",
+        "おやすみなさい。"
+      ],
+      "responses": [
+        {
+          "responseId": "revision_end_accepted_reply",
+          "text": "おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "revision_end_let_go",
+      "callerLines": [
+        "...ありがとうございます。",
+        "...おやすみなさい。"
+      ],
+      "responses": [
+        {
+          "responseId": "revision_end_let_go_reply",
+          "text": "おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "revision_end_police",
+      "callerLines": [
+        "...わかりました。警察に...電話します。",
+        "...ありがとうございました。"
+      ],
+      "responses": [
+        {
+          "responseId": "revision_end_police_reply",
+          "text": "正しい選択です。お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "revision_end_return",
+      "callerLines": [
+        "...戻ります。",
+        "逃げ続けることはできない...",
+        "...あの人が無事でありますように。"
+      ],
+      "responses": [
+        {
+          "responseId": "revision_end_return_reply",
+          "text": "お気をつけて。",
+          "nextSegmentId": null,
+          "setFlags": ["yamada_returning"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "revision_intro",
+  "note": "山田の2回目の通話。最初の通話から話を修正しようとする。「動物だった」「場所も違った」と否認を試みるが、矛盾を指摘されると崩れる。story_inconsistency_detectedフラグはプレイヤーが矛盾に気づいたことを示す。"
+}

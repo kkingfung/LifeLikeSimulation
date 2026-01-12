@@ -126,6 +126,16 @@ namespace LifeLike.Services.Operator.CallFlow
         int GetMissedCallCount();
 
         /// <summary>
+        /// 次の利用可能な通話をトリガーする（シミュレーションモード用）
+        /// </summary>
+        void TriggerNextCall();
+
+        /// <summary>
+        /// 全ての通話が完了したかチェック
+        /// </summary>
+        bool AreAllCallsCompleted();
+
+        /// <summary>
         /// 全てクリア
         /// </summary>
         void Clear();

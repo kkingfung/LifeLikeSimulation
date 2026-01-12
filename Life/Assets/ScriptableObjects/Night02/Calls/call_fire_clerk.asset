@@ -105,6 +105,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_confirm
     media:
       mediaType: 0
@@ -190,6 +191,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_location
     media:
       mediaType: 0
@@ -275,6 +277,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_vehicle
     media:
       mediaType: 0
@@ -360,6 +363,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_time
     media:
       mediaType: 0
@@ -446,6 +450,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_company
     media:
       mediaType: 0
@@ -495,6 +500,7 @@ MonoBehaviour:
       trustImpact: 0
       setFlags:
       - security_company_noted
+      - warehouse_connection
       clearFlags: []
       isDispatchAction: 0
       nextSegmentId: clerk_end
@@ -522,6 +528,7 @@ MonoBehaviour:
       trustImpact: 0
       setFlags:
       - security_company_noted
+      - warehouse_connection
       clearFlags: []
       isDispatchAction: 0
       nextSegmentId: clerk_people
@@ -549,6 +556,7 @@ MonoBehaviour:
       trustImpact: 0
       setFlags:
       - security_company_noted
+      - warehouse_connection
       clearFlags: []
       isDispatchAction: 0
       nextSegmentId: clerk_behavior
@@ -559,6 +567,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_behavior
     media:
       mediaType: 0
@@ -617,6 +626,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_explosion
     media:
       mediaType: 0
@@ -701,6 +711,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_fire_status
     media:
       mediaType: 0
@@ -759,6 +770,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_people
     media:
       mediaType: 0
@@ -818,6 +830,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_warehouse
     media:
       mediaType: 0
@@ -876,6 +889,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_other
     media:
       mediaType: 0
@@ -935,6 +949,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: clerk_end
     media:
       mediaType: 0
@@ -993,6 +1008,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []

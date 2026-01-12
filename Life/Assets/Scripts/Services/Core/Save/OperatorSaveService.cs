@@ -179,8 +179,8 @@ namespace LifeLike.Services.Core.Save
                 });
             }
 
-            // 次の夜のインデックスを設定
-            data.currentNightIndex = data.nightResults.Count;
+            // 次の夜のインデックスを設定（最大9、つまり10夜まで）
+            data.currentNightIndex = Math.Min(data.nightResults.Count, 9);
 
             // 永続フラグを更新
             data.persistentFlags = persistentFlags.Select(f => new FlagStateData

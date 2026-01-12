@@ -1,0 +1,195 @@
+{
+  "callId": "call_noise",
+  "callerId": "suzuki_takashi",
+  "title": "大きな音がしたんです",
+  "description": "事故の最初の手がかり。時刻と場所の確立。優しく対応するとNight05で情報提供。",
+  "segments": [
+    {
+      "segmentId": "noise_intro",
+      "callerLines": [
+        "...もしもし、あの、すみません。",
+        "夜分遅くに申し訳ないんですが...",
+        "さっき、大きな音がしたんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "noise_intro_listen",
+          "text": "緊急通報センターです。大きな音とは、どのような音でしたか？",
+          "nextSegmentId": "noise_detail",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "noise_intro_location",
+          "text": "緊急通報センターです。どちらでお聞きになりましたか？",
+          "nextSegmentId": "noise_location",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "noise_intro_dismiss",
+          "text": "緊急通報センターです。何時頃のことですか？",
+          "nextSegmentId": "noise_time",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "noise_detail",
+      "callerLines": [
+        "車の...ぶつかるような音だったと思います。",
+        "ドンって。すごく大きな音で。",
+        "でも、窓から見ても何も見えなくて..."
+      ],
+      "responses": [
+        {
+          "responseId": "noise_detail_location",
+          "text": "車の衝突音ですね。どの辺りから聞こえましたか？",
+          "nextSegmentId": "noise_location",
+          "setFlags": ["suzuki_heard_collision"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "noise_detail_time",
+          "text": "何時頃のことですか？",
+          "nextSegmentId": "noise_time",
+          "setFlags": ["suzuki_heard_collision"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "noise_location",
+      "callerLines": [
+        "歩道橋の方からです。",
+        "国道沿いの...うちからだと北の方になります。",
+        "300メートルくらい先ですかね。"
+      ],
+      "responses": [
+        {
+          "responseId": "noise_location_time",
+          "text": "歩道橋の方ですね。何時頃のことでしたか？",
+          "nextSegmentId": "noise_time",
+          "setFlags": ["suzuki_location_footbridge"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "noise_location_confirm",
+          "text": "歩道橋...国道沿いですね。他に何か気づいたことはありますか？",
+          "nextSegmentId": "noise_nothing_else",
+          "setFlags": ["suzuki_location_footbridge"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "noise_time",
+      "callerLines": [
+        "2時15分...いや、17分くらいだったと思います。",
+        "時計を見たので。",
+        "不眠症でして、この時間に起きてることが多いんです。"
+      ],
+      "responses": [
+        {
+          "responseId": "noise_time_location",
+          "text": "2時17分頃ですね。どの辺りから聞こえましたか？",
+          "nextSegmentId": "noise_location",
+          "setFlags": ["suzuki_time_0217"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "noise_time_thanks",
+          "text": "情報ありがとうございます。確認してみます。",
+          "nextSegmentId": "noise_end_helpful",
+          "setFlags": ["suzuki_time_0217", "suzuki_report_taken"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "noise_time_dismiss",
+          "text": "そうですか。何かあればまたお電話ください。",
+          "nextSegmentId": "noise_end_dismissed",
+          "setFlags": ["suzuki_time_0217", "suzuki_dismissed"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "noise_nothing_else",
+      "callerLines": [
+        "いえ、音だけで...",
+        "暗くて何も見えませんでした。",
+        "でも、気になって。事故だったら大変ですから。"
+      ],
+      "responses": [
+        {
+          "responseId": "noise_nothing_else_thanks",
+          "text": "ご連絡いただきありがとうございます。確認してみますね。",
+          "nextSegmentId": "noise_end_helpful",
+          "setFlags": ["suzuki_report_taken"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "noise_nothing_else_practical",
+          "text": "分かりました。何かあればまたお電話ください。",
+          "nextSegmentId": "noise_end_neutral",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "noise_end_helpful",
+      "callerLines": [
+        "ありがとうございます。",
+        "何もなければいいんですけど...",
+        "お仕事頑張ってください。おやすみなさい。"
+      ],
+      "responses": [
+        {
+          "responseId": "noise_end_helpful_reply",
+          "text": "おやすみなさい。ご連絡ありがとうございました。",
+          "nextSegmentId": null,
+          "setFlags": ["suzuki_warm_response"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "noise_end_neutral",
+      "callerLines": [
+        "そうですか...",
+        "わかりました。おやすみなさい。"
+      ],
+      "responses": [
+        {
+          "responseId": "noise_end_neutral_reply",
+          "text": "おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "noise_end_dismissed",
+      "callerLines": [
+        "あ、はい...",
+        "すみませんでした。失礼します。"
+      ],
+      "responses": [
+        {
+          "responseId": "noise_end_dismissed_reply",
+          "text": "失礼します。",
+          "nextSegmentId": null,
+          "setFlags": ["suzuki_cold_response"],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "noise_intro"
+}

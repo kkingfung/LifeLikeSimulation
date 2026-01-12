@@ -1,6 +1,9 @@
 #nullable enable
 using System.ComponentModel;
 using LifeLike.Controllers;
+using LifeLike.Core.Services;
+using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Localization;
 using LifeLike.UI;
 using LifeLike.UI.Effects;
 using LifeLike.ViewModels;
@@ -53,7 +56,25 @@ namespace LifeLike.Views
         [SerializeField] private RectTransform? _settingsPanel;
         [SerializeField] private Text? _titleText;
 
+        [Header("Labels (for localization)")]
+        [SerializeField] private Text? _masterVolumeLabel;
+        [SerializeField] private Text? _bgmVolumeLabel;
+        [SerializeField] private Text? _sfxVolumeLabel;
+        [SerializeField] private Text? _voiceVolumeLabel;
+        [SerializeField] private Text? _muteLabel;
+        [SerializeField] private Text? _fullscreenLabel;
+        [SerializeField] private Text? _resolutionLabel;
+        [SerializeField] private Text? _qualityLabel;
+        [SerializeField] private Text? _textSpeedLabel;
+        [SerializeField] private Text? _autoAdvanceLabel;
+        [SerializeField] private Text? _autoAdvanceDelayLabel;
+        [SerializeField] private Text? _skipUnreadLabel;
+        [SerializeField] private Text? _languageLabel;
+        [SerializeField] private Text? _backButtonText;
+        [SerializeField] private Text? _resetButtonText;
+
         private SettingsViewModel? _viewModel;
+        private ILocalizationService? _localizationService;
         private bool _isUpdatingUI = false;
         private GameObject? _crtOverlay;
         private TypewriterEffect? _titleTypewriter;
@@ -72,6 +93,13 @@ namespace LifeLike.Views
             {
                 Debug.LogError("[SettingsView] SettingsSceneControllerが見つかりません。");
                 return;
+            }
+
+            // ローカライズサービスを取得
+            _localizationService = ServiceLocator.Instance.Get<ILocalizationService>();
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged += OnLanguageChanged;
             }
 
             _viewModel = new SettingsViewModel();
@@ -95,6 +123,9 @@ namespace LifeLike.Views
             _viewModel.OnBackRequested += OnBackRequested;
             UpdateUIFromViewModel();
 
+            // ローカライズテキストを適用
+            ApplyLocalizedTexts();
+
             if (_controller?.IsSubsceneMode ?? false)
             {
                 Debug.Log("[SettingsView] サブシーンモードで起動");
@@ -117,12 +148,29 @@ namespace LifeLike.Views
         {
             if (_titleText == null) return;
 
+            // 既存のTypewriterEffectがあれば使用、なければ追加
             _titleTypewriter = _titleText.GetComponent<TypewriterEffect>();
             if (_titleTypewriter == null)
             {
                 _titleTypewriter = _titleText.gameObject.AddComponent<TypewriterEffect>();
             }
-            _titleTypewriter.StartTyping("SETTINGS");
+
+            // 明示的にタイピングを開始（TypewriterEffect.Start()より後に実行されるように遅延）
+            StartCoroutine(StartTitleTypingDelayed());
+        }
+
+        /// <summary>
+        /// タイトルのタイピングを遅延して開始
+        /// </summary>
+        private System.Collections.IEnumerator StartTitleTypingDelayed()
+        {
+            // 1フレーム待機してTypewriterEffect.Start()の処理を終わらせる
+            yield return null;
+
+            if (_titleTypewriter != null)
+            {
+                _titleTypewriter.StartTyping("SETTINGS");
+            }
         }
 
         /// <summary>
@@ -293,6 +341,12 @@ namespace LifeLike.Views
                 Destroy(_crtOverlay);
             }
 
+            // ローカライズサービスのイベント購読を解除
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged -= OnLanguageChanged;
+            }
+
             if (_viewModel != null)
             {
                 _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
@@ -386,7 +440,7 @@ namespace LifeLike.Views
             if (_languageDropdown != null)
             {
                 SetupLanguageDropdown();
-                _languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
+                _languageDropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);
             }
 
             // ボタン
@@ -402,13 +456,29 @@ namespace LifeLike.Views
         }
 
         /// <summary>
+        /// Dropdownのテンプレートが有効かチェック
+        /// </summary>
+        private bool IsDropdownValid(Dropdown? dropdown, string dropdownName)
+        {
+            if (dropdown == null) return false;
+
+            if (dropdown.template == null)
+            {
+                Debug.LogWarning($"[SettingsView] {dropdownName}のテンプレートが設定されていません。Unityエディタでドロップダウンを再作成してください。");
+                dropdown.interactable = false;
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// 解像度ドロップダウンをセットアップ
         /// </summary>
         private void SetupResolutionDropdown()
         {
-            if (_resolutionDropdown == null) return;
+            if (!IsDropdownValid(_resolutionDropdown, "ResolutionDropdown")) return;
 
-            _resolutionDropdown.ClearOptions();
+            _resolutionDropdown!.ClearOptions();
             var resolutions = Screen.resolutions;
             var options = new System.Collections.Generic.List<string>();
 
@@ -433,9 +503,9 @@ namespace LifeLike.Views
         /// </summary>
         private void SetupQualityDropdown()
         {
-            if (_qualityDropdown == null) return;
+            if (!IsDropdownValid(_qualityDropdown, "QualityDropdown")) return;
 
-            _qualityDropdown.ClearOptions();
+            _qualityDropdown!.ClearOptions();
             var names = QualitySettings.names;
             _qualityDropdown.AddOptions(new System.Collections.Generic.List<string>(names));
         }
@@ -445,14 +515,39 @@ namespace LifeLike.Views
         /// </summary>
         private void SetupLanguageDropdown()
         {
-            if (_languageDropdown == null) return;
+            if (!IsDropdownValid(_languageDropdown, "LanguageDropdown")) return;
 
-            _languageDropdown.ClearOptions();
-            _languageDropdown.AddOptions(new System.Collections.Generic.List<string>
+            _languageDropdown!.ClearOptions();
+
+            if (_localizationService != null)
             {
-                "Japanese",
-                "English"
-            });
+                var options = new System.Collections.Generic.List<string>();
+                foreach (var language in _localizationService.AvailableLanguages)
+                {
+                    options.Add(_localizationService.GetLanguageDisplayName(language));
+                }
+                _languageDropdown.AddOptions(options);
+
+                // 現在の言語を選択
+                int currentIndex = 0;
+                for (int i = 0; i < _localizationService.AvailableLanguages.Count; i++)
+                {
+                    if (_localizationService.AvailableLanguages[i] == _localizationService.CurrentLanguage)
+                    {
+                        currentIndex = i;
+                        break;
+                    }
+                }
+                _languageDropdown.value = currentIndex;
+            }
+            else
+            {
+                _languageDropdown.AddOptions(new System.Collections.Generic.List<string>
+                {
+                    "日本語",
+                    "English"
+                });
+            }
         }
 
         /// <summary>
@@ -571,12 +666,68 @@ namespace LifeLike.Views
             if (!_isUpdatingUI && _viewModel != null) _viewModel.SkipUnread = value;
         }
 
-        private void OnLanguageChanged(int index)
+        /// <summary>
+        /// ドロップダウンの言語変更時（ユーザー操作）
+        /// </summary>
+        private void OnLanguageDropdownChanged(int index)
         {
-            if (!_isUpdatingUI && _viewModel != null)
+            if (_isUpdatingUI) return;
+
+            if (_localizationService != null && index >= 0 && index < _localizationService.AvailableLanguages.Count)
+            {
+                var selectedLanguage = _localizationService.AvailableLanguages[index];
+                _localizationService.SetLanguage(selectedLanguage);
+            }
+
+            if (_viewModel != null)
             {
                 _viewModel.Language = index == 0 ? "Japanese" : "English";
             }
+        }
+
+        /// <summary>
+        /// ローカライズサービスの言語変更時（システム通知）
+        /// </summary>
+        private void OnLanguageChanged(Language language)
+        {
+            // UIテキストを更新
+            ApplyLocalizedTexts();
+
+            Debug.Log($"[SettingsView] 言語が変更されました: {language}");
+        }
+
+        /// <summary>
+        /// ローカライズテキストを適用
+        /// </summary>
+        private void ApplyLocalizedTexts()
+        {
+            if (_localizationService == null) return;
+
+            // 各ラベルにローカライズテキストを適用
+            SetLocalizedText(_masterVolumeLabel, UILocalizationKeys.Settings.MasterVolume);
+            SetLocalizedText(_bgmVolumeLabel, UILocalizationKeys.Settings.BgmVolume);
+            SetLocalizedText(_sfxVolumeLabel, UILocalizationKeys.Settings.SfxVolume);
+            SetLocalizedText(_voiceVolumeLabel, UILocalizationKeys.Settings.VoiceVolume);
+            SetLocalizedText(_muteLabel, UILocalizationKeys.Settings.MuteAll);
+            SetLocalizedText(_fullscreenLabel, UILocalizationKeys.Settings.Fullscreen);
+            SetLocalizedText(_resolutionLabel, UILocalizationKeys.Settings.Resolution);
+            SetLocalizedText(_qualityLabel, UILocalizationKeys.Settings.Quality);
+            SetLocalizedText(_textSpeedLabel, UILocalizationKeys.Settings.TextSpeed);
+            SetLocalizedText(_autoAdvanceLabel, UILocalizationKeys.Settings.AutoAdvance);
+            SetLocalizedText(_autoAdvanceDelayLabel, UILocalizationKeys.Settings.AutoAdvanceDelay);
+            SetLocalizedText(_skipUnreadLabel, UILocalizationKeys.Settings.SkipUnread);
+            SetLocalizedText(_languageLabel, UILocalizationKeys.Settings.Language);
+            SetLocalizedText(_backButtonText, UILocalizationKeys.Settings.Back);
+            SetLocalizedText(_resetButtonText, UILocalizationKeys.Settings.ResetToDefault);
+        }
+
+        /// <summary>
+        /// ローカライズテキストを設定するヘルパー
+        /// </summary>
+        private void SetLocalizedText(Text? textComponent, string key)
+        {
+            if (textComponent == null || _localizationService == null) return;
+            textComponent.text = _localizationService.GetText(key);
         }
 
         private void OnBackClicked()

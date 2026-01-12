@@ -10,6 +10,7 @@ using LifeLike.Services.Operator.Clock;
 using LifeLike.Services.Operator.EndState;
 using LifeLike.Services.Operator.Flag;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace LifeLike.UI.Debug
 {
@@ -20,7 +21,6 @@ namespace LifeLike.UI.Debug
     public class DebugPanel : MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField] private KeyCode _toggleKey = KeyCode.F12;
         [SerializeField] private bool _enableInReleaseBuild = false;
 
         [Header("Window Settings")]
@@ -85,8 +85,8 @@ namespace LifeLike.UI.Debug
 
         private void Update()
         {
-            // トグルキーでパネル表示切替
-            if (Input.GetKeyDown(_toggleKey))
+            // トグルキーでパネル表示切替 (F12)
+            if (Keyboard.current != null && Keyboard.current.f12Key.wasPressedThisFrame)
             {
                 _isVisible = !_isVisible;
                 UnityEngine.Debug.Log($"[DebugPanel] 表示状態: {_isVisible}");

@@ -15,7 +15,7 @@ MonoBehaviour:
   callId: call_callback_family
   caller: {fileID: 11400000, guid: 19986a8ec947cc645ab8b25557e7062e, type: 2}
   description: "\u507D\u5144\u306E\u30B3\u30FC\u30EB\u30D0\u30C3\u30AF\u3002\u6797\u9065\u3092\u898B\u3064\u3051\u3089\u308C\u306A\u3044\u3068\u7D44\u7E54\u306B\u6BBA\u3055\u308C\u308B\u305F\u3081\u5FC5\u6B7B\u3002\u5A01\u5727\u7684\u3060\u304C\u7126\u308A\u304C\u898B\u3048\u308B\u3002"
-  incomingTimeMinutes: 190
+  incomingTimeMinutes: 188
   ringDuration: 45
   priority: 8
   startSegmentId: callback_family_intro
@@ -130,6 +130,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_family_slip
     media:
       mediaType: 0
@@ -216,6 +217,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_family_demand
     media:
       mediaType: 0
@@ -301,6 +303,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_family_threaten
     media:
       mediaType: 0
@@ -386,6 +389,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_family_desperate
     media:
       mediaType: 0
@@ -473,6 +477,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_family_almost_reveal
     media:
       mediaType: 0
@@ -560,6 +565,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_family_more
     media:
       mediaType: 0
@@ -646,6 +652,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_family_angry
     media:
       mediaType: 0
@@ -733,6 +740,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_family_push
     media:
       mediaType: 0
@@ -820,6 +828,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: callback_family_breakdown
     media:
       mediaType: 0
@@ -879,6 +888,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: callback_family_frustrated
     media:
       mediaType: 0
@@ -938,6 +948,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: callback_family_rush
     media:
       mediaType: 0
@@ -997,6 +1008,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: callback_family_end_desperate
     media:
       mediaType: 0
@@ -1057,6 +1069,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: callback_family_end_cut
     media:
       mediaType: 0
@@ -1117,6 +1130,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []

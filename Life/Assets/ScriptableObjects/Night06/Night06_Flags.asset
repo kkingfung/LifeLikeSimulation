@@ -224,6 +224,18 @@ MonoBehaviour:
     weight: 2
     persistsAcrossNights: 1
     cancelsFlags: []
+  - flagId: all_seiwa_connected
+    category: 4
+    description: "\u5168\u3066\u306E\u4E8B\u4EF6\u304C\u8AA0\u548C\u88FD\u85AC\u306B\u7E4B\u304C\u3063\u3066\u3044\u308B\u3053\u3068\u306B\u6C17\u3065\u3044\u305F"
+    weight: 3
+    persistsAcrossNights: 1
+    cancelsFlags: []
+  - flagId: kenji_was_researcher
+    category: 4
+    description: "\u6797\u5065\u4E8C\u304C\u8AA0\u548C\u88FD\u85AC\u306E\u7814\u7A76\u54E1\u3060\u3063\u305F\u3068\u77E5\u3063\u305F"
+    weight: 2
+    persistsAcrossNights: 1
+    cancelsFlags: []
   mutualExclusionRules:
   - whenFlagSet: nakamura_calm
     cancelFlags:

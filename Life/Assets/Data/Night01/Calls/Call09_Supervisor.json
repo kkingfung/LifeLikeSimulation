@@ -1,0 +1,493 @@
+{
+  "callId": "call_supervisor",
+  "callerId": "kudo_shinji",
+  "title": "記録のためだけど",
+  "description": "当直主任からの通話。記録の確認を装って言葉遣いを監視。「歩行者」という言葉を避けるよう誘導。システムの圧力を示す。",
+  "segments": [
+    {
+      "segmentId": "supervisor_intro",
+      "callerLines": [
+        "夜勤お疲れ様。工藤です。",
+        "今夜の記録を確認してるんだけど、ちょっといいかな。",
+        "歩道橋付近の件、何件か通報が入ってるみたいだね。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_intro_yes",
+          "text": "はい、工藤主任。何かありましたか？",
+          "nextSegmentId": "supervisor_inquiry",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_intro_confirm",
+          "text": "はい、複数の通報がありました。",
+          "nextSegmentId": "supervisor_detail",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_intro_guarded",
+          "text": "記録は通常通り作成しています。",
+          "nextSegmentId": "supervisor_probe",
+          "setFlags": ["guarded_with_supervisor"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_inquiry",
+      "callerLines": [
+        "いや、大したことじゃないんだけど。",
+        "記録の書き方について、少し確認したくてね。",
+        "「歩行者」って言葉、使った？"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_inquiry_yes",
+          "text": "はい、使ったと思います。",
+          "nextSegmentId": "supervisor_correction",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_inquiry_no",
+          "text": "いいえ、特に使っていないと思います。",
+          "nextSegmentId": "supervisor_good",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_inquiry_why",
+          "text": "なぜそれを聞くんですか？",
+          "nextSegmentId": "supervisor_explain",
+          "setFlags": ["questioned_supervisor"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_probe",
+      "callerLines": [
+        "通常通り、か。",
+        "いや、いいんだ。ただ、今夜の件は少し...複雑になるかもしれないからね。",
+        "記録の言葉遣い、気をつけた方がいいよ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_probe_accept",
+          "text": "わかりました。気をつけます。",
+          "nextSegmentId": "supervisor_advice",
+          "setFlags": ["accepted_supervisor_advice"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_probe_question",
+          "text": "複雑になるとは、どういう意味ですか？",
+          "nextSegmentId": "supervisor_vague",
+          "setFlags": ["questioned_supervisor"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_detail",
+      "callerLines": [
+        "うん、見たよ。",
+        "田中さんからの通報、山田さんからの通報、林さんからの問い合わせ...",
+        "それぞれの記録の書き方、確認しておきたくてね。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_detail_cooperate",
+          "text": "はい、何を確認したいですか？",
+          "nextSegmentId": "supervisor_specific",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_detail_guarded",
+          "text": "記録は事実に基づいて作成しています。",
+          "nextSegmentId": "supervisor_probe",
+          "setFlags": ["guarded_with_supervisor"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_correction",
+      "callerLines": [
+        "そうか...。",
+        "今後は「歩行者」じゃなくて「通報対象者」とか「該当者」って書いた方がいいよ。",
+        "「歩行者」だと、車との関係が暗示されるからね。記録としては中立的な表現の方がいい。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_correction_accept",
+          "text": "わかりました。修正します。",
+          "nextSegmentId": "supervisor_end_aligned",
+          "setFlags": ["aligned_language", "accepted_supervisor_advice"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_correction_refuse",
+          "text": "でも、事実は事実です。見たままを記録するべきでは？",
+          "nextSegmentId": "supervisor_pushback",
+          "setFlags": ["refused_supervisor"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_correction_question",
+          "text": "なぜ中立的な表現が必要なんですか？",
+          "nextSegmentId": "supervisor_reason",
+          "setFlags": ["questioned_supervisor"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_good",
+      "callerLines": [
+        "そうか、それならいい。",
+        "今後もそういう中立的な表現を心がけてね。",
+        "「通報対象者」とか「該当者」の方が、記録としては適切だから。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_good_accept",
+          "text": "わかりました。心がけます。",
+          "nextSegmentId": "supervisor_end_aligned",
+          "setFlags": ["aligned_language"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_good_question",
+          "text": "なぜそのような表現が適切なんですか？",
+          "nextSegmentId": "supervisor_reason",
+          "setFlags": ["questioned_supervisor"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_explain",
+      "callerLines": [
+        "いや、大した理由じゃないよ。",
+        "ただ、記録の書き方には気をつけた方がいいってこと。",
+        "言葉一つで、後から解釈が変わることもあるからね。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_explain_accept",
+          "text": "わかりました。気をつけます。",
+          "nextSegmentId": "supervisor_advice",
+          "setFlags": ["accepted_supervisor_advice"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_explain_press",
+          "text": "解釈が変わる...誰かに不都合があるということですか？",
+          "nextSegmentId": "supervisor_defensive",
+          "setFlags": ["questioned_supervisor", "supervisor_flagged"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_specific",
+      "callerLines": [
+        "田中さんの通報...「人が倒れている」という記録だね。",
+        "これは「要確認対象を発見」とかの方がいいかな。",
+        "あと、山田さんからの通報は...どう記録した？"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_specific_honest",
+          "text": "「何かを轢いたかもしれない」という内容でした。",
+          "nextSegmentId": "supervisor_concern",
+          "setFlags": [],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_specific_vague",
+          "text": "運転中の不安についての相談でした。",
+          "nextSegmentId": "supervisor_good_vague",
+          "setFlags": ["aligned_language"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_concern",
+      "callerLines": [
+        "なるほど...",
+        "その記録は、もう少し曖昧にしておいた方がいいかもしれないね。",
+        "「運転中の不安について相談」とか。接点を作らない方がいい。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_concern_accept",
+          "text": "わかりました。そのように修正します。",
+          "nextSegmentId": "supervisor_end_aligned",
+          "setFlags": ["aligned_language", "accepted_supervisor_advice"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_concern_refuse",
+          "text": "でも、それは事実と異なります。",
+          "nextSegmentId": "supervisor_pushback",
+          "setFlags": ["refused_supervisor"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_good_vague",
+      "callerLines": [
+        "うん、それでいい。",
+        "詳細を書きすぎると、後から色々と面倒になることがあるからね。",
+        "よくやってるよ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_good_vague_end",
+          "text": "ありがとうございます。",
+          "nextSegmentId": "supervisor_end_aligned",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_vague",
+      "callerLines": [
+        "...色々と、だよ。",
+        "君は新人だから知らないかもしれないけど、記録は武器にもなれば、足枷にもなる。",
+        "今夜のことは、あまり詳しく書かない方がいい。それだけさ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_vague_accept",
+          "text": "...わかりました。",
+          "nextSegmentId": "supervisor_end_uncertain",
+          "setFlags": ["accepted_supervisor_advice"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_vague_refuse",
+          "text": "私は見たままを記録します。それが仕事ですから。",
+          "nextSegmentId": "supervisor_warning",
+          "setFlags": ["refused_supervisor", "supervisor_flagged"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_reason",
+      "callerLines": [
+        "理由？",
+        "...記録は公式文書だからね。誰がどう読むかわからない。",
+        "余計な解釈を与えないためさ。それだけだよ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_reason_accept",
+          "text": "なるほど、わかりました。",
+          "nextSegmentId": "supervisor_end_aligned",
+          "setFlags": ["aligned_language"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_reason_doubt",
+          "text": "誰かを守るためですか？",
+          "nextSegmentId": "supervisor_defensive",
+          "setFlags": ["questioned_supervisor", "supervisor_flagged"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_pushback",
+      "callerLines": [
+        "事実...か。",
+        "記録は事実だけを書くものじゃない。解釈を含まない、客観的な表現を使うべきなんだ。",
+        "君が「歩行者」と書けば、それは「車に轢かれた」という解釈を暗示する。まだ確定してないことを記録するのは問題だ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_pushback_yield",
+          "text": "...わかりました。気をつけます。",
+          "nextSegmentId": "supervisor_end_reluctant",
+          "setFlags": ["aligned_language"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_pushback_stand",
+          "text": "でも、通報者の言葉はそのまま記録すべきでは？",
+          "nextSegmentId": "supervisor_warning",
+          "setFlags": ["refused_supervisor", "supervisor_flagged"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_defensive",
+      "callerLines": [
+        "...誰かを守る？",
+        "何を言ってるんだ。私は記録の正確さについて話してるだけだ。",
+        "君...ちょっと疲れてるんじゃないか？今夜は色々あったからな。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_defensive_back_down",
+          "text": "...すみません。そうかもしれません。",
+          "nextSegmentId": "supervisor_end_backed_down",
+          "setFlags": [],
+          "clearFlags": ["supervisor_flagged"]
+        },
+        {
+          "responseId": "supervisor_defensive_stand",
+          "text": "疲れてはいません。ただ、真実を記録したいだけです。",
+          "nextSegmentId": "supervisor_warning",
+          "setFlags": ["refused_supervisor", "supervisor_flagged"],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_advice",
+      "callerLines": [
+        "うん、それでいい。",
+        "今夜のことは、あまり深く考えすぎない方がいい。",
+        "記録は記録。それ以上のことを書く必要はないよ。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_advice_accept",
+          "text": "わかりました。",
+          "nextSegmentId": "supervisor_end_aligned",
+          "setFlags": ["aligned_language"],
+          "clearFlags": []
+        },
+        {
+          "responseId": "supervisor_advice_silent",
+          "text": "...。",
+          "nextSegmentId": "supervisor_end_silent",
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ]
+    },
+    {
+      "segmentId": "supervisor_warning",
+      "callerLines": [
+        "...そうか。",
+        "君の考えは尊重するよ。でも、覚えておいた方がいい。",
+        "この仕事で一番大事なのは、自分の身を守ること。記録は時に、自分を傷つける武器になる。",
+        "...今夜はゆっくり休んで。また明日。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_warning_end",
+          "text": "...おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "supervisor_end_aligned",
+      "callerLines": [
+        "よし、それでいい。",
+        "今夜はお疲れ様。ゆっくり休んで。",
+        "また明日。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_end_aligned_reply",
+          "text": "お疲れ様でした。おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "supervisor_end_reluctant",
+      "callerLines": [
+        "うん...。",
+        "まあ、色々あったからね。気持ちはわかるよ。",
+        "ゆっくり休んで。また明日。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_end_reluctant_reply",
+          "text": "...おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "supervisor_end_uncertain",
+      "callerLines": [
+        "うん。今夜は色々あったからね。",
+        "あまり考えすぎずに。ゆっくり休んで。",
+        "また明日。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_end_uncertain_reply",
+          "text": "...おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "supervisor_end_backed_down",
+      "callerLines": [
+        "うん、そうだろう。今夜は大変だったからな。",
+        "記録のことは、また明日確認しよう。",
+        "ゆっくり休んで。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_end_backed_down_reply",
+          "text": "はい...おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    },
+    {
+      "segmentId": "supervisor_end_silent",
+      "callerLines": [
+        "...まあ、いいさ。",
+        "今夜はゆっくり休んで。",
+        "また明日。"
+      ],
+      "responses": [
+        {
+          "responseId": "supervisor_end_silent_reply",
+          "text": "...おやすみなさい。",
+          "nextSegmentId": null,
+          "setFlags": [],
+          "clearFlags": []
+        }
+      ],
+      "isEnding": true
+    }
+  ],
+  "startSegmentId": "supervisor_intro",
+  "note": "工藤主任はシステムの代弁者。記録の確認を装って言葉遣いを監視し、「歩行者」という言葉を避けるよう誘導する。aligned_languageフラグはシステムへの協力を示す。supervisor_flaggedフラグは主任に対して防御的だったことを示し、今後の監視対象になる可能性を暗示。"
+}

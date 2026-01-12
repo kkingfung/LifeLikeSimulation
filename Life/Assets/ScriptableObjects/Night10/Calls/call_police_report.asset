@@ -80,6 +80,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: misaki_found
     media:
       mediaType: 0
@@ -140,6 +141,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: yoshida_testimony
     media:
       mediaType: 0
@@ -199,6 +201,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: yoshida_seiwaq
     media:
       mediaType: 0
@@ -284,6 +287,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: police_interested
     media:
       mediaType: 0
@@ -343,6 +347,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: police_will_investigate
     media:
       mediaType: 0
@@ -429,6 +434,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: police_adoption
     media:
       mediaType: 0
@@ -487,6 +493,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: police_end_success
     media:
       mediaType: 0
@@ -546,6 +553,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: police_arrived_late
     media:
       mediaType: 0
@@ -606,6 +614,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: yoshida_dead_details
     media:
       mediaType: 0
@@ -690,6 +699,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: misaki_missing
     media:
       mediaType: 0
@@ -749,6 +759,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: misaki_unknown
     media:
       mediaType: 0
@@ -808,6 +819,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: police_end_failure
     media:
       mediaType: 0
@@ -867,6 +879,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: police_news_report
     media:
       mediaType: 0
@@ -926,6 +939,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: yoshida_dead_news
     media:
       mediaType: 0
@@ -986,6 +1000,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []

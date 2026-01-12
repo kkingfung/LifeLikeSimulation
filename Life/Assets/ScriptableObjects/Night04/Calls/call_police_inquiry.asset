@@ -105,6 +105,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: police_press
     media:
       mediaType: 0
@@ -192,6 +193,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: ask_content
     media:
       mediaType: 0
@@ -305,6 +307,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: ask_details
     media:
       mediaType: 0
@@ -417,6 +420,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: ask_gagged
     media:
       mediaType: 0
@@ -503,6 +507,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: ask_other_voice
     media:
       mediaType: 0
@@ -562,6 +567,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: police_very_interested
     media:
       mediaType: 0
@@ -621,6 +627,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: ask_details_vague
     media:
       mediaType: 0
@@ -679,6 +686,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: ask_details_lie
     media:
       mediaType: 0
@@ -737,6 +745,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: check_connection
     media:
       mediaType: 0
@@ -792,6 +801,33 @@ MonoBehaviour:
       endsCall: 0
       discoversEvidence: 0
       discoveredEvidenceId: 
+    - responseId: mention_clothing
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u4E00\u3064\u6C17\u306B\u306A\u308B\u3053\u3068\u304C...\u907A\u4F53\u306E\u670D\u88C5\u306A\u3093\u3067\u3059\u304C\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - mentioned_clothing_to_police
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: clothing_question
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
     - responseId: no_mention
       displayText:
         key: 
@@ -822,6 +858,213 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
+  - segmentId: clothing_question
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u670D\u88C5\uFF1F\n\u4F55\u304B\u3042\u308A\u307E\u3057\u305F\u304B\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: explain_clothing
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u4EE5\u524D\u300C\u6797\u9065\u3055\u3093\u306E\u5144\u300D\u3092\u540D\u4E57\u308B\u4EBA\u304B\u3089\u96FB\u8A71\u304C\u3042\u308A\u3001\u53CD\u5C04\u30B8\u30E3\u30B1\u30C3\u30C8\u3092\u7740\u3066\u3044\u308B\u3068\u8A00\u3063\u3066\u3044\u307E\u3057\u305F\u3002\u3067\u3082\u907A\u4F53\u306F\u30B9\u30FC\u30C4..."
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - told_police_clothing_mismatch
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: police_clothing_interested
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: police_clothing_interested
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "...\u300C\u5144\u300D\u304C\u5225\u306E\u670D\u88C5\u3092\u4E3B\u5F35\u3057\u3066\u3044\u305F\uFF1F\n\u6797\u9065\u3055\u3093\u306E\u4EF6\u306F\u78BA\u8A8D\u304C\u5FC5\u8981\u3067\u3059\u306D\u3002\n\u305D\u306E\u300C\u5144\u300D\u306B\u3064\u3044\u3066\u3001\u4ED6\u306B\u4F55\u304B\u899A\u3048\u3066\u3044\u307E\u3059\u304B\uFF1F"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: clothing_fake_brother_detail
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u3068\u3066\u3082\u7126\u3063\u3066\u3044\u307E\u3057\u305F\u3002\u300C\u6642\u9593\u304C\u306A\u3044\u300D\u3068\u4F55\u5EA6\u3082\u3002\u666E\u901A\u306E\u5FC3\u914D\u3068\u306F\u9055\u3046\u611F\u3058\u3067\u3057\u305F\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - told_police_fake_brother_behavior
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: police_fake_brother_noted
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    - responseId: clothing_no_more
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u305D\u308C\u4EE5\u4E0A\u306F...\u899A\u3048\u3066\u3044\u307E\u305B\u3093\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags: []
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: police_end_normal
+      endsCall: 0
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 0
+  - segmentId: police_fake_brother_noted
+    media:
+      mediaType: 0
+      dialogueText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u300C\u6642\u9593\u304C\u306A\u3044\u300D...\u8208\u5473\u6DF1\u3044\u3067\u3059\u306D\u3002\n\u6797\u9065\u3055\u3093\u306E\u4EF6\u3068\u907A\u4F53\u306E\u4EF6\u3001\u95A2\u9023\u3092\u8ABF\u3079\u307E\u3059\u3002\n\u8CB4\u91CD\u306A\u60C5\u5831\u3092\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
+      textSpeed: 30
+      subtitleTrackId: 
+      inlineSubtitles:
+        trackId: 
+        entries: []
+      localAudioClip: {fileID: 0}
+      audioBundleName: 
+      audioAssetName: 
+      videoReference:
+        source: 0
+        localClip: {fileID: 0}
+        streamingAssetsPath: 
+        bundleName: 
+        assetName: 
+        bundleVersion: 1
+        directUrl: 
+      duration: 0
+      emotionalState: 0
+    responses:
+    - responseId: fake_brother_end
+      displayText:
+        key: 
+        defaultLanguage: 0
+        entries:
+        - language: 0
+          text: "\u304A\u5F79\u306B\u7ACB\u3066\u308C\u3070\u3002"
+      actualText:
+        key: 
+        defaultLanguage: 0
+        entries: []
+      isSilence: 0
+      isLie: 0
+      presentsEvidence: 0
+      evidenceIdToPresent: 
+      conditions: []
+      requiredEvidenceIds: []
+      effects: []
+      trustImpact: 0
+      setFlags:
+      - police_investigating_fake_brother
+      clearFlags: []
+      isDispatchAction: 0
+      nextSegmentId: 
+      endsCall: 1
+      discoversEvidence: 0
+      discoveredEvidenceId: 
+    responseTimeLimit: 0
+    timeoutResponseId: 
+    autoDiscoveredEvidenceIds: []
+    conditions: []
+    isEnding: 1
   - segmentId: check_connection_brief
     media:
       mediaType: 0
@@ -880,6 +1123,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: van_connection
     media:
       mediaType: 0
@@ -939,6 +1183,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: police_interested
     media:
       mediaType: 0
@@ -998,6 +1243,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: police_end_normal
     media:
       mediaType: 0
@@ -1056,6 +1302,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: police_end_unsatisfied
     media:
       mediaType: 0
@@ -1114,6 +1361,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: police_end_suspicious
     media:
       mediaType: 0
@@ -1173,6 +1421,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []

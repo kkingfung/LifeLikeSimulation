@@ -3,6 +3,7 @@ using LifeLike.Core.Scene;
 using LifeLike.Data;
 using LifeLike.Services.Core.Save;
 using LifeLike.Services.Core.Story;
+using LifeLike.Services.Core.Subscene;
 using UnityEngine;
 
 namespace LifeLike.Controllers
@@ -28,6 +29,7 @@ namespace LifeLike.Controllers
         private IOperatorSaveService? _operatorSaveService;
         private IStoryService? _storyService;
         private ISaveService? _saveService;
+        private ISubsceneService? _subsceneService;
 
         /// <summary>
         /// オペレーターモードかどうか
@@ -57,6 +59,8 @@ namespace LifeLike.Controllers
         private void Awake()
         {
             // サービスを取得
+            TryGetService(out _subsceneService);
+
             if (_useOperatorMode)
             {
                 TryGetService(out _operatorSaveService);

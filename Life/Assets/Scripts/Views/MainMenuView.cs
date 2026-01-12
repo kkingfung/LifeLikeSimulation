@@ -58,6 +58,14 @@ namespace LifeLike.Views
                 Debug.LogError("[MainMenuView] MainMenuSceneControllerが見つかりません。");
                 return;
             }
+        }
+
+        /// <summary>
+        /// ViewModelを初期化（Controllerのサービス取得後に呼ばれる）
+        /// </summary>
+        private void InitializeViewModel()
+        {
+            if (_controller == null) return;
 
             // コントローラーからサービスを取得してViewModelを作成
             if (_controller.UseOperatorMode)
@@ -100,8 +108,12 @@ namespace LifeLike.Views
 
         private void Start()
         {
+            // ViewModelを初期化（Start時点でControllerのAwakeは完了している）
+            InitializeViewModel();
+
             if (_viewModel == null)
             {
+                Debug.LogError("[MainMenuView] ViewModelの初期化に失敗しました。");
                 return;
             }
 
@@ -308,11 +320,26 @@ namespace LifeLike.Views
                 {
                     _titleTypewriter = _titleText.gameObject.AddComponent<TypewriterEffect>();
                 }
-                _titleTypewriter.StartTyping(titleContent);
+                // 明示的にタイピングを開始（TypewriterEffect.Start()より後に実行されるように遅延）
+                StartCoroutine(StartTitleTypingDelayed(titleContent));
             }
             else
             {
                 _titleText.text = titleContent;
+            }
+        }
+
+        /// <summary>
+        /// タイトルのタイピングを遅延して開始
+        /// </summary>
+        private System.Collections.IEnumerator StartTitleTypingDelayed(string titleContent)
+        {
+            // 1フレーム待機してTypewriterEffect.Start()の処理を終わらせる
+            yield return null;
+
+            if (_titleTypewriter != null)
+            {
+                _titleTypewriter.StartTyping(titleContent);
             }
         }
 
@@ -375,17 +402,25 @@ namespace LifeLike.Views
                 return;
             }
 
-            // コンティニューボタンの有効/無効（セーブがある時のみ有効）
+            // セーブがある場合: Continueのみ表示、Startは非表示
+            // セーブがない場合: Startのみ表示、Continueは非表示
+            bool hasSave = _viewModel.CanContinue;
+
+            if (_startButton != null)
+            {
+                _startButton.gameObject.SetActive(!hasSave);
+            }
+
             if (_continueButton != null)
             {
-                _continueButton.interactable = _viewModel.CanContinue;
+                _continueButton.gameObject.SetActive(hasSave);
             }
 
             // 削除ボタンの有効/無効（セーブがある時のみ表示）
             if (_deleteSaveButton != null)
             {
-                _deleteSaveButton.interactable = _viewModel.CanContinue;
-                _deleteSaveButton.gameObject.SetActive(_viewModel.CanContinue);
+                _deleteSaveButton.interactable = hasSave;
+                _deleteSaveButton.gameObject.SetActive(hasSave);
             }
 
             // 最後のセーブ情報

@@ -3,10 +3,10 @@
   "description": "第1夜「午前2時の歩道橋」発信者データ",
   "callers": [
     {
-      "callerId": "suzuki_ichiro",
-      "displayName": "鈴木一郎",
-      "realName": "鈴木一郎",
-      "description": "67歳、元工場勤務。妻を3年前に亡くし、一人暮らし。毎週水曜の夜に電話をかけてくる常連。",
+      "callerId": "suzuki_takashi",
+      "displayName": "鈴木隆",
+      "realName": "鈴木隆",
+      "description": "68歳、元工場作業員。不眠症で深夜に起きていることが多い。妻を3年前に亡くし、一人暮らし。",
       "voiceDescription": "穏やかで少し疲れた声。ゆっくり話す。",
       "voicePitch": 0.9,
       "personality": {
@@ -15,8 +15,8 @@
         "cooperation": 85,
         "aggression": 5
       },
-      "hiddenInfo": "孤独を紛らわすために電話している。本当は話し相手が欲しいだけ。",
-      "trueMotivation": "誰かと話したい",
+      "hiddenInfo": "不眠症で夜中に起きていて、たまたま事故の音を聞いた。何が起きたかは知らない。",
+      "trueMotivation": "不審な音を報告したい",
       "relations": [],
       "organizationRelation": "none"
     },

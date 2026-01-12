@@ -10,14 +10,14 @@
   "theTruth": "林遥（27歳）は組織から逃げている最中、疲労困憊の山田美咲の車に轢かれた。林は組織の末端工作員で、守ろうとした子供と共に逃走中だった。彼女が持つ情報は組織トップの正体を暴露する致命的な秘密。偽の兄（組織の中間管理職）と偽の同僚（佐藤浩二）は彼女を追跡している。服装の矛盾（反射ジャケット vs パーカー）は追跡者が古い情報しか持っていないことを示す。偽兄は林遥を見つけられないと組織に殺される。",
   "callSchedule": [
     {
-      "callId": "call_retirement",
-      "callerId": "suzuki_ichiro",
-      "title": "いつもの電話",
+      "callId": "call_noise",
+      "callerId": "suzuki_takashi",
+      "title": "大きな音がしたんです",
       "incomingTimeMinutes": 137,
       "ringDuration": 30,
       "priority": 2,
       "isCritical": false,
-      "description": "ウォームアップ。普通の夜の演出。優しく対応するとNight05で情報提供。"
+      "description": "事故の最初の手がかり。時刻と場所の確立。優しく対応するとNight05で情報提供。"
     },
     {
       "callId": "call_shift",
@@ -70,14 +70,34 @@
       "description": "偽の兄。普通の心配する兄に見える。服装矛盾が唯一の伏線。情報を漏らすと組織が現場に来る。"
     },
     {
+      "callId": "call_revision",
+      "callerId": "yamada_misaki",
+      "title": "考えてたんだけど",
+      "incomingTimeMinutes": 180,
+      "ringDuration": 45,
+      "priority": 8,
+      "isCritical": false,
+      "description": "ドライバーの2回目の通話。話を修正しようとする。「動物だったと思う」と否認を試みる。"
+    },
+    {
       "callId": "call_callback_family",
       "callerId": "hayashi_kenji",
       "title": "頼むから教えてくれ",
-      "incomingTimeMinutes": 190,
+      "incomingTimeMinutes": 188,
       "ringDuration": 45,
       "priority": 8,
       "isCritical": false,
       "description": "偽兄コールバック。林遥を見つけられないと組織に殺されるため必死。Night04で遺体として発見。"
+    },
+    {
+      "callId": "call_supervisor",
+      "callerId": "kudo_shinji",
+      "title": "記録のためだけど",
+      "incomingTimeMinutes": 200,
+      "ringDuration": 60,
+      "priority": 6,
+      "isCritical": false,
+      "description": "当直主任からの通話。記録の確認を装って言葉遣いを監視。システムの圧力を示す。"
     }
   ],
   "specialEvents": [],

@@ -25,10 +25,6 @@ namespace LifeLike.Views
         [SerializeField] private Transform? _chapterNodesContainer;
         [SerializeField] private GameObject? _chapterNodePrefab;
 
-        [Header("Route Line UI")]
-        [SerializeField] private Transform? _routeLinesContainer;
-        [SerializeField] private GameObject? _routeLinePrefab;
-
         [Header("Selected Chapter Info")]
         [SerializeField] private GameObject? _selectedInfoPanel;
         [SerializeField] private Text? _selectedTitleText;
@@ -60,7 +56,6 @@ namespace LifeLike.Views
 
         private ChapterSelectViewModel? _viewModel;
         private readonly List<GameObject> _chapterNodes = new();
-        private readonly List<GameObject> _routeLines = new();
         private readonly Dictionary<string, Button> _chapterButtons = new();
         private GameObject? _crtOverlay;
         private SlideEffect? _selectedInfoSlide;
@@ -79,6 +74,14 @@ namespace LifeLike.Views
                 Debug.LogError("[ChapterSelectView] ChapterSelectSceneControllerが見つかりません。");
                 return;
             }
+        }
+
+        /// <summary>
+        /// ViewModelを初期化（Controllerのサービス取得後に呼ばれる）
+        /// </summary>
+        private void InitializeViewModel()
+        {
+            if (_controller == null) return;
 
             if (_controller.OperatorSaveService == null)
             {
@@ -91,7 +94,14 @@ namespace LifeLike.Views
 
         private void Start()
         {
-            if (_viewModel == null) return;
+            // ViewModelを初期化（Start時点でControllerのAwakeは完了している）
+            InitializeViewModel();
+
+            if (_viewModel == null)
+            {
+                Debug.LogError("[ChapterSelectView] ViewModelの初期化に失敗しました。");
+                return;
+            }
 
             // テーマを設定
             SetupTheme();
@@ -277,7 +287,6 @@ namespace LifeLike.Views
             }
 
             ClearChapterNodes();
-            ClearRouteLines();
         }
 
         private void SetupUI()
@@ -301,7 +310,6 @@ namespace LifeLike.Views
             if (_viewModel == null) return;
 
             ClearChapterNodes();
-            ClearRouteLines();
 
             var summary = _viewModel.ProgressSummary;
 
@@ -310,12 +318,6 @@ namespace LifeLike.Views
             {
                 var chapter = summary.chapters[i];
                 CreateChapterNode(chapter, i);
-            }
-
-            // ルートラインを生成
-            foreach (var route in summary.routes)
-            {
-                CreateRouteLine(route);
             }
         }
 
@@ -384,26 +386,6 @@ namespace LifeLike.Views
             }
 
             _chapterNodes.Add(nodeObj);
-        }
-
-        /// <summary>
-        /// ルートラインを作成
-        /// </summary>
-        private void CreateRouteLine(RouteBranch route)
-        {
-            if (_routeLinesContainer == null || _routeLinePrefab == null) return;
-
-            var lineObj = Instantiate(_routeLinePrefab, _routeLinesContainer);
-            lineObj.name = $"RouteLine_{route.routeId}";
-
-            // ラインの色を設定
-            var image = lineObj.GetComponent<Image>();
-            if (image != null)
-            {
-                image.color = route.isUnlocked ? _completedColor : _lockedColor;
-            }
-
-            _routeLines.Add(lineObj);
         }
 
         /// <summary>
@@ -545,9 +527,12 @@ namespace LifeLike.Views
 
             if (_startButtonText != null && _viewModel.SelectedChapter != null)
             {
-                _startButtonText.text = _viewModel.SelectedChapter.state == ChapterState.InProgress
-                    ? "再開する"
-                    : "開始する";
+                _startButtonText.text = _viewModel.SelectedChapter.state switch
+                {
+                    ChapterState.InProgress => "再開する",
+                    ChapterState.Completed => "再プレイ",
+                    _ => "開始する"
+                };
             }
         }
 
@@ -644,15 +629,6 @@ namespace LifeLike.Views
             }
             _chapterNodes.Clear();
             _chapterButtons.Clear();
-        }
-
-        private void ClearRouteLines()
-        {
-            foreach (var line in _routeLines)
-            {
-                if (line != null) Destroy(line);
-            }
-            _routeLines.Clear();
         }
     }
 }

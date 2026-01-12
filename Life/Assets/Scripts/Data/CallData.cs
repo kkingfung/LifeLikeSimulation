@@ -143,6 +143,10 @@ namespace LifeLike.Data
         [Header("条件")]
         [Tooltip("このセグメントを表示する条件")]
         public List<StoryCondition> conditions = new();
+
+        [Header("終了")]
+        [Tooltip("このセグメントが通話の終了セグメントかどうか")]
+        public bool isEnding = false;
     }
 
     /// <summary>

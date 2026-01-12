@@ -241,13 +241,19 @@ namespace LifeLike.Services.Operator.CallFlow
         {
             if (_currentSegment == null)
             {
+                Debug.Log("[CallFlowService] GetAvailableResponses - currentSegment is null");
                 return Array.Empty<ResponseData>();
             }
 
-            return _currentSegment.responses
+            Debug.Log($"[CallFlowService] GetAvailableResponses - Segment: {_currentSegment.segmentId}, Total responses: {_currentSegment.responses.Count}");
+
+            var available = _currentSegment.responses
                 .Where(IsResponseAvailable)
-                .ToList()
-                .AsReadOnly();
+                .ToList();
+
+            Debug.Log($"[CallFlowService] GetAvailableResponses - Available after filter: {available.Count}");
+
+            return available.AsReadOnly();
         }
 
         public bool IsResponseAvailable(ResponseData response)
@@ -255,6 +261,7 @@ namespace LifeLike.Services.Operator.CallFlow
             // 条件チェック
             if (!CheckConditions(response.conditions))
             {
+                Debug.Log($"[CallFlowService] Response '{response.responseId}' filtered out by conditions");
                 return false;
             }
 
@@ -263,6 +270,7 @@ namespace LifeLike.Services.Operator.CallFlow
             {
                 if (!_evidenceService.HasEvidence(evidenceId))
                 {
+                    Debug.Log($"[CallFlowService] Response '{response.responseId}' filtered out - missing evidence: {evidenceId}");
                     return false;
                 }
             }
@@ -273,6 +281,54 @@ namespace LifeLike.Services.Operator.CallFlow
         public int GetMissedCallCount()
         {
             return _missedCalls.Count;
+        }
+
+        public void TriggerNextCall()
+        {
+            if (_currentScenario == null)
+            {
+                Debug.LogWarning("[CallFlowService] シナリオが読み込まれていません。");
+                return;
+            }
+
+            // 既に着信中の通話がある場合はスキップ
+            if (_incomingCalls.Count > 0)
+            {
+                return;
+            }
+
+            // まだトリガーされていない次の通話を探す
+            foreach (var call in _currentScenario.calls)
+            {
+                // 既に着信リストにある場合はスキップ
+                if (_incomingCalls.Any(c => c.callId == call.callId))
+                    continue;
+
+                // 既に履歴にある場合はスキップ
+                if (_callHistory.Any(c => c.callId == call.callId))
+                    continue;
+
+                // 不在着信リストにある場合はスキップ
+                if (_missedCalls.Any(c => c.callId == call.callId))
+                    continue;
+
+                // 通話をトリガー
+                AddIncomingCall(call);
+                Debug.Log($"[CallFlowService] 次の通話をトリガー: {call.caller?.displayName ?? "不明"} ({call.callId})");
+                return;
+            }
+
+            Debug.Log("[CallFlowService] トリガー可能な通話がありません。");
+        }
+
+        public bool AreAllCallsCompleted()
+        {
+            if (_currentScenario == null) return true;
+
+            // 全ての通話が履歴または不在着信にあるかチェック
+            return _currentScenario.calls.All(call =>
+                _callHistory.Any(h => h.callId == call.callId) ||
+                _missedCalls.Any(m => m.callId == call.callId));
         }
 
         public void Clear()
@@ -362,7 +418,24 @@ namespace LifeLike.Services.Operator.CallFlow
                 if (nextSegment != null)
                 {
                     TransitionToSegment(nextSegment);
+                    return;
                 }
+            }
+
+            // nextSegmentIdがない、または見つからない場合
+            // 現在のセグメントがisEndingなら通話終了
+            if (_currentSegment != null && _currentSegment.isEnding)
+            {
+                Debug.Log("[CallFlowService] 終了セグメントのため通話終了");
+                EndCall();
+                return;
+            }
+
+            // それ以外で次のセグメントがない場合も通話終了
+            if (string.IsNullOrEmpty(response.nextSegmentId))
+            {
+                Debug.Log("[CallFlowService] 次のセグメントがないため通話終了");
+                EndCall();
             }
         }
 

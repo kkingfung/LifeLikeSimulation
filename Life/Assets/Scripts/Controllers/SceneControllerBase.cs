@@ -14,6 +14,11 @@ namespace LifeLike.Controllers
         [Header("Current Scene")]
         [SerializeField] private SceneReference _currentScene = new();
 
+        [Header("Auto Bootstrap (Editor Only)")]
+        [SerializeField] private SceneReference _bootstrapScene = new();
+
+        private static bool _servicesInitialized = false;
+
         /// <summary>
         /// このコントローラーが配置されているシーンの参照
         /// </summary>
@@ -28,6 +33,38 @@ namespace LifeLike.Controllers
         /// ServiceLocatorのインスタンス（便利プロパティ）
         /// </summary>
         protected ServiceLocator Services => ServiceLocator.Instance;
+
+        /// <summary>
+        /// サービスが初期化されているかを確認し、必要に応じてBootstrapをロード
+        /// </summary>
+        protected void EnsureServicesInitialized()
+        {
+            if (_servicesInitialized) return;
+
+            // サービスが存在するか確認（任意のサービスで確認）
+            var testService = Services.Get<LifeLike.Services.Operator.Flag.IFlagService>();
+            if (testService != null)
+            {
+                _servicesInitialized = true;
+                return;
+            }
+
+#if UNITY_EDITOR
+            // エディタでサービスが未初期化の場合、Bootstrapシーンを追加ロード
+            if (_bootstrapScene.IsValid)
+            {
+                Debug.LogWarning($"[{GetType().Name}] サービスが初期化されていません。Bootstrapシーンを追加ロードします。");
+                UnityEngine.SceneManagement.SceneManager.LoadScene(_bootstrapScene.SceneName, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                _servicesInitialized = true;
+            }
+            else
+            {
+                Debug.LogError($"[{GetType().Name}] サービスが初期化されていません。Bootstrapシーンを設定するか、Bootstrapシーンから開始してください。");
+            }
+#else
+            Debug.LogError($"[{GetType().Name}] サービスが初期化されていません。Bootstrapシーンから開始してください。");
+#endif
+        }
 
         /// <summary>
         /// サービスを取得する

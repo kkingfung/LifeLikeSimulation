@@ -15,6 +15,9 @@ namespace LifeLike.Services.Core.Localization
         private readonly List<LocalizationTable> _tables = new();
         private ScenarioLocalizationData? _scenarioData;
 
+        // UIローカライズデータ（コードベース）
+        private readonly Dictionary<string, LocalizedString> _uiEntries;
+
         private readonly List<Language> _availableLanguages = new()
         {
             Language.Japanese,
@@ -50,6 +53,10 @@ namespace LifeLike.Services.Core.Localization
 
         public LocalizationService()
         {
+            // UIローカライズデータを読み込み
+            _uiEntries = UILocalizationData.GetAllEntries();
+            Debug.Log($"[LocalizationService] UIローカライズデータを読み込み: {_uiEntries.Count}エントリ");
+
             // システム言語から初期言語を決定
             _currentLanguage = GetSystemLanguage();
             Debug.Log($"[LocalizationService] 初期言語: {GetLanguageDisplayName(_currentLanguage)}");
@@ -93,7 +100,13 @@ namespace LifeLike.Services.Core.Localization
 
         public string GetText(string key, Language language)
         {
-            // シナリオデータを優先
+            // UIエントリを最初に検索
+            if (_uiEntries.TryGetValue(key, out var uiEntry))
+            {
+                return uiEntry.GetText(language);
+            }
+
+            // シナリオデータを検索
             if (_scenarioData != null)
             {
                 var text = _scenarioData.GetText(key, language);

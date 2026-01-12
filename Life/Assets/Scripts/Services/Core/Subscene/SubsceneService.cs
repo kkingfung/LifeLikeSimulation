@@ -110,6 +110,8 @@ namespace LifeLike.Services.Core.Subscene
                 if (asyncOperation == null)
                 {
                     Debug.LogError($"[SubsceneService] シーンのアンロードに失敗: {sceneName}");
+                    // アンロード失敗でも状態をリセット（既にアンロード済みの可能性）
+                    _currentSubsceneName = null;
                     _isLoading = false;
                     return false;
                 }
@@ -131,6 +133,8 @@ namespace LifeLike.Services.Core.Subscene
             catch (Exception ex)
             {
                 Debug.LogError($"[SubsceneService] サブシーンのアンロード中にエラー: {ex.Message}");
+                // 例外発生時も状態をリセット
+                _currentSubsceneName = null;
                 _isLoading = false;
                 return false;
             }

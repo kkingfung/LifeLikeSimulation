@@ -104,6 +104,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: missing_detail
     media:
       mediaType: 0
@@ -190,6 +191,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: missing_react
     media:
       mediaType: 0
@@ -276,6 +278,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: missing_clothing
     media:
       mediaType: 0
@@ -353,6 +356,7 @@ MonoBehaviour:
       setFlags:
       - fake_brother_claimed_reflective
       - clothing_contradiction_noted
+      - clothing_mismatch
       clearFlags: []
       isDispatchAction: 0
       nextSegmentId: missing_mismatch
@@ -363,6 +367,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: missing_mismatch
     media:
       mediaType: 0
@@ -449,6 +454,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: missing_route
     media:
       mediaType: 0
@@ -562,6 +568,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: missing_shock
     media:
       mediaType: 0
@@ -648,6 +655,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: missing_wait
     media:
       mediaType: 0
@@ -734,6 +742,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 0
   - segmentId: missing_police
     media:
       mediaType: 0
@@ -792,6 +801,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: missing_rush
     media:
       mediaType: 0
@@ -851,6 +861,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   - segmentId: missing_worried
     media:
       mediaType: 0
@@ -910,6 +921,7 @@ MonoBehaviour:
     timeoutResponseId: 
     autoDiscoveredEvidenceIds: []
     conditions: []
+    isEnding: 1
   triggerConditions: []
   onEndEffects: []
   onMissedEffects: []
