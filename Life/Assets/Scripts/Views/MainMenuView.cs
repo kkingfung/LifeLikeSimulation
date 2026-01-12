@@ -1,6 +1,9 @@
 #nullable enable
 using System.ComponentModel;
 using LifeLike.Controllers;
+using LifeLike.Core.Services;
+using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Localization;
 using LifeLike.UI;
 using LifeLike.UI.Effects;
 using LifeLike.ViewModels;
@@ -32,6 +35,12 @@ namespace LifeLike.Views
         [SerializeField] private Text? _titleText;
         [SerializeField] private Text? _versionText;
 
+        [Header("Button Labels (for localization)")]
+        [SerializeField] private Text? _startButtonText;
+        [SerializeField] private Text? _continueButtonText;
+        [SerializeField] private Text? _settingsButtonText;
+        [SerializeField] private Text? _quitButtonText;
+
         [Header("UI Effects")]
         [SerializeField] private UITheme? _theme;
         [SerializeField] private bool _enableCRTEffect = true;
@@ -40,6 +49,7 @@ namespace LifeLike.Views
         [SerializeField] private Canvas? _mainCanvas;
 
         private MainMenuViewModel? _viewModel;
+        private ILocalizationService? _localizationService;
         private GameObject? _crtOverlay;
         private TypewriterEffect? _titleTypewriter;
         private FadeEffect? _screenFade;
@@ -57,6 +67,13 @@ namespace LifeLike.Views
             {
                 Debug.LogError("[MainMenuView] MainMenuSceneControllerが見つかりません。");
                 return;
+            }
+
+            // ローカライズサービスを取得
+            _localizationService = ServiceLocator.Instance.Get<ILocalizationService>();
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged += OnLanguageChanged;
             }
         }
 
@@ -134,6 +151,9 @@ namespace LifeLike.Views
 
             // 初期状態を反映
             UpdateUI();
+
+            // ローカライズテキストを適用
+            ApplyLocalizedTexts();
 
             // タイトルを設定（タイプライター効果付き）
             SetupTitle();
@@ -351,6 +371,12 @@ namespace LifeLike.Views
                 Destroy(_crtOverlay);
             }
 
+            // ローカライズサービスのイベント購読を解除
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged -= OnLanguageChanged;
+            }
+
             if (_viewModel != null)
             {
                 _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
@@ -359,6 +385,36 @@ namespace LifeLike.Views
                 _viewModel.OnChapterSelectRequested -= OnChapterSelectRequested;
                 _viewModel.Dispose();
             }
+        }
+
+        /// <summary>
+        /// 言語変更時のハンドラ
+        /// </summary>
+        private void OnLanguageChanged(Language language)
+        {
+            ApplyLocalizedTexts();
+        }
+
+        /// <summary>
+        /// ローカライズテキストを適用
+        /// </summary>
+        private void ApplyLocalizedTexts()
+        {
+            if (_localizationService == null) return;
+
+            SetLocalizedText(_startButtonText, UILocalizationKeys.MainMenu.NewGame);
+            SetLocalizedText(_continueButtonText, UILocalizationKeys.MainMenu.Continue);
+            SetLocalizedText(_settingsButtonText, UILocalizationKeys.MainMenu.Settings);
+            SetLocalizedText(_quitButtonText, UILocalizationKeys.MainMenu.Quit);
+        }
+
+        /// <summary>
+        /// ローカライズテキストを設定するヘルパー
+        /// </summary>
+        private void SetLocalizedText(Text? textComponent, string key)
+        {
+            if (textComponent == null || _localizationService == null) return;
+            textComponent.text = _localizationService.GetText(key);
         }
 
         /// <summary>

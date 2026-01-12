@@ -1116,6 +1116,10 @@ MonoBehaviour:
   _currentNightText: {fileID: 2072009336}
   _titleText: {fileID: 1623998387}
   _versionText: {fileID: 401000022}
+  _startButtonText: {fileID: 1764148261}
+  _continueButtonText: {fileID: 1161734406}
+  _settingsButtonText: {fileID: 724189549}
+  _quitButtonText: {fileID: 511315460}
   _theme: {fileID: 11400000, guid: 06910a7ef09ff9a43969875b5e8ee031, type: 2}
   _enableCRTEffect: 1
   _enableTypewriterTitle: 1
@@ -1893,8 +1897,8 @@ MonoBehaviour:
     _sceneAsset: {fileID: 102900000, guid: 3d12e45683dd93e4d9d03d83362d53fe, type: 3}
     _sceneName: MainMenu
   _bootstrapScene:
-    _sceneAsset: {fileID: 0}
-    _sceneName: 
+    _sceneAsset: {fileID: 102900000, guid: c6960e92ec1ac684e92ddd2cf8bb4880, type: 3}
+    _sceneName: Bootstrap
   _useOperatorMode: 1
   _gameStateData: {fileID: 0}
   _chapterSelectScene:

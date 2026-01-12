@@ -1072,6 +1072,9 @@ MonoBehaviour:
   _startButton: {fileID: 1375789755}
   _backButton: {fileID: 955449445}
   _startButtonText: {fileID: 511315460}
+  _backButtonText: {fileID: 2072009336}
+  _titleText: {fileID: 120012167}
+  _progressLabel: {fileID: 200977513}
   _lockedColor: {r: 0.4, g: 0.4, b: 0.45, a: 1}
   _availableColor: {r: 0.9, g: 0.9, b: 0.95, a: 1}
   _inProgressColor: {r: 0.9, g: 0.75, b: 0.2, a: 1}
@@ -1758,8 +1761,8 @@ MonoBehaviour:
     _sceneAsset: {fileID: 102900000, guid: fa53eeda1eae4ae46b99ae53bce02dea, type: 3}
     _sceneName: ChapterSelect
   _bootstrapScene:
-    _sceneAsset: {fileID: 0}
-    _sceneName: 
+    _sceneAsset: {fileID: 102900000, guid: c6960e92ec1ac684e92ddd2cf8bb4880, type: 3}
+    _sceneName: Bootstrap
   _operatorScene:
     _sceneAsset: {fileID: 102900000, guid: dd0d24fe560c84747b32e472b0cff3cb, type: 3}
     _sceneName: Operator

@@ -1102,6 +1102,8 @@ MonoBehaviour:
   _showSummaryButton: {fileID: 230634260}
   _returnToMenuButton: {fileID: 883887177}
   _newGameButton: {fileID: 1592351870}
+  _returnToMenuButtonText: {fileID: 1922618248}
+  _newGameButtonText: {fileID: 1981511439}
   _theme: {fileID: 11400000, guid: 06910a7ef09ff9a43969875b5e8ee031, type: 2}
   _enableCRTEffect: 1
   _enableButtonEffects: 1
@@ -1597,11 +1599,14 @@ MonoBehaviour:
     _sceneAsset: {fileID: 102900000, guid: 731c612605504ea49ab3a6991f7b14ed, type: 3}
     _sceneName: Result
   _bootstrapScene:
-    _sceneAsset: {fileID: 0}
-    _sceneName: 
+    _sceneAsset: {fileID: 102900000, guid: c6960e92ec1ac684e92ddd2cf8bb4880, type: 3}
+    _sceneName: Bootstrap
   _mainMenuScene:
     _sceneAsset: {fileID: 102900000, guid: 3d12e45683dd93e4d9d03d83362d53fe, type: 3}
     _sceneName: MainMenu
+  _chapterSelectScene:
+    _sceneAsset: {fileID: 102900000, guid: fa53eeda1eae4ae46b99ae53bce02dea, type: 3}
+    _sceneName: ChapterSelect
   _operatorScene:
     _sceneAsset: {fileID: 102900000, guid: dd0d24fe560c84747b32e472b0cff3cb, type: 3}
     _sceneName: Operator

@@ -555,7 +555,8 @@ namespace LifeLike.Views
 
             if (hasDialogue && _callerDialogueText != null && _viewModel.CurrentSegment?.media != null)
             {
-                _callerDialogueText.text = _viewModel.CurrentSegment.media.dialogueText.ToString();
+                var currentLanguage = _localizationService?.CurrentLanguage ?? Language.Japanese;
+                _callerDialogueText.text = _viewModel.CurrentSegment.media.dialogueText.GetText(currentLanguage);
             }
         }
 
@@ -589,7 +590,8 @@ namespace LifeLike.Views
                     var buttonText = button.GetComponentInChildren<Text>();
                     if (buttonText != null)
                     {
-                        buttonText.text = response.displayText.ToString();
+                        var currentLanguage = _localizationService?.CurrentLanguage ?? Language.Japanese;
+                        buttonText.text = response.displayText.GetText(currentLanguage);
                     }
 
                     // クロージャーで正しいresponseIdをキャプチャ
@@ -918,6 +920,9 @@ namespace LifeLike.Views
         private void OnLanguageChanged(Language language)
         {
             ApplyLocalizedTexts();
+            // ダイアログと応答UIも現在の言語で再描画
+            UpdateDialogueUI();
+            UpdateResponsesUI();
             Debug.Log($"[OperatorView] 言語が変更されました: {language}");
         }
 

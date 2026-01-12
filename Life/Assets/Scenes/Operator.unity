@@ -1316,8 +1316,8 @@ MonoBehaviour:
     _sceneAsset: {fileID: 102900000, guid: dd0d24fe560c84747b32e472b0cff3cb, type: 3}
     _sceneName: Operator
   _bootstrapScene:
-    _sceneAsset: {fileID: 0}
-    _sceneName: 
+    _sceneAsset: {fileID: 102900000, guid: c6960e92ec1ac684e92ddd2cf8bb4880, type: 3}
+    _sceneName: Bootstrap
   _nightDataSets:
   - nightId: 0
     scenarioData: {fileID: 11400000, guid: 07a06409dc481c1448ad5b5530181302, type: 2}

@@ -8444,8 +8444,8 @@ MonoBehaviour:
     _sceneAsset: {fileID: 102900000, guid: 7714c52d07b1e00459b25c4aa44b0bf5, type: 3}
     _sceneName: Settings
   _bootstrapScene:
-    _sceneAsset: {fileID: 0}
-    _sceneName: 
+    _sceneAsset: {fileID: 102900000, guid: c6960e92ec1ac684e92ddd2cf8bb4880, type: 3}
+    _sceneName: Bootstrap
   _mainMenuScene:
     _sceneAsset: {fileID: 102900000, guid: 3d12e45683dd93e4d9d03d83362d53fe, type: 3}
     _sceneName: MainMenu

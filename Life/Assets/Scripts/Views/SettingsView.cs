@@ -578,9 +578,18 @@ namespace LifeLike.Views
             }
             if (_skipUnreadToggle != null) _skipUnreadToggle.isOn = _viewModel.SkipUnread;
 
-            if (_languageDropdown != null)
+            // 言語ドロップダウンはLocalizationServiceから現在の言語を取得して設定
+            if (_languageDropdown != null && _localizationService != null)
             {
-                int langIndex = _viewModel.Language == "Japanese" ? 0 : 1;
+                int langIndex = 0;
+                for (int i = 0; i < _localizationService.AvailableLanguages.Count; i++)
+                {
+                    if (_localizationService.AvailableLanguages[i] == _localizationService.CurrentLanguage)
+                    {
+                        langIndex = i;
+                        break;
+                    }
+                }
                 _languageDropdown.value = langIndex;
             }
 
@@ -677,11 +686,12 @@ namespace LifeLike.Views
             {
                 var selectedLanguage = _localizationService.AvailableLanguages[index];
                 _localizationService.SetLanguage(selectedLanguage);
-            }
 
-            if (_viewModel != null)
-            {
-                _viewModel.Language = index == 0 ? "Japanese" : "English";
+                // ViewModelにも言語名を保存（LocalizationServiceが言語をPlayerPrefsに保存するため、ViewModelでの保存は参考程度）
+                if (_viewModel != null)
+                {
+                    _viewModel.Language = selectedLanguage.ToString();
+                }
             }
         }
 

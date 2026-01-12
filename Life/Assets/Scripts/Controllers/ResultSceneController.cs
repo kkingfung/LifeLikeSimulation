@@ -13,6 +13,7 @@ namespace LifeLike.Controllers
     {
         [Header("Scene Settings")]
         [SerializeField] private SceneReference _mainMenuScene = new();
+        [SerializeField] private SceneReference _chapterSelectScene = new();
         [SerializeField] private SceneReference _operatorScene = new();
 
         // サービス参照
@@ -34,6 +35,14 @@ namespace LifeLike.Controllers
         public void NavigateToMainMenu()
         {
             NavigateTo(_mainMenuScene);
+        }
+
+        /// <summary>
+        /// チャプター選択画面へ戻る
+        /// </summary>
+        public void NavigateToChapterSelect()
+        {
+            NavigateTo(_chapterSelectScene);
         }
 
         /// <summary>

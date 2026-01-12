@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using LifeLike.Controllers;
+using LifeLike.Core.Services;
+using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Localization;
 using LifeLike.UI;
 using LifeLike.UI.Effects;
 using LifeLike.ViewModels;
@@ -43,6 +46,10 @@ namespace LifeLike.Views
         [SerializeField] private Button? _returnToMenuButton;
         [SerializeField] private Button? _newGameButton;
 
+        [Header("Button Labels (for localization)")]
+        [SerializeField] private Text? _returnToMenuButtonText;
+        [SerializeField] private Text? _newGameButtonText;
+
         [Header("UI Effects")]
         [SerializeField] private UITheme? _theme;
         [SerializeField] private bool _enableCRTEffect = true;
@@ -51,6 +58,7 @@ namespace LifeLike.Views
         [SerializeField] private Canvas? _mainCanvas;
 
         private ResultViewModel? _viewModel;
+        private ILocalizationService? _localizationService;
         private readonly List<GameObject> _chapterResultItems = new();
         private bool _isScrollingCredits;
         private GameObject? _crtOverlay;
@@ -70,6 +78,13 @@ namespace LifeLike.Views
             if (_controller == null)
             {
                 Debug.LogError("[ResultView] ResultSceneControllerが見つかりません。");
+            }
+
+            // ローカライズサービスを取得
+            _localizationService = ServiceLocator.Instance.Get<ILocalizationService>();
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged += OnLanguageChanged;
             }
         }
 
@@ -106,6 +121,9 @@ namespace LifeLike.Views
             _viewModel.OnNewGameRequested += OnNewGameRequested;
 
             UpdateUI();
+
+            // ローカライズテキストを適用
+            ApplyLocalizedTexts();
         }
 
         /// <summary>
@@ -310,6 +328,12 @@ namespace LifeLike.Views
                 Destroy(_crtOverlay);
             }
 
+            // ローカライズサービスのイベント購読を解除
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged -= OnLanguageChanged;
+            }
+
             if (_viewModel != null)
             {
                 _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
@@ -319,6 +343,35 @@ namespace LifeLike.Views
             }
 
             ClearChapterResults();
+        }
+
+        /// <summary>
+        /// 言語変更時のハンドラ
+        /// </summary>
+        private void OnLanguageChanged(Language language)
+        {
+            ApplyLocalizedTexts();
+            UpdateChapterResults();
+        }
+
+        /// <summary>
+        /// ローカライズテキストを適用
+        /// </summary>
+        private void ApplyLocalizedTexts()
+        {
+            if (_localizationService == null) return;
+
+            SetLocalizedText(_returnToMenuButtonText, UILocalizationKeys.Result.ReturnToMenu);
+            SetLocalizedText(_newGameButtonText, UILocalizationKeys.MainMenu.NewGame);
+        }
+
+        /// <summary>
+        /// ローカライズテキストを設定するヘルパー
+        /// </summary>
+        private void SetLocalizedText(Text? textComponent, string key)
+        {
+            if (textComponent == null || _localizationService == null) return;
+            textComponent.text = _localizationService.GetText(key);
         }
 
         private void SetupUI()
@@ -411,9 +464,11 @@ namespace LifeLike.Views
                 }
                 if (texts.Length > 1)
                 {
+                    string completedText = _localizationService?.GetText(UILocalizationKeys.ChapterSelect.Completed) ?? "Completed";
+                    string lockedText = _localizationService?.GetText(UILocalizationKeys.ChapterSelect.Locked) ?? "Locked";
                     texts[1].text = result.isCompleted
-                        ? result.endingTitle ?? "完了"
-                        : "未完了";
+                        ? result.endingTitle ?? completedText
+                        : lockedText;
                 }
                 if (texts.Length > 2)
                 {
@@ -557,7 +612,7 @@ namespace LifeLike.Views
 
         private void OnReturnToMenuRequested()
         {
-            _controller?.NavigateToMainMenu();
+            _controller?.NavigateToChapterSelect();
         }
 
         private void OnNewGameRequested()

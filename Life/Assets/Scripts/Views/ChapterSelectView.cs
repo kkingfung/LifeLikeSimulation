@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using LifeLike.Controllers;
+using LifeLike.Core.Services;
 using LifeLike.Data;
+using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Localization;
 using LifeLike.UI;
 using LifeLike.UI.Effects;
 using LifeLike.ViewModels;
@@ -40,6 +43,11 @@ namespace LifeLike.Views
         [SerializeField] private Button? _startButton;
         [SerializeField] private Button? _backButton;
         [SerializeField] private Text? _startButtonText;
+        [SerializeField] private Text? _backButtonText;
+
+        [Header("Labels (for localization)")]
+        [SerializeField] private Text? _titleText;
+        [SerializeField] private Text? _progressLabel;
 
         [Header("Visual Settings")]
         [SerializeField] private Color _lockedColor = Color.gray;
@@ -55,6 +63,7 @@ namespace LifeLike.Views
         [SerializeField] private Canvas? _mainCanvas;
 
         private ChapterSelectViewModel? _viewModel;
+        private ILocalizationService? _localizationService;
         private readonly List<GameObject> _chapterNodes = new();
         private readonly Dictionary<string, Button> _chapterButtons = new();
         private GameObject? _crtOverlay;
@@ -73,6 +82,13 @@ namespace LifeLike.Views
             {
                 Debug.LogError("[ChapterSelectView] ChapterSelectSceneControllerが見つかりません。");
                 return;
+            }
+
+            // ローカライズサービスを取得
+            _localizationService = ServiceLocator.Instance.Get<ILocalizationService>();
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged += OnLanguageChanged;
             }
         }
 
@@ -117,6 +133,9 @@ namespace LifeLike.Views
 
             BuildChapterFlowchart();
             UpdateUI();
+
+            // ローカライズテキストを適用
+            ApplyLocalizedTexts();
         }
 
         /// <summary>
@@ -278,6 +297,12 @@ namespace LifeLike.Views
                 Destroy(_crtOverlay);
             }
 
+            // ローカライズサービスのイベント購読を解除
+            if (_localizationService != null)
+            {
+                _localizationService.OnLanguageChanged -= OnLanguageChanged;
+            }
+
             if (_viewModel != null)
             {
                 _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
@@ -287,6 +312,37 @@ namespace LifeLike.Views
             }
 
             ClearChapterNodes();
+        }
+
+        /// <summary>
+        /// 言語変更時のハンドラ
+        /// </summary>
+        private void OnLanguageChanged(Language language)
+        {
+            ApplyLocalizedTexts();
+            // チャプターノードも再構築（ローカライズされたテキストを反映）
+            BuildChapterFlowchart();
+            UpdateUI();
+        }
+
+        /// <summary>
+        /// ローカライズテキストを適用
+        /// </summary>
+        private void ApplyLocalizedTexts()
+        {
+            if (_localizationService == null) return;
+
+            SetLocalizedText(_titleText, UILocalizationKeys.ChapterSelect.Title);
+            SetLocalizedText(_backButtonText, UILocalizationKeys.Common.Back);
+        }
+
+        /// <summary>
+        /// ローカライズテキストを設定するヘルパー
+        /// </summary>
+        private void SetLocalizedText(Text? textComponent, string key)
+        {
+            if (textComponent == null || _localizationService == null) return;
+            textComponent.text = _localizationService.GetText(key);
         }
 
         private void SetupUI()
@@ -412,7 +468,7 @@ namespace LifeLike.Views
 
             if (_progressText != null)
             {
-                _progressText.text = $"進行状況: {summary.completedNights} / {summary.totalNights}";
+                _progressText.text = $"{summary.completedNights} / {summary.totalNights}";
             }
 
             if (_progressSlider != null)
@@ -527,13 +583,31 @@ namespace LifeLike.Views
 
             if (_startButtonText != null && _viewModel.SelectedChapter != null)
             {
-                _startButtonText.text = _viewModel.SelectedChapter.state switch
+                _startButtonText.text = GetLocalizedStartButtonText(_viewModel.SelectedChapter.state);
+            }
+        }
+
+        /// <summary>
+        /// 開始ボタンのローカライズテキストを取得
+        /// </summary>
+        private string GetLocalizedStartButtonText(ChapterState state)
+        {
+            if (_localizationService == null)
+            {
+                return state switch
                 {
-                    ChapterState.InProgress => "再開する",
-                    ChapterState.Completed => "再プレイ",
-                    _ => "開始する"
+                    ChapterState.InProgress => "Resume",
+                    ChapterState.Completed => "Replay",
+                    _ => "Start"
                 };
             }
+
+            return state switch
+            {
+                ChapterState.InProgress => _localizationService.GetText(UILocalizationKeys.ChapterSelect.Resume),
+                ChapterState.Completed => _localizationService.GetText(UILocalizationKeys.Result.Replay),
+                _ => _localizationService.GetText(UILocalizationKeys.ChapterSelect.Start)
+            };
         }
 
         /// <summary>
@@ -571,13 +645,25 @@ namespace LifeLike.Views
         /// </summary>
         private string GetStateText(ChapterState state)
         {
+            if (_localizationService == null)
+            {
+                return state switch
+                {
+                    ChapterState.Locked => "Locked",
+                    ChapterState.Available => "Available",
+                    ChapterState.InProgress => "In Progress",
+                    ChapterState.Completed => "Completed",
+                    _ => "Unknown"
+                };
+            }
+
             return state switch
             {
-                ChapterState.Locked => "未解放",
-                ChapterState.Available => "プレイ可能",
-                ChapterState.InProgress => "進行中",
-                ChapterState.Completed => "完了",
-                _ => "不明"
+                ChapterState.Locked => _localizationService.GetText(UILocalizationKeys.ChapterSelect.Locked),
+                ChapterState.Available => _localizationService.GetText(UILocalizationKeys.ChapterSelect.Available),
+                ChapterState.InProgress => _localizationService.GetText(UILocalizationKeys.ChapterSelect.InProgress),
+                ChapterState.Completed => _localizationService.GetText(UILocalizationKeys.ChapterSelect.Completed),
+                _ => "?"
             };
         }
 

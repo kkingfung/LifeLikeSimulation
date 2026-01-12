@@ -59,6 +59,10 @@ namespace LifeLike.Data.Localization
             public const string Night = "ui.chapter_select.night";
             public const string Locked = "ui.chapter_select.locked";
             public const string Completed = "ui.chapter_select.completed";
+            public const string Available = "ui.chapter_select.available";
+            public const string InProgress = "ui.chapter_select.in_progress";
+            public const string Start = "ui.chapter_select.start";
+            public const string Resume = "ui.chapter_select.resume";
         }
 
         // 結果画面
