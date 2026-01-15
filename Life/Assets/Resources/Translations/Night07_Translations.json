@@ -1,0 +1,2776 @@
+{
+  "scenarioId": "night_07",
+  "title": {
+    "ja": "崩壊の夜",
+    "en": "Night of Collapse",
+    "zh_CN": "崩塌之夜",
+    "zh_TW": "崩塌之夜",
+    "ko": "붕괴의 밤"
+  },
+  "description": {
+    "ja": "中村浩二が自宅で遺体で発見される。自殺に見せかけられているが、遺書はない。同時に、組織が真理に迫る。美咲は吉田の家に預けられている。",
+    "en": "Koji Nakamura is found dead at his home. It appears to be suicide, but there is no note. Meanwhile, the organization closes in on Mari. Misaki has been left in Yoshida's care.",
+    "zh_CN": "中村浩二在家中被发现死亡。看起来像是自杀，但没有遗书。与此同时，组织正在逼近真理。美咲被寄养在吉田家。",
+    "zh_TW": "中村浩二在家中被發現死亡。看起來像是自殺，但沒有遺書。與此同時，組織正在逼近真理。美咲被寄養在吉田家。",
+    "ko": "나카무라 코지가 자택에서 시신으로 발견된다. 자살로 보이지만 유서가 없다. 동시에 조직이 마리에게 접근하고 있다. 미사키는 요시다의 집에 맡겨져 있다."
+  },
+  "callers": [
+    {
+      "callerId": "landlord",
+      "displayName": {
+        "ja": "大家",
+        "en": "Landlord",
+        "zh_CN": "房东",
+        "zh_TW": "房東",
+        "ko": "집주인"
+      },
+      "description": {
+        "ja": "中村浩二が住んでいたアパートの大家。家賃催促で訪問し、中村の遺体を発見した。",
+        "en": "The landlord of the apartment where Koji Nakamura lived. Came to collect rent and discovered Nakamura's body.",
+        "zh_CN": "中村浩二居住的公寓房东。来催收房租时发现了中村的尸体。",
+        "zh_TW": "中村浩二居住的公寓房東。來催收房租時發現了中村的屍體。",
+        "ko": "나카무라 코지가 살던 아파트의 집주인. 월세를 받으러 왔다가 나카무라의 시신을 발견했다."
+      }
+    },
+    {
+      "callerId": "watanabe_mari",
+      "displayName": {
+        "ja": "渡辺真理",
+        "en": "Mari Watanabe",
+        "zh_CN": "渡边真理",
+        "zh_TW": "渡邊真理",
+        "ko": "와타나베 마리"
+      },
+      "description": {
+        "ja": "林遥の親友。美咲を預かっている。組織に狙われている。",
+        "en": "Haruka Hayashi's best friend. Taking care of Misaki. Being targeted by the organization.",
+        "zh_CN": "林遥的挚友。照顾着美咲。被组织盯上了。",
+        "zh_TW": "林遙的摯友。照顧著美咲。被組織盯上了。",
+        "ko": "하야시 하루카의 절친. 미사키를 돌보고 있다. 조직의 표적이 되어 있다."
+      }
+    },
+    {
+      "callerId": "police_detective",
+      "displayName": {
+        "ja": "高橋刑事",
+        "en": "Detective Takahashi",
+        "zh_CN": "高桥刑警",
+        "zh_TW": "高橋刑警",
+        "ko": "타카하시 형사"
+      },
+      "description": {
+        "ja": "○○署の刑事。中村浩二の死を調査している。自殺として処理しようとしている。",
+        "en": "A detective from the local precinct. Investigating Nakamura's death. Trying to classify it as suicide.",
+        "zh_CN": "当地警署的刑警。正在调查中村的死亡。试图将其定性为自杀。",
+        "zh_TW": "當地警署的刑警。正在調查中村的死亡。試圖將其定性為自殺。",
+        "ko": "지역 경찰서의 형사. 나카무라의 죽음을 조사하고 있다. 자살로 처리하려 하고 있다."
+      }
+    },
+    {
+      "callerId": "yoshida_kazuko",
+      "displayName": {
+        "ja": "吉田和子",
+        "en": "Kazuko Yoshida",
+        "zh_CN": "吉田和子",
+        "zh_TW": "吉田和子",
+        "ko": "요시다 카즈코"
+      },
+      "description": {
+        "ja": "真理の隣人。真理から美咲を預かっている。真理が連れ去られるのを目撃する。",
+        "en": "Mari's neighbor. Taking care of Misaki on Mari's behalf. Witnesses Mari being taken away.",
+        "zh_CN": "真理的邻居。受真理之托照顾美咲。目睹了真理被带走。",
+        "zh_TW": "真理的鄰居。受真理之託照顧美咲。目睹了真理被帶走。",
+        "ko": "마리의 이웃. 마리를 대신해 미사키를 돌보고 있다. 마리가 끌려가는 것을 목격한다."
+      }
+    },
+    {
+      "callerId": "nakamura_koji",
+      "displayName": {
+        "ja": "中村浩二",
+        "en": "Koji Nakamura",
+        "zh_CN": "中村浩二",
+        "zh_TW": "中村浩二",
+        "ko": "나카무라 코지"
+      },
+      "description": {
+        "ja": "抗議活動をしていた男性。息子を誠和製薬の薬で亡くした。Night07では遺体として発見される。",
+        "en": "The man who was protesting. Lost his son to Seiwa Pharmaceutical's drug. Found as a corpse in Night07.",
+        "zh_CN": "之前在抗议的男子。儿子因诚和制药的药物去世。在第七夜被发现已成尸体。",
+        "zh_TW": "之前在抗議的男子。兒子因誠和製藥的藥物去世。在第七夜被發現已成屍體。",
+        "ko": "항의 활동을 하던 남성. 아들을 세이와 제약의 약으로 잃었다. 제7야에서 시신으로 발견된다."
+      }
+    },
+    {
+      "callerId": "hayashi_misaki",
+      "displayName": {
+        "ja": "林美咲",
+        "en": "Misaki Hayashi",
+        "zh_CN": "林美咲",
+        "zh_TW": "林美咲",
+        "ko": "하야시 미사키"
+      },
+      "description": {
+        "ja": "林遥の娘、5歳。吉田の家に預けられている。",
+        "en": "Haruka Hayashi's daughter, 5 years old. Left in Yoshida's care.",
+        "zh_CN": "林遥的女儿，5岁。被寄养在吉田家。",
+        "zh_TW": "林遙的女兒，5歲。被寄養在吉田家。",
+        "ko": "하야시 하루카의 딸, 5세. 요시다의 집에 맡겨져 있다."
+      }
+    }
+  ],
+  "calls": [
+    {
+      "callId": "call_landlord_report",
+      "title": {
+        "ja": "大家からの通報",
+        "en": "Report from the Landlord",
+        "zh_CN": "房东的报警",
+        "zh_TW": "房東的報警",
+        "ko": "집주인의 신고"
+      },
+      "segments": [
+        {
+          "segmentId": "landlord_intro",
+          "callerLines": [
+            {
+              "ja": "も、もしもし！警察ですか！？",
+              "en": "H-Hello!? Is this the police!?",
+              "zh_CN": "喂、喂！是警察吗！？",
+              "zh_TW": "喂、喂！是警察嗎！？",
+              "ko": "여, 여보세요! 경찰인가요!?"
+            },
+            {
+              "ja": "大変なんです！人が...人が死んでるんです！",
+              "en": "It's terrible! Someone... someone's dead!",
+              "zh_CN": "出大事了！有人...有人死了！",
+              "zh_TW": "出大事了！有人...有人死了！",
+              "ko": "큰일이에요! 사람이... 사람이 죽어 있어요!"
+            },
+            {
+              "ja": "中村さんが...首を吊って...",
+              "en": "Mr. Nakamura... hanged himself...",
+              "zh_CN": "中村先生...上吊了...",
+              "zh_TW": "中村先生...上吊了...",
+              "ko": "나카무라 씨가... 목을 매고..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "intro_calm_down",
+              "displayText": {
+                "ja": "落ち着いてください。場所を教えてください。",
+                "en": "Please calm down. Tell me the location.",
+                "zh_CN": "请冷静。请告诉我地点。",
+                "zh_TW": "請冷靜。請告訴我地點。",
+                "ko": "진정하세요. 장소를 알려주세요."
+              }
+            },
+            {
+              "responseId": "intro_ask_situation",
+              "displayText": {
+                "ja": "どういう状況ですか？",
+                "en": "What is the situation?",
+                "zh_CN": "是什么情况？",
+                "zh_TW": "是什麼情況？",
+                "ko": "어떤 상황인가요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "location_info",
+          "callerLines": [
+            {
+              "ja": "○○町のアパートです...2階の...203号室...",
+              "en": "It's an apartment in XX Town... 2nd floor... room 203...",
+              "zh_CN": "是XX町的公寓...2楼...203号室...",
+              "zh_TW": "是XX町的公寓...2樓...203號室...",
+              "ko": "XX동의 아파트예요... 2층... 203호..."
+            },
+            {
+              "ja": "中村浩二さんのお部屋で...",
+              "en": "In Mr. Koji Nakamura's room...",
+              "zh_CN": "是中村浩二先生的房间...",
+              "zh_TW": "是中村浩二先生的房間...",
+              "ko": "나카무라 코지 씨의 방에서..."
+            },
+            {
+              "ja": "私、大家なんです...",
+              "en": "I'm the landlord...",
+              "zh_CN": "我是房东...",
+              "zh_TW": "我是房東...",
+              "ko": "저, 집주인이에요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "location_ask_detail",
+              "displayText": {
+                "ja": "どのような状態ですか？",
+                "en": "What is the condition?",
+                "zh_CN": "是什么状态？",
+                "zh_TW": "是什麼狀態？",
+                "ko": "어떤 상태인가요?"
+              }
+            },
+            {
+              "responseId": "location_ask_why",
+              "displayText": {
+                "ja": "なぜ部屋に入ったんですか？",
+                "en": "Why did you enter the room?",
+                "zh_CN": "你为什么进入了房间？",
+                "zh_TW": "你為什麼進入了房間？",
+                "ko": "왜 방에 들어가셨나요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "situation_detail",
+          "callerLines": [
+            {
+              "ja": "家賃を催促しに行ったんです...",
+              "en": "I went to collect the rent...",
+              "zh_CN": "我去催收房租的...",
+              "zh_TW": "我去催收房租的...",
+              "ko": "월세를 받으러 갔었어요..."
+            },
+            {
+              "ja": "ドアをノックしても返事がなくて...",
+              "en": "There was no answer when I knocked...",
+              "zh_CN": "敲门也没有回应...",
+              "zh_TW": "敲門也沒有回應...",
+              "ko": "문을 두드려도 대답이 없어서..."
+            },
+            {
+              "ja": "合鍵で開けたら...中村さんが...",
+              "en": "When I opened it with the spare key... Mr. Nakamura was...",
+              "zh_CN": "用备用钥匙打开门后...中村先生...",
+              "zh_TW": "用備用鑰匙打開門後...中村先生...",
+              "ko": "여분의 열쇠로 열었더니... 나카무라 씨가..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "situation_ask_body",
+              "displayText": {
+                "ja": "中村さんはどのような状態ですか？",
+                "en": "What is Mr. Nakamura's condition?",
+                "zh_CN": "中村先生是什么状态？",
+                "zh_TW": "中村先生是什麼狀態？",
+                "ko": "나카무라 씨는 어떤 상태인가요?"
+              }
+            },
+            {
+              "responseId": "situation_ask_location",
+              "displayText": {
+                "ja": "住所を教えてください。",
+                "en": "Please tell me the address.",
+                "zh_CN": "请告诉我地址。",
+                "zh_TW": "請告訴我地址。",
+                "ko": "주소를 알려주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "why_entered",
+          "callerLines": [
+            {
+              "ja": "家賃が2ヶ月滞納で...",
+              "en": "The rent was two months overdue...",
+              "zh_CN": "房租拖欠了两个月...",
+              "zh_TW": "房租拖欠了兩個月...",
+              "ko": "월세가 두 달이나 밀려서..."
+            },
+            {
+              "ja": "何度電話しても出ないし...",
+              "en": "He wouldn't answer no matter how many times I called...",
+              "zh_CN": "打了好几次电话都不接...",
+              "zh_TW": "打了好幾次電話都不接...",
+              "ko": "몇 번을 전화해도 안 받고..."
+            },
+            {
+              "ja": "心配になって...",
+              "en": "I got worried...",
+              "zh_CN": "我担心起来了...",
+              "zh_TW": "我擔心起來了...",
+              "ko": "걱정이 돼서..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "why_ask_body",
+              "displayText": {
+                "ja": "中村さんの状態を教えてください。",
+                "en": "Please tell me about Mr. Nakamura's condition.",
+                "zh_CN": "请告诉我中村先生的状态。",
+                "zh_TW": "請告訴我中村先生的狀態。",
+                "ko": "나카무라 씨의 상태를 알려주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "body_description",
+          "callerLines": [
+            {
+              "ja": "首を...吊ってるんです...",
+              "en": "He's... hanging...",
+              "zh_CN": "他...上吊了...",
+              "zh_TW": "他...上吊了...",
+              "ko": "목을... 매고 있어요..."
+            },
+            {
+              "ja": "ロープで...天井から...",
+              "en": "With a rope... from the ceiling...",
+              "zh_CN": "用绳子...从天花板...",
+              "zh_TW": "用繩子...從天花板...",
+              "ko": "밧줄로... 천장에서..."
+            },
+            {
+              "ja": "もう動いてない...冷たくなってる...",
+              "en": "He's not moving anymore... he's cold...",
+              "zh_CN": "已经不动了...身体都凉了...",
+              "zh_TW": "已經不動了...身體都涼了...",
+              "ko": "이미 움직이지 않아요... 차가워져 있어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "body_ask_detail",
+              "displayText": {
+                "ja": "他に気づいたことはありますか？",
+                "en": "Did you notice anything else?",
+                "zh_CN": "还注意到其他什么吗？",
+                "zh_TW": "還注意到其他什麼嗎？",
+                "ko": "다른 눈에 띈 것이 있나요?"
+              }
+            },
+            {
+              "responseId": "body_ask_room",
+              "displayText": {
+                "ja": "部屋の様子はどうですか？",
+                "en": "How does the room look?",
+                "zh_CN": "房间的情况怎么样？",
+                "zh_TW": "房間的情況怎麼樣？",
+                "ko": "방 상태는 어떤가요?"
+              }
+            },
+            {
+              "responseId": "body_ask_recent",
+              "displayText": {
+                "ja": "中村さんの最近の様子は？",
+                "en": "How has Mr. Nakamura been recently?",
+                "zh_CN": "中村先生最近的状况怎么样？",
+                "zh_TW": "中村先生最近的狀況怎麼樣？",
+                "ko": "나카무라 씨의 최근 상태는요?"
+              }
+            },
+            {
+              "responseId": "body_dispatch",
+              "displayText": {
+                "ja": "分かりました。すぐに警察と救急を向かわせます。",
+                "en": "Understood. I'll send police and ambulance right away.",
+                "zh_CN": "明白了。我会立刻派警察和救护车过去。",
+                "zh_TW": "明白了。我會立刻派警察和救護車過去。",
+                "ko": "알겠습니다. 바로 경찰과 구급대를 보내겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "body_detail",
+          "callerLines": [
+            {
+              "ja": "えっと...あの...",
+              "en": "Um... well...",
+              "zh_CN": "那个...那个...",
+              "zh_TW": "那個...那個...",
+              "ko": "음... 저기..."
+            },
+            {
+              "ja": "口に...何か詰まってるみたいで...",
+              "en": "There seems to be... something stuffed in his mouth...",
+              "zh_CN": "嘴里...好像塞着什么东西...",
+              "zh_TW": "嘴裡...好像塞著什麼東西...",
+              "ko": "입에... 뭔가 막혀 있는 것 같아서..."
+            },
+            {
+              "ja": "黒っぽい布...？",
+              "en": "A dark cloth...?",
+              "zh_CN": "黑色的布...？",
+              "zh_TW": "黑色的布...？",
+              "ko": "검은 천...?"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "detail_cloth",
+              "displayText": {
+                "ja": "布？どんな布ですか？",
+                "en": "Cloth? What kind of cloth?",
+                "zh_CN": "布？什么样的布？",
+                "zh_TW": "布？什麼樣的布？",
+                "ko": "천요? 어떤 천이에요?"
+              }
+            },
+            {
+              "responseId": "detail_ask_room",
+              "displayText": {
+                "ja": "部屋の様子はどうですか？",
+                "en": "How does the room look?",
+                "zh_CN": "房间的情况怎么样？",
+                "zh_TW": "房間的情況怎麼樣？",
+                "ko": "방 상태는 어떤가요?"
+              }
+            },
+            {
+              "responseId": "detail_dispatch",
+              "displayText": {
+                "ja": "警察を向かわせます。何も触らないでください。",
+                "en": "I'll send the police. Please don't touch anything.",
+                "zh_CN": "我会派警察过去。请不要碰任何东西。",
+                "zh_TW": "我會派警察過去。請不要碰任何東西。",
+                "ko": "경찰을 보내겠습니다. 아무것도 만지지 마세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "cloth_description",
+          "callerLines": [
+            {
+              "ja": "厚手の...なんだろう...",
+              "en": "It's thick... I wonder what it is...",
+              "zh_CN": "厚厚的...不知道是什么...",
+              "zh_TW": "厚厚的...不知道是什麼...",
+              "ko": "두꺼운... 뭘까요..."
+            },
+            {
+              "ja": "制服みたいな素材...？作業着かな...",
+              "en": "Material like a uniform...? Maybe work clothes...",
+              "zh_CN": "像制服一样的材质...？是工作服吗...",
+              "zh_TW": "像制服一樣的材質...？是工作服嗎...",
+              "ko": "제복 같은 소재...? 작업복일까..."
+            },
+            {
+              "ja": "よく見えないですけど...ボタンみたいなのも...",
+              "en": "I can't see well but... there seems to be buttons too...",
+              "zh_CN": "看不太清楚...好像还有扣子...",
+              "zh_TW": "看不太清楚...好像還有扣子...",
+              "ko": "잘 안 보이지만... 단추 같은 것도..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "cloth_ask_room",
+              "displayText": {
+                "ja": "部屋の様子はどうですか？",
+                "en": "How does the room look?",
+                "zh_CN": "房间的情况怎么样？",
+                "zh_TW": "房間的情況怎麼樣？",
+                "ko": "방 상태는 어떤가요?"
+              }
+            },
+            {
+              "responseId": "cloth_dispatch",
+              "displayText": {
+                "ja": "大事な証拠になるかもしれません。触らないでください。警察を向かわせます。",
+                "en": "That might be important evidence. Please don't touch it. I'll send the police.",
+                "zh_CN": "这可能是重要证据。请不要碰它。我会派警察过去。",
+                "zh_TW": "這可能是重要證據。請不要碰它。我會派警察過去。",
+                "ko": "중요한 증거가 될 수 있습니다. 만지지 마세요. 경찰을 보내겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "room_state",
+          "callerLines": [
+            {
+              "ja": "部屋が...荒らされてるみたいで...",
+              "en": "The room... looks like it's been ransacked...",
+              "zh_CN": "房间...好像被翻过了...",
+              "zh_TW": "房間...好像被翻過了...",
+              "ko": "방이... 어질러진 것 같아서..."
+            },
+            {
+              "ja": "物が散らばってて...",
+              "en": "Things are scattered around...",
+              "zh_CN": "东西散落一地...",
+              "zh_TW": "東西散落一地...",
+              "ko": "물건들이 흩어져 있고..."
+            },
+            {
+              "ja": "でも、遺書とかは...見当たらないんです...",
+              "en": "But... I can't find a suicide note...",
+              "zh_CN": "但是...找不到遗书...",
+              "zh_TW": "但是...找不到遺書...",
+              "ko": "그런데, 유서 같은 건... 안 보여요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "room_ask_note",
+              "displayText": {
+                "ja": "遺書はないんですか？",
+                "en": "There's no suicide note?",
+                "zh_CN": "没有遗书吗？",
+                "zh_TW": "沒有遺書嗎？",
+                "ko": "유서가 없나요?"
+              }
+            },
+            {
+              "responseId": "room_ask_recent",
+              "displayText": {
+                "ja": "中村さんの最近の様子は？",
+                "en": "How has Mr. Nakamura been recently?",
+                "zh_CN": "中村先生最近的状况怎么样？",
+                "zh_TW": "中村先生最近的狀況怎麼樣？",
+                "ko": "나카무라 씨의 최근 상태는요?"
+              }
+            },
+            {
+              "responseId": "room_dispatch",
+              "displayText": {
+                "ja": "警察を向かわせます。部屋には触らないでください。",
+                "en": "I'll send the police. Please don't touch anything in the room.",
+                "zh_CN": "我会派警察过去。请不要碰房间里的任何东西。",
+                "zh_TW": "我會派警察過去。請不要碰房間裡的任何東西。",
+                "ko": "경찰을 보내겠습니다. 방 안의 것은 만지지 마세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "no_suicide_note",
+          "callerLines": [
+            {
+              "ja": "探したんですけど...見つからなくて...",
+              "en": "I looked for one but... couldn't find it...",
+              "zh_CN": "我找过了...但是找不到...",
+              "zh_TW": "我找過了...但是找不到...",
+              "ko": "찾아봤는데... 안 보여요..."
+            },
+            {
+              "ja": "普通、遺書って残すものですよね...",
+              "en": "Normally, people leave a suicide note, right...",
+              "zh_CN": "一般来说，都会留下遗书的吧...",
+              "zh_TW": "一般來說，都會留下遺書的吧...",
+              "ko": "보통 유서는 남기는 거잖아요..."
+            },
+            {
+              "ja": "なんか...おかしいなって...",
+              "en": "Something... feels off...",
+              "zh_CN": "总觉得...有点奇怪...",
+              "zh_TW": "總覺得...有點奇怪...",
+              "ko": "뭔가... 이상하다는 생각이..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "note_ask_recent",
+              "displayText": {
+                "ja": "最近の中村さんの様子は？",
+                "en": "How has Mr. Nakamura been recently?",
+                "zh_CN": "中村先生最近怎么样？",
+                "zh_TW": "中村先生最近怎麼樣？",
+                "ko": "최근 나카무라 씨는 어땠나요?"
+              }
+            },
+            {
+              "responseId": "note_dispatch",
+              "displayText": {
+                "ja": "警察を向かわせます。何も触らないでください。",
+                "en": "I'll send the police. Please don't touch anything.",
+                "zh_CN": "我会派警察过去。请不要碰任何东西。",
+                "zh_TW": "我會派警察過去。請不要碰任何東西。",
+                "ko": "경찰을 보내겠습니다. 아무것도 만지지 마세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "recent_state",
+          "callerLines": [
+            {
+              "ja": "最近...すごく疲れた顔してました...",
+              "en": "Recently... he looked really exhausted...",
+              "zh_CN": "最近...他看起来很疲惫...",
+              "zh_TW": "最近...他看起來很疲憊...",
+              "ko": "최근에... 많이 지쳐 보였어요..."
+            },
+            {
+              "ja": "よく誰かと電話してて...",
+              "en": "He was often on the phone with someone...",
+              "zh_CN": "经常和谁在打电话...",
+              "zh_TW": "經常和誰在打電話...",
+              "ko": "자주 누군가와 통화하고 있었고..."
+            },
+            {
+              "ja": "「もう終わりだ」とか言ってるのを聞いたことが...",
+              "en": "I heard him say things like 'It's all over'...",
+              "zh_CN": "我听到他说过什么「已经完了」之类的话...",
+              "zh_TW": "我聽到他說過什麼「已經完了」之類的話...",
+              "ko": "「이제 끝이다」 같은 말을 하는 걸 들은 적이..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "recent_ask_phone",
+              "displayText": {
+                "ja": "誰と電話していたか分かりますか？",
+                "en": "Do you know who he was talking to?",
+                "zh_CN": "你知道他在和谁通话吗？",
+                "zh_TW": "你知道他在和誰通話嗎？",
+                "ko": "누구와 통화했는지 아시나요?"
+              }
+            },
+            {
+              "responseId": "recent_ask_room",
+              "displayText": {
+                "ja": "部屋の様子はどうですか？",
+                "en": "How does the room look?",
+                "zh_CN": "房间的情况怎么样？",
+                "zh_TW": "房間的情況怎麼樣？",
+                "ko": "방 상태는 어떤가요?"
+              }
+            },
+            {
+              "responseId": "recent_dispatch",
+              "displayText": {
+                "ja": "分かりました。警察を向かわせます。",
+                "en": "Understood. I'll send the police.",
+                "zh_CN": "明白了。我会派警察过去。",
+                "zh_TW": "明白了。我會派警察過去。",
+                "ko": "알겠습니다. 경찰을 보내겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "phone_calls",
+          "callerLines": [
+            {
+              "ja": "分からないです...でも...",
+              "en": "I don't know... but...",
+              "zh_CN": "我不知道...但是...",
+              "zh_TW": "我不知道...但是...",
+              "ko": "모르겠어요... 하지만..."
+            },
+            {
+              "ja": "怒鳴ってることもあったし...",
+              "en": "Sometimes he was shouting...",
+              "zh_CN": "有时候他在大吼大叫...",
+              "zh_TW": "有時候他在大吼大叫...",
+              "ko": "소리를 지를 때도 있었고..."
+            },
+            {
+              "ja": "「息子のことを忘れない」とか言ってました...",
+              "en": "He said things like 'I won't forget about my son'...",
+              "zh_CN": "他说过什么「不会忘记儿子的事」之类的话...",
+              "zh_TW": "他說過什麼「不會忘記兒子的事」之類的話...",
+              "ko": "「아들 일을 잊지 않겠다」 같은 말을 했어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "phone_dispatch",
+              "displayText": {
+                "ja": "分かりました。警察を向かわせます。",
+                "en": "Understood. I'll send the police.",
+                "zh_CN": "明白了。我会派警察过去。",
+                "zh_TW": "明白了。我會派警察過去。",
+                "ko": "알겠습니다. 경찰을 보내겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "dispatch_response",
+          "callerLines": [
+            {
+              "ja": "はい...お願いします...",
+              "en": "Yes... please...",
+              "zh_CN": "是...拜托了...",
+              "zh_TW": "是...拜託了...",
+              "ko": "네... 부탁드려요..."
+            },
+            {
+              "ja": "私、どうしたら...",
+              "en": "What should I do...",
+              "zh_CN": "我该怎么办...",
+              "zh_TW": "我該怎麼辦...",
+              "ko": "저, 어떻게 해야..."
+            },
+            {
+              "ja": "怖くて...",
+              "en": "I'm scared...",
+              "zh_CN": "好害怕...",
+              "zh_TW": "好害怕...",
+              "ko": "무서워서..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "dispatch_stay",
+              "displayText": {
+                "ja": "部屋の外で待っていてください。何も触らないように。",
+                "en": "Please wait outside the room. Don't touch anything.",
+                "zh_CN": "请在房间外面等着。不要碰任何东西。",
+                "zh_TW": "請在房間外面等著。不要碰任何東西。",
+                "ko": "방 밖에서 기다려 주세요. 아무것도 만지지 마시고요."
+              }
+            },
+            {
+              "responseId": "dispatch_leave",
+              "displayText": {
+                "ja": "建物の外に出て、警察を待ってください。",
+                "en": "Please go outside the building and wait for the police.",
+                "zh_CN": "请到建筑物外面等警察。",
+                "zh_TW": "請到建築物外面等警察。",
+                "ko": "건물 밖으로 나가서 경찰을 기다려 주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "waiting",
+          "callerLines": [
+            {
+              "ja": "分かりました...",
+              "en": "I understand...",
+              "zh_CN": "我知道了...",
+              "zh_TW": "我知道了...",
+              "ko": "알겠어요..."
+            },
+            {
+              "ja": "中村さん...かわいそうに...",
+              "en": "Poor Mr. Nakamura...",
+              "zh_CN": "中村先生...真可怜...",
+              "zh_TW": "中村先生...真可憐...",
+              "ko": "나카무라 씨... 불쌍해..."
+            },
+            {
+              "ja": "息子さんのことずっと言ってたのに...",
+              "en": "He was always talking about his son...",
+              "zh_CN": "他一直在说儿子的事...",
+              "zh_TW": "他一直在說兒子的事...",
+              "ko": "아들 얘기를 계속 하셨는데..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "waiting_end",
+              "displayText": {
+                "ja": "警察が来るまでそこで待っていてください。",
+                "en": "Please wait there until the police arrive.",
+                "zh_CN": "请在那里等警察来。",
+                "zh_TW": "請在那裡等警察來。",
+                "ko": "경찰이 올 때까지 거기서 기다려 주세요."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_mari_emergency",
+      "title": {
+        "ja": "真理からの緊急電話",
+        "en": "Emergency Call from Mari",
+        "zh_CN": "真理的紧急电话",
+        "zh_TW": "真理的緊急電話",
+        "ko": "마리의 긴급 전화"
+      },
+      "segments": [
+        {
+          "segmentId": "mari_panic",
+          "callerLines": [
+            {
+              "ja": "...もしもし！？",
+              "en": "...Hello!?",
+              "zh_CN": "...喂！？",
+              "zh_TW": "...喂！？",
+              "ko": "...여보세요!?"
+            },
+            {
+              "ja": "車が...車が来た！",
+              "en": "Cars... cars are here!",
+              "zh_CN": "车...车来了！",
+              "zh_TW": "車...車來了！",
+              "ko": "차가... 차가 왔어요!"
+            },
+            {
+              "ja": "黒い車が...何台も...",
+              "en": "Black cars... several of them...",
+              "zh_CN": "黑色的车...好几辆...",
+              "zh_TW": "黑色的車...好幾輛...",
+              "ko": "검은 차가... 여러 대..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "panic_ask_location",
+              "displayText": {
+                "ja": "渡辺さん？今どこにいますか？",
+                "en": "Ms. Watanabe? Where are you now?",
+                "zh_CN": "渡边女士？您现在在哪里？",
+                "zh_TW": "渡邊女士？您現在在哪裡？",
+                "ko": "와타나베 씨? 지금 어디에 계세요?"
+              }
+            },
+            {
+              "responseId": "panic_ask_situation",
+              "displayText": {
+                "ja": "何が起きてるんですか？",
+                "en": "What's happening?",
+                "zh_CN": "发生什么事了？",
+                "zh_TW": "發生什麼事了？",
+                "ko": "무슨 일이에요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_location",
+          "callerLines": [
+            {
+              "ja": "家です...自分の家...",
+              "en": "My home... my house...",
+              "zh_CN": "家里...我自己家...",
+              "zh_TW": "家裡...我自己家...",
+              "ko": "집이에요... 제 집..."
+            },
+            {
+              "ja": "窓の外に...止まってる...",
+              "en": "Outside the window... they're parked...",
+              "zh_CN": "在窗外...停着...",
+              "zh_TW": "在窗外...停著...",
+              "ko": "창문 밖에... 서 있어요..."
+            },
+            {
+              "ja": "助けて...お願い...",
+              "en": "Help me... please...",
+              "zh_CN": "救命...求你了...",
+              "zh_TW": "救命...求你了...",
+              "ko": "도와주세요... 제발..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "location_dispatch",
+              "displayText": {
+                "ja": "警察を向かわせます。住所は？",
+                "en": "I'll send the police. What's the address?",
+                "zh_CN": "我会派警察过去。地址是？",
+                "zh_TW": "我會派警察過去。地址是？",
+                "ko": "경찰을 보내겠습니다. 주소가 어떻게 되나요?"
+              }
+            },
+            {
+              "responseId": "location_ask_who",
+              "displayText": {
+                "ja": "誰が来たんですか？",
+                "en": "Who came?",
+                "zh_CN": "是谁来了？",
+                "zh_TW": "是誰來了？",
+                "ko": "누가 온 건가요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_explain",
+          "callerLines": [
+            {
+              "ja": "ずっと見張られてて...",
+              "en": "I've been watched...",
+              "zh_CN": "一直被监视着...",
+              "zh_TW": "一直被監視著...",
+              "ko": "계속 감시당하고 있었어요..."
+            },
+            {
+              "ja": "今、車が止まった...",
+              "en": "Now the cars have stopped...",
+              "zh_CN": "现在车停下了...",
+              "zh_TW": "現在車停下了...",
+              "ko": "지금 차가 멈췄어요..."
+            },
+            {
+              "ja": "ドアの前に誰かいる...",
+              "en": "Someone's at the door...",
+              "zh_CN": "门前有人...",
+              "zh_TW": "門前有人...",
+              "ko": "문 앞에 누가 있어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "explain_dispatch",
+              "displayText": {
+                "ja": "警察を向かわせます。住所を教えて！",
+                "en": "I'll send the police. Tell me your address!",
+                "zh_CN": "我会派警察过去。快告诉我地址！",
+                "zh_TW": "我會派警察過去。快告訴我地址！",
+                "ko": "경찰을 보내겠습니다. 주소를 알려주세요!"
+              }
+            },
+            {
+              "responseId": "explain_hide",
+              "displayText": {
+                "ja": "どこかに隠れて！",
+                "en": "Hide somewhere!",
+                "zh_CN": "快找地方躲起来！",
+                "zh_TW": "快找地方躲起來！",
+                "ko": "어디든 숨으세요!"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_who",
+          "callerLines": [
+            {
+              "ja": "分からない...でも...",
+              "en": "I don't know... but...",
+              "zh_CN": "不知道...但是...",
+              "zh_TW": "不知道...但是...",
+              "ko": "모르겠어요... 하지만..."
+            },
+            {
+              "ja": "あの車...前から見てた車...",
+              "en": "That car... the one that's been watching...",
+              "zh_CN": "那辆车...之前见过的车...",
+              "zh_TW": "那輛車...之前見過的車...",
+              "ko": "저 차... 전부터 감시하던 차..."
+            },
+            {
+              "ja": "（ドアを叩く音）...来た...",
+              "en": "(Sound of door being knocked)...they're here...",
+              "zh_CN": "（敲门声）...来了...",
+              "zh_TW": "（敲門聲）...來了...",
+              "ko": "(문 두드리는 소리)...왔어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "who_dispatch",
+              "displayText": {
+                "ja": "警察を向かわせます！住所は！？",
+                "en": "I'll send the police! What's the address!?",
+                "zh_CN": "我会派警察过去！地址是！？",
+                "zh_TW": "我會派警察過去！地址是！？",
+                "ko": "경찰을 보내겠습니다! 주소가요!?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_address",
+          "callerLines": [
+            {
+              "ja": "○○町の...（ドアを叩く激しい音）",
+              "en": "XX Town... (loud banging on door)",
+              "zh_CN": "XX町的...（激烈的敲门声）",
+              "zh_TW": "XX町的...（激烈的敲門聲）",
+              "ko": "XX동의... (격렬하게 문 두드리는 소리)"
+            },
+            {
+              "ja": "...っ！",
+              "en": "...!",
+              "zh_CN": "...！",
+              "zh_TW": "...！",
+              "ko": "...!"
+            },
+            {
+              "ja": "（電話が落ちる音）",
+              "en": "(Sound of phone dropping)",
+              "zh_CN": "（电话掉落的声音）",
+              "zh_TW": "（電話掉落的聲音）",
+              "ko": "(전화기 떨어지는 소리)"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "address_call_out",
+              "displayText": {
+                "ja": "渡辺さん！？渡辺さん！！",
+                "en": "Ms. Watanabe!? Ms. Watanabe!!",
+                "zh_CN": "渡边女士！？渡边女士！！",
+                "zh_TW": "渡邊女士！？渡邊女士！！",
+                "ko": "와타나베 씨!? 와타나베 씨!!"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_hiding",
+          "callerLines": [
+            {
+              "ja": "隠れる場所が...",
+              "en": "Nowhere to hide...",
+              "zh_CN": "躲藏的地方...",
+              "zh_TW": "躲藏的地方...",
+              "ko": "숨을 곳이..."
+            },
+            {
+              "ja": "（ドアが開く音）",
+              "en": "(Sound of door opening)",
+              "zh_CN": "（开门声）",
+              "zh_TW": "（開門聲）",
+              "ko": "(문 열리는 소리)"
+            },
+            {
+              "ja": "...っ！誰...！",
+              "en": "...! Who...!",
+              "zh_CN": "...！谁...！",
+              "zh_TW": "...！誰...！",
+              "ko": "...! 누구...!"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "hiding_call_out",
+              "displayText": {
+                "ja": "渡辺さん！！",
+                "en": "Ms. Watanabe!!",
+                "zh_CN": "渡边女士！！",
+                "zh_TW": "渡邊女士！！",
+                "ko": "와타나베 씨!!"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "call_cutoff",
+          "callerLines": [
+            {
+              "ja": "（男の声「こっちだ」）",
+              "en": "(Man's voice: 'Over here')",
+              "zh_CN": "（男人的声音「这边」）",
+              "zh_TW": "（男人的聲音「這邊」）",
+              "ko": "(남자 목소리 「이쪽이다」)"
+            },
+            {
+              "ja": "待って...一つだけ...！",
+              "en": "Wait... just one thing...!",
+              "zh_CN": "等等...就一件事...！",
+              "zh_TW": "等等...就一件事...！",
+              "ko": "잠깐... 하나만...!"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "cutoff_listen",
+              "displayText": {
+                "ja": "渡辺さん！",
+                "en": "Ms. Watanabe!",
+                "zh_CN": "渡边女士！",
+                "zh_TW": "渡邊女士！",
+                "ko": "와타나베 씨!"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_last_words",
+          "callerLines": [
+            {
+              "ja": "美咲のこと...お願い...",
+              "en": "Misaki... please...",
+              "zh_CN": "美咲的事...拜托了...",
+              "zh_TW": "美咲的事...拜託了...",
+              "ko": "미사키 일을... 부탁해요..."
+            },
+            {
+              "ja": "遥が...遥が命がけで守った子なの...",
+              "en": "Haruka... Haruka protected that child with her life...",
+              "zh_CN": "遥...遥用生命保护的孩子...",
+              "zh_TW": "遙...遙用生命保護的孩子...",
+              "ko": "하루카가... 하루카가 목숨 걸고 지킨 아이예요..."
+            },
+            {
+              "ja": "遥は...遥は最後まで美咲のことだけ考えてた...",
+              "en": "Haruka... Haruka thought only of Misaki until the very end...",
+              "zh_CN": "遥...遥到最后都只想着美咲...",
+              "zh_TW": "遙...遙到最後都只想著美咲...",
+              "ko": "하루카는... 하루카는 끝까지 미사키만 생각했어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "last_words_haruka_ask",
+              "displayText": {
+                "ja": "林遥さんのこと...知ってるんですか？",
+                "en": "Do you know about Haruka Hayashi...?",
+                "zh_CN": "林遥女士的事...您知道吗？",
+                "zh_TW": "林遙女士的事...您知道嗎？",
+                "ko": "하야시 하루카 씨에 대해... 아시나요?"
+              }
+            },
+            {
+              "responseId": "last_words_promise",
+              "displayText": {
+                "ja": "美咲ちゃんは...必ず守ります。",
+                "en": "I will... definitely protect Misaki.",
+                "zh_CN": "美咲...我一定会保护她。",
+                "zh_TW": "美咲...我一定會保護她。",
+                "ko": "미사키는... 반드시 지키겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_haruka_truth",
+          "callerLines": [
+            {
+              "ja": "遥は私の親友...美咲のお母さん...",
+              "en": "Haruka was my best friend... Misaki's mother...",
+              "zh_CN": "遥是我的挚友...美咲的妈妈...",
+              "zh_TW": "遙是我的摯友...美咲的媽媽...",
+              "ko": "하루카는 내 절친... 미사키의 엄마..."
+            },
+            {
+              "ja": "あの夜...遥は逃げられたはずなのに...",
+              "en": "That night... Haruka could have escaped...",
+              "zh_CN": "那天晚上...遥明明能逃走的...",
+              "zh_TW": "那天晚上...遙明明能逃走的...",
+              "ko": "그날 밤... 하루카는 도망칠 수 있었는데..."
+            },
+            {
+              "ja": "美咲を託すために...私のところに来て...",
+              "en": "She came to me... to entrust Misaki...",
+              "zh_CN": "为了把美咲托付给我...来找我...",
+              "zh_TW": "為了把美咲託付給我...來找我...",
+              "ko": "미사키를 맡기려고... 나한테 왔어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "haruka_truth_continue",
+              "displayText": {
+                "ja": "それで...？",
+                "en": "And then...?",
+                "zh_CN": "然后...？",
+                "zh_TW": "然後...？",
+                "ko": "그래서...?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_haruka_sacrifice",
+          "callerLines": [
+            {
+              "ja": "『美咲をお願い』って...それだけ言って...",
+              "en": "'Please take care of Misaki'... that's all she said...",
+              "zh_CN": "'拜托照顾美咲'...只说了这句话...",
+              "zh_TW": "'拜託照顧美咲'...只說了這句話...",
+              "ko": "「미사키를 부탁해」라고... 그것만 말하고..."
+            },
+            {
+              "ja": "『私は大丈夫だから』って笑って...",
+              "en": "'I'll be fine,' she said with a smile...",
+              "zh_CN": "'我没事的'然后笑着说...",
+              "zh_TW": "'我沒事的'然後笑著說...",
+              "ko": "「나는 괜찮아」라며 웃고..."
+            },
+            {
+              "ja": "それが...最後だった...",
+              "en": "That was... the last time...",
+              "zh_CN": "那是...最后一面...",
+              "zh_TW": "那是...最後一面...",
+              "ko": "그게... 마지막이었어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "sacrifice_realize",
+              "displayText": {
+                "ja": "（『みさきをお願い』...あの時の言葉...）",
+                "en": "('Please take care of Misaki'... those words from that time...)",
+                "zh_CN": "（'拜托照顾美咲'...那时的话...）",
+                "zh_TW": "（'拜託照顧美咲'...那時的話...）",
+                "ko": "(「미사키를 부탁해」... 그때의 말...)"
+              }
+            },
+            {
+              "responseId": "sacrifice_comfort",
+              "displayText": {
+                "ja": "林遥さんは...最後まで美咲ちゃんのことを...",
+                "en": "Ms. Hayashi... thought of Misaki until the end...",
+                "zh_CN": "林遥女士...到最后都在想着美咲...",
+                "zh_TW": "林遙女士...到最後都在想著美咲...",
+                "ko": "하야시 하루카 씨는... 끝까지 미사키를..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_final_plea",
+          "callerLines": [
+            {
+              "ja": "遥の想い...無駄にしないで...",
+              "en": "Don't let Haruka's wish... be in vain...",
+              "zh_CN": "遥的心意...不要白费...",
+              "zh_TW": "遙的心意...不要白費...",
+              "ko": "하루카의 마음... 헛되이 하지 마세요..."
+            },
+            {
+              "ja": "美咲を...（ドアが破られる音）",
+              "en": "Misaki... (sound of door being broken)",
+              "zh_CN": "美咲...（门被撞开的声音）",
+              "zh_TW": "美咲...（門被撞開的聲音）",
+              "ko": "미사키를... (문 부서지는 소리)"
+            },
+            {
+              "ja": "（男の声「黙れ」）",
+              "en": "(Man's voice: 'Shut up')",
+              "zh_CN": "（男人的声音「闭嘴」）",
+              "zh_TW": "（男人的聲音「閉嘴」）",
+              "ko": "(남자 목소리 「닥쳐」)"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "final_plea_call",
+              "displayText": {
+                "ja": "渡辺さん！！",
+                "en": "Ms. Watanabe!!",
+                "zh_CN": "渡边女士！！",
+                "zh_TW": "渡邊女士！！",
+                "ko": "와타나베 씨!!"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "call_end_violence",
+          "callerLines": [
+            {
+              "ja": "（真理の悲鳴）",
+              "en": "(Mari's scream)",
+              "zh_CN": "（真理的尖叫声）",
+              "zh_TW": "（真理的尖叫聲）",
+              "ko": "(마리의 비명)"
+            },
+            {
+              "ja": "（何かが倒れる音）",
+              "en": "(Sound of something falling)",
+              "zh_CN": "（什么东西倒下的声音）",
+              "zh_TW": "（什麼東西倒下的聲音）",
+              "ko": "(무언가 쓰러지는 소리)"
+            },
+            {
+              "ja": "（通話が切れる）",
+              "en": "(Call disconnects)",
+              "zh_CN": "（通话断了）",
+              "zh_TW": "（通話斷了）",
+              "ko": "(통화 끊김)"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "end_violence_dispatch",
+              "displayText": {
+                "ja": "...（警察に連絡しなければ）",
+                "en": "...(I need to contact the police)",
+                "zh_CN": "...（必须联系警察）",
+                "zh_TW": "...（必須聯繫警察）",
+                "ko": "...(경찰에 연락해야 해)"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "after_cutoff",
+          "callerLines": [
+            {
+              "ja": "（通話終了）",
+              "en": "(Call ended)",
+              "zh_CN": "（通话结束）",
+              "zh_TW": "（通話結束）",
+              "ko": "(통화 종료)"
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "after_dispatch_police",
+              "displayText": {
+                "ja": "警察に渡辺さんの住所を伝える",
+                "en": "Report Ms. Watanabe's address to the police",
+                "zh_CN": "把渡边女士的地址告诉警察",
+                "zh_TW": "把渡邊女士的地址告訴警察",
+                "ko": "경찰에 와타나베 씨 주소를 알린다"
+              }
+            },
+            {
+              "responseId": "after_wait",
+              "displayText": {
+                "ja": "...（何もできない）",
+                "en": "...(There's nothing I can do)",
+                "zh_CN": "...（什么也做不了）",
+                "zh_TW": "...（什麼也做不了）",
+                "ko": "...(아무것도 할 수 없다)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_police_inquiry",
+      "title": {
+        "ja": "警察からの連絡",
+        "en": "Call from the Police",
+        "zh_CN": "警察的来电",
+        "zh_TW": "警察的來電",
+        "ko": "경찰로부터의 연락"
+      },
+      "segments": [
+        {
+          "segmentId": "police_intro",
+          "callerLines": [
+            {
+              "ja": "○○署の高橋です。",
+              "en": "This is Takahashi from the local precinct.",
+              "zh_CN": "我是XX署的高桥。",
+              "zh_TW": "我是XX署的高橋。",
+              "ko": "XX서의 타카하시입니다."
+            },
+            {
+              "ja": "本日通報のあった中村浩二さんの件で確認があります。",
+              "en": "I have some questions about Mr. Koji Nakamura's case that was reported today.",
+              "zh_CN": "关于今天报警的中村浩二先生的事，想确认一下。",
+              "zh_TW": "關於今天報警的中村浩二先生的事，想確認一下。",
+              "ko": "오늘 신고된 나카무라 코지 씨 건으로 확인할 게 있습니다."
+            },
+            {
+              "ja": "オペレーターの方ですか？",
+              "en": "Are you the operator?",
+              "zh_CN": "您是接线员吗？",
+              "zh_TW": "您是接線員嗎？",
+              "ko": "오퍼레이터 분이신가요?"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "intro_confirm",
+              "displayText": {
+                "ja": "はい、そうです。",
+                "en": "Yes, that's me.",
+                "zh_CN": "是的。",
+                "zh_TW": "是的。",
+                "ko": "네, 맞습니다."
+              }
+            },
+            {
+              "responseId": "intro_ask_what",
+              "displayText": {
+                "ja": "どのようなご用件ですか？",
+                "en": "What is this regarding?",
+                "zh_CN": "有什么事？",
+                "zh_TW": "有什麼事？",
+                "ko": "무슨 일이신가요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_explain",
+          "callerLines": [
+            {
+              "ja": "中村浩二さんの死亡事案について調べています。",
+              "en": "We're investigating Mr. Koji Nakamura's death.",
+              "zh_CN": "正在调查中村浩二先生的死亡案件。",
+              "zh_TW": "正在調查中村浩二先生的死亡案件。",
+              "ko": "나카무라 코지 씨의 사망 건을 조사하고 있습니다."
+            },
+            {
+              "ja": "過去にこの方から通報があったか確認したくて。",
+              "en": "I wanted to confirm if we had previous reports from him.",
+              "zh_CN": "想确认一下这位以前有没有报过警。",
+              "zh_TW": "想確認一下這位以前有沒有報過警。",
+              "ko": "이전에 이분으로부터 신고가 있었는지 확인하고 싶어서요."
+            },
+            {
+              "ja": "誠和製薬に関する通報とか、ありましたか？",
+              "en": "Were there any reports regarding Seiwa Pharmaceutical?",
+              "zh_CN": "有没有关于�的和制药的报警？",
+              "zh_TW": "有沒有關於誠和製藥的報警？",
+              "ko": "세이와 제약 관련 신고가 있었나요?"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "explain_yes",
+              "displayText": {
+                "ja": "誠和製薬前での抗議活動の通報がありました。",
+                "en": "There was a report about protests in front of Seiwa Pharmaceutical.",
+                "zh_CN": "有人报警说在诚和制药门前有抗议活动。",
+                "zh_TW": "有人報警說在誠和製藥門前有抗議活動。",
+                "ko": "세이와 제약 앞에서의 항의 활동 신고가 있었습니다."
+              }
+            },
+            {
+              "responseId": "explain_vague",
+              "displayText": {
+                "ja": "記録を確認しないと...詳しくは分かりません。",
+                "en": "I'd need to check the records... I'm not sure of the details.",
+                "zh_CN": "要确认记录...详细情况不清楚。",
+                "zh_TW": "要確認記錄...詳細情況不清楚。",
+                "ko": "기록을 확인해 봐야... 자세한 건 모르겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_question",
+          "callerLines": [
+            {
+              "ja": "中村さんが誠和製薬について何か言っていたか、",
+              "en": "Did Mr. Nakamura say anything about Seiwa Pharmaceutical?",
+              "zh_CN": "中村先生有没有说过关于诚和制药的什么，",
+              "zh_TW": "中村先生有沒有說過關於誠和製藥的什麼，",
+              "ko": "나카무라 씨가 세이와 제약에 대해 뭔가 말했는지,"
+            },
+            {
+              "ja": "通報記録があれば教えていただきたいのですが。",
+              "en": "I'd like to know if there are any records.",
+              "zh_CN": "如果有报警记录的话想了解一下。",
+              "zh_TW": "如果有報警記錄的話想了解一下。",
+              "ko": "신고 기록이 있으면 알려주셨으면 합니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "question_yes",
+              "displayText": {
+                "ja": "誠和製薬前で抗議活動をしていたという通報がありました。",
+                "en": "There was a report that he was protesting in front of Seiwa Pharmaceutical.",
+                "zh_CN": "有人报警说他在诚和制药门前进行抗议活动。",
+                "zh_TW": "有人報警說他在誠和製藥門前進行抗議活動。",
+                "ko": "세이와 제약 앞에서 항의 활동을 했다는 신고가 있었습니다."
+              }
+            },
+            {
+              "responseId": "question_check",
+              "displayText": {
+                "ja": "記録を確認します。少々お待ちください。",
+                "en": "I'll check the records. Please wait a moment.",
+                "zh_CN": "我确认一下记录。请稍等。",
+                "zh_TW": "我確認一下記錄。請稍等。",
+                "ko": "기록을 확인하겠습니다. 잠시만 기다려 주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_seiwaq",
+          "callerLines": [
+            {
+              "ja": "誠和製薬...なるほど。",
+              "en": "Seiwa Pharmaceutical... I see.",
+              "zh_CN": "诚和制药...原来如此。",
+              "zh_TW": "誠和製藥...原來如此。",
+              "ko": "세이와 제약... 그렇군요."
+            },
+            {
+              "ja": "息子さんの件で抗議していたと聞いています。",
+              "en": "I heard he was protesting about his son.",
+              "zh_CN": "听说他是因为儿子的事在抗议。",
+              "zh_TW": "聽說他是因為兒子的事在抗議。",
+              "ko": "아들 건으로 항의하고 있었다고 들었습니다."
+            },
+            {
+              "ja": "それ以外に何か言っていましたか？",
+              "en": "Did he say anything else?",
+              "zh_CN": "除此之外还说了什么吗？",
+              "zh_TW": "除此之外還說了什麼嗎？",
+              "ko": "그 외에 뭔가 말한 게 있나요?"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "seiwaq_detail",
+              "displayText": {
+                "ja": "「息子が薬の副作用で死んだ」と主張していました。",
+                "en": "He claimed his son died from drug side effects.",
+                "zh_CN": "他说'儿子因为药物副作用死了'。",
+                "zh_TW": "他說'兒子因為藥物副作用死了'。",
+                "ko": "「아들이 약 부작용으로 죽었다」고 주장했습니다."
+              }
+            },
+            {
+              "responseId": "seiwaq_nothing",
+              "displayText": {
+                "ja": "それ以上は...記録にありません。",
+                "en": "Beyond that... there's nothing in the records.",
+                "zh_CN": "除此之外...记录里没有了。",
+                "zh_TW": "除此之外...記錄裡沒有了。",
+                "ko": "그 이상은... 기록에 없습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_record",
+          "callerLines": [
+            {
+              "ja": "確認お願いします。",
+              "en": "Please check.",
+              "zh_CN": "请确认一下。",
+              "zh_TW": "請確認一下。",
+              "ko": "확인 부탁드립니다."
+            },
+            {
+              "ja": "...お待ちしています。",
+              "en": "...I'll wait.",
+              "zh_CN": "...我等着。",
+              "zh_TW": "...我等著。",
+              "ko": "...기다리겠습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "record_found",
+              "displayText": {
+                "ja": "誠和製薬前での抗議活動の通報がありました。",
+                "en": "There was a report about protests in front of Seiwa Pharmaceutical.",
+                "zh_CN": "有人报警说在诚和制药门前有抗议活动。",
+                "zh_TW": "有人報警說在誠和製藥門前有抗議活動。",
+                "ko": "세이와 제약 앞에서의 항의 활동 신고가 있었습니다."
+              }
+            },
+            {
+              "responseId": "record_none",
+              "displayText": {
+                "ja": "特に関連する記録は見つかりませんでした。",
+                "en": "I couldn't find any relevant records.",
+                "zh_CN": "没有找到特别相关的记录。",
+                "zh_TW": "沒有找到特別相關的記錄。",
+                "ko": "특별히 관련된 기록은 없었습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_note",
+          "callerLines": [
+            {
+              "ja": "息子さんの件...なるほど。",
+              "en": "About his son... I see.",
+              "zh_CN": "儿子的事...原来如此。",
+              "zh_TW": "兒子的事...原來如此。",
+              "ko": "아들 건... 그렇군요."
+            },
+            {
+              "ja": "参考になります。記録しておきます。",
+              "en": "That's helpful. I'll note it down.",
+              "zh_CN": "很有参考价值。我会记录的。",
+              "zh_TW": "很有參考價值。我會記錄的。",
+              "ko": "참고가 됩니다. 기록해 두겠습니다."
+            },
+            {
+              "ja": "他に何かありますか？",
+              "en": "Is there anything else?",
+              "zh_CN": "还有其他事吗？",
+              "zh_TW": "還有其他事嗎？",
+              "ko": "그 외에 뭔가 있나요?"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "note_suspicion",
+              "displayText": {
+                "ja": "...自殺ではない可能性はないんですか？",
+                "en": "...Isn't there a possibility it wasn't suicide?",
+                "zh_CN": "...没有可能不是自杀吗？",
+                "zh_TW": "...沒有可能不是自殺嗎？",
+                "ko": "...자살이 아닐 가능성은 없나요?"
+              }
+            },
+            {
+              "responseId": "note_nothing",
+              "displayText": {
+                "ja": "いえ、以上です。",
+                "en": "No, that's all.",
+                "zh_CN": "不，就这些。",
+                "zh_TW": "不，就這些。",
+                "ko": "아뇨, 그게 전부입니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_dismiss",
+          "callerLines": [
+            {
+              "ja": "今のところ自殺として処理しています。",
+              "en": "For now, we're treating it as suicide.",
+              "zh_CN": "目前作为自杀处理。",
+              "zh_TW": "目前作為自殺處理。",
+              "ko": "현재로서는 자살로 처리하고 있습니다."
+            },
+            {
+              "ja": "遺書はありませんでしたが、精神的に追い詰められていたようですし。",
+              "en": "There was no note, but he seemed mentally cornered.",
+              "zh_CN": "虽然没有遗书，但看起来精神上很受煎熬。",
+              "zh_TW": "雖然沒有遺書，但看起來精神上很受煎熬。",
+              "ko": "유서는 없었지만, 정신적으로 몰려 있었던 것 같고요."
+            },
+            {
+              "ja": "何か気になることがあれば、また連絡ください。",
+              "en": "If you notice anything, please contact us again.",
+              "zh_CN": "如果有什么在意的事请再联系。",
+              "zh_TW": "如果有什麼在意的事請再聯繫。",
+              "ko": "신경 쓰이는 게 있으면 다시 연락 주세요."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "dismiss_understood",
+              "displayText": {
+                "ja": "分かりました。",
+                "en": "Understood.",
+                "zh_CN": "明白了。",
+                "zh_TW": "明白了。",
+                "ko": "알겠습니다."
+              }
+            },
+            {
+              "responseId": "dismiss_no_note",
+              "displayText": {
+                "ja": "遺書がないのは不自然では？",
+                "en": "Isn't it strange that there's no suicide note?",
+                "zh_CN": "没有遗书不奇怪吗？",
+                "zh_TW": "沒有遺書不奇怪嗎？",
+                "ko": "유서가 없는 건 이상하지 않나요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_no_note_response",
+          "callerLines": [
+            {
+              "ja": "自殺者の全員が遺書を残すわけではありませんからね。",
+              "en": "Not all suicide victims leave notes.",
+              "zh_CN": "并不是所有自杀者都会留遗书的。",
+              "zh_TW": "並不是所有自殺者都會留遺書的。",
+              "ko": "자살자 전원이 유서를 남기는 건 아니니까요."
+            },
+            {
+              "ja": "ご心配は分かりますが、現場の状況から自殺と判断しています。",
+              "en": "I understand your concern, but based on the scene, we've determined it to be suicide.",
+              "zh_CN": "我理解您的担心，但根据现场情况判断是自杀。",
+              "zh_TW": "我理解您的擔心，但根據現場情況判斷是自殺。",
+              "ko": "걱정은 알겠지만, 현장 상황으로 보아 자살로 판단했습니다."
+            },
+            {
+              "ja": "では、ご協力ありがとうございました。",
+              "en": "Thank you for your cooperation.",
+              "zh_CN": "那么，感谢您的配合。",
+              "zh_TW": "那麼，感謝您的配合。",
+              "ko": "그럼, 협조해 주셔서 감사합니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "no_note_end",
+              "displayText": {
+                "ja": "...分かりました。",
+                "en": "...Understood.",
+                "zh_CN": "...明白了。",
+                "zh_TW": "...明白了。",
+                "ko": "...알겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_thanks",
+          "callerLines": [
+            {
+              "ja": "ご協力ありがとうございました。",
+              "en": "Thank you for your cooperation.",
+              "zh_CN": "感谢您的配合。",
+              "zh_TW": "感謝您的配合。",
+              "ko": "협조해 주셔서 감사합니다."
+            },
+            {
+              "ja": "何かあればまた連絡します。",
+              "en": "We'll contact you if anything comes up.",
+              "zh_CN": "有什么事再联系。",
+              "zh_TW": "有什麼事再聯繫。",
+              "ko": "뭔가 있으면 다시 연락드리겠습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "thanks_end",
+              "displayText": {
+                "ja": "お疲れ様です。",
+                "en": "Thank you for your work.",
+                "zh_CN": "辛苦了。",
+                "zh_TW": "辛苦了。",
+                "ko": "수고하세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_end",
+          "callerLines": [
+            {
+              "ja": "では、失礼します。",
+              "en": "Well then, goodbye.",
+              "zh_CN": "那么，告辞了。",
+              "zh_TW": "那麼，告辭了。",
+              "ko": "그럼, 실례하겠습니다."
+            },
+            {
+              "ja": "ご協力ありがとうございました。",
+              "en": "Thank you for your cooperation.",
+              "zh_CN": "感谢您的配合。",
+              "zh_TW": "感謝您的配合。",
+              "ko": "협조해 주셔서 감사합니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "end_reply",
+              "displayText": {
+                "ja": "お疲れ様です。",
+                "en": "Thank you for your work.",
+                "zh_CN": "辛苦了。",
+                "zh_TW": "辛苦了。",
+                "ko": "수고하세요."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_yoshida_witness",
+      "title": {
+        "ja": "吉田からの目撃報告",
+        "en": "Witness Report from Yoshida",
+        "zh_CN": "吉田的目击报告",
+        "zh_TW": "吉田的目擊報告",
+        "ko": "요시다의 목격 보고"
+      },
+      "segments": [
+        {
+          "segmentId": "yoshida_panic",
+          "callerLines": [
+            {
+              "ja": "あ、あの...吉田です...",
+              "en": "U-um... this is Yoshida...",
+              "zh_CN": "啊，那个...我是吉田...",
+              "zh_TW": "啊，那個...我是吉田...",
+              "ko": "저, 저기... 요시다입니다..."
+            },
+            {
+              "ja": "大変なことが...渡辺さんが...",
+              "en": "Something terrible... Ms. Watanabe...",
+              "zh_CN": "出大事了...渡边女士...",
+              "zh_TW": "出大事了...渡邊女士...",
+              "ko": "큰일이... 와타나베 씨가..."
+            },
+            {
+              "ja": "車で...連れていかれた...",
+              "en": "Was taken away... in a car...",
+              "zh_CN": "被车...带走了...",
+              "zh_TW": "被車...帶走了...",
+              "ko": "차로... 끌려갔어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "panic_ask_detail",
+              "displayText": {
+                "ja": "落ち着いて。何があったんですか？",
+                "en": "Calm down. What happened?",
+                "zh_CN": "冷静点。发生什么事了？",
+                "zh_TW": "冷靜點。發生什麼事了？",
+                "ko": "진정하세요. 무슨 일이에요?"
+              }
+            },
+            {
+              "responseId": "panic_ask_when",
+              "displayText": {
+                "ja": "いつのことですか？",
+                "en": "When did this happen?",
+                "zh_CN": "是什么时候的事？",
+                "zh_TW": "是什麼時候的事？",
+                "ko": "언제 일이에요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_explain",
+          "callerLines": [
+            {
+              "ja": "さっき...窓から見てたら...",
+              "en": "Just now... I was looking out the window...",
+              "zh_CN": "刚才...从窗户看的时候...",
+              "zh_TW": "剛才...從窗戶看的時候...",
+              "ko": "아까... 창문에서 보고 있었는데..."
+            },
+            {
+              "ja": "黒い車が渡辺さんの家の前に止まって...",
+              "en": "A black car stopped in front of Ms. Watanabe's house...",
+              "zh_CN": "黑色的车停在渡边女士家门前...",
+              "zh_TW": "黑色的車停在渡邊女士家門前...",
+              "ko": "검은 차가 와타나베 씨 집 앞에 멈춰서..."
+            },
+            {
+              "ja": "男の人たちが...渡辺さんを車に乗せて...",
+              "en": "Men... put Ms. Watanabe in the car...",
+              "zh_CN": "几个男人...把渡边女士带上了车...",
+              "zh_TW": "幾個男人...把渡邊女士帶上了車...",
+              "ko": "남자들이... 와타나베 씨를 차에 태워서..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "explain_ask_men",
+              "displayText": {
+                "ja": "男の人たちはどんな様子でしたか？",
+                "en": "What did the men look like?",
+                "zh_CN": "那些男人是什么样子？",
+                "zh_TW": "那些男人是什麼樣子？",
+                "ko": "남자들은 어떤 모습이었나요?"
+              }
+            },
+            {
+              "responseId": "explain_ask_mari",
+              "displayText": {
+                "ja": "渡辺さんは抵抗していましたか？",
+                "en": "Was Ms. Watanabe resisting?",
+                "zh_CN": "渡边女士有反抗吗？",
+                "zh_TW": "渡邊女士有反抗嗎？",
+                "ko": "와타나베 씨가 저항했나요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_timing",
+          "callerLines": [
+            {
+              "ja": "ついさっきです...10分くらい前...",
+              "en": "Just now... about 10 minutes ago...",
+              "zh_CN": "就刚才...大概10分钟前...",
+              "zh_TW": "就剛才...大概10分鐘前...",
+              "ko": "방금이에요... 10분쯤 전에..."
+            },
+            {
+              "ja": "車が止まったと思ったら...",
+              "en": "The car stopped and then...",
+              "zh_CN": "车刚停下...",
+              "zh_TW": "車剛停下...",
+              "ko": "차가 멈춘 것 같더니..."
+            },
+            {
+              "ja": "あっという間に...",
+              "en": "It happened so fast...",
+              "zh_CN": "一眨眼的功夫...",
+              "zh_TW": "一眨眼的功夫...",
+              "ko": "순식간에..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "timing_ask_detail",
+              "displayText": {
+                "ja": "詳しく教えてください。",
+                "en": "Please tell me more details.",
+                "zh_CN": "请详细说说。",
+                "zh_TW": "請詳細說說。",
+                "ko": "자세히 말씀해 주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_men",
+          "callerLines": [
+            {
+              "ja": "スーツを着た男の人が2、3人...",
+              "en": "2 or 3 men in suits...",
+              "zh_CN": "穿西装的男人有两三个...",
+              "zh_TW": "穿西裝的男人有兩三個...",
+              "ko": "양복 입은 남자가 2, 3명..."
+            },
+            {
+              "ja": "怖い顔して...",
+              "en": "With scary faces...",
+              "zh_CN": "表情很凶...",
+              "zh_TW": "表情很兇...",
+              "ko": "무서운 얼굴로..."
+            },
+            {
+              "ja": "渡辺さんを両側から挟んで...",
+              "en": "They sandwiched Ms. Watanabe from both sides...",
+              "zh_CN": "把渡边女士夹在中间...",
+              "zh_TW": "把渡邊女士夾在中間...",
+              "ko": "와타나베 씨를 양쪽에서 끼고..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "men_ask_car",
+              "displayText": {
+                "ja": "車のナンバーは見えましたか？",
+                "en": "Did you see the car's license plate?",
+                "zh_CN": "看到车牌号了吗？",
+                "zh_TW": "看到車牌號了嗎？",
+                "ko": "차 번호판이 보였나요?"
+              }
+            },
+            {
+              "responseId": "men_ask_direction",
+              "displayText": {
+                "ja": "車はどちらに行きましたか？",
+                "en": "Which way did the car go?",
+                "zh_CN": "车往哪边走了？",
+                "zh_TW": "車往哪邊走了？",
+                "ko": "차는 어느 쪽으로 갔나요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_mari_state",
+          "callerLines": [
+            {
+              "ja": "最初は何か言ってたみたいだけど...",
+              "en": "At first it seemed like she was saying something...",
+              "zh_CN": "一开始好像说了什么...",
+              "zh_TW": "一開始好像說了什麼...",
+              "ko": "처음엔 뭔가 말하는 것 같았는데..."
+            },
+            {
+              "ja": "すぐに車に押し込まれて...",
+              "en": "Then she was quickly pushed into the car...",
+              "zh_CN": "马上就被推上车了...",
+              "zh_TW": "馬上就被推上車了...",
+              "ko": "바로 차에 밀어 넣어지고..."
+            },
+            {
+              "ja": "私、怖くて声も出せなかった...",
+              "en": "I was so scared I couldn't even make a sound...",
+              "zh_CN": "我吓得都说不出话来...",
+              "zh_TW": "我嚇得都說不出話來...",
+              "ko": "저, 무서워서 소리도 못 냈어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "mari_ask_car",
+              "displayText": {
+                "ja": "車のナンバーは？",
+                "en": "What about the license plate?",
+                "zh_CN": "车牌号是？",
+                "zh_TW": "車牌號是？",
+                "ko": "차 번호판은요?"
+              }
+            },
+            {
+              "responseId": "mari_ask_direction",
+              "displayText": {
+                "ja": "車はどこへ？",
+                "en": "Where did the car go?",
+                "zh_CN": "车去哪了？",
+                "zh_TW": "車去哪了？",
+                "ko": "차는 어디로?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_car",
+          "callerLines": [
+            {
+              "ja": "品川ナンバー...前と同じ車だと思います...",
+              "en": "Shinagawa plates... I think it's the same car as before...",
+              "zh_CN": "品川车牌...我觉得是和之前一样的车...",
+              "zh_TW": "品川車牌...我覺得是和之前一樣的車...",
+              "ko": "시나가와 번호판... 전에 본 것과 같은 차 같아요..."
+            },
+            {
+              "ja": "32...で終わる...",
+              "en": "Ends with... 32...",
+              "zh_CN": "以32...结尾...",
+              "zh_TW": "以32...結尾...",
+              "ko": "32로... 끝나는..."
+            },
+            {
+              "ja": "また別の車も来てた...",
+              "en": "There was another car too...",
+              "zh_CN": "还来了另一辆车...",
+              "zh_TW": "還來了另一輛車...",
+              "ko": "또 다른 차도 왔었어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "car_ask_direction",
+              "displayText": {
+                "ja": "どちらに行きましたか？",
+                "en": "Which way did they go?",
+                "zh_CN": "往哪边走了？",
+                "zh_TW": "往哪邊走了？",
+                "ko": "어느 쪽으로 갔나요?"
+              }
+            },
+            {
+              "responseId": "car_dispatch",
+              "displayText": {
+                "ja": "警察に連絡します。",
+                "en": "I'll contact the police.",
+                "zh_CN": "我联系警察。",
+                "zh_TW": "我聯繫警察。",
+                "ko": "경찰에 연락하겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_direction",
+          "callerLines": [
+            {
+              "ja": "北の方に...走っていきました...",
+              "en": "They drove off... to the north...",
+              "zh_CN": "往北边...开走了...",
+              "zh_TW": "往北邊...開走了...",
+              "ko": "북쪽으로... 달려갔어요..."
+            },
+            {
+              "ja": "すごいスピードで...",
+              "en": "At high speed...",
+              "zh_CN": "速度很快...",
+              "zh_TW": "速度很快...",
+              "ko": "엄청난 속도로..."
+            },
+            {
+              "ja": "渡辺さん...大丈夫かしら...",
+              "en": "Ms. Watanabe... I hope she's okay...",
+              "zh_CN": "渡边女士...没事吧...",
+              "zh_TW": "渡邊女士...沒事吧...",
+              "ko": "와타나베 씨... 괜찮을까요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "direction_dispatch",
+              "displayText": {
+                "ja": "警察に連絡します。吉田さんは家にいてください。",
+                "en": "I'll contact the police. Please stay home, Ms. Yoshida.",
+                "zh_CN": "我联系警察。吉田女士请待在家里。",
+                "zh_TW": "我聯繫警察。吉田女士請待在家裡。",
+                "ko": "경찰에 연락하겠습니다. 요시다 씨는 집에 계세요."
+              }
+            },
+            {
+              "responseId": "direction_ask_self",
+              "displayText": {
+                "ja": "吉田さんは大丈夫ですか？",
+                "en": "Are you okay, Ms. Yoshida?",
+                "zh_CN": "吉田女士您没事吧？",
+                "zh_TW": "吉田女士您沒事吧？",
+                "ko": "요시다 씨는 괜찮으세요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_self",
+          "callerLines": [
+            {
+              "ja": "私は...大丈夫です...",
+              "en": "I'm... okay...",
+              "zh_CN": "我...没事...",
+              "zh_TW": "我...沒事...",
+              "ko": "저는... 괜찮아요..."
+            },
+            {
+              "ja": "でも、渡辺さんが...",
+              "en": "But Ms. Watanabe...",
+              "zh_CN": "但是渡边女士...",
+              "zh_TW": "但是渡邊女士...",
+              "ko": "하지만 와타나베 씨가..."
+            },
+            {
+              "ja": "どうしたらいいの...",
+              "en": "What should I do...",
+              "zh_CN": "怎么办...",
+              "zh_TW": "怎麼辦...",
+              "ko": "어떻게 해야 해요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "self_dispatch",
+              "displayText": {
+                "ja": "警察に連絡します。家から出ないでください。",
+                "en": "I'll contact the police. Please don't leave the house.",
+                "zh_CN": "我联系警察。请不要出门。",
+                "zh_TW": "我聯繫警察。請不要出門。",
+                "ko": "경찰에 연락하겠습니다. 집에서 나오지 마세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_police",
+          "callerLines": [
+            {
+              "ja": "警察...お願いします...",
+              "en": "Police... please...",
+              "zh_CN": "警察...拜托了...",
+              "zh_TW": "警察...拜託了...",
+              "ko": "경찰... 부탁드려요..."
+            },
+            {
+              "ja": "渡辺さんを助けて...",
+              "en": "Please help Ms. Watanabe...",
+              "zh_CN": "救救渡边女士...",
+              "zh_TW": "救救渡邊女士...",
+              "ko": "와타나베 씨를 도와주세요..."
+            },
+            {
+              "ja": "あの人たち...怖かった...",
+              "en": "Those people... were scary...",
+              "zh_CN": "那些人...好可怕...",
+              "zh_TW": "那些人...好可怕...",
+              "ko": "그 사람들... 무서웠어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "police_reassure",
+              "displayText": {
+                "ja": "すぐに対応します。吉田さんも気をつけて。",
+                "en": "We'll respond immediately. Please be careful, Ms. Yoshida.",
+                "zh_CN": "马上处理。吉田女士也请小心。",
+                "zh_TW": "馬上處理。吉田女士也請小心。",
+                "ko": "바로 대응하겠습니다. 요시다 씨도 조심하세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_end",
+          "callerLines": [
+            {
+              "ja": "はい...ありがとうございます...",
+              "en": "Yes... thank you...",
+              "zh_CN": "好的...谢谢...",
+              "zh_TW": "好的...謝謝...",
+              "ko": "네... 감사합니다..."
+            },
+            {
+              "ja": "渡辺さん...無事でいて...",
+              "en": "Ms. Watanabe... please be safe...",
+              "zh_CN": "渡边女士...希望没事...",
+              "zh_TW": "渡邊女士...希望沒事...",
+              "ko": "와타나베 씨... 무사하길..."
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "end_close",
+              "displayText": {
+                "ja": "何かあればまた連絡してください。",
+                "en": "Please contact us again if anything happens.",
+                "zh_CN": "有什么事再联系。",
+                "zh_TW": "有什麼事再聯繫。",
+                "ko": "뭔가 있으면 다시 연락 주세요."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_mari_cutoff",
+      "title": {
+        "ja": "真理の電話が切れる",
+        "en": "Mari's Call Gets Cut Off",
+        "zh_CN": "真理的电话断了",
+        "zh_TW": "真理的電話斷了",
+        "ko": "마리의 전화가 끊기다"
+      },
+      "segments": [
+        {
+          "segmentId": "mari_call",
+          "callerLines": [
+            {
+              "ja": "...もしもし...",
+              "en": "...Hello...",
+              "zh_CN": "...喂...",
+              "zh_TW": "...喂...",
+              "ko": "...여보세요..."
+            },
+            {
+              "ja": "誰か...聞こえますか...",
+              "en": "Can anyone... hear me...",
+              "zh_CN": "有人...能听到吗...",
+              "zh_TW": "有人...能聽到嗎...",
+              "ko": "누구... 들리나요..."
+            },
+            {
+              "ja": "助けて...",
+              "en": "Help me...",
+              "zh_CN": "救命...",
+              "zh_TW": "救命...",
+              "ko": "도와주세요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "call_ask_who",
+              "displayText": {
+                "ja": "どなたですか？何があったんですか？",
+                "en": "Who is this? What happened?",
+                "zh_CN": "您是谁？发生什么事了？",
+                "zh_TW": "您是誰？發生什麼事了？",
+                "ko": "누구세요? 무슨 일이에요?"
+              }
+            },
+            {
+              "responseId": "call_ask_location",
+              "displayText": {
+                "ja": "場所を教えてください。",
+                "en": "Please tell me your location.",
+                "zh_CN": "请告诉我地点。",
+                "zh_TW": "請告訴我地點。",
+                "ko": "장소를 알려주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_whisper",
+          "callerLines": [
+            {
+              "ja": "渡辺...真理です...",
+              "en": "Watanabe... Mari...",
+              "zh_CN": "渡边...真理...",
+              "zh_TW": "渡邊...真理...",
+              "ko": "와타나베... 마리예요..."
+            },
+            {
+              "ja": "外に...車が...",
+              "en": "Outside... there's a car...",
+              "zh_CN": "外面...有车...",
+              "zh_TW": "外面...有車...",
+              "ko": "밖에... 차가..."
+            },
+            {
+              "ja": "（小さな声で）美咲を...",
+              "en": "(In a small voice) Misaki...",
+              "zh_CN": "（小声）美咲...",
+              "zh_TW": "（小聲）美咲...",
+              "ko": "(작은 목소리로) 미사키를..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "whisper_ask_child",
+              "displayText": {
+                "ja": "美咲ちゃん？一緒にいるんですか？",
+                "en": "Misaki? Is she with you?",
+                "zh_CN": "美咲？和您在一起吗？",
+                "zh_TW": "美咲？和您在一起嗎？",
+                "ko": "미사키? 같이 있는 건가요?"
+              }
+            },
+            {
+              "responseId": "whisper_dispatch",
+              "displayText": {
+                "ja": "警察を向かわせます。住所は？",
+                "en": "I'll send the police. What's the address?",
+                "zh_CN": "我会派警察过去。地址是？",
+                "zh_TW": "我會派警察過去。地址是？",
+                "ko": "경찰을 보내겠습니다. 주소가요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_location",
+          "callerLines": [
+            {
+              "ja": "自宅...○○町の...",
+              "en": "My home... in XX Town...",
+              "zh_CN": "家里...XX町的...",
+              "zh_TW": "家裡...XX町的...",
+              "ko": "집이에요... XX동의..."
+            },
+            {
+              "ja": "（ドアを叩く音）",
+              "en": "(Sound of door being knocked)",
+              "zh_CN": "（敲门声）",
+              "zh_TW": "（敲門聲）",
+              "ko": "(문 두드리는 소리)"
+            },
+            {
+              "ja": "...っ！来た...",
+              "en": "...! They're here...",
+              "zh_CN": "...！来了...",
+              "zh_TW": "...！來了...",
+              "ko": "...! 왔어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "location_dispatch",
+              "displayText": {
+                "ja": "警察を向かわせます！隠れて！",
+                "en": "I'll send the police! Hide!",
+                "zh_CN": "我派警察过去！快躲起来！",
+                "zh_TW": "我派警察過去！快躲起來！",
+                "ko": "경찰을 보내겠습니다! 숨으세요!"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_with_misaki",
+          "callerLines": [
+            {
+              "ja": "はい...美咲と一緒に...",
+              "en": "Yes... with Misaki...",
+              "zh_CN": "好的...和美咲一起...",
+              "zh_TW": "好的...和美咲一起...",
+              "ko": "네... 미사키와 같이..."
+            },
+            {
+              "ja": "（ドアを叩く音）",
+              "en": "(Sound of door being knocked)",
+              "zh_CN": "（敲门声）",
+              "zh_TW": "（敲門聲）",
+              "ko": "(문 두드리는 소리)"
+            },
+            {
+              "ja": "...もう時間がない...",
+              "en": "...There's no more time...",
+              "zh_CN": "...没时间了...",
+              "zh_TW": "...沒時間了...",
+              "ko": "...시간이 없어요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "misaki_dispatch",
+              "displayText": {
+                "ja": "警察を向かわせます！二人とも隠れて！",
+                "en": "I'll send the police! Both of you, hide!",
+                "zh_CN": "我派警察过去！两个人都躲起来！",
+                "zh_TW": "我派警察過去！兩個人都躲起來！",
+                "ko": "경찰을 보내겠습니다! 둘 다 숨으세요!"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_address_attempt",
+          "callerLines": [
+            {
+              "ja": "○○町...2丁目の...",
+              "en": "XX Town... 2-chome...",
+              "zh_CN": "XX町...2丁目的...",
+              "zh_TW": "XX町...2丁目的...",
+              "ko": "XX동... 2초메의..."
+            },
+            {
+              "ja": "（ドアが開く音）",
+              "en": "(Sound of door opening)",
+              "zh_CN": "（开门声）",
+              "zh_TW": "（開門聲）",
+              "ko": "(문 열리는 소리)"
+            },
+            {
+              "ja": "...！",
+              "en": "...!",
+              "zh_CN": "...！",
+              "zh_TW": "...！",
+              "ko": "...!"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "address_call_out",
+              "displayText": {
+                "ja": "渡辺さん！？",
+                "en": "Ms. Watanabe!?",
+                "zh_CN": "渡边女士！？",
+                "zh_TW": "渡邊女士！？",
+                "ko": "와타나베 씨!?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_hiding_attempt",
+          "callerLines": [
+            {
+              "ja": "隠れる場所が...",
+              "en": "Nowhere to hide...",
+              "zh_CN": "躲藏的地方...",
+              "zh_TW": "躲藏的地方...",
+              "ko": "숨을 곳이..."
+            },
+            {
+              "ja": "（ドアが開く音）",
+              "en": "(Sound of door opening)",
+              "zh_CN": "（开门声）",
+              "zh_TW": "（開門聲）",
+              "ko": "(문 열리는 소리)"
+            },
+            {
+              "ja": "（美咲の声「まりおばちゃん...」）",
+              "en": "(Misaki's voice: 'Auntie Mari...')",
+              "zh_CN": "（美咲的声音「真理阿姨...」）",
+              "zh_TW": "（美咲的聲音「真理阿姨...」）",
+              "ko": "(미사키의 목소리 「마리 이모...」)"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "hiding_call_out",
+              "displayText": {
+                "ja": "渡辺さん！美咲ちゃん！！",
+                "en": "Ms. Watanabe! Misaki!!",
+                "zh_CN": "渡边女士！美咲！！",
+                "zh_TW": "渡邊女士！美咲！！",
+                "ko": "와타나베 씨! 미사키!!"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "call_cut",
+          "callerLines": [
+            {
+              "ja": "（男の声「こっちだ」）",
+              "en": "(Man's voice: 'Over here')",
+              "zh_CN": "（男人的声音「这边」）",
+              "zh_TW": "（男人的聲音「這邊」）",
+              "ko": "(남자 목소리 「이쪽이다」)"
+            },
+            {
+              "ja": "待って...遥の...遥の想いが...",
+              "en": "Wait... Haruka's... Haruka's wish...",
+              "zh_CN": "等等...遥的...遥的心意...",
+              "zh_TW": "等等...遙的...遙的心意...",
+              "ko": "잠깐... 하루카의... 하루카의 마음이..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "cut_listen",
+              "displayText": {
+                "ja": "渡辺さん！",
+                "en": "Ms. Watanabe!",
+                "zh_CN": "渡边女士！",
+                "zh_TW": "渡邊女士！",
+                "ko": "와타나베 씨!"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "mari_cut_last_words",
+          "callerLines": [
+            {
+              "ja": "遥が...命がけで守った子なのに...",
+              "en": "Haruka... protected that child with her life...",
+              "zh_CN": "遥...用生命保护的孩子...",
+              "zh_TW": "遙...用生命保護的孩子...",
+              "ko": "하루카가... 목숨 걸고 지킨 아이인데..."
+            },
+            {
+              "ja": "私が...私が守らなきゃいけなかったのに...",
+              "en": "I... I was supposed to protect her...",
+              "zh_CN": "我...本该由我来保护的...",
+              "zh_TW": "我...本該由我來保護的...",
+              "ko": "내가... 내가 지켜야 했는데..."
+            },
+            {
+              "ja": "（真理の悲鳴）",
+              "en": "(Mari's scream)",
+              "zh_CN": "（真理的尖叫声）",
+              "zh_TW": "（真理的尖叫聲）",
+              "ko": "(마리의 비명)"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "cut_last_words_end",
+              "displayText": {
+                "ja": "...",
+                "en": "...",
+                "zh_CN": "...",
+                "zh_TW": "...",
+                "ko": "..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "call_cut_with_misaki",
+          "callerLines": [
+            {
+              "ja": "（男の声「二人とも連れていけ」）",
+              "en": "(Man's voice: 'Take both of them')",
+              "zh_CN": "（男人的声音「把两个人都带走」）",
+              "zh_TW": "（男人的聲音「把兩個人都帶走」）",
+              "ko": "(남자 목소리 「둘 다 데려가」)"
+            },
+            {
+              "ja": "遥...ごめん...美咲を守れなかった...",
+              "en": "Haruka... I'm sorry... I couldn't protect Misaki...",
+              "zh_CN": "遥...对不起...没能保护好美咲...",
+              "zh_TW": "遙...對不起...沒能保護好美咲...",
+              "ko": "하루카... 미안해... 미사키를 지키지 못했어..."
+            },
+            {
+              "ja": "（美咲の泣き声「まりおばちゃん！」）",
+              "en": "(Misaki crying: 'Auntie Mari!')",
+              "zh_CN": "（美咲的哭声「真理阿姨！」）",
+              "zh_TW": "（美咲的哭聲「真理阿姨！」）",
+              "ko": "(미사키의 울음소리 「마리 이모!」)"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "cut_misaki_end",
+              "displayText": {
+                "ja": "...",
+                "en": "...",
+                "zh_CN": "...",
+                "zh_TW": "...",
+                "ko": "..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "after_cut",
+          "callerLines": [
+            {
+              "ja": "（通話終了）",
+              "en": "(Call ended)",
+              "zh_CN": "（通话结束）",
+              "zh_TW": "（通話結束）",
+              "ko": "(통화 종료)"
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "after_dispatch",
+              "displayText": {
+                "ja": "...（警察に連絡しなければ）",
+                "en": "...(I need to contact the police)",
+                "zh_CN": "...（必须联系警察）",
+                "zh_TW": "...（必須聯繫警察）",
+                "ko": "...(경찰에 연락해야 해)"
+              }
+            },
+            {
+              "responseId": "after_nothing",
+              "displayText": {
+                "ja": "...",
+                "en": "...",
+                "zh_CN": "...",
+                "zh_TW": "...",
+                "ko": "..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "after_cut_misaki",
+          "callerLines": [
+            {
+              "ja": "（通話終了）",
+              "en": "(Call ended)",
+              "zh_CN": "（通话结束）",
+              "zh_TW": "（通話結束）",
+              "ko": "(통화 종료)"
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "...",
+              "zh_TW": "...",
+              "ko": "..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "after_misaki_dispatch",
+              "displayText": {
+                "ja": "...（警察に連絡しなければ）",
+                "en": "...(I need to contact the police)",
+                "zh_CN": "...（必须联系警察）",
+                "zh_TW": "...（必須聯繫警察）",
+                "ko": "...(경찰에 연락해야 해)"
+              }
+            },
+            {
+              "responseId": "after_misaki_nothing",
+              "displayText": {
+                "ja": "...",
+                "en": "...",
+                "zh_CN": "...",
+                "zh_TW": "...",
+                "ko": "..."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "evidence_nakamura_death",
+      "title": {
+        "ja": "中村浩二の死",
+        "en": "Koji Nakamura's Death",
+        "zh_CN": "中村浩二之死",
+        "zh_TW": "中村浩二之死",
+        "ko": "나카무라 코지의 죽음"
+      },
+      "content": {
+        "ja": "中村浩二が自宅で首を吊っている状態で発見された",
+        "en": "Koji Nakamura was found hanging at his home",
+        "zh_CN": "中村浩二在家中被发现上吊身亡",
+        "zh_TW": "中村浩二在家中被發現上吊身亡",
+        "ko": "나카무라 코지가 자택에서 목을 맨 채 발견되었다"
+      }
+    },
+    {
+      "evidenceId": "evidence_no_suicide_note",
+      "title": {
+        "ja": "遺書がない",
+        "en": "No Suicide Note",
+        "zh_CN": "没有遗书",
+        "zh_TW": "沒有遺書",
+        "ko": "유서가 없다"
+      },
+      "content": {
+        "ja": "中村の部屋には遺書がなかった。自殺にしては不自然。",
+        "en": "There was no suicide note in Nakamura's room. Unusual for a suicide.",
+        "zh_CN": "中村的房间里没有遗书。作为自杀来说很不自然。",
+        "zh_TW": "中村的房間裡沒有遺書。作為自殺來說很不自然。",
+        "ko": "나카무라의 방에는 유서가 없었다. 자살치고는 이상하다."
+      }
+    },
+    {
+      "evidenceId": "evidence_nakamura_recent_state",
+      "title": {
+        "ja": "中村の最近の様子",
+        "en": "Nakamura's Recent State",
+        "zh_CN": "中村最近的状况",
+        "zh_TW": "中村最近的狀況",
+        "ko": "나카무라의 최근 상태"
+      },
+      "content": {
+        "ja": "大家によると、中村は最近疲れていた。誰かと電話していた。",
+        "en": "According to the landlord, Nakamura was recently exhausted. He was on the phone with someone.",
+        "zh_CN": "据房东说，中村最近很疲惫。一直在和人打电话。",
+        "zh_TW": "據房東說，中村最近很疲憊。一直在和人打電話。",
+        "ko": "집주인에 따르면, 나카무라는 최근 지쳐 있었다. 누군가와 통화하고 있었다."
+      }
+    },
+    {
+      "evidenceId": "evidence_room_state",
+      "title": {
+        "ja": "部屋の状態",
+        "en": "Room Condition",
+        "zh_CN": "房间的状态",
+        "zh_TW": "房間的狀態",
+        "ko": "방 상태"
+      },
+      "content": {
+        "ja": "部屋は荒らされた形跡がある",
+        "en": "The room shows signs of being ransacked",
+        "zh_CN": "房间有被翻动过的痕迹",
+        "zh_TW": "房間有被翻動過的痕跡",
+        "ko": "방은 어질러진 흔적이 있다"
+      }
+    },
+    {
+      "evidenceId": "evidence_mari_abducted",
+      "title": {
+        "ja": "真理の連れ去り",
+        "en": "Mari's Abduction",
+        "zh_CN": "真理被带走",
+        "zh_TW": "真理被帶走",
+        "ko": "마리의 납치"
+      },
+      "content": {
+        "ja": "渡辺真理が黒い車で連れ去られた",
+        "en": "Mari Watanabe was taken away in a black car",
+        "zh_CN": "渡边真理被黑色轿车带走了",
+        "zh_TW": "渡邊真理被黑色轎車帶走了",
+        "ko": "와타나베 마리가 검은 차에 실려 갔다"
+      }
+    }
+  ],
+  "thoughts": [],
+  "endings": []
+}

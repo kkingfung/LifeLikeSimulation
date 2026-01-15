@@ -117,15 +117,17 @@ namespace LifeLike.Services.Operator.CallFlow
             _incomingCalls.Remove(call);
             _currentCall = call;
 
+            // 重要: OnCallStartedを先に発火して、ViewModelにCurrentCallを設定させる
+            // これにより、OnSegmentChanged時にCurrentCallが利用可能になる（翻訳ルックアップに必要）
+            Debug.Log($"[CallFlowService] 通話開始: {call.caller?.displayName ?? "不明"}");
+            OnCallStarted?.Invoke(call);
+
             // 開始セグメントへ
             var startSegment = call.GetStartSegment();
             if (startSegment != null)
             {
                 TransitionToSegment(startSegment);
             }
-
-            Debug.Log($"[CallFlowService] 通話開始: {call.caller?.displayName ?? "不明"}");
-            OnCallStarted?.Invoke(call);
 
             return true;
         }

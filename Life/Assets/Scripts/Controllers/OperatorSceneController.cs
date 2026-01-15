@@ -153,19 +153,27 @@ namespace LifeLike.Controllers
             if (_debugPanel != null)
             {
                 _debugPanel.OnNightJumpRequested += OnDebugNightJump;
-            }
         }
 
         private void Start()
         {
-            // メインメニューから渡された夜インデックスを取得
+            // チャプター選択画面から明示的に選択されたかどうかをチェック
+            bool isExplicitSelection = PlayerPrefs.GetInt("LifeLike_ExplicitChapterSelect", 0) == 1;
+            PlayerPrefs.DeleteKey("LifeLike_ExplicitChapterSelect");
+
+            // メインメニュー/チャプター選択から渡された夜インデックスを取得
             int startNightIndex = PlayerPrefs.GetInt("LifeLike_StartNightIndex", 0);
             PlayerPrefs.DeleteKey("LifeLike_StartNightIndex");
 
-            // セーブデータから夜インデックスを取得（優先）
-            if (_operatorSaveService != null && _operatorSaveService.HasSaveData)
+            // セーブデータから夜インデックスを取得（明示的な選択がない場合のみ）
+            if (!isExplicitSelection && _operatorSaveService != null && _operatorSaveService.HasSaveData)
             {
                 startNightIndex = _operatorSaveService.GetCurrentNightIndex();
+                Debug.Log($"[OperatorSceneController] セーブデータから夜インデックスを取得: {startNightIndex}");
+            }
+            else if (isExplicitSelection)
+            {
+                Debug.Log($"[OperatorSceneController] チャプター選択から明示的に夜 {startNightIndex} を選択");
             }
 
             // 夜を開始
@@ -183,7 +191,6 @@ namespace LifeLike.Controllers
             if (_worldStateService != null)
             {
                 _worldStateService.OnScenarioEnded -= OnScenarioEnded;
-            }
         }
 
         /// <summary>
@@ -269,17 +276,10 @@ namespace LifeLike.Controllers
             // セーブ
             SaveCurrentState(endState);
 
-            // 次の夜へ、または全夜終了
-            if (_currentNightIndex < _nightDataSets.Count - 1)
-            {
-                _currentNightIndex++;
-                StartNight(_currentNightIndex);
-            }
-            else
-            {
-                Debug.Log("[OperatorSceneController] 全ての夜が終了しました。");
-                OnAllNightsCompleted();
-            }
+            // 夜終了後はチャプター選択画面へ遷移
+            // プレイヤーが次の夜を選択できるようにする
+            Debug.Log("[OperatorSceneController] チャプター選択画面へ遷移します。");
+            NavigateTo(_chapterSelectScene);
         }
 
         /// <summary>

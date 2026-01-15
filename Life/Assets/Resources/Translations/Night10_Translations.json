@@ -1,0 +1,1358 @@
+{
+  "scenarioId": "night_10",
+  "title": {
+    "ja": "夜明け前",
+    "en": "Before Dawn",
+    "zh_CN": "黎明前",
+    "zh_TW": "黎明前",
+    "ko": "새벽 전"
+  },
+  "description": {
+    "ja": "最後の夜。釣り人からの通報で真理の遺体が発見される。オペレーターは最後の決断を迫られる。すべての選択が、ここで結実する。",
+    "en": "The final night. A fisherman's report leads to the discovery of Mari's body. The operator is forced to make a final decision. All choices culminate here.",
+    "zh_CN": "最后一夜。钓鱼人的报警发现了真理的遗体。接线员被迫做出最后的决断。所有的选择，都将在此结出果实。",
+    "zh_TW": "最後一夜。釣魚人的報警發現了真理的遺體。接線員被迫做出最後的決斷。所有的選擇，都將在此結出果實。",
+    "ko": "마지막 밤. 낚시꾼의 신고로 마리의 시신이 발견된다. 오퍼레이터는 최후의 결단을 강요받는다. 모든 선택이 여기서 결실을 맺는다."
+  },
+  "callers": [
+    {
+      "callerId": "fisherman",
+      "displayName": {
+        "ja": "釣り人",
+        "en": "Fisherman",
+        "zh_CN": "钓鱼人",
+        "zh_TW": "釣魚人",
+        "ko": "낚시꾼"
+      },
+      "description": {
+        "ja": "早朝に川で釣りをしていた男性。遺体を発見して通報。",
+        "en": "A man who was fishing in the river early morning. He found the body and reported it.",
+        "zh_CN": "清晨在河边钓鱼的男性。发现遗体后报警。",
+        "zh_TW": "清晨在河邊釣魚的男性。發現遺體後報警。",
+        "ko": "이른 아침에 강에서 낚시하던 남자. 시신을 발견하고 신고했다."
+      }
+    },
+    {
+      "callerId": "police_detective",
+      "displayName": {
+        "ja": "高橋刑事",
+        "en": "Detective Takahashi",
+        "zh_CN": "高桥刑警",
+        "zh_TW": "高橋刑警",
+        "ko": "다카하시 형사"
+      },
+      "description": {
+        "ja": "事件を担当している刑事。オペレーターと信頼関係を築いている場合、協力的。",
+        "en": "The detective handling the case. Cooperative if trust has been built with the operator.",
+        "zh_CN": "负责此案的刑警。如果与接线员建立了信任关系，会积极配合。",
+        "zh_TW": "負責此案的刑警。如果與接線員建立了信任關係，會積極配合。",
+        "ko": "사건을 담당하는 형사. 오퍼레이터와 신뢰 관계가 구축되어 있으면 협력적."
+      }
+    },
+    {
+      "callerId": "whistleblower",
+      "displayName": {
+        "ja": "内部告発者",
+        "en": "Whistleblower",
+        "zh_CN": "内部告发者",
+        "zh_TW": "內部告發者",
+        "ko": "내부 고발자"
+      },
+      "description": {
+        "ja": "林健二の元同僚。Night09で逃げた後、警察に保護された可能性がある。キーホルダーの使い方を知っている。",
+        "en": "Former colleague of Kenji Hayashi. After fleeing in Night09, possibly protected by the police. Knows how to use the keychain.",
+        "zh_CN": "林健二的前同事。Night09逃跑后可能被警察保护。知道钥匙扣的用法。",
+        "zh_TW": "林健二的前同事。Night09逃跑後可能被警察保護。知道鑰匙圈的用法。",
+        "ko": "하야시 켄지의 전 동료. Night09에서 도망친 후 경찰에 보호받았을 가능성이 있다. 열쇠고리 사용법을 알고 있다."
+      }
+    }
+  ],
+  "calls": [
+    {
+      "callId": "call_fisherman_report",
+      "title": {
+        "ja": "釣り人からの通報",
+        "en": "Fisherman's Report",
+        "zh_CN": "钓鱼人的报警",
+        "zh_TW": "釣魚人的報警",
+        "ko": "낚시꾼의 신고"
+      },
+      "segments": [
+        {
+          "segmentId": "fisherman_panic",
+          "callerLines": [
+            {
+              "ja": "も、もしもし...！",
+              "en": "H-Hello...!",
+              "zh_CN": "喂、喂...！",
+              "zh_TW": "喂、喂...！",
+              "ko": "여, 여보세요...!"
+            },
+            {
+              "ja": "川で...人が...",
+              "en": "In the river... a person...",
+              "zh_CN": "河里...有人...。",
+              "zh_TW": "河裡...有人...。",
+              "ko": "강에서... 사람이..."
+            },
+            {
+              "ja": "女の人が倒れてて...動かないんです...",
+              "en": "A woman is lying there... she's not moving...",
+              "zh_CN": "有个女人倒在那里...不动了...。",
+              "zh_TW": "有個女人倒在那裡...不動了...。",
+              "ko": "여자가 쓰러져 있는데... 움직이지 않아요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "panic_calm",
+              "displayText": {
+                "ja": "落ち着いてください。どこにいますか？",
+                "en": "Please calm down. Where are you?",
+                "zh_CN": "请冷静。你在哪里？",
+                "zh_TW": "請冷靜。你在哪裡？",
+                "ko": "침착하세요. 어디에 계시나요?"
+              }
+            },
+            {
+              "responseId": "panic_ask",
+              "displayText": {
+                "ja": "その人は息をしていますか？",
+                "en": "Is she breathing?",
+                "zh_CN": "那个人还有呼吸吗？",
+                "zh_TW": "那個人還有呼吸嗎？",
+                "ko": "그 사람이 숨을 쉬고 있나요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "fisherman_confirm_dead",
+          "callerLines": [
+            {
+              "ja": "い、息...してない...と思います...",
+              "en": "I-I don't think... she's breathing...",
+              "zh_CN": "呼、呼吸...好像没有...。",
+              "zh_TW": "呼、呼吸...好像沒有...。",
+              "ko": "숨... 안 쉬는... 것 같아요..."
+            },
+            {
+              "ja": "顔が...青くて...",
+              "en": "Her face is... blue...",
+              "zh_CN": "脸...发青...。",
+              "zh_TW": "臉...發青...。",
+              "ko": "얼굴이... 파랗고..."
+            },
+            {
+              "ja": "水から上がってたみたいで...",
+              "en": "It looks like she came up from the water...",
+              "zh_CN": "好像是从水里上来的...。",
+              "zh_TW": "好像是從水裡上來的...。",
+              "ko": "물에서 올라온 것 같아서..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "dead_location",
+              "displayText": {
+                "ja": "場所を教えてください。",
+                "en": "Please tell me the location.",
+                "zh_CN": "请告诉我地点。",
+                "zh_TW": "請告訴我地點。",
+                "ko": "장소를 알려주세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "fisherman_location",
+          "callerLines": [
+            {
+              "ja": "○○川の...河川敷です...",
+              "en": "The XX River... riverbed...",
+              "zh_CN": "XX河的...河滩...。",
+              "zh_TW": "XX河的...河灘...。",
+              "ko": "XX강 하천부지예요..."
+            },
+            {
+              "ja": "○○橋から下流に500メートルくらい...",
+              "en": "About 500 meters downstream from XX Bridge...",
+              "zh_CN": "从XX桥往下游大约500米...。",
+              "zh_TW": "從XX橋往下游大約500公尺...。",
+              "ko": "XX다리에서 하류로 500미터 정도..."
+            },
+            {
+              "ja": "朝釣りしてたら...見つけて...",
+              "en": "I was fishing in the morning... and I found her...",
+              "zh_CN": "早上钓鱼的时候...发现的...。",
+              "zh_TW": "早上釣魚的時候...發現的...。",
+              "ko": "아침에 낚시하다가... 발견해서..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "location_details",
+              "displayText": {
+                "ja": "女性はどんな様子ですか？",
+                "en": "What does the woman look like?",
+                "zh_CN": "那个女人是什么样子？",
+                "zh_TW": "那個女人是什麼樣子？",
+                "ko": "여성은 어떤 모습인가요?"
+              }
+            },
+            {
+              "responseId": "location_dispatch",
+              "displayText": {
+                "ja": "分かりました。警察を向かわせます。",
+                "en": "Understood. I'm sending the police.",
+                "zh_CN": "明白了。我派警察过去。",
+                "zh_TW": "明白了。我派警察過去。",
+                "ko": "알겠습니다. 경찰을 보내겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "fisherman_description",
+          "callerLines": [
+            {
+              "ja": "30代くらいの...女の人です...",
+              "en": "A woman in her 30s...",
+              "zh_CN": "大概30多岁的...女人...。",
+              "zh_TW": "大概30多歲的...女人...。",
+              "ko": "30대 정도의... 여자예요..."
+            },
+            {
+              "ja": "髪が長くて...服はよく見えないけど...",
+              "en": "Long hair... I can't see her clothes well, but...",
+              "zh_CN": "长头发...衣服看不太清楚...。",
+              "zh_TW": "長頭髮...衣服看不太清楚...。",
+              "ko": "머리가 길고... 옷은 잘 안 보이는데..."
+            },
+            {
+              "ja": "首に...痕みたいなのが...",
+              "en": "There are marks... on her neck...",
+              "zh_CN": "脖子上...好像有痕迹...。",
+              "zh_TW": "脖子上...好像有痕跡...。",
+              "ko": "목에... 자국 같은 게..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "description_dispatch",
+              "displayText": {
+                "ja": "分かりました。警察と救急を向かわせます。その場を離れないでください。",
+                "en": "Understood. I'm sending police and ambulance. Please don't leave the scene.",
+                "zh_CN": "明白了。我派警察和急救过去。请不要离开现场。",
+                "zh_TW": "明白了。我派警察和急救過去。請不要離開現場。",
+                "ko": "알겠습니다. 경찰과 구급대를 보내겠습니다. 그 자리를 떠나지 마세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "fisherman_wait",
+          "callerLines": [
+            {
+              "ja": "は、はい...",
+              "en": "Y-Yes...",
+              "zh_CN": "好、好的...。",
+              "zh_TW": "好、好的...。",
+              "ko": "네, 네..."
+            },
+            {
+              "ja": "ここで待ってます...",
+              "en": "I'll wait here...",
+              "zh_CN": "我在这里等着...。",
+              "zh_TW": "我在這裡等著...。",
+              "ko": "여기서 기다릴게요..."
+            },
+            {
+              "ja": "早く来てください...",
+              "en": "Please come quickly...",
+              "zh_CN": "请快点来...。",
+              "zh_TW": "請快點來...。",
+              "ko": "빨리 와주세요..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "wait_end",
+              "displayText": {
+                "ja": "すぐに向かいます。お電話ありがとうございました。",
+                "en": "They'll be there soon. Thank you for calling.",
+                "zh_CN": "马上过去。谢谢您的来电。",
+                "zh_TW": "馬上過去。謝謝您的來電。",
+                "ko": "바로 출동합니다. 전화 감사합니다."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_police_confirmation",
+      "title": {
+        "ja": "警察からの身元確認",
+        "en": "Police Identification Report",
+        "zh_CN": "警察的身份确认",
+        "zh_TW": "警察的身份確認",
+        "ko": "경찰의 신원 확인"
+      },
+      "segments": [
+        {
+          "segmentId": "police_intro",
+          "callerLines": [
+            {
+              "ja": "○○署の高橋です。",
+              "en": "This is Takahashi from XX Station.",
+              "zh_CN": "我是XX署的高桥。",
+              "zh_TW": "我是XX署的高橋。",
+              "ko": "XX서 다카하시입니다."
+            },
+            {
+              "ja": "先ほどの河川敷の件で、ご報告があります。",
+              "en": "I have a report about the riverbed incident earlier.",
+              "zh_CN": "关于刚才河滩的事，有报告。",
+              "zh_TW": "關於剛才河灘的事，有報告。",
+              "ko": "아까 하천부지 건으로 보고드릴 게 있습니다."
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "……",
+              "zh_TW": "……",
+              "ko": "..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "intro_listen",
+              "displayText": {
+                "ja": "お願いします。",
+                "en": "Please go ahead.",
+                "zh_CN": "请说。",
+                "zh_TW": "請說。",
+                "ko": "말씀하세요."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_identification",
+          "callerLines": [
+            {
+              "ja": "遺体の身元が判明しました。",
+              "en": "We've identified the body.",
+              "zh_CN": "遗体的身份已经确认了。",
+              "zh_TW": "遺體的身份已經確認了。",
+              "ko": "시신의 신원이 확인되었습니다."
+            },
+            {
+              "ja": "渡辺真理さん、32歳。",
+              "en": "Mari Watanabe, age 32.",
+              "zh_CN": "渡边真理，32岁。",
+              "zh_TW": "渡邊真理，32歲。",
+              "ko": "와타나베 마리, 32세."
+            },
+            {
+              "ja": "...行方不明届が出ていた方です。",
+              "en": "...She was reported missing.",
+              "zh_CN": "...是报了失踪的那位。",
+              "zh_TW": "...是報了失蹤的那位。",
+              "ko": "...실종 신고가 접수되어 있던 분입니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "id_shock",
+              "displayText": {
+                "ja": "...渡辺さん...",
+                "en": "...Ms. Watanabe...",
+                "zh_CN": "...渡边女士...。",
+                "zh_TW": "...渡邊女士...。",
+                "ko": "...와타나베 씨..."
+              }
+            },
+            {
+              "responseId": "id_ask_cause",
+              "displayText": {
+                "ja": "死因は分かりましたか？",
+                "en": "Has the cause of death been determined?",
+                "zh_CN": "死因查明了吗？",
+                "zh_TW": "死因查明了嗎？",
+                "ko": "사인은 확인됐나요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_cause",
+          "callerLines": [
+            {
+              "ja": "検視はこれからですが...",
+              "en": "The autopsy is still pending, but...",
+              "zh_CN": "验尸还要等...。",
+              "zh_TW": "驗屍還要等...。",
+              "ko": "검시는 아직이지만..."
+            },
+            {
+              "ja": "首に絞められた痕がありました。",
+              "en": "There were strangulation marks on her neck.",
+              "zh_CN": "脖子上有被勒的痕迹。",
+              "zh_TW": "脖子上有被勒的痕跡。",
+              "ko": "목에 졸린 자국이 있었습니다."
+            },
+            {
+              "ja": "他殺と見て捜査しています。",
+              "en": "We're investigating this as a homicide.",
+              "zh_CN": "作为他杀案在调查。",
+              "zh_TW": "作為他殺案在調查。",
+              "ko": "타살로 보고 수사 중입니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "cause_continue",
+              "displayText": {
+                "ja": "...",
+                "en": "...",
+                "zh_CN": "……",
+                "zh_TW": "……",
+                "ko": "..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_details",
+          "callerLines": [
+            {
+              "ja": "渡辺さんは林遥さんの親友でしたね。",
+              "en": "Ms. Watanabe was Haruka Hayashi's close friend.",
+              "zh_CN": "渡边女士是林遥的好朋友呢。",
+              "zh_TW": "渡邊女士是林遙的好朋友呢。",
+              "ko": "와타나베 씨는 하야시 하루카 씨의 절친이었죠."
+            },
+            {
+              "ja": "林健二の件、中村浩二の件...",
+              "en": "The Kenji Hayashi case, the Koji Nakamura case...",
+              "zh_CN": "林健二的案子、中村浩二的案子...。",
+              "zh_TW": "林健二的案子、中村浩二的案子...。",
+              "ko": "하야시 켄지 건, 나카무라 코지 건..."
+            },
+            {
+              "ja": "すべて繋がっているように見えます。",
+              "en": "They all seem to be connected.",
+              "zh_CN": "看起来都是有关联的。",
+              "zh_TW": "看起來都是有關聯的。",
+              "ko": "모두 연결되어 있는 것 같습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "details_agree",
+              "displayText": {
+                "ja": "私もそう思います。",
+                "en": "I think so too.",
+                "zh_CN": "我也这么想。",
+                "zh_TW": "我也這麼想。",
+                "ko": "저도 그렇게 생각합니다."
+              }
+            },
+            {
+              "responseId": "details_ask_next",
+              "displayText": {
+                "ja": "これからどうするんですか？",
+                "en": "What happens next?",
+                "zh_CN": "接下来怎么办？",
+                "zh_TW": "接下來怎麼辦？",
+                "ko": "앞으로 어떻게 하실 건가요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_ask_info",
+          "callerLines": [
+            {
+              "ja": "渡辺さんについて、何か知っていることはありますか？",
+              "en": "Do you know anything about Ms. Watanabe?",
+              "zh_CN": "关于渡边女士，有什么知道的吗？",
+              "zh_TW": "關於渡邊女士，有什麼知道的嗎？",
+              "ko": "와타나베 씨에 대해 아는 것이 있으신가요?"
+            },
+            {
+              "ja": "誰かと一緒だったとか...",
+              "en": "Was she with someone...",
+              "zh_CN": "有没有和谁在一起...。",
+              "zh_TW": "有沒有和誰在一起...。",
+              "ko": "누군가와 함께 있었다든가..."
+            },
+            {
+              "ja": "どこに住んでいたとか...",
+              "en": "Where she was living...",
+              "zh_CN": "住在哪里...。",
+              "zh_TW": "住在哪裡...。",
+              "ko": "어디에 살았다든가..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "info_yoshida",
+              "displayText": {
+                "ja": "吉田さんという方が、渡辺さんの近所に住んでいました。",
+                "en": "A person named Yoshida lived in Ms. Watanabe's neighborhood.",
+                "zh_CN": "有位叫吉田的女士住在渡边女士附近。",
+                "zh_TW": "有位叫吉田的女士住在渡邊女士附近。",
+                "ko": "요시다라는 분이 와타나베 씨 근처에 살고 계셨어요."
+              }
+            },
+            {
+              "responseId": "info_nothing",
+              "displayText": {
+                "ja": "私が知っているのは通話の内容だけです。",
+                "en": "I only know what was said in the calls.",
+                "zh_CN": "我只知道通话内容。",
+                "zh_TW": "我只知道通話內容。",
+                "ko": "저는 통화 내용만 알고 있습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_yoshida_info",
+          "callerLines": [
+            {
+              "ja": "吉田さん...? 詳しく教えてください。",
+              "en": "Yoshida...? Please tell me more.",
+              "zh_CN": "吉田女士...？请详细说说。",
+              "zh_TW": "吉田女士...？請詳細說說。",
+              "ko": "요시다 씨...? 자세히 말씀해 주세요."
+            },
+            {
+              "ja": "住所は分かりますか？",
+              "en": "Do you have the address?",
+              "zh_CN": "知道地址吗？",
+              "zh_TW": "知道地址嗎？",
+              "ko": "주소를 아시나요?"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "yoshida_address",
+              "displayText": {
+                "ja": "通話記録から確認できます。",
+                "en": "I can confirm it from the call records.",
+                "zh_CN": "可以从通话记录确认。",
+                "zh_TW": "可以從通話記錄確認。",
+                "ko": "통화 기록에서 확인할 수 있습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_will_check",
+          "callerLines": [
+            {
+              "ja": "分かりました。確認してみます。",
+              "en": "Understood. I'll check on it.",
+              "zh_CN": "明白了。我去确认一下。",
+              "zh_TW": "明白了。我去確認一下。",
+              "ko": "알겠습니다. 확인해 보겠습니다."
+            },
+            {
+              "ja": "何か分かったら連絡します。",
+              "en": "I'll contact you if I find anything.",
+              "zh_CN": "有什么发现会联系你。",
+              "zh_TW": "有什麼發現會聯繫你。",
+              "ko": "뭔가 알게 되면 연락드리겠습니다."
+            },
+            {
+              "ja": "ありがとうございました。",
+              "en": "Thank you.",
+              "zh_CN": "谢谢。",
+              "zh_TW": "謝謝。",
+              "ko": "감사합니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "check_end",
+              "displayText": {
+                "ja": "お願いします。",
+                "en": "Please do.",
+                "zh_CN": "请说。",
+                "zh_TW": "請說。",
+                "ko": "부탁드립니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_next_steps",
+          "callerLines": [
+            {
+              "ja": "誠和製薬との関連を調べています。",
+              "en": "We're investigating the connection to Seiwa Pharmaceuticals.",
+              "zh_CN": "在调查与诚和制药的关联。",
+              "zh_TW": "在調查與誠和製藥的關聯。",
+              "ko": "세이와 제약과의 관련을 조사하고 있습니다."
+            },
+            {
+              "ja": "まだ証拠が足りませんが...",
+              "en": "We still don't have enough evidence, but...",
+              "zh_CN": "虽然证据还不够...。",
+              "zh_TW": "雖然證據還不夠...。",
+              "ko": "아직 증거가 부족하지만..."
+            },
+            {
+              "ja": "諦めるつもりはありません。",
+              "en": "I don't intend to give up.",
+              "zh_CN": "不打算放弃。",
+              "zh_TW": "不打算放棄。",
+              "ko": "포기할 생각은 없습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "next_encourage",
+              "displayText": {
+                "ja": "お願いします。",
+                "en": "Please do.",
+                "zh_CN": "请说。",
+                "zh_TW": "請說。",
+                "ko": "부탁드립니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_end",
+          "callerLines": [
+            {
+              "ja": "何か新しいことが分かったら連絡します。",
+              "en": "I'll contact you if I learn anything new.",
+              "zh_CN": "有新发现会联系你。",
+              "zh_TW": "有新發現會聯繫你。",
+              "ko": "새로운 것이 알려지면 연락드리겠습니다."
+            },
+            {
+              "ja": "では。",
+              "en": "Goodbye.",
+              "zh_CN": "那就这样。",
+              "zh_TW": "那就這樣。",
+              "ko": "그럼."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "end_close",
+              "displayText": {
+                "ja": "お疲れ様です。",
+                "en": "Thank you for your work.",
+                "zh_CN": "辛苦了。",
+                "zh_TW": "辛苦了。",
+                "ko": "수고하셨습니다."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "callId": "call_police_report",
+      "title": {
+        "ja": "警察からの報告",
+        "en": "Police Report",
+        "zh_CN": "警察的报告",
+        "zh_TW": "警察的報告",
+        "ko": "경찰 보고"
+      },
+      "segments": [
+        {
+          "segmentId": "police_arrived_in_time",
+          "callerLines": [
+            {
+              "ja": "高橋です。吉田さんの家に行きました。",
+              "en": "This is Takahashi. We went to Ms. Yoshida's house.",
+              "zh_CN": "我是高桥。去了吉田女士家。",
+              "zh_TW": "我是高橋。去了吉田女士家。",
+              "ko": "다카하시입니다. 요시다 씨 집에 갔습니다."
+            },
+            {
+              "ja": "ギリギリでした...不審な車が近くにいて...",
+              "en": "We barely made it in time... there was a suspicious car nearby...",
+              "zh_CN": "差一点就来不及了...附近有可疑的车...。",
+              "zh_TW": "差一點就來不及了...附近有可疑的車...。",
+              "ko": "아슬아슬했습니다... 수상한 차가 근처에 있어서..."
+            },
+            {
+              "ja": "吉田さんは怪我をしましたが、命に別状はありません。",
+              "en": "Ms. Yoshida was injured, but her life is not in danger.",
+              "zh_CN": "吉田女士受了伤，但没有生命危险。",
+              "zh_TW": "吉田女士受了傷，但沒有生命危險。",
+              "ko": "요시다 씨는 부상을 입었지만 생명에는 지장이 없습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "in_time_ask_misaki",
+              "displayText": {
+                "ja": "美咲ちゃんは...？",
+                "en": "What about Misaki...?",
+                "zh_CN": "美咲...？",
+                "zh_TW": "美咲...？",
+                "ko": "미사키는...?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "misaki_found",
+          "callerLines": [
+            {
+              "ja": "5歳の女の子がいました。",
+              "en": "There was a 5-year-old girl.",
+              "zh_CN": "有一个5岁的女孩。",
+              "zh_TW": "有一個5歲的女孩。",
+              "ko": "5살 여자아이가 있었습니다."
+            },
+            {
+              "ja": "吉田さんが押し入れに隠していたようです。",
+              "en": "It seems Ms. Yoshida hid her in a closet.",
+              "zh_CN": "好像是吉田女士藏在壁橱里的。",
+              "zh_TW": "好像是吉田女士藏在壁櫥裡的。",
+              "ko": "요시다 씨가 벽장에 숨겨둔 것 같습니다."
+            },
+            {
+              "ja": "無事です。今、保護しています。",
+              "en": "She's safe. We're protecting her now.",
+              "zh_CN": "没事。现在正在保护中。",
+              "zh_TW": "沒事。現在正在保護中。",
+              "ko": "무사합니다. 지금 보호하고 있습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "found_relief",
+              "displayText": {
+                "ja": "...よかった...",
+                "en": "...Thank goodness...",
+                "zh_CN": "...太好了...。",
+                "zh_TW": "...太好了...。",
+                "ko": "...다행이다..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_testimony",
+          "callerLines": [
+            {
+              "ja": "吉田さんから話を聞きました。",
+              "en": "We heard from Ms. Yoshida.",
+              "zh_CN": "从吉田女士那里听说了。",
+              "zh_TW": "從吉田女士那裡聽說了。",
+              "ko": "요시다 씨에게서 이야기를 들었습니다."
+            },
+            {
+              "ja": "渡辺さんから「親友が誠和製薬の秘密を知って追われている」と聞いていたそうです。",
+              "en": "Apparently Ms. Watanabe told her that 'her close friend discovered Seiwa Pharmaceuticals' secret and is being pursued.'",
+              "zh_CN": "据说渡边女士告诉她'好朋友知道了诚和制药的秘密被追杀'。",
+              "zh_TW": "據說渡邊女士告訴她'好朋友知道了誠和製藥的秘密被追殺'。",
+              "ko": "와타나베 씨에게서 '절친이 세이와 제약의 비밀을 알게 되어 쫓기고 있다'고 들었다고 합니다."
+            },
+            {
+              "ja": "美咲ちゃんを守るために、ずっと隠していたと...",
+              "en": "She had been hiding Misaki to protect her...",
+              "zh_CN": "为了保护美咲，一直藏着...。",
+              "zh_TW": "為了保護美咲，一直藏著...。",
+              "ko": "미사키를 지키기 위해 계속 숨겨왔다고..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "testimony_ask",
+              "displayText": {
+                "ja": "誠和製薬の秘密...？",
+                "en": "Seiwa Pharmaceuticals' secret...?",
+                "zh_CN": "诚和制药的秘密...？",
+                "zh_TW": "誠和製藥的秘密...？",
+                "ko": "세이와 제약의 비밀...?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_seiwaq",
+          "callerLines": [
+            {
+              "ja": "副作用の隠蔽、違法な活動...",
+              "en": "Cover-up of side effects, illegal activities...",
+              "zh_CN": "隐瞒副作用、非法活动...。",
+              "zh_TW": "隱瞞副作用、非法活動...。",
+              "ko": "부작용 은폐, 불법 활동..."
+            },
+            {
+              "ja": "渡辺さんはそれを知っていたから狙われた。",
+              "en": "Ms. Watanabe was targeted because she knew about it.",
+              "zh_CN": "渡边女士因为知道了这些所以被盯上了。",
+              "zh_TW": "渡邊女士因為知道了這些所以被盯上了。",
+              "ko": "와타나베 씨는 그걸 알고 있어서 노려졌어요."
+            },
+            {
+              "ja": "証拠があれば動けるんですが...",
+              "en": "If we had evidence, we could act, but...",
+              "zh_CN": "如果有证据就能行动了...。",
+              "zh_TW": "如果有證據就能行動了...。",
+              "ko": "증거가 있으면 움직일 수 있는데..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "seiwaq_whistleblower",
+              "displayText": {
+                "ja": "証拠なら...心当たりがあるかもしれません。",
+                "en": "Evidence... I might have an idea.",
+                "zh_CN": "证据的话...可能有些线索。",
+                "zh_TW": "證據的話...可能有些線索。",
+                "ko": "증거라면... 단서가 있을지도 모릅니다."
+              }
+            },
+            {
+              "responseId": "seiwaq_unknown",
+              "displayText": {
+                "ja": "...私には分かりません。",
+                "en": "...I don't know.",
+                "zh_CN": "...我不知道。",
+                "zh_TW": "...我不知道。",
+                "ko": "...저는 모르겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_interested",
+          "callerLines": [
+            {
+              "ja": "本当ですか？",
+              "en": "Really?",
+              "zh_CN": "真的吗？",
+              "zh_TW": "真的嗎？",
+              "ko": "정말인가요?"
+            },
+            {
+              "ja": "何でも構いません。教えてください。",
+              "en": "Anything would help. Please tell me.",
+              "zh_CN": "什么都行。请告诉我。",
+              "zh_TW": "什麼都行。請告訴我。",
+              "ko": "뭐든 좋습니다. 알려주세요."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "tell_about_whistleblower",
+              "displayText": {
+                "ja": "林健二さんの元同僚から連絡がありました。証拠のことを知っているかもしれません。",
+                "en": "I received contact from a former colleague of Kenji Hayashi. They might know about the evidence.",
+                "zh_CN": "林健二的前同事联系过我。可能知道证据的事。",
+                "zh_TW": "林健二的前同事聯繫過我。可能知道證據的事。",
+                "ko": "하야시 켄지 씨의 전 동료에게서 연락이 왔습니다. 증거에 대해 알고 있을지도 모릅니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_will_investigate",
+          "callerLines": [
+            {
+              "ja": "分かりました。その方に連絡を取ってみます。",
+              "en": "Understood. I'll try to contact them.",
+              "zh_CN": "明白了。我试着联系那个人。",
+              "zh_TW": "明白了。我試著聯繫那個人。",
+              "ko": "알겠습니다. 그분에게 연락해 보겠습니다."
+            },
+            {
+              "ja": "美咲ちゃんのことは...どうしますか？",
+              "en": "About Misaki... what shall we do?",
+              "zh_CN": "美咲的事...怎么办？",
+              "zh_TW": "美咲的事...怎麼辦？",
+              "ko": "미사키 건은... 어떻게 할까요?"
+            },
+            {
+              "ja": "親族がいないようなので...",
+              "en": "It seems she has no relatives...",
+              "zh_CN": "好像没有亲属...。",
+              "zh_TW": "好像沒有親屬...。",
+              "ko": "친척이 없는 것 같아서..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "adopt_misaki",
+              "displayText": {
+                "ja": "...私が引き取ります。",
+                "en": "...I'll take her in.",
+                "zh_CN": "...我来收养。",
+                "zh_TW": "...我來收養。",
+                "ko": "...제가 맡겠습니다."
+              }
+            },
+            {
+              "responseId": "let_authorities",
+              "displayText": {
+                "ja": "...行政に任せます。",
+                "en": "...I'll leave it to the authorities.",
+                "zh_CN": "...交给政府处理。",
+                "zh_TW": "...交給政府處理。",
+                "ko": "...행정에 맡기겠습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_adoption",
+          "callerLines": [
+            {
+              "ja": "...分かりました。",
+              "en": "...I understand.",
+              "zh_CN": "...明白了。",
+              "zh_TW": "...明白了。",
+              "ko": "...알겠습니다."
+            },
+            {
+              "ja": "手続きが必要になりますが...きっとうまくいきます。",
+              "en": "There'll be paperwork, but... I'm sure it'll work out.",
+              "zh_CN": "需要办手续...一定会顺利的。",
+              "zh_TW": "需要辦手續...一定會順利的。",
+              "ko": "절차가 필요하지만... 분명 잘 될 겁니다."
+            },
+            {
+              "ja": "美咲ちゃんも、あなたのことを待っていると思います。",
+              "en": "I'm sure Misaki is waiting for you too.",
+              "zh_CN": "美咲也在等着你呢。",
+              "zh_TW": "美咲也在等著你呢。",
+              "ko": "미사키도 당신을 기다리고 있을 거예요."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "adoption_thanks",
+              "displayText": {
+                "ja": "ありがとうございます。",
+                "en": "Thank you.",
+                "zh_CN": "谢谢。",
+                "zh_TW": "謝謝。",
+                "ko": "감사합니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_end_success",
+          "callerLines": [
+            {
+              "ja": "これからも捜査を続けます。",
+              "en": "We'll continue the investigation.",
+              "zh_CN": "今后也会继续调查。",
+              "zh_TW": "今後也會繼續調查。",
+              "ko": "앞으로도 수사를 계속하겠습니다."
+            },
+            {
+              "ja": "あなたのおかげで、一歩前に進めました。",
+              "en": "Thanks to you, we've made progress.",
+              "zh_CN": "多亏了你，才能前进一步。",
+              "zh_TW": "多虧了你，才能前進一步。",
+              "ko": "당신 덕분에 한 발 앞으로 나아갈 수 있었습니다."
+            },
+            {
+              "ja": "ありがとうございました。",
+              "en": "Thank you.",
+              "zh_CN": "谢谢。",
+              "zh_TW": "謝謝。",
+              "ko": "감사합니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "success_end",
+              "displayText": {
+                "ja": "お疲れ様です。",
+                "en": "Thank you for your work.",
+                "zh_CN": "辛苦了。",
+                "zh_TW": "辛苦了。",
+                "ko": "수고하셨습니다."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_arrived_late",
+          "callerLines": [
+            {
+              "ja": "高橋です。吉田さんの家に行きました。",
+              "en": "This is Takahashi. We went to Ms. Yoshida's house.",
+              "zh_CN": "我是高桥。去了吉田女士家。",
+              "zh_TW": "我是高橋。去了吉田女士家。",
+              "ko": "다카하시입니다. 요시다 씨 집에 갔습니다."
+            },
+            {
+              "ja": "...遅かったです。",
+              "en": "...We were too late.",
+              "zh_CN": "...晚了。",
+              "zh_TW": "...晚了。",
+              "ko": "...늦었습니다."
+            },
+            {
+              "ja": "吉田さんは...亡くなっていました。",
+              "en": "Ms. Yoshida... was dead.",
+              "zh_CN": "吉田女士...已经去世了。",
+              "zh_TW": "吉田女士...已經去世了。",
+              "ko": "요시다 씨는... 돌아가셨습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "late_shock",
+              "displayText": {
+                "ja": "...そんな...",
+                "en": "...No...",
+                "zh_CN": "...怎么会...。",
+                "zh_TW": "...怎麼會...。",
+                "ko": "...그럴 리가..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_dead_details",
+          "callerLines": [
+            {
+              "ja": "殺されていました。首を絞められて...",
+              "en": "She was murdered. Strangled...",
+              "zh_CN": "被杀了。被勒死的...。",
+              "zh_TW": "被殺了。被勒死的...。",
+              "ko": "살해당했습니다. 목이 졸려서..."
+            },
+            {
+              "ja": "家の中は荒らされていて...",
+              "en": "The house was ransacked...",
+              "zh_CN": "家里被翻乱了...。",
+              "zh_TW": "家裡被翻亂了...。",
+              "ko": "집 안이 어질러져 있었고..."
+            },
+            {
+              "ja": "誰かを探していたようです。",
+              "en": "It seems they were looking for someone.",
+              "zh_CN": "好像在找什么人。",
+              "zh_TW": "好像在找什麼人。",
+              "ko": "누군가를 찾고 있었던 것 같습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "dead_ask_child",
+              "displayText": {
+                "ja": "...子供は...？",
+                "en": "...The child...?",
+                "zh_CN": "...孩子呢...？",
+                "zh_TW": "...孩子呢...？",
+                "ko": "...아이는...?"
+              }
+            },
+            {
+              "responseId": "dead_silence",
+              "displayText": {
+                "ja": "...",
+                "en": "...",
+                "zh_CN": "……",
+                "zh_TW": "……",
+                "ko": "..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "misaki_missing",
+          "callerLines": [
+            {
+              "ja": "子供...？",
+              "en": "A child...?",
+              "zh_CN": "孩子...？",
+              "zh_TW": "孩子...？",
+              "ko": "아이...?"
+            },
+            {
+              "ja": "家の中には子供はいませんでした。",
+              "en": "There was no child in the house.",
+              "zh_CN": "家里没有孩子。",
+              "zh_TW": "家裡沒有孩子。",
+              "ko": "집 안에 아이는 없었습니다."
+            },
+            {
+              "ja": "...誰かがいたんですか？",
+              "en": "...Was someone supposed to be there?",
+              "zh_CN": "...有人在吗？",
+              "zh_TW": "...有人在嗎？",
+              "ko": "...누가 있었나요?"
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "missing_explain",
+              "displayText": {
+                "ja": "美咲ちゃんという5歳の女の子が...吉田さんのところにいたはずです...",
+                "en": "A 5-year-old girl named Misaki... was supposed to be at Ms. Yoshida's...",
+                "zh_CN": "有个叫美咲的5岁女孩...应该在吉田女士那里...。",
+                "zh_TW": "有個叫美咲的5歲女孩...應該在吉田女士那裡...。",
+                "ko": "미사키라는 5살 여자아이가... 요시다 씨 댁에 있었을 텐데..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "misaki_unknown",
+          "callerLines": [
+            {
+              "ja": "...探してみます。",
+              "en": "...We'll look for her.",
+              "zh_CN": "...我去找找看。",
+              "zh_TW": "...我去找找看。",
+              "ko": "...찾아보겠습니다."
+            },
+            {
+              "ja": "でも、もし組織に連れ去られていたら...",
+              "en": "But if the organization took her...",
+              "zh_CN": "但是如果被组织带走了的话...。",
+              "zh_TW": "但是如果被組織帶走了的話...。",
+              "ko": "하지만 조직에 끌려갔다면..."
+            },
+            {
+              "ja": "...すみません。",
+              "en": "...I'm sorry.",
+              "zh_CN": "...对不起。",
+              "zh_TW": "...對不起。",
+              "ko": "...죄송합니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "unknown_despair",
+              "displayText": {
+                "ja": "...美咲ちゃん...",
+                "en": "...Misaki...",
+                "zh_CN": "...美咲...。",
+                "zh_TW": "...美咲...。",
+                "ko": "...미사키..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_end_failure",
+          "callerLines": [
+            {
+              "ja": "...捜査は続けます。",
+              "en": "...We'll continue the investigation.",
+              "zh_CN": "...会继续调查的。",
+              "zh_TW": "...會繼續調查的。",
+              "ko": "...수사는 계속하겠습니다."
+            },
+            {
+              "ja": "でも...すみませんでした。",
+              "en": "But... I'm sorry.",
+              "zh_CN": "但是...对不起。",
+              "zh_TW": "但是...對不起。",
+              "ko": "하지만... 죄송합니다."
+            },
+            {
+              "ja": "...",
+              "en": "...",
+              "zh_CN": "……",
+              "zh_TW": "……",
+              "ko": "..."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "failure_end",
+              "displayText": {
+                "ja": "...",
+                "en": "...",
+                "zh_CN": "……",
+                "zh_TW": "……",
+                "ko": "..."
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "police_news_report",
+          "callerLines": [
+            {
+              "ja": "高橋です。",
+              "en": "This is Takahashi.",
+              "zh_CN": "我是高桥。",
+              "zh_TW": "我是高橋。",
+              "ko": "다카하시입니다."
+            },
+            {
+              "ja": "ニュースでご覧になったかもしれませんが...",
+              "en": "You may have seen it on the news, but...",
+              "zh_CN": "你可能在新闻上看到了...。",
+              "zh_TW": "你可能在新聞上看到了...。",
+              "ko": "뉴스에서 보셨을지 모르겠지만..."
+            },
+            {
+              "ja": "渡辺真理さんの近所で、もう一人の遺体が見つかりました。",
+              "en": "Another body was found near Mari Watanabe's home.",
+              "zh_CN": "在渡边真理女士附近又发现了一具遗体。",
+              "zh_TW": "在渡邊真理女士附近又發現了一具遺體。",
+              "ko": "와타나베 마리 씨 근처에서 또 한 구의 시신이 발견됐습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "news_ask",
+              "displayText": {
+                "ja": "...誰ですか？",
+                "en": "...Who is it?",
+                "zh_CN": "...是谁？",
+                "zh_TW": "...是誰？",
+                "ko": "...누구인가요?"
+              }
+            }
+          ]
+        },
+        {
+          "segmentId": "yoshida_dead_news",
+          "callerLines": [
+            {
+              "ja": "吉田和子さん、72歳。",
+              "en": "Kazuko Yoshida, age 72.",
+              "zh_CN": "吉田和子，72岁。",
+              "zh_TW": "吉田和子，72歲。",
+              "ko": "요시다 카즈코, 72세."
+            },
+            {
+              "ja": "殺害されていました。",
+              "en": "She was murdered.",
+              "zh_CN": "被杀害了。",
+              "zh_TW": "被殺害了。",
+              "ko": "살해당했습니다."
+            },
+            {
+              "ja": "渡辺さんとの関係を調べています。",
+              "en": "We're investigating her connection to Ms. Watanabe.",
+              "zh_CN": "正在调查与渡边女士的关系。",
+              "zh_TW": "正在調查與渡邊女士的關係。",
+              "ko": "와타나베 씨와의 관계를 조사하고 있습니다."
+            }
+          ],
+          "responses": [
+            {
+              "responseId": "news_end",
+              "displayText": {
+                "ja": "...分かりました。",
+                "en": "...I understand.",
+                "zh_CN": "...明白了。",
+                "zh_TW": "...明白了。",
+                "ko": "...알겠습니다."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "evidence_mari_dead",
+      "title": {
+        "ja": "真理の死",
+        "en": "Mari's Death",
+        "zh_CN": "真理之死",
+        "zh_TW": "真理之死",
+        "ko": "마리의 죽음"
+      },
+      "content": {
+        "ja": "渡辺真理が川の近くで遺体で発見された",
+        "en": "Mari Watanabe was found dead near the river",
+        "zh_CN": "渡边真理在河边被发现遗体",
+        "zh_TW": "渡邊真理在河邊被發現遺體",
+        "ko": "와타나베 마리가 강 근처에서 시신으로 발견되었다"
+      }
+    },
+    {
+      "evidenceId": "evidence_yoshida_death",
+      "title": {
+        "ja": "吉田の死",
+        "en": "Yoshida's Death",
+        "zh_CN": "吉田之死",
+        "zh_TW": "吉田之死",
+        "ko": "요시다의 죽음"
+      },
+      "content": {
+        "ja": "吉田和子が美咲を守ろうとして殺された",
+        "en": "Kazuko Yoshida was killed trying to protect Misaki",
+        "zh_CN": "吉田和子为了保护美咲而被杀",
+        "zh_TW": "吉田和子為了保護美咲而被殺",
+        "ko": "요시다 카즈코가 미사키를 지키려다 살해당했다"
+      }
+    },
+    {
+      "evidenceId": "evidence_misaki_saved",
+      "title": {
+        "ja": "美咲の救出",
+        "en": "Misaki's Rescue",
+        "zh_CN": "救出美咲",
+        "zh_TW": "救出美咲",
+        "ko": "미사키의 구출"
+      },
+      "content": {
+        "ja": "美咲が警察に保護され、オペレーターが引き取った",
+        "en": "Misaki was protected by the police and taken in by the operator",
+        "zh_CN": "美咲被警察保护，接线员收养了她",
+        "zh_TW": "美咲被警察保護，接線員收養了她",
+        "ko": "미사키가 경찰에 보호되어 오퍼레이터가 맡았다"
+      }
+    },
+    {
+      "evidenceId": "evidence_usb_found",
+      "title": {
+        "ja": "USBの発見",
+        "en": "USB Discovery",
+        "zh_CN": "发现USB",
+        "zh_TW": "發現USB",
+        "ko": "USB 발견"
+      },
+      "content": {
+        "ja": "美咲のキーホルダーからUSBが発見された。誠和製薬の不正の証拠。",
+        "en": "A USB was discovered in Misaki's keychain. Evidence of Seiwa Pharmaceuticals' fraud.",
+        "zh_CN": "从美咲的钥匙扣里发现了USB。是诚和制药违法的证据。",
+        "zh_TW": "從美咲的鑰匙圈裡發現了USB。是誠和製藥違法的證據。",
+        "ko": "미사키의 열쇠고리에서 USB가 발견되었다. 세이와 제약의 부정 증거."
+      }
+    },
+    {
+      "evidenceId": "evidence_company_destroyed",
+      "title": {
+        "ja": "誠和製薬の壊滅",
+        "en": "Seiwa Pharmaceuticals' Downfall",
+        "zh_CN": "诚和制药的覆灭",
+        "zh_TW": "誠和製藥的覆滅",
+        "ko": "세이와 제약의 붕괴"
+      },
+      "content": {
+        "ja": "USBの証拠により、誠和製薬は壊滅した",
+        "en": "The USB evidence led to the downfall of Seiwa Pharmaceuticals",
+        "zh_CN": "凭借USB的证据，诚和制药被摧毁了",
+        "zh_TW": "憑藉USB的證據，誠和製藥被摧毀了",
+        "ko": "USB 증거로 세이와 제약이 붕괴했다"
+      }
+    }
+  ],
+  "thoughts": [],
+  "endings": []
+}

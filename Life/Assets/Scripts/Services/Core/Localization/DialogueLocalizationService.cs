@@ -37,10 +37,12 @@ namespace LifeLike.Services.Core.Localization
                 return true;
             }
 
-            // JSONファイルを読み込む
-            string nightNumber = scenarioId.Replace("night", "").PadLeft(2, '0');
+            // 夜番号を抽出（"0", "1", "night01", "night_01" など様々な形式に対応）
+            string nightNumber = ExtractNightNumber(scenarioId);
             string fileName = $"Night{nightNumber}_Translations";
             string resourcePath = $"Translations/{fileName}";
+
+            Debug.Log($"[DialogueLocalizationService] 翻訳読み込み開始: scenarioId={scenarioId}, nightNumber={nightNumber}, resourcePath={resourcePath}");
 
             // Resourcesから読み込みを試行
             var textAsset = Resources.Load<TextAsset>(resourcePath);
@@ -79,12 +81,17 @@ namespace LifeLike.Services.Core.Localization
                 {
                     _cachedNights[scenarioId] = _currentNightData;
                     Debug.Log($"[DialogueLocalizationService] Resourcesから翻訳データを読み込みました: {resourcePath}");
+                    Debug.Log($"[DialogueLocalizationService] 読み込みデータ - scenarioId: {_currentNightData.scenarioId}, calls: {_currentNightData.calls.Count}, callers: {_currentNightData.callers.Count}");
                     return true;
+                }
+                else
+                {
+                    Debug.LogWarning($"[DialogueLocalizationService] JSONパース結果がnull: {resourcePath}");
                 }
             }
             catch (System.Exception e)
             {
-                Debug.LogError($"[DialogueLocalizationService] 翻訳データのパースに失敗: {e.Message}");
+                Debug.LogError($"[DialogueLocalizationService] 翻訳データのパースに失敗: {e.Message}\n{e.StackTrace}");
             }
 
             return false;
@@ -113,16 +120,25 @@ namespace LifeLike.Services.Core.Localization
             var result = new List<string>();
 
             var callTranslation = GetCallTranslation(callId);
-            if (callTranslation == null) return result;
+            if (callTranslation == null)
+            {
+                Debug.LogWarning($"[DialogueLocalizationService] GetCallerLines - callId '{callId}' が見つかりません (IsLoaded: {IsLoaded}, calls count: {_currentNightData?.calls.Count ?? 0})");
+                return result;
+            }
 
             var segmentTranslation = callTranslation.GetSegmentTranslation(segmentId);
-            if (segmentTranslation == null) return result;
+            if (segmentTranslation == null)
+            {
+                Debug.LogWarning($"[DialogueLocalizationService] GetCallerLines - segmentId '{segmentId}' が見つかりません");
+                return result;
+            }
 
             foreach (var line in segmentTranslation.callerLines)
             {
                 result.Add(line.GetText(CurrentLanguage));
             }
 
+            Debug.Log($"[DialogueLocalizationService] GetCallerLines - 言語: {CurrentLanguage}, 行数: {result.Count}");
             return result;
         }
 
@@ -132,15 +148,29 @@ namespace LifeLike.Services.Core.Localization
         public string GetResponseText(string callId, string segmentId, string responseId)
         {
             var callTranslation = GetCallTranslation(callId);
-            if (callTranslation == null) return string.Empty;
+            if (callTranslation == null)
+            {
+                Debug.LogWarning($"[DialogueLocalizationService] GetResponseText - callId '{callId}' not found");
+                return string.Empty;
+            }
 
             var segmentTranslation = callTranslation.GetSegmentTranslation(segmentId);
-            if (segmentTranslation == null) return string.Empty;
+            if (segmentTranslation == null)
+            {
+                Debug.LogWarning($"[DialogueLocalizationService] GetResponseText - segmentId '{segmentId}' not found in call '{callId}'");
+                return string.Empty;
+            }
 
             var responseTranslation = segmentTranslation.responses.Find(r => r.responseId == responseId);
-            if (responseTranslation == null) return string.Empty;
+            if (responseTranslation == null)
+            {
+                Debug.LogWarning($"[DialogueLocalizationService] GetResponseText - responseId '{responseId}' not found in segment '{segmentId}' (available: {string.Join(", ", segmentTranslation.responses.ConvertAll(r => r.responseId))})");
+                return string.Empty;
+            }
 
-            return responseTranslation.displayText.GetText(CurrentLanguage);
+            var result = responseTranslation.displayText.GetText(CurrentLanguage);
+            Debug.Log($"[DialogueLocalizationService] GetResponseText - Language: {CurrentLanguage}, Result: '{result}'");
+            return result;
         }
 
         /// <summary>
@@ -179,6 +209,34 @@ namespace LifeLike.Services.Core.Localization
         public string GetScenarioDescription()
         {
             return _currentNightData?.description.GetText(CurrentLanguage) ?? string.Empty;
+        }
+
+        /// <summary>
+        /// シナリオIDから夜番号を抽出（2桁ゼロパディング）
+        /// 対応形式: "0", "1", "night01", "night_01", "night1"
+        /// </summary>
+        private string ExtractNightNumber(string scenarioId)
+        {
+            // 純粋な数値の場合（"0", "1", "2"...）
+            if (int.TryParse(scenarioId, out int numericId))
+            {
+                // 0-based indexを1-basedに変換
+                return (numericId + 1).ToString("D2");
+            }
+
+            // "night" プレフィックスを除去して数値を抽出
+            string cleaned = scenarioId
+                .Replace("night_", "")
+                .Replace("night", "")
+                .Trim();
+
+            if (int.TryParse(cleaned, out int nightNum))
+            {
+                return nightNum.ToString("D2");
+            }
+
+            // フォールバック: そのまま2桁パディング
+            return cleaned.PadLeft(2, '0');
         }
     }
 }

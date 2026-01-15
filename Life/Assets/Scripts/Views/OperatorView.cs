@@ -518,7 +518,9 @@ namespace LifeLike.Views
             {
                 if (_callerNameText != null)
                 {
-                    _callerNameText.text = _viewModel.CurrentCallerDisplayName;
+                    // 発信者名のローカライズを取得
+                    string callerName = GetLocalizedCallerName(_viewModel.CurrentCaller.callerId, _viewModel.IsCurrentCallerRevealed);
+                    _callerNameText.text = callerName;
                 }
 
                 if (_callerPhoneText != null)
@@ -526,6 +528,31 @@ namespace LifeLike.Views
                     _callerPhoneText.text = _viewModel.CurrentCaller.phoneNumber;
                 }
             }
+        }
+
+        /// <summary>
+        /// ローカライズされた発信者名を取得
+        /// </summary>
+        private string GetLocalizedCallerName(string callerId, bool isRevealed)
+        {
+            if (!isRevealed)
+            {
+                // 不明の場合はUIローカライズから取得
+                return GetLocalizedText(UILocalizationKeys.Operator.UnknownCaller);
+            }
+
+            // ダイアログローカライズサービスから発信者名を取得
+            if (_dialogueLocalizationService != null && _dialogueLocalizationService.IsLoaded)
+            {
+                string localizedName = _dialogueLocalizationService.GetCallerDisplayName(callerId);
+                if (!string.IsNullOrEmpty(localizedName))
+                {
+                    return localizedName;
+                }
+            }
+
+            // フォールバック: ViewModelの表示名を使用
+            return _viewModel?.CurrentCallerDisplayName ?? "不明";
         }
 
         private void UpdateCallStatusUI()
@@ -568,15 +595,18 @@ namespace LifeLike.Views
             if (hasDialogue && _callerDialogueText != null && _viewModel.CurrentSegment?.media != null)
             {
                 var currentLanguage = _localizationService?.CurrentLanguage ?? Language.Japanese;
+                Debug.Log($"[OperatorView] UpdateDialogueUI - IsLoaded: {_dialogueLocalizationService?.IsLoaded}, CurrentCall: {_viewModel.CurrentCall?.callId}, Segment: {_viewModel.CurrentSegment?.segmentId}, Language: {currentLanguage}");
 
                 // ダイアログローカライズサービスから翻訳を取得
                 if (_dialogueLocalizationService != null &&
                     _dialogueLocalizationService.IsLoaded &&
-                    _viewModel.CurrentCall != null)
+                    _viewModel.CurrentCall != null &&
+                    _viewModel.CurrentSegment != null)
                 {
                     var callId = _viewModel.CurrentCall.callId;
                     var segmentId = _viewModel.CurrentSegment.segmentId;
                     var callerLines = _dialogueLocalizationService.GetCallerLines(callId, segmentId);
+                    Debug.Log($"[OperatorView] Got {callerLines.Count} caller lines for call={callId}, segment={segmentId}");
 
                     if (callerLines.Count > 0)
                     {
@@ -589,7 +619,7 @@ namespace LifeLike.Views
                         _callerDialogueText.text = _viewModel.CurrentSegment.media.dialogueText.GetText(currentLanguage);
                     }
                 }
-                else
+                else if (_viewModel.CurrentSegment != null)
                 {
                     // ローカライズサービスが利用できない場合はフォールバック
                     _callerDialogueText.text = _viewModel.CurrentSegment.media.dialogueText.GetText(currentLanguage);
@@ -622,7 +652,7 @@ namespace LifeLike.Views
                 string? currentCallId = _viewModel.CurrentCall?.callId;
                 string? currentSegmentId = _viewModel.CurrentSegment?.segmentId;
 
-                Debug.Log($"[OperatorView] Creating {_viewModel.AvailableResponses.Count} response buttons");
+                Debug.Log($"[OperatorView] Creating {_viewModel.AvailableResponses.Count} response buttons - CallId: {currentCallId}, SegmentId: {currentSegmentId}, DialogueService: {_dialogueLocalizationService != null}, IsLoaded: {_dialogueLocalizationService?.IsLoaded}");
                 foreach (var response in _viewModel.AvailableResponses)
                 {
                     Debug.Log($"[OperatorView] Response: {response.responseId} - {response.displayText}");
@@ -641,12 +671,18 @@ namespace LifeLike.Views
                         {
                             responseText = _dialogueLocalizationService.GetResponseText(
                                 currentCallId, currentSegmentId, response.responseId);
+                            Debug.Log($"[OperatorView] Translation lookup: call={currentCallId}, segment={currentSegmentId}, response={response.responseId} => '{responseText}'");
+                        }
+                        else
+                        {
+                            Debug.Log($"[OperatorView] Skipping translation - Service: {_dialogueLocalizationService != null}, Loaded: {_dialogueLocalizationService?.IsLoaded}, CallId: {currentCallId}, SegmentId: {currentSegmentId}");
                         }
 
                         // 翻訳がない場合はフォールバック
                         if (string.IsNullOrEmpty(responseText))
                         {
                             responseText = response.displayText.GetText(currentLanguage);
+                            Debug.Log($"[OperatorView] Using fallback text: '{responseText}'");
                         }
 
                         buttonText.text = responseText;

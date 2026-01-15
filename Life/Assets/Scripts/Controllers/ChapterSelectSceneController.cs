@@ -35,6 +35,8 @@ namespace LifeLike.Controllers
         public void StartChapter(int nightIndex)
         {
             PlayerPrefs.SetInt("LifeLike_StartNightIndex", nightIndex);
+            // 明示的なチャプター選択フラグを設定（セーブデータより優先させる）
+            PlayerPrefs.SetInt("LifeLike_ExplicitChapterSelect", 1);
             PlayerPrefs.Save();
             NavigateTo(_operatorScene);
         }

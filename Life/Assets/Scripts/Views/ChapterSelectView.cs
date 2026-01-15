@@ -110,7 +110,15 @@ namespace LifeLike.Views
                 return;
             }
 
-            _viewModel = new ChapterSelectViewModel(_controller.OperatorSaveService);
+            // ダイアログローカライズサービスを取得
+            var dialogueLocalizationService = ServiceLocator.Instance.Get<IDialogueLocalizationService>();
+            if (dialogueLocalizationService == null)
+            {
+                Debug.LogError("[ChapterSelectView] IDialogueLocalizationServiceが見つかりません。");
+                return;
+            }
+
+            _viewModel = new ChapterSelectViewModel(_controller.OperatorSaveService, dialogueLocalizationService);
         }
 
         private void Start()

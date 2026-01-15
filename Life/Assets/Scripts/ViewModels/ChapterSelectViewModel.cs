@@ -5,6 +5,7 @@ using LifeLike.Core.Commands;
 using LifeLike.Core.MVVM;
 using LifeLike.Data;
 using LifeLike.Data.EndState;
+using LifeLike.Services.Core.Localization;
 using LifeLike.Services.Core.Save;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace LifeLike.ViewModels
     public class ChapterSelectViewModel : ViewModelBase
     {
         private readonly IOperatorSaveService _operatorSaveService;
+        private readonly IDialogueLocalizationService _dialogueLocalizationService;
 
         private PlayerProgressSummary _progressSummary = new();
         private ChapterInfo? _selectedChapter;
@@ -80,9 +82,10 @@ namespace LifeLike.ViewModels
         /// </summary>
         public event Action? OnBackToMenuRequested;
 
-        public ChapterSelectViewModel(IOperatorSaveService operatorSaveService)
+        public ChapterSelectViewModel(IOperatorSaveService operatorSaveService, IDialogueLocalizationService dialogueLocalizationService)
         {
             _operatorSaveService = operatorSaveService ?? throw new ArgumentNullException(nameof(operatorSaveService));
+            _dialogueLocalizationService = dialogueLocalizationService ?? throw new ArgumentNullException(nameof(dialogueLocalizationService));
 
             SelectChapterCommand = new RelayCommand<string>(ExecuteSelectChapter);
             StartChapterCommand = new RelayCommand(ExecuteStartChapter, () => CanStartChapter);
@@ -104,49 +107,52 @@ namespace LifeLike.ViewModels
             // 10夜分のチャプター情報を生成
             for (int i = 0; i < 10; i++)
             {
-                string nightId = $"night_{i + 1:D2}";
+                string nightId = i.ToString();  // シーンのNightDataSetと同じ形式（0, 1, 2, ...）
                 var chapter = new ChapterInfo
                 {
                     chapterId = nightId,
                     title = GetNightTitle(i),
-                    description = GetNightDescription(i),
                     nightIndex = i
                 };
 
                 // 状態を判定
+                // ロック解除条件：最初の夜 OR 前の夜がクリア済み
+                bool previousNightCompleted = i == 0 || completedNights.Contains((i - 1).ToString());
+
                 if (completedNights.Contains(nightId))
                 {
                     chapter.state = ChapterState.Completed;
                     chapter.endState = _operatorSaveService.GetNightEndState(nightId);
                     chapter.endingTitle = GetEndingTitle(chapter.endState);
+                    // クリア済みの夜のみ説明を表示
+                    chapter.description = GetNightDescription(i);
                 }
-                else if (i == currentNightIndex)
+                else if (previousNightCompleted)
                 {
-                    chapter.state = hasMidNightSave ? ChapterState.InProgress : ChapterState.Available;
-                }
-                else if (i < currentNightIndex)
-                {
-                    // 完了してないが現在より前 → 完了扱い（スキップされた場合）
-                    chapter.state = ChapterState.Completed;
-                }
-                else if (i == currentNightIndex + 1 && completedNights.Count > 0)
-                {
-                    chapter.state = ChapterState.Available;
-                }
-                else if (i == 0)
-                {
-                    chapter.state = ChapterState.Available;
+                    // 前の夜がクリア済み → プレイ可能
+                    if (i == currentNightIndex && hasMidNightSave)
+                    {
+                        chapter.state = ChapterState.InProgress;
+                    }
+                    else
+                    {
+                        chapter.state = ChapterState.Available;
+                    }
+                    // 未クリアの夜は説明を非表示
+                    chapter.description = string.Empty;
                 }
                 else
                 {
+                    // 前の夜が未クリア → ロック
                     chapter.state = ChapterState.Locked;
+                    chapter.description = string.Empty;
                 }
 
                 summary.chapters.Add(chapter);
             }
 
             summary.completedNights = completedNights.Count;
-            summary.currentChapterId = $"night_{currentNightIndex + 1:D2}";
+            summary.currentChapterId = currentNightIndex.ToString();
 
             // ルート情報を生成
             GenerateRoutes(summary);
@@ -188,10 +194,22 @@ namespace LifeLike.ViewModels
         }
 
         /// <summary>
-        /// 夜のタイトルを取得
+        /// 夜のタイトルを取得（ローカライズ対応）
         /// </summary>
         private string GetNightTitle(int nightIndex)
         {
+            // シナリオIDを使って翻訳データを読み込み
+            string scenarioId = nightIndex.ToString();
+            if (_dialogueLocalizationService.LoadNightTranslation(scenarioId))
+            {
+                string localizedTitle = _dialogueLocalizationService.GetScenarioTitle();
+                if (!string.IsNullOrEmpty(localizedTitle))
+                {
+                    return localizedTitle;
+                }
+            }
+
+            // フォールバック：日本語ハードコード
             return nightIndex switch
             {
                 0 => "Night 01: 最初の夜",
@@ -209,10 +227,22 @@ namespace LifeLike.ViewModels
         }
 
         /// <summary>
-        /// 夜の説明を取得
+        /// 夜の説明を取得（ローカライズ対応）
         /// </summary>
         private string GetNightDescription(int nightIndex)
         {
+            // シナリオIDを使って翻訳データを読み込み
+            string scenarioId = nightIndex.ToString();
+            if (_dialogueLocalizationService.LoadNightTranslation(scenarioId))
+            {
+                string localizedDescription = _dialogueLocalizationService.GetScenarioDescription();
+                if (!string.IsNullOrEmpty(localizedDescription))
+                {
+                    return localizedDescription;
+                }
+            }
+
+            // フォールバック：日本語ハードコード
             return nightIndex switch
             {
                 0 => "緊急通報センターでの最初の勤務。奇妙な通報が始まる。",
