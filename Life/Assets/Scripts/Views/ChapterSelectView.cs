@@ -118,7 +118,7 @@ namespace LifeLike.Views
                 return;
             }
 
-            _viewModel = new ChapterSelectViewModel(_controller.OperatorSaveService, dialogueLocalizationService);
+            _viewModel = new ChapterSelectViewModel(_controller.OperatorSaveService, dialogueLocalizationService, _localizationService);
         }
 
         private void Start()
@@ -544,7 +544,8 @@ namespace LifeLike.Views
                 {
                     if (selected.state == ChapterState.Completed && selected.endingTitle != null)
                     {
-                        _selectedEndingText.text = $"結果: {selected.endingTitle}";
+                        string resultPrefix = _localizationService?.GetText(UILocalizationKeys.ChapterSelect.ResultPrefix) ?? "結果:";
+                        _selectedEndingText.text = $"{resultPrefix} {selected.endingTitle}";
                         _selectedEndingText.gameObject.SetActive(true);
                     }
                     else

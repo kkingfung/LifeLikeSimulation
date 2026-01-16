@@ -5,6 +5,8 @@ using LifeLike.Core.Commands;
 using LifeLike.Core.MVVM;
 using LifeLike.Data;
 using LifeLike.Data.EndState;
+using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Localization;
 using LifeLike.Services.Core.Save;
 using UnityEngine;
 
@@ -17,6 +19,7 @@ namespace LifeLike.ViewModels
     public class ResultViewModel : ViewModelBase
     {
         private readonly IOperatorSaveService _operatorSaveService;
+        private readonly ILocalizationService? _localizationService;
 
         private string _endingTitle = string.Empty;
         private string _endingDescription = string.Empty;
@@ -119,9 +122,10 @@ namespace LifeLike.ViewModels
         /// </summary>
         public event Action? OnNewGameRequested;
 
-        public ResultViewModel(IOperatorSaveService operatorSaveService)
+        public ResultViewModel(IOperatorSaveService operatorSaveService, ILocalizationService? localizationService = null)
         {
             _operatorSaveService = operatorSaveService ?? throw new ArgumentNullException(nameof(operatorSaveService));
+            _localizationService = localizationService;
 
             ShowCreditsCommand = new RelayCommand(() => IsShowingCredits = true);
             ShowSummaryCommand = new RelayCommand(() => IsShowingCredits = false);
@@ -142,7 +146,7 @@ namespace LifeLike.ViewModels
             // 各夜の結果を取得
             for (int i = 0; i < 10; i++)
             {
-                string nightId = $"night_{i + 1:D2}";
+                string nightId = i.ToString();  // シーンのNightDataSetと同じ形式（0, 1, 2, ...）
                 var endState = _operatorSaveService.GetNightEndState(nightId);
 
                 var result = new ChapterResultInfo
@@ -161,7 +165,7 @@ namespace LifeLike.ViewModels
             ChapterResults = results;
 
             // 最終エンドステートを取得
-            var night10EndState = _operatorSaveService.GetNightEndState("night_10");
+            var night10EndState = _operatorSaveService.GetNightEndState("9");
             if (night10EndState.HasValue)
             {
                 FinalEndState = night10EndState.Value;
@@ -181,7 +185,7 @@ namespace LifeLike.ViewModels
         }
 
         /// <summary>
-        /// ルートサマリーを生成
+        /// ルートサマリーを生成（ローカライズ対応）
         /// </summary>
         private string GenerateRouteSummary(List<ChapterResultInfo> results)
         {
@@ -202,22 +206,42 @@ namespace LifeLike.ViewModels
                 }
             }
 
-            string routeType;
-            if (goodCount >= 7)
-                routeType = "真実の道";
-            else if (badCount >= 7)
-                routeType = "闇の道";
-            else if (goodCount > badCount)
-                routeType = "光への道";
-            else if (badCount > goodCount)
-                routeType = "影への道";
-            else
-                routeType = "中立の道";
+            string routeType = GetLocalizedRouteType(goodCount, badCount);
+            string yourRoute = GetLocalizedText(UILocalizationKeys.Result.YourRoute, "あなたのルート:");
+            string bestChoices = string.Format(GetLocalizedText(UILocalizationKeys.Result.BestChoices, "最善の選択: {0}回"), goodCount);
+            string neutralChoices = string.Format(GetLocalizedText(UILocalizationKeys.Result.NeutralChoices, "中立の選択: {0}回"), neutralCount);
+            string badChoicesText = string.Format(GetLocalizedText(UILocalizationKeys.Result.BadChoices, "過ちの選択: {0}回"), badCount);
 
-            return $"あなたのルート: {routeType}\n" +
-                   $"最善の選択: {goodCount}回\n" +
-                   $"中立の選択: {neutralCount}回\n" +
-                   $"過ちの選択: {badCount}回";
+            return $"{yourRoute} {routeType}\n{bestChoices}\n{neutralChoices}\n{badChoicesText}";
+        }
+
+        /// <summary>
+        /// ルートタイプのローカライズを取得
+        /// </summary>
+        private string GetLocalizedRouteType(int goodCount, int badCount)
+        {
+            if (goodCount >= 7)
+                return GetLocalizedText(UILocalizationKeys.Result.RouteTruth, "真実の道");
+            else if (badCount >= 7)
+                return GetLocalizedText(UILocalizationKeys.Result.RouteDarkness, "闇の道");
+            else if (goodCount > badCount)
+                return GetLocalizedText(UILocalizationKeys.Result.RouteLight, "光への道");
+            else if (badCount > goodCount)
+                return GetLocalizedText(UILocalizationKeys.Result.RouteShadow, "影への道");
+            else
+                return GetLocalizedText(UILocalizationKeys.Result.RouteNeutral, "中立の道");
+        }
+
+        /// <summary>
+        /// ローカライズテキストを取得（フォールバック付き）
+        /// </summary>
+        private string GetLocalizedText(string key, string fallback)
+        {
+            if (_localizationService != null)
+            {
+                return _localizationService.GetText(key);
+            }
+            return fallback;
         }
 
         /// <summary>
@@ -283,64 +307,122 @@ namespace LifeLike.ViewModels
         }
 
         /// <summary>
-        /// エンディングタイトルを取得
+        /// エンディングタイトルを取得（ローカライズ対応）
         /// </summary>
         private string? GetEndingTitle(EndStateType? endState)
         {
             if (endState == null) return null;
 
+            // ローカライズサービスがある場合はローカライズされた文字列を取得
+            if (_localizationService != null)
+            {
+                string? key = GetEndingTitleKey(endState.Value);
+                if (key != null)
+                {
+                    return _localizationService.GetText(key);
+                }
+            }
+
+            // フォールバック
+            return GetEndingTitleFallback(endState.Value);
+        }
+
+        /// <summary>
+        /// エンドステートに対応するローカライズキーを取得
+        /// </summary>
+        private string? GetEndingTitleKey(EndStateType endState)
+        {
             return endState switch
             {
-                // Night01
+                EndStateType.Contained => UILocalizationKeys.Result.Contained,
+                EndStateType.Exposed => UILocalizationKeys.Result.Exposed,
+                EndStateType.Complicit => UILocalizationKeys.Result.Complicit,
+                EndStateType.Flagged => UILocalizationKeys.Result.Flagged,
+                EndStateType.Absorbed => UILocalizationKeys.Result.Absorbed,
+                EndStateType.Vigilant => UILocalizationKeys.Result.Vigilant,
+                EndStateType.Compliant => UILocalizationKeys.Result.Compliant,
+                EndStateType.Connected => UILocalizationKeys.Result.Connected,
+                EndStateType.Isolated => UILocalizationKeys.Result.Isolated,
+                EndStateType.Routine => UILocalizationKeys.Result.Routine,
+                EndStateType.Crossroads => UILocalizationKeys.Result.Crossroads,
+                EndStateType.Intervention => UILocalizationKeys.Result.Intervention,
+                EndStateType.Disclosure => UILocalizationKeys.Result.Disclosure,
+                EndStateType.Silence => UILocalizationKeys.Result.Silence,
+                EndStateType.WitnessConnected => UILocalizationKeys.Result.WitnessConnected,
+                EndStateType.WitnessOnly => UILocalizationKeys.Result.WitnessOnly,
+                EndStateType.ConnectedOnly => UILocalizationKeys.Result.ConnectedOnly,
+                EndStateType.Neither => UILocalizationKeys.Result.Neither,
+                EndStateType.VoiceReached => UILocalizationKeys.Result.VoiceReached,
+                EndStateType.VoiceDistant => UILocalizationKeys.Result.VoiceDistant,
+                EndStateType.VoiceLost => UILocalizationKeys.Result.VoiceLost,
+                EndStateType.StormPrepared => UILocalizationKeys.Result.StormPrepared,
+                EndStateType.StormAware => UILocalizationKeys.Result.StormAware,
+                EndStateType.StormDistant => UILocalizationKeys.Result.StormDistant,
+                EndStateType.StormUnaware => UILocalizationKeys.Result.StormUnaware,
+                EndStateType.MisakiProtected => UILocalizationKeys.Result.MisakiProtected,
+                EndStateType.MisakiSafeUnaware => UILocalizationKeys.Result.MisakiSafeUnaware,
+                EndStateType.MisakiTaken => UILocalizationKeys.Result.MisakiTaken,
+                EndStateType.CollapseWitnessed => UILocalizationKeys.Result.CollapseWitnessed,
+                EndStateType.TruthSeeker => UILocalizationKeys.Result.TruthSeeker,
+                EndStateType.InformedCaution => UILocalizationKeys.Result.InformedCaution,
+                EndStateType.SilentWitness => UILocalizationKeys.Result.SilentWitness,
+                EndStateType.UnawareSurvivor => UILocalizationKeys.Result.UnawareSurvivor,
+                EndStateType.FullAlliance => UILocalizationKeys.Result.FullAlliance,
+                EndStateType.ActiveAlliance => UILocalizationKeys.Result.ActiveAlliance,
+                EndStateType.PassiveTruth => UILocalizationKeys.Result.PassiveTruth,
+                EndStateType.WhistleblowerSaved => UILocalizationKeys.Result.WhistleblowerSaved,
+                EndStateType.WhistleblowerEndangered => UILocalizationKeys.Result.WhistleblowerEndangered,
+                EndStateType.MisakiDiscovered => UILocalizationKeys.Result.MisakiDiscovered,
+                EndStateType.TruthRevealed => UILocalizationKeys.Result.TruthRevealed,
+                EndStateType.UncertainFuture => UILocalizationKeys.Result.UncertainFuture,
+                EndStateType.TruthDawn => UILocalizationKeys.Result.TruthDawn,
+                EndStateType.InvestigationContinues => UILocalizationKeys.Result.InvestigationContinues,
+                EndStateType.IntoDarkness => UILocalizationKeys.Result.IntoDarkness,
+                EndStateType.UncertainDawn => UILocalizationKeys.Result.UncertainDawn,
+                _ => null
+            };
+        }
+
+        /// <summary>
+        /// エンディングタイトルのフォールバック（日本語）
+        /// </summary>
+        private string GetEndingTitleFallback(EndStateType endState)
+        {
+            return endState switch
+            {
                 EndStateType.Contained => "封じ込め",
                 EndStateType.Exposed => "露出",
                 EndStateType.Complicit => "共犯",
                 EndStateType.Flagged => "要注意",
                 EndStateType.Absorbed => "吸収",
-
-                // Night02
                 EndStateType.Vigilant => "警戒",
                 EndStateType.Compliant => "従順",
                 EndStateType.Connected => "接続",
                 EndStateType.Isolated => "孤立",
                 EndStateType.Routine => "日常",
-
-                // Night03
                 EndStateType.Crossroads => "分かれ道",
                 EndStateType.Intervention => "介入",
                 EndStateType.Disclosure => "開示",
                 EndStateType.Silence => "沈黙",
-
-                // Night04
                 EndStateType.WitnessConnected => "証人と接続",
                 EndStateType.WitnessOnly => "証人",
                 EndStateType.ConnectedOnly => "接続のみ",
                 EndStateType.Neither => "どちらもなし",
-
-                // Night05
                 EndStateType.VoiceReached => "届いた声",
                 EndStateType.VoiceDistant => "遠い声",
                 EndStateType.VoiceLost => "消えた声",
-
-                // Night06
                 EndStateType.StormPrepared => "嵐への備え",
                 EndStateType.StormAware => "嵐の予感",
                 EndStateType.StormDistant => "遠い雷鳴",
                 EndStateType.StormUnaware => "静かな午後",
-
-                // Night07
                 EndStateType.MisakiProtected => "小さな光",
                 EndStateType.MisakiSafeUnaware => "守られた秘密",
                 EndStateType.MisakiTaken => "崩壊",
                 EndStateType.CollapseWitnessed => "崩壊の夜",
-
-                // Night08
                 EndStateType.TruthSeeker => "真実を追う者",
                 EndStateType.InformedCaution => "慎重な知識",
                 EndStateType.SilentWitness => "沈黙の証人",
                 EndStateType.UnawareSurvivor => "無知な生存者",
-
-                // Night09
                 EndStateType.FullAlliance => "完全な同盟",
                 EndStateType.ActiveAlliance => "積極的な協力",
                 EndStateType.PassiveTruth => "真実を知った沈黙",
@@ -349,13 +431,10 @@ namespace LifeLike.ViewModels
                 EndStateType.MisakiDiscovered => "美咲の存在を知った",
                 EndStateType.TruthRevealed => "真実が明らかに",
                 EndStateType.UncertainFuture => "不確かな未来",
-
-                // Night10
                 EndStateType.TruthDawn => "真実の夜明け",
                 EndStateType.InvestigationContinues => "調査は続く",
                 EndStateType.IntoDarkness => "闇の中へ",
                 EndStateType.UncertainDawn => "不確かな夜明け",
-
                 _ => endState.ToString()
             };
         }

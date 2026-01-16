@@ -676,6 +676,41 @@
               "zh_CN": "我不知道该怎么回答……",
               "zh_TW": "我不知道該怎麼回答……",
               "ko": "뭐라고 말해야 할지 모르겠어서..."
+            },
+            {
+              "ja": "...あ、ちょっと待ってね。",
+              "en": "...Ah, wait a moment.",
+              "zh_CN": "...啊，稍等一下。",
+              "zh_TW": "...啊，稍等一下。",
+              "ko": "...아, 잠깐만요."
+            },
+            {
+              "ja": "[背景で子供の声が聞こえる]",
+              "en": "[A child's voice is heard in the background]",
+              "zh_CN": "[背景中传来孩子的声音]",
+              "zh_TW": "[背景中傳來孩子的聲音]",
+              "ko": "[배경에서 아이 목소리가 들린다]"
+            },
+            {
+              "ja": "...うん、おばあちゃんお電話してるの。すぐ終わるからね。",
+              "en": "...Yes, Grandma is on the phone. It'll be over soon, okay?",
+              "zh_CN": "...嗯，奶奶在打电话呢。马上就结束了哦。",
+              "zh_TW": "...嗯，奶奶在打電話呢。馬上就結束了喔。",
+              "ko": "...응, 할머니 전화하는 중이야. 금방 끝날 거야."
+            },
+            {
+              "ja": "[吉田が電話に戻る]",
+              "en": "[Yoshida returns to the phone]",
+              "zh_CN": "[吉田回到电话上]",
+              "zh_TW": "[吉田回到電話上]",
+              "ko": "[요시다가 전화로 돌아온다]"
+            },
+            {
+              "ja": "すみません、美咲ちゃんが...",
+              "en": "I'm sorry, Misaki-chan...",
+              "zh_CN": "抱歉，美咲她...",
+              "zh_TW": "抱歉，美咲她...",
+              "ko": "죄송해요, 미사키가..."
             }
           ],
           "responses": [
@@ -1438,6 +1473,16 @@
                 "zh_TW": "請躲到安全的地方。",
                 "ko": "안전한 곳에 숨어주세요."
               }
+            },
+            {
+              "responseId": "location_help_no_flag",
+              "displayText": {
+                "ja": "わかりました。助けを送ります。現在地を教えてください。",
+                "en": "I understand. I'll send help. Please tell me your location.",
+                "zh_CN": "我明白了。我会派人去帮助您。请告诉我您的位置。",
+                "zh_TW": "我明白了。我會派人去幫助您。請告訴我您的位置。",
+                "ko": "알겠습니다. 도움을 보내겠습니다. 현재 위치를 알려주세요."
+              }
             }
           ]
         },
@@ -2094,7 +2139,18 @@
               "ko": "..."
             }
           ],
-          "responses": []
+          "responses": [
+            {
+              "responseId": "end_uncertain",
+              "displayText": {
+                "ja": "...お気をつけて。何かあればまたお電話ください。",
+                "en": "...Take care. Please call again if anything happens.",
+                "zh_CN": "...请保重。如有任何情况请再来电。",
+                "zh_TW": "...請保重。如有任何情況請再來電。",
+                "ko": "...조심하세요. 무슨 일이 있으면 다시 전화해 주세요."
+              }
+            }
+          ]
         }
       ]
     },
@@ -2344,6 +2400,16 @@
                 "zh_CN": "……我想是的。",
                 "zh_TW": "……我想是的。",
                 "ko": "...그렇다고 생각해요."
+              }
+            },
+            {
+              "responseId": "conscience_mother_alive",
+              "displayText": {
+                "ja": "林遥さんは生きています。今なら間に合います。",
+                "en": "Ms. Hayashi Haruka is alive. There's still time.",
+                "zh_CN": "林遥女士还活着。现在还来得及。",
+                "zh_TW": "林遙女士還活著。現在還來得及。",
+                "ko": "하야시 하루카 씨는 살아 있습니다. 지금이라면 늦지 않았습니다."
               }
             }
           ]

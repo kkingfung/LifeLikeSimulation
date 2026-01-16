@@ -547,6 +547,16 @@
                 "zh_TW": "……是嗎。",
                 "ko": "...그렇군요."
               }
+            },
+            {
+              "responseId": "connection_ask_nakamura",
+              "displayText": {
+                "ja": "中村さんとはどのような関係でしたか？",
+                "en": "What was your relationship with Mr. Nakamura?",
+                "zh_CN": "您和中村先生是什么关系？",
+                "zh_TW": "您和中村先生是什麼關係？",
+                "ko": "나카무라 씨와는 어떤 관계였습니까?"
+              }
             }
           ]
         },
@@ -2214,7 +2224,18 @@
               "ko": "후회하지 않으면 좋겠네요."
             }
           ],
-          "responses": []
+          "responses": [
+            {
+              "responseId": "choice_end",
+              "displayText": {
+                "ja": "...わかりました。",
+                "en": "...I understand.",
+                "zh_CN": "...我明白了。",
+                "zh_TW": "...我明白了。",
+                "ko": "...알겠습니다."
+              }
+            }
+          ]
         },
         {
           "segmentId": "warning_no_more",

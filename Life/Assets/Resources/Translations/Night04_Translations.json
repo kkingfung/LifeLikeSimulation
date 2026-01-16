@@ -727,6 +727,16 @@
                 "zh_TW": "最後聽到了另一個聲音，然後電話就斷了。",
                 "ko": "마지막에 다른 목소리가 들리더니 전화가 끊겼어요."
               }
+            },
+            {
+              "responseId": "details_nothing",
+              "displayText": {
+                "ja": "それだけです。すぐに切れました。",
+                "en": "That's all. The call was cut off immediately.",
+                "zh_CN": "就这些。电话很快就断了。",
+                "zh_TW": "就這些。電話很快就斷了。",
+                "ko": "그게 다입니다. 바로 끊겼어요."
+              }
             }
           ]
         },
@@ -1714,6 +1724,16 @@
                 "zh_TW": "怎麼了？",
                 "ko": "무슨 일이세요?"
               }
+            },
+            {
+              "responseId": "daycare_intro_emergency",
+              "displayText": {
+                "ja": "緊急通報センターです。どうされましたか？",
+                "en": "Emergency call center. How can I help you?",
+                "zh_CN": "紧急呼叫中心。请问有什么事？",
+                "zh_TW": "緊急呼叫中心。請問有什麼事？",
+                "ko": "긴급 신고 센터입니다. 무슨 일이신가요?"
+              }
             }
           ]
         },
@@ -1761,6 +1781,16 @@
                 "zh_CN": "妈妈叫什么名字？",
                 "zh_TW": "媽媽叫什麼名字？",
                 "ko": "어머니 성함이 어떻게 되시나요?"
+              }
+            },
+            {
+              "responseId": "situation_ask_age",
+              "displayText": {
+                "ja": "その子は何歳ですか？",
+                "en": "How old is the child?",
+                "zh_CN": "这个孩子几岁了？",
+                "zh_TW": "這個孩子幾歲了？",
+                "ko": "그 아이는 몇 살인가요?"
               }
             }
           ]
@@ -1857,6 +1887,16 @@
                 "zh_CN": "联系过警察吗？",
                 "zh_TW": "聯繫過警察嗎？",
                 "ko": "경찰에 상담하셨나요?"
+              }
+            },
+            {
+              "responseId": "last_contact_address",
+              "displayText": {
+                "ja": "林さんのご自宅の住所を教えていただけますか？",
+                "en": "Could you give me Ms. Hayashi's home address?",
+                "zh_CN": "您能告诉我林女士的家庭住址吗？",
+                "zh_TW": "您能告訴我林女士的家庭住址嗎？",
+                "ko": "하야시 씨 집 주소를 알려주시겠습니까?"
               }
             }
           ]

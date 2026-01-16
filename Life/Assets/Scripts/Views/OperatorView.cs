@@ -525,7 +525,7 @@ namespace LifeLike.Views
 
                 if (_callerPhoneText != null)
                 {
-                    _callerPhoneText.text = _viewModel.CurrentCaller.phoneNumber;
+                    _callerPhoneText.text = GetLocalizedPhoneNumber(_viewModel.CurrentCaller.phoneNumber);
                 }
             }
         }
@@ -552,7 +552,53 @@ namespace LifeLike.Views
             }
 
             // フォールバック: ViewModelの表示名を使用
-            return _viewModel?.CurrentCallerDisplayName ?? "不明";
+            return _viewModel?.CurrentCallerDisplayName ?? (_localizationService?.GetText(UILocalizationKeys.Operator.UnknownCaller) ?? "Unknown");
+        }
+
+        
+        /// <summary>
+        /// 着信リストの発信者名をローカライズして取得
+        /// </summary>
+        private string GetLocalizedIncomingCallerName(CallData call)
+        {
+            if (call.caller == null)
+            {
+                return GetLocalizedText(UILocalizationKeys.Operator.UnknownCaller);
+            }
+
+            // 発信者の名前が判明しているかチェック
+            bool isRevealed = _viewModel?.IsCallerRevealed(call.caller.callerId) ?? false;
+
+            if (!isRevealed)
+            {
+                return GetLocalizedText(UILocalizationKeys.Operator.UnknownCaller);
+            }
+
+            // ダイアログローカライズサービスから発信者名を取得
+            if (_dialogueLocalizationService != null && _dialogueLocalizationService.IsLoaded)
+            {
+                string localizedName = _dialogueLocalizationService.GetCallerDisplayName(call.caller.callerId);
+                if (!string.IsNullOrEmpty(localizedName))
+                {
+                    return localizedName;
+                }
+            }
+
+            // フォールバック: CallerDataの表示名を使用
+            return call.caller.displayName;
+        }
+
+        /// <summary>
+        /// ローカライズされた電話番号を取得（非通知の場合はローカライズ）
+        /// </summary>
+        private string GetLocalizedPhoneNumber(string phoneNumber)
+        {
+            // "非通知"（日本語のデフォルト値）の場合はローカライズ
+            if (phoneNumber == "非通知" && _localizationService != null)
+            {
+                return _localizationService.GetText(UILocalizationKeys.Operator.PrivateNumber);
+            }
+            return phoneNumber;
         }
 
         private void UpdateCallStatusUI()
@@ -763,7 +809,8 @@ namespace LifeLike.Views
                     if (buttonText != null)
                     {
                         // 名前が判明していない発信者は「不明」と表示
-                        buttonText.text = _viewModel.GetCallerDisplayName(call.caller);
+                        string callerName = GetLocalizedIncomingCallerName(call);
+                        buttonText.text = callerName;
                     }
 
                     string callId = call.callId;

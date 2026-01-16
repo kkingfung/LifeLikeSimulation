@@ -153,6 +153,7 @@ namespace LifeLike.Controllers
             if (_debugPanel != null)
             {
                 _debugPanel.OnNightJumpRequested += OnDebugNightJump;
+            }
         }
 
         private void Start()
@@ -191,6 +192,7 @@ namespace LifeLike.Controllers
             if (_worldStateService != null)
             {
                 _worldStateService.OnScenarioEnded -= OnScenarioEnded;
+            }
         }
 
         /// <summary>
@@ -276,10 +278,18 @@ namespace LifeLike.Controllers
             // セーブ
             SaveCurrentState(endState);
 
-            // 夜終了後はチャプター選択画面へ遷移
-            // プレイヤーが次の夜を選択できるようにする
-            Debug.Log("[OperatorSceneController] チャプター選択画面へ遷移します。");
-            NavigateTo(_chapterSelectScene);
+            // 最後の夜（Night 10）が終了した場合は結果画面へ
+            if (_currentNightIndex >= _nightDataSets.Count - 1)
+            {
+                Debug.Log("[OperatorSceneController] 全ての夜が終了しました。結果画面へ遷移します。");
+                NavigateTo(_resultScene);
+            }
+            else
+            {
+                // それ以外はチャプター選択画面へ遷移
+                Debug.Log("[OperatorSceneController] チャプター選択画面へ遷移します。");
+                NavigateTo(_chapterSelectScene);
+            }
         }
 
         /// <summary>

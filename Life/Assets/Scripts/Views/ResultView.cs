@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using LifeLike.Controllers;
 using LifeLike.Core.Services;
+using LifeLike.Data.EndState;
 using LifeLike.Data.Localization;
 using LifeLike.Services.Core.Localization;
 using LifeLike.UI;
@@ -15,7 +16,7 @@ namespace LifeLike.Views
 {
     /// <summary>
     /// 結果画面のView
-    /// クレジットとルートサマリーを表示
+    /// エンディング情報とチャプター結果を表示
     /// CRT効果、タイプライター効果を含む
     /// </summary>
     public class ResultView : MonoBehaviour
@@ -27,22 +28,14 @@ namespace LifeLike.Views
         [SerializeField] private Text? _endingTitleText;
         [SerializeField] private Text? _endingDescriptionText;
 
+        [Header("Route Summary")]
+        [SerializeField] private Text? _routeSummaryText;
+
         [Header("Chapter Results")]
         [SerializeField] private Transform? _chapterResultsContainer;
         [SerializeField] private GameObject? _chapterResultPrefab;
 
-        [Header("Route Summary")]
-        [SerializeField] private GameObject? _summaryPanel;
-        [SerializeField] private Text? _routeSummaryText;
-
-        [Header("Credits")]
-        [SerializeField] private GameObject? _creditsPanel;
-        [SerializeField] private ScrollRect? _creditsScrollRect;
-        [SerializeField] private float _creditsScrollSpeed = 50f;
-
         [Header("Buttons")]
-        [SerializeField] private Button? _showCreditsButton;
-        [SerializeField] private Button? _showSummaryButton;
         [SerializeField] private Button? _returnToMenuButton;
         [SerializeField] private Button? _newGameButton;
 
@@ -60,12 +53,9 @@ namespace LifeLike.Views
         private ResultViewModel? _viewModel;
         private ILocalizationService? _localizationService;
         private readonly List<GameObject> _chapterResultItems = new();
-        private bool _isScrollingCredits;
         private GameObject? _crtOverlay;
         private TypewriterEffect? _titleTypewriter;
         private FadeEffect? _screenFade;
-        private SlideEffect? _creditsPanelSlide;
-        private SlideEffect? _summaryPanelSlide;
 
         private void Awake()
         {
@@ -98,7 +88,7 @@ namespace LifeLike.Views
                 return;
             }
 
-            _viewModel = new ResultViewModel(_controller.OperatorSaveService);
+            _viewModel = new ResultViewModel(_controller.OperatorSaveService, _localizationService);
         }
 
         private void Start()
@@ -155,8 +145,6 @@ namespace LifeLike.Views
             // 画面フェード効果をセットアップ
             SetupScreenFade();
 
-            // パネルのスライド効果をセットアップ
-            SetupPanelSlides();
         }
 
         /// <summary>
@@ -186,46 +174,6 @@ namespace LifeLike.Views
 
             // ゆっくりフェードイン（結果画面は演出を強調）
             _screenFade.FadeIn(1.0f);
-        }
-
-        /// <summary>
-        /// パネルのスライド効果をセットアップ
-        /// </summary>
-        private void SetupPanelSlides()
-        {
-            // クレジットパネル
-            if (_creditsPanel != null)
-            {
-                var canvasGroup = _creditsPanel.GetComponent<CanvasGroup>();
-                if (canvasGroup == null)
-                {
-                    canvasGroup = _creditsPanel.AddComponent<CanvasGroup>();
-                }
-
-                _creditsPanelSlide = _creditsPanel.GetComponent<SlideEffect>();
-                if (_creditsPanelSlide == null)
-                {
-                    _creditsPanelSlide = _creditsPanel.AddComponent<SlideEffect>();
-                    _creditsPanelSlide.SetDirection(SlideEffect.SlideDirection.Up);
-                }
-            }
-
-            // サマリーパネル
-            if (_summaryPanel != null)
-            {
-                var canvasGroup = _summaryPanel.GetComponent<CanvasGroup>();
-                if (canvasGroup == null)
-                {
-                    canvasGroup = _summaryPanel.AddComponent<CanvasGroup>();
-                }
-
-                _summaryPanelSlide = _summaryPanel.GetComponent<SlideEffect>();
-                if (_summaryPanelSlide == null)
-                {
-                    _summaryPanelSlide = _summaryPanel.AddComponent<SlideEffect>();
-                    _summaryPanelSlide.SetDirection(SlideEffect.SlideDirection.Right);
-                }
-            }
         }
 
         /// <summary>
@@ -270,8 +218,6 @@ namespace LifeLike.Views
         {
             var theme = UIThemeManager.Instance.Theme;
 
-            AddButtonEffects(_showCreditsButton, theme);
-            AddButtonEffects(_showSummaryButton, theme);
             AddButtonEffects(_returnToMenuButton, theme);
             AddButtonEffects(_newGameButton, theme, ButtonAudioFeedback.ClickSoundType.Confirm);
         }
@@ -295,28 +241,6 @@ namespace LifeLike.Views
             {
                 audioFeedback = button.gameObject.AddComponent<ButtonAudioFeedback>();
                 audioFeedback.SetClickSoundType(soundType);
-            }
-        }
-
-        private void Update()
-        {
-            // クレジット自動スクロール
-            if (_isScrollingCredits && _creditsScrollRect != null)
-            {
-                var content = _creditsScrollRect.content;
-                if (content != null)
-                {
-                    var pos = content.anchoredPosition;
-                    pos.y += _creditsScrollSpeed * Time.deltaTime;
-                    content.anchoredPosition = pos;
-
-                    // スクロール終了チェック
-                    float maxScroll = content.rect.height - _creditsScrollRect.viewport.rect.height;
-                    if (pos.y >= maxScroll)
-                    {
-                        _isScrollingCredits = false;
-                    }
-                }
             }
         }
 
@@ -351,7 +275,10 @@ namespace LifeLike.Views
         private void OnLanguageChanged(Language language)
         {
             ApplyLocalizedTexts();
+            UpdateRouteSummary();
             UpdateChapterResults();
+            // ルートサマリーを再生成するためにViewModelをリロード
+            _viewModel?.LoadResults();
         }
 
         /// <summary>
@@ -376,16 +303,6 @@ namespace LifeLike.Views
 
         private void SetupUI()
         {
-            if (_showCreditsButton != null)
-            {
-                _showCreditsButton.onClick.AddListener(OnShowCreditsClicked);
-            }
-
-            if (_showSummaryButton != null)
-            {
-                _showSummaryButton.onClick.AddListener(OnShowSummaryClicked);
-            }
-
             if (_returnToMenuButton != null)
             {
                 _returnToMenuButton.onClick.AddListener(OnReturnToMenuClicked);
@@ -405,9 +322,17 @@ namespace LifeLike.Views
             if (_viewModel == null) return;
 
             UpdateEndingInfo();
-            UpdateChapterResults();
             UpdateRouteSummary();
-            UpdatePanelVisibility();
+            UpdateChapterResults();
+        }
+
+        /// <summary>
+        /// ルートサマリーを更新
+        /// </summary>
+        private void UpdateRouteSummary()
+        {
+            if (_viewModel == null || _routeSummaryText == null) return;
+            _routeSummaryText.text = _viewModel.RouteSummary;
         }
 
         /// <summary>
@@ -416,6 +341,10 @@ namespace LifeLike.Views
         private void UpdateEndingInfo()
         {
             if (_viewModel == null) return;
+
+            // ローカライズされたエンディングテキストを取得
+            string endingTitle = GetLocalizedEndingTitle(_viewModel.FinalEndState);
+            string endingDescription = GetLocalizedEndingDescription(_viewModel.FinalEndState);
 
             if (_endingTitleText != null)
             {
@@ -427,18 +356,58 @@ namespace LifeLike.Views
                     {
                         _titleTypewriter = _endingTitleText.gameObject.AddComponent<TypewriterEffect>();
                     }
-                    _titleTypewriter.StartTyping(_viewModel.EndingTitle);
+                    _titleTypewriter.StartTyping(endingTitle);
                 }
                 else
                 {
-                    _endingTitleText.text = _viewModel.EndingTitle;
+                    _endingTitleText.text = endingTitle;
                 }
             }
 
             if (_endingDescriptionText != null)
             {
-                _endingDescriptionText.text = _viewModel.EndingDescription;
+                _endingDescriptionText.text = endingDescription;
             }
+        }
+
+        /// <summary>
+        /// ローカライズされたエンディングタイトルを取得
+        /// </summary>
+        private string GetLocalizedEndingTitle(EndStateType endState)
+        {
+            if (_localizationService == null)
+            {
+                return _viewModel?.EndingTitle ?? "The End";
+            }
+
+            return endState switch
+            {
+                EndStateType.TruthDawn => _localizationService.GetText(UILocalizationKeys.Result.TruthDawn),
+                EndStateType.InvestigationContinues => _localizationService.GetText(UILocalizationKeys.Result.InvestigationContinues),
+                EndStateType.IntoDarkness => _localizationService.GetText(UILocalizationKeys.Result.IntoDarkness),
+                EndStateType.UncertainDawn => _localizationService.GetText(UILocalizationKeys.Result.UncertainDawn),
+                _ => _localizationService.GetText(UILocalizationKeys.Result.DefaultEnding)
+            };
+        }
+
+        /// <summary>
+        /// ローカライズされたエンディング説明を取得
+        /// </summary>
+        private string GetLocalizedEndingDescription(EndStateType endState)
+        {
+            if (_localizationService == null)
+            {
+                return _viewModel?.EndingDescription ?? "";
+            }
+
+            return endState switch
+            {
+                EndStateType.TruthDawn => _localizationService.GetText(UILocalizationKeys.Result.TruthDawnDesc),
+                EndStateType.InvestigationContinues => _localizationService.GetText(UILocalizationKeys.Result.InvestigationContinuesDesc),
+                EndStateType.IntoDarkness => _localizationService.GetText(UILocalizationKeys.Result.IntoDarknessDesc),
+                EndStateType.UncertainDawn => _localizationService.GetText(UILocalizationKeys.Result.UncertainDawnDesc),
+                _ => _localizationService.GetText(UILocalizationKeys.Result.DefaultEndingDesc)
+            };
         }
 
         /// <summary>
@@ -470,103 +439,17 @@ namespace LifeLike.Views
                         ? result.endingTitle ?? completedText
                         : lockedText;
                 }
-                if (texts.Length > 2)
-                {
-                    texts[2].text = result.endState?.ToString() ?? "-";
-                }
 
                 // 完了状態に応じて色を変更
                 var image = itemObj.GetComponent<Image>();
                 if (image != null)
                 {
                     image.color = result.isCompleted
-                        ? new Color(0.2f, 0.8f, 0.2f, 0.5f)
-                        : new Color(0.5f, 0.5f, 0.5f, 0.5f);
+                        ? new Color(0.3f, 0.5f, 0.3f, 0.6f)
+                        : new Color(0.4f, 0.4f, 0.4f, 0.4f);
                 }
 
                 _chapterResultItems.Add(itemObj);
-            }
-        }
-
-        /// <summary>
-        /// ルートサマリーを更新
-        /// </summary>
-        private void UpdateRouteSummary()
-        {
-            if (_viewModel == null) return;
-
-            if (_routeSummaryText != null)
-            {
-                _routeSummaryText.text = _viewModel.RouteSummary;
-            }
-        }
-
-        /// <summary>
-        /// パネルの表示状態を更新
-        /// </summary>
-        private void UpdatePanelVisibility()
-        {
-            if (_viewModel == null) return;
-
-            bool showCredits = _viewModel.IsShowingCredits;
-
-            // クレジットパネルの表示/非表示（スライド効果付き）
-            if (_creditsPanelSlide != null)
-            {
-                if (showCredits && !_creditsPanelSlide.IsVisible)
-                {
-                    _creditsPanel?.SetActive(true);
-                    _creditsPanelSlide.SlideIn();
-                }
-                else if (!showCredits && _creditsPanelSlide.IsVisible)
-                {
-                    _creditsPanelSlide.SlideOut();
-                }
-            }
-            else if (_creditsPanel != null)
-            {
-                _creditsPanel.SetActive(showCredits);
-            }
-
-            // サマリーパネルの表示/非表示（スライド効果付き）
-            if (_summaryPanelSlide != null)
-            {
-                if (!showCredits && !_summaryPanelSlide.IsVisible)
-                {
-                    _summaryPanel?.SetActive(true);
-                    _summaryPanelSlide.SlideIn();
-                }
-                else if (showCredits && _summaryPanelSlide.IsVisible)
-                {
-                    _summaryPanelSlide.SlideOut();
-                }
-            }
-            else if (_summaryPanel != null)
-            {
-                _summaryPanel.SetActive(!showCredits);
-            }
-
-            // クレジット表示開始時にスクロール開始
-            if (showCredits)
-            {
-                StartCreditsScroll();
-            }
-            else
-            {
-                _isScrollingCredits = false;
-            }
-        }
-
-        /// <summary>
-        /// クレジットスクロールを開始
-        /// </summary>
-        private void StartCreditsScroll()
-        {
-            if (_creditsScrollRect != null && _creditsScrollRect.content != null)
-            {
-                // スクロール位置をリセット
-                _creditsScrollRect.content.anchoredPosition = Vector2.zero;
-                _isScrollingCredits = true;
             }
         }
 
@@ -574,30 +457,17 @@ namespace LifeLike.Views
         {
             switch (e.PropertyName)
             {
-                case nameof(ResultViewModel.IsShowingCredits):
-                    UpdatePanelVisibility();
-                    break;
                 case nameof(ResultViewModel.ChapterResults):
                     UpdateChapterResults();
-                    break;
-                case nameof(ResultViewModel.RouteSummary):
-                    UpdateRouteSummary();
                     break;
                 case nameof(ResultViewModel.EndingTitle):
                 case nameof(ResultViewModel.EndingDescription):
                     UpdateEndingInfo();
                     break;
+                case nameof(ResultViewModel.RouteSummary):
+                    UpdateRouteSummary();
+                    break;
             }
-        }
-
-        private void OnShowCreditsClicked()
-        {
-            _viewModel?.ShowCreditsCommand.Execute(null);
-        }
-
-        private void OnShowSummaryClicked()
-        {
-            _viewModel?.ShowSummaryCommand.Execute(null);
         }
 
         private void OnReturnToMenuClicked()

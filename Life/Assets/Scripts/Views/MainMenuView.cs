@@ -113,7 +113,7 @@ namespace LifeLike.Views
                 return;
             }
 
-            _viewModel = new MainMenuViewModel(_controller.OperatorSaveService);
+            _viewModel = new MainMenuViewModel(_controller.OperatorSaveService, _localizationService);
         }
 
         /// <summary>
@@ -403,6 +403,8 @@ namespace LifeLike.Views
         private void OnLanguageChanged(Language language)
         {
             ApplyLocalizedTexts();
+            // ViewModel内のセーブ情報テキストも更新
+            _viewModel?.RefreshSaveInfo();
         }
 
         /// <summary>

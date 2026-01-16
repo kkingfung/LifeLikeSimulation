@@ -1094,7 +1094,18 @@
               "ko": "다시 연락드릴 수도 있습니다."
             }
           ],
-          "responses": []
+          "responses": [
+            {
+              "responseId": "sato_end_info_reply",
+              "displayText": {
+                "ja": "わかりました。何かあればまたご連絡ください。",
+                "en": "I understand. Please contact us again if anything comes up.",
+                "zh_CN": "我明白了。如有任何情况请再联系我们。",
+                "zh_TW": "我明白了。如有任何情況請再聯繫我們。",
+                "ko": "알겠습니다. 무슨 일이 있으면 다시 연락 주세요."
+              }
+            }
+          ]
         },
         {
           "segmentId": "sato_end_hospital_info",
@@ -1121,7 +1132,18 @@
               "ko": "협조해 주셔서 감사합니다."
             }
           ],
-          "responses": []
+          "responses": [
+            {
+              "responseId": "sato_end_hospital_reply",
+              "displayText": {
+                "ja": "お見舞いに行かれるんですね。お気をつけて。",
+                "en": "You're going to visit her. Take care.",
+                "zh_CN": "您要去探望她。请保重。",
+                "zh_TW": "您要去探望她。請保重。",
+                "ko": "병문안 가시는군요. 조심히 가세요."
+              }
+            }
+          ]
         }
       ]
     },
@@ -1564,6 +1586,16 @@
                 "zh_TW": "您需要幫助嗎？請發出聲音告訴我。",
                 "ko": "도움이 필요하신가요? 소리를 내서 알려주세요."
               }
+            },
+            {
+              "responseId": "unknown_silence_2_wait",
+              "displayText": {
+                "ja": "お待ちしています。何かあれば、いつでもお電話ください。",
+                "en": "I'll wait. Please call anytime if something happens.",
+                "zh_CN": "我会等着。如有任何情况，请随时来电。",
+                "zh_TW": "我會等著。如有任何情況，請隨時來電。",
+                "ko": "기다리겠습니다. 무슨 일이 있으면 언제든 전화해 주세요."
+              }
             }
           ]
         },
@@ -1674,7 +1706,18 @@
               "ko": "뚜... 뚜... 뚜..."
             }
           ],
-          "responses": []
+          "responses": [
+            {
+              "responseId": "unknown_end_reply",
+              "displayText": {
+                "ja": "...お気をつけて。",
+                "en": "...Take care.",
+                "zh_CN": "...请保重。",
+                "zh_TW": "...請保重。",
+                "ko": "...조심하세요."
+              }
+            }
+          ]
         }
       ]
     },

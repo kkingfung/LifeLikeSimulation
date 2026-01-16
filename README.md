@@ -4,15 +4,53 @@
 
 <img src="/Result.PNG" width="600">
 
-## 機能
+## ゲームコンセプト: "Operator: Night Signal"
 
+夜間緊急オペレーターとして電話を受け、10夜にわたる物語を体験する「責任シミュレーター」。
+
+- **One Operator, Many Calls, One Truth** - プレイヤーはデスクから離れず、声だけで世界を把握
+- **通話は不完全** - 偏見あり、時に虚偽。真実は語られるのではなく、浮かび上がる
+- **嘘をつくことも選択肢** - 良い/悪いのラベルなし、結果のみ
+
+## 主な機能
+
+### ゲームプレイ
 - **動画再生**: 実写動画クリップのシームレスな再生
 - **選択システム**: 通常選択、時限選択、ステータスベース選択
-- **分岐ストーリー**: リニアなストーリーと複数エンディング
-- **キャラクター関係性**: 複数軸での関係性追跡（Love, Trust, Friendshipなど）
+- **分岐ストーリー**: 10夜のシナリオ、60以上のエンディングバリエーション
+- **信頼グラフ**: 発信者との関係性が選択肢と結末に影響
+- **証拠システム**: 矛盾の発見、証拠の提示による会話の分岐
+
+### 多言語対応 (Multi-Language Support)
+
+**5言語完全対応:**
+
+| 言語 | Language | 対応状況 |
+|------|----------|----------|
+| 日本語 | Japanese | ✅ 完全対応（デフォルト） |
+| English | English | ✅ 完全対応 |
+| 简体中文 | Chinese (Simplified) | ✅ 完全対応 |
+| 繁體中文 | Chinese (Traditional) | ✅ 完全対応 |
+| 한국어 | Korean | ✅ 完全対応 |
+
+**ローカライズの範囲:**
+- **UIテキスト**: メニュー、設定、ボタン、ステータス表示など全UI要素
+- **シナリオ**: 全10夜の通話内容、選択肢、応答テキスト
+- **キャラクター名**: 発信者の表示名
+- **エンディング**: 結果画面のタイトルと説明文
+- **システムメッセージ**: 通話ステータス、プログレス表示など
+
+**技術仕様:**
+- `ILocalizationService`: UI・システムテキストのローカライズ
+- `IDialogueLocalizationService`: シナリオ・台詞のローカライズ
+- JSONベースの翻訳ファイル（`Resources/Translations/Night01_Translations.json`等）
+- ゲーム内設定画面からリアルタイムで言語切り替え可能
+
+### 技術機能
 - **AssetBundle対応**: サーバーからのダウンロードまたはローカル読み込み
 - **オートセーブ**: 自動セーブシステム
 - **トランジション設定**: 黒フェード、白フェード、クロスフェードなど
+- **MVVM + ServiceLocator**: 拡張性の高いアーキテクチャ
 
 ## 動作環境
 
@@ -22,17 +60,31 @@
 ## プロジェクト構成
 
 ```
-Assets/
+Life/Assets/
+├── Scenes/
+│   ├── Bootstrap.unity         # 初期化シーン
+│   ├── MainMenu.unity          # メインメニュー
+│   ├── ChapterSelect.unity     # 夜選択画面
+│   ├── Operator.unity          # オペレーターゲーム画面
+│   ├── Result.unity            # 結果画面
+│   └── Settings.unity          # 設定画面
 ├── Scripts/
-│   ├── Core/           # MVVM基底クラス、ServiceLocator、Bootstrap
-│   ├── Services/       # Story, Video, Choice, Relationship, Save, Transition, AssetBundle
-│   ├── Data/           # ScriptableObject（StoryScene, Character, Choiceなど）
-│   ├── ViewModels/     # MainMenu, StoryScene ViewModel
-│   └── Views/          # uGUI View
-├── Scenes/             # Bootstrap, MainMenu, StoryScene
-├── StoryData/          # ストーリーコンテンツ（ScriptableObject）
-├── UI/                 # プレハブ
-└── Videos/             # 動画ファイル（またはAssetBundle使用）
+│   ├── Core/                   # MVVM基底クラス、ServiceLocator、Bootstrap
+│   ├── Controllers/            # シーンコントローラー
+│   ├── Services/               # Story, Video, CallFlow, Evidence, Trust, Localization等
+│   ├── Data/                   # ScriptableObject（Caller, Call, Evidence等）
+│   ├── ViewModels/             # UI ViewModel
+│   └── Views/                  # uGUI View
+├── Data/
+│   ├── Night01/ ~ Night10/     # 各夜のシナリオデータ（JSON）
+│   └── ...
+├── Resources/
+│   └── Translations/           # 各夜の翻訳データ（JSON）
+│       ├── Night01_Translations.json
+│       ├── Night02_Translations.json
+│       └── ...
+├── UI/Prefabs/                 # UIプレハブ
+└── Videos/                     # 動画ファイル（またはAssetBundle使用）
 ```
 
 ## クイックスタート
@@ -44,21 +96,20 @@ Assets/
 3. `GameStateData`アセットを作成して割り当て
 4. Build Settingsで`Bootstrap`を最初のシーンに設定
 
-### 2. ストーリーコンテンツの作成
+### 2. シナリオデータの作成
 
-**キャラクターを作成:**
-```
-Projectで右クリック → Create → LifeLike → Character Data
-```
+シナリオデータはJSON形式で管理され、多言語に対応しています:
 
-**ストーリーシーンを作成:**
-```
-Projectで右クリック → Create → LifeLike → Story Scene
-```
-
-**ゲーム状態を作成:**
-```
-Projectで右クリック → Create → LifeLike → Game State Data
+```json
+{
+  "title": {
+    "ja": "第一夜：深夜の通報",
+    "en": "Night 1: Midnight Calls",
+    "zh_CN": "第一夜：深夜的报警",
+    "zh_TW": "第一夜：深夜的報警",
+    "ko": "첫째 밤: 한밤중의 신고"
+  }
+}
 ```
 
 ### 3. 動画ソースの設定
@@ -79,61 +130,108 @@ Projectで右クリック → Create → LifeLike → Game State Data
 
 ## アーキテクチャ
 
-**MVVM + ServiceLocator**パターンを使用:
+**MVVM + Controller + ServiceLocator**パターンを使用:
 
 ```
-Views (UI) → ViewModels → Services → Data (ScriptableObjects)
+Controllers (Scene) → Views (UI) → ViewModels → Services → Data (ScriptableObjects/JSON)
 ```
 
-### サービス一覧
+### 主要サービス一覧
 
 | サービス | 役割 |
 |----------|------|
-| `IStoryService` | ストーリー進行と変数管理 |
+| `ICallFlowService` | 通話フロー管理 |
+| `IEvidenceService` | 証拠の発見・使用・矛盾検出 |
+| `ITrustGraphService` | 信頼関係の追跡 |
+| `IWorldStateService` | ゲーム時間と世界状態 |
+| `ILocalizationService` | UIローカライズ |
+| `IDialogueLocalizationService` | シナリオローカライズ |
 | `IVideoService` | 動画再生（ローカル + AssetBundle） |
-| `IChoiceService` | 選択肢の表示と選択処理 |
-| `IRelationshipService` | キャラクター関係性の追跡 |
+| `IAudioService` | BGM/SFX/Voice管理 |
 | `ISaveService` | オートセーブ管理 |
 | `ITransitionService` | 画面遷移演出 |
-| `IAssetBundleService` | AssetBundleのダウンロードとキャッシュ |
 
-## 動画参照（VideoReference）
+## 多言語対応の実装
+
+### UIローカライズ
+
+`UILocalizationData.cs`にてコードベースで定義:
 
 ```csharp
-// ローカル動画
-video.source = AssetSource.Local;
-video.localClip = myClip;
-
-// AssetBundle動画
-video.source = AssetSource.AssetBundle;
-video.bundleName = "chapter1_videos";
-video.assetName = "scene_001";
-video.bundleVersion = 1;
-
-// StreamingAssets動画
-video.source = AssetSource.StreamingAssets;
-video.streamingAssetsPath = "Videos/intro.mp4";
+AddEntry(entries, UILocalizationKeys.MainMenu.NewGame,
+    "新規ゲーム",      // Japanese
+    "New Game",        // English
+    "新游戏",          // Chinese Simplified
+    "新遊戲",          // Chinese Traditional
+    "새 게임");        // Korean
 ```
 
-## 条件と効果
+### シナリオローカライズ
 
-**条件の例**（Love >= 50 の場合に選択肢を表示）:
+各夜の翻訳ファイル（`Resources/Translations/NightXX_Translations.json`）:
+
+```json
+{
+  "calls": [
+    {
+      "callId": "call_noise",
+      "title": {
+        "ja": "大きな音がしたんです",
+        "en": "I Heard a Loud Noise",
+        "zh_CN": "我听到很大的声音",
+        "zh_TW": "我聽到很大的聲音",
+        "ko": "큰 소리가 났어요"
+      }
+    }
+  ]
+}
+```
+
+### 言語の切り替え
+
 ```csharp
-condition.variableName = "char_sakura_love";
-condition.comparisonOperator = ComparisonOperator.GreaterThanOrEqual;
-condition.intValue = 50;
+var localizationService = ServiceLocator.Instance.Get<ILocalizationService>();
+localizationService.SetLanguage(Language.English);
 ```
 
-**効果の例**（Loveに10を加算）:
-```csharp
-effect.variableName = "char_sakura_love";
-effect.operation = EffectOperation.Add;
-effect.intValue = 10;
-```
+## エンディングシステム
+
+10夜を通じて、選択によって異なるエンディングに到達:
+
+| エンディング種別 | 説明 |
+|------------------|------|
+| `TruthRevealed` | 真相解明 |
+| `DamageMinimized` | 被害最小化 |
+| `SomeoneSaved` | 誰かを救った |
+| `SomeoneAbandoned` | 誰かを見捨てた |
+| `BecameAccomplice` | 共犯者になった |
+| `EveryoneSaved` | 全員を救った |
+| `NooneSaved` | 誰も救えなかった |
+
+「成功」エンディングは悲劇的かもしれない。「失敗」は道徳的に正しいかもしれない。
 
 ## ドキュメント
 
-詳細な技術ドキュメントは [CLAUDE.md](CLAUDE.md) を参照してください。
+| ファイル | 内容 |
+|----------|------|
+| [CLAUDE.md](CLAUDE.md) | 技術ドキュメント |
+| [SCENARIOS.md](SCENARIOS.md) | 全10夜のシナリオ詳細 |
+| [CHARACTERS.md](CHARACTERS.md) | 登場人物と関係図 |
+
+## 開発ステータス
+
+### 完了済み
+- ✅ 全6シーンのフレームワーク
+- ✅ MVVM + ServiceLocatorアーキテクチャ
+- ✅ 20以上のコアサービス
+- ✅ 通話フロー・証拠・信頼グラフシステム
+- ✅ 10夜分のシナリオデータ
+- ✅ **5言語対応（日本語・英語・簡体中文・繁体中文・韓国語）**
+- ✅ オーディオシステム（BGM/SFX/Voice）
+
+### 開発中
+- 🔄 Phase 2: 音声追加
+- 🔄 Phase 3: 動画通話
 
 ## ライセンス
 

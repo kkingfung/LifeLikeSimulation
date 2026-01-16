@@ -3,6 +3,8 @@ using System;
 using LifeLike.Core.Commands;
 using LifeLike.Core.MVVM;
 using LifeLike.Data;
+using LifeLike.Data.Localization;
+using LifeLike.Services.Core.Localization;
 using LifeLike.Services.Core.Save;
 using LifeLike.Services.Core.Story;
 using UnityEngine;
@@ -18,6 +20,7 @@ namespace LifeLike.ViewModels
         private readonly IStoryService? _storyService;
         private readonly ISaveService? _saveService;
         private readonly IOperatorSaveService? _operatorSaveService;
+        private readonly ILocalizationService? _localizationService;
         private readonly GameStateData? _gameStateData;
 
         private bool _canContinue;
@@ -100,9 +103,11 @@ namespace LifeLike.ViewModels
         /// MainMenuViewModelを初期化する（オペレーターモード用）
         /// </summary>
         /// <param name="operatorSaveService">オペレーターセーブサービス</param>
-        public MainMenuViewModel(IOperatorSaveService operatorSaveService)
+        /// <param name="localizationService">ローカライズサービス（オプション）</param>
+        public MainMenuViewModel(IOperatorSaveService operatorSaveService, ILocalizationService? localizationService = null)
         {
             _operatorSaveService = operatorSaveService ?? throw new ArgumentNullException(nameof(operatorSaveService));
+            _localizationService = localizationService;
             _isOperatorMode = true;
 
             // コマンドを初期化
@@ -175,16 +180,18 @@ namespace LifeLike.ViewModels
                 // 全10夜クリア済みの場合
                 if (completedNights.Count >= 10)
                 {
-                    CurrentNightInfo = "全クリア (Night 10 / 10)";
+                    CurrentNightInfo = GetLocalizedText(UILocalizationKeys.MainMenu.AllCleared, "全クリア (Night 10 / 10)");
                 }
                 else
                 {
-                    CurrentNightInfo = $"Night {nightIndex + 1:D2} / 10";
+                    string template = GetLocalizedText(UILocalizationKeys.MainMenu.CurrentNight, "Night {0:D2} / 10");
+                    CurrentNightInfo = string.Format(template, nightIndex + 1);
                 }
 
                 if (_operatorSaveService.LastSaveTime.HasValue)
                 {
-                    LastSaveInfo = $"最後のセーブ: {_operatorSaveService.LastSaveTime.Value:yyyy/MM/dd HH:mm}";
+                    string template = GetLocalizedText(UILocalizationKeys.MainMenu.LastSave, "最後のセーブ: {0}");
+                    LastSaveInfo = string.Format(template, _operatorSaveService.LastSaveTime.Value.ToString("yyyy/MM/dd HH:mm"));
                 }
                 else
                 {
@@ -194,7 +201,7 @@ namespace LifeLike.ViewModels
                 // 中断セーブがある場合は表示
                 if (_operatorSaveService.HasMidNightSave)
                 {
-                    CurrentNightInfo += " (中断セーブあり)";
+                    CurrentNightInfo += GetLocalizedText(UILocalizationKeys.MainMenu.MidNightSave, " (中断セーブあり)");
                 }
             }
             else
@@ -202,6 +209,18 @@ namespace LifeLike.ViewModels
                 CurrentNightInfo = string.Empty;
                 LastSaveInfo = string.Empty;
             }
+        }
+
+        /// <summary>
+        /// ローカライズテキストを取得するヘルパー
+        /// </summary>
+        private string GetLocalizedText(string key, string fallback)
+        {
+            if (_localizationService != null)
+            {
+                return _localizationService.GetText(key);
+            }
+            return fallback;
         }
 
         /// <summary>
@@ -215,7 +234,8 @@ namespace LifeLike.ViewModels
 
             if (_saveService.LastSaveTime.HasValue)
             {
-                LastSaveInfo = $"最後のセーブ: {_saveService.LastSaveTime.Value:yyyy/MM/dd HH:mm}";
+                string template = GetLocalizedText(UILocalizationKeys.MainMenu.LastSave, "最後のセーブ: {0}");
+                LastSaveInfo = string.Format(template, _saveService.LastSaveTime.Value.ToString("yyyy/MM/dd HH:mm"));
             }
             else
             {

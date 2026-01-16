@@ -732,6 +732,16 @@
                 "zh_TW": "緊急呼叫中心。發生什麼事了嗎？",
                 "ko": "긴급 신고 센터입니다. 무슨 일이 있었습니까?"
               }
+            },
+            {
+              "responseId": "coworker_intro_name",
+              "displayText": {
+                "ja": "佐藤さん。フルネームを教えていただけますか？",
+                "en": "Mr./Ms. Sato. Could you give me your full name?",
+                "zh_CN": "佐藤先生/女士。您能告诉我您的全名吗？",
+                "zh_TW": "佐藤先生/女士。您能告訴我您的全名嗎？",
+                "ko": "사토 씨. 성함을 알려주시겠습니까?"
+              }
             }
           ]
         },
@@ -1201,6 +1211,16 @@
                 "zh_TW": "有人倒下？請詳細說明。",
                 "ko": "사람이 쓰러져 있다고요? 자세히 말씀해 주세요."
               }
+            },
+            {
+              "responseId": "discovery_intro_calm",
+              "displayText": {
+                "ja": "田中さん、落ち着いてください。状況を教えてください。",
+                "en": "Mr. Tanaka, please calm down. Tell me what happened.",
+                "zh_CN": "田中先生，请冷静。请告诉我发生了什么。",
+                "zh_TW": "田中先生，請冷靜。請告訴我發生了什麼。",
+                "ko": "다나카 씨, 진정하세요. 무슨 일인지 말씀해 주세요."
+              }
             }
           ]
         },
@@ -1239,6 +1259,16 @@
                 "zh_TW": "她在說什麼？",
                 "ko": "뭐라고 하고 있습니까?"
               }
+            },
+            {
+              "responseId": "victim_speaking_ambulance",
+              "displayText": {
+                "ja": "救急隊がもうすぐ着きます。そのまま見守っていてください。",
+                "en": "The ambulance will arrive soon. Please keep watching over her.",
+                "zh_CN": "救护车很快就到。请继续照看着她。",
+                "zh_TW": "救護車很快就到。請繼續照看著她。",
+                "ko": "구급대가 곧 도착합니다. 계속 지켜봐 주세요."
+              }
             }
           ]
         },
@@ -1276,6 +1306,16 @@
                 "zh_CN": "美咲...记下了。可能是和她有关的人。",
                 "zh_TW": "美咲...記下了。可能是和她有關的人。",
                 "ko": "미사키... 기록했습니다. 그분과 관련된 사람일 수 있어요."
+              }
+            },
+            {
+              "responseId": "misaki_name_comfort",
+              "displayText": {
+                "ja": "大丈夫です、救急隊が来ますから。",
+                "en": "It's okay, the ambulance is coming.",
+                "zh_CN": "没事的，救护车快来了。",
+                "zh_TW": "沒事的，救護車快來了。",
+                "ko": "괜찮습니다, 구급대가 옵니다."
               }
             }
           ]
@@ -1728,6 +1768,16 @@
                 "zh_CN": "首先请告诉我地点。您现在在哪里？",
                 "zh_TW": "首先請告訴我地點。您現在在哪裡？",
                 "ko": "먼저 장소를 알려주세요. 지금 어디에 계십니까?"
+              }
+            },
+            {
+              "responseId": "hit_intro_calm",
+              "displayText": {
+                "ja": "大丈夫ですか？まずは落ち着いて。何があったか教えてください。",
+                "en": "Are you okay? Please calm down first. Tell me what happened.",
+                "zh_CN": "您还好吗？请先冷静下来。告诉我发生了什么。",
+                "zh_TW": "您還好嗎？請先冷靜下來。告訴我發生了什麼。",
+                "ko": "괜찮으세요? 먼저 진정하세요. 무슨 일이 있었는지 말씀해 주세요."
               }
             }
           ]
@@ -2937,6 +2987,16 @@
                 "zh_TW": "動物...？這跟剛才說的不一樣啊。",
                 "ko": "동물...? 아까 말씀과 다른데요."
               }
+            },
+            {
+              "responseId": "revision_intro_recall",
+              "displayText": {
+                "ja": "何か轢いたかもしれないとおっしゃっていた方ですね。",
+                "en": "You're the one who said you might have hit something, right?",
+                "zh_CN": "您就是那位说可能撞到什么的人，对吧？",
+                "zh_TW": "您就是那位說可能撞到什麼的人，對吧？",
+                "ko": "뭔가 치었을지도 모른다고 하셨던 분이시죠."
+              }
             }
           ]
         },
@@ -3538,6 +3598,16 @@
                 "zh_CN": "没有更多可以告知的信息了。",
                 "zh_TW": "沒有更多可以告知的信息了。",
                 "ko": "더 이상 알려드릴 수 있는 정보가 없습니다."
+              }
+            },
+            {
+              "responseId": "callback_family_intro_info",
+              "displayText": {
+                "ja": "先ほどお伝えした通り、救急が対応中です。",
+                "en": "As I mentioned earlier, emergency services are responding.",
+                "zh_CN": "正如我之前说的，急救人员正在处理中。",
+                "zh_TW": "正如我之前說的，急救人員正在處理中。",
+                "ko": "앞서 말씀드린 대로, 응급 서비스가 대응 중입니다."
               }
             }
           ]
@@ -4145,6 +4215,16 @@
                 "zh_TW": "記錄正在按照常規製作。",
                 "ko": "기록은 평소대로 작성하고 있습니다."
               }
+            },
+            {
+              "responseId": "supervisor_intro_confirm",
+              "displayText": {
+                "ja": "はい、複数の通報がありました。",
+                "en": "Yes, there were multiple reports.",
+                "zh_CN": "是的，有多起报警。",
+                "zh_TW": "是的，有多起報警。",
+                "ko": "네, 여러 건의 신고가 있었습니다."
+              }
             }
           ]
         },
@@ -4192,6 +4272,16 @@
                 "zh_CN": "但是，事实就是事实。不应该如实记录吗？",
                 "zh_TW": "但是，事實就是事實。不應該如實記錄嗎？",
                 "ko": "하지만, 사실은 사실입니다. 본 대로 기록해야 하지 않을까요?"
+              }
+            },
+            {
+              "responseId": "supervisor_correction_question",
+              "displayText": {
+                "ja": "なぜ中立的な表現が必要なんですか？",
+                "en": "Why is neutral language necessary?",
+                "zh_CN": "为什么需要中立的表达？",
+                "zh_TW": "為什麼需要中立的表達？",
+                "ko": "왜 중립적인 표현이 필요한가요?"
               }
             }
           ]
